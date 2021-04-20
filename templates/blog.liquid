@@ -1,0 +1,19 @@
+BLOG
+
+{{ content_for_index }}
+
+{% for post in store.blog.recent %}
+
+    {{ post.title }}
+    {{ blog_post.content | strip_html | truncate: 140 }}
+
+{% endfor %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Blog",
+        "fi": "Blogi"
+    }
+}
+{% endschema %}

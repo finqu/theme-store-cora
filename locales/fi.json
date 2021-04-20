@@ -1,0 +1,28 @@
+{
+    "system": {
+        "pages": {
+            "terms_and_conditions": "Käyttöehdot",
+            "cancellation_policy": "Peruutusehdot",
+            "shipping_policy": "Toimitusehdot",
+            "privacy_policy": "Tietosuojaseloste",
+            "login": "Kirjaudu sisään",
+            "register": "Uusi asiakastili",
+            "reset_password": "Salasanan vaihto",
+            "forgotten_password": "Unohtunut salasana?",
+            "change_password": "Vaihda salasana",
+            "blog": "Blogi",
+            "cart": "Ostoskori",
+            "order": "Tilaus",
+            "receipt": "Kuitti",
+            "account": "Asiakastili",
+            "edit_account": "Muokkaa asiakastilin tietoja",
+            "wishlist": "Toivelista",
+            "orders": "Tilaukset",
+            "confirmation": "Vahvistussivu",
+            "password": "Tulossa pian",
+            "search": "Haku",
+            "not_published": "Julkaisematon kauppa",
+            "not_activated": "Rajoitettu pääsy"
+        }
+    }
+}

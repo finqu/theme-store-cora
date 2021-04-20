@@ -1,0 +1,66 @@
+{
+	"name": "superb",
+	"theme_name": "Superb",
+	"styles": [
+		{
+			"name": "Test",
+			"settings": [{}]
+		}
+	],
+	"presets": [],
+	"settings": [
+		{
+			"id": "name",
+			"type": "text",
+			"label": "Store name"
+		},
+		{
+			"id": "image_theme",
+			"type": "image-picker",
+			"label": "Image picker (image-picker) test",
+			"default": "https://images.unsplash.com/photo-1603993097397-89c963e325c7?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+		},
+		{
+			"id": "richText2",
+			"type": "richtext",
+			"label": "Richtext (richtext)",
+			"default": "Some text"
+		},
+		{
+			"type": "separator"
+		},
+		{
+			"type": "title",
+			"label": "Colors",
+			"info": "info for the colors"
+		},
+		{
+			"type": "label",
+			"label": "Color group title"
+		},
+		{
+			"id": "primary",
+			"type": "color",
+			"label": "Primary",
+			"default": "#0d6efd"
+		},
+		{
+			"id": "secondary",
+			"type": "color",
+			"label": "Secondary",
+			"default": "#6c757d"
+		},
+		{
+			"type": "label",
+			"label": "Range without own label"
+		},
+		{
+			"id": "range_without_label",
+			"type": "range",
+			"min": 10,
+			"max": 100,
+			"step": 10,
+			"default": 20
+		}
+	]
+}

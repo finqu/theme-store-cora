@@ -1,0 +1,27 @@
+CATEGORY
+
+<div>
+id: {{ category.id }}
+</div>
+
+<div>
+name: {{ category.name }}
+</div>
+
+description: {{ category.description }}
+</div>
+
+<div>
+visible: {% if category.is_visible %} true {% else %} false {% endif %}
+</div>
+
+{{ content_for_index }}
+
+{% schema %}
+{
+	"name": {
+		"en": "Category",
+		"fi": "Tuoteryhmä"
+	}
+}
+{% endschema %}

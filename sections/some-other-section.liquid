@@ -1,0 +1,327 @@
+<div class="padding-{{ section.settings.sectionHeight }}">
+
+	<h5>{{section.settings.text}}</h5>
+
+	{{ section.settings.richText }}
+
+    <hr>
+    {{ content_for_blocks }}
+    <hr>
+
+    {% for block in section.settings.setting_blocks.blockTest %}
+        <h1>Mitä</h1>
+        <h2>{{block.type}}/{{block.id}} - {{block.settings.blocktext}}</h2>
+    {% endfor %}
+</div>
+
+<style>
+	#finqu-section-{{section.id}} {
+        {% if section.settings.splashTest %}
+            background-image: url({{section.settings.splashTest}});
+            background-size: cover;
+            background-repeat: no-repeat;
+        {% endif %}
+
+		background-color: {{ section.settings.backgroundColor | _default: 'white' }};
+		color: {{ section.settings.textColor | _default: 'black' }};
+
+        {% if section.settings.radioPillTest == 'other' %}
+            height: {{ section.settings.rangeTest }}px;
+        {% endif %}
+	}
+</style>
+
+{% stylesheet %}
+	.some-other-section {
+		text-align: center;
+	}
+{% endstylesheet %}
+
+{% schema %}
+{
+    "name": "Some other section",
+    "tag": "section",
+    "class": "some-other-section",
+    "settings": {
+        "groups": [
+            {
+                "title": "Content",
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": "Basic",
+                            "settings": [
+                                {
+                                    "id": "text",
+                                    "type": "text",
+                                    "label": "Text (text)",
+                                    "placeholder": "Just some placeholder",
+                                    "default": "Default",
+                                    "info": "Some info text here"
+                                },
+                                {
+                                    "id": "textarea",
+                                    "type": "textarea",
+                                    "label": "Textarea (textarea)",
+                                    "placeholder": "Just some placeholder",
+                                    "conditions": ["!text contains foobar", "text:length gte 5"],
+                                    "default": "Textarea default"
+                                },
+                                {
+                                    "id": "select",
+                                    "type": "select",
+                                    "label": "Select (select)",
+                                    "default": "medium",
+                                    "info": "Some info here!",
+                                    "options": [
+                                        {
+                                            "value": "small",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "medium",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "large",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "range",
+                                    "label": "Range",
+                                    "type": "range",
+                                    "min": 10,
+                                    "max": 100,
+                                    "step": 10,
+                                    "default": 20,
+                                    "info": "Some info here!"
+                                },
+                                {
+                                    "id": "radio",
+                                    "type": "radio",
+                                    "label": "Radio (radio)",
+                                    "options": [
+                                        {
+                                            "value": "one",
+                                            "label": "Radio one"
+                                        },
+                                        {
+                                            "value": "two",
+                                            "label": "Radio two"
+                                        },
+                                        {
+                                            "value": "three",
+                                            "label": "Radio threeasdfsadfasdfasf"
+                                        },
+                                        {
+                                            "value": "four",
+                                            "label": "Radio four adsafd fsd ds"
+                                        }
+                                    ],
+                                    "default": "one"
+                                },
+                                {
+                                    "id": "checkbox",
+                                    "type": "checkbox",
+                                    "label": "Checkbox (checkbox)",
+                                    "default": false
+                                },
+                                {
+                                    "type": "title",
+                                    "label": "Colors"
+                                },
+                                {
+                                    "id": "backgroundColor",
+                                    "type": "color",
+                                    "label": "Background color",
+                                    "default": "#ff4433"
+                                },
+                                {
+                                    "id": "textColor",
+                                    "type": "color",
+                                    "label": "Text color",
+                                    "default": "#222222"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Special",
+                            "settings": [
+                            	{
+                                    "id": "radioPill",
+                                    "type": "radio-pill",
+                                    "label": "Radio Pill (radio-pill)",
+                                    "options": [
+                                        {
+                                            "value": "one",
+                                            "label": "Radio one"
+                                        },
+                                        {
+                                            "value": "two",
+                                            "label": "Radio two"
+                                        }
+                                    ],
+                                    "default": "one"
+                                },
+                                {
+                                    "id": "image",
+                                    "type": "image-picker",
+                                    "label": "Image picker (image-picker)",
+                                    "default": "https://images.unsplash.com/photo-1603993097397-89c963e325c7?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+                                },
+                                {
+                                    "id": "richText",
+                                    "type": "richtext",
+                                    "label": "Richtext (richtext)",
+                                    "default": "Some text"
+                                },
+                                {
+                                    "id": "font",
+                                    "type": "font-picker",
+                                    "label": "Font picker (font-picker)",
+                                    "default": "Lato",
+                                    "families": [
+                                        "Open Sans",
+                                        "Lato",
+                                        "Roboto"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Playful",
+                            "settings": [
+                                {
+                                    "id": "radioPillTest",
+                                    "type": "radio-pill",
+                                    "label": "Section height",
+                                    "default": "other",
+                                    "options": [
+                                        {
+                                            "value": "s",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "m",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "l",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "other",
+                                            "label": ".."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "rangeTest",
+                                    "type": "range",
+                                    "label": "Custom height",
+                                    "min": 200,
+                                    "max": 1000,
+                                    "step": 50,
+                                    "default": 300,
+                                    "conditions": ["radioPillTest eq other"]
+                                },
+                                {
+                                    "id": "splashTest",
+                                	"type": "unsplash",
+                                	"label": "Unsplash!",
+                                	"template": "<p>Generate some awesome Unsplash images to the background!</p>"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Styles",
+                            "id": "styles",
+                            "max_blocks": 5,
+                            "call_to_action": "Add new style",
+                            "display_icons": true,
+                            "setting_blocks": [
+                                {
+                                    "type": "style",
+                                    "title": "Style",
+                                    "settings": [
+                                        {
+                                            "id": "style_image",
+                                            "type": "image-picker",
+                                            "label": "Image set"
+                                        },
+                                        {
+                                            "id": "name",
+                                            "type": "text",
+                                            "label": "Style name"
+                                        },
+                                        {
+                                            "id": "fonttest",
+                                            "type": "font-picker",
+                                            "label": "Font picker (font-picker)",
+                                            "default": "Lato",
+                                            "families": [
+                                                "Open Sans",
+                                                "Lato",
+                                                "Roboto"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "title": "Dynamic blocks",
+                "id": "blockTest",
+                "max_blocks": 2,
+                "call_to_action": "Add more playfulness",
+                "is_sortable": true,
+                "setting_blocks": [
+                    {
+                        "type": "playful",
+                        "title": "Playful",
+                        "settings": [
+                            {
+                                "id": "blocktext_image",
+                                "type": "image-picker",
+                                "label": "I can has an icon?"
+                            },
+                            {
+                                "id": "blocktext",
+                                "type": "text",
+                                "label": "This should be a title"
+                            },
+                            {
+                                "id": "blocktext_subtitle",
+                                "type": "text",
+                                "label": "This should be a subtitle"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "playful_two",
+                        "title": "More Playful",
+                        "settings": [
+                            {
+                                "id": "blocktext_2_image",
+                                "type": "image-picker",
+                                "label": "I can has an icon?"
+                            },
+                            {
+                                "id": "blocktext_2",
+                                "type": "text",
+                                "label": "This should be a title"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+{% endschema %}

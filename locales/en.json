@@ -1,0 +1,28 @@
+{
+    "system": {
+        "pages": {
+            "terms_and_conditions": "Terms & Conditions",
+            "cancellation_policy": "Cancellation policy",
+            "shipping_policy": "Shipping policy",
+            "privacy_policy": "Privacy policy",
+            "login": "Login",
+            "register": "Create account",
+            "reset_password": "Reset password",
+            "forgotten_password": "Forgotten password?",
+            "change_password": "Change password",
+            "blog": "Blog",
+            "cart": "Cart",
+            "order": "Order",
+            "receipt": "Receipt",
+            "account": "Account",
+            "edit_account": "Edit account information",
+            "wishlist": "Wishlist",
+            "orders": "Orders",
+            "confirmation": "Confirmation page",
+            "password": "Coming soon",
+            "search": "Search",
+            "not_published": "Unpublished store",
+            "not_activated": "Limited access"
+        }
+    }
+}

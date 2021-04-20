@@ -1,0 +1,18 @@
+FRONTPAGE TEMPLATE
+
+{% if page.content %}
+	{{ page.content }}
+{% endif %}
+
+<button class="btn btn-primary">Primääri</button>
+
+{{ content_for_index }}
+
+{% schema %}
+{
+	"name": {
+		"en": "Frontpage",
+		"fi": "Etusivu"
+	}
+}
+{% endschema %}

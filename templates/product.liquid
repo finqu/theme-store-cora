@@ -1,0 +1,32 @@
+PRODUCT
+
+<div>
+id: {{ product.id }}
+</div>
+
+<div>
+name: {{ product.name }}
+</div>
+
+<div>
+short description: {{ product.short_description }}
+</div>
+
+<div>
+description: {{ product.description }}
+</div>
+
+<div>
+visible: {% if product.is_visible %} true {% else %} false {% endif %}
+</div>
+
+{{ content_for_index }}
+
+{% schema %}
+{
+	"name": {
+		"en": "Product",
+		"fi": "Tuote"
+	}
+}
+{% endschema %}

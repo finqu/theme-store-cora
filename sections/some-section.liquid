@@ -1,0 +1,21 @@
+<p>Some section</p>
+<p>Value: {{ section.settings.text }}</p>
+
+<hr>
+{{ content_for_blocks }}
+<hr>
+
+{% schema %}
+{
+  "name": "Some section",
+  "tag": "section",
+  "settings": [{
+  	"title": "Title",
+    "text": {
+      "type": "text",
+      "label": "Simple setting list",
+      "default": "Just some default value"
+    }
+  }]
+}
+{% endschema %}

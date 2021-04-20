@@ -1,0 +1,73 @@
+LOGIN TEMPLATE
+
+<section class="customer login parallax parallax-fullscreen parallax-light">
+
+	<img class="parallax-img no-transition" data-srcset="{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:3840,3840 }} 3840w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:2400,2400 }} 2400w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:1536,1536 }} 1536w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:1152,1152 }} 1152w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:1920,1920 }} 1920w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:1200,1200 }} 1200w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:768,768 }} 768w,
+		{{ '//cdn.finqudev.com/users/32/images/uploads/bg-test.jpg' | thumb:576,576 }} 576w"
+	sizes="(min-width: 1200px) 1200w,
+		(min-width: 768px) 768w,
+		(min-width: 576px) 576w,
+		100vw"
+	alt="">
+
+	<div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6 m-auto">
+
+				<div class="section-header mb-4">
+
+					<h6>{{ 'login.title' | t }}</h6>
+
+				</div>
+
+				<div class="section-content">
+
+					{% form 'login' %}
+
+			            {% if form.was_success %}
+
+			                <span class="text-success d-block text-center">
+			                	<i class="fa fa-check fa-fw" aria-hidden="true"></i> {{ 'login.success' | t }}
+			                </span>
+
+			                <script>window.onload = function() { window.location='{{ 'account' | link }}'; }</script>
+
+			            {% elsif store.session.logged_in %}
+
+			                <span class="text-warning d-block text-center">
+			                	<i class="fa fa-info fa-fw" aria-hidden="true"></i> {{ 'login.already_logged_in' | t }}
+			                </span>
+
+			            {% else %}
+
+			            	<div class="form-group">
+			            		<label for="login-email">{{ 'login.email_placeholder' | t }}</label>
+								<input type="email" name="email" id="login-email" class="form-control" value="{{ form.submitted.email | escape }}" required>
+							</div>
+
+							<div class="form-group">
+								<label for="login-password">{{ 'login.password_placeholder' | t }}</label>
+								<input type="password" name="password" id="login-password" class="form-control" value="{{ form.submitted.password | escape }}" required>
+							</div>
+
+			            {% endif %}
+
+			        {% endform %}
+
+		        </div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
