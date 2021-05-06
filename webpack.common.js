@@ -11,7 +11,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
 	entry: {
-		app: './assets/app.js'
+		main: ['core-js/stable', './assets/main.js']
 	},
 	node: {
 		fs: 'empty'
@@ -29,7 +29,7 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: '[name].[ext]',
-							outputPath: 'img/'
+							outputPath: 'media/'
 						}
 					}
 				]
@@ -53,7 +53,13 @@ module.exports = {
 		new CleanWebpackPlugin(['app/assets/dist']),
 		new ManifestPlugin({
 			fileName: 'cache.manifest.json'
-		})
+		}),
+		new webpack.ProvidePlugin({
+	      $: path.resolve('./node_modules/jquery'),
+	      jQuery: path.resolve('./node_modules/jquery'),
+	      'window.jQuery': path.resolve('./node_modules/jquery'),
+	      'window.$': path.resolve('./node_modules/jquery')
+	    })
 	],
 	optimization: {
 		minimize: true,

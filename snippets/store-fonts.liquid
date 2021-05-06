@@ -1,0 +1,7 @@
+{%- if settings.font_base -%}
+
+	{%- for fontAsset in settings.font_heading.assets -%}
+		<link rel="preload" href="{{ fontAsset.url }}" as="font" type="font/{{ fontAsset.format }}" crossorigin>
+	{%- endfor -%}
+
+{%- endif -%}

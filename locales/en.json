@@ -24,5 +24,8 @@
             "not_published": "Unpublished store",
             "not_activated": "Limited access"
         }
+    },
+    "swag": {
+        "test": "TESTIII"
     }
 }

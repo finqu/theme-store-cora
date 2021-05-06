@@ -1,0 +1,52 @@
+// Section
+// -----------------------------------------------------------------------------------------
+
+.section {
+
+	.section-content {
+		background-size: cover;
+	}
+
+	@each $val in $background-positions {
+		.section-bg-img-position-#{str-replace(#{$val}, ' ', '-')} {
+			background-position: $val;
+		}
+	}
+
+	@each $key, $val in $section-spacers-content {
+		.section-spacing-content-#{$key} {
+
+			.container,
+			.container-fluid {
+
+				.row {
+					margin-left: -#{$val};
+					margin-right: -#{$val};
+
+					> .col,
+					> [class*="col-"] {
+						padding-right: $val;
+						padding-left: $val;
+					}
+				}
+			}
+		}
+	}
+
+	@each $key, $val in $section-spacers-height {
+		.section-height-#{$key} {
+			padding-top: $val;
+			padding-bottom: $val;
+		}
+	}
+
+	@each $key, $val in $section-spacers-inner {
+		.section-spacing-inner-#{$key} {
+
+			.container,
+			.container-fluid {
+				padding: $val;
+			}
+		}
+	}
+}

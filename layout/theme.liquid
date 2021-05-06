@@ -1,32 +1,57 @@
 <!DOCTYPE html>
+
 <html lang="{{ store.language }}">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="" />
 
-    {{ store_meta.meta }}
+	<head>
 
-    <title>{% if page.meta_title %}{{ page.meta_title }} - {{ store.name }}{% else %}{{ page.title }} - {{ store.name }}{% endif %}</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="theme-color" content="{{ settings.color_button }}">
 
-    <meta name="description" content="" />
+		<link rel="preconnect" href="//cdn.finqu.com" crossorigin>
+		<link rel="preconnect" href="//analytics.finqu.com" crossorigin>
+		<link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<link rel="preload" href="{{ 'main.css' | asset_url }}" as="style">
+		<link rel="preload" href="{{ 'main.js' | asset_url }}" as="script">
 
-    {{ content_for_header }}
+		{%- include 'snippets/store-fonts' -%}
 
-    {{ 'main.css' | asset_url | stylesheet_tag }}
-    {{ 'app.js' | asset_url | script_tag }}
-  </head>
+		<link rel="stylesheet" href="{{ 'main.css' | asset_url }}" type="text/css" media="all">
 
-  <body>
+		{{- store_meta.meta -}}
 
-    {% section 'header' %}
+		{%- capture pageTitle -%}
+			{%- if page.meta_title -%}
+				{{ page.meta_title }} - {{ store.name }}
+			{%- else -%}
+				{{ page.title }} - {{ store.name }}
+			{%- endif -%}
+		{%- endcapture -%}
 
-    {{ content_for_layout }}
+		<title>{{ pageTitle | strip }}</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+		{%- include 'snippets/store-favicon' -%}
+		{%- include 'snippets/store-settings' -%}
 
-  </body>
+		<script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+
+		{{ content_for_header }}
+
+	</head>
+
+	<body class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
+
+		{% section 'header' %}
+
+		{{ content_for_layout }}
+
+		{% section 'footer' %}
+
+		{{ store_meta.scripts }}
+
+	</body>
+
 </html>

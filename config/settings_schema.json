@@ -1,6 +1,6 @@
 {
-	"name": "superb",
-	"theme_name": "Superb",
+	"name": "cora",
+	"theme_name": "Cora",
 	"styles": [
 		{
 			"name": "Test",
@@ -10,57 +10,254 @@
 	"presets": [],
 	"settings": [
 		{
-			"id": "name",
-			"type": "text",
-			"label": "Store name"
-		},
-		{
-			"id": "image_theme",
-			"type": "image-picker",
-			"label": "Image picker (image-picker) test",
-			"default": "https://images.unsplash.com/photo-1603993097397-89c963e325c7?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-		},
-		{
-			"id": "richText2",
-			"type": "richtext",
-			"label": "Richtext (richtext)",
-			"default": "Some text"
-		},
-		{
-			"type": "separator"
-		},
-		{
-			"type": "title",
+			"type": "setting-page",
 			"label": "Colors",
-			"info": "info for the colors"
+			"title": "Colors",
+			"settings": [
+				{
+					"type": "title",
+					"label": "Theme colors",
+					"subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				},
+				{
+					"id": "some_other_bg_color",
+					"type": "color",
+					"label": "Background color",
+					"default": "#ff00ff"
+				},
+				{
+					"id": "theme_styles",
+					"type": "style-editor",
+					"label": "Edit styles",
+					"info": "Some info here",
+					"settings": [
+						{
+							"id": "background_color",
+							"type": "color",
+							"label": "Background color"
+						},
+						{
+							"id": "text_color",
+							"type": "color",
+							"label": "Text color"
+						},
+						{
+							"id": "font",
+							"type": "font-picker",
+							"label": "Font picker (font-picker)",
+							"default": "Lato",
+							"families": ["Open Sans", "Lato", "Roboto"]
+						}
+					],
+					"presets": [
+						{
+							"id": "light",
+							"name": "Light",
+							"default": {
+								"background_color": "#ffffff",
+								"text_color": "#000000"
+							}
+						},
+						{
+							"id": "dark",
+							"name": "Dark",
+							"default": {
+								"background_color": "#000000",
+								"text_color": "#ffffff"
+							}
+						},
+						{
+							"id": "foobar",
+							"name": "Foobar",
+							"default": {
+								"background_color": "#000000",
+								"text_color": "#ffffff"
+							}
+						}
+					]
+				},
+				{
+					"type": "spacer"
+				},
+				{
+					"type": "setting-page",
+					"label": "Even more settings",
+					"title": "This is more",
+					"detail": true,
+					"settings": [],
+					"info": "Go pro and do the unimagined"
+				}
+			]
 		},
 		{
-			"type": "label",
-			"label": "Color group title"
+			"type": "setting-page",
+			"label": "Buttons",
+			"title": "Buttons",
+			"settings": []
 		},
 		{
-			"id": "primary",
-			"type": "color",
-			"label": "Primary",
-			"default": "#0d6efd"
+			"type": "setting-page",
+			"label": "Typography",
+			"title": "Typography",
+			"settings": []
 		},
 		{
-			"id": "secondary",
-			"type": "color",
-			"label": "Secondary",
-			"default": "#6c757d"
-		},
-		{
-			"type": "label",
-			"label": "Range without own label"
-		},
-		{
-			"id": "range_without_label",
-			"type": "range",
-			"min": 10,
-			"max": 100,
-			"step": 10,
-			"default": 20
+			"type": "setting-page",
+			"label": "Sections",
+			"title": "Sections",
+			"settings": [
+				{
+					"id": "sectionHeight",
+					"type": "radio-pill",
+					"label": "Height",
+					"default": "md",
+                    "options": [
+                        {
+                            "value": "sm",
+                            "label": "S"
+                        },
+                        {
+                            "value": "md",
+                            "label": "M"
+                        },
+                        {
+                            "value": "lg",
+                            "label": "L"
+                        },
+                        {
+                            "value": "xl",
+                            "label": "XL"
+                        }
+                    ]
+				},
+				{
+                    "id": "sectionInnerSpacing",
+                    "type": "radio-pill",
+                    "label": "Inner spacing",
+                    "default": "off",
+                    "options": [
+                        {
+                            "value": "off",
+                            "label": "OFF"
+                        },
+                        {
+                            "value": "sm",
+                            "label": "S"
+                        },
+                        {
+                            "value": "md",
+                            "label": "M"
+                        },
+                        {
+                            "value": "lg",
+                            "label": "L"
+                        }
+                    ]
+                },
+                {
+                    "id": "sectionContentSpacing",
+                    "type": "radio-pill",
+                    "label": "Content spacing",
+                    "default": "md",
+                    "options": [
+                        {
+                            "value": "sm",
+                            "label": "S"
+                        },
+                        {
+                            "value": "md",
+                            "label": "M"
+                        },
+                        {
+                            "value": "lg",
+                            "label": "L"
+                        },
+                        {
+                            "value": "xl",
+                            "label": "XL"
+                        }
+                    ]
+                },
+                {
+                    "id": "sectionBgImgPosition",
+                    "type": "select",
+                    "label": "Background position",
+                    "default": "center-center",
+                    "options": [
+                        {
+                            "value": "left-top",
+                            "label": "Left Top"
+                        },
+                        {
+                            "value": "left-center",
+                            "label": "Left Center"
+                        },
+                        {
+                            "value": "left-bottom",
+                            "label": "Left Bottom"
+                        },
+                        {
+                            "value": "right-top",
+                            "label": "Right Top"
+                        },
+                        {
+                            "value": "right-center",
+                            "label": "Right Center"
+                        },
+                        {
+                            "value": "right-bottom",
+                            "label": "Right Bottom"
+                        },
+                        {
+                            "value": "center-top",
+                            "label": "Center Top"
+                        },
+                        {
+                            "value": "center-center",
+                            "label": "Center Center"
+                        },
+                        {
+                            "value": "center-bottom",
+                            "label": "Center Bottom"
+                        }
+                    ]
+                },
+                {
+					"id": "sectionStyles",
+					"type": "style-editor",
+					"label": "Styles",
+					"settings": [
+						{
+							"id": "bgColor",
+							"type": "color",
+							"label": "Background color"
+						},
+						{
+							"id": "textColor",
+							"type": "color",
+							"label": "Text color"
+						}
+					],
+					"presets": [
+						{
+							"id": "light",
+							"name": "Light",
+							"default": {
+								"bgColor": "#ffffff",
+								"textColor": "#000000"
+							}
+						},
+						{
+							"id": "dark",
+							"name": "Dark",
+							"default": {
+								"bgColor": "#000000",
+								"textColor": "#ffffff"
+							}
+						}
+					]
+				}
+			]
 		}
 	]
 }

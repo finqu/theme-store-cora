@@ -1,10 +1,6 @@
-FRONTPAGE TEMPLATE
-
-{% if page.content %}
+{%- if page.content -%}
 	{{ page.content }}
-{% endif %}
-
-<button class="btn btn-primary">Primääri</button>
+{%- endif -%}
 
 {{ content_for_index }}
 

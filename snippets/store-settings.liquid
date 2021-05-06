@@ -1,0 +1,18 @@
+<script>
+	window.store = {
+		assetUrl: {{ request.asset_url | json }},
+		designMode: {{ request.design_mode | json }},
+		countryCode: {{ store.country.code | json }},
+		languageCode: {{ store.language.code | json }},
+		locale: {{ store.language.code | append: '_' | append: store.country.code | json }},
+		translations: {
+			test: {{ 'swag.test' | t | json }},
+			system: {
+				asd: '123',
+				yolo: {
+					woow: 'zzz'
+				}
+			}
+		}
+	};
+</script>

@@ -1,2 +1,56 @@
-$primary: {{ settings.primary | _default: '#000000' }};
-@import "bootstrap/bootstrap";
+{%- if settings.font_base -%}
+
+	{%- for fontAsset in settings.font_base.assets -%}
+
+		{%- case fontAsset.weight -%}
+			{%- when '300' -%}
+				{%- assign fontWeightLight = fontAsset.weight -%}
+			{%- when '400' -%}
+				{%- assign fontWeightNormal = fontAsset.weight -%}
+			{%- when '500' -%}
+				{%- assign fontWeightBold = fontAsset.weight -%}
+		{%- endcase -%}
+
+		@font-face {
+			font-family: '{{ settings.font_base.family }}';
+			font-style: {{ fontAsset.style }};
+			font-weight: {{ fontAsset.weight }};
+			font-display: swap;
+			src: url({{ fontAsset.url }}) format("{{ fontAsset.format }}");
+		}
+
+	{%- endfor -%}
+
+	$font-family-base: '{{ settings.font_base.family }}';
+
+{%- endif -%}
+
+$font-weight-light:           {{ fontWeightLight | _default: '300' }};
+$font-weight-normal:          {{ fontWeightNormal | _default: '400' }};
+$font-weight-bold:            {{ fontWeightBold | _default: '500' }};
+
+// Section
+$background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom !default;
+
+$section-spacers-content: (
+	sm: 10px,
+	md: 15px,
+	lg: 25px,
+	xl: 50px
+) !default;
+
+$section-spacers-height: (
+	sm: 35px,
+	md: 50px,
+	lg: 80px,
+	xl: 120px
+) !default;
+
+$section-spacers-inner: (
+	sm: 15px,
+	md: 30px,
+	lg: 60px,
+	xl: 90px
+) !default;
+
+@import "scss/theme";

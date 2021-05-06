@@ -24,5 +24,8 @@
             "not_published": "Julkaisematon kauppa",
             "not_activated": "Rajoitettu pääsy"
         }
+    },
+    "swag": {
+        "test": "TESTIII __var__ asdasd 123123 __var2__"
     }
 }

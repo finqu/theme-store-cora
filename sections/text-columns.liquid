@@ -1,0 +1,126 @@
+<div class="row">
+
+	{% for block in section.settings.setting_blocks.content %}
+
+		<div id="finqu-section-{{ section.id }}-block-{{ forloop.index }}" class="col-12 col-lg">
+
+			<div class="row">
+
+				{% if block.settings.image %}
+
+					<div class="img-container col-12 col-lg">
+
+						<img
+						  alt=""
+						  class="lazy img-fluid"
+						  src="{{ block.settings.image }}"
+						  data-src="{{ block.settings.image }}"
+						  data-srcset="{{ block.settings.image }} 400w,
+						    {{ block.settings.image }} 800w"
+						  data-sizes="100w"
+						/>
+
+				    </div>
+
+			    {% endif %}
+
+			    <div class="col-12 col-lg">
+
+			    	<h2>
+			    		{{ block.settings.heading }}
+			    	</h2>
+
+			    	{{ block.settings.content }}
+
+			    </div>
+
+			</div>
+
+		</div>
+
+	{% endfor %}
+
+</div>
+
+<style>
+	{%- for block in section.settings.setting_blocks.content -%}
+
+		#finqu-section-{{ section.id }}-block-{{ forloop.index }} .img-container {
+			flex-basis: 100%;
+			max-width: {{ block.settings.image_width }}%;
+		}
+
+	{%- endfor -%}
+</style>
+
+{% schema %}
+{
+    "name": "Text columns",
+    "tag": "section",
+    "class": "text-columns",
+    "settings": {
+        "groups": [
+        	{
+                "title": "Content",
+                "id": "content",
+                "max_blocks": 2,
+                "call_to_action": "Add item",
+                "is_sortable": true,
+                "setting_blocks": [
+                    {
+                        "type": "item",
+                        "title": "Item",
+                        "settings": [
+                            {
+                                "id": "image",
+                                "type": "image-picker",
+                                "label": "Image"
+                            },
+                            {
+                                "id": "image_width",
+                                "type": "range",
+                                "label": "Image width",
+                                "min": 10,
+                                "max": 80,
+                                "step": 1,
+                                "default": 50
+                            },
+                            {
+                                "id": "heading",
+                                "type": "text",
+                                "label": "Title"
+                            },
+                            {
+                                "id": "content",
+                                "type": "richtext",
+                                "label": "Content"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Settings",
+                "settings": [
+                	{
+                        "id": "text",
+                        "type": "text",
+                        "label": "Text (text)",
+                        "placeholder": "Just some placeholder",
+                        "default": "Default",
+                        "info": "Some info text here"
+                    },
+                    {
+                        "id": "textarea",
+                        "type": "textarea",
+                        "label": "Textarea (textarea)",
+                        "placeholder": "Just some placeholder",
+                        "conditions": ["!text contains foobar", "text:length gte 5"],
+                        "default": "Textarea default"
+                    }
+                ]
+            }
+        ]
+    }
+}
+{% endschema %}

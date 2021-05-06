@@ -1,0 +1,494 @@
+{%- assign sectionHeight = section.settings.sectionHeight | _default: settings.sectionHeight -%}
+{%- assign sectionInnerSpacing = section.settings.sectionInnerSpacing | _default: settings.sectionInnerSpacing -%}
+{%- assign sectionContentSpacing = section.settings.sectionContentSpacing | _default: settings.sectionContentSpacing -%}
+{%- assign sectionContentWidth = section.settings.sectionContentWidth | _default: '12' -%}
+{%- assign sectionContentAlign = section.settings.sectionContentAlign | _default: 'center' -%}
+{%- assign sectionBgImgPosition = section.settings.sectionBgImgPosition | _default: settings.sectionBgImgPosition -%}
+{%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | _default: '0' -%}
+{%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
+
+{%- assign colsArr = section.settings.contentColumnArrangement | split: ',' -%}
+{%- assign imageColSize = colsArr[0] -%}
+{%- assign textColSize = colsArr[1] -%}
+
+{%- capture classes -%}section-height-{{ sectionHeight }} section-spacing-content-{{ sectionContentSpacing }}{%- endcapture -%}
+
+{%- if sectionInnerSpacing != 'off' -%}
+    {% capture sectionContentSpacingClass %} section-spacing-inner-{{ sectionInnerSpacing }}{% endcapture %}
+    {%- assign classes = classes | append: sectionContentSpacingClass -%}
+{%- endif -%}
+
+{%- if sectionBgImgSrc -%}
+    {% capture sectionBgImgPositionClass %} section-bg-img-position-{{ sectionBgImgPosition }}{% endcapture %}
+    {%- assign classes = classes | append: sectionBgImgPositionClass -%}
+{%- endif -%}
+
+{%- capture imageCol -%}
+
+    {%- case section.settings.contentImgAlign -%}
+        {% when 'top' %}
+            {%- assign imgAlign = 'align-self-start' -%}
+        {% when 'middle' %}
+            {%- assign imgAlign = 'align-self-center' -%}
+        {% when 'bottom' %}
+            {%- assign imgAlign = 'align-self-end' -%}
+    {%- endcase -%}
+
+    <div class="col-{{ imageColSize }} {{ imgAlign }}">
+
+        <img
+            alt="{{ contentImgAlt }}"
+            class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
+            src="{{ section.settings.contentImgSrc }}"
+            data-src="{{ section.settings.contentImgSrc }}"
+            data-srcset="{{ section.settings.contentImgSrc }} 400w,
+            {{ section.settings.contentImgSrc }} 800w"
+            data-sizes="100w"
+            data-finqu-inline-editor="contentImgSrc"
+        />
+
+    </div>
+
+{%- endcapture -%}
+
+{%- capture textCol -%}
+
+    {%- case section.settings.contentRichtextAlign -%}
+        {% when 'top' %}
+            {%- assign textAlign = 'align-self-start' -%}
+        {% when 'middle' %}
+            {%- assign textAlign = 'align-self-center' -%}
+        {% when 'bottom' %}
+            {%- assign textAlign = 'align-self-end' -%}
+    {%- endcase -%}
+
+    <div class="col-{{ textColSize }} {{ textAlign }}">
+
+        <div data-finqu-inline-editor="contentRichtextHtml">{{ section.settings.contentRichtextHtml }}</div>
+
+    </div>
+
+{%- endcapture -%}
+
+{%- capture content -%}
+
+    <div class="row">
+
+        {%- if section.settings.contentImgSide == 'left' -%}
+            {{- imageCol -}}
+            {{- textCol -}}
+        {%- else -%}
+            {{- textCol -}}
+            {{- imageCol -}}
+        {%- endif -%}
+
+    </div>
+
+{%- endcapture -%}
+
+<div class="lazy section-content {{ classes }}"{%- if sectionBgImgSrc -%} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% endif %}>
+
+    <div class="container">
+
+        {%- if sectionContentWidth == '12' -%}
+
+            {{- content -}}
+
+        {%- else -%}
+
+            {%- case sectionContentAlign -%}
+                {% when 'left' %}
+                    {%- assign contentAlign = 'justify-content-start' -%}
+                {% when 'center' %}
+                    {%- assign contentAlign = 'justify-content-center' -%}
+                {% when 'right' %}
+                    {%- assign contentAlign = 'justify-content-end' -%}
+            {%- endcase -%}
+
+            <div class="row {{ contentAlign }}">
+
+                <div class="col-{{ sectionContentWidth }}">
+
+                    {{- content -}}
+
+                </div>
+
+            </div>
+
+        {%- endif -%}
+
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Image text",
+    "tag": "section",
+    "class": "section section-image-text has-lazy",
+    "default": {
+        "contentColumnArrangement": "6,6",
+        "contentImgSrc": "https://via.placeholder.com/540",
+        "contentImgAlt": "Alt text",
+        "contentImgSide": "left",
+        "contentImgAlign": "middle",
+        "contentImgEffect": "none",
+        "contentRichtextAlign": "middle",
+        "contentRichtextHtml": "<h2>Tervetuloa paremman myynnin maailmaan</h2><h4><br></h4><h4>Myy kaikkialla</h4><p>Et tarvitse useita eri järjestelmiä tai kalliita integraatioita myydäksesi siellä missä asiakkaasi ovat. Sisään rakennettu monikanavaisuus mahdollistaa myymisen kaikkialla, kuten verkossa, kivijalkaliikkeessä ja tapahtumissa. Finqu verkkokauppa ja Finqu POS tekevät myymisen helpoksi ja säästät selvää rahaa yhdellä keskitetyllä kaupankäynnin alustalla.</p><h4>Hallitse yhdestä paikasta</h4><p>Hallitse kaikkea myyntiä yhdestä paikassa riippumatta siitä, missä myynti on tapahtunut. Keskitetyn tiedon ansiosta et enää koskaan kärsi päällekkäisistä asiakas- tai tuotetiedoista tai varaston yli myynnistä. Samalla nautit kampanjoista, jotka toimivat läpi kaikkien myyntikanavien. Vähemmän vaivaa, enemmän myyntiä.</p><h4>Älä maksa turhasta</h4><p>Finqun joustavalla hinnoittelulla saat ensin 2 viikkoa ilmaista aikaa kaupallesi ja käynnistät myynnin vain muutamalla eurolla kuukaudessa. Älä turhaan maksa korkeita kuukausikustannuksia etukäteen. Maksa vasta, kun saat liiketoiminnan käyntiin ja myynnin kunnolla rullaamaan.</p>"
+    },
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": "General",
+                "settings": [
+                    {
+                        "id": "contentColumnArrangement",
+                        "type": "select",
+                        "label": "Column Arrangement",
+                        "default": "6,6",
+                        "options": [
+                            {
+                                "value": "6,6",
+                                "label": "6 | 6"
+                            },
+                            {
+                                "value": "4,8",
+                                "label": "4 | 8"
+                            },
+                            {
+                                "value": "8,4",
+                                "label": "8 | 4"
+                            },
+                            {
+                                "value": "5,7",
+                                "label": "5 | 7"
+                            },
+                            {
+                                "value": "7,5",
+                                "label": "7 | 5"
+                            },
+                            {
+                                "value": "3,9",
+                                "label": "3 | 9"
+                            },
+                            {
+                                "value": "9,3",
+                                "label": "9 | 3"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentImgSide",
+                        "type": "radio-pill",
+                        "label": "Image side",
+                        "default": "left",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "Left"
+                            },
+                            {
+                                "value": "right",
+                                "label": "Right"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentImgAlign",
+                        "type": "radio-pill",
+                        "label": "Image align",
+                        "default": "middle",
+                        "options": [
+                            {
+                                "value": "top",
+                                "label": "Top"
+                            },
+                            {
+                                "value": "middle",
+                                "label": "Middle"
+                            },
+                            {
+                                "value": "bottom",
+                                "label": "Bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentImgAlt",
+                        "type": "text",
+                        "label": "Image alt"
+                    },
+                    {
+                        "id": "contentImgEffect",
+                        "type": "select",
+                        "label": "Image effect",
+                        "default": "none",
+                        "options": [
+                            {
+                                "value": "none",
+                                "label": "None"
+                            },
+                            {
+                                "value": "rounded",
+                                "label": "Rounded"
+                            },
+                            {
+                                "value": "rounded-circle",
+                                "label": "Cicle"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentRichtextAlign",
+                        "type": "radio-pill",
+                        "label": "Text align",
+                        "default": "middle",
+                        "options": [
+                            {
+                                "value": "top",
+                                "label": "Top"
+                            },
+                            {
+                                "value": "middle",
+                                "label": "Middle"
+                            },
+                            {
+                                "value": "bottom",
+                                "label": "Bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentImgSrc",
+                        "type": "image-picker",
+                        "inline": "true"
+                    },
+                    {
+                        "id": "contentRichtextHtml",
+                        "type": "richtext",
+                        "inline": "true",
+                        "default": "<h2>Tervetuloa paremman myynnin maailmaan</h2><h4><br></h4><h4>Myy kaikkialla</h4><p>Et tarvitse useita eri järjestelmiä tai kalliita integraatioita myydäksesi siellä missä asiakkaasi ovat. Sisään rakennettu monikanavaisuus mahdollistaa myymisen kaikkialla, kuten verkossa, kivijalkaliikkeessä ja tapahtumissa. Finqu verkkokauppa ja Finqu POS tekevät myymisen helpoksi ja säästät selvää rahaa yhdellä keskitetyllä kaupankäynnin alustalla.</p><h4>Hallitse yhdestä paikasta</h4><p>Hallitse kaikkea myyntiä yhdestä paikassa riippumatta siitä, missä myynti on tapahtunut. Keskitetyn tiedon ansiosta et enää koskaan kärsi päällekkäisistä asiakas- tai tuotetiedoista tai varaston yli myynnistä. Samalla nautit kampanjoista, jotka toimivat läpi kaikkien myyntikanavien. Vähemmän vaivaa, enemmän myyntiä.</p><h4>Älä maksa turhasta</h4><p>Finqun joustavalla hinnoittelulla saat ensin 2 viikkoa ilmaista aikaa kaupallesi ja käynnistät myynnin vain muutamalla eurolla kuukaudessa. Älä turhaan maksa korkeita kuukausikustannuksia etukäteen. Maksa vasta, kun saat liiketoiminnan käyntiin ja myynnin kunnolla rullaamaan.</p>"
+                    }
+                ]
+            },
+            {
+                "title": "Section",
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": "Layout",
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": "Section height",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Section inner spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Content spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": "Content width",
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": "Content alignment",
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "|<-"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "->|<-"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "->|"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Background",
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": "Image"
+                                },
+                                {
+                                    "id": "sectionBgImgPosition",
+                                    "type": "select",
+                                    "label": "Position",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "left-top",
+                                            "label": "Left Top"
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": "Left Center"
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": "Left Bottom"
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": "Right Top"
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": "Right Center"
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": "Right Bottom"
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": "Center Top"
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": "Center Center"
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": "Center Bottom"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": "Overlay",
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": 0,
+                                    "unit": "%"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "title": "Colors",
+                "settings": [
+                    {
+                        "id": "sectionStyles",
+                        "styles_id": "sectionStyles",
+                        "type": "style-picker",
+                        "default": "light"
+                    }
+                ]
+            }
+        ]
+    }
+}
+{% endschema %}
