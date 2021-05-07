@@ -5,6 +5,14 @@
 
 	.section-content {
 		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	@each $name, $map in $section-styles {
+		.section-style-#{str-replace(#{$name}, ' ', '-')} {
+			background-color: map-get($map, background-color);
+			color: map-get($map, color);
+		}
 	}
 
 	@each $val in $background-positions {

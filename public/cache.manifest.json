@@ -1,5 +1,10 @@
 {
-  "main.js": "js/main.7b3e16fc4b86694e0c47.js",
-  "js/main.7b3e16fc4b86694e0c47.js.gz": "js/main.7b3e16fc4b86694e0c47.js.gz",
-  "media/check-circle-1-jUA7gT.svg": "media/check-circle-1-jUA7gT.svg"
+  "main.js": "js/main.90de063fd019bcbb7e95.js",
+  "js/main.90de063fd019bcbb7e95.js.gz": "js/main.90de063fd019bcbb7e95.js.gz",
+  "media/move-down-1-fSZQ4o.svg": "media/move-down-1-fSZQ4o.svg",
+  "media/move-left-1-fSZYq5.svg": "media/move-left-1-fSZYq5.svg",
+  "media/move-right-1-fSZYYL.svg": "media/move-right-1-fSZYYL.svg",
+  "media/move-up-1-hNEO9b.svg": "media/move-up-1-hNEO9b.svg",
+  "media/shrink-horizontal-y7qSce.svg": "media/shrink-horizontal-y7qSce.svg",
+  "media/shrink-vertical-y7qZWz.svg": "media/shrink-vertical-y7qZWz.svg"
 }

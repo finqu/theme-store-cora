@@ -6,10 +6,11 @@
 {%- assign sectionBgImgPosition = section.settings.sectionBgImgPosition | _default: settings.sectionBgImgPosition -%}
 {%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | _default: '0' -%}
 {%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
+{%- assign sectionStyle = section.settings.sectionStyle -%}
 
 {%- assign colsArr = section.settings.contentColumnArrangement | split: ',' -%}
-{%- assign imageColSize = colsArr[0] -%}
-{%- assign textColSize = colsArr[1] -%}
+{%- assign leftColSize = colsArr[0] -%}
+{%- assign rightColSize = colsArr[1] -%}
 
 {%- capture classes -%}section-height-{{ sectionHeight }} section-spacing-content-{{ sectionContentSpacing }}{%- endcapture -%}
 
@@ -23,7 +24,33 @@
     {%- assign classes = classes | append: sectionBgImgPositionClass -%}
 {%- endif -%}
 
-{%- capture imageCol -%}
+{%- if sectionStyle -%}
+    {% capture sectionStyleClass %} section-style-{{ sectionStyle }}{% endcapture %}
+    {%- assign classes = classes | append: sectionStyleClass -%}
+{%- endif -%}
+
+{%- capture imgColContent -%}
+
+    <img
+        alt="{{ contentImgAlt }}"
+        class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
+        src="{{ section.settings.contentImgSrc }}"
+        data-src="{{ section.settings.contentImgSrc }}"
+        data-srcset="{{ section.settings.contentImgSrc }} 400w,
+        {{ section.settings.contentImgSrc }} 800w"
+        data-sizes="100w"
+        data-finqu-inline-editor="contentImgSrc"
+    />
+
+{%- endcapture -%}
+
+{%- capture textColContent -%}
+
+    <div data-finqu-inline-editor="contentRichtextHtml">{{ section.settings.contentRichtextHtml }}</div>
+
+{%- endcapture -%}
+
+{%- capture content -%}
 
     {%- case section.settings.contentImgAlign -%}
         {% when 'top' %}
@@ -34,25 +61,6 @@
             {%- assign imgAlign = 'align-self-end' -%}
     {%- endcase -%}
 
-    <div class="col-{{ imageColSize }} {{ imgAlign }}">
-
-        <img
-            alt="{{ contentImgAlt }}"
-            class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
-            src="{{ section.settings.contentImgSrc }}"
-            data-src="{{ section.settings.contentImgSrc }}"
-            data-srcset="{{ section.settings.contentImgSrc }} 400w,
-            {{ section.settings.contentImgSrc }} 800w"
-            data-sizes="100w"
-            data-finqu-inline-editor="contentImgSrc"
-        />
-
-    </div>
-
-{%- endcapture -%}
-
-{%- capture textCol -%}
-
     {%- case section.settings.contentRichtextAlign -%}
         {% when 'top' %}
             {%- assign textAlign = 'align-self-start' -%}
@@ -62,24 +70,28 @@
             {%- assign textAlign = 'align-self-end' -%}
     {%- endcase -%}
 
-    <div class="col-{{ textColSize }} {{ textAlign }}">
-
-        <div data-finqu-inline-editor="contentRichtextHtml">{{ section.settings.contentRichtextHtml }}</div>
-
-    </div>
-
-{%- endcapture -%}
-
-{%- capture content -%}
-
     <div class="row">
 
         {%- if section.settings.contentImgSide == 'left' -%}
-            {{- imageCol -}}
-            {{- textCol -}}
+
+            <div class="col-{{ leftColSize }} {{ imgAlign }}">
+                {{- imgColContent -}}
+            </div>
+
+            <div class="col-{{ rightColSize }} {{ textAlign }}">
+                {{- textColContent -}}
+            </div>
+
         {%- else -%}
-            {{- textCol -}}
-            {{- imageCol -}}
+
+            <div class="col-{{ leftColSize }} {{ textAlign }}">
+                {{- textColContent -}}
+            </div>
+
+            <div class="col-{{ rightColSize }} {{ imgAlign }}">
+                {{- imgColContent -}}
+            </div>
+
         {%- endif -%}
 
     </div>
@@ -126,16 +138,6 @@
     "name": "Image text",
     "tag": "section",
     "class": "section section-image-text has-lazy",
-    "default": {
-        "contentColumnArrangement": "6,6",
-        "contentImgSrc": "https://via.placeholder.com/540",
-        "contentImgAlt": "Alt text",
-        "contentImgSide": "left",
-        "contentImgAlign": "middle",
-        "contentImgEffect": "none",
-        "contentRichtextAlign": "middle",
-        "contentRichtextHtml": "<h2>Tervetuloa paremman myynnin maailmaan</h2><h4><br></h4><h4>Myy kaikkialla</h4><p>Et tarvitse useita eri järjestelmiä tai kalliita integraatioita myydäksesi siellä missä asiakkaasi ovat. Sisään rakennettu monikanavaisuus mahdollistaa myymisen kaikkialla, kuten verkossa, kivijalkaliikkeessä ja tapahtumissa. Finqu verkkokauppa ja Finqu POS tekevät myymisen helpoksi ja säästät selvää rahaa yhdellä keskitetyllä kaupankäynnin alustalla.</p><h4>Hallitse yhdestä paikasta</h4><p>Hallitse kaikkea myyntiä yhdestä paikassa riippumatta siitä, missä myynti on tapahtunut. Keskitetyn tiedon ansiosta et enää koskaan kärsi päällekkäisistä asiakas- tai tuotetiedoista tai varaston yli myynnistä. Samalla nautit kampanjoista, jotka toimivat läpi kaikkien myyntikanavien. Vähemmän vaivaa, enemmän myyntiä.</p><h4>Älä maksa turhasta</h4><p>Finqun joustavalla hinnoittelulla saat ensin 2 viikkoa ilmaista aikaa kaupallesi ja käynnistät myynnin vain muutamalla eurolla kuukaudessa. Älä turhaan maksa korkeita kuukausikustannuksia etukäteen. Maksa vasta, kun saat liiketoiminnan käyntiin ja myynnin kunnolla rullaamaan.</p>"
-    },
     "settings": {
         "list_type": "tabs",
         "groups": [
@@ -186,11 +188,11 @@
                         "options": [
                             {
                                 "value": "left",
-                                "label": "Left"
+                                "label": "{# icon.alignLeft #}"
                             },
                             {
                                 "value": "right",
-                                "label": "Right"
+                                "label": "{# icon.alignRight #}"
                             }
                         ]
                     },
@@ -202,15 +204,15 @@
                         "options": [
                             {
                                 "value": "top",
-                                "label": "Top"
+                                "label": "{# icon.alignTop #}"
                             },
                             {
                                 "value": "middle",
-                                "label": "Middle"
+                                "label": "{# icon.alignMiddle #}"
                             },
                             {
                                 "value": "bottom",
-                                "label": "Bottom"
+                                "label": "{# icon.alignBottom #}"
                             }
                         ]
                     },
@@ -247,22 +249,23 @@
                         "options": [
                             {
                                 "value": "top",
-                                "label": "Top"
+                                "label": "{# icon.alignTop #}"
                             },
                             {
                                 "value": "middle",
-                                "label": "Middle"
+                                "label": "{# icon.alignMiddle #}"
                             },
                             {
                                 "value": "bottom",
-                                "label": "Bottom"
+                                "label": "{# icon.alignBottom #}"
                             }
                         ]
                     },
                     {
                         "id": "contentImgSrc",
                         "type": "image-picker",
-                        "inline": "true"
+                        "inline": "true",
+                        "default": "https://via.placeholder.com/540"
                     },
                     {
                         "id": "contentRichtextHtml",
@@ -392,15 +395,15 @@
                                     "options": [
                                         {
                                             "value": "left",
-                                            "label": "|<-"
+                                            "label": "{# icon.alignLeft #}"
                                         },
                                         {
                                             "value": "center",
-                                            "label": "->|<-"
+                                            "label": "{# icon.alignCenter #}"
                                         },
                                         {
                                             "value": "right",
-                                            "label": "->|"
+                                            "label": "{# icon.alignRight #}"
                                         }
                                     ]
                                 }
@@ -473,20 +476,20 @@
                                     "unit": "%"
                                 }
                             ]
+                        },
+                        {
+                            "title": "Colors",
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "sectionStyles",
+                                    "type": "style-picker",
+                                    "default": "light"
+                                }
+                            ]
                         }
                     ]
                 }
-            },
-            {
-                "title": "Colors",
-                "settings": [
-                    {
-                        "id": "sectionStyles",
-                        "styles_id": "sectionStyles",
-                        "type": "style-picker",
-                        "default": "light"
-                    }
-                ]
             }
         ]
     }

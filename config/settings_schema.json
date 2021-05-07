@@ -228,12 +228,12 @@
 					"label": "Styles",
 					"settings": [
 						{
-							"id": "bgColor",
+							"id": "background_color",
 							"type": "color",
 							"label": "Background color"
 						},
 						{
-							"id": "textColor",
+							"id": "text_color",
 							"type": "color",
 							"label": "Text color"
 						}
@@ -243,16 +243,16 @@
 							"id": "light",
 							"name": "Light",
 							"default": {
-								"bgColor": "#ffffff",
-								"textColor": "#000000"
+								"background_color": "#ffffff",
+								"text_color": "#000000"
 							}
 						},
 						{
 							"id": "dark",
 							"name": "Dark",
 							"default": {
-								"bgColor": "#000000",
-								"textColor": "#ffffff"
+								"background_color": "#000000",
+								"text_color": "#ffffff"
 							}
 						}
 					]

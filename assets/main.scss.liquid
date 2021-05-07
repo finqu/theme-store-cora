@@ -30,6 +30,20 @@ $font-weight-normal:          {{ fontWeightNormal | _default: '400' }};
 $font-weight-bold:            {{ fontWeightBold | _default: '500' }};
 
 // Section
+$section-styles: (
+	{%- for style in settings.sectionStyles -%}
+
+		{%- assign name = style[0] -%}
+		{%- assign obj = style[1] | json -%}
+
+		{{- name -}}: (
+			background-color: {{- obj.background_color -}},
+			color: {{- obj.text_color -}}
+		){%- unless forloop.last == true -%},{%- endunless -%}
+
+	{%- endfor -%}
+);
+
 $background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom !default;
 
 $section-spacers-content: (
