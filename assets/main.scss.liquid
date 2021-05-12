@@ -29,6 +29,8 @@ $font-weight-light:           {{ fontWeightLight | _default: '300' }};
 $font-weight-normal:          {{ fontWeightNormal | _default: '400' }};
 $font-weight-bold:            {{ fontWeightBold | _default: '500' }};
 
+$grid-gutter-width: 40px;
+
 // Section
 $section-styles: (
 	{%- for style in settings.sectionStyles -%}
@@ -48,7 +50,7 @@ $background-positions: left top, left center, left bottom, right top, right cent
 
 $section-spacers-content: (
 	sm: 10px,
-	md: 15px,
+	md: 20px,
 	lg: 25px,
 	xl: 50px
 ) !default;

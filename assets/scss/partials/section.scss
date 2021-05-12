@@ -4,37 +4,54 @@
 .section {
 
 	.section-content {
-		background-size: cover;
+		position: relative;
+
+		.container,
+		.container-fluid {
+			padding-top: $grid-gutter-width / 2;
+			padding-bottom: $grid-gutter-width / 2;
+		}
+
+		@each $name, $map in $section-styles {
+			&.section-style-#{str-replace(#{$name}, ' ', '-')} {
+				color: map-get($map, color);
+
+				.section-bg {
+					background-color: map-get($map, background-color);
+				}
+			}
+		}
+	}
+
+	.section-bg {
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background-size: cover;
 		background-repeat: no-repeat;
-	}
-
-	@each $name, $map in $section-styles {
-		.section-style-#{str-replace(#{$name}, ' ', '-')} {
-			background-color: map-get($map, background-color);
-			color: map-get($map, color);
-		}
-	}
-
-	@each $val in $background-positions {
-		.section-bg-img-position-#{str-replace(#{$val}, ' ', '-')} {
-			background-position: $val;
-		}
+		overflow: hidden;
+    	pointer-events: none;
+    	z-index: -1;
 	}
 
 	@each $key, $val in $section-spacers-content {
-		.section-spacing-content-#{$key} {
+		@include media-breakpoint-up(md) {
+			.section-spacing-content-#{$key} {
 
-			.container,
-			.container-fluid {
+				.container,
+				.container-fluid {
 
-				.row {
-					margin-left: -#{$val};
-					margin-right: -#{$val};
+					.row {
+						margin-left: -#{$val};
+						margin-right: -#{$val};
 
-					> .col,
-					> [class*="col-"] {
-						padding-right: $val;
-						padding-left: $val;
+						> .col,
+						> [class*="col-"] {
+							padding-right: $val;
+							padding-left: $val;
+						}
 					}
 				}
 			}
@@ -42,18 +59,21 @@
 	}
 
 	@each $key, $val in $section-spacers-height {
-		.section-height-#{$key} {
-			padding-top: $val;
-			padding-bottom: $val;
+		@include media-breakpoint-up(md) {
+			.section-height-#{$key} {
+				padding-top: $val;
+				padding-bottom: $val;
+			}
 		}
 	}
 
 	@each $key, $val in $section-spacers-inner {
-		.section-spacing-inner-#{$key} {
-
-			.container,
-			.container-fluid {
-				padding: $val;
+		@include media-breakpoint-up(md) {
+			.section-spacing-inner-#{$key} {
+				.container,
+				.container-fluid {
+					padding: $val;
+				}
 			}
 		}
 	}

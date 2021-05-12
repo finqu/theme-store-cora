@@ -10,3 +10,15 @@
 
 	@return $string;
 }
+
+@each $val in $background-positions {
+	.bg-img-pos-#{str-replace(#{$val}, ' ', '-')} {
+		background-position: $val;
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.hide-bg-sm {
+		background-image: none !important;
+	}
+}

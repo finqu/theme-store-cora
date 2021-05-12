@@ -29,24 +29,50 @@
     {%- assign classes = classes | append: sectionStyleClass -%}
 {%- endif -%}
 
+{%- if section.settings.sectionContentBgColorStatus -%}
+    {% capture sectionHasBgColorClass %} section-has-bg-color{% endcapture %}
+    {%- assign classes = classes | append: sectionHasBgColorClass -%}
+{%- endif -%}
+
 {%- capture imgColContent -%}
 
-    <img
-        alt="{{ contentImgAlt }}"
-        class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
-        src="{{ section.settings.contentImgSrc }}"
-        data-src="{{ section.settings.contentImgSrc }}"
-        data-srcset="{{ section.settings.contentImgSrc }} 400w,
-        {{ section.settings.contentImgSrc }} 800w"
-        data-sizes="100w"
-        data-finqu-inline-editor="contentImgSrc"
-    />
+    <picture>
+        <source media="(min-width: 768px)" data-srcset="
+            {{ section.settings.contentImgSrc | thumb:755,755 }} 1x,
+            {{ section.settings.contentImgSrc | thumb:755,755 | thumb:'@2x' }} 2x">
+
+        <img
+            alt="{{ section.settings.contentImgAlt }}"
+            data-src="{{ section.settings.contentImgSrc | thumb:420,420 }}"
+            data-srcset="{{ section.settings.contentImgSrc | thumb:420,420 }} 1x,{{ section.settings.contentImgSrc | thumb:420,420 | thumb:'@2x' }} 2x"
+            class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
+            data-finqu-inline-editor="contentImgSrc">
+    </picture>
 
 {%- endcapture -%}
 
 {%- capture textColContent -%}
 
     <div data-finqu-inline-editor="contentRichtextHtml">{{ section.settings.contentRichtextHtml }}</div>
+
+    {%- if section.settings.contentBtnLabel %}
+
+        {% case section.settings.contentBtnType %}
+          {% when 'page' %}
+             {%- assign href = section.settings.contentBtnPage | link -%}
+          {% when 'product' %}
+            {%- assign href =  section.settings.contentBtnProduct | link -%}
+          {% when 'article' %}
+            {%- assign href =  section.settings.contentBtnArticle | link -%}
+          {% when 'link' %}
+            {%- assign href =  section.settings.contentBtnLink -%}
+        {% endcase %}
+
+        <a href="{{ href }}" class="btn btn-primary mt-3">
+            {{- section.settings.contentBtnLabel -}}
+        </a>
+
+    {%- endif -%}
 
 {%- endcapture -%}
 
@@ -74,21 +100,21 @@
 
         {%- if section.settings.contentImgSide == 'left' -%}
 
-            <div class="col-{{ leftColSize }} {{ imgAlign }}">
+            <div class="col-12 col-md-{{ leftColSize }} {{ imgAlign }}">
                 {{- imgColContent -}}
             </div>
 
-            <div class="col-{{ rightColSize }} {{ textAlign }}">
+            <div class="col-12 pt-5 pt-md-0 col-md-{{ rightColSize }} {{ textAlign }}">
                 {{- textColContent -}}
             </div>
 
         {%- else -%}
 
-            <div class="col-{{ leftColSize }} {{ textAlign }}">
+            <div class="col-12 pt-5 pt-md-0 col-md-{{ leftColSize }} {{ textAlign }} order-2 order-md-1">
                 {{- textColContent -}}
             </div>
 
-            <div class="col-{{ rightColSize }} {{ imgAlign }}">
+            <div class="col-12 col-md-{{ rightColSize }} {{ imgAlign }} order-1 order-md-2">
                 {{- imgColContent -}}
             </div>
 
@@ -97,6 +123,17 @@
     </div>
 
 {%- endcapture -%}
+
+{%- if section.settings.sectionContentBgColorStatus -%}
+    <style>
+        #finqu-section-{{ section.id }} .container {
+            background-color: {{ section.settings.sectionContentBgColor }}
+        }
+        #finqu-section-{{ section.id }} .container-fluid {
+            background-color: {{ section.settings.sectionContentBgColor }}
+        }
+    </style>
+{%- endif -%}
 
 <div class="lazy section-content {{ classes }}"{%- if sectionBgImgSrc -%} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% endif %}>
 
@@ -119,7 +156,7 @@
 
             <div class="row {{ contentAlign }}">
 
-                <div class="col-{{ sectionContentWidth }}">
+                <div class="col-12 col-md-{{ sectionContentWidth }}">
 
                     {{- content -}}
 
@@ -259,6 +296,72 @@
                                 "value": "bottom",
                                 "label": "{# icon.alignBottom #}"
                             }
+                        ]
+                    },
+                    {
+                        "id": "contentBtnLabel",
+                        "type": "text",
+                        "label": "Button label"
+                    },
+                    {
+                        "id": "contentBtnType",
+                        "type": "radio-pill",
+                        "label": "Button type",
+                        "default": "page",
+                        "conditions": ["contentBtnLabel:truthy eq true"],
+                        "options": [
+                            {
+                                "value": "page",
+                                "label": "Page"
+                            },
+                            {
+                                "value": "product",
+                                "label": "Product"
+                            },
+                            {
+                                "value": "article",
+                                "label": "Article"
+                            },
+                            {
+                                "value": "link",
+                                "label": "Link"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentBtnPage",
+                        "type": "page",
+                        "label": "Button resource",
+                        "conditions": [
+                            "contentBtnLabel:truthy eq true",
+                            "contentBtnType eq page"
+                        ]
+                    },
+                    {
+                        "id": "contentBtnProduct",
+                        "type": "product",
+                        "label": "Button resource",
+                        "conditions": [
+                            "contentBtnLabel:truthy eq true",
+                            "contentBtnType eq product"
+                        ]
+                    },
+                    {
+                        "id": "contentBtnArticle",
+                        "type": "article",
+                        "label": "Button resource",
+                        "conditions": [
+                            "contentBtnLabel:truthy eq true",
+                            "contentBtnType eq article"
+                        ]
+                    },
+                    {
+                        "id": "contentBtnLink",
+                        "type": "text",
+                        "label": "Button resource",
+                        "conditions": [
+                            "contentBtnLabel:truthy eq true",
+                            "contentBtnType eq link"
                         ]
                     },
                     {
@@ -474,6 +577,19 @@
                                     "step": 10,
                                     "default": 0,
                                     "unit": "%"
+                                },
+                                {
+                                    "id": "sectionContentBgColorStatus",
+                                    "type": "checkbox",
+                                    "label": "Enable content background",
+                                    "default": false
+                                },
+                                {
+                                    "id": "sectionContentBgColor",
+                                    "type": "color",
+                                    "label": "Content background color",
+                                    "default": "#ffffff",
+                                    "conditions": ["sectionContentBgColorStatus:truthy eq true"]
                                 }
                             ]
                         },

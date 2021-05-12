@@ -1,70 +1,140 @@
-<div class="row">
+{%- assign sectionHeight = section.settings.sectionHeight | _default: settings.sectionHeight -%}
+{%- assign sectionInnerSpacing = section.settings.sectionInnerSpacing | _default: settings.sectionInnerSpacing -%}
+{%- assign sectionContentSpacing = section.settings.sectionContentSpacing | _default: settings.sectionContentSpacing -%}
+{%- assign sectionContentWidth = section.settings.sectionContentWidth | _default: '12' -%}
+{%- assign sectionContentAlign = section.settings.sectionContentAlign | _default: 'center' -%}
+{%- assign sectionBgImgPos = section.settings.sectionBgImgPos | _default: settings.sectionBgImgPos -%}
+{%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | _default: '0' -%}
+{%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
+{%- assign sectionStyle = section.settings.sectionStyle -%}
 
-	{% for block in section.settings.setting_blocks.content %}
+{%- capture classes -%}section-height-{{ sectionHeight }} section-spacing-content-{{ sectionContentSpacing }}{%- endcapture -%}
 
-		<div id="finqu-section-{{ section.id }}-block-{{ forloop.index }}" class="col-12 col-lg">
+{%- if sectionInnerSpacing != 'off' -%}
+    {% capture sectionContentSpacingClass %} section-spacing-inner-{{ sectionInnerSpacing }}{% endcapture %}
+    {%- assign classes = classes | append: sectionContentSpacingClass -%}
+{%- endif -%}
 
-			<div class="row">
+{%- if sectionStyle -%}
+    {% capture sectionStyleClass %} section-style-{{ sectionStyle }}{% endcapture %}
+    {%- assign classes = classes | append: sectionStyleClass -%}
+{%- endif -%}
 
-				{% if block.settings.image %}
+{%- capture content -%}
 
-					<div class="img-container col-12 col-lg">
+    <div class="row">
 
-						<img
-						  alt=""
-						  class="lazy img-fluid"
-						  src="{{ block.settings.image }}"
-						  data-src="{{ block.settings.image }}"
-						  data-srcset="{{ block.settings.image }} 400w,
-						    {{ block.settings.image }} 800w"
-						  data-sizes="100w"
-						/>
+        {% for item in section.settings.setting_blocks.items %}
 
-				    </div>
+            <div class="col-12 col-lg{% if section.settings.setting_blocks.items.size > 1 %} col-md-6{% endif %} py-4">
 
-			    {% endif %}
+                {% if item.settings.imgSrc %}
 
-			    <div class="col-12 col-lg">
+                    {%- assign imgSizeSm = '375' -%}
+                    {%- assign imgSizeMd = '680' -%}
 
-			    	<h2>
-			    		{{ block.settings.heading }}
-			    	</h2>
+                    {%- case section.settings.setting_blocks.items.size -%}
+                        {% when 1 %}
+                            {%- assign imgSizeLg = '1100' -%}
+                        {% when 2 %}
+                            {%- assign imgSizeLg = '530' -%}
+                        {% when 3 %}
+                            {%- assign imgSizeLg = '340' -%}
+                        {% when 4 %}
+                            {%- assign imgSizeLg = '245' -%}
+                    {%- endcase -%}
 
-			    	{{ block.settings.content }}
+                    <picture>
 
-			    </div>
+                        {%- if section.settings.setting_blocks.items.size == 1 -%}
+                            <source media="(min-width: 576px)" data-srcset="
+                                {{ item.settings.imgSrc | thumb: imgSizeMd }} 1x,
+                                {{ item.settings.imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+                        {%- endif -%}
 
-			</div>
+                        <source media="(min-width: 992px)" data-srcset="
+                            {{ item.settings.imgSrc | thumb: imgSizeLg }} 1x,
+                            {{ item.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-		</div>
+                        <img
+                            alt="{{ item.settings.imgAlt }}"
+                            data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                            data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                            class="lazy mb-4 d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
+                            data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+                    </picture>
 
-	{% endfor %}
+                {% endif %}
+
+                <div data-finqu-inline-editor="items.{{ item.id }}.richtextHtml">{{ item.settings.richtextHtml }}</div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{%- endcapture -%}
+
+{%- if section.settings.sectionContentBgColorStatus -%}
+    <style>
+        #finqu-section-{{ section.id }} .container,
+        #finqu-section-{{ section.id }} .container-fluid {
+            background-color: {{ section.settings.sectionContentBgColor }}
+        }
+    </style>
+{%- endif -%}
+
+<div class="section-content {{ classes }}">
+
+    <div class="container">
+
+        {%- if sectionContentWidth == '12' -%}
+
+            {{- content -}}
+
+        {%- else -%}
+
+            {%- case sectionContentAlign -%}
+                {% when 'left' %}
+                    {%- assign contentAlign = 'justify-content-start' -%}
+                {% when 'center' %}
+                    {%- assign contentAlign = 'justify-content-center' -%}
+                {% when 'right' %}
+                    {%- assign contentAlign = 'justify-content-end' -%}
+            {%- endcase -%}
+
+            <div class="row {{ contentAlign }}">
+
+                <div class="col-12 col-md-{{ sectionContentWidth }}">
+
+                    {{- content -}}
+
+                </div>
+
+            </div>
+
+        {%- endif -%}
+
+    </div>
+
+    <div class="section-bg{% if sectionBgImgSrc %} bg-img-pos-{{ sectionBgImgPos }} lazy{% if section.settings.sectionContentBgColorStatus %} hide-bg-sm{% endif %}{% endif %}"{% if sectionBgImgSrc and sectionBgImgOverlay > 0 %} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% elsif sectionBgImgSrc %} data-bg="url({{ sectionBgImgSrc }})"{% endif %}></div>
 
 </div>
-
-<style>
-	{%- for block in section.settings.setting_blocks.content -%}
-
-		#finqu-section-{{ section.id }}-block-{{ forloop.index }} .img-container {
-			flex-basis: 100%;
-			max-width: {{ block.settings.image_width }}%;
-		}
-
-	{%- endfor -%}
-</style>
 
 {% schema %}
 {
     "name": "Text columns",
     "tag": "section",
-    "class": "text-columns",
+    "class": "section section-text-columns has-lazy",
     "settings": {
+        "list_type": "tabs",
         "groups": [
-        	{
+            {
                 "title": "Content",
-                "id": "content",
-                "max_blocks": 2,
-                "call_to_action": "Add item",
+                "id": "items",
+                "max_blocks": 4,
+                "call_to_action": "Add a item",
                 "is_sortable": true,
                 "setting_blocks": [
                     {
@@ -72,53 +142,274 @@
                         "title": "Item",
                         "settings": [
                             {
-                                "id": "image",
+                                "id": "imgSrc",
                                 "type": "image-picker",
                                 "label": "Image"
                             },
                             {
-                                "id": "image_width",
-                                "type": "range",
-                                "label": "Image width",
-                                "min": 10,
-                                "max": 80,
-                                "step": 1,
-                                "default": 50
-                            },
-                            {
-                                "id": "heading",
+                                "id": "imgAlt",
                                 "type": "text",
-                                "label": "Title"
+                                "label": "Image alt"
                             },
                             {
-                                "id": "content",
+                                "id": "imgEffect",
+                                "type": "select",
+                                "label": "Image effect",
+                                "default": "none",
+                                "options": [
+                                    {
+                                        "value": "none",
+                                        "label": "None"
+                                    },
+                                    {
+                                        "value": "rounded",
+                                        "label": "Rounded"
+                                    },
+                                    {
+                                        "value": "rounded-circle",
+                                        "label": "Cicle"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "richtextHtml",
                                 "type": "richtext",
-                                "label": "Content"
+                                "label": "Text",
+                                "inline": "true",
+                                "default": "<h2>Tervetuloa paremman myynnin maailmaan</h2><h4><br></h4><h4>Myy kaikkialla</h4><p>Et tarvitse useita eri järjestelmiä tai kalliita integraatioita myydäksesi siellä missä asiakkaasi ovat. Sisään rakennettu monikanavaisuus mahdollistaa myymisen kaikkialla, kuten verkossa, kivijalkaliikkeessä ja tapahtumissa. Finqu verkkokauppa ja Finqu POS tekevät myymisen helpoksi ja säästät selvää rahaa yhdellä keskitetyllä kaupankäynnin alustalla.</p><h4>Hallitse yhdestä paikasta</h4><p>Hallitse kaikkea myyntiä yhdestä paikassa riippumatta siitä, missä myynti on tapahtunut. Keskitetyn tiedon ansiosta et enää koskaan kärsi päällekkäisistä asiakas- tai tuotetiedoista tai varaston yli myynnistä. Samalla nautit kampanjoista, jotka toimivat läpi kaikkien myyntikanavien. Vähemmän vaivaa, enemmän myyntiä.</p><h4>Älä maksa turhasta</h4><p>Finqun joustavalla hinnoittelulla saat ensin 2 viikkoa ilmaista aikaa kaupallesi ja käynnistät myynnin vain muutamalla eurolla kuukaudessa. Älä turhaan maksa korkeita kuukausikustannuksia etukäteen. Maksa vasta, kun saat liiketoiminnan käyntiin ja myynnin kunnolla rullaamaan.</p>"
                             }
                         ]
                     }
                 ]
             },
             {
-                "title": "Settings",
-                "settings": [
-                	{
-                        "id": "text",
-                        "type": "text",
-                        "label": "Text (text)",
-                        "placeholder": "Just some placeholder",
-                        "default": "Default",
-                        "info": "Some info text here"
-                    },
-                    {
-                        "id": "textarea",
-                        "type": "textarea",
-                        "label": "Textarea (textarea)",
-                        "placeholder": "Just some placeholder",
-                        "conditions": ["!text contains foobar", "text:length gte 5"],
-                        "default": "Textarea default"
-                    }
-                ]
+                "title": "Section",
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": "Layout",
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": "Section height",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Section inner spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Content spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": "Content width",
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": "Content alignment",
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeft #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenter #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRight #}"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Background",
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": "Image"
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": "Position",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "left-top",
+                                            "label": "Left Top"
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": "Left Center"
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": "Left Bottom"
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": "Right Top"
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": "Right Center"
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": "Right Bottom"
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": "Center Top"
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": "Center Center"
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": "Center Bottom"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": "Overlay",
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": 0,
+                                    "unit": "%"
+                                },
+                                {
+                                    "id": "sectionContentBgColorStatus",
+                                    "type": "checkbox",
+                                    "label": "Enable content background",
+                                    "default": false
+                                },
+                                {
+                                    "id": "sectionContentBgColor",
+                                    "type": "color",
+                                    "label": "Content background color",
+                                    "default": "#ffffff",
+                                    "conditions": ["sectionContentBgColorStatus:truthy eq true"]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Colors",
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "sectionStyles",
+                                    "type": "style-picker",
+                                    "default": "light"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ]
     }

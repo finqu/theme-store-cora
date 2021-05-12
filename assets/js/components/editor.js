@@ -38,6 +38,11 @@ export default {
 
         				const key = matches[index].match(/(?<=\{# icon.).+?(?=\ #})/g)[0];
 
+        				console.log(key);
+        				console.log(matches[index]);
+        				console.log(labelEl);
+        				console.log(this.icons[key]);
+
 						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ window.themeApp.data.assetUrl+'/'+this.icons[key] }">`);
 					}
         		}
