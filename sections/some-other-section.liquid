@@ -1,7 +1,15 @@
 <div class="padding-{{ section.settings.sectionHeight }}">
-
-	<h5>{{section.settings.text}}</h5>
-
+    
+    {% if section.settings.url %}
+	    <h5>
+	        {{- section.settings.url.url -}}
+	        
+	        {%- if section.settings.url.type == 'product' -%}
+	            {{section.settings.url.object.price}}
+	        {%- endif -%}
+	   </h5>
+    {% endif %}
+    
 	{{ section.settings.richText }}
 
     <hr>
@@ -179,15 +187,14 @@
                                     "default": "Some text"
                                 },
                                 {
-                                    "id": "font",
-                                    "type": "font-picker",
-                                    "label": "Font picker (font-picker)",
-                                    "default": "Lato",
-                                    "families": [
-                                        "Open Sans",
-                                        "Lato",
-                                        "Roboto"
-                                    ]
+                                    "id": "url",
+                                    "type": "url",
+                                    "label": "URL test"
+                                },
+                                {
+                                    "id": "product",
+                                    "type": "product",
+                                    "label": "Product test"
                                 }
                             ]
                         },

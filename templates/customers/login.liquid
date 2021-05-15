@@ -1,0 +1,50 @@
+<div class="container">
+
+    {% form 'login' %}
+
+        <div class="form-group">
+
+            <label>{{ 'account.information.email' | t }}</label>
+            <input type="email" class="form-control" name="email" id="login-email" placeholder="{{ 'login.email_placeholder' | t }}" value="{{ form.submitted.email | escape }}" required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="d-block">
+                <div class="row align-items-center">
+                    <div class="col">{{ 'account.information.password' | t }}</div>
+                    <div class="col col-auto small"><a href="{{ 'forgotten_password' | link }}">{{ 'login.forgot_password' | t }}</a></div>
+                </div>
+            </label>
+            <input type="password" class="form-control" name="password" id="login-password" placeholder="{{ 'login.password_placeholder' | t }}" value="{{ form.submitted.password | escape }}" required>
+
+        </div>
+
+        {% if form.error %}
+
+            <p class="text-error">{{ form.error | prepend:'form.error.' | t }}</p>
+
+        {% endif %}
+
+        <div class="row align-items-center">
+
+            <div class="col col-auto">
+                <button type="submit" class="btn btn-primary">{{ 'login.cta' | t }}</button>
+            </div>
+
+            <div class="col text-right">
+
+                {% if store.users_can_register %}
+
+                    {{ 'login.new_customer' | t }} <a href="{{ 'register' | link }}">{{ 'login.register' | t }}</a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    {% endform %}
+
+</div>

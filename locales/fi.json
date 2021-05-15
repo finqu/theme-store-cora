@@ -1,8 +1,16 @@
 {
+    "general": {
+        "policies": {
+            "terms_and_conditions": "Käyttöehdot",
+            "refund_policy": "Peruutusehdot",
+            "shipping_policy": "Toimitusehdot",
+            "privacy_policy": "Tietosuojaseloste"
+        }
+    },
     "system": {
         "pages": {
             "terms_and_conditions": "Käyttöehdot",
-            "cancellation_policy": "Peruutusehdot",
+            "refund_policy": "Peruutusehdot",
             "shipping_policy": "Toimitusehdot",
             "privacy_policy": "Tietosuojaseloste",
             "login": "Kirjaudu sisään",
@@ -25,7 +33,122 @@
             "not_activated": "Rajoitettu pääsy"
         }
     },
-    "swag": {
-        "test": "TESTIII __var__ asdasd 123123 __var2__"
+    "account": {
+        "title": "Tili",
+        "management": "Tilin hallinta",
+        "edit_title": "Tietosi",
+        "edit_account": "Muokkaa tietojasi",
+        "change_password": "Vaihda salasana",
+        "purchaces_title": "Ostoksesi",
+        "open_order": "Avaa tilaus",
+        "order_refund": "Hyvitetty",
+        "order_refund_product": "tuote",
+        "newsletter_subscribe_status": "Uutiskirje tilattu",
+        "optional_information": "Valinnaiset tiedot",
+        "information_update_success": "Tietojen päivitys onnistui.",
+        "information": {
+            "title": "Asiakastiedot",
+            "account_email": "Käyttäjätunnuksen sähköpostiosoite",
+            "password": "Salasana",
+            "new_password": "Uusi salasana",
+            "confirm_password": "Vahvista salasana",
+            "confirm_new_password": "Vahvista uusi salasana",
+            "name": "Nimi",
+            "firstname": "Etunimi",
+            "lastname": "Sukunimi",
+            "street_address": "Katuosoite",
+            "city": "Kaupunki",
+            "zipcode": "Postinumero",
+            "country": "Maa",
+            "phonenumber": "Puhelinnumero",
+            "email": "Sähköpostiosoite",
+            "language": "Kieli",
+            "currency": "Valuutta",
+            "company": "Yritys",
+            "businessid": "Y-tunnus",
+            "vatid": "ALV-numero"
+        },
+        "orders": {
+            "title": "Tilaukset",
+            "order_title": "Tilaus",
+            "no_orders": "Ei tilauksia näytettävänä.",
+            "other_product": "muu tuote",
+            "other_products": "muuta tuotetta",
+            "order_products_total": "Tuotteet yhteensä",
+            "buyer_information": "Tilaajan tiedot",
+            "order_recipient": "Tilauksen vastaanottaja.",
+            "open_receipt": "Lataa kuitti",
+            "shipping_address": "Toimitusosoite",
+            "shipping_method": "Toimitustapa",
+            "payment_method": "Maksutapa",
+            "shipment_tracking": "Lähetysten seuranta",
+            "delivery": "Toimitus",
+            "tracking": "Seuranta",
+            "shipping_costs": "Toimituskulut",
+            "payment_method_costs": "Maksutapalisä",
+            "order_status": "Tilauksen tila",
+            "order_status_received": "Vastaanotettu",
+            "order_status_waiting": "Odottaa",
+            "order_status_in_handling": "Käsittelyssä",
+            "order_status_ready": "Valmis",
+            "order_status_cancelled": "Peruutettu",
+            "order_status_refunded": "Hyvitys tehty"
+        }
+    },
+    "form": {
+        "policy_accept_text": "Olen lukenut ja hyväksyn __policy__",
+        "error": {
+            "general": "Tapahtui virhe",
+            "key": "Virheellinen tunniste. Salasanaa ei voida vaihtaa.",
+            "comment": "Kommentti on liian lyhyt.",
+            "stock_variant": "Tuotevalinta on valitsematta.",
+            "not_buyable": "Tuote ei ole ostettavissa.",
+            "min_amount": "Tuotetta ei voi ostaa näin pientä määrää.",
+            "max_amount": "Tuotetta ei voi ostaa näin suurta määrää.",
+            "attribute": "Pakollinen tuotevalinta puuttuu.",
+            "invalid_data": "Tapahtui virhe.",
+            "name": "Nimi puuttuu",
+            "email": "Virheellinen sähköpostiosoite.",
+            "message": "Viesti on liian lyhyt.",
+            "confirm_password": "Salasanat eivät täsmää.",
+            "password": "Virheellinen salasana.",
+            "invalid_credentials": "Virheellinen sähköpostiosoite tai salasana.",
+            "invalid_product": "Virheellinen tuote.",
+            "already_reviewed": "Olet jo arvostellut tämän tuotteen.",
+            "not_purchased": "Et ole ostanut tätä tuotetta.",
+            "review_title": "Tuotearvioinnin otsikko puuttuu.",
+            "review_comment": "Tuotearvioinnin kommenti on liian lyhyt.",
+            "rating": "Virheellinen tuotteen arvosana.",
+            "not_reviewed": "Tuotearviota ei voida poistaa, et ole arvioinut tuotetta.",
+            "username_taken": "Sähköpostiosoite on jo käytössä.",
+            "stock": "Tuotetta ei ole tarpeeksi varastossa.",
+            "terms_of_use": "Sinun on hyväksyttävä käyttöehdot.",
+            "min_length": "merkkiä vähintään.",
+            "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
+        }
+    },
+    "login": {
+        "title": "Kirjautuminen",
+        "cta": "Kirjaudu",
+        "logout": "Kirjaudu ulos",
+        "success": "Kirjautuminen onnistui!",
+        "already_logged_in": "Olet jo kirjautunut sisään.",
+        "forgot_password": "Unohtuiko salasana?",
+        "email_placeholder": "matti@meikalainen.com",
+        "password_placeholder": "Salasana",
+        "new_customer": "Uusi asiakas?",
+        "register": "Luo tili"
+    },
+    "register": {
+        "title": "Rekisteröityminen",
+        "success": "Rekisteröityminen onnistui!",
+        "register": "Rekisteröidy",
+        "order_as_company": "Tilaa yritykselle",
+        "already_registered": "Olet jo rekisteröitynyt.",
+        "cta": "Luo tili",
+        "returning_customer": "Palaava asiakas?",
+        "login": "Kirjaudu sisään",
+        "inline_terms": "Valitsemalla __action__ hyväksyt __terms__.",
+        "inline_terms_with_policy": "Valitsemalla __action__ hyväksyt __terms__. Lue __policy__, joka kertoo tietojen keräämisestä, käytöstä ja jakamisesta."
     }
 }
