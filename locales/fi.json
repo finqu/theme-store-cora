@@ -150,5 +150,11 @@
         "login": "Kirjaudu sisään",
         "inline_terms": "Valitsemalla __action__ hyväksyt __terms__.",
         "inline_terms_with_policy": "Valitsemalla __action__ hyväksyt __terms__. Lue __policy__, joka kertoo tietojen keräämisestä, käytöstä ja jakamisesta."
+    },
+    "password_reset": {
+        "title": "Unohtuiko salasana?",
+        "description": "Syötä alla olevaan kenttään sähköpostiosoite, jota käytit rekisteröitymisessä. Lähetämme ohjeet salasanan vaihdosta antamaasi osoitteeseen.",
+        "success": "Ohjeet lähetettiin sähköpostiisi.",
+        "cta": "Lähetä"
     }
 }

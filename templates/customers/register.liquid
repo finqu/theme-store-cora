@@ -1,6 +1,6 @@
 <div class="container">
 
-    {% form 'register' %}
+    {% form 'register' id:myCustomId class:"form-class classes" %}
 
         <div class="form-group">
 
@@ -78,27 +78,15 @@
 
         {% endif %}
 
-        <div class="row align-items-center">
+        <button type="submit" class="btn btn-primary btn-block">
+            {{ 'register.cta' | t }}
+        </button>
 
-            <div class="col col-auto">
+        {% if store.users_can_login %}
 
-                <button type="submit" class="btn btn-primary btn-block">
-                    {{ 'register.cta' | t }}
-                </button>
+            <p class="text-center">{{ 'register.returning_customer' | t }} <a href="{{ 'login' | link }}">{{ 'register.login' | t }}</a></p>
 
-            </div>
-
-            <div class="col text-right">
-
-                {% if store.users_can_login %}
-
-                    {{ 'register.returning_customer' | t }} <a href="{{ 'login' | link }}">{{ 'register.login' | t }}</a>
-
-                {% endif %}
-
-            </div>
-
-        </div>
+        {% endif %}
 
         {% if settings.policyAgreementMethod == 'inline' and store.terms_and_conditions %}
 

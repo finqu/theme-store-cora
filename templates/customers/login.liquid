@@ -27,23 +27,13 @@
 
         {% endif %}
 
-        <div class="row align-items-center">
+        <button type="submit" class="btn btn-primary btn-block">{{ 'login.cta' | t }}</button>
 
-            <div class="col col-auto">
-                <button type="submit" class="btn btn-primary">{{ 'login.cta' | t }}</button>
-            </div>
+        {% if store.users_can_register %}
 
-            <div class="col text-right">
+            <p class="text-center">{{ 'login.new_customer' | t }} <a href="{{ 'register' | link }}">{{ 'login.register' | t }}</a></p>
 
-                {% if store.users_can_register %}
-
-                    {{ 'login.new_customer' | t }} <a href="{{ 'register' | link }}">{{ 'login.register' | t }}</a>
-
-                {% endif %}
-
-            </div>
-
-        </div>
+        {% endif %}
 
     {% endform %}
 

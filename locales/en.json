@@ -151,5 +151,11 @@
         "login": "Sign in",
         "inline_terms": "By clicking __action__, you agree to our __terms__.",
         "inline_terms_with_policy": "By clicking __action__, you agree to our __terms__. Learn how we collect, use and share your data in our __policy__."
+    },
+    "password_reset": {
+        "title": "Forgotten password?",
+        "description": "Fill in the email below which you gave during the registration. Instructions will be sent to this email address.",
+        "success": "Instructions were sent to the given email address.",
+        "cta": "Send"
     }
 }
