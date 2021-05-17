@@ -1,0 +1,87 @@
+{
+    "disable_draft": true,
+    "asset_cache": {
+        "main.css": "main.dcde36478a266bcd1ab9d728808a7b8d.css"
+    },
+    "current": {
+        "templates": {
+            "frontpage": {
+                "sections": [
+                    {
+                        "id": "ab002bbe1e5585d4a1cf0c154ed3e880",
+                        "name": "some-other-section",
+                        "settings": {
+                            "text": "Default",
+                            "textarea": "Textarea default",
+                            "select": "medium",
+                            "range": "20",
+                            "radio": "one",
+                            "backgroundColor": "#ff4433",
+                            "textColor": "#222222",
+                            "radioPill": "one",
+                            "image": "https:\/\/cdn.finqu.ninja\/users\/1\/images\/uploads\/1_inside-print.png",
+                            "richText": "<p>Some text<\/p>",
+                            "url": {
+                                "type": "url",
+                                "record_id": "",
+                                "url": ""
+                            },
+                            "product": {
+                                "type": "product",
+                                "id": "",
+                                "name": ""
+                            },
+                            "radioPillTest": "other",
+                            "rangeTest": "300"
+                        },
+                        "blocks": []
+                    }
+                ]
+            }
+        },
+        "settings": {
+            "some_other_bg_color": "#ff00ff",
+            "theme_styles": {
+                "light": {
+                    "background_color": "#ffffff",
+                    "text_color": "#000000"
+                },
+                "dark": {
+                    "background_color": "#000000",
+                    "text_color": "#ffffff"
+                },
+                "foobar": {
+                    "background_color": "#000000",
+                    "text_color": "#ffffff"
+                }
+            },
+            "sectionHeight": "md",
+            "sectionInnerSpacing": "off",
+            "sectionContentSpacing": "md",
+            "sectionBgImgPosition": "center-center",
+            "sectionStyles": {
+                "light": {
+                    "background_color": "#ffffff",
+                    "text_color": "#000000"
+                },
+                "dark": {
+                    "background_color": "#000000",
+                    "text_color": "#ffffff"
+                }
+            }
+        },
+        "sections": [
+            {
+                "id": "header",
+                "name": "header",
+                "settings": {
+                    "title": {
+                        "type": "product",
+                        "id": "1",
+                        "name": "Test product"
+                    }
+                }
+            }
+        ]
+    }
+}

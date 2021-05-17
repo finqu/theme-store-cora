@@ -1,0 +1,53 @@
+<div class="container">
+
+	<h2>Tilin tiedot</h2>
+
+	<div class="row">
+
+		<div class="col">
+
+			<p><a href="{{ 'edit_account' | link }}">Muokkaa yhteystietoja</a></p>
+
+		</div>
+
+		<div class="col col-auto">
+
+			{% form 'currency' id:account_currency_form %}
+
+				<select name="currency" class="form-control" id="edit-account-currency">
+
+			        {% for currency in store.currencies %}
+
+			            <option value="{{ currency.id }}"{% if currency.code == customer.currency.code %} selected{% endif %}>{{ currency.name }}</option>
+
+			        {% endfor %}
+
+			    </select>
+
+			{% endform %}
+
+		</div>
+
+		<div class="col col-auto">
+
+			{% form 'language' id:account_language_form %}
+
+				<select name="language" class="form-control" id="edit-account-language">
+
+			        {% for language in store.languages %}
+
+			            <option value="{{ language.id }}"{% if language.code == customer.language.code %} selected{% endif %}>{{ language.name }}</option>
+
+			        {% endfor %}
+
+			    </select>
+
+			{% endform %}
+
+		</div>
+
+	</div>
+
+	<h2>Tilaukset ({{ customer.orders | count }})</h2>
+
+</div>

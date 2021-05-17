@@ -1,0 +1,150 @@
+<div class="container">
+
+    <p><a href="{{ 'account' | link }}">Takaisin</a></p>
+
+    {% form 'account' %}
+
+        <h4>{{ 'account.contact_information' | t }}</h4>
+
+        <div class="row">
+
+            <div class="form-group col-sm-6 col-xs-12">
+
+                <label>{{ 'account.information.firstname' | t }}</label>
+                <input type="text" class="form-control" name="firstname" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ customer.firstname }}" required>
+
+            </div>
+
+            <div class="form-group col-sm-6 col-xs-12">
+
+                <label>{{ 'account.information.lastname' | t }}</label>
+                <input type="text" class="form-control" name="lastname" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ customer.lastname }}" required>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="form-group col-sm-6 col-xs-12">
+
+                <label>{{ 'account.information.email' | t }}</label>
+                <input type="email" class="form-control" name="email" id="edit-account-email" placeholder="{{ 'account.information.email' | t }}" value="{{ customer.email }}" required>
+
+            </div>
+
+            <div class="form-group col-sm-6 col-xs-12">
+
+                <label>{{ 'account.information.phonenumber' | t }}</label>
+                <input type="tel" class="form-control" name="phonenumber" id="edit-account-phonenumber" placeholder="{{ 'account.information.phonenumber' | t }}" value="{{ customer.phonenumber }}">
+
+            </div>
+
+        </div>
+
+        <h4>{{ 'account.address' | t }}</h4>
+
+        <div class="form-group">
+
+            <label>{{ 'account.information.street_address' | t }}</label>
+            <input type="text" class="form-control" name="address_1" id="edit-account-address_1" placeholder="{{ 'account.information.street_address' | t }}" value="{{ customer.address_1 }}">
+
+        </div>
+
+        <div class="row">
+
+            <div class="form-group col-sm-3 col-xs-12">
+
+                <label>{{ 'account.information.country' | t }}</label>
+
+                <select name="country" class="form-control" id="edit-account-country">
+
+                    {% for country in store.countries %}
+
+                        <option value="{{ country.id }}"{% if country.code == customer.country.code %} selected{% endif %}>{{ country.name }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="form-group col-sm-3 col-xs-12">
+
+                <label>{{ 'account.information.zipcode' | t }}</label>
+                <input type="text" class="form-control" name="zipcode" id="edit-account-zipcode" placeholder="{{ 'account.information.zipcode' | t }}" value="{{ customer.zipcode }}">
+
+            </div>
+
+            <div class="form-group col-sm-6 col-xs-12">
+
+                <label>{{ 'account.information.city' | t }}</label>
+                <input type="text" class="form-control" name="city" id="edit-account-city" placeholder="{{ 'account.information.city' | t }}" value="{{ customer.city }}">
+
+            </div>
+
+        </div>
+
+        <h4>{{ 'account.company_information' | t }}</h4>
+
+        <div class="row">
+
+            <div class="form-group col-sm-6 col-xs-12">
+
+                <label>{{ 'account.information.company' | t }}</label>
+                <input type="text" class="form-control" name="company" id="edit-account-company" value="{{ customer.company }}">
+
+            </div>
+
+            <div class="form-group col-sm-3 col-xs-12">
+
+                <label>{{ 'account.information.businessid' | t }}</label>
+                <input type="text" class="form-control" name="businessid" id="edit-account-businessid" value="{{ customer.businessid }}">
+
+            </div>
+
+            <div class="form-group col-sm-3 col-xs-12">
+
+                <label>{{ 'account.information.vatid' | t }}</label>
+                <input type="text" class="form-control" name="vatid" id="edit-account-vatid" value="{{ customer.vatid }}">
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <div class="checkbox">
+
+                <input type="checkbox" name="newsletter" id="edit-account-newsletter"{% if customer.newsletter %} checked{% endif %}>
+                <label for="edit-account-newsletter">{{ 'subscribe_to_newsletter' | t }} </label>
+
+            </div>
+
+        </div>
+
+        {% if form.posted_succesfully? %}
+
+            <div class="form-group text-center">
+
+                <span class="text-success"><i class="fa fa-check fa-fw" aria-hidden="true"></i> {{ 'account.information_update_success' | t }}</span>
+
+            </div>
+
+        {% endif %}
+
+        {% if form.error %}
+
+            <div class="form-group text-center">
+
+                <span class="text-danger"><i class="fa fa-exclamation fa-fw" aria-hidden="true"></i> {{ form.error | prepend:'form.error.' | t }}</span>
+
+            </div>
+
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary btn-block">{{ 'update' | t }}</button>
+
+    {% endform %}
+
+</div>

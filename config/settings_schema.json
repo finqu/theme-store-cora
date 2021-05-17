@@ -111,73 +111,73 @@
 					"type": "radio-pill",
 					"label": "Height",
 					"default": "md",
-                    "options": [
-                        {
-                            "value": "sm",
-                            "label": "S"
-                        },
-                        {
-                            "value": "md",
-                            "label": "M"
-                        },
-                        {
-                            "value": "lg",
-                            "label": "L"
-                        },
-                        {
-                            "value": "xl",
-                            "label": "XL"
-                        }
-                    ]
+					"options": [
+						{
+							"value": "sm",
+							"label": "S"
+						},
+						{
+							"value": "md",
+							"label": "M"
+						},
+						{
+							"value": "lg",
+							"label": "L"
+						},
+						{
+							"value": "xl",
+							"label": "XL"
+						}
+					]
 				},
 				{
-                    "id": "sectionInnerSpacing",
-                    "type": "radio-pill",
-                    "label": "Inner spacing",
-                    "default": "off",
-                    "options": [
-                        {
-                            "value": "off",
-                            "label": "OFF"
-                        },
-                        {
-                            "value": "sm",
-                            "label": "S"
-                        },
-                        {
-                            "value": "md",
-                            "label": "M"
-                        },
-                        {
-                            "value": "lg",
-                            "label": "L"
-                        }
-                    ]
-                },
-                {
-                    "id": "sectionContentSpacing",
-                    "type": "radio-pill",
-                    "label": "Content spacing",
-                    "default": "md",
-                    "options": [
-                        {
-                            "value": "sm",
-                            "label": "S"
-                        },
-                        {
-                            "value": "md",
-                            "label": "M"
-                        },
-                        {
-                            "value": "lg",
-                            "label": "L"
-                        },
-                        {
-                            "value": "xl",
-                            "label": "XL"
-                        }
-                    ]
-                },
+					"id": "sectionInnerSpacing",
+					"type": "radio-pill",
+					"label": "Inner spacing",
+					"default": "off",
+					"options": [
+						{
+							"value": "off",
+							"label": "OFF"
+						},
+						{
+							"value": "sm",
+							"label": "S"
+						},
+						{
+							"value": "md",
+							"label": "M"
+						},
+						{
+							"value": "lg",
+							"label": "L"
+						}
+					]
+				},
+				{
+					"id": "sectionContentSpacing",
+					"type": "radio-pill",
+					"label": "Content spacing",
+					"default": "md",
+					"options": [
+						{
+							"value": "sm",
+							"label": "S"
+						},
+						{
+							"value": "md",
+							"label": "M"
+						},
+						{
+							"value": "lg",
+							"label": "L"
+						},
+						{
+							"value": "xl",
+							"label": "XL"
+						}
+					]
+				},
                 {
                     "id": "sectionBgImgPos",
                     "type": "select",
@@ -254,6 +254,51 @@
 								"background_color": "#000000",
 								"text_color": "#ffffff"
 							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "setting-page",
+			"label": {
+				"en": "General",
+				"fi": "Yleinen"
+			},
+			"title": {
+				"en": "General",
+				"fi": "Yleinen"
+			},
+			"settings": [
+				{
+					"type": "setting-page",
+					"label": {
+						"en": "Forms",
+						"fi": "Lomakkeet"
+					},
+					"title": {
+						"en": "Forms",
+						"fi": "Lomakkeet"
+					},
+					"settings": [
+						{
+							"type": "radio",
+							"id": "policyAgreementMethod",
+							"label": {
+								"en": "Policy agreeement",
+								"fi": "Ehtojen hyväksyminen"
+							},
+							"default": "check",
+							"options": [
+								{
+									"value": "check",
+									"label": "Check"
+								},
+								{
+									"value": "inline",
+									"label": "Inline"
+								}
+							]
 						}
 					]
 				}
