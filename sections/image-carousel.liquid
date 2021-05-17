@@ -1,0 +1,203 @@
+{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
+{%- assign sectionStyle = section.settings.sectionStyle -%}
+
+{%- capture classes -%}section-height-{{ sectionHeight }} section-spacing-content-{{ sectionContentSpacing }}{%- endcapture -%}
+
+{%- if sectionStyle -%}
+    {% capture sectionStyleClass %} section-style-{{ sectionStyle }}{% endcapture %}
+    {%- assign classes = classes | append: sectionStyleClass -%}
+{%- endif -%}
+
+{%- capture content -%}
+
+    {% for item in section.settings.setting_blocks.items %}
+
+        <div class="swiper-slide">
+
+            {% if item.settings.imgSrc %}
+
+                <div class="slide-bg-img">
+
+                    {%- assign imgSizeSm = '375' -%}
+                    {%- assign imgSizeMd = '680' -%}
+                    {%- assign imgSizeLg = '1100' -%}
+
+                    <picture>
+
+                        <source media="(min-width: 576px)" data-srcset="
+                            {{ item.settings.imgSrc | thumb: imgSizeMd }} 1x,
+                            {{ item.settings.imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 992px)" data-srcset="
+                            {{ item.settings.imgSrc | thumb: imgSizeLg }} 1x,
+                            {{ item.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                        <img
+                            alt="{{ item.settings.imgAlt }}"
+                            data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                            data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                            class="lazy">
+
+                    </picture>
+
+                </div>
+
+            {% endif %}
+
+            <div class="container h-100">
+
+                <div class="row h-100">
+
+                    <div class="col">
+
+                        {% if item.settings.title %}
+
+                            <div class="slide-title">
+                                {{- item.settings.title -}}
+                            </div>
+
+                        {% endif %}
+
+                        {% if item.settings.description %}
+
+                            <div class="slide-description">
+                                {{- item.settings.description -}}
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{%- endcapture -%}
+
+<div class="section-content {{ classes }}">
+
+    <div class="swiper-container">
+
+        <div class="swiper-wrapper">
+
+            {{- content -}}
+
+        </div>
+
+        <div class="swiper-button-prev">
+            {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+        </div>
+
+        <div class="swiper-button-next">
+            {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Image carousel",
+    "tag": "section",
+    "class": "section section-image-carousel",
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": "Content",
+                "id": "items",
+                "max_blocks": 4,
+                "call_to_action": "Add a item",
+                "is_sortable": true,
+                "setting_blocks": [
+                    {
+                        "type": "item",
+                        "title": "Item",
+                        "settings": [
+                            {
+                                "id": "imgSrc",
+                                "type": "image-picker",
+                                "label": "Image"
+                            },
+                            {
+                                "id": "imgAlt",
+                                "type": "text",
+                                "label": "Image alt"
+                            },
+                            {
+                                "id": "title",
+                                "type": "text",
+                                "label": "Title"
+                            },
+                            {
+                                "id": "description",
+                                "type": "textarea",
+                                "label": "Description"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Section",
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": "Settings",
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": "Section height",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Colors",
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "sectionStyles",
+                                    "type": "style-picker",
+                                    "default": "light"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+{% endschema %}

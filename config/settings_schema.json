@@ -179,7 +179,7 @@
                     ]
                 },
                 {
-                    "id": "sectionBgImgPosition",
+                    "id": "sectionBgImgPos",
                     "type": "select",
                     "label": "Background position",
                     "default": "center-center",

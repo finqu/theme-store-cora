@@ -1,10 +1,12 @@
 import 'intersection-observer';
 import 'bootstrap';
+import icons from './components/icons.js';
 import editor from './components/editor';
 import dotize from 'dotize';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
+import ImageCarousel from './components/sections/image-carousel';
 
 export default class App {
 
@@ -16,6 +18,9 @@ export default class App {
 			this.data.translations = dotize.convert(this.data.translations);
 		}
 
+		let loadedImgs = [];
+
+		this.icons = icons;
 		this.lazyLoad = new LazyLoad({
             show_while_loading: true,
             callback_reveal: function (img) {
@@ -24,6 +29,8 @@ export default class App {
                 });
 
                 objectFitImages(img);
+
+                loadedImgs.push(img);
             },
             callback_loaded: function (img) {
             	// Loaded
@@ -33,9 +40,27 @@ export default class App {
             }
         });
 
-        if (this.data.designMode) {
-        	editor.init();
+        for (const el of document.querySelectorAll('img')) {
+
+        	if (loadedImgs.includes(el)) {
+        		objectFitImages(el);
+        	}
         }
+
+        if (this.data.designMode) {
+        	editor.init(this);
+        }
+
+        this.init();
+	}
+
+	init() {
+
+    	for (const el of document.querySelectorAll('.section-image-carousel')) {
+    		console.log(el);
+    		new ImageCarousel(el);
+    	}
+
 	}
 
     t(key, vars = {}) {

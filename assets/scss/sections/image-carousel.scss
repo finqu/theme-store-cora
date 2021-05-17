@@ -1,0 +1,53 @@
+// Image carousel
+// -----------------------------------------------------------------------------------------
+
+.section-image-carousel {
+
+	@each $key, $val in $swiper-heights {
+		@include media-breakpoint-up(md) {
+			.section-height-#{$key} {
+				padding-top: 0;
+				padding-bottom: 0;
+
+				.swiper-container {
+					height: $val;
+				}
+			}
+		}
+	}
+
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+
+		.swiper-slide {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			flex-direction: column;
+			position: relative;
+			overflow: hidden;
+
+			.slide-title {
+
+			}
+
+			.slide-description {
+
+			}
+
+			.slide-bg-img img {
+				width: 100%;
+		        height: 100%;
+		        object-fit: cover;
+		        font-family: 'object-fit: cover';
+		        position: absolute;
+		        left: 0;
+		        right: 0;
+		        transform: none;
+		        z-index: 1;
+			}
+		}
+	}
+}
