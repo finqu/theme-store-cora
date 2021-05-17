@@ -21,8 +21,6 @@
 
 		<link rel="stylesheet" href="{{ 'main.css' | asset_url }}" type="text/css" media="all">
 
-		{{- store_meta.meta -}}
-
 		{%- capture pageTitle -%}
 			{%- if page.meta_title -%}
 				{{ page.meta_title }} - {{ store.name }}
@@ -49,8 +47,6 @@
 		{{ content_for_layout }}
 
 		{% section 'footer' %}
-
-		{{ store_meta.scripts }}
 
 	</body>
 

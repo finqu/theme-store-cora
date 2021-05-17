@@ -1,21 +1,5 @@
-import MoveLeft1 from '@streamlinehq/streamlinehq/img/streamline-light/move-left-1-fSZYq5.svg';
-import MoveRight1 from '@streamlinehq/streamlinehq/img/streamline-light/move-right-1-fSZYYL.svg';
-import MoveDown1 from '@streamlinehq/streamlinehq/img/streamline-light/move-down-1-fSZQ4o.svg';
-import MoveUp1 from '@streamlinehq/streamlinehq/img/streamline-light/move-up-1-hNEO9b.svg';
-import ShrinkHorizontal from '@streamlinehq/streamlinehq/img/streamline-light/shrink-horizontal-y7qSce.svg';
-import ShrinkVertical from '@streamlinehq/streamlinehq/img/streamline-light/shrink-vertical-y7qZWz.svg';
-
 export default {
-	icons: {
-		alignLeft: MoveLeft1,
-		alignCenter: ShrinkHorizontal,
-		alignRight: MoveRight1,
-		alignTop: MoveUp1,
-		alignMiddle: ShrinkVertical,
-		alignBottom: MoveDown1
-	},
-
-    init: function() {
+    init: function(app) {
 
         document.addEventListener('finqu:section:load', (e) => {
             if (e.target.classList.contains('has-lazy')) {
@@ -41,9 +25,9 @@ export default {
         				console.log(key);
         				console.log(matches[index]);
         				console.log(labelEl);
-        				console.log(this.icons[key]);
+        				console.log(app.icons[key]);
 
-						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ window.themeApp.data.assetUrl+'/'+this.icons[key] }">`);
+						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ window.themeApp.data.assetUrl+'/'+app.icons[key] }">`);
 					}
         		}
         	}

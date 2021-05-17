@@ -1,0 +1,118 @@
+<div class="container">
+
+    {% form 'register' id:myCustomId class:"form-class classes" %}
+
+        <div class="form-group">
+
+            <input type="text" class="form-control" name="firstname" id="register-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.firstname | escape }}" required>
+
+        </div>
+
+        <div class="form-group">
+
+            <input type="text" class="form-control" name="lastname" id="register-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.submitted.lastname | escape }}" required>
+
+        </div>
+
+        <div class="form-group">
+
+            <input type="email" class="form-control" name="email" id="register-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.submitted.email | escape }}" required>
+
+        </div>
+
+        <div class="form-group">
+
+            <input type="password" pattern=".{8,}" class="form-control" name="password" id="register-password" placeholder="{{ 'account.information.password' | t }}" value="{{ form.submitted.password | escape }}" required title="8 {{ 'form.error.min_length' | t }}">
+
+        </div>
+
+        {% if settings.policyAgreementMethod == 'check' %}
+
+            {% if store.terms_and_conditions %}
+
+                <div class="checkbox">
+
+                    <input type="checkbox" name="terms_and_conditions" id="register-terms-conditions">
+
+                    <label for="register-terms-conditions">
+
+                        {% assign policyName = 'general.policies.terms_and_conditions' | t %}
+                        {% assign link = policyName | link_to:store.terms_and_conditions.url,'_blank' %}
+
+                        {{- 'form.policy_accept_text' | t | replace:'__policy__',link -}}
+
+                    </label>
+
+                </div>
+
+            {% endif %}
+
+            {% if store.privacy_policy %}
+
+                <div class="checkbox">
+
+                    <input type="checkbox" name="privacy_policy" id="register-privacy-policy">
+
+                    <label for="register-privacy-policy">
+
+                        {% assign policyName = 'general.policies.privacy_policy' | t  %}
+                        {% assign link = policyName | link_to:store.privacy_policy.url,'_blank' %}
+
+                        {{- 'form.policy_accept_text' | t | replace:'__policy__',link -}}
+
+                    </label>
+
+                </div>
+
+            {% endif %}
+
+        {% endif %}
+
+        {% if form.error %}
+
+            <div class="form-group text-center">
+
+                <span class="text-danger">{{ form.error | prepend:'form.error.' | t }}</span>
+
+            </div>
+
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary btn-block">
+            {{ 'register.cta' | t }}
+        </button>
+
+        {% if store.users_can_login %}
+
+            <p class="text-center">{{ 'register.returning_customer' | t }} <a href="{{ 'login' | link }}">{{ 'register.login' | t }}</a></p>
+
+        {% endif %}
+
+        {% if settings.policyAgreementMethod == 'inline' and store.terms_and_conditions %}
+
+            <p class="small text-muted">
+
+                {% assign actionText = 'register.cta' | t %}
+                {% assign termsName = 'general.policies.terms_and_conditions' | t  %}
+                {% assign termsLink = termsName | link_to:store.terms_and_conditions.url,'_blank' %}
+
+                {% if store.privacy_policy %}
+
+                    {% assign policyName = 'general.policies.privacy_policy' | t  %}
+                    {% assign policyLink = policyName | link_to:store.privacy_policy.url,'_blank' %}
+
+                    {{- 'register.inline_terms_with_policy' | t | replace:'__action__',actionText | replace:'__terms__',termsLink | replace:'__policy__',policyLink -}}
+
+                {% else %}
+
+                   {{- 'register.inline_terms' | t | replace:'__action__',actionText | replace:'__terms__',termsLink -}}
+
+                {% endif %}
+
+            </p>
+
+        {% endif %}
+
+    {% endform %}
+
+</div>

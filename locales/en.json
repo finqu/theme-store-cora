@@ -1,8 +1,16 @@
 {
+    "general": {
+        "policies": {
+            "terms_and_conditions": "Terms & Conditions",
+            "refund_policy": "Refund policy",
+            "shipping_policy": "Shipping policy",
+            "privacy_policy": "Privacy policy"
+        }
+    },
     "system": {
         "pages": {
             "terms_and_conditions": "Terms & Conditions",
-            "cancellation_policy": "Cancellation policy",
+            "refund_policy": "Refund policy",
             "shipping_policy": "Shipping policy",
             "privacy_policy": "Privacy policy",
             "login": "Login",
@@ -25,7 +33,129 @@
             "not_activated": "Limited access"
         }
     },
-    "swag": {
-        "test": "TESTIII"
+    "form": {
+        "policy_accept_text": "I have read and agree to the __policy__",
+        "error": {
+            "general": "An error occurred",
+            "key": "Invalid identifier. The password can not be changed.",
+            "comment": "Comment is too short.",
+            "stock_variant": "You did not choose a required product option.",
+            "not_buyable": "Product is not buyable.",
+            "min_amount": "You have to buy more of this product.",
+            "max_amount": "You've exceeded the maximum amount one can buy this product.",
+            "attribute": "Required product option is missing.",
+            "invalid_data": "An error happened.",
+            "name": "Name is missing",
+            "email": "Invalid e-mail address.",
+            "message": "Message is too short.",
+            "confirm_password": "The passwords do not match.",
+            "password": "Invalid password.",
+            "invalid_credentials": "Invalid email address or password.",
+            "invalid_product": "Invalid product.",
+            "already_reviewed": "You've already reviewed this product.",
+            "not_purchased": "You haven't bought this product.",
+            "review_title": "Review title is missing.",
+            "review_comment": "Review comment is too short.",
+            "rating": "Invalid rating for review.",
+            "not_reviewed": "Review cannot be removed because you have not reviewed this product yet.",
+            "username_taken": "Email address is already taken.",
+            "stock": "Not enough products in storage.",
+            "terms_of_use": "You must agree to terms of use.",
+            "min_length": "characters minimum.",
+            "privacy_policy": "You must accept handling of personal information and be at least 16 years old."
+        }
+    },
+    "account": {
+        "title": "Account",
+        "management": "Account management",
+        "edit_title": "Your information",
+        "edit_account": "Edit information",
+        "change_password": "Change password",
+        "purchaces_title": "Your purchases",
+        "open_order": "View order",
+        "order_refund": "Refunded",
+        "order_refund_product": "product",
+        "update_information": "Update your information",
+        "newsletter_subscribe_status": "Newsletter Subscribed",
+        "optional_information": "Optional information",
+        "information_update_success": "Information updated successfully.",
+        "information": {
+            "title": "Customer Information",
+            "account_email": "E-mail address for username",
+            "password": "Password",
+            "new_password": "New password",
+            "confirm_password": "Confirm password",
+            "confirm_new_password": "Confirm new password",
+            "name": "Name",
+            "firstname": "Firstname",
+            "lastname": "Lastname",
+            "street_address": "Address",
+            "city": "City",
+            "zipcode": "Zipcode",
+            "country": "Country",
+            "phonenumber": "Phonenumber",
+            "email": "E-mail address",
+            "language": "Language",
+            "currency": "Currency",
+            "company": "Company",
+            "businessid": "Business ID",
+            "vatid": "VAT number"
+        },
+        "orders": {
+            "title": "Orders",
+            "order_title": "Order",
+            "no_orders": "No orders to display.",
+            "other_product": "other product",
+            "other_products": "other products",
+            "order_products_total": "Products total",
+            "buyer_information": "Buyer information",
+            "order_recipient": "Order recipient",
+            "open_receipt": "Download receipt",
+            "shipping_address": "Billing address",
+            "shipping_method": "Shipping method",
+            "payment_method": "Payment method",
+            "shipment_tracking": "Shipment tracking",
+            "delivery": "Delivery",
+            "tracking": "Order tracking",
+            "shipping_costs": "Shipping costs",
+            "payment_method_costs": "Payment method costs",
+            "order_status": "Order status",
+            "order_status_received": "Received",
+            "order_status_waiting": "Waiting",
+            "order_status_in_handling": "In handling",
+            "order_status_ready": "Ready",
+            "order_status_cancelled": "Cancelled",
+            "order_status_refunded": "Refund has been made."
+        }
+    },
+    "login": {
+        "title": "Sign in",
+        "cta": "Sign in",
+        "logout": "Sign out",
+        "success": "You have logged in successfully!",
+        "already_logged_in": "You have already signed in",
+        "forgot_password": "Forgot your password?",
+        "email_placeholder": "john@doe.com",
+        "password_placeholder": "Password",
+        "new_customer": "New customer?",
+        "register": "Create account"
+    },
+    "register": {
+        "title": "Registration",
+        "success": "Registration succesful!",
+        "register": "Register",
+        "order_as_company": "Order as company",
+        "already_registered": "You have already registered.",
+        "cta": "Create account",
+        "returning_customer": "Returning customer?",
+        "login": "Sign in",
+        "inline_terms": "By clicking __action__, you agree to our __terms__.",
+        "inline_terms_with_policy": "By clicking __action__, you agree to our __terms__. Learn how we collect, use and share your data in our __policy__."
+    },
+    "password_reset": {
+        "title": "Forgotten password?",
+        "description": "Fill in the email below which you gave during the registration. Instructions will be sent to this email address.",
+        "success": "Instructions were sent to the given email address.",
+        "cta": "Send"
     }
 }
