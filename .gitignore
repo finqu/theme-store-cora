@@ -7,3 +7,4 @@ node_modules/
 streamlinehq.json
 finqu-theme-kit.json
 settings/settings_data.json
+**/page.*.liquid
