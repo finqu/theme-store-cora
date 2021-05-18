@@ -1,22 +1,5 @@
 <div class="container">
 
-    {% if store.customer_accounts_optional %}
-        <p>Luo jos huvittaa</p>
-    {% elsif store.customer_accounts_require_approval %}
-        <p>Vain kauppiaan hyväksynnällä</p>
-    {% else %}
-        <p>Asiakastili vaaditaan</p>
-    {% endif %}
-
-    {% unless store.customer_accounts_optional %}
-        {% if store.catalog_browsing_requires_account %}
-            <p>Äläpä selaa ennen ku tulee lupa</p>
-        {% else %}
-            <p>Tutki valikoimaa, mutta kirjautuminen vaaditaan</p>
-        {% endif %}
-    {% endunless %}
-
-
     {% form 'login' %}
 
         <div class="form-group">
