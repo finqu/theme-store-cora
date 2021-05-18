@@ -178,51 +178,51 @@
 						}
 					]
 				},
-				{
-					"id": "sectionBgImgPosition",
-					"type": "select",
-					"label": "Background position",
-					"default": "center-center",
-					"options": [
-						{
-							"value": "left-top",
-							"label": "Left Top"
-						},
-						{
-							"value": "left-center",
-							"label": "Left Center"
-						},
-						{
-							"value": "left-bottom",
-							"label": "Left Bottom"
-						},
-						{
-							"value": "right-top",
-							"label": "Right Top"
-						},
-						{
-							"value": "right-center",
-							"label": "Right Center"
-						},
-						{
-							"value": "right-bottom",
-							"label": "Right Bottom"
-						},
-						{
-							"value": "center-top",
-							"label": "Center Top"
-						},
-						{
-							"value": "center-center",
-							"label": "Center Center"
-						},
-						{
-							"value": "center-bottom",
-							"label": "Center Bottom"
-						}
-					]
-				},
-				{
+                {
+                    "id": "sectionBgImgPos",
+                    "type": "select",
+                    "label": "Background position",
+                    "default": "center-center",
+                    "options": [
+                        {
+                            "value": "left-top",
+                            "label": "Left Top"
+                        },
+                        {
+                            "value": "left-center",
+                            "label": "Left Center"
+                        },
+                        {
+                            "value": "left-bottom",
+                            "label": "Left Bottom"
+                        },
+                        {
+                            "value": "right-top",
+                            "label": "Right Top"
+                        },
+                        {
+                            "value": "right-center",
+                            "label": "Right Center"
+                        },
+                        {
+                            "value": "right-bottom",
+                            "label": "Right Bottom"
+                        },
+                        {
+                            "value": "center-top",
+                            "label": "Center Top"
+                        },
+                        {
+                            "value": "center-center",
+                            "label": "Center Center"
+                        },
+                        {
+                            "value": "center-bottom",
+                            "label": "Center Bottom"
+                        }
+                    ]
+                },
+                {
 					"id": "sectionStyles",
 					"type": "style-editor",
 					"label": "Styles",

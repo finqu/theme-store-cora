@@ -1,10 +1,10 @@
-{%- assign sectionHeight = section.settings.sectionHeight | _default: settings.sectionHeight -%}
-{%- assign sectionInnerSpacing = section.settings.sectionInnerSpacing | _default: settings.sectionInnerSpacing -%}
-{%- assign sectionContentSpacing = section.settings.sectionContentSpacing | _default: settings.sectionContentSpacing -%}
-{%- assign sectionContentWidth = section.settings.sectionContentWidth | _default: '12' -%}
-{%- assign sectionContentAlign = section.settings.sectionContentAlign | _default: 'center' -%}
-{%- assign sectionBgImgPosition = section.settings.sectionBgImgPosition | _default: settings.sectionBgImgPosition -%}
-{%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | _default: '0' -%}
+{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
+{%- assign sectionInnerSpacing = section.settings.sectionInnerSpacing | default: settings.sectionInnerSpacing -%}
+{%- assign sectionContentSpacing = section.settings.sectionContentSpacing | default: settings.sectionContentSpacing -%}
+{%- assign sectionContentWidth = section.settings.sectionContentWidth | default: '12' -%}
+{%- assign sectionContentAlign = section.settings.sectionContentAlign | default: 'center' -%}
+{%- assign sectionBgImgPos = section.settings.sectionBgImgPos | default: settings.sectionBgImgPos -%}
+{%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | default: '0' -%}
 {%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
 {%- assign sectionStyle = section.settings.sectionStyle -%}
 
@@ -19,32 +19,25 @@
     {%- assign classes = classes | append: sectionContentSpacingClass -%}
 {%- endif -%}
 
-{%- if sectionBgImgSrc -%}
-    {% capture sectionBgImgPositionClass %} section-bg-img-position-{{ sectionBgImgPosition }}{% endcapture %}
-    {%- assign classes = classes | append: sectionBgImgPositionClass -%}
-{%- endif -%}
-
 {%- if sectionStyle -%}
     {% capture sectionStyleClass %} section-style-{{ sectionStyle }}{% endcapture %}
     {%- assign classes = classes | append: sectionStyleClass -%}
 {%- endif -%}
 
-{%- if section.settings.sectionContentBgColorStatus -%}
-    {% capture sectionHasBgColorClass %} section-has-bg-color{% endcapture %}
-    {%- assign classes = classes | append: sectionHasBgColorClass -%}
-{%- endif -%}
-
 {%- capture imgColContent -%}
+
+    {%- assign imgSizeSm = '420' -%}
+    {%- assign imgSizeLg = '755' -%}
 
     <picture>
         <source media="(min-width: 768px)" data-srcset="
-            {{ section.settings.contentImgSrc | thumb:755,755 }} 1x,
-            {{ section.settings.contentImgSrc | thumb:755,755 | thumb:'@2x' }} 2x">
+            {{ section.settings.contentImgSrc | thumb: imgSizeLg }} 1x,
+            {{ section.settings.contentImgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
         <img
             alt="{{ section.settings.contentImgAlt }}"
-            data-src="{{ section.settings.contentImgSrc | thumb:420,420 }}"
-            data-srcset="{{ section.settings.contentImgSrc | thumb:420,420 }} 1x,{{ section.settings.contentImgSrc | thumb:420,420 | thumb:'@2x' }} 2x"
+            data-src="{{ section.settings.contentImgSrc | thumb: imgSizeSm }}"
+            data-srcset="{{ section.settings.contentImgSrc | thumb: imgSizeSm }} 1x,{{ section.settings.contentImgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
             class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
             data-finqu-inline-editor="contentImgSrc">
     </picture>
@@ -126,16 +119,14 @@
 
 {%- if section.settings.sectionContentBgColorStatus -%}
     <style>
-        #finqu-section-{{ section.id }} .container {
-            background-color: {{ section.settings.sectionContentBgColor }}
-        }
+        #finqu-section-{{ section.id }} .container,
         #finqu-section-{{ section.id }} .container-fluid {
             background-color: {{ section.settings.sectionContentBgColor }}
         }
     </style>
 {%- endif -%}
 
-<div class="lazy section-content {{ classes }}"{%- if sectionBgImgSrc -%} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% endif %}>
+<div class="section-content {{ classes }}">
 
     <div class="container">
 
@@ -167,6 +158,8 @@
         {%- endif -%}
 
     </div>
+
+    <div class="section-bg{% if sectionBgImgSrc %} bg-img-pos-{{ sectionBgImgPos }} lazy{% if section.settings.sectionContentBgColorStatus %} hide-bg-sm{% endif %}{% endif %}"{% if sectionBgImgSrc and sectionBgImgOverlay > 0 %} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% elsif sectionBgImgSrc %} data-bg="url({{ sectionBgImgSrc }})"{% endif %}></div>
 
 </div>
 
@@ -521,7 +514,7 @@
                                     "label": "Image"
                                 },
                                 {
-                                    "id": "sectionBgImgPosition",
+                                    "id": "sectionBgImgPos",
                                     "type": "select",
                                     "label": "Position",
                                     "default": "",
