@@ -30,23 +30,15 @@
             <a class="nav-link" aria-current="page" href="{{ store.session.logout_link }}">Sign out</a>
           </li>
 
-        {% elsif store.users_can_login or store.users_can_register %}
+        {% elsif store.customer_accounts_enabled %}
 
-          {% if store.users_can_login %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ 'login' | link }}">Sign in</a>
+          </li>
 
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{{ 'login' | link }}">Sign in</a>
-            </li>
-
-          {% endif %}
-
-          {% if store.users_can_register %}
-
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{{ 'register' | link }}">Sign up</a>
-            </li>
-
-          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ 'register' | link }}">Sign up</a>
+          </li>
 
         {% endif %}
 
