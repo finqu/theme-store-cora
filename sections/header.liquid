@@ -23,31 +23,32 @@
         {% if store.session.logged_in %}
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ 'account' | link }}">Account</a>
+            <a class="nav-link" aria-current="page" href="{{ routes.account_url }}">Account</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ store.session.logout_link }}">Sign out</a>
+            <a class="nav-link" aria-current="page" href="{{ routes.account_logout_url }}">Sign out</a>
           </li>
 
         {% elsif store.customer_accounts_enabled %}
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ 'login' | link }}">Sign in</a>
+            <a class="nav-link" aria-current="page" href="{{ routes.account_login_url }}">Sign in</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ 'register' | link }}">Sign up</a>
+            <a class="nav-link" aria-current="page" href="{{ routes.account_register_url }}">Sign up</a>
           </li>
 
         {% endif %}
 
       </ul>
 
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      {% form 'search' id:header-search class:d-flex %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+      {% endform %}
     </div>
   </div>
 </nav>
