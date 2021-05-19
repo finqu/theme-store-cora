@@ -1,5 +1,5 @@
 export default {
-    init: function(app) {
+    init: function() {
 
         document.addEventListener('finqu:section:load', (e) => {
             if (e.target.classList.contains('has-lazy')) {
@@ -25,9 +25,9 @@ export default {
         				console.log(key);
         				console.log(matches[index]);
         				console.log(labelEl);
-        				console.log(app.icons[key]);
+        				console.log(window.themeApp.icons[key]);
 
-						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ window.themeApp.data.assetUrl+'/'+app.icons[key] }">`);
+						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ window.themeApp.data.assetUrl+'/'+window.themeApp.icons[key] }">`);
 					}
         		}
         	}

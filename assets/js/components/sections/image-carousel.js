@@ -1,23 +1,35 @@
 import Swiper from 'swiper';
-import SwiperCore, { Navigation, Pagination } from 'swiper/core';
-import 'swiper/swiper-bundle.css';
+import SwiperCore, {
+    Navigation,
+    Pagination,
+    Autoplay,
+    EffectFade,
+    Parallax
+} from 'swiper/core';
+import 'swiper/swiper.min.css';
+import 'swiper/components/controller/controller.min.css';
+import 'swiper/components/effect-fade/effect-fade.min.css';
 
-SwiperCore.use([Navigation, Pagination]);
+SwiperCore.use([
+    Navigation,
+    Parallax
+]);
 
 export default class ImageCarousel {
 
     constructor(el) {
 
         this.el = el;
+        this.containerEl = el.querySelector('.swiper-container');
+        this.opts = this.containerEl.dataset;
         this.swiperCfg = {
-            speed: 1000,
-            autoplay: true,
+            loop: JSON.parse(this.opts.carouselLoop),
+            effect: this.opts.carouselEffect,
             parallax: true,
-            loop: true,
             grabCursor: true,
             centerSlides: true,
             pagination: {
-                el: '.swiper-pagination',
+                el: '.swiper-pagination'
             },
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -26,12 +38,14 @@ export default class ImageCarousel {
             on: {
                 init: function() {
 
+                    window.themeApp.lazyLoad.update(this.el.querySelectorAll('.slide-lazy-img'));
+
                     const swiper = this;
 
                     for (let i = 0; i < swiper.slides.length; i++) {
 
                         $(swiper.slides[i])
-                            .find('.img-container')
+                            .find('.slide-bg-img img')
                             .attr({
                                 'data-swiper-parallax': 0.75 * swiper.width
                             });
@@ -48,13 +62,43 @@ export default class ImageCarousel {
             }
         };
 
-        this.swiper = new Swiper(el.querySelector('.swiper-container'), this.swiperCfg);
+        if (this.opts.carouselAutoplay == true) {
+
+            this.swiperCfg.autoplay = {
+                delay: this.opts.carouselAutoplaySpeed ? this.opts.carouselAutoplaySpeed * 1000 : 3000,
+                pauseOnMouseEnter: true
+            };
+
+            SwiperCore.use(Autoplay);
+
+        } else {
+
+            this.swiperCfg.autoplay = false;
+        }
+
+        if (this.opts.carouselEffect === 'fade') {
+
+            this.swiperCfg.parallax = false;
+
+            SwiperCore.use(EffectFade);
+        }
+
+        if (this.opts.carouselPagination) {
+            SwiperCore.use(Pagination);
+        }
+
+        this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
         window.addEventListener('resize', () => {
             this.swiper.destroy();
-            this.swiper = new Swiper(el.querySelector('.swiper-container'), this.swiperCfg);
+            this.swiper = new Swiper(this.containerEl, this.swiperCfg);
         });
 
-        console.log('Init image carousel');
+        document.addEventListener('finqu:section:load', (e) => {
+            if (e.target.classList.contains('section-image-carousel')) {
+                this.containerEl = e.target.querySelector('.swiper-container');
+                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+            }
+        });
     }
 }

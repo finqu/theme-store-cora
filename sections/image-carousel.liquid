@@ -1,11 +1,55 @@
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 {%- assign sectionStyle = section.settings.sectionStyle -%}
+{%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | default: '0' -%}
 
-{%- capture classes -%}section-height-{{ sectionHeight }} section-spacing-content-{{ sectionContentSpacing }}{%- endcapture -%}
+{%- capture classes -%}section-height-{{ sectionHeight }}{%- endcapture -%}
 
 {%- if sectionStyle -%}
     {% capture sectionStyleClass %} section-style-{{ sectionStyle }}{% endcapture %}
     {%- assign classes = classes | append: sectionStyleClass -%}
+{%- endif -%}
+
+{%- capture carouselSettings -%} data-carousel-autoplay="{{- section.settings.autoplay | boolval -}}"{%- endcapture -%}
+
+{%- if section.settings.autoplay -%}
+    {% capture autoplaySpeedAttr %} data-carousel-autoplay-speed="{{- section.settings.autoplaySpeed -}}"{% endcapture %}
+    {%- assign carouselSettings = carouselSettings | append: autoplaySpeedAttr -%}
+{%- endif -%}
+
+{% capture paginationAttr %} data-carousel-pagination="{{- section.settings.pagination | boolval -}}"{% endcapture %}
+{%- assign carouselSettings = carouselSettings | append: paginationAttr -%}
+
+{% capture loopAttr %} data-carousel-loop="{{ section.settings.loop | boolval }}"{% endcapture %}
+{%- assign carouselSettings = carouselSettings | append: loopAttr -%}
+
+{% capture effectAttr %} data-carousel-effect="{{- section.settings.effect -}}"{% endcapture %}
+{%- assign carouselSettings = carouselSettings | append: effectAttr -%}
+
+{%- assign carouselClasses = '' -%}
+
+{%- if section.settings.pagination == 'hover' -%}
+    {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: paginationHoverClass -%}
+{%- endif -%}
+
+{%- if section.settings.navigation == 'hover' -%}
+    {% capture navigationHoverClass %} swiper-navigation-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
+{%- endif -%}
+
+{%- if sectionBgImgOverlay -%}
+    <style>
+        #finqu-section-{{ section.id }} .swiper-slide::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            background: linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%))
+        }
+    </style>
 {%- endif -%}
 
 {%- capture content -%}
@@ -18,13 +62,30 @@
 
                 <div class="slide-bg-img">
 
-                    {%- assign imgSizeSm = '375' -%}
-                    {%- assign imgSizeMd = '680' -%}
-                    {%- assign imgSizeLg = '1100' -%}
+                    {%- assign imgSizeSm = '768,400' -%}
+
+                    {%- case sectionHeight -%}
+                        {%- when 'sm' -%}
+                            {%- assign imgSizeMd = '768,400' -%}
+                            {%- assign imgSizeLg = '1100,400' -%}
+                            {%- assign imgSizeXl = '1905,400' -%}
+                        {%- when 'md' -%}
+                            {%- assign imgSizeMd = '768,600' -%}
+                            {%- assign imgSizeLg = '1100,600' -%}
+                            {%- assign imgSizeXl = '1905,600' -%}
+                        {%- when 'lg' -%}
+                            {%- assign imgSizeMd = '768,800' -%}
+                            {%- assign imgSizeLg = '1100,800' -%}
+                            {%- assign imgSizeXl = '1905,800' -%}
+                        {%- when 'xl' -%}
+                            {%- assign imgSizeMd = '768,945' -%}
+                            {%- assign imgSizeLg = '1100,945' -%}
+                            {%- assign imgSizeXl = '1905,945' -%}
+                    {%- endcase -%}
 
                     <picture>
 
-                        <source media="(min-width: 576px)" data-srcset="
+                        <source media="(min-width: 768px)" data-srcset="
                             {{ item.settings.imgSrc | thumb: imgSizeMd }} 1x,
                             {{ item.settings.imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
 
@@ -32,11 +93,15 @@
                             {{ item.settings.imgSrc | thumb: imgSizeLg }} 1x,
                             {{ item.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
+                        <source media="(min-width: 1200px)" data-srcset="
+                            {{ item.settings.imgSrc | thumb: imgSizeXl }} 1x,
+                            {{ item.settings.imgSrc | thumb: imgSizeXl | thumb:'@2x' }} 2x">
+
                         <img
                             alt="{{ item.settings.imgAlt }}"
-                            data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                            data-src="{{ item.settings.imgSizeSm | thumb: imgSizeMobile }}"
                             data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                            class="lazy">
+                            class="slide-lazy-img">
 
                     </picture>
 
@@ -48,12 +113,16 @@
 
                 <div class="row h-100">
 
-                    <div class="col">
+                    <div class="col align-self-center justify-content-center flex-column">
 
                         {% if item.settings.title %}
 
                             <div class="slide-title">
-                                {{- item.settings.title -}}
+
+                                <h3>
+                                    {{ item.settings.title }}
+                                </h3>
+
                             </div>
 
                         {% endif %}
@@ -61,7 +130,23 @@
                         {% if item.settings.description %}
 
                             <div class="slide-description">
-                                {{- item.settings.description -}}
+
+                                <p>
+                                    {{ item.settings.description }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                        {% if item.settings.btnLabel %}
+
+                            <div class="slide-action">
+
+                                <a href="{{- item.settings.btnResource.url -}}" class="btn btn-primary">
+                                    {{ item.settings.btnLabel }}
+                                </a>
+
                             </div>
 
                         {% endif %}
@@ -80,7 +165,7 @@
 
 <div class="section-content {{ classes }}">
 
-    <div class="swiper-container">
+    <div class="swiper-container{{ carouselClasses }}" {{ carouselSettings }}>
 
         <div class="swiper-wrapper">
 
@@ -88,15 +173,23 @@
 
         </div>
 
-        <div class="swiper-button-prev">
-            {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
-        </div>
+        {%- if section.settings.navigation -%}
 
-        <div class="swiper-button-next">
-            {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
-        </div>
+            <div class="swiper-button-prev">
+                {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+            </div>
 
-        <div class="swiper-pagination"></div>
+            <div class="swiper-button-next">
+                {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+            </div>
+
+        {%- endif -%}
+
+        {%- if section.settings.pagination -%}
+
+            <div class="swiper-pagination"></div>
+
+        {%- endif -%}
 
     </div>
 
@@ -140,6 +233,16 @@
                                 "id": "description",
                                 "type": "textarea",
                                 "label": "Description"
+                            },
+                            {
+                                "id": "btnLabel",
+                                "type": "text",
+                                "label": "Button label"
+                            },
+                            {
+                                "id": "btnResource",
+                                "type": "url",
+                                "label": "Button link"
                             }
                         ]
                     }
@@ -153,6 +256,85 @@
                         {
                             "title": "Settings",
                             "settings": [
+                                {
+                                    "id": "loop",
+                                    "type": "checkbox",
+                                    "label": "Loop",
+                                    "default": true
+                                },
+                                {
+                                    "id": "autoplay",
+                                    "type": "checkbox",
+                                    "label": "Autoplay",
+                                    "default": true
+                                },
+                                {
+                                    "id": "autoplaySpeed",
+                                    "label": "Autoplay Speed",
+                                    "type": "range",
+                                    "min": 3,
+                                    "max": 20,
+                                    "step": 1,
+                                    "default": 3,
+                                    "unit": "s",
+                                    "conditions": ["autoplay:truthy eq true"]
+                                },
+                                {
+                                    "id": "navigation",
+                                    "type": "radio-pill",
+                                    "label": "Show navigation",
+                                    "default": "hover",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Off"
+                                        },
+                                        {
+                                            "value": "hover",
+                                            "label": "On Hover"
+                                        },
+                                        {
+                                            "value": "on",
+                                            "label": "Always"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "pagination",
+                                    "type": "radio-pill",
+                                    "label": "Show pagination",
+                                    "default": "hover",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Off"
+                                        },
+                                        {
+                                            "value": "hover",
+                                            "label": "On Hover"
+                                        },
+                                        {
+                                            "value": "on",
+                                            "label": "Always"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "effect",
+                                    "type": "radio-pill",
+                                    "label": "Effect",
+                                    "default": "slide",
+                                    "options": [
+                                        {
+                                            "value": "slide",
+                                            "label": "Slide"
+                                        },
+                                        {
+                                            "value": "fade",
+                                            "label": "Fade"
+                                        }
+                                    ]
+                                },
                                 {
                                     "id": "sectionHeight",
                                     "type": "radio-pill",
@@ -180,6 +362,16 @@
                                             "label": "XL"
                                         }
                                     ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": "Overlay",
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": 0,
+                                    "unit": "%"
                                 }
                             ]
                         },

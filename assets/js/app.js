@@ -2,6 +2,7 @@ import 'intersection-observer';
 import 'bootstrap';
 import icons from './components/icons.js';
 import editor from './components/editor';
+import SVGInject from '@iconfu/svg-inject';
 import dotize from 'dotize';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
@@ -40,15 +41,45 @@ export default class App {
             }
         });
 
+        this.SVGInject = SVGInject;
+        this.SVGInject.setOptions({
+			useCache: true,
+			copyAttributes: true,
+			makeIdsUnique: false,
+			afterLoad: function(svg, svgString) {
+				// Load
+			},
+			afterInject: function(img, svg) {
+
+				svg.removeAttribute('width');
+				svg.removeAttribute('height');
+				svg.classList.remove('svg-inline');
+				svg.classList.add('svg-icon');
+
+				if (svg.classList.length === 0) {
+					svg.removeAttribute('class');
+				}
+			}
+	    });
+
+	    window.themeApp = this;
+
         for (const el of document.querySelectorAll('img')) {
 
-        	if (loadedImgs.includes(el)) {
-        		objectFitImages(el);
-        	}
+        	if (el.classList.contains('svg-inline')) {
+
+        		this.SVGInject(el);
+
+        	} else {
+
+	        	if (loadedImgs.includes(el)) {
+	        		objectFitImages(el);
+	        	}
+	        }
         }
 
         if (this.data.designMode) {
-        	editor.init(this);
+        	editor.init();
         }
 
         this.init();
@@ -57,7 +88,6 @@ export default class App {
 	init() {
 
     	for (const el of document.querySelectorAll('.section-image-carousel')) {
-    		console.log(el);
     		new ImageCarousel(el);
     	}
 

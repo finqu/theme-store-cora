@@ -19,6 +19,19 @@
 				.section-bg {
 					background-color: map-get($map, background-color);
 				}
+
+				.swiper-button-prev,
+				.swiper-button-next {
+					stroke: map-get($map, color);
+				}
+
+				.swiper-pagination-bullet-active {
+					background: map-get($map, color);
+				}
+
+				.swiper-pagination-progressbar-fill {
+					background: map-get($map, color);
+				}
 			}
 		}
 	}

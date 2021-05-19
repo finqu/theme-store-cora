@@ -3,13 +3,17 @@
 
 .section-image-carousel {
 
-	@each $key, $val in $swiper-heights {
-		@include media-breakpoint-up(md) {
-			.section-height-#{$key} {
-				padding-top: 0;
-				padding-bottom: 0;
+	@each $key, $val in $carousel-heights {
 
-				.swiper-container {
+		.section-height-#{$key} {
+			padding-top: 0;
+			padding-bottom: 0;
+
+			.swiper-container {
+				@include media-breakpoint-down(md) {
+					height: 350px;
+				}
+				@include media-breakpoint-up(md) {
 					height: $val;
 				}
 			}
@@ -34,6 +38,10 @@
 			}
 
 			.slide-description {
+
+			}
+
+			.slide-action {
 
 			}
 
