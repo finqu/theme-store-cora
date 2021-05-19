@@ -14,7 +14,7 @@
             <label class="d-block">
                 <div class="row align-items-center">
                     <div class="col">{{ 'account.information.password' | t }}</div>
-                    <div class="col col-auto small"><a href="{{ 'forgotten_password' | link }}">{{ 'login.forgot_password' | t }}</a></div>
+                    <div class="col col-auto small"><a href="{{ routes.account_password_recover_url }}">{{ 'login.forgot_password' | t }}</a></div>
                 </div>
             </label>
             <input type="password" class="form-control" name="password" id="login-password" placeholder="{{ 'login.password_placeholder' | t }}" value="{{ form.submitted.password | escape }}" required>
@@ -29,11 +29,7 @@
 
         <button type="submit" class="btn btn-primary btn-block">{{ 'login.cta' | t }}</button>
 
-        {% if store.users_can_register %}
-
-            <p class="text-center">{{ 'login.new_customer' | t }} <a href="{{ 'register' | link }}">{{ 'login.register' | t }}</a></p>
-
-        {% endif %}
+        <p class="text-center">{{ 'login.new_customer' | t }} <a href="{{ routes.account_register_url }}">{{ 'login.register' | t }}</a></p>
 
     {% endform %}
 

@@ -82,11 +82,7 @@
             {{ 'register.cta' | t }}
         </button>
 
-        {% if store.users_can_login %}
-
-            <p class="text-center">{{ 'register.returning_customer' | t }} <a href="{{ 'login' | link }}">{{ 'register.login' | t }}</a></p>
-
-        {% endif %}
+        <p class="text-center">{{ 'register.returning_customer' | t }} <a href="{{ 'login' | link }}">{{ 'register.login' | t }}</a></p>
 
         {% if settings.policyAgreementMethod == 'inline' and store.terms_and_conditions %}
 

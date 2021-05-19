@@ -1,8 +1,8 @@
 <div class="container">
 
-    <p><a href="{{ 'account' | link }}">Takaisin</a></p>
+    <p><a href="{{ routes.account_url }}">Takaisin</a></p>
 
-    {% form 'account' %}
+    {% form 'edit_customer' %}
 
         <h4>{{ 'account.contact_information' | t }}</h4>
 
@@ -11,14 +11,14 @@
             <div class="form-group col-sm-6 col-xs-12">
 
                 <label>{{ 'account.information.firstname' | t }}</label>
-                <input type="text" class="form-control" name="firstname" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ customer.firstname }}" required>
+                <input type="text" class="form-control" name="firstname" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.first_name }}" required>
 
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
 
                 <label>{{ 'account.information.lastname' | t }}</label>
-                <input type="text" class="form-control" name="lastname" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ customer.lastname }}" required>
+                <input type="text" class="form-control" name="lastname" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.last_name }}" required>
 
             </div>
 
@@ -29,14 +29,14 @@
             <div class="form-group col-sm-6 col-xs-12">
 
                 <label>{{ 'account.information.email' | t }}</label>
-                <input type="email" class="form-control" name="email" id="edit-account-email" placeholder="{{ 'account.information.email' | t }}" value="{{ customer.email }}" required>
+                <input type="email" class="form-control" name="email" id="edit-account-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.email }}" required>
 
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
 
                 <label>{{ 'account.information.phonenumber' | t }}</label>
-                <input type="tel" class="form-control" name="phonenumber" id="edit-account-phonenumber" placeholder="{{ 'account.information.phonenumber' | t }}" value="{{ customer.phonenumber }}">
+                <input type="tel" class="form-control" name="phonenumber" id="edit-account-phonenumber" placeholder="{{ 'account.information.phonenumber' | t }}" value="{{ form.phonenumber }}">
 
             </div>
 
@@ -47,7 +47,7 @@
         <div class="form-group">
 
             <label>{{ 'account.information.street_address' | t }}</label>
-            <input type="text" class="form-control" name="address_1" id="edit-account-address_1" placeholder="{{ 'account.information.street_address' | t }}" value="{{ customer.address_1 }}">
+            <input type="text" class="form-control" name="address_1" id="edit-account-address_1" placeholder="{{ 'account.information.street_address' | t }}" value="{{ form.address_1 }}">
 
         </div>
 
@@ -59,11 +59,7 @@
 
                 <select name="country" class="form-control" id="edit-account-country">
 
-                    {% for country in store.countries %}
-
-                        <option value="{{ country.id }}"{% if country.code == customer.country.code %} selected{% endif %}>{{ country.name }}</option>
-
-                    {% endfor %}
+                    {{ country_option_tags }}
 
                 </select>
 
@@ -72,14 +68,14 @@
             <div class="form-group col-sm-3 col-xs-12">
 
                 <label>{{ 'account.information.zipcode' | t }}</label>
-                <input type="text" class="form-control" name="zipcode" id="edit-account-zipcode" placeholder="{{ 'account.information.zipcode' | t }}" value="{{ customer.zipcode }}">
+                <input type="text" class="form-control" name="zipcode" id="edit-account-zipcode" placeholder="{{ 'account.information.zipcode' | t }}" value="{{ form.zipcode }}">
 
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
 
                 <label>{{ 'account.information.city' | t }}</label>
-                <input type="text" class="form-control" name="city" id="edit-account-city" placeholder="{{ 'account.information.city' | t }}" value="{{ customer.city }}">
+                <input type="text" class="form-control" name="city" id="edit-account-city" placeholder="{{ 'account.information.city' | t }}" value="{{ form.city }}">
 
             </div>
 
@@ -92,21 +88,21 @@
             <div class="form-group col-sm-6 col-xs-12">
 
                 <label>{{ 'account.information.company' | t }}</label>
-                <input type="text" class="form-control" name="company" id="edit-account-company" value="{{ customer.company }}">
+                <input type="text" class="form-control" name="company" id="edit-account-company" value="{{ form.company }}">
 
             </div>
 
             <div class="form-group col-sm-3 col-xs-12">
 
                 <label>{{ 'account.information.businessid' | t }}</label>
-                <input type="text" class="form-control" name="businessid" id="edit-account-businessid" value="{{ customer.businessid }}">
+                <input type="text" class="form-control" name="businessid" id="edit-account-businessid" value="{{ form.businessid }}">
 
             </div>
 
             <div class="form-group col-sm-3 col-xs-12">
 
                 <label>{{ 'account.information.vatid' | t }}</label>
-                <input type="text" class="form-control" name="vatid" id="edit-account-vatid" value="{{ customer.vatid }}">
+                <input type="text" class="form-control" name="vatid" id="edit-account-vatid" value="{{ form.vatid }}">
 
             </div>
 
@@ -116,7 +112,7 @@
 
             <div class="checkbox">
 
-                <input type="checkbox" name="newsletter" id="edit-account-newsletter"{% if customer.newsletter %} checked{% endif %}>
+                <input type="checkbox" name="accepts_marketing" id="edit-account-accepts_marketing"{% if form.accepts_marketing %} checked{% endif %}>
                 <label for="edit-account-newsletter">{{ 'subscribe_to_newsletter' | t }} </label>
 
             </div>
