@@ -21,15 +21,13 @@
 
 		<link rel="stylesheet" href="{{ 'main.css' | asset_url }}" type="text/css" media="all">
 
-		{%- capture pageTitle -%}
-			{%- if page.meta_title -%}
-				{{ page.meta_title }} - {{ store.name }}
-			{%- else -%}
-				{{ page.title }} - {{ store.name }}
-			{%- endif -%}
+		{%- capture seo_title -%}
+			{{- page_title -}}
+			{%- assign escaped_page_title = page_title | escape -%}
+			{%- unless escaped_page_title contains store.name %} &ndash; {{ store.name }}{% endunless -%}
 		{%- endcapture -%}
 
-		<title>{{ pageTitle | strip }}</title>
+		<title>{{ seo_title }}</title>
 
 		{%- include 'snippets/store-favicon' -%}
 		{%- render 'store-settings' -%}
