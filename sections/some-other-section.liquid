@@ -1,15 +1,15 @@
 <div class="padding-{{ section.settings.sectionHeight }}">
-    
+
     {% if section.settings.url %}
 	    <h5>
 	        {{- section.settings.url.url -}}
-	        
+
 	        {%- if section.settings.url.type == 'product' -%}
 	            {{section.settings.url.object.price}}
 	        {%- endif -%}
 	   </h5>
     {% endif %}
-    
+
 	{{ section.settings.richText }}
 
     <hr>
