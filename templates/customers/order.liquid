@@ -406,45 +406,198 @@
 	<h4>Alennukset</h4>
 
 	{% for discount in order.discounts %}
-		<dd>
+		<dl>
 			<dt>title</dt>
 			<dd>{{ discount.title }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>code</dt>
 			<dd>{{ discount.code }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>description</dt>
 			<dd>{{ discount.description }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>discount_percent</dt>
 			<dd>{{ discount.discount_percent }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>type</dt>
 			<dd>{{ discount.type }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>amount</dt>
 			<dd>{{ discount.amount | money_with_currency }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>total_amount</dt>
 			<dd>{{ discount.total_amount | money_with_currency }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>savings</dt>
 			<dd>{{ discount.savings | money_with_currency }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>total_savings</dt>
 			<dd>{{ discount.total_savings | money_with_currency }}</dd>
-		</dd>
-		<dd>
+		</dl>
+		<dl>
 			<dt>coupon_type</dt>
 			<dd>{{ discount.coupon_type }}</dd>
-		</dd>
+		</dl>
+	{% endfor %}
+
+	<h4>Toimitukset</h4>
+
+	{% for shipment in order.shipments %}
+		<dl>
+			<dt>title</dt>
+			<dd>{{ shipment.title }}</dd>
+		</dl>
+		<dl>
+			<dt>carrier</dt>
+			<dd>{{ shipment.carrier }}</dd>
+		</dl>
+		<dl>
+			<dt>carrier_product</dt>
+			<dd>{{ shipment.carrier_product }}</dd>
+		</dl>
+		<dl>
+			<dt>cod_amount</dt>
+			<dd>{{ shipment.cod_amount }}</dd>
+		</dl>
+		<dl>
+			<dt>cod_reference</dt>
+			<dd>{{ shipment.cod_reference }}</dd>
+		</dl>
+		<dl>
+			<dt>cod_bank</dt>
+			<dd>{{ shipment.cod_bank }}</dd>
+		</dl>
+		<dl>
+			<dt>cod_bic</dt>
+			<dd>{{ shipment.cod_bic }}</dd>
+		</dl>
+		<dl>
+			<dt>description</dt>
+			<dd>{{ shipment.description }}</dd>
+		</dl>
+
+		<dl>
+			<dt>address</dt>
+			<dd>
+				<address>
+					email: {{ shipment.address.email }}<br>
+					phone: {{ shipment.address.phone }}<br>
+					--<br>
+					first_name: {{ shipment.address.first_name }}<br>
+					last_name: {{ shipment.address.last_name }}<br>
+					address1: {{ shipment.address.address1 }}<br>
+					address2: {{ shipment.address.address2 }}<br>
+					zipcode: {{ shipment.address.zipcode }}<br>
+					city: {{ shipment.address.city }}<br>
+					state_code: {{ shipment.address.state_code }}<br>
+					country: {{ shipment.address.country.iso_code }}<br>
+					--<br>
+					info: {{ shipment.address.info }}<br>
+					--<br>
+					latitude: {{ shipment.address.latitude }}<br>
+					longitude: {{ shipment.address.longitude }}
+				</address>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt>pickup_address</dt>
+			<dd>
+				<address>
+					name: {{ shipment.pickup_address.name }}<br>
+					address1: {{ shipment.pickup_address.address1 }}<br>
+					address2: {{ shipment.pickup_address.address2 }}<br>
+					zipcode: {{ shipment.pickup_address.zipcode }}<br>
+					city: {{ shipment.pickup_address.city }}<br>
+					state_code: {{ shipment.pickup_address.state_code }}<br>
+					country: {{ shipment.pickup_address.country.iso_code }}<br>
+					--<br>
+					info: {{ shipment.pickup_address.info }}<br>
+					--<br>
+					latitude: {{ shipment.pickup_address.latitude }}<br>
+					longitude: {{ shipment.pickup_address.longitude }}
+				</address>
+			</dd>
+		</dl>
+
+		{% for package in shipment.packages %}
+
+			<dl>
+				<dt>package.description</dt>
+				<dd>{{ package.description }}</dd>
+			</dl>
+			<dl>
+				<dt>package.width</dt>
+				<dd>{{ package.width }}</dd>
+			</dl>
+			<dl>
+				<dt>package.height</dt>
+				<dd>{{ package.height }}</dd>
+			</dl>
+			<dl>
+				<dt>package.length</dt>
+				<dd>{{ package.length }}</dd>
+			</dl>
+			<dl>
+				<dt>package.weight</dt>
+				<dd>{{ package.weight }}</dd>
+			</dl>
+			<dl>
+				<dt>package.tracking_url</dt>
+				<dd>{{ package.tracking_url }}</dd>
+			</dl>
+			<dl>
+				<dt>package.tracking_code</dt>
+				<dd>{{ package.tracking_code }}</dd>
+			</dl>
+
+			{% for item in package.items %}
+				<dl>
+					<dt>package.item.shipped_quantity</dt>
+					<dd>{{item.shipped_quantity}}</dd>
+				</dl>
+				<dl>
+					<dt>package.item.line_item</dt>
+					<dd>{{item.line_item}}</dd>
+				</dl>
+				<dl>
+					<dt>package.item.width</dt>
+					<dd>{{item.width}}</dd>
+				</dl>
+				<dl>
+					<dt>package.item.height</dt>
+					<dd>{{item.height}}</dd>
+				</dl>
+				<dl>
+					<dt>package.item.length</dt>
+					<dd>{{item.length}}</dd>
+				</dl>
+				<dl>
+					<dt>package.item.weight</dt>
+					<dd>{{item.weight}}</dd>
+				</dl>
+			{% endfor %}
+		{% endfor %}
+
+		<dl>
+			<dt>tracking_url</dt>
+			<dd>{{ shipment.tracking_url }}</dd>
+		</dl>
+		<dl>
+			<dt>tracking_code</dt>
+			<dd>{{ shipment.tracking_code }}</dd>
+		</dl>
+		<dl>
+			<dt>created_at</dt>
+			<dd>{{ shipment.created_at }}</dd>
+		</dl>
 	{% endfor %}
 </div>
