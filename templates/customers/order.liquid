@@ -1,0 +1,450 @@
+<div class="container">
+
+	<h2>Tilaus #{{ order.order_number }}</h2>
+
+	<dl>
+		<dt>is_cancelled</dt>
+		<dd>{{ order.is_cancelled | json }}</dd>
+	</dl>
+	<dl>
+		<dt>created_at</dt>
+		<dd>{{ order.created_at | date:'r' }}</dd>
+	</dl>
+	<dl>
+		<dt>financial_status</dt>
+		<dd>{{ order.financial_status }}</dd>
+	</dl>
+	<dl>
+		<dt>subtotal_price</dt>
+		<dd>{{ order.subtotal_price | money_with_currency }}</dd>
+	</dl>
+	<dl>
+		<dt>total_price</dt>
+		<dd>{{ order.total_price | money_with_currency }}</dd>
+	</dl>
+	<dl>
+		<dt>tax_lines</dt>
+		<dd>{{ order.tax_lines | json }}</dd>
+	</dl>
+	<dl>
+		<dt>is_paid</dt>
+		<dd>{{ order.is_paid | json }}</dd>
+	</dl>
+	<dl>
+		<dt>is_refunded</dt>
+		<dd>{{ order.is_refunded | json }}</dd>
+	</dl>
+	<dl>
+		<dt>is_fulfilled</dt>
+		<dd>{{ order.is_fulfilled | json }}</dd>
+	</dl>
+	<dl>
+		<dt>is_delivered</dt>
+		<dd>{{ order.is_delivered | json }}</dd>
+	</dl>
+	<dl>
+		<dt>order_status</dt>
+		<dd>{{ order.order_status }}</dd>
+	</dl>
+	<dl>
+		<dt>payment_method_name</dt>
+		<dd>{{ order.payment_method_name }}</dd>
+	</dl>
+	<dl>
+		<dt>payment_fee</dt>
+		<dd>{{ order.payment_fee | money_with_currency }}</dd>
+	</dl>
+	<dl>
+		<dt>shipping_price</dt>
+		<dd>{{ order.shipping_price | money_with_currency }}</dd>
+	</dl>
+	<dl>
+		<dt>available_order_statuses</dt>
+		<dd>{{ available_order_statuses | json }}</dd>
+	</dl>
+	<dl>
+		<dt>available_return_statuses</dt>
+		<dd>{{ available_return_statuses | json }}</dd>
+	</dl>
+	<dl>
+		<dt>available_return_reasons</dt>
+		<dd>{{ available_return_reasons | json }}</dd>
+	</dl>
+
+	<hr>
+
+	<h4>Laskutusosoite</h4>
+
+	<address>
+		email: {{ order.billing_address.email }}<br>
+		phone: {{ order.billing_address.phone }}<br>
+		--<br>
+		first_name: {{ order.billing_address.first_name }}<br>
+		last_name: {{ order.billing_address.last_name }}<br>
+		address1: {{ order.billing_address.address1 }}<br>
+		address2: {{ order.billing_address.address2 }}<br>
+		zipcode: {{ order.billing_address.zipcode }}<br>
+		city: {{ order.billing_address.city }}<br>
+		state_code: {{ order.billing_address.state_code }}<br>
+		country: {{ order.billing_address.country.iso_code }}<br>
+		--<br>
+		company: {{ order.billing_address.company }}<br>
+		company_id: {{ order.billing_address.company_id }}<br>
+		vat_number: {{ order.billing_address.vat_number }}<br>
+		--<br>
+		latitude: {{ order.billing_address.latitude }}<br>
+		longitude: {{ order.billing_address.longitude }}
+	</address>
+
+	<hr>
+
+	<h4>Toimitusosoite</h4>
+
+	<address>
+		email: {{ order.shipping_address.email }}<br>
+		phone: {{ order.shipping_address.phone }}<br>
+		--<br>
+		first_name: {{ order.shipping_address.first_name }}<br>
+		last_name: {{ order.shipping_address.last_name }}<br>
+		address1: {{ order.shipping_address.address1 }}<br>
+		address2: {{ order.shipping_address.address2 }}<br>
+		zipcode: {{ order.shipping_address.zipcode }}<br>
+		city: {{ order.shipping_address.city }}<br>
+		state_code: {{ order.shipping_address.state_code }}<br>
+		country: {{ order.shipping_address.country.iso_code }}<br>
+		--<br>
+		company: {{ order.shipping_address.company }}<br>
+		company_id: {{ order.shipping_address.company_id }}<br>
+		vat_number: {{ order.shipping_address.vat_number }}<br>
+		--<br>
+		latitude: {{ order.shipping_address.latitude }}<br>
+		longitude: {{ order.shipping_address.longitude }}
+	</address>
+
+	<hr>
+
+	<h4>Noutopiste</h4>
+
+	<address>
+		name: {{ order.drop_point.name }}<br>
+		address1: {{ order.drop_point.address1 }}<br>
+		address2: {{ order.drop_point.address2 }}<br>
+		zipcode: {{ order.drop_point.zipcode }}<br>
+		city: {{ order.drop_point.city }}<br>
+		state_code: {{ order.drop_point.state_code }}<br>
+		country: {{ order.drop_point.country.iso_code }}<br>
+		--<br>
+		info: {{ order.drop_point.info }}<br>
+		--<br>
+		latitude: {{ order.drop_point.latitude }}<br>
+		longitude: {{ order.drop_point.longitude }}
+	</address>
+
+	<hr>
+
+	<h4>Tuotteet</h4>
+
+	{% for item in order.items %}
+		<dl>
+			<dt>title</dt>
+			<dd>{{ item.title }}</dd>
+		</dl>
+
+		<dl>
+			<dt>model</dt>
+			<dd>{{ item.model }}</dd>
+		</dl>
+
+		<dl>
+			<dt>sku</dt>
+			<dd>{{ item.sku }}</dd>
+		</dl>
+
+		<dl>
+			<dt>image</dt>
+			<dd>{{ item.image }}</dd>
+		</dl>
+
+		<dl>
+			<dt>price</dt>
+			<dd>{{ item.price | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>line_price</dt>
+			<dd>{{ item.line_price | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>category_path</dt>
+			<dd>{{ item.category_path | json }}</dd>
+		</dl>
+
+		<dl>
+			<dt>attachment</dt>
+			<dd>{{ item.attachment }}</dd>
+		</dl>
+
+		<dl>
+			<dt>gift_card_code</dt>
+			<dd>{{ item.gift_card_code }}</dd>
+		</dl>
+
+		<dl>
+			<dt>gift_card_value</dt>
+			<dd>{{ item.gift_card_value }}</dd>
+		</dl>
+
+		<dl>
+			<dt>gift_card_expiry</dt>
+			<dd>{{ item.gift_card_expiry }}</dd>
+		</dl>
+
+		<dl>
+			<dt>product_id</dt>
+			<dd>{{ item.product_id }}</dd>
+		</dl>
+
+		<dl>
+			<dt>quantity</dt>
+			<dd>{{ item.quantity }}</dd>
+		</dl>
+
+		<dl>
+			<dt>attributes_label</dt>
+			<dd>{{ item.attributes_label }}</dd>
+		</dl>
+
+		<dl>
+			<dt>gtin</dt>
+			<dd>{{ item.gtin }}</dd>
+		</dl>
+
+		<dl>
+			<dt>unit</dt>
+			<dd>{{ item.unit }}</dd>
+		</dl>
+
+		<dl>
+			<dt>product</dt>
+			<dd>{{ item.product }}</dd>
+		</dl>
+
+		<dl>
+			<dt>rate</dt>
+			<dd>{{ item.rate }}</dd>
+		</dl>
+
+		<dl>
+			<dt>rate_percentage</dt>
+			<dd>{{ item.rate_percentage }}</dd>
+		</dl>
+
+		{% for bundle_item in item.bundle_items %}
+			<dl>
+				<dt>bundle_item.title</dt>
+				<dd>{{ bundle_item.title }}</dd>
+			</dl>
+		{% endfor %}
+
+	{% endfor %}
+
+	<hr>
+
+	<h4>Maksutavat</h4>
+
+	{% for payment_method in order.payment_methods %}
+		<dl>
+			<dt>title</dt>
+			<dd>{{ payment_method.title }}</dd>
+		</dl>
+
+		<dl>
+			<dt>status</dt>
+			<dd>{{ payment_method.status }}</dd>
+		</dl>
+
+		<dl>
+			<dt>type</dt>
+			<dd>{{ payment_method.type }}</dd>
+		</dl>
+
+		<dl>
+			<dt>info</dt>
+			<dd>{{ payment_method.info }}</dd>
+		</dl>
+
+		<dl>
+			<dt>description</dt>
+			<dd>{{ payment_method.description }}</dd>
+		</dl>
+
+		<dl>
+			<dt>currency</dt>
+			<dd>{{ payment_method.currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>fee</dt>
+			<dd>{{ payment_method.fee | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>rate</dt>
+			<dd>{{ payment_method.rate }}</dd>
+		</dl>
+
+		<dl>
+			<dt>rate_percentage</dt>
+			<dd>{{ payment_method.rate_percentage }}</dd>
+		</dl>
+
+		<dl>
+			<dt>price</dt>
+			<dd>{{ payment_method.price | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>line_price</dt>
+			<dd>{{ payment_method.line_price | money_with_currency }}</dd>
+		</dl>
+
+		{% if payment_method.gift_card %}
+			<dl>
+				<dt>code</dt>
+				<dd>{{ payment_method.gift_card.code }}</dd>
+			</dl>
+
+			<dl>
+				<dt>expires</dt>
+				<dd>{{ payment_method.gift_card.expires }}</dd>
+			</dl>
+
+			<dl>
+				<dt>value</dt>
+				<dd>{{ payment_method.gift_card.value | money_with_currency }}</dd>
+			</dl>
+
+			<dl>
+				<dt>value_left</dt>
+				<dd>{{ payment_method.gift_card.value_left | money_with_currency }}</dd>
+			</dl>
+		{% endif %}
+	{% endfor %}
+
+	<hr>
+
+	<h4>Toimitustavat</h4>
+
+	{% for shipping_method in order.shipping_methods %}
+		<dl>
+			<dt>title</dt>
+			<dd>{{ shipping_method.title }}</dd>
+		</dl>
+
+		<dl>
+			<dt>type</dt>
+			<dd>{{ shipping_method.type }}</dd>
+		</dl>
+
+		<dl>
+			<dt>info</dt>
+			<dd>{{ shipping_method.info }}</dd>
+		</dl>
+
+		<dl>
+			<dt>description</dt>
+			<dd>{{ shipping_method.description }}</dd>
+		</dl>
+
+		<dl>
+			<dt>fee</dt>
+			<dd>{{ shipping_method.fee | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>rate</dt>
+			<dd>{{ shipping_method.rate }}</dd>
+		</dl>
+
+		<dl>
+			<dt>rate_percentage</dt>
+			<dd>{{ shipping_method.rate_percentage }}</dd>
+		</dl>
+
+		<dl>
+			<dt>price</dt>
+			<dd>{{ shipping_method.price | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>line_price</dt>
+			<dd>{{ shipping_method.line_price | money_with_currency }}</dd>
+		</dl>
+
+		<dl>
+			<dt>pickup_address</dt>
+			<dd>
+				<address>
+					name: {{ shipping_method.pickup_address.name }}<br>
+					address1: {{ shipping_method.pickup_address.address1 }}<br>
+					address2: {{ shipping_method.pickup_address.address2 }}<br>
+					zipcode: {{ shipping_method.pickup_address.zipcode }}<br>
+					city: {{ shipping_method.pickup_address.city }}<br>
+					state_code: {{ shipping_method.pickup_address.state_code }}<br>
+					country: {{ shipping_method.pickup_address.country.iso_code }}<br>
+					--<br>
+					info: {{ shipping_method.pickup_address.info }}<br>
+					--<br>
+					latitude: {{ shipping_method.pickup_address.latitude }}<br>
+					longitude: {{ shipping_method.pickup_address.longitude }}
+				</address>
+			</dd>
+		</dl>
+	{% endfor %}
+
+	<h4>Alennukset</h4>
+
+	{% for discount in order.discounts %}
+		<dd>
+			<dt>title</dt>
+			<dd>{{ discount.title }}</dd>
+		</dd>
+		<dd>
+			<dt>code</dt>
+			<dd>{{ discount.code }}</dd>
+		</dd>
+		<dd>
+			<dt>description</dt>
+			<dd>{{ discount.description }}</dd>
+		</dd>
+		<dd>
+			<dt>discount_percent</dt>
+			<dd>{{ discount.discount_percent }}</dd>
+		</dd>
+		<dd>
+			<dt>type</dt>
+			<dd>{{ discount.type }}</dd>
+		</dd>
+		<dd>
+			<dt>amount</dt>
+			<dd>{{ discount.amount | money_with_currency }}</dd>
+		</dd>
+		<dd>
+			<dt>total_amount</dt>
+			<dd>{{ discount.total_amount | money_with_currency }}</dd>
+		</dd>
+		<dd>
+			<dt>savings</dt>
+			<dd>{{ discount.savings | money_with_currency }}</dd>
+		</dd>
+		<dd>
+			<dt>total_savings</dt>
+			<dd>{{ discount.total_savings | money_with_currency }}</dd>
+		</dd>
+		<dd>
+			<dt>coupon_type</dt>
+			<dd>{{ discount.coupon_type }}</dd>
+		</dd>
+	{% endfor %}
+</div>
