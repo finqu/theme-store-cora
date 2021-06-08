@@ -21,7 +21,14 @@
 
 		<link rel="stylesheet" href="{{ 'main.css' | asset_url }}" type="text/css" media="all">
 
-		<title>{{ page_title | strip }} - {{ store.name }}</title>
+		{%- capture seo_title -%}
+			{{- page_title -}}
+			{%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+			{%- assign escaped_page_title = page_title | escape -%}
+			{%- unless escaped_page_title contains store.name %} &ndash; {{ store.name }}{% endunless -%}
+		{%- endcapture -%}
+
+		<title>{{ seo_title }}</title>
 
 		{%- render 'store-favicon' -%}
 		{%- render 'store-settings' -%}
