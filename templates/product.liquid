@@ -1,24 +1,10 @@
-PRODUCT
+{% comment %}
+	The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
 
-<div>
-id: {{ product.id }}
-</div>
+{{ content_for_index }}
 
-<div>
-name: {{ product.name }}
-</div>
-
-<div>
-short description: {{ product.short_description }}
-</div>
-
-<div>
-description: {{ product.description }}
-</div>
-
-<div>
-visible: {% if product.is_visible %} true {% else %} false {% endif %}
-</div>
+{% section 'product-template' %}
 
 {{ content_for_index }}
 

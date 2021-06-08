@@ -1,0 +1,105 @@
+{% comment %}
+	Renders a section header
+
+	Accepts:
+	- sectionTitle: {String}
+	- sectionTitleTag: {String}
+	- sectionSubtitle: {String}
+	- sectionDescription: {String}
+	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
+
+	Usage:
+	Render this snippet inside of element with a "section" class.
+
+	{% render 'section-header', sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs %}
+{% endcomment %}
+
+{% assign sectionTitleTag = sectionTitleTag | default: 'span'  %}
+
+<div class="section-header">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col">
+
+				{% if sectionBreadcrumbs %}
+
+					<div class="breadcrumbs-container">
+
+						<nav>
+
+							<ul class="breadcrumbs">
+
+								{% for breadcrumb in sectionBreadcrumbs %}
+
+									<li class="item">
+
+							            {%- if forloop.last == true -%}
+
+							            	<span class="item-text">{{ breadcrumb.name }}</span>
+
+							            {%- else -%}
+
+							                <a href="{{ breadcrumb | link }}" class="item-link">{{ breadcrumb.name }}</a>
+
+							                {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0', class: 'item-seperator' -%}
+
+							            {%- endif -%}
+
+							        </li>
+
+						        {% endfor %}
+
+							</ul>
+
+						</nav>
+
+					</div>
+
+				{% endif %}
+
+				{% if sectionTitle %}
+
+					<div class="title-container">
+
+						<{{ sectionTitleTag }} class="title">
+							{{- sectionTitle -}}
+						</{{ sectionTitleTag }}>
+
+					</div>
+
+				{% endif %}
+
+				{% if sectionSubtitle %}
+
+					<div class="subtitle-container">
+
+						<span class="subtitle">
+							{{- sectionSubtitle -}}
+						</span>
+
+					</div>
+
+				{% endif %}
+
+				{% if sectionDescription %}
+
+					<div class="description-container">
+
+						<p class="description mb-0">
+							{{- sectionDescription -}}
+						</p>
+
+					</div>
+
+				{% endif %}
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

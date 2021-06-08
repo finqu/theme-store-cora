@@ -1,19 +1,10 @@
-CATEGORY
+{% comment %}
+	The contents of the category.liquid template can be found in /sections/category-template.liquid
+{% endcomment %}
 
-<div>
-id: {{ category.id }}
-</div>
+{{ content_for_index }}
 
-<div>
-name: {{ category.name }}
-</div>
-
-description: {{ category.description }}
-</div>
-
-<div>
-visible: {% if category.is_visible %} true {% else %} false {% endif %}
-</div>
+{% section 'category-template' %}
 
 {{ content_for_index }}
 

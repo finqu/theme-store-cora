@@ -1,0 +1,349 @@
+{% comment %}
+    Renders Handlebars templates which can be accessed from javascript later on
+    Handlebars documentation https://handlebarsjs.com/guide
+
+    Usage:
+    Render this snippet inside of head element.
+
+    {% render 'hbs-templates' %}
+{% endcomment %}
+
+<script id="hbs-cart-template" type="text/template">
+{% raw %}
+
+    {{#ifCond cart.item_count '>' 0}}
+
+        <div class="cart-items">
+
+            {{#each cart.items as |item|}}
+
+                <div class="item">
+
+                    <div class="row">
+
+                        <div class="col-3">
+
+                            <div class="item-image">
+
+                                <a href="{{ item.url }}">
+
+                                    <img src="{{ item.thumbs.small }}" alt="{{ item.name }}" class="img-responsive">
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+
+                            <div class="item-name">
+
+                                <a href="{{ item.url }}">{{ item.name }}</a>
+
+                            </div>
+
+                            {{#if item.variants}}
+
+                                <div class="item-variants">
+
+                                    <span class="item-variants-text">{{#if item.variants}}{{ join item.variants '<br>' }}{{/if}}</span>
+
+                                </div>
+
+                            {{/if}}
+
+                            <div class="item-price">
+                                <span class="item-price-text">{{ item.price }}</span>
+                            </div>
+
+                            <div class="item-quantity-select">
+
+                                <button type="button" class="btn btn-plain item-quantity-decrease" data-cart-quantity-decrease="{{ item.id }}">
+                                    {{> icon icon='subtract-gWaFt8' }}
+                                </button>
+
+                                <input type="tel" class="item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}" pattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
+
+                                <button type="button" class="btn btn-plain item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
+                                    {{> icon icon='add-eLjfck' }}
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-auto">
+
+                            <button type="button" class="btn btn-plain" data-cart-remove="{{ item.id }}">
+                                {{> icon icon='close-232XyC' }}
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {{/each}}
+
+        </div>
+
+        <div class="cart-details">
+
+            <div class="cart-subtotal">
+
+                <span>{{ t 'general.subtotal' }}</span>
+                <span>{{ formatCurrency cart.subtotal 1 2 3 }}</span>
+
+            </div>
+
+            {{#ifCond cart.payment_fee '>' 0}}
+
+                <div class="cart-payment-fee">
+
+                    <span>{{ t 'general.payment_fee' }}</span>
+                    <span>{{ formatCurrency cart.payment_fee }}</span>
+
+                </div>
+
+            {{/ifCond}}
+
+            {{#ifCond cart.shipping_price '>' 0}}
+
+                <div class="cart-shipping-price">
+
+                    <span>{{ t 'general.shipping_price' }}</span>
+                    <span>{{ formatCurrency cart.shipping_price }}</span>
+
+                </div>
+
+            {{/ifCond}}
+
+            {{#ifCond cart.discounts '>' 0}}
+
+                <div class="cart-discounts">
+
+                    {{#each cart.discounts as |item|}}
+
+                        <div class="cart-discount">
+
+                            <span>{{ item.title }}{{#if item.code}} - {{ item.code }}{{/if}}</span>
+                            <span>{{ formatCurrency item.amount }}</span>
+                        </div>
+
+                    {{/each}}
+
+                </div>
+
+            {{/ifCond}}
+
+            <div class="cart-tax-free">
+
+                <span>{{ t 'general.tax_free_price'}}</span>
+                <span>{{ formatCurrency cart.tax_free }}</span>
+
+            </div>
+
+            <div class="cart-tax">
+
+                <span>{{ t 'general.tax'}}</span>
+                <span>{{ formatCurrency cart.tax }}</span>
+
+            </div>
+
+            <div class="cart-total">
+
+                <span><strong>{{ t 'general.total' }}</strong></span>
+                <span>{{ formatCurrency cart.total }}</span>
+
+            </div>
+
+        </div>
+
+        <div class="cart-actions">
+
+            <a href="{{ checkoutUrl }}" class="btn btn-primary" data-cart-checkout>
+                {{ t 'cart.proceed_to_checkout' }}
+            </a>
+
+        </div>
+
+    {{else}}
+
+        <span>{{ t 'cart.empty' }}</span>
+
+    {{/ifCond}}
+
+{% endraw %}
+</script>
+
+<script id="hbs-cart-mini-template" type="text/template">
+{% raw %}
+
+    {{#ifCond cart.item_count '>' 0}}
+
+        <div class="cart-items">
+
+            {{#each cart.items as |item|}}
+
+                <div class="item">
+
+                    <div class="row">
+
+                        <div class="col-3">
+
+                            <div class="item-image">
+
+                                <a href="{{ item.url }}">
+
+                                    <img src="{{ item.thumbs.small }}" alt="{{ item.name }}" class="img-responsive">
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+
+                            <div class="item-name">
+
+                                <a href="{{ item.url }}">{{ item.name }}</a>
+
+                            </div>
+
+                            {{#if item.variants}}
+
+                                <div class="item-variants">
+
+                                    <span class="item-variants-text">{{#if item.variants}}{{ join item.variants '<br>' }}{{/if}}</span>
+
+                                </div>
+
+                            {{/if}}
+
+                            <div class="item-price">
+                                <span class="item-price-text">{{ item.price }}</span>
+                            </div>
+
+                            <div class="item-quantity-select">
+
+                                <button type="button" class="btn btn-plain item-quantity-decrease" data-cart-quantity-decrease="{{ item.id }}">
+                                    {{> icon icon='subtract-gWaFt8' }}
+                                </button>
+
+                                <input type="tel" class="item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}" pattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
+
+                                <button type="button" class="btn btn-plain item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
+                                    {{> icon icon='add-eLjfck' }}
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-auto">
+
+                            <button type="button" class="btn btn-plain" data-cart-remove="{{ item.id }}">
+                                {{> icon icon='close-232XyC' }}
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {{/each}}
+
+        </div>
+
+        <div class="cart-details">
+
+            <div class="cart-subtotal">
+
+                <span>{{ t 'general.subtotal' }}</span>
+                <span>{{ formatCurrency cart.subtotal 1 2 3 }}</span>
+
+            </div>
+
+            {{#ifCond cart.payment_fee '>' 0}}
+
+                <div class="cart-payment-fee">
+
+                    <span>{{ t 'general.payment_fee' }}</span>
+                    <span>{{ formatCurrency cart.payment_fee }}</span>
+
+                </div>
+
+            {{/ifCond}}
+
+            {{#ifCond cart.shipping_price '>' 0}}
+
+                <div class="cart-shipping-price">
+
+                    <span>{{ t 'general.shipping_price' }}</span>
+                    <span>{{ formatCurrency cart.shipping_price }}</span>
+
+                </div>
+
+            {{/ifCond}}
+
+            {{#ifCond cart.discounts '>' 0}}
+
+                <div class="cart-discounts">
+
+                    {{#each cart.discounts as |item|}}
+
+                        <div class="cart-discount">
+
+                            <span>{{ item.title }}{{#if item.code}} - {{ item.code }}{{/if}}</span>
+                            <span>{{ formatCurrency item.amount }}</span>
+                        </div>
+
+                    {{/each}}
+
+                </div>
+
+            {{/ifCond}}
+
+            <div class="cart-tax-free">
+
+                <span>{{ t 'general.tax_free_price'}}</span>
+                <span>{{ formatCurrency cart.tax_free }}</span>
+
+            </div>
+
+            <div class="cart-tax">
+
+                <span>{{ t 'general.tax'}}</span>
+                <span>{{ formatCurrency cart.tax }}</span>
+
+            </div>
+
+            <div class="cart-total">
+
+                <span><strong>{{ t 'general.total' }}</strong></span>
+                <span>{{ formatCurrency cart.total }}</span>
+
+            </div>
+
+        </div>
+
+        <div class="cart-actions">
+
+            <a href="{{ cartUrl }}" class="btn btn-primary">
+                {{ t 'cart.title' }}
+            </a>
+
+        </div>
+
+    {{else}}
+
+        <span>{{ t 'cart.empty' }}</span>
+
+    {{/ifCond}}
+
+{% endraw %}
+</script>

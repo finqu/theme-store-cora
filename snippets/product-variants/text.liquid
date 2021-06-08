@@ -1,0 +1,51 @@
+<div class="product-variant-container form-group">
+
+    {% for option in variant.options %}
+
+        {% if option.name or option.price > 0 %}
+
+            <label for="product-variant-{{ option.id }}">
+
+                {{ option.name }}
+                {% if option.price > 0 and showVariantPrice and showVariantTotalPrice == blank %}(+{{ option.price | in_currency }}) {% endif %}
+
+            </label>
+
+        {% endif %}
+
+        {% if option.price > 0 and showVariantPrice and showVariantTotalPrice and option.in_stock == true %}
+
+              {% assign textArgument1 = true %}
+
+        {% endif %}
+
+        {% if option.price > 0 and showVariantPrice and showVariantTotalPrice and product.ignore_storage == true %}
+
+              {% assign textArgument2 = true %}
+
+        {% endif %}
+
+        <textarea
+
+            class="product-variant form-control{% if textArgument1 or textArgument2 %} has-price{% endif %}"
+            id="product-option-{{ option.id }}"
+            name="{{ option.id }}"
+            data-is-usable
+
+            {% if option.min_length > 0 %}
+                minlength="{{ option.min_length }}"
+            {% endif %}
+
+            {% if option.max_length > 0 %}
+                maxlength="{{ option.max_length }}"
+            {% endif %}
+
+            {% if option.rows > 0 %}
+                rows="{{ option.rows }}"
+            {% endif %}
+
+            ></textarea>
+
+    {% endfor %}
+
+</div>

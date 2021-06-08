@@ -1,0 +1,22 @@
+{% comment %}
+	Renders a form error
+
+	Accepts:
+	- error: {String} Name of error (required)
+	- class: {String} Classes
+
+	Usage:
+	{% render 'form-error', error: form.error, class: class %}
+{% endcomment %}
+
+{% if error %}
+
+	<div class="form-error {% if class %} {{ class }}{% endif %}">
+
+        <p class="text-danger">
+        	{{ form.error | prepend: 'form.error.' | t }}
+        </p>
+
+    </div>
+
+{% endif %}

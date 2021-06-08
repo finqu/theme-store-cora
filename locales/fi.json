@@ -1,5 +1,29 @@
 {
     "general": {
+        "title": "Otsikko",
+        "cancel": "Peruuta",
+        "submit": "Lähetä",
+        "close": "Sulje",
+        "next": "Seuraava",
+        "previous": "Edellinen",
+        "search": "Haku",
+        "search_no_results": "Haku ei tuottanut tuloksia, kokeile muita hakusanoja.",
+        "search_results_for": "Hait sanalla",
+        "product_catalog": "Tuoteluettelo",
+        "page_not_found_title": "Emme valitettavasti löytäneet haluamaasi sivua",
+        "page_not_found_subtitle": "Vaikuttaa siltä, että sivu ei ole enää käytössä.",
+        "product": "Tuote",
+        "product_count": "{{ amount }} tuote",
+        "product_plural": "Tuotetta",
+        "product_plural_count": "{{ amount }} tuotetta",
+        "page": "Sivu",
+        "sort_by": "Lajittele",
+        "date_format": "%-d.%-m.%Y",
+        "total": "Yhteensä",
+        "subtotal": "Välisumma",
+        "tax_free_price": "Veroton hinta",
+        "tax": "Vero",
+        "policy_accept_text": "Olen lukenut ja hyväksyn {{ policy }}",
         "policies": {
             "terms_and_conditions": "Käyttöehdot",
             "refund_policy": "Peruutusehdot",
@@ -32,6 +56,46 @@
             "not_published": "Julkaisematon kauppa",
             "not_activated": "Rajoitettu pääsy"
         }
+    },
+    "filters": {
+        "sort-by": {
+            "default": "Oletus",
+            "price-ascending": "Hinta (Pienin)",
+            "price-descending": "Hinta (Suurin)",
+            "title-ascending": "Tuotenimike (A-Z)",
+            "title-descending": "Tuotenimike (Z-A)",
+            "created-ascending": "Tuotteen luontiaika (Vanhin)",
+            "created-descending": "Tuotteen luontiaika (Uusin)"
+        }
+    },
+    "product": {
+        "description": "Tuotekuvaus",
+        "vat_included_dynamic": "sis. {{ amount }} % alv",
+        "discount_dynamic": "{{ amount }} % alennus",
+        "reviews": "Arvostelut",
+        "attachments": "Liitteet",
+        "create_review": "Kirjoita arvostelu",
+        "review_product_purchase_required": "Arvostellaaksesi tuotteen sinun pitää ostaa tuote.",
+        "bulk_discount": "Määräalennus",
+        "discount_rate": "Alennusprosentti"
+    },
+    "cart": {
+        "title": "Ostoskori",
+        "add": "Lisää ostoskoriin",
+        "empty": "Ostoskorisi on tyhjä.",
+        "proceed_to_checkout": "Jatka kassalle",
+        "view_cart": "Katso ostoskoria",
+        "product_added_to_cart": "Tuote lisättiin ostoskoriin"
+    },
+    "blog": {
+        "title": "Blogi",
+        "readmore": "Lue lisää",
+        "no_articles": "Blogissa ei ole yhtään artikkelia.",
+        "reply_comment": "Vastaa",
+        "comments": "Kommentit",
+        "comment_login": "Kirjaudu sisään",
+        "comment_login_subtext": "kirjoittaaksesi kommentin.",
+        "leave_comment": "Jätä kommentti"
     },
     "account": {
         "title": "Tili",
@@ -95,37 +159,34 @@
             "order_status_refunded": "Hyvitys tehty"
         }
     },
-    "form": {
-        "policy_accept_text": "Olen lukenut ja hyväksyn __policy__",
-        "error": {
-            "general": "Tapahtui virhe",
-            "key": "Virheellinen tunniste. Salasanaa ei voida vaihtaa.",
-            "comment": "Kommentti on liian lyhyt.",
-            "stock_variant": "Tuotevalinta on valitsematta.",
-            "not_buyable": "Tuote ei ole ostettavissa.",
-            "min_amount": "Tuotetta ei voi ostaa näin pientä määrää.",
-            "max_amount": "Tuotetta ei voi ostaa näin suurta määrää.",
-            "attribute": "Pakollinen tuotevalinta puuttuu.",
-            "invalid_data": "Tapahtui virhe.",
-            "name": "Nimi puuttuu",
-            "email": "Virheellinen sähköpostiosoite.",
-            "message": "Viesti on liian lyhyt.",
-            "confirm_password": "Salasanat eivät täsmää.",
-            "password": "Virheellinen salasana.",
-            "invalid_credentials": "Virheellinen sähköpostiosoite tai salasana.",
-            "invalid_product": "Virheellinen tuote.",
-            "already_reviewed": "Olet jo arvostellut tämän tuotteen.",
-            "not_purchased": "Et ole ostanut tätä tuotetta.",
-            "review_title": "Tuotearvioinnin otsikko puuttuu.",
-            "review_comment": "Tuotearvioinnin kommenti on liian lyhyt.",
-            "rating": "Virheellinen tuotteen arvosana.",
-            "not_reviewed": "Tuotearviota ei voida poistaa, et ole arvioinut tuotetta.",
-            "username_taken": "Sähköpostiosoite on jo käytössä.",
-            "stock": "Tuotetta ei ole tarpeeksi varastossa.",
-            "terms_of_use": "Sinun on hyväksyttävä käyttöehdot.",
-            "min_length": "merkkiä vähintään.",
-            "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
-        }
+    "error": {
+        "general": "Tapahtui virhe",
+        "key": "Virheellinen tunniste. Salasanaa ei voida vaihtaa.",
+        "comment": "Kommentti on liian lyhyt.",
+        "stock_variant": "Tuotevalinta on valitsematta.",
+        "not_buyable": "Tuote ei ole ostettavissa.",
+        "min_amount": "Tuotetta ei voi ostaa näin pientä määrää.",
+        "max_amount": "Tuotetta ei voi ostaa näin suurta määrää.",
+        "attribute": "Pakollinen tuotevalinta puuttuu.",
+        "invalid_data": "Tapahtui virhe.",
+        "name": "Nimi puuttuu",
+        "email": "Virheellinen sähköpostiosoite.",
+        "message": "Viesti on liian lyhyt.",
+        "confirm_password": "Salasanat eivät täsmää.",
+        "password": "Virheellinen salasana.",
+        "invalid_credentials": "Virheellinen sähköpostiosoite tai salasana.",
+        "invalid_product": "Virheellinen tuote.",
+        "already_reviewed": "Olet jo arvostellut tämän tuotteen.",
+        "not_purchased": "Et ole ostanut tätä tuotetta.",
+        "review_title": "Tuotearvioinnin otsikko puuttuu.",
+        "review_comment": "Tuotearvioinnin kommenti on liian lyhyt.",
+        "rating": "Virheellinen tuotteen arvosana.",
+        "not_reviewed": "Tuotearviota ei voida poistaa, et ole arvioinut tuotetta.",
+        "username_taken": "Sähköpostiosoite on jo käytössä.",
+        "stock": "Tuotetta ei ole tarpeeksi varastossa.",
+        "terms_of_use": "Sinun on hyväksyttävä käyttöehdot.",
+        "min_length": "merkkiä vähintään.",
+        "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
     },
     "login": {
         "title": "Kirjautuminen",
@@ -148,8 +209,8 @@
         "cta": "Luo tili",
         "returning_customer": "Palaava asiakas?",
         "login": "Kirjaudu sisään",
-        "inline_terms": "Valitsemalla __action__ hyväksyt __terms__.",
-        "inline_terms_with_policy": "Valitsemalla __action__ hyväksyt __terms__. Lue __policy__, joka kertoo tietojen keräämisestä, käytöstä ja jakamisesta."
+        "inline_terms": "Valitsemalla {{ action }} hyväksyt {{ terms }}.",
+        "inline_terms_with_policy": "Valitsemalla {{ action }} hyväksyt {{ terms }}. Lue {{ policy }}, joka kertoo tietojen keräämisestä, käytöstä ja jakamisesta."
     },
     "password_reset": {
         "title": "Unohtuiko salasana?",

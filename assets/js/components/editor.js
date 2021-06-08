@@ -3,7 +3,7 @@ export default {
 
         document.addEventListener('finqu:section:load', (e) => {
             if (e.target.classList.contains('has-lazy')) {
-                window.themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
+                themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
             }
         });
 
@@ -25,9 +25,9 @@ export default {
         				console.log(key);
         				console.log(matches[index]);
         				console.log(labelEl);
-        				console.log(window.themeApp.icons[key]);
+        				console.log(themeApp.icons[key]);
 
-						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ window.themeApp.data.assetUrl+'/'+window.themeApp.icons[key] }">`);
+						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
 					}
         		}
         	}

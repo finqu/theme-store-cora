@@ -1,0 +1,75 @@
+{% comment %}
+	Renders a section content
+
+	Accepts:
+	- sectionContent: {String}
+	- sectionContentWidth: {String}
+	- sectionContentAlign: {String}
+    - sectionContentContainer: {String}
+
+	Usage:
+	Render this snippet inside of element with a "section" class.
+
+	{% render 'section-content', sectionContent: content, sectionContentWidth: width, sectionContentAlign: align, sectionContentContainer: container %}
+{% endcomment %}
+
+{%- assign sectionContentWidth = sectionContentWidth | default: '12'  -%}
+{%- assign sectionContentAlign = sectionContentAlign | default: 'center' -%}
+{%- assign sectionContentContainer = sectionContentContainer | default: 'fixed' -%}
+
+{% capture content %}
+
+    {%- if sectionContentWidth == '12' -%}
+
+        {{- sectionContent -}}
+
+    {%- else -%}
+
+        {%- case sectionContentAlign -%}
+            {% when 'left' %}
+                {%- assign contentAlign = 'justify-content-start' -%}
+            {% when 'center' %}
+                {%- assign contentAlign = 'justify-content-center' -%}
+            {% when 'right' %}
+                {%- assign contentAlign = 'justify-content-end' -%}
+        {%- endcase -%}
+
+        <div class="row {{ contentAlign }}">
+
+            <div class="col-12 col-md-{{ sectionContentWidth }}">
+
+                {{- sectionContent -}}
+
+            </div>
+
+        </div>
+
+    {%- endif -%}
+
+{% endcapture %}
+
+<div class="section-content">
+
+    {%- if sectionContentContainer == 'fixed' -%}
+
+        <div class="container">
+
+            {{- content -}}
+
+        </div>
+
+    {%- elsif sectionContentContainer == 'fluid' -%}
+
+        <div class="container-fluid">
+
+            {{- content -}}
+
+        </div>
+
+    {%- elsif sectionContentContainer == 'none' -%}
+
+        {{- content -}}
+
+    {%- endif -%}
+
+</div>

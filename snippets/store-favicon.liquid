@@ -1,3 +1,12 @@
+{% comment %}
+	Renders favicon dependencies
+
+	Usage:
+	Render this snippet inside of head element.
+
+	{% render 'store-favicon' %}
+{% endcomment %}
+
 {%- if store.favicon and store.favicon | is_ico -%}
 
 	<link rel="shortcut icon" href="{{ store.favicon }}" sizes="16x16 32x32 57x57 72x72 114x114 120x120 144x144 152x152" type="image/x-icon">

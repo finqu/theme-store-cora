@@ -1,0 +1,763 @@
+{%- capture sectionContent -%}
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="product-media-container">
+
+                <div class="product-media row">
+
+                    <div id="product-thumb-media-swiper" class="swiper-container d-none d-lg-block col-2 mr-3">
+
+                        <div class="swiper-wrapper">
+
+                            {% for media in product.media %}
+
+                                <div class="swiper-slide">
+
+                                    {% if media.type == "image" %}
+
+                                        {% assign imgSize = 120,120 %}
+
+                                        <picture>
+                                            <img
+                                                alt="{{ product.name }}"
+                                                data-src="{{ media.thumb | thumb: imgSize }}"
+                                                data-srcset="{{ media.thumb | thumb: imgSize }} 1x,{{ media.thumb | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                class="lazy d-block mx-auto img-fluid">
+                                        </picture>
+
+                                    {% endif %}
+
+                                </div>
+
+                            {% endfor %}
+
+                            {% if product.variants.size > 0 %}
+
+                                {% for variant in product.variants %}
+
+                                    {% for option in variant.options %}
+
+                                        {% if option.image %}
+
+                                            <div class="swiper-slide">
+
+                                                {% assign imgSize = 120,120 %}
+
+                                                <picture>
+                                                    <img
+                                                        alt="{{ product.name }}"
+                                                        data-src="{{ option.image | thumb: imgSize }}"
+                                                        data-srcset="{{ option.image | thumb: imgSize }} 1x,{{ option.image | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                        class="lazy d-block mx-auto img-fluid">
+                                                </picture>
+
+                                            </div>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                {% endfor %}
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="swiper-button-prev">
+                            {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+                        </div>
+
+                        <div class="swiper-button-next">
+                            {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+                        </div>
+
+                    </div>
+
+                    <div id="product-main-media-swiper" class="swiper-container swiper-navigation-hide-on-desktop col">
+
+                        <div class="product-badges">
+
+                            {% if product.has_discount and product.out_of_stock == false %}
+
+                                <div class="discount-badge">
+
+                                    <span class="badge-content">-{{ product.discount_percent }}%</span>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if product.is_new and product.out_of_stock == false %}
+
+                                <div class="new-badge">
+
+                                    <span class="badge-content">{{ 'product.badge_new' | t }}</span>
+
+                                </div>
+
+                            {% elsif product.out_of_stock %}
+
+                                <div class="out-of-stock-badge">
+
+                                    <span class="badge-content">{{ 'product.out_of_stock' | t }}</span>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="swiper-wrapper">
+
+                            {% for media in product.media %}
+
+                                <div class="swiper-slide gallery-img">
+
+                                    {% if media.type == "image" %}
+
+                                        {% assign imgSizeSm = 420,420 %}
+                                        {% assign imgSizeLg = 490,700, %}
+
+                                        <picture>
+                                            <source media="(min-width: 768px)" data-srcset="
+                                                {{ media.thumb | thumb: imgSizeLg }} 1x,
+                                                {{ media.thumb | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                            <img
+                                                alt="{{ product.name }}"
+                                                data-gallery-src="{{ media.original }}"
+                                                data-src="{{ media.thumb | thumb: imgSizeSm }}"
+                                                data-srcset="{{ media.thumb | thumb: imgSizeSm }} 1x,{{ media.thumb | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                                class="lazy d-block mx-auto img-fluid">
+                                        </picture>
+
+                                    {% endif %}
+
+                                </div>
+
+                            {% endfor %}
+
+                            {% if product.variants.size > 0 %}
+
+                                {% for variant in product.variants %}
+
+                                    {% for option in variant.options %}
+
+                                        {% if option.image %}
+
+                                            <div class="swiper-slide">
+
+                                                {% assign imgSizeSm = 420,420 %}
+                                                {% assign imgSizeLg = 490,700, %}
+
+                                                <picture>
+                                                    <source media="(min-width: 768px)" data-srcset="
+                                                        {{ media.thumb | thumb: imgSizeLg }} 1x,
+                                                        {{ media.thumb | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                                    <img
+                                                        id="product-option-image-{{ option.id }}"
+                                                        alt="{{ product.name }}"
+                                                        data-gallery-src="{{ option.image }}"
+                                                        data-src="{{ option.image | thumb: imgSize }}"
+                                                        data-srcset="{{ option.image | thumb: imgSize }} 1x,{{ option.image | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                        class="lazy d-block mx-auto img-fluid">
+                                                </picture>
+
+                                            </div>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                {% endfor %}
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="swiper-button-prev">
+                            {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+                        </div>
+
+                        <div class="swiper-button-next">
+                            {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-5 offset-md-1">
+
+            <div class="product-info">
+
+                <div class="product-manufacturer">
+
+                    <a href="{{ product.manufacturer | link }}" class="product-manufacturer-text h3">{{ product.manufacturer.name }}</a>
+
+                </div>
+
+                <div class="product-name">
+
+                    <h1 class="product-name-text">{{ product.name }}</h1>
+
+                </div>
+
+                <div class="product-pricing">
+
+                    {% if product.has_discount %}
+
+                        <div class="product-discount">
+
+                            <span class="product-discount-text">
+                                {{ 'product.discount_dynamic' | t, amount: product.discount_percent }}
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+                    <div class="product-price">
+
+                        <span class="{% if product.has_discount %}product-price-text{% else %}product-price-discount-text{% endif %}" data-product-price-dynamic>
+                            {{ product.price | in_currency }}
+                        </span>
+
+                        {% if product.has_discount %}
+
+                            <span class="product-price-original-text">
+                                {{ product.original_price | in_currency }}
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="product-price-vat">
+
+                        <span class="product-price-vat-text">
+
+                            {%- assign productTaxPercent = product.taxpercent | round -%}
+
+                            {{ 'product.vat_included_dynamic' | t, amount: productTaxPercent }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% if product.is_reviewed or product.can_be_reviewed %}
+
+                    <div class="product-review">
+
+                        <button type="button" name="product-show-reviews" class="btn btn-plain">
+
+                            <span class="product-review-icon">
+
+                                {% for rating in (1..product.max_rating) %}
+
+                                    {% if product.rating >= rating %}
+
+                                        {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
+
+                                    {% else %}
+
+                                        {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </span>
+
+                            <span class="product-review-text">
+                                {{ product.review_count }}
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                {% endif %}
+
+                {% if product.short_description %}
+
+                    <div class="product-short-description">
+
+                        <span>{{ product.short_description }}</span>
+
+                    </div>
+
+                {% endif %}
+
+                {% if product.bulkrates %}
+
+                    <div class="product-bulk-discounts">
+
+                        <div class="row">
+
+                            <div class="col-6">
+
+                                <span class="product-bulk-discount-info-text">
+                                    {{ 'product.bulk_discount' | t }}
+                                </span>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <span class="product-bulk-discount-info-text">
+                                    {{ 'product.discount_rate' | t }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        {% for rate in product.bulkrates %}
+
+                            {% if rate.is_percentage %}
+
+                                <div class="row">
+
+                                    <div class="col-6">
+
+                                        <span class="product-bulk-discount-rate-quantity-text">
+                                            {% if rate.quantity > 1 %}+ {%endif %}{{ rate.quantity }} {{ product.unit }}
+                                        </span>
+
+                                    </div>
+
+                                    <div class="col-6">
+
+                                        <span class="product-bulk-discount-rate-amount-text">
+                                            {{ rate.amount }} %
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+                {% if product.related.size > 0 %}
+
+                    <div class="product-related-items">
+
+                        {% for relatedItem in product.related %}
+
+                            {% if relatedItem.is_visible %}
+
+                                <div class="item">
+
+                                    <a href="{{ relatedItem | link }}">
+
+                                        <div class="item-media">
+
+                                            {%- assign imgSize = 60,80 -%}
+
+                                            <picture>
+                                                <img
+                                                    alt="{{ relatedItem.name }}"
+                                                    data-src="{{ relatedItem.image | thumb: imgSize }}"
+                                                    data-srcset="{{ relatedItem.image | thumb: imgSize }} 1x, {{ relatedItem.image | thumb: imgSize | thumb: '@2x' }} 2x"
+                                                    class="lazy d-block mx-auto img-fluid">
+                                            </picture>
+
+                                        </div>
+
+                                    </a>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+                {% if product.ignore_storage or product.in_stock and product.only_preview != true %}
+
+                    <div class="product-form">
+
+                        {% form 'product', product %}
+
+                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                            <input type="hidden" name="quantity" value="{{ product.min_amount }}">
+
+                            {% if product.variants.size > 0 %}
+
+                                <div class="product-variants">
+
+                                    {% assign showVariantPrice = true %}
+                                    {% assign showVariantTotalPrice = true %}
+                                    {% assign showVariantStock = false %}
+
+                                    {% for variant in product.variants %}
+
+                                        {%- if variant.input_type == 'select' -%}
+
+                                            {% render 'product-variants/select', variant: variant %}
+
+                                        {%- elsif variant.input_type == 'radio' -%}
+
+                                            {% render 'product-variants/radio', variant: variant %}
+
+                                        {%- elsif variant.input_type == 'checkbox' -%}
+
+                                            {% render 'product-variants/checkbox', variant: variant %}
+
+                                        {%- elsif variant.input_type == 'text' -%}
+
+                                            {% render 'product-variants/text', variant: variant %}
+
+                                        {%- endif -%}
+
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                            <div class="product-action-add-to-cart d-flex">
+
+                                <button type="button" class="btn btn-primary btn-lg btn-block" data-cart-add data-cart-form>
+                                    {{ 'cart.add' | t }}
+                                </button>
+
+                                {% if store.session.logged_in %}
+
+                                    <button type="button" class="btn btn-plain ml-1 product-wishlist-btn" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
+                                        {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
+                                    </button>
+
+                                {% endif %}
+
+                            </div>
+
+                            {% render 'form-error', error: form.error %}
+
+                        {% endform %}
+
+                    </div>
+
+                {% elsif product.ignore_storage == false and product.in_stock == false and product.only_preview != true %}
+
+                    {% if product.is_reserved %}
+
+                        <div class="product-info-reserved">
+
+                            <span class="product-info-reserved-text">
+                                {{ 'product.reserved_for_you' | t }}
+                            </span>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="product-info-out-of-stock">
+
+                            <span class="product-info-out-of-stock-text">
+                                {{ 'product.out-of-stock' | t }}
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+                {% elsif product.only_preview %}
+
+                    <div class="product-info-preview">
+
+                        <span class="product-info-preview-text">
+                            {{ 'product.preview' | t }}
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+                <div class="product-details mt-4 accordion">
+
+                    {% if product.description %}
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <button class="btn btn-block d-flex" data-toggle="collapse" data-target="#accordion-product-description">
+
+                                    <span>
+                                        {{ 'product.description' | t }}
+                                    </span>
+
+                                    <span class="accordion-indicator">
+                                        {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                            <div id="accordion-product-description" class="collapse">
+
+                                <div class="product-description card-body">
+                                    {{ product.description }}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if product.attachments.size %}
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <button class="btn btn-block d-flex" data-toggle="collapse" data-target="#accordion-product-attachments">
+
+                                    <span>
+                                        {{ 'product.attachments' | t }}
+                                    </span>
+
+                                    <span class="accordion-indicator">
+                                        {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                            <div id="accordion-product-attachments" class="collapse">
+
+                                <div class="product-attachments card-body">
+
+                                    {% for attachment in product.attachments %}
+
+                                        <a href="{{ attachment.href }}" class="d-block">
+                                            {%- render 'icon', icon: 'download-bottom-M5p7BQ' -%}
+                                            <span>{{ attachment.name }}</span>
+                                        </a>
+
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if product.is_reviewed or product.can_be_reviewed %}
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <button class="btn btn-block d-flex" data-toggle="collapse" data-target="#accordion-product-reviews">
+
+                                    <span class="mr-2">{{ 'product.reviews' | t }} ({{ product.review_count }})</span>
+
+                                    <span class="product-review-icons">
+
+                                        {% for rating in (1..product.max_rating) %}
+
+                                            {% if product.rating >= rating %}
+
+                                                {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
+
+                                            {% else %}
+
+                                                {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </span>
+
+                                    <span class="accordion-indicator">
+                                        {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                            <div id="accordion-product-reviews" class="collapse">
+
+                                <div class="product-reviews card-body">
+
+                                    {% if product.can_be_reviewed == false %}
+
+                                        <button name="product-review-create" class="btn btn-text">
+                                            {{ 'product.create_review' | t }}
+                                        </button>
+
+                                        <div class="product-review-form d-none">
+
+                                            {% form 'product_review' %}
+
+                                                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                                                <div class="form-group">
+
+                                                    <fieldset class="product-review-rating">
+
+                                                        <input type="radio" id="product-review-rating-5" name="rating" value="5"{% if form.submitted.rating | escape == '5' %} checked{% endif %}>
+                                                        <label for="product-review-rating-5" title="5">
+                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                        </label>
+
+                                                        <input type="radio" id="product-review-rating-4" name="rating" value="4"{% if form.submitted.rating | escape == '4' %} checked{% endif %}>
+                                                        <label for="product-review-rating-4" title="4">
+                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                        </label>
+
+                                                        <input type="radio" id="product-review-rating-3" name="rating" value="3"{% if form.submitted.rating | escape == '3' %} checked{% endif %}>
+                                                        <label for="product-review-rating-3" title="3">
+                                                           {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                        </label>
+
+                                                        <input type="radio" id="product-review-rating-2" name="rating" value="2"{% if form.submitted.rating | escape == '2' %} checked{% endif %}>
+                                                        <label for="product-review-rating-2" title="2">
+                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                        </label>
+
+                                                        <input type="radio" id="product-review-rating-1" name="rating" value="1"{% if form.submitted.rating | escape == '1' %} checked{% endif %}>
+                                                        <label for="product-review-rating-1" title="1">
+                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                        </label>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                   <input name="review_title" type="text" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.review_title | escape }}" required>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <textarea name="review_comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.review_comment | escape }}" required></textarea>
+
+                                                </div>
+
+                                                <div class="form-group text-right">
+
+                                                    <button type="button" name="product-review-cancel" class="btn btn-secondary">{{ 'general.cancel' | t }}</button>
+
+                                                    <button type="submit" class="btn btn-primary">{{ 'general.submit' | t }}</button>
+
+                                                </div>
+
+                                                {% render 'form-error', error: form.error %}
+
+                                            {% endform %}
+
+                                        </div>
+
+                                    {% elsif store.session.logged_in and product.is_reviewed == false %}
+
+                                        <span>
+                                            {{ 'product.review_product_purchase_required' | t }}
+                                        </span>
+
+                                    {% endif %}
+
+                                    {% for review in product.reviews %}
+
+                                        <div class="product-review">
+
+                                            <span class="product-review-author">
+
+                                                {% assign dateFormat = 'general.date_format' | t  %}
+
+                                                <span class="mr-2">
+                                                    {{ review.title }}
+                                                </span>
+
+                                                <i><time datetime="{{ review.created_at | date: "%F" }}">{{ review.created_at  | date: dateFormat }}</time></i>
+
+                                            </span>
+
+                                            <div class="product-review-rating">
+
+                                                <span class="product-review-icons">
+
+                                                    {% for rating in (1..product.max_rating) %}
+
+                                                        {% if product.rating >= rating %}
+
+                                                            {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
+
+                                                        {% else %}
+
+                                                            {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+
+                                                        {% endif %}
+
+                                                    {% endfor %}
+
+                                                </span>
+
+                                            </div>
+
+                                            <div class="product-review-content">
+                                                {{ review.review }}
+                                            </div>
+
+                                        </div>
+
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent %}
+
+{% schema %}
+{
+    "name": "Product",
+    "tag": "div",
+    "class": "section section-product-card",
+    "is_creatable": false
+}
+{% endschema %}

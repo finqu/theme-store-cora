@@ -1,26 +1,4 @@
-{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
-{%- assign sectionInnerSpacing = section.settings.sectionInnerSpacing | default: settings.sectionInnerSpacing -%}
-{%- assign sectionContentSpacing = section.settings.sectionContentSpacing | default: settings.sectionContentSpacing -%}
-{%- assign sectionContentWidth = section.settings.sectionContentWidth | default: '12' -%}
-{%- assign sectionContentAlign = section.settings.sectionContentAlign | default: 'center' -%}
-{%- assign sectionBgImgPos = section.settings.sectionBgImgPos | default: settings.sectionBgImgPos -%}
-{%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | default: '0' -%}
-{%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
-{%- assign sectionStyle = section.settings.sectionStyle -%}
-
-{%- capture classes -%}section-height-{{ sectionHeight }} section-spacing-content-{{ sectionContentSpacing }}{%- endcapture -%}
-
-{%- if sectionInnerSpacing != 'off' -%}
-    {% capture sectionContentSpacingClass %} section-spacing-inner-{{ sectionInnerSpacing }}{% endcapture %}
-    {%- assign classes = classes | append: sectionContentSpacingClass -%}
-{%- endif -%}
-
-{%- if sectionStyle -%}
-    {% capture sectionStyleClass %} section-style-{{ sectionStyle }}{% endcapture %}
-    {%- assign classes = classes | append: sectionStyleClass -%}
-{%- endif -%}
-
-{%- capture content -%}
+{%- capture sectionContent -%}
 
     <div class="row">
 
@@ -76,51 +54,7 @@
 
 {%- endcapture -%}
 
-{%- if section.settings.sectionContentBgColorStatus -%}
-    <style>
-        #finqu-section-{{ section.id }} .container,
-        #finqu-section-{{ section.id }} .container-fluid {
-            background-color: {{ section.settings.sectionContentBgColor }}
-        }
-    </style>
-{%- endif -%}
-
-<div class="section-content {{ classes }}">
-
-    <div class="container">
-
-        {%- if sectionContentWidth == '12' -%}
-
-            {{- content -}}
-
-        {%- else -%}
-
-            {%- case sectionContentAlign -%}
-                {% when 'left' %}
-                    {%- assign contentAlign = 'justify-content-start' -%}
-                {% when 'center' %}
-                    {%- assign contentAlign = 'justify-content-center' -%}
-                {% when 'right' %}
-                    {%- assign contentAlign = 'justify-content-end' -%}
-            {%- endcase -%}
-
-            <div class="row {{ contentAlign }}">
-
-                <div class="col-12 col-md-{{ sectionContentWidth }}">
-
-                    {{- content -}}
-
-                </div>
-
-            </div>
-
-        {%- endif -%}
-
-    </div>
-
-    <div class="section-bg{% if sectionBgImgSrc %} bg-img-pos-{{ sectionBgImgPos }} lazy{% if section.settings.sectionContentBgColorStatus %} hide-bg-sm{% endif %}{% endif %}"{% if sectionBgImgSrc and sectionBgImgOverlay > 0 %} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% elsif sectionBgImgSrc %} data-bg="url({{ sectionBgImgSrc }})"{% endif %}></div>
-
-</div>
+{% render 'section', section: section, sectionContent: sectionContent %}
 
 {% schema %}
 {

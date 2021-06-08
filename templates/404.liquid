@@ -1,0 +1,10 @@
+{%- assign sectionTitle =  'general.page_not_found_title' | t -%}
+{%- assign sectionSubtitle = 'general.page_not_found_subtitle' | t -%}
+
+{%- capture sectionContent -%}
+	{%- render 'icon', icon: 'common-file-question-ZOslf3', class: 'svg-icon-8x' -%}
+{%- endcapture -%}
+
+<section class="section section-404">
+	{% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent %}
+</section>

@@ -1,0 +1,56 @@
+{% comment %}
+	Renders a pagination
+
+	Accepts:
+	- paginate: {Object} Paginate Liquid object (required)
+
+	Usage:
+	{% render 'pagination', paginate: paginate %}
+{% endcomment %}
+
+<ul class="pagination">
+
+	<li>
+		{% if paginate.previous.url %}
+
+			<a href="{{ paginate.previous.url }}" class="paginate-item-previous">
+				{%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+			</a>
+
+		{% else %}
+
+			<span class="paginate-item-previous disabled">
+				{%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+			</span>
+
+		{% endif %}
+
+	</li>
+
+	<li>
+
+		<span clas="paginate-item-text">
+			{{ 'general.page' | t }} {{ paginate.current_page }} / {{ paginate.pages }}
+		</span>
+
+	</li>
+
+	<li>
+
+		{% if paginate.next.url %}
+
+			<a href="{{ paginate.next.url }}" class="paginate-item-next">
+				{%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+			</a>
+
+		{% else %}
+
+			<span class="paginate-item-next disabled">
+				{%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+			</span>
+
+		{% endif %}
+
+	</li>
+
+</ul>

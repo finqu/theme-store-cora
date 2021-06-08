@@ -1,19 +1,18 @@
-BLOG
+{% comment %}
+	The contents of the blog.liquid template can be found in /sections/blog-template.liquid
+{% endcomment %}
 
 {{ content_for_index }}
 
-{% for post in store.blog.recent %}
+{% section 'blog-template' %}
 
-    {{ post.title }}
-    {{ blog_post.content | strip_html | truncate: 140 }}
-
-{% endfor %}
+{{ content_for_index }}
 
 {% schema %}
 {
-    "name": {
-        "en": "Blog",
-        "fi": "Blogi"
-    }
+	"name": {
+		"en": "Blog",
+		"fi": "Blogi"
+	}
 }
 {% endschema %}

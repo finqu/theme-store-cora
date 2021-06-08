@@ -1,15 +1,74 @@
+{% comment %}
+	Renders store data so it can be accessed from javascript later on
+
+	Usage:
+	Render this snippet inside of head element.
+
+	{% render 'store-settings' %}
+{% endcomment %}
+
 <script>
 	window.store = {
-		assetUrl: {{ request.asset_url | json }},
 		designMode: {{ request.design_mode | yepnope:'true','false' }},
 		locale: {{ request.locale.iso_code | json }},
+		currency: {
+			code: {{ store.currency.code | json }},
+			decimalPlaces: {{ store.currency.decimal_places | json }}
+		},
+		routes: {
+			rootUrl: {{ routes.root_url | json }},
+			accountUrl: {{ routes.account_url | json }},
+			accountEditUrl: {{ routes.account_edit_url | json }},
+			accountLoginUrl: {{ routes.account_login_url | json }},
+			accountLogoutUrl: {{ routes.account_logout_url | json }},
+			accountRegisterUrl: {{ routes.account_register_url | json }},
+			accountPasswordRecoverUrl: {{ routes.account_password_recover_url | json }},
+			searchUrl: {{ routes.search_url | json }},
+			cartUrl: {{ routes.cart_url | json }},
+			checkoutUrl: {{ routes.checkout_url | json }},
+			assetUrl: {{ request.asset_url | json }}
+		},
 		translations: {
-			test: {{ 'swag.test' | t | json }},
-			system: {
-				asd: '123',
-				yolo: {
-					woow: 'zzz'
-				}
+			general: {
+				total: {{ 'general.total'  | t | json }},
+			    subtotal: {{ 'general.subtotal' | t | json }},
+			    tax_free_price: {{ 'general.tax_free_price' | t | json }},
+			    tax: {{ 'general.tax' | t | json }}
+		    },
+			cart: {
+				title: {{ 'cart.title' | t | json }},
+				product_added_to_cart: {{ 'cart.product_added_to_cart' | t | json }},
+				proceed_to_checkout: {{ 'cart.proceed_to_checkout' | t | json }},
+				empty: {{ 'cart.empty' | t | json }}
+			},
+			error: {
+				general: "Tapahtui virhe",
+		        key: "Virheellinen tunniste. Salasanaa ei voida vaihtaa.",
+		        comment: "Kommentti on liian lyhyt.",
+		        stock_variant: "Tuotevalinta on valitsematta.",
+		        not_buyable: "Tuote ei ole ostettavissa.",
+		        min_amount: "Tuotetta ei voi ostaa näin pientä määrää.",
+		        max_amount: "Tuotetta ei voi ostaa näin suurta määrää.",
+		        attribute: "Pakollinen tuotevalinta puuttuu.",
+		        invalid_data: "Tapahtui virhe.",
+		        name: "Nimi puuttuu",
+		        email: "Virheellinen sähköpostiosoite.",
+		        message: "Viesti on liian lyhyt.",
+		        confirm_password: "Salasanat eivät täsmää.",
+		        password: "Virheellinen salasana.",
+		        invalid_credentials: "Virheellinen sähköpostiosoite tai salasana.",
+		        invalid_product: "Virheellinen tuote.",
+		        already_reviewed: "Olet jo arvostellut tämän tuotteen.",
+		        not_purchased: "Et ole ostanut tätä tuotetta.",
+		        review_title: "Tuotearvioinnin otsikko puuttuu.",
+		        review_comment: "Tuotearvioinnin kommenti on liian lyhyt.",
+		        rating: "Virheellinen tuotteen arvosana.",
+		        not_reviewed: "Tuotearviota ei voida poistaa, et ole arvioinut tuotetta.",
+		        username_taken: "Sähköpostiosoite on jo käytössä.",
+		        stock: "Tuotetta ei ole tarpeeksi varastossa.",
+		        terms_of_use: "Sinun on hyväksyttävä käyttöehdot.",
+		        min_length: "merkkiä vähintään.",
+		        privacy_policy: "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
 			}
 		}
 	};

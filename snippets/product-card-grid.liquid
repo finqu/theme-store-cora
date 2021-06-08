@@ -1,0 +1,106 @@
+{% comment %}
+	Renders a product card as grid item
+
+	Accepts:
+	- product: {Object} Product Liquid object (required)
+
+	Usage:
+	{% render 'product-card-grid', product: product %}
+{% endcomment %}
+
+<div class="product-card-grid-item">
+
+	<div class="item-media-container">
+
+		<div class="item-badges">
+
+			{% if product.has_discount and product.out_of_stock == false %}
+
+                <div class="discount-badge">
+
+                    <span class="badge-content">-{{ product.discount_percent }}%</span>
+
+                </div>
+
+            {% endif %}
+
+            {% if product.is_new and product.out_of_stock == false %}
+
+                <div class="new-badge">
+
+                    <span class="badge-content">{{ 'product.badge_new' | t }}</span>
+
+                </div>
+
+            {% elsif product.out_of_stock %}
+
+                <div class="out-of-stock-badge">
+
+                    <span class="badge-content">{{ 'product.out_of_stock' | t }}</span>
+
+                </div>
+
+            {% endif %}
+
+		</div>
+
+		<a href="{{ product | page_url }}">
+
+			<div class="item-media{% unless product.image %} placeholder-image{% endunless%}">
+
+	  			{% if product.image %}
+
+	  				{% assign imgSizeSm = 420,420 %}
+	  				{% assign imgSizeLg = 576,576 %}
+
+		  			<picture>
+				        <source media="(min-width: 768px)" data-srcset="
+				            {{ product.image | thumb: imgSizeLg }} 1x,
+				            {{ product.image | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+				        <img
+				            alt="{{ product.name }}"
+				            data-src="{{ product.image | thumb: imgSizeSm }}"
+				            data-srcset="{{ product.image | thumb: imgSizeSm }} 1x,{{ imgSizeSm | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+				            class="lazy d-block mx-auto img-fluid">
+				    </picture>
+
+				{% endif %}
+
+  			</div>
+
+		</a>
+
+	</div>
+
+	<div class="item-caption">
+
+		<div class="item-title">
+
+			<a href="{{ product | page_url }}">
+
+				<h3>{{ product.name }}</h3>
+
+			</a>
+
+		</div>
+
+		<div class="item-price">
+
+			<span class="price-text">
+				{{ product.price | in_currency }}
+			</span>
+
+			{% if product.has_discount %}
+
+	            <span class="original-price-text">
+	            	{{ product.original_price | in_currency }}
+	            </span>
+
+	        {% endif %}
+
+		</div>
+
+	</div>
+
+</div>

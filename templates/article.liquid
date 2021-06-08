@@ -1,13 +1,12 @@
-BLOGPOST
+{% comment %}
+	The contents of the article.liquid template can be found in /sections/article-template.liquid
+{% endcomment %}
 
 {{ content_for_index }}
 
-<div>
+{% section 'article-template' %}
 
-{{ blogpost.title }}
-{{ blogpost.content }}
-
-</div>
+{{ content_for_index }}
 
 {% schema %}
 {

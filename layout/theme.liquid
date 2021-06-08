@@ -17,22 +17,15 @@
 		<link rel="preload" href="{{ 'main.css' | asset_url }}" as="style">
 		<link rel="preload" href="{{ 'main.js' | asset_url }}" as="script">
 
-		{%- include 'snippets/store-fonts' -%}
+		{%- render 'store-fonts' -%}
 
 		<link rel="stylesheet" href="{{ 'main.css' | asset_url }}" type="text/css" media="all">
 
-		{%- capture pageTitle -%}
-			{%- if page.meta_title -%}
-				{{ page.meta_title }} - {{ store.name }}
-			{%- else -%}
-				{{ page.title }} - {{ store.name }}
-			{%- endif -%}
-		{%- endcapture -%}
+		<title>{{ page_title | strip }} - {{ store.name }}</title>
 
-		<title>{{ pageTitle | strip }}</title>
-
-		{%- include 'snippets/store-favicon' -%}
+		{%- render 'store-favicon' -%}
 		{%- render 'store-settings' -%}
+		{%- render 'hbs-templates' -%}
 
 		<script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
 

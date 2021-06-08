@@ -1,12 +1,20 @@
-PAGE
-
 {% if page.content %}
-	{{ page.content }}
+
+	{%- capture sectionContent -%}
+
+		{{ page.content }}
+
+	{%- endcapture -%}
+
+	<section class="section section-search">
+		{% render 'section', sectionTitle: page.meta_title sectionContent: sectionContent %}
+	</section>
+
+{% else %}
+
+	{{ content_for_index }}
+
 {% endif %}
-
-<button class="btn btn-primary">Primääri</button>
-
-{{ content_for_index }}
 
 {% schema %}
 {

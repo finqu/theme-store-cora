@@ -1,0 +1,53 @@
+{% if category.sub_categories.size > 0 and category.id == page.id %}
+
+    <li class="item parent active open">
+
+{% elsif category.sub_categories.size > 0 %}
+
+    <li class="item parent">
+
+{% elsif category.id == page.id or category.id == last_category_id %}
+
+    <li class="item active">
+
+{% else %}
+
+    <li class="item">
+
+{% endif %}
+
+    {% if category.is_visible %}
+
+        <a href="{{ category | link }}" class="item-name">{{ category.name }}</a>
+
+    {% else %}
+
+        <span class="item-name">{{ category.name }}</span>
+
+    {% endif %}
+
+    {% if category.sub_categories.size > 0 and category.id == page.id %}
+
+        <div class="item-toggle open"></div>
+
+    {% elsif category.sub_categories.size > 0 %}
+
+        <div class="item-toggle"></div>
+
+    {% endif %}
+
+    {% if category.sub_categories.size > 0 %}
+
+        <ul class="item-container parent child{% if category.id == page.id %} open {% endif %}">
+
+            {% for category in category.sub_categories %}
+
+                {% render 'category-list-item', category: category %}
+
+            {% endfor %}
+
+        </ul>
+
+    {% endif %}
+
+</li>

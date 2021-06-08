@@ -1,0 +1,120 @@
+{%- assign sectionTitle = 'blog.title' | t -%}
+
+{%- capture sectionContent -%}
+
+	{%- assign posts = store.blog.recent -%}
+
+	{% if posts.size > 0 %}
+
+		{%- paginate posts by 20 -%}
+
+			{%- for post in posts -%}
+
+				<div class="item row">
+
+					<div class="col col-sm-6">
+
+						<div class="item-title">
+
+							<a href="{{ post | page_url }}">
+
+								<h2>{{ post.title }}</h2>
+
+							</a>
+
+						</div>
+
+						<div class="item-info">
+
+							 <span class="post-date">
+
+	                            {% assign format = 'general.date_format' | t  %}
+	                            <i><time datetime="{{ post.created_at | date: "%F" }}">{{ post.created_at | date:format }}</time></i>
+
+	                        </span>
+
+						</div>
+
+						<div class="item-content">
+
+							{% if post.introduction.size > 0 %}
+
+	                            <p>{{ post.introduction }}</p>
+
+	                        {% endif %}
+
+	                        <p>{{ blog_post.content | strip_html | truncate: 140 }}</p>
+
+						</div>
+
+						<div class="item-action">
+
+							<a href="{{ post | page_url }}" class="btn btn-primary">{{ 'blog.readmore' | t }}</a>
+
+						</div>
+
+					</div>
+
+					<div class="col col-sm-6">
+
+						<div class="item-image">
+
+							{% if post.header_image %}
+
+				  				{% assign imgSizeSm = 300,185 %}
+				  				{% assign imgSizeLg = 535,185 %}
+
+					  			<picture>
+							        <source media="(min-width: 768px)" data-srcset="
+							            {{ post.image | thumb: imgSizeLg }} 1x,
+							            {{ post.image | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+							        <img
+							            alt="{{ post.title }}"
+							            data-src="{{ post.header_image | thumb: imgSizeSm }}"
+							            data-srcset="{{ post.header_image | thumb: imgSizeSm }} 1x, {{ imgSizeSm | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+							            class="lazy d-block mx-auto img-fluid">
+							    </picture>
+
+							{% endif %}
+
+						</div>
+
+					</div>
+
+				</div>
+
+			{%- endfor -%}
+
+			<div class="row">
+
+                <div class="col">
+
+                    {% render 'pagination', paginate: paginate %}
+
+                </div>
+
+            </div>
+
+		{%- endpaginate -%}
+
+	{% else %}
+
+		<div>
+			<span>{{ 'blog.no_articles' | t }}</span>
+		</div>
+
+	{% endif %}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle %}
+
+{% schema %}
+{
+    "name": "Blog",
+    "tag": "section",
+    "class": "section section-blog",
+    "is_creatable": false
+}
+{% endschema %}

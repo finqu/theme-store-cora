@@ -1,0 +1,140 @@
+{%- assign dateFormat = 'general.date_format' | t  -%}
+{%- assign sectionTitle = blogpost.title | t -%}
+{%- assign article = blogpost -%}
+{%- assign comments = blogpost.comments -%}
+
+{%- if comments -%}
+    {%- assign comments = comments | reverse -%}
+{%- endif -%}
+
+{%- capture sectionSubtitle -%}
+	<i><time datetime="{{ article.created_at | date: "%F" }}">{{ article.created_at | date: dateFormat }}</time></i>
+{%- endcapture -%}
+
+{%- assign sectionSubtitle = sectionSubtitle -%}
+
+{%- capture sectionContent -%}
+
+	<div class="row">
+
+		<div class="col">
+
+			{% if article.header_image %}
+
+				<div class="item-image">
+
+	  				{% assign imgSizeSm = 300,185 %}
+	  				{% assign imgSizeLg = 535,185 %}
+
+		  			<picture>
+				        <source media="(min-width: 768px)" data-srcset="
+				            {{ article.header_image | thumb: imgSizeLg }} 1x,
+				            {{ article.header_image | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+				        <img
+				            alt="{{ article.title }}"
+				            data-src="{{ article.header_image | thumb: imgSizeSm }}"
+				            data-srcset="{{ article.header_image | thumb: imgSizeSm }} 1x, {{ imgSizeSm | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+				            class="lazy d-block mx-auto img-fluid">
+				    </picture>
+
+				</div>
+
+			{% endif %}
+
+			<div class="item-content">
+
+				{{ article.content }}
+
+			</div>
+
+			<div class="item-share">
+
+				{% render 'social-share-buttons', facebook: true, twitter: true, whatsapp: true, email: true %}
+
+			</div>
+
+			<div class="item-comments{% if comments.size > 0 %} has-comments{% endif %}">
+
+                {% if store.session.logged_in == false or comments.size > 0 %}
+
+                    <span class="h4">
+                    	{{ 'blog.comments' | t }}
+                    </span>
+
+                {% endif %}
+
+                {% if store.session.logged_in == false and store.customer_accounts_enabled %}
+
+                    <p>
+                    	<a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
+                    </p>
+
+                {% endif %}
+
+                {% if store.session.logged_in %}
+
+                    {% if comments.size == 0 %}
+
+                        <span class="h4">
+                        	{{ 'blog.leave_comment' | t }}
+                        </span>
+
+                    {% endif %}
+
+                    <div class="item-reply">
+
+                        {% form 'blog_comment' %}
+
+                            <input type="hidden" name="post_id" value="{{ article.id }}">
+
+                            <div class="form-group">
+
+                                <label>{{ 'comment' | t }}</label>
+
+                			    <textarea class="form-control" name="comment"></textarea>
+
+                            </div>
+
+                            {% render 'form-error', error: form.error %}
+
+                            <div class="form-group text-right">
+
+                                <button type="submit" class="btn btn-primary">{{ 'submit' | t }}</button>
+
+                            </div>
+
+                        {% endform %}
+
+                    </div>
+
+                {% endif %}
+
+                {% if comments.size > 0 %}
+
+                    {% for comment in comments %}
+
+                    	{% render 'article-comment', article: article, comment: comment %}
+
+                    {% endfor %}
+
+                {% endif %}
+
+			</div>
+
+		</div>
+
+	</div>
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle sectionSubtitle: sectionSubtitle %}
+
+{% schema %}
+{
+    "name": "Article",
+    "tag": "section",
+    "class": "section section-article",
+    "is_creatable": false
+}
+{% endschema %}
