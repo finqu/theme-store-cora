@@ -8,23 +8,159 @@
 
 		@each $name, $map in $section-styles {
 			&.section-style-#{str-replace(#{$name}, ' ', '-')} {
-				color: map-get($map, color);
+				color: map-get($map, text_color);
 
 				.section-bg {
-					background-color: map-get($map, background-color);
+					background-color: map-get($map, background_color);
 				}
 
+				// Typography
+				h1, h2, h3, h4, h5, h6,
+				.h1, .h2, .h3, .h4, .h5, .h6 {
+					color: map-get($map, heading_color);
+				}
+
+				hr {
+					border-top: $hr-border-width solid map-get($map, border_color);
+				}
+
+				.text-icon,
+				.svg-icon, {
+					color: map-get($map, icon_color);
+				}
+
+				.text-subheading,
+				.subheading {
+					color: map-get($map, subheading_color);
+				}
+
+				.text-product-title {
+					color: map-get($map, product_title_color);
+				}
+
+				.text-price {
+					color: map-get($map, price_color);
+				}
+
+				.text-sale-price {
+					color: map-get($map, sale_price_color);
+				}
+
+				// Tables
+
+				// Product
+				.product-badges {
+
+					.new-badge {
+						background-color: map-get($map, new_badge_bg_color);
+						color: map-get($map, new_badge_text_color);
+					}
+
+					.discount-badge {
+						background-color: map-get($map, discount_badge_bg_color);
+						color: map-get($map, discount_badge_text_color);
+					}
+
+					.general-badge {
+						background-color: map-get($map, general_badge_bg_color);
+						color: map-get($map, general_badge_text_color);
+					}
+				}
+
+				// Forms
+				.form-control {
+					color: map-get($map, form_text_color);
+					background-color: map-get($map, form_bg_color);
+					border: $input-border-width solid map-get($map, form_border_color);
+
+					@include border-radius($input-border-radius, 0);
+					@include form-control-focus($ignore-warning: true);
+
+					&::placeholder {
+						color: lighten(map-get($map, form_text_color), 15%);
+					}
+
+					&[readonly] {
+						background-color: lighten(map-get($map, form_bg_color), 15%);
+					}
+				}
+
+				select.form-control {
+					&:focus::-ms-value {
+						color: map-get($map, form_text_color);
+						background-color: map-get($map, form_bg_color);
+					}
+				}
+
+				// Input groups
+				.input-group-text {
+					color: map-get($map, form_text_color);
+					background-color: map-get($map, form_bg_color);
+					border: $input-border-width solid solid map-get($map, form_border_color);
+					@include border-radius($input-border-radius);
+				}
+
+
+				// Links
+				a {
+					color: map-get($map, link_color);
+
+					@include hover() {
+						color: map-get($map, link_color);
+					}
+				}
+
+				// Swiper
 				.swiper-button-prev,
 				.swiper-button-next {
-					stroke: map-get($map, color);
+					stroke: map-get($map, text_color);
 				}
 
 				.swiper-pagination-bullet-active {
-					background: map-get($map, color);
+					background: map-get($map, indicator_color);
 				}
 
 				.swiper-pagination-progressbar-fill {
-					background: map-get($map, color);
+					background: map-get($map, indicator_color);
+				}
+
+				// Buttons
+				.btn {
+
+					&.btn-section {
+						@include section-button-variant(map-get($map, button_bg_color), map-get($map, button_text_color));
+					}
+
+					&.btn-outline-section {
+						@include section-button-outline-variant(map-get($map, button_bg_color), map-get($map, button_text_color));
+					}
+				}
+
+				.btn-icon {
+					color: map-get($map, icon_color);
+
+					&.disabled,
+				    &[disabled] {
+				        &:hover {
+				            color: map-get($map, indicator_color);
+				        }
+				    }
+				}
+
+				// Social
+				.social-buttons {
+
+					.social-btn {
+						&.social-btn-style-section {
+							background-color: map-get($map, button_bg_color);
+		    				color: map-get($map, button_text_color);
+
+		    				&:hover,
+						    &:focus {
+						        background-color: lighten(map-get($map, button_bg_color), 15%);
+						    }
+						}
+					}
 				}
 			}
 		}

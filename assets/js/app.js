@@ -29,7 +29,10 @@ export default class App {
 		this.cart = new Cart();
 		this.icons = icons;
 		this.lazyLoad = new LazyLoad({
+			container: document,
+			elements_selector: '.lazy',
             show_while_loading: true,
+            use_native: true,
             callback_reveal: function (img) {
                 picturefill({
                     elements: [img]

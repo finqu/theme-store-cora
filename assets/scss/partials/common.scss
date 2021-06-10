@@ -1,0 +1,104 @@
+// Common
+// -----------------------------------------------------------------------------------------
+
+// Header
+
+// Footer
+
+// Buttons
+.btn,
+.btn-link,
+.btn-text {
+	outline: 0;
+}
+
+.btn-icon {
+    // display: inline-flex;
+    // width: $btn-icon-height;
+    // height: $btn-icon-height;
+    // color: inherit;
+    // text-align: center;
+    // padding-left: 0;
+    // padding-right: 0;
+    // line-height: 0;
+    // justify-content: center;
+    // align-items: center;
+    // flex-shrink: 0;
+    // border-radius: 50%;
+
+    // &.btn-sm {
+    //     width: $btn-icon-height-sm;
+    //     height: $btn-icon-height-sm;
+    // }
+
+    // &.btn-lg {
+    //     width: $btn-icon-height-lg;
+    //     height: $btn-icon-height-lg;
+    // }
+
+    &:hover {
+        color: theme-color('dark');
+    }
+
+    &.disabled,
+    &[disabled] {
+        &:hover {
+            color: inherit;
+        }
+    }
+
+    &:hover:not(.disabled):not([disabled]):not(.disable-hover) {
+        background-color: transparent;
+
+        &:before {
+            transform: scale3d(1,1,1);
+            opacity: 1;
+        }
+    }
+
+    &:not(.disabled):not([disabled]):not(.disable-hover) {
+        background-color: transparent;
+        transition: opacity 0.5s ease, scale 0.5s ease;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            content: '';
+            transform: scale3d(0,0,0);
+            transition: all;
+            transition-duration: 250ms;
+            background-color: rgba(0,0,0,.1);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    > .svg-icon {
+        vertical-align: middle;
+        pointer-events: none;
+        margin: 0;
+    }
+
+    img,
+    span {
+        pointer-events: none;
+    }
+}
+
+.btn-text {
+    display: inline;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    border: 0;
+    cursor: pointer;
+}

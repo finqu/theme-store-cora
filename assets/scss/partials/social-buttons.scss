@@ -3,85 +3,95 @@
 // --------------------------------------------------
 
 @mixin social-btn-style-default($color, $bg) {
-    background-color: $bg;
-    color: $color;
-    border-radius: 50%;
+   background-color: $bg !important;
+   color: $color !important;
+   border-radius: 50%;
 
-    &:hover,
-    &:focus {
-        background-color: lighten($bg, 5%);
+   .svg-icon {
+      color: inherit !important;
+   }
 
-    }
+   &:hover,
+   &:focus {
+      background-color: lighten($bg, 5%) !important;
+   }
 }
 
 @mixin social-btn-style-text($color, $bg) {
-    background-color: $bg;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 6px;
-    color: $color;
-    width: auto;
-    padding: 0 4px;
+   background-color: $bg !important;
+   border: 1px solid rgba(0,0,0,0.1);
+   border-radius: 6px;
+   color: $color !important;
+   width: auto;
+   padding: 0 4px;
 
-    .svg-icon {
-        vertical-align: baseline;
-    }
+   .svg-icon {
+      vertical-align: baseline;
+      color: inherit !important;
+   }
 
-    &:hover,
-    &:focus {
-        background-color: lighten($bg, 5%);
-    }
+   &:hover,
+   &:focus {
+      background-color: lighten($bg, 5%) !important;
+   }
 }
 
 @mixin social-btn-style-border-circle($color, $bg) {
-    background-color: transparent;
-    border: 2px solid $bg;
-    border-radius: 50%;
-    color: $bg;
-    transition: color .15s linear, background-color .15s linear;
+   background-color: transparent;
+   border: 2px solid $bg !important;
+   border-radius: 50%;
+   color: $bg !important;
+   transition: color .15s linear, background-color .15s linear;
 
-    .svg-icon {
-        vertical-align: baseline;
-    }
+   .svg-icon {
+      vertical-align: baseline;
+      color: inherit !important;
+   }
 
-    &:hover,
-    &:focus {
-        color: $color;
-        background-color: $bg;
-    }
+   &:hover,
+   &:focus {
+      color: $color !important;
+      background-color: $bg !important;
+   }
 }
 
 @mixin social-btn-style-box($color, $bg) {
-    background-color: $bg;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 6px;
-    color: $color;
+   background-color: $bg !important;
+   border: 1px solid rgba(0,0,0,0.1);
+   border-radius: 6px;
+   color: $color !important;
 
-    &:hover,
-    &:focus {
-        background-color: lighten($bg, 5%);
-    }
+   .svg-icon {
+      color: inherit !important;
+   }
+
+   &:hover,
+   &:focus {
+      background-color: lighten($bg, 5%) !important;
+   }
 }
 
 @mixin social-btn-style-bw {
-    background-color: #3b3b3b;
-    color: #ffffff;
-    border-radius: 50%;
+   background-color: #3b3b3b !important;
+   color: #ffffff !important;
+   border-radius: 50%;
 
-    &:hover,
-    &:focus {
-        background-color: lighten(#3b3b3b, 5%);
-    }
+   .svg-icon {
+      color: inherit !important;
+   }
+
+   &:hover,
+   &:focus {
+      background-color: lighten(#3b3b3b, 5%) !important;
+   }
 }
 
-@mixin social-btn-style-brand {
-    background-color: $primary;
-    color: color-yiq($primary);
-    border-radius: 50%;
+@mixin social-btn-style-section {
+   border-radius: 50%;
 
-    &:hover,
-    &:focus {
-        background-color: lighten($primary, 5%);
-    }
+   .svg-icon {
+      color: inherit !important;
+   }
 }
 
 .social-buttons {
@@ -115,8 +125,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -136,8 +146,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -157,8 +167,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -178,8 +188,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -199,8 +209,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -220,8 +230,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -241,8 +251,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -262,8 +272,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -283,8 +293,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -304,8 +314,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -325,8 +335,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -346,8 +356,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 
@@ -367,8 +377,8 @@
             &.social-btn-style-bw {
                @include social-btn-style-bw;
             }
-            &.social-btn-style-brand {
-               @include social-btn-style-brand;
+            &.social-btn-style-section {
+               @include social-btn-style-section;
             }
         }
 

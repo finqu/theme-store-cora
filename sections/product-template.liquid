@@ -20,13 +20,11 @@
 
                                         {% assign imgSize = 120,120 %}
 
-                                        <picture>
-                                            <img
-                                                alt="{{ product.name }}"
-                                                data-src="{{ media.thumb | thumb: imgSize }}"
-                                                data-srcset="{{ media.thumb | thumb: imgSize }} 1x,{{ media.thumb | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                class="lazy d-block mx-auto img-fluid">
-                                        </picture>
+                                        <img
+                                            class="lazy d-block mx-auto img-fluid"
+                                            alt="{{ product.name }}"
+                                            data-src="{{ media.thumb | thumb: imgSize }}"
+                                            data-srcset="{{ media.thumb | thumb: imgSize }} 1x, {{ media.thumb | thumb: imgSize | thumb: '@2x' }} 2x">
 
                                     {% endif %}
 
@@ -46,13 +44,11 @@
 
                                                 {% assign imgSize = 120,120 %}
 
-                                                <picture>
-                                                    <img
-                                                        alt="{{ product.name }}"
-                                                        data-src="{{ option.image | thumb: imgSize }}"
-                                                        data-srcset="{{ option.image | thumb: imgSize }} 1x,{{ option.image | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                        class="lazy d-block mx-auto img-fluid">
-                                                </picture>
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ option.image | thumb: imgSize }}"
+                                                    data-srcset="{{ option.image | thumb: imgSize }} 1x, {{ option.image | thumb: imgSize | thumb: '@2x' }} 2x">
 
                                             </div>
 
@@ -122,16 +118,19 @@
                                         {% assign imgSizeLg = 490,700, %}
 
                                         <picture>
-                                            <source media="(min-width: 768px)" data-srcset="
+                                            <source media="(min-width: 768px)" srcset="
                                                 {{ media.thumb | thumb: imgSizeLg }} 1x,
-                                                {{ media.thumb | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                                                {{ media.thumb | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+
+                                            <source srcset="
+                                                {{ media.thumb | thumb: imgSizeSm }} 1x,
+                                                {{ media.thumb | thumb: imgSizeSm | thumb: '@2x' }} 2x">
 
                                             <img
+                                                class="d-block mx-auto img-fluid"
                                                 alt="{{ product.name }}"
                                                 data-gallery-src="{{ media.original }}"
-                                                data-src="{{ media.thumb | thumb: imgSizeSm }}"
-                                                data-srcset="{{ media.thumb | thumb: imgSizeSm }} 1x,{{ media.thumb | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                                                class="lazy d-block mx-auto img-fluid">
+                                                src="{{ media.thumb | thumb: imgSizeSm }}">
                                         </picture>
 
                                     {% endif %}
@@ -154,17 +153,19 @@
                                                 {% assign imgSizeLg = 490,700, %}
 
                                                 <picture>
-                                                    <source media="(min-width: 768px)" data-srcset="
-                                                        {{ media.thumb | thumb: imgSizeLg }} 1x,
-                                                        {{ media.thumb | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                                                    <source media="(min-width: 768px)" srcset="
+                                                        {{ option.image | thumb: imgSizeLg }} 1x,
+                                                        {{ option.image | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+
+                                                    <source srcset="
+                                                        {{ option.image | thumb: imgSizeSm }} 1x,
+                                                        {{ option.image | thumb: imgSizeSm | thumb: '@2x' }} 2x">
 
                                                     <img
-                                                        id="product-option-image-{{ option.id }}"
+                                                        class="d-block mx-auto img-fluid"
                                                         alt="{{ product.name }}"
                                                         data-gallery-src="{{ option.image }}"
-                                                        data-src="{{ option.image | thumb: imgSize }}"
-                                                        data-srcset="{{ option.image | thumb: imgSize }} 1x,{{ option.image | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                        class="lazy d-block mx-auto img-fluid">
+                                                        src="{{ option.image | thumb: imgSizeSm }}">
                                                 </picture>
 
                                             </div>
@@ -437,7 +438,7 @@
 
                             <div class="product-action-add-to-cart d-flex">
 
-                                <button type="button" class="btn btn-primary btn-lg btn-block" data-cart-add data-cart-form>
+                                <button type="button" class="btn btn-section btn-lg btn-block" data-cart-add data-cart-form>
                                     {{ 'cart.add' | t }}
                                 </button>
 
@@ -669,7 +670,7 @@
 
                                                     <button type="button" name="product-review-cancel" class="btn btn-secondary">{{ 'general.cancel' | t }}</button>
 
-                                                    <button type="submit" class="btn btn-primary">{{ 'general.submit' | t }}</button>
+                                                    <button type="submit" class="btn btn-section">{{ 'general.submit' | t }}</button>
 
                                                 </div>
 

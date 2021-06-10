@@ -3,9 +3,10 @@
 
 // Dependencies
 @import "../vendor/bootstrap/scss/bootstrap";
+@import "partials/functions";
+@import "partials/mixins";
 @import "partials/utils";
-@import "partials/header";
-@import "partials/footer";
+@import "partials/common";
 @import "partials/section";
 @import "partials/swiper";
 @import "partials/awesome-notifications";

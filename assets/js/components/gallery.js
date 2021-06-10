@@ -84,10 +84,6 @@ export default class Gallery {
 
 					self.init($(this).parentsUntil('.gallery-img').parent().index());
 		        });
-
-			} else {
-
-				console.log('No images to display');
 			}
 
 		}).catch(() => {

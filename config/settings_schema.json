@@ -1,115 +1,578 @@
 {
 	"name": "cora",
 	"theme_name": "Cora",
-	"styles": [
-		{
-			"name": "Test",
-			"settings": [{}]
-		}
-	],
-	"presets": [],
 	"settings": [
 		{
 			"type": "setting-page",
-			"label": "Colors",
-			"title": "Colors",
+			"label": {
+				"en": "Colors",
+				"fi": "Värit"
+			},
+			"title": {
+				"en": "Colors",
+				"fi": "Värit"
+			},
 			"settings": [
 				{
-					"type": "title",
-					"label": "Theme colors",
-					"subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-				},
-				{
-					"id": "some_other_bg_color",
-					"type": "color",
-					"label": "Background color",
-					"default": "#ff00ff"
-				},
-				{
-					"id": "theme_styles",
+					"id": "styles",
 					"type": "style-editor",
-					"label": "Edit styles",
-					"info": "Some info here",
+					"label": {
+						"en": "Styles",
+						"fi": "Tyylit"
+					},
 					"settings": [
+						{
+							"type": "title",
+							"label": {
+								"en": "Common",
+								"fi": "Yleinen"
+							}
+						},
 						{
 							"id": "background_color",
 							"type": "color",
-							"label": "Background color"
+							"label": {
+								"en": "Background",
+								"fi": "Tausta"
+							}
 						},
 						{
 							"id": "text_color",
 							"type": "color",
-							"label": "Text color"
+							"label": {
+								"en": "Text",
+								"fi": "Teksti"
+							}
 						},
 						{
-							"id": "font",
-							"type": "font-picker",
-							"label": "Font picker (font-picker)",
-							"default": "Lato",
-							"families": ["Open Sans", "Lato", "Roboto"]
+							"id": "link_color",
+							"type": "color",
+							"label": {
+								"en": "Link",
+								"fi": "Linkki"
+							}
+						},
+						{
+							"id": "border_color",
+							"type": "color",
+							"label": {
+								"en": "Border",
+								"fi": "Reunus"
+							}
+						},
+						{
+							"id": "indicator_color",
+							"type": "color",
+							"label": {
+								"en": "Indicator",
+								"fi": "Osoitin"
+							}
+						},
+						{
+							"id": "icon_color",
+							"type": "color",
+							"label": {
+								"en": "Icon",
+								"fi": "Kuvake"
+							}
+						},
+						{
+							"id": "heading_color",
+							"type": "color",
+							"label": {
+								"en": "Heading",
+								"fi": "Otsikko"
+							}
+						},
+						{
+							"id": "subheading_color",
+							"type": "color",
+							"label": {
+								"en": "Subheading",
+								"fi": "Alaotsikko"
+							}
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Button",
+								"fi": "Nappi"
+							}
+						},
+						{
+							"id": "button_bg_color",
+							"type": "color",
+							"label": {
+								"en": "Background",
+								"fi": "Tausta"
+							}
+						},
+						{
+							"id": "button_text_color",
+							"type": "color",
+							"label": {
+								"en": "Text",
+								"fi": "Teksti"
+							}
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Form",
+								"fi": "Lomake"
+							}
+						},
+						{
+							"id": "form_bg_color",
+							"type": "color",
+							"label": {
+								"en": "Background",
+								"fi": "Tausta"
+							}
+						},
+						{
+							"id": "form_text_color",
+							"type": "color",
+							"label": {
+								"en": "Text",
+								"fi": "Teksti"
+							}
+						},
+						{
+							"id": "form_border_color",
+							"type": "color",
+							"label": {
+								"en": "Border",
+								"fi": "Reunus"
+							}
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Product",
+								"fi": "Tuote"
+							}
+						},
+						{
+							"id": "product_title_color",
+							"type": "color",
+							"label": {
+								"en": "Title",
+								"fi": "Otsikko"
+							}
+						},
+						{
+							"id": "price_color",
+							"type": "color",
+							"label": {
+								"en": "Price",
+								"fi": "Hinta"
+							}
+						},
+						{
+							"id": "sale_price_color",
+							"type": "color",
+							"label": {
+								"en": "Sale price",
+								"fi": "Alennushinta"
+							}
+						},
+						{
+							"id": "new_badge_bg_color",
+							"type": "color",
+							"label": {
+								"en": "New badge background",
+								"fi": "Uusi -merkin tausta"
+							}
+						},
+						{
+							"id": "new_badge_text_color",
+							"type": "color",
+							"label": {
+								"en": "New badge text",
+								"fi": "Uusi -merkin teksti"
+							}
+						},
+						{
+							"id": "discount_badge_bg_color",
+							"type": "color",
+							"label": {
+								"en": "Discount badge background",
+								"fi": "Alennus -merkin tausta"
+							}
+						},
+						{
+							"id": "discount_badge_text_color",
+							"type": "color",
+							"label": {
+								"en": "Discount badge text",
+								"fi": "Alennus -merkin teksti"
+							}
+						},
+						{
+							"id": "general_badge_bg_color",
+							"type": "color",
+							"label": {
+								"en": "General badge background",
+								"fi": "Yleinen -merkin tausta"
+							}
+						},
+						{
+							"id": "general_badge_text_color",
+							"type": "color",
+							"label": {
+								"en": "General badge text",
+								"fi": "Yleinen -merkin teksti"
+							}
 						}
 					],
 					"presets": [
 						{
-							"id": "light",
-							"name": "Light",
+							"id": "general",
+							"name": {
+								"en": "General",
+								"fi": "Yleinen"
+							},
 							"default": {
 								"background_color": "#ffffff",
-								"text_color": "#000000"
+								"text_color": "#1a1a1a",
+								"link_color": "#1a1a1a",
+								"border_color": "#d0d1d3",
+								"indicator_color": "#ff6900",
+								"icon_color": "#1a1a1a",
+								"heading_color": "#1a1a1a",
+								"subheading_color": "#1a1a1a",
+								"button_bg_color": "#1a1a1a",
+								"button_text_color": "#ffffff",
+								"form_bg_color": "#ffffff",
+								"form_text_color": "#333333",
+								"form_border_color": "#cccccc",
+								"product_title_color": "#1a1a1a",
+								"price_color": "#1a1a1a",
+								"sale_price_color": "#eb0037",
+								"new_badge_bg_color": "#1a1a1a",
+								"new_badge_text_color": "#ffffff",
+								"discount_badge_bg_color": "#eb0037",
+								"discount_badge_text_color": "#ffffff",
+								"general_badge_bg_color": "#1a1a1a",
+								"general_badge_text_color": "#ffffff"
+							}
+						},
+						{
+							"id": "lightest",
+							"name": {
+								"en": "Lightest",
+								"fi": "Vaalein"
+							},
+							"default": {
+								"background_color": "#ffffff",
+								"text_color": "#000000",
+								"link_color": "#000000",
+								"border_color": "#000000",
+								"indicator_color": "#000000",
+								"icon_color": "#000000",
+								"heading_color": "#000000",
+								"subheading_color": "#000000",
+								"button_bg_color": "#000000",
+								"button_text_color": "#ffffff",
+								"form_bg_color": "#ffffff",
+								"form_text_color": "#000000",
+								"form_border_color": "#000000",
+								"product_title_color": "#000000",
+								"price_color": "#000000",
+								"sale_price_color": "#000000",
+								"new_badge_bg_color": "#000000",
+								"new_badge_text_color": "#ffffff",
+								"discount_badge_bg_color": "#000000",
+								"discount_badge_text_color": "#ffffff",
+								"general_badge_bg_color": "#000000",
+								"general_badge_text_color": "#ffffff"
+							}
+						},
+						{
+							"id": "light",
+							"name": {
+								"en": "Light",
+								"fi": "Vaalea"
+							},
+							"default": {
+								"background_color": "#ebebeb",
+								"text_color": "#000000",
+								"link_color": "#000000",
+								"border_color": "#ffffff",
+								"indicator_color": "#000000",
+								"icon_color": "#000000",
+								"heading_color": "#000000",
+								"subheading_color": "#000000",
+								"button_bg_color": "#a8a6a1",
+								"button_text_color": "#ffffff",
+								"form_bg_color": "#ffffff",
+								"form_text_color": "#000000",
+								"form_border_color": "#000000",
+								"product_title_color": "#000000",
+								"price_color": "#000000",
+								"sale_price_color": "#000000",
+								"new_badge_bg_color": "#a8a6a1",
+								"new_badge_text_color": "#ffffff",
+								"discount_badge_bg_color": "#a8a6a1",
+								"discount_badge_text_color": "#ffffff",
+								"general_badge_bg_color": "#a8a6a1",
+								"general_badge_text_color": "#ffffff"
 							}
 						},
 						{
 							"id": "dark",
-							"name": "Dark",
+							"name": {
+								"en": "Dark",
+								"fi": "Tumma"
+							},
 							"default": {
-								"background_color": "#000000",
-								"text_color": "#ffffff"
+								"background_color": "#333333",
+								"text_color": "#999999",
+								"link_color": "#ffffff",
+								"border_color": "#ffffff",
+								"indicator_color": "#ffffff",
+								"icon_color": "#ffffff",
+								"heading_color": "#ffffff",
+								"subheading_color": "#ffffff",
+								"button_bg_color": "#ffffff",
+								"button_text_color": "#333333",
+								"form_bg_color": "#ffffff",
+								"form_text_color": "#333333",
+								"form_border_color": "#ffffff",
+								"product_title_color": "#ffffff",
+								"price_color": "#ffffff",
+								"sale_price_color": "#ffffff",
+								"new_badge_bg_color": "#ffffff",
+								"new_badge_text_color": "#333333",
+								"discount_badge_bg_color": "#ffffff",
+								"discount_badge_text_color": "#333333",
+								"general_badge_bg_color": "#ffffff",
+								"general_badge_text_color": "#333333"
 							}
 						},
 						{
-							"id": "foobar",
-							"name": "Foobar",
+							"id": "darkest",
+							"name": {
+								"en": "Darkest",
+								"fi": "Tummin"
+							},
 							"default": {
 								"background_color": "#000000",
-								"text_color": "#ffffff"
+								"text_color": "#ffffff",
+								"link_color": "#ffffff",
+								"border_color": "#ffffff",
+								"indicator_color": "#ffffff",
+								"icon_color": "#ffffff",
+								"heading_color": "#ffffff",
+								"subheading_color": "#ffffff",
+								"button_bg_color": "#ffffff",
+								"button_text_color": "#000000",
+								"form_bg_color": "#ffffff",
+								"form_text_color": "#000000",
+								"form_border_color": "#ffffff",
+								"product_title_color": "#ffffff",
+								"price_color": "#ffffff",
+								"sale_price_color": "#ffffff",
+								"new_badge_bg_color": "#ffffff",
+								"new_badge_text_color": "#000000",
+								"discount_badge_bg_color": "#ffffff",
+								"discount_badge_text_color": "#000000",
+								"general_badge_bg_color": "#ffffff",
+								"general_badge_text_color": "#000000"
 							}
 						}
 					]
-				},
-				{
-					"type": "spacer"
-				},
-				{
-					"type": "setting-page",
-					"label": "Even more settings",
-					"title": "This is more",
-					"detail": true,
-					"settings": [],
-					"info": "Go pro and do the unimagined"
 				}
 			]
 		},
 		{
 			"type": "setting-page",
-			"label": "Buttons",
-			"title": "Buttons",
-			"settings": []
+			"label": {
+				"en": "Typography",
+				"fi": "Teksti"
+			},
+			"title": {
+				"en": "Typography",
+				"fi": "Teksti"
+			},
+			"settings": [
+				{
+					"id": "textScale",
+					"type": "radio-pill",
+					"label": {
+						"en": "Text size",
+						"fi": "Tekstin koko"
+					},
+					"default": "1",
+					"options": [
+						{
+							"value": "0.875",
+							"label": "S"
+						},
+						{
+							"value": "1",
+							"label": "M"
+						},
+						{
+							"value": "1.125",
+							"label": "L"
+						},
+						{
+							"value": "1.25",
+							"label": "XL"
+						}
+					]
+				},
+				{
+					"id": "bodyTextFont",
+					"type": "font-picker",
+					"label": {
+						"en": "Body text font",
+						"fi": "Leipäktestin fontti"
+					},
+					"default": "Lato",
+					"families": [
+						"Open Sans",
+						"Lato",
+						"Roboto"
+					],
+					"variants": [
+						"Regular",
+						"italic",
+						"300",
+						"700"
+					]
+				},
+				{
+					"id": "headingFont",
+					"type": "font-picker",
+					"label": {
+						"en": "Heading font",
+						"fi": "Otsikon fontti"
+					},
+					"default": "Lato",
+					"families": [
+						"Open Sans",
+						"Lato",
+						"Roboto"
+					],
+					"variants": [
+						"Regular",
+						"italic",
+						"300",
+						"700"
+					]
+				},
+				{
+					"id": "subheadingFont",
+					"type": "font-picker",
+					"label": {
+						"en": "Subheading font",
+						"fi": "Alaotsikon fontti"
+					},
+					"default": "Lato",
+					"families": [
+						"Open Sans",
+						"Lato",
+						"Roboto"
+					],
+					"variants": [
+						"Regular",
+						"italic",
+						"300",
+						"700"
+					]
+				},
+				{
+					"id": "buttonFont",
+					"type": "font-picker",
+					"label": {
+						"en": "Button font",
+						"fi": "Napin fontti"
+					},
+					"default": "Lato",
+					"families": [
+						"Open Sans",
+						"Lato",
+						"Roboto"
+					],
+					"variants": [
+						"Regular",
+						"italic",
+						"300",
+						"700"
+					]
+				}
+			]
 		},
 		{
 			"type": "setting-page",
-			"label": "Typography",
-			"title": "Typography",
-			"settings": []
+			"label": {
+				"en": "Buttons",
+				"fi": "Napit"
+			},
+			"title": {
+				"en": "Buttons",
+				"fi": "Napit"
+			},
+			"settings": [
+				{
+					"id": "buttonBorderRadius",
+					"type": "radio-pill",
+					"label": {
+						"en": "Border radius",
+						"fi": "Reunan pyöristys"
+					},
+					"default": "3px",
+					"options": [
+						{
+							"value": "0px",
+							"label": "OFF"
+						},
+						{
+							"value": "3px",
+							"label": "S"
+						},
+						{
+							"value": "7px",
+							"label": "M"
+						},
+						{
+							"value": "15px",
+							"label": "L"
+						}
+					]
+				}
+			]
 		},
 		{
 			"type": "setting-page",
-			"label": "Sections",
-			"title": "Sections",
+			"label": {
+				"en": "Sections",
+				"fi": "Osiot"
+			},
+			"title": {
+				"en": "Sections",
+				"fi": "Osiot"
+			},
 			"settings": [
 				{
 					"id": "sectionHeight",
 					"type": "radio-pill",
-					"label": "Height",
+					"label": {
+						"en": "Height",
+						"fi": "Korkeus"
+					},
 					"default": "md",
 					"options": [
 						{
@@ -133,7 +596,10 @@
 				{
 					"id": "sectionInnerSpacing",
 					"type": "radio-pill",
-					"label": "Inner spacing",
+					"label": {
+						"en": "Inner spacing",
+						"fi": "Sisäinen tilavuus"
+					},
 					"default": "off",
 					"options": [
 						{
@@ -157,7 +623,10 @@
 				{
 					"id": "sectionContentSpacing",
 					"type": "radio-pill",
-					"label": "Content spacing",
+					"label": {
+						"en": "Content spacing",
+						"fi": "Sisällön tilavuus"
+					},
 					"default": "md",
 					"options": [
 						{
@@ -181,82 +650,77 @@
                 {
                     "id": "sectionBgImgPos",
                     "type": "select",
-                    "label": "Background position",
+                    "label": {
+						"en": "Background position",
+						"fi": "Taustakuvan sijainti"
+					},
                     "default": "center-center",
                     "options": [
                         {
                             "value": "left-top",
-                            "label": "Left Top"
+                            "label": {
+								"en": "Left Top",
+								"fi": "Vasemmalla ylhäällä"
+							}
                         },
                         {
                             "value": "left-center",
-                            "label": "Left Center"
+                            "label": {
+								"en": "Left Center",
+								"fi": "Vasemmalla"
+							}
                         },
                         {
                             "value": "left-bottom",
-                            "label": "Left Bottom"
+                            "label": {
+								"en": "Left Bottom",
+								"fi": "Vasemmalla alhaalla"
+							}
                         },
                         {
                             "value": "right-top",
-                            "label": "Right Top"
+                            "label": {
+								"en": "Right Top",
+								"fi": "Oikealla ylhäällä"
+							}
                         },
                         {
                             "value": "right-center",
-                            "label": "Right Center"
+                            "label": {
+								"en": "Right Center",
+								"fi": "Oikealla"
+							}
                         },
                         {
                             "value": "right-bottom",
-                            "label": "Right Bottom"
+                            "label": {
+								"en": "Right Bottom",
+								"fi": "Oikealla alhaalla"
+							}
                         },
                         {
                             "value": "center-top",
-                            "label": "Center Top"
+                            "label": {
+								"en": "Center Top",
+								"fi": "Keskellä ylhäällä"
+							}
                         },
                         {
                             "value": "center-center",
-                            "label": "Center Center"
+                            "label": {
+								"en": "Center Center",
+								"fi": "Keskellä"
+							}
                         },
                         {
                             "value": "center-bottom",
-                            "label": "Center Bottom"
+                            "label": {
+								"en": "Center Bottom",
+								"fi": "Keskellä alhaalla"
+							}
                         }
                     ]
-                },
-                {
-					"id": "sectionStyles",
-					"type": "style-editor",
-					"label": "Styles",
-					"settings": [
-						{
-							"id": "background_color",
-							"type": "color",
-							"label": "Background color"
-						},
-						{
-							"id": "text_color",
-							"type": "color",
-							"label": "Text color"
-						}
-					],
-					"presets": [
-						{
-							"id": "light",
-							"name": "Light",
-							"default": {
-								"background_color": "#ffffff",
-								"text_color": "#000000"
-							}
-						},
-						{
-							"id": "dark",
-							"name": "Dark",
-							"default": {
-								"background_color": "#000000",
-								"text_color": "#ffffff"
-							}
-						}
-					]
-				}
+                }
 			]
 		},
 		{
@@ -270,6 +734,24 @@
 				"fi": "Yleinen"
 			},
 			"settings": [
+				{
+                    "id": "taxFreePrices",
+                    "type": "checkbox",
+                    "label": {
+						"en": "Tax free prices",
+						"fi": "Verottomat hinnat"
+					},
+                    "default": false
+                },
+                {
+                    "id": "addToCartNotification",
+                    "type": "checkbox",
+                    "label": {
+						"en": "Add to cart notification",
+						"fi": "Lisää ostoskoriin -ilmoitus"
+					},
+                    "default": false
+                },
 				{
 					"type": "setting-page",
 					"label": {
@@ -302,6 +784,51 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"type": "setting-page",
+			"label": {
+				"en": "Social media",
+				"fi": "Sosiaalinen media"
+			},
+			"title": {
+				"en": "Social media",
+				"fi": "Sosiaalinen media"
+			},
+			"settings": [
+				{
+                    "id": "facebookPageUrl",
+                    "type": "text",
+                    "label": {
+						"en": "Facebook page URL",
+						"fi": "Facebook-sivun URL-osoite"
+					}
+                },
+                {
+                    "id": "instagramPageUrl",
+                    "type": "text",
+                    "label": {
+						"en": "Instagram page URL",
+						"fi": "Instagram-sivun URL-osoite"
+					}
+                },
+                {
+                    "id": "twitterPageUrl",
+                    "type": "text",
+                    "label": {
+						"en": "Twitter page URL",
+						"fi": "Twitter-sivun URL-osoite"
+					}
+                },
+                {
+                    "id": "youtubePageUrl",
+                    "type": "text",
+                    "label": {
+						"en": "Youtube page URL",
+						"fi": "Youtube-sivun URL-osoite"
+					}
+                }
 			]
 		}
 	]

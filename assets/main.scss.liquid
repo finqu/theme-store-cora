@@ -1,83 +1,3 @@
-{%- if settings.font_base -%}
-
-	{%- for fontAsset in settings.font_base.assets -%}
-
-		{%- case fontAsset.weight -%}
-			{%- when '300' -%}
-				{%- assign fontWeightLight = fontAsset.weight -%}
-			{%- when '400' -%}
-				{%- assign fontWeightNormal = fontAsset.weight -%}
-			{%- when '500' -%}
-				{%- assign fontWeightBold = fontAsset.weight -%}
-		{%- endcase -%}
-
-		@font-face {
-			font-family: '{{ settings.font_base.family }}';
-			font-style: {{ fontAsset.style }};
-			font-weight: {{ fontAsset.weight }};
-			font-display: swap;
-			src: url({{ fontAsset.url }}) format("{{ fontAsset.format }}");
-		}
-
-	{%- endfor -%}
-
-	$font-family-base: '{{ settings.font_base.family }}';
-
-{%- endif -%}
-
-$font-weight-light:           {{ fontWeightLight | _default: '300' }};
-$font-weight-normal:          {{ fontWeightNormal | _default: '400' }};
-$font-weight-bold:            {{ fontWeightBold | _default: '500' }};
-
-// Common
-$grid-gutter-width: 40px;
-
-// Carousel
-$carousel-heights: (
-	sm: 400px,
-	md: 600px,
-	lg: 800px,
-	xl: 945px
-);
-
-// Section
-$section-styles: (
-	{%- for style in settings.sectionStyles -%}
-
-		{%- assign name = style[0] -%}
-		{%- assign obj = style[1] | json -%}
-
-		{{- name -}}: (
-			background-color: {{- obj.background_color -}},
-			color: {{- obj.text_color -}}
-		){%- unless forloop.last == true -%},{%- endunless -%}
-
-	{%- endfor -%}
-);
-
-$background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom !default;
-
-$section-spacers-content: (
-	sm: 10px,
-	md: 20px,
-	lg: 25px,
-	xl: 50px
-) !default;
-
-$section-spacers-height: (
-	sm: 35px,
-	md: 50px,
-	lg: 80px,
-	xl: 120px
-) !default;
-
-$section-spacers-inner: (
-	sm: 15px,
-	md: 30px,
-	lg: 60px,
-	xl: 90px
-) !default;
-
 // Social
 $social-fb-text: #ffffff;
 $social-fb-bg: #007bb7;
@@ -107,5 +27,180 @@ $social-reddit-text: #ffffff;
 $social-reddit-bg: #ff4500;
 $social-email-text: #ffffff;
 $social-email-bg: #707070;
+
+
+// Text
+$font-size-base: 1rem * {{- settings.textScale -}};
+$font-family-base: {{- settings.bodyTextFont -}};
+$headings-font-family: {{- settings.headingFont -}};
+$subheadings-font-family: {{- settings.subheadingFont -}};
+$btn-font-family: {{- settings.buttonFont -}};
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+
+// Buttons
+$btn-border-radius: {{- settings.buttonBorderRadius -}};
+
+
+// Common
+$grid-gutter-width: 40px;
+$background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom !default;
+
+
+// Carousel
+$carousel-heights: (
+	sm: 400px,
+	md: 600px,
+	lg: 800px,
+	xl: 945px
+);
+
+
+// Section
+$section-spacers-content: (
+	sm: 10px,
+	md: 20px,
+	lg: 25px,
+	xl: 50px
+) !default;
+
+$section-spacers-height: (
+	sm: 35px,
+	md: 50px,
+	lg: 80px,
+	xl: 120px
+) !default;
+
+$section-spacers-inner: (
+	sm: 15px,
+	md: 30px,
+	lg: 60px,
+	xl: 90px
+) !default;
+
+$section-styles: (
+	general: (
+		"background_color": {{ settings.styles.general.background_color }},
+		"text_color": {{ settings.styles.general.text_color }},
+		"link_color": {{ settings.styles.general.link_color }},
+		"border_color": {{ settings.styles.general.border_color }},
+		"indicator_color": {{ settings.styles.general.indicator_color }},
+		"icon_color": {{ settings.styles.general.icon_color }},
+		"heading_color": {{ settings.styles.general.heading_color }},
+		"subheading_color": {{ settings.styles.general.subheading_color }},
+		"button_bg_color": {{ settings.styles.general.button_bg_color }},
+		"button_text_color": {{ settings.styles.general.button_text_color }},
+		"form_bg_color": {{ settings.styles.general.form_bg_color }},
+		"form_text_color": {{ settings.styles.general.form_text_color }},
+		"form_border_color": {{ settings.styles.general.form_border_color }},
+		"product_title_color": {{ settings.styles.general.product_title_color }},
+		"price_color": {{ settings.styles.general.price_color }},
+		"sale_price_color": {{ settings.styles.general.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.general.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.general.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.general.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.general.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.general.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.general.general_badge_text_color }}
+	),
+	lightest: (
+		"background_color": {{ settings.styles.lightest.background_color }},
+		"text_color": {{ settings.styles.lightest.text_color }},
+		"link_color": {{ settings.styles.lightest.link_color }},
+		"border_color": {{ settings.styles.lightest.border_color }},
+		"indicator_color": {{ settings.styles.lightest.indicator_color }},
+		"icon_color": {{ settings.styles.lightest.icon_color }},
+		"heading_color": {{ settings.styles.lightest.heading_color }},
+		"subheading_color": {{ settings.styles.lightest.subheading_color }},
+		"button_bg_color": {{ settings.styles.lightest.button_bg_color }},
+		"button_text_color": {{ settings.styles.lightest.button_text_color }},
+		"form_bg_color": {{ settings.styles.lightest.form_bg_color }},
+		"form_text_color": {{ settings.styles.lightest.form_text_color }},
+		"form_border_color": {{ settings.styles.lightest.form_border_color }},
+		"product_title_color": {{ settings.styles.lightest.product_title_color }},
+		"price_color": {{ settings.styles.lightest.price_color }},
+		"sale_price_color": {{ settings.styles.lightest.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.lightest.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.lightest.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.lightest.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.lightest.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.lightest.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.lightest.general_badge_text_color }}
+	),
+	light: (
+		"background_color": {{ settings.styles.light.background_color }},
+		"text_color": {{ settings.styles.light.text_color }},
+		"link_color": {{ settings.styles.light.link_color }},
+		"border_color": {{ settings.styles.light.border_color }},
+		"indicator_color": {{ settings.styles.light.indicator_color }},
+		"icon_color": {{ settings.styles.light.icon_color }},
+		"heading_color": {{ settings.styles.light.heading_color }},
+		"subheading_color": {{ settings.styles.light.subheading_color }},
+		"button_bg_color": {{ settings.styles.light.button_bg_color }},
+		"button_text_color": {{ settings.styles.light.button_text_color }},
+		"form_bg_color": {{ settings.styles.light.form_bg_color }},
+		"form_text_color": {{ settings.styles.light.form_text_color }},
+		"form_border_color": {{ settings.styles.light.form_border_color }},
+		"product_title_color": {{ settings.styles.light.product_title_color }},
+		"price_color": {{ settings.styles.light.price_color }},
+		"sale_price_color": {{ settings.styles.light.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.light.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.light.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.light.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.light.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.light.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.light.general_badge_text_color }}
+	),
+	dark: (
+		"background_color": {{ settings.styles.dark.background_color }},
+		"text_color": {{ settings.styles.dark.text_color }},
+		"link_color": {{ settings.styles.dark.link_color }},
+		"border_color": {{ settings.styles.dark.border_color }},
+		"indicator_color": {{ settings.styles.dark.indicator_color }},
+		"icon_color": {{ settings.styles.dark.icon_color }},
+		"heading_color": {{ settings.styles.dark.heading_color }},
+		"subheading_color": {{ settings.styles.dark.subheading_color }},
+		"button_bg_color": {{ settings.styles.dark.button_bg_color }},
+		"button_text_color": {{ settings.styles.dark.button_text_color }},
+		"form_bg_color": {{ settings.styles.dark.form_bg_color }},
+		"form_text_color": {{ settings.styles.dark.form_text_color }},
+		"form_border_color": {{ settings.styles.dark.form_border_color }},
+		"product_title_color": {{ settings.styles.dark.product_title_color }},
+		"price_color": {{ settings.styles.dark.price_color }},
+		"sale_price_color": {{ settings.styles.dark.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.dark.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.dark.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.dark.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.dark.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.dark.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.dark.general_badge_text_color }}
+	),
+	darkest: (
+		"background_color": {{ settings.styles.darkest.background_color }},
+		"text_color": {{ settings.styles.darkest.text_color }},
+		"link_color": {{ settings.styles.darkest.link_color }},
+		"border_color": {{ settings.styles.darkest.border_color }},
+		"indicator_color": {{ settings.styles.darkest.indicator_color }},
+		"icon_color": {{ settings.styles.darkest.icon_color }},
+		"heading_color": {{ settings.styles.darkest.heading_color }},
+		"subheading_color": {{ settings.styles.darkest.subheading_color }},
+		"button_bg_color": {{ settings.styles.darkest.button_bg_color }},
+		"button_text_color": {{ settings.styles.darkest.button_text_color }},
+		"form_bg_color": {{ settings.styles.darkest.form_bg_color }},
+		"form_text_color": {{ settings.styles.darkest.form_text_color }},
+		"form_border_color": {{ settings.styles.darkest.form_border_color }},
+		"product_title_color": {{ settings.styles.darkest.product_title_color }},
+		"price_color": {{ settings.styles.darkest.price_color }},
+		"sale_price_color": {{ settings.styles.darkest.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.darkest.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.darkest.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.darkest.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.darkest.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.darkest.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.darkest.general_badge_text_color }}
+	)
+);
 
 @import "scss/theme";

@@ -10,9 +10,9 @@
 
 <div class="product-card-grid-item">
 
-	<div class="item-media-container">
+	<div class="product-media-container">
 
-		<div class="item-badges">
+		<div class="product-badges">
 
 			{% if product.has_discount and product.out_of_stock == false %}
 
@@ -46,7 +46,7 @@
 
 		<a href="{{ product | page_url }}">
 
-			<div class="item-media{% unless product.image %} placeholder-image{% endunless%}">
+			<div class="product-media{% unless product.image %} placeholder-image{% endunless%}">
 
 	  			{% if product.image %}
 
@@ -73,9 +73,9 @@
 
 	</div>
 
-	<div class="item-caption">
+	<div class="product-caption">
 
-		<div class="item-title">
+		<div class="product-title">
 
 			<a href="{{ product | page_url }}">
 
@@ -85,7 +85,7 @@
 
 		</div>
 
-		<div class="item-price">
+		<div class="product-price">
 
 			<span class="price-text">
 				{{ product.price | in_currency }}

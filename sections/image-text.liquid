@@ -26,24 +26,13 @@
 
     <div data-finqu-inline-editor="contentRichtextHtml">{{ section.settings.contentRichtextHtml }}</div>
 
-    {%- if section.settings.contentBtnLabel %}
+    {% if section.settings.contentBtnLabel %}
 
-        {% case section.settings.contentBtnType %}
-          {% when 'page' %}
-             {%- assign href = section.settings.contentBtnPage | link -%}
-          {% when 'product' %}
-            {%- assign href =  section.settings.contentBtnProduct | link -%}
-          {% when 'article' %}
-            {%- assign href =  section.settings.contentBtnArticle | link -%}
-          {% when 'link' %}
-            {%- assign href =  section.settings.contentBtnLink -%}
-        {% endcase %}
-
-        <a href="{{ href }}" class="btn btn-primary mt-3">
+        <a href="{{- section.settings.contentBtnResource.url -}}" class="btn btn-section mt-3">
             {{- section.settings.contentBtnLabel -}}
         </a>
 
-    {%- endif -%}
+    {% endif %}
 
 {%- endcapture -%}
 
@@ -231,65 +220,9 @@
                         "label": "Button label"
                     },
                     {
-                        "id": "contentBtnType",
-                        "type": "radio-pill",
-                        "label": "Button type",
-                        "default": "page",
-                        "conditions": ["contentBtnLabel:truthy eq true"],
-                        "options": [
-                            {
-                                "value": "page",
-                                "label": "Page"
-                            },
-                            {
-                                "value": "product",
-                                "label": "Product"
-                            },
-                            {
-                                "value": "article",
-                                "label": "Article"
-                            },
-                            {
-                                "value": "link",
-                                "label": "Link"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentBtnPage",
-                        "type": "page",
-                        "label": "Button resource",
-                        "conditions": [
-                            "contentBtnLabel:truthy eq true",
-                            "contentBtnType eq page"
-                        ]
-                    },
-                    {
-                        "id": "contentBtnProduct",
-                        "type": "product",
-                        "label": "Button resource",
-                        "conditions": [
-                            "contentBtnLabel:truthy eq true",
-                            "contentBtnType eq product"
-                        ]
-                    },
-                    {
-                        "id": "contentBtnArticle",
-                        "type": "article",
-                        "label": "Button resource",
-                        "conditions": [
-                            "contentBtnLabel:truthy eq true",
-                            "contentBtnType eq article"
-                        ]
-                    },
-                    {
-                        "id": "contentBtnLink",
-                        "type": "text",
-                        "label": "Button resource",
-                        "conditions": [
-                            "contentBtnLabel:truthy eq true",
-                            "contentBtnType eq link"
-                        ]
+                        "id": "contentBtnResource",
+                        "type": "url",
+                        "label": "Button link"
                     },
                     {
                         "id": "contentImgSrc",
@@ -525,9 +458,9 @@
                             "settings": [
                                 {
                                     "id": "sectionStyle",
-                                    "styles_id": "sectionStyles",
+                                    "styles_id": "styles",
                                     "type": "style-picker",
-                                    "default": "light"
+                                    "default": "general"
                                 }
                             ]
                         }

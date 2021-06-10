@@ -161,8 +161,6 @@ export default {
     		// If variant is visible show it
             $('.product-variant[data-is-usable]').filter(':visible').each(function() {
 
-            	console.log('test');
-
                 $(this).removeAttr('disabled');
 
                 const optionId = $(this).val();
