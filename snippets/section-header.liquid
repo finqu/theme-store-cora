@@ -7,99 +7,134 @@
 	- sectionSubtitle: {String}
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
+	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact'
 
 	Usage:
 	Render this snippet inside of element with a "section" class.
 
-	{% render 'section-header', sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs %}
+	{% render 'section-header', sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContentContainer: 'fixed' %}
 {% endcomment %}
 
 {% assign sectionTitleTag = sectionTitleTag | default: 'span'  %}
 
-<div class="section-header">
+{% capture content %}
 
-	<div class="container">
+    <div class="row">
 
-		<div class="row">
+		<div class="col">
 
-			<div class="col">
+			{% if sectionBreadcrumbs %}
 
-				{% if sectionBreadcrumbs %}
+				<div class="breadcrumbs-container">
 
-					<div class="breadcrumbs-container">
+					<nav>
 
-						<nav>
+						<ul class="breadcrumbs">
 
-							<ul class="breadcrumbs">
+							{% for breadcrumb in sectionBreadcrumbs %}
 
-								{% for breadcrumb in sectionBreadcrumbs %}
+								<li class="item">
 
-									<li class="item">
+						            {%- if forloop.last == true -%}
 
-							            {%- if forloop.last == true -%}
+						            	<a href="{{ breadcrumb | link }}" class="item-link">
+						            		{{ breadcrumb.name }}
+						            	</a>
 
-							            	<span class="item-text">{{ breadcrumb.name }}</span>
+						            {%- else -%}
 
-							            {%- else -%}
+						                <a href="{{ breadcrumb | link }}" class="item-link">
+						                	{{ breadcrumb.name }}
+						                </a>
 
-							                <a href="{{ breadcrumb | link }}" class="item-link">{{ breadcrumb.name }}</a>
+						                {%- render 'icon', icon: 'arrow-right-1-Nc3Zm6', class: 'item-seperator' -%}
 
-							                {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0', class: 'item-seperator' -%}
+						            {%- endif -%}
 
-							            {%- endif -%}
+						        </li>
 
-							        </li>
+					        {% endfor %}
 
-						        {% endfor %}
+						</ul>
 
-							</ul>
+					</nav>
 
-						</nav>
+				</div>
 
+			{% endif %}
+
+			{% if sectionTitle %}
+
+				<div class="title-container">
+
+					<{{ sectionTitleTag }} class="title">
+						{{- sectionTitle -}}
+					</{{ sectionTitleTag }}>
+
+				</div>
+
+			{% endif %}
+
+			{% if sectionSubtitle %}
+
+				<div class="subtitle-container">
+
+					<span class="subtitle">
+						{{- sectionSubtitle -}}
+					</span>
+
+				</div>
+
+			{% endif %}
+
+			{% if sectionDescription %}
+
+				<div class="description-container">
+
+					<div class="description">
+						{{- sectionDescription -}}
 					</div>
 
-				{% endif %}
+				</div>
 
-				{% if sectionTitle %}
-
-					<div class="title-container">
-
-						<{{ sectionTitleTag }} class="title">
-							{{- sectionTitle -}}
-						</{{ sectionTitleTag }}>
-
-					</div>
-
-				{% endif %}
-
-				{% if sectionSubtitle %}
-
-					<div class="subtitle-container">
-
-						<span class="subtitle">
-							{{- sectionSubtitle -}}
-						</span>
-
-					</div>
-
-				{% endif %}
-
-				{% if sectionDescription %}
-
-					<div class="description-container">
-
-						<p class="description mb-0">
-							{{- sectionDescription -}}
-						</p>
-
-					</div>
-
-				{% endif %}
-
-			</div>
+			{% endif %}
 
 		</div>
 
 	</div>
+
+{% endcapture %}
+
+<div class="section-header">
+
+	{%- if sectionContentContainer == 'fixed' -%}
+
+        <div class="container">
+
+            {{- content -}}
+
+        </div>
+
+    {%- elsif sectionContentContainer == 'fluid' -%}
+
+        <div class="container-fluid">
+
+            {{- content -}}
+
+        </div>
+
+    {%- elsif sectionContentContainer == 'compact' -%}
+
+        <div class="container-compact">
+
+            {{- content -}}
+
+        </div>
+
+    {%- elsif sectionContentContainer == 'none' -%}
+
+        {{- content -}}
+
+    {%- endif -%}
 
 </div>

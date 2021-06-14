@@ -51,11 +51,11 @@ export default class Gallery {
 			            </button>
 
 			            <button type="button" class="btn" name="gallery-prev">
-			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleLeft}" class="svg-inline" alt="">
+			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleLeftLight}" class="svg-inline" alt="">
 			            </button>
 
 			            <button type="button" class="btn" name="gallery-next">
-			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleRight}" class="svg-inline" alt="">
+			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleRightLight}" class="svg-inline" alt="">
 			            </button>
 
 			        </div>

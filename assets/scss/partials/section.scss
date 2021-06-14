@@ -4,14 +4,65 @@
 .section {
 
 	.section-inner {
+		display: flex;
+	    flex-direction: column;
+	    justify-content: center;
 		position: relative;
 
 		@each $name, $map in $section-styles {
 			&.section-style-#{str-replace(#{$name}, ' ', '-')} {
 				color: map-get($map, text_color);
 
+				&.section-overlay {
+
+					.section-header {
+
+						& + .section-content {
+
+							.container,
+							.container-fluid,
+							.container-compact {
+								padding-top: 0;
+							}
+						}
+					}
+
+					.container,
+					.container-fluid,
+					.container-compact {
+						background-color: map-get($map, background_color);
+						padding-top: spacer(6);
+						padding-bottom: spacer(6);
+						@include media-breakpoint-up(md) {
+							padding-left: spacer(6);
+							padding-right: spacer(6);
+						}
+					}
+
+					.section-bg {
+						background-color: map-get($map, overlay_background_color);
+					}
+				}
+
 				.section-bg {
 					background-color: map-get($map, background_color);
+				}
+
+				.section-header {
+
+					.title-container {
+
+						.title {
+							color: map-get($map, heading_color);
+						}
+					}
+
+					.subtitle-container {
+
+						.subtitle {
+							color: map-get($map, subheading_color);
+						}
+					}
 				}
 
 				// Typography
@@ -29,8 +80,11 @@
 					color: map-get($map, icon_color);
 				}
 
-				.text-subheading,
-				.subheading {
+				.text-title {
+					color: map-get($map, heading_color);
+				}
+
+				.text-subtitle {
 					color: map-get($map, subheading_color);
 				}
 
@@ -46,7 +100,58 @@
 					color: map-get($map, sale_price_color);
 				}
 
+				.text-underline-indicator {
+					transition: border .15s ease-in-out;
+					border-bottom: 2px solid transparent;
+					padding-bottom: 2px;
+
+					@include hover() {
+						border-bottom-color: map-get($map, indicator_color);
+					}
+				}
+
 				// Tables
+				.table {
+					color: map-get($map, table_text_color);
+					background-color: map-get($map, table_bg_color);
+
+					th,
+					td {
+						border-top: $table-border-width solid map-get($map, table_border_color);
+					}
+
+					thead th {
+						border-bottom: $table-border-width solid map-get($map, table_border_color);
+					}
+
+					tbody + tbody {
+						border-top: $table-border-width solid map-get($map, table_border_color);
+					}
+				}
+
+				.table-bordered {
+					border: $table-border-width solid map-get($map, table_border_color);
+
+					th,
+					td {
+						border: $table-border-width solid map-get($map, table_border_color);
+					}
+				}
+
+				.table-striped {
+					tbody tr:nth-of-type(#{$table-striped-order}) {
+						background-color: color-yiq(map-get($map, table_bg_color), darken(map-get($map, table_bg_color), 4%), lighten(map-get($map, table_bg_color), 4%));
+					}
+				}
+
+				.table-hover {
+					tbody tr {
+						@include hover() {
+							color: map-get($map, table_text_color);
+							background-color: color-yiq(map-get($map, table_bg_color), darken(map-get($map, table_bg_color), 4%), lighten(map-get($map, table_bg_color), 4%));
+						}
+					}
+				}
 
 				// Product
 				.product-badges {
@@ -74,7 +179,7 @@
 					border: $input-border-width solid map-get($map, form_border_color);
 
 					@include border-radius($input-border-radius, 0);
-					@include form-control-focus($ignore-warning: true);
+					@include section-form-control-focus(map-get($map, form_text_color), map-get($map, form_bg_color), map-get($map, form_border_color), none, 0px);
 
 					&::placeholder {
 						color: lighten(map-get($map, form_text_color), 15%);
@@ -139,10 +244,14 @@
 				.btn-icon {
 					color: map-get($map, icon_color);
 
+					&:hover {
+				        color: map-get($map, indicator_color);
+				    }
+
 					&.disabled,
 				    &[disabled] {
 				        &:hover {
-				            color: map-get($map, indicator_color);
+				            color: map-get($map, icon_color);
 				        }
 				    }
 				}
@@ -166,13 +275,110 @@
 		}
 	}
 
+	.section-header {
+		display: flex;
+
+		.container,
+		.container-fluid,
+		.container-compact {
+			padding-top: spacer(4);
+			padding-bottom: spacer(4);
+		}
+
+		.breadcrumbs-container {
+			display: flex;
+
+			& + .title-container {
+				padding-top: spacer(3);
+			}
+
+			& + .subtitle-container {
+				padding-top: spacer(1);
+
+				& + .description-container {
+					padding-top: spacer(6);
+				}
+			}
+
+			& + .description-container {
+				padding-top: spacer(6);
+			}
+
+			.breadcrumbs {
+				display: flex;
+				margin: 0;
+				padding: 0;
+				align-items: center;
+				list-style: none;
+
+				.item {
+					display: flex;
+					align-items: center;
+					font-size: 1rem;
+					font-weight: $font-weight-bold;
+					@include media-breakpoint-down(md) {
+						display: none;
+
+						&:nth-last-of-type(-n+2) {
+							display: flex;
+						}
+					}
+
+					.item-seperator {
+						margin-left: spacer(3);
+						margin-right: spacer(3);
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+
+		.title-container {
+
+			& + .subtitle-container {
+				padding-top: spacer(1);
+
+				& + .description-container {
+					padding-top: spacer(6);
+				}
+			}
+
+			& + .description-container {
+				padding-top: spacer(6);
+			}
+
+			.title {
+				font-size: $h1-font-size * 1.15;
+				font-weight: $font-weight-bold;
+				line-height: $headings-line-height;
+			}
+		}
+
+		.subtitle-container {
+
+			.subtitle {
+				font-size: $h3-font-size * 1.15;
+				line-height: $headings-line-height;
+			}
+		}
+
+		.description-container {
+
+			.description {
+
+			}
+		}
+	}
+
 	.section-content {
+		display: flex;
 		position: relative;
 
 		.container,
-		.container-fluid {
-			padding-top: $grid-gutter-width / 2;
-			padding-bottom: $grid-gutter-width / 2;
+		.container-fluid,
+		.container-compact {
+			padding-top: spacer(4);
+			padding-bottom: spacer(4);
 		}
 	}
 
@@ -216,6 +422,10 @@
 			.section-height-#{$key} {
 				padding-top: $val;
 				padding-bottom: $val;
+
+				.section-header {
+					margin-top: 0;
+				}
 			}
 		}
 	}

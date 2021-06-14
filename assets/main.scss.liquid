@@ -1,88 +1,16 @@
-// Social
-$social-fb-text: #ffffff;
-$social-fb-bg: #007bb7;
-$social-flickr-text: #ffffff;
-$social-flickr-bg: #ff0084;
-$social-google-plus-text: #ffffff;
-$social-google-plus-bg: #dd4b39;
-$social-youtube-text: #ffffff;
-$social-youtube-bg: #c4302b;
-$social-pinterest-text: #ffffff;
-$social-pinterest-bg: #c8232c;
-$social-instagram-text: #ffffff;
-$social-instagram-bg: #3f729b;
-$social-linkedin-text: #ffffff;
-$social-linkedin-bg: #007bb6;
-$social-tumblr-text: #ffffff;
-$social-tumblr-bg: #2c4762;
-$social-twitter-text: #ffffff;
-$social-twitter-bg: #55acee;
-$social-vimeo-text: #ffffff;
-$social-vimeo-bg: #1ab7ea;
-$social-soundcloud-text: #ffffff;
-$social-soundcloud-bg: #ff8800;
-$social-whatsapp-text: #ffffff;
-$social-whatsapp-bg: #3cbc4a;
-$social-reddit-text: #ffffff;
-$social-reddit-bg: #ff4500;
-$social-email-text: #ffffff;
-$social-email-bg: #707070;
-
-
-// Text
 $font-size-base: 1rem * {{- settings.textScale -}};
 $font-family-base: {{- settings.bodyTextFont -}};
+
 $headings-font-family: {{- settings.headingFont -}};
 $subheadings-font-family: {{- settings.subheadingFont -}};
+
 $btn-font-family: {{- settings.buttonFont -}};
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-bold: 700;
-
-
-// Buttons
 $btn-border-radius: {{- settings.buttonBorderRadius -}};
-
-
-// Common
-$grid-gutter-width: 40px;
-$background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom !default;
-
-
-// Carousel
-$carousel-heights: (
-	sm: 400px,
-	md: 600px,
-	lg: 800px,
-	xl: 945px
-);
-
-
-// Section
-$section-spacers-content: (
-	sm: 10px,
-	md: 20px,
-	lg: 25px,
-	xl: 50px
-) !default;
-
-$section-spacers-height: (
-	sm: 35px,
-	md: 50px,
-	lg: 80px,
-	xl: 120px
-) !default;
-
-$section-spacers-inner: (
-	sm: 15px,
-	md: 30px,
-	lg: 60px,
-	xl: 90px
-) !default;
 
 $section-styles: (
 	general: (
 		"background_color": {{ settings.styles.general.background_color }},
+		"overlay_background_color": {{ settings.styles.general.overlay_background_color }},
 		"text_color": {{ settings.styles.general.text_color }},
 		"link_color": {{ settings.styles.general.link_color }},
 		"border_color": {{ settings.styles.general.border_color }},
@@ -92,6 +20,9 @@ $section-styles: (
 		"subheading_color": {{ settings.styles.general.subheading_color }},
 		"button_bg_color": {{ settings.styles.general.button_bg_color }},
 		"button_text_color": {{ settings.styles.general.button_text_color }},
+		"table_bg_color": {{ settings.styles.general.table_bg_color }},
+		"table_text_color": {{ settings.styles.general.table_text_color }},
+		"table_border_color": {{ settings.styles.general.table_border_color }},
 		"form_bg_color": {{ settings.styles.general.form_bg_color }},
 		"form_text_color": {{ settings.styles.general.form_text_color }},
 		"form_border_color": {{ settings.styles.general.form_border_color }},
@@ -107,6 +38,7 @@ $section-styles: (
 	),
 	lightest: (
 		"background_color": {{ settings.styles.lightest.background_color }},
+		"overlay_background_color": {{ settings.styles.lightest.overlay_background_color }},
 		"text_color": {{ settings.styles.lightest.text_color }},
 		"link_color": {{ settings.styles.lightest.link_color }},
 		"border_color": {{ settings.styles.lightest.border_color }},
@@ -116,6 +48,9 @@ $section-styles: (
 		"subheading_color": {{ settings.styles.lightest.subheading_color }},
 		"button_bg_color": {{ settings.styles.lightest.button_bg_color }},
 		"button_text_color": {{ settings.styles.lightest.button_text_color }},
+		"table_bg_color": {{ settings.styles.lightest.table_bg_color }},
+		"table_text_color": {{ settings.styles.lightest.table_text_color }},
+		"table_border_color": {{ settings.styles.lightest.table_border_color }},
 		"form_bg_color": {{ settings.styles.lightest.form_bg_color }},
 		"form_text_color": {{ settings.styles.lightest.form_text_color }},
 		"form_border_color": {{ settings.styles.lightest.form_border_color }},
@@ -131,6 +66,7 @@ $section-styles: (
 	),
 	light: (
 		"background_color": {{ settings.styles.light.background_color }},
+		"overlay_background_color": {{ settings.styles.light.overlay_background_color }},
 		"text_color": {{ settings.styles.light.text_color }},
 		"link_color": {{ settings.styles.light.link_color }},
 		"border_color": {{ settings.styles.light.border_color }},
@@ -140,6 +76,9 @@ $section-styles: (
 		"subheading_color": {{ settings.styles.light.subheading_color }},
 		"button_bg_color": {{ settings.styles.light.button_bg_color }},
 		"button_text_color": {{ settings.styles.light.button_text_color }},
+		"table_bg_color": {{ settings.styles.light.table_bg_color }},
+		"table_text_color": {{ settings.styles.light.table_text_color }},
+		"table_border_color": {{ settings.styles.light.table_border_color }},
 		"form_bg_color": {{ settings.styles.light.form_bg_color }},
 		"form_text_color": {{ settings.styles.light.form_text_color }},
 		"form_border_color": {{ settings.styles.light.form_border_color }},
@@ -155,6 +94,7 @@ $section-styles: (
 	),
 	dark: (
 		"background_color": {{ settings.styles.dark.background_color }},
+		"overlay_background_color": {{ settings.styles.dark.overlay_background_color }},
 		"text_color": {{ settings.styles.dark.text_color }},
 		"link_color": {{ settings.styles.dark.link_color }},
 		"border_color": {{ settings.styles.dark.border_color }},
@@ -164,6 +104,9 @@ $section-styles: (
 		"subheading_color": {{ settings.styles.dark.subheading_color }},
 		"button_bg_color": {{ settings.styles.dark.button_bg_color }},
 		"button_text_color": {{ settings.styles.dark.button_text_color }},
+		"table_bg_color": {{ settings.styles.dark.table_bg_color }},
+		"table_text_color": {{ settings.styles.dark.table_text_color }},
+		"table_border_color": {{ settings.styles.dark.table_border_color }},
 		"form_bg_color": {{ settings.styles.dark.form_bg_color }},
 		"form_text_color": {{ settings.styles.dark.form_text_color }},
 		"form_border_color": {{ settings.styles.dark.form_border_color }},
@@ -179,6 +122,7 @@ $section-styles: (
 	),
 	darkest: (
 		"background_color": {{ settings.styles.darkest.background_color }},
+		"overlay_background_color": {{ settings.styles.darkest.overlay_background_color }},
 		"text_color": {{ settings.styles.darkest.text_color }},
 		"link_color": {{ settings.styles.darkest.link_color }},
 		"border_color": {{ settings.styles.darkest.border_color }},
@@ -188,6 +132,9 @@ $section-styles: (
 		"subheading_color": {{ settings.styles.darkest.subheading_color }},
 		"button_bg_color": {{ settings.styles.darkest.button_bg_color }},
 		"button_text_color": {{ settings.styles.darkest.button_text_color }},
+		"table_bg_color": {{ settings.styles.darkest.table_bg_color }},
+		"table_text_color": {{ settings.styles.darkest.table_text_color }},
+		"table_border_color": {{ settings.styles.darkest.table_border_color }},
 		"form_bg_color": {{ settings.styles.darkest.form_bg_color }},
 		"form_text_color": {{ settings.styles.darkest.form_text_color }},
 		"form_border_color": {{ settings.styles.darkest.form_border_color }},
@@ -200,6 +147,62 @@ $section-styles: (
 		"discount_badge_text_color": {{ settings.styles.darkest.discount_badge_text_color }},
 		"general_badge_bg_color": {{ settings.styles.darkest.general_badge_bg_color }},
 		"general_badge_text_color": {{ settings.styles.darkest.general_badge_text_color }}
+	),
+	custom1: (
+		"background_color": {{ settings.styles.custom1.background_color }},
+		"overlay_background_color": {{ settings.styles.custom1.overlay_background_color }},
+		"text_color": {{ settings.styles.custom1.text_color }},
+		"link_color": {{ settings.styles.custom1.link_color }},
+		"border_color": {{ settings.styles.custom1.border_color }},
+		"indicator_color": {{ settings.styles.custom1.indicator_color }},
+		"icon_color": {{ settings.styles.custom1.icon_color }},
+		"heading_color": {{ settings.styles.custom1.heading_color }},
+		"subheading_color": {{ settings.styles.custom1.subheading_color }},
+		"button_bg_color": {{ settings.styles.custom1.button_bg_color }},
+		"button_text_color": {{ settings.styles.custom1.button_text_color }},
+		"table_bg_color": {{ settings.styles.custom1.table_bg_color }},
+		"table_text_color": {{ settings.styles.custom1.table_text_color }},
+		"table_border_color": {{ settings.styles.custom1.table_border_color }},
+		"form_bg_color": {{ settings.styles.custom1.form_bg_color }},
+		"form_text_color": {{ settings.styles.custom1.form_text_color }},
+		"form_border_color": {{ settings.styles.custom1.form_border_color }},
+		"product_title_color": {{ settings.styles.custom1.product_title_color }},
+		"price_color": {{ settings.styles.custom1.price_color }},
+		"sale_price_color": {{ settings.styles.custom1.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.custom1.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.custom1.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.custom1.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.custom1.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.custom1.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.custom1.general_badge_text_color }}
+	),
+	custom2: (
+		"background_color": {{ settings.styles.custom2.background_color }},
+		"overlay_background_color": {{ settings.styles.custom2.overlay_background_color }},
+		"text_color": {{ settings.styles.custom2.text_color }},
+		"link_color": {{ settings.styles.custom2.link_color }},
+		"border_color": {{ settings.styles.custom2.border_color }},
+		"indicator_color": {{ settings.styles.custom2.indicator_color }},
+		"icon_color": {{ settings.styles.custom2.icon_color }},
+		"heading_color": {{ settings.styles.custom2.heading_color }},
+		"subheading_color": {{ settings.styles.custom2.subheading_color }},
+		"button_bg_color": {{ settings.styles.custom2.button_bg_color }},
+		"button_text_color": {{ settings.styles.custom2.button_text_color }},
+		"table_bg_color": {{ settings.styles.custom2.table_bg_color }},
+		"table_text_color": {{ settings.styles.custom2.table_text_color }},
+		"table_border_color": {{ settings.styles.custom2.table_border_color }},
+		"form_bg_color": {{ settings.styles.custom2.form_bg_color }},
+		"form_text_color": {{ settings.styles.custom2.form_text_color }},
+		"form_border_color": {{ settings.styles.custom2.form_border_color }},
+		"product_title_color": {{ settings.styles.custom2.product_title_color }},
+		"price_color": {{ settings.styles.custom2.price_color }},
+		"sale_price_color": {{ settings.styles.custom2.sale_price_color }},
+		"new_badge_bg_color": {{ settings.styles.custom2.new_badge_bg_color }},
+		"new_badge_text_color": {{ settings.styles.custom2.new_badge_text_color }},
+		"discount_badge_bg_color": {{ settings.styles.custom2.discount_badge_bg_color }},
+		"discount_badge_text_color": {{ settings.styles.custom2.discount_badge_text_color }},
+		"general_badge_bg_color": {{ settings.styles.custom2.general_badge_bg_color }},
+		"general_badge_text_color": {{ settings.styles.custom2.general_badge_text_color }}
 	)
 );
 

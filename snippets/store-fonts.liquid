@@ -1,3 +1,13 @@
+{% comment %}
+	Renders fonts dependencies
+
+	Usage:
+	Render this snippet inside of head element.
+
+	{% render 'store-fonts' %}
+{% endcomment %}
+
+
 {%- capture fontsStr -%}
 	{{- settings.bodyTextFont -}},{{- settings.headingFont -}},{{- settings.subheadingFont -}},{{- settings.buttonFont -}}
 {%- endcapture -%}

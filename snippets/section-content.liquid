@@ -66,6 +66,14 @@
 
         </div>
 
+    {%- elsif sectionContentContainer == 'compact' -%}
+
+        <div class="container-compact">
+
+            {{- content -}}
+
+        </div>
+
     {%- elsif sectionContentContainer == 'none' -%}
 
         {{- content -}}

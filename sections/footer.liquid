@@ -1,15 +1,237 @@
+{%- capture preset1 -%}
+
+	{% for link in section.settings.menu.links %}
+
+		<a href="{{ link.url }}">
+			{{ link.title }}
+		</a>
+
+	{% endfor %}
+
+{%- endcapture -%}
+
+{%- capture sectionContent -%}
+
+    {%- if section.settings.preset == '1' -%}
+
+        {{- preset1 -}}
+
+    {%- endif -%}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle %}
+
 {% schema %}
 {
-  "name": "Footer",
-  "tag": "div",
-  "is_creatable": false,
-  "is_removable": false,
-  "settings": [{
-    "title": "Title",
-    "sectionTitle": {
-      "type": "text",
-      "label": "Footer title"
+	"name": "Footer",
+	"tag": "section",
+	"is_creatable": false,
+	"is_removable": false,
+	"class": "section section-footer",
+	"settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": "General",
+                "settings": [
+                    {
+                        "id": "preset",
+                        "type": "select",
+                        "label": "Preset",
+                        "default": "1",
+                        "options": [
+                            {
+                                "value": "1",
+                                "label": "Preset 1"
+                            }
+                        ]
+                    },
+                    {
+                    	"id": "menu",
+                    	"type": "menu",
+                    	"label": "Menu",
+                    	"default": "footer-menu"
+                    }
+                ]
+            },
+            {
+                "title": "Section",
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": "Layout",
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": "Section height",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Section inner spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Content spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Background",
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": "Image"
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": "Position",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "left-top",
+                                            "label": "Left Top"
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": "Left Center"
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": "Left Bottom"
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": "Right Top"
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": "Right Center"
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": "Right Bottom"
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": "Center Top"
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": "Center Center"
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": "Center Bottom"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": "Overlay",
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": 0,
+                                    "unit": "%"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Colors",
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "dark"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
     }
-  }]
 }
 {% endschema %}

@@ -1,6 +1,10 @@
 // Common
 // -----------------------------------------------------------------------------------------
 
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
 // Header
 
 // Footer
@@ -13,38 +17,27 @@
 }
 
 .btn-icon {
-    // display: inline-flex;
-    // width: $btn-icon-height;
-    // height: $btn-icon-height;
-    // color: inherit;
-    // text-align: center;
-    // padding-left: 0;
-    // padding-right: 0;
-    // line-height: 0;
-    // justify-content: center;
-    // align-items: center;
-    // flex-shrink: 0;
-    // border-radius: 50%;
+    display: inline-flex;
+    width: $btn-icon-height;
+    height: $btn-icon-height;
+    color: inherit;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 0;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
 
-    // &.btn-sm {
-    //     width: $btn-icon-height-sm;
-    //     height: $btn-icon-height-sm;
-    // }
-
-    // &.btn-lg {
-    //     width: $btn-icon-height-lg;
-    //     height: $btn-icon-height-lg;
-    // }
-
-    &:hover {
-        color: theme-color('dark');
+    &.btn-sm {
+        width: $btn-icon-height-sm;
+        height: $btn-icon-height-sm;
     }
 
-    &.disabled,
-    &[disabled] {
-        &:hover {
-            color: inherit;
-        }
+    &.btn-lg {
+        width: $btn-icon-height-lg;
+        height: $btn-icon-height-lg;
     }
 
     &:hover:not(.disabled):not([disabled]):not(.disable-hover) {

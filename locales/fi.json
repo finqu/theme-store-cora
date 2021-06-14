@@ -189,16 +189,16 @@
         "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
     },
     "login": {
-        "title": "Kirjautuminen",
-        "cta": "Kirjaudu",
+        "title": "Kirjaudu sisään",
+        "cta": "Kirjaudu sisään",
         "logout": "Kirjaudu ulos",
         "success": "Kirjautuminen onnistui!",
         "already_logged_in": "Olet jo kirjautunut sisään.",
-        "forgot_password": "Unohtuiko salasana?",
-        "email_placeholder": "matti@meikalainen.com",
+        "forgot_password": "Unohditko salasanasi?",
+        "email_placeholder": "Sähköposti",
         "password_placeholder": "Salasana",
-        "new_customer": "Uusi asiakas?",
-        "register": "Luo tili"
+        "new_customer": "Oletko uusi asiakas?",
+        "register": "Rekisteröidy nyt"
     },
     "register": {
         "title": "Rekisteröityminen",

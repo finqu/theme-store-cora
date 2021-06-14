@@ -14,7 +14,7 @@
 	<div class="form-error {% if class %} {{ class }}{% endif %}">
 
         <p class="text-danger">
-        	{{ form.error | prepend: 'form.error.' | t }}
+        	{{ error | prepend: 'error.' | t }}
         </p>
 
     </div>

@@ -10,3 +10,13 @@
 
 	@return $string;
 }
+
+@function spacer($key) {
+
+	@if map-has-key($spacers, $key) {
+		@return map-get($spacers, $key);
+	}
+
+	@warn "Unknown `#{$key}` in $spacers.";
+	@return null;
+}

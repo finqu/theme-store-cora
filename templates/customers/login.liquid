@@ -1,36 +1,51 @@
-<div class="container">
+{%- assign sectionTitle = 'login.title' | t -%}
+
+{%- capture sectionContent -%}
 
     {% form 'login' %}
 
         <div class="form-group">
 
-            <label>{{ 'account.information.email' | t }}</label>
+            <label>
+                {{ 'account.information.email' | t }}
+            </label>
+
             <input type="email" class="form-control" name="email" id="login-email" placeholder="{{ 'login.email_placeholder' | t }}" value="{{ form.submitted.email | escape }}" required>
 
         </div>
 
         <div class="form-group">
 
-            <label class="d-block">
-                <div class="row align-items-center">
-                    <div class="col">{{ 'account.information.password' | t }}</div>
-                    <div class="col col-auto small"><a href="{{ routes.account_password_recover_url }}">{{ 'login.forgot_password' | t }}</a></div>
-                </div>
+            <label>
+                {{ 'account.information.password' | t }}
             </label>
+
             <input type="password" class="form-control" name="password" id="login-password" placeholder="{{ 'login.password_placeholder' | t }}" value="{{ form.submitted.password | escape }}" required>
 
         </div>
 
-        {% if form.error %}
+        {% render 'form-error', error: form.error %}
 
-            <p class="text-error">{{ form.error | prepend:'form.error.' | t }}</p>
+        <button type="submit" class="btn btn-section btn-block mb-4">{{ 'login.cta' | t }}</button>
 
-        {% endif %}
+        <a href="{{ routes.account_password_recover_url }}" class="font-weight-bold text-underline-indicator">
+            {{ 'login.forgot_password' | t }}
+        </a>
 
-        <button type="submit" class="btn btn-section btn-block">{{ 'login.cta' | t }}</button>
+        <hr class="mt-5 mb-5">
 
-        <p class="text-center">{{ 'login.new_customer' | t }} <a href="{{ routes.account_register_url }}">{{ 'login.register' | t }}</a></p>
+        <h3 class="mb-5">
+            {{ 'login.new_customer' | t }}
+        </h3>
+
+        <a href="{{ routes.account_register_url }}" class="btn btn-outline-section btn-block">
+            {{ 'login.register' | t }}
+        </a>
 
     {% endform %}
 
-</div>
+{%- endcapture -%}
+
+<section class="section section-login">
+    {% render 'section', sectionTitle: sectionTitle, sectionContent: sectionContent, sectionContentContainer: 'compact', sectionOverlay: true %}
+</section>

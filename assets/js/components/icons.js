@@ -4,8 +4,8 @@ import MoveDown1 from '@streamlinehq/streamlinehq/img/streamline-light/move-down
 import MoveUp1 from '@streamlinehq/streamlinehq/img/streamline-light/move-up-1-hNEO9b.svg';
 import ShrinkHorizontal from '@streamlinehq/streamlinehq/img/streamline-light/shrink-horizontal-y7qSce.svg';
 import ShrinkVertical from '@streamlinehq/streamlinehq/img/streamline-light/shrink-vertical-y7qZWz.svg';
-import ArrowLeft1 from '@streamlinehq/streamlinehq/img/streamline-light/arrow-left-1-itskPx.svg';
-import ArrowRight1 from '@streamlinehq/streamlinehq/img/streamline-light/arrow-right-1-Ei8Dl0.svg';
+import { ArrowLeft1 as ArrowLeftLight } from '@streamlinehq/streamlinehq/img/streamline-light/arrow-left-1-itskPx.svg';
+import { ArrowRight1 as ArrowRightLight } from '@streamlinehq/streamlinehq/img/streamline-light/arrow-right-1-Ei8Dl0.svg';
 import CommonFileQuestion from '@streamlinehq/streamlinehq/img/streamline-light/common-file-question-ZOslf3.svg';
 import LoadingHalf from '@streamlinehq/streamlinehq/img/streamline-light/loading-half-7QUSw4.svg';
 import Close from '@streamlinehq/streamlinehq/img/streamline-light/close-232XyC.svg';
@@ -16,6 +16,8 @@ import { RatingStar as RatingStarRegular } from '@streamlinehq/streamlinehq/img/
 import LoveIt from '@streamlinehq/streamlinehq/img/streamline-regular/love-it-08UZOs.svg';
 import DownloadBottom from '@streamlinehq/streamlinehq/img/streamline-regular/download-bottom-M5p7BQ.svg';
 import ArrowDown1 from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-down-1-dzphtd.svg';
+import { ArrowLeft1 as ArrowLeftRegular } from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-1-dzpa9L.svg';
+import { ArrowRight1 as ArrowRightRegular } from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-1-Nc3Zm6.svg';
 
 export default {
 	alignLeft: MoveLeft1,
@@ -24,8 +26,8 @@ export default {
 	alignTop: MoveUp1,
 	alignMiddle: ShrinkVertical,
 	alignBottom: MoveDown1,
-	angleLeft: ArrowLeft1,
-	angleRight: ArrowRight1,
+	angleLeftLight: ArrowLeftLight,
+	angleRightLight: ArrowRightLight,
 	fileQuestion: CommonFileQuestion,
 	loadingHalf: LoadingHalf,
 	close: Close,
@@ -34,5 +36,7 @@ export default {
 	ratingStarRegular: RatingStarRegular,
 	heart: LoveIt,
 	download: DownloadBottom,
-	ArrowDown: ArrowDown1
+	arrowDown: ArrowDown1,
+	arrowLeftRegular: ArrowLeftRegular,
+	arrowRightRegular: ArrowRightRegular
 }
