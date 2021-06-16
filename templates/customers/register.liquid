@@ -1,28 +1,46 @@
-<div class="container">
+{%- assign sectionTitle = 'register.title' | t -%}
+
+{%- capture sectionContent -%}
 
     {% form 'create_customer' %}
 
-        <div class="form-group">
+        <div class="form-group form-floating">
 
-            <input type="text" class="form-control" name="firstname" id="register-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.firstname | escape }}" required>
+             <input type="text" class="form-control" name="firstname" id="register-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.firstname | escape }}" required>
 
-        </div>
-
-        <div class="form-group">
-
-            <input type="text" class="form-control" name="lastname" id="register-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.submitted.lastname | escape }}" required>
+             <label for="register-firstname">
+                {{ 'account.information.firstname' | t }}
+            </label>
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-floating">
+
+            <input type="text" class="form-control" name="lastname" id="register-lastname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.lastname | escape }}" required>
+
+            <label for="register-lastname">
+                {{ 'account.information.password' | t }}
+            </label>
+
+        </div>
+
+        <div class="form-group form-floating">
 
             <input type="email" class="form-control" name="email" id="register-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.submitted.email | escape }}" required>
 
+            <label for="register-email">
+                {{ 'account.information.email' | t }}
+            </label>
+
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-floating">
 
-            <input type="password" pattern=".{8,}" class="form-control" name="password" id="register-password" placeholder="{{ 'account.information.password' | t }}" value="{{ form.submitted.password | escape }}" required title="8 {{ 'form.error.min_length' | t }}">
+            <input type="password" pattern=".{8,}" class="form-control" name="password" id="register-password" placeholder="{{ 'account.information.password' | t }}" value="{{ form.submitted.password | escape }}" required title="8 {{ 'error.min_length' | t }}">
+
+            <label for="register-password">
+                {{ 'account.information.password' | t }}
+            </label>
 
         </div>
 
@@ -30,16 +48,16 @@
 
             {% if store.terms_and_conditions %}
 
-                <div class="checkbox">
+                <div class="form-group form-check">
 
-                    <input type="checkbox" name="terms_and_conditions" id="register-terms-conditions">
+                    <input type="checkbox" name="terms_and_conditions" id="register-terms-conditions" class="form-check-input">
 
-                    <label for="register-terms-conditions">
+                    <label for="register-terms-conditions" class="form-check-label">
 
                         {% assign policyName = 'general.policies.terms_and_conditions' | t %}
-                        {% assign link = policyName | link_to:store.terms_and_conditions.url,'_blank' %}
+                        {% assign link = policyName | link_to: store.terms_and_conditions.url, null, '_blank' %}
 
-                        {{- 'form.policy_accept_text' | t | replace:'__policy__',link -}}
+                        {{- 'general.policy_accept_text' | t, policy: link -}}
 
                     </label>
 
@@ -49,16 +67,16 @@
 
             {% if store.privacy_policy %}
 
-                <div class="checkbox">
+                <div class="form-group form-check">
 
-                    <input type="checkbox" name="privacy_policy" id="register-privacy-policy">
+                    <input type="checkbox" name="privacy_policy" id="register-privacy-policy" class="form-check-input">
 
-                    <label for="register-privacy-policy">
+                    <label for="register-privacy-policy" class="form-check-label">
 
                         {% assign policyName = 'general.policies.privacy_policy' | t  %}
-                        {% assign link = policyName | link_to:store.privacy_policy.url,'_blank' %}
+                        {% assign link = policyName | link_to: store.privacy_policy.url, null, '_blank' %}
 
-                        {{- 'form.policy_accept_text' | t | replace:'__policy__',link -}}
+                        {{- 'general.policy_accept_text' | t, policy: link -}}
 
                     </label>
 
@@ -68,21 +86,11 @@
 
         {% endif %}
 
-        {% if form.error %}
+        {% render 'form-error', error: form.error %}
 
-            <div class="form-group text-center">
-
-                <span class="text-danger">{{ form.error | prepend:'form.error.' | t }}</span>
-
-            </div>
-
-        {% endif %}
-
-        <button type="submit" class="btn btn-section btn-block">
+        <button type="submit" id="register-cta" class="btn btn-section btn-block mb-4"{% if settings.policyAgreementMethod == 'check' %} disabled{% endif %}>
             {{ 'register.cta' | t }}
         </button>
-
-        <p class="text-center">{{ 'register.returning_customer' | t }} <a href="{{ 'login' | link }}">{{ 'register.login' | t }}</a></p>
 
         {% if settings.policyAgreementMethod == 'inline' and store.terms_and_conditions %}
 
@@ -90,18 +98,18 @@
 
                 {% assign actionText = 'register.cta' | t %}
                 {% assign termsName = 'general.policies.terms_and_conditions' | t  %}
-                {% assign termsLink = termsName | link_to:store.terms_and_conditions.url,'_blank' %}
+                {% assign termsLink = termsName | link_to: store.terms_and_conditions.url, null, '_blank' %}
 
                 {% if store.privacy_policy %}
 
                     {% assign policyName = 'general.policies.privacy_policy' | t  %}
-                    {% assign policyLink = policyName | link_to:store.privacy_policy.url,'_blank' %}
+                    {% assign policyLink = policyName | link_to: store.privacy_policy.url, null, '_blank' %}
 
-                    {{- 'register.inline_terms_with_policy' | t | replace:'__action__',actionText | replace:'__terms__',termsLink | replace:'__policy__',policyLink -}}
+                    {{- 'register.inline_terms_with_policy' | t, action: actionText, terms: termsLink, policy: policyLink -}}
 
                 {% else %}
 
-                   {{- 'register.inline_terms' | t | replace:'__action__',actionText | replace:'__terms__',termsLink -}}
+                   {{- 'register.inline_terms' | t, action: actionText, terms: termsLink -}}
 
                 {% endif %}
 
@@ -109,6 +117,20 @@
 
         {% endif %}
 
+        <hr class="mt-5 mb-5">
+
+        <h3 class="mb-5">
+            {{ 'register.returning_customer' | t }}
+        </h3>
+
+        <a href="{{ routes.account_login_url }}" class="btn btn-outline-section btn-block">
+            {{ 'register.login' | t }}
+        </a>
+
     {% endform %}
 
-</div>
+{%- endcapture -%}
+
+<section class="section section-register">
+    {% render 'section', sectionTitle: sectionTitle, sectionContent: sectionContent, sectionContentContainer: 'compact', sectionOverlay: true %}
+</section>

@@ -1,24 +1,27 @@
 // Theme
 // -----------------------------------------------------------------------------------------
 
-// Dependencies
-@import "partials/functions";
-@import "partials/variables";
+// Configuration
+@import "functions";
+@import "variables";
 @import "../vendor/bootstrap/scss/bootstrap";
-@import "partials/mixins";
-@import "partials/utils";
-@import "partials/common";
-@import "partials/section";
-@import "partials/swiper";
-@import "partials/awesome-notifications";
-@import "partials/social-buttons";
-@import "partials/gallery";
+@import "mixins";
+@import "utilities";
+@import "layout";
+
+// Components
+@import "components/awesome-notifications";
+@import "components/buttons";
+@import "components/forms";
+@import "components/gallery";
+@import "components/grid";
+@import "components/section";
+@import "components/social-buttons";
+@import "components/swiper";
 
 // Sections
-@import "sections/image-carousel";
 @import "sections/article";
+@import "sections/image-carousel";
 @import "sections/product-card";
 
 // Blocks
-//@import "blocks/...";
-//

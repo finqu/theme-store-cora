@@ -1,0 +1,354 @@
+// Social Buttons
+// --------------------------------------------------
+
+.social-buttons {
+
+    .social-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 2px;
+        text-align: center;
+
+        &:last-child {
+            margin-right: auto;
+        }
+
+        // Social btns
+        &.social-btn-fb {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-fb-text, $social-fb-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-fb-text, $social-fb-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-fb-text, $social-fb-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-fb-text, $social-fb-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-flickr {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-flickr-text, $social-flickr-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-flickr-text, $social-flickr-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-flickr-text, $social-flickr-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-flickr-text, $social-flickr-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-youtube {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-youtube-text, $social-youtube-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-youtube-text, $social-youtube-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-youtube-text, $social-youtube-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-youtube-text, $social-youtube-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-pinterest {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-pinterest-text, $social-pinterest-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-pinterest-text, $social-pinterest-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-pinterest-text, $social-pinterest-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-pinterest-text, $social-pinterest-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-instagram {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-instagram-text, $social-instagram-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-instagram-text, $social-instagram-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-instagram-text, $social-instagram-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-instagram-text, $social-instagram-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-linkedin {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-linkedin-text, $social-linkedin-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-linkedin-text, $social-linkedin-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-linkedin-text, $social-linkedin-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-linkedin-text, $social-linkedin-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-tumblr {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-tumblr-text, $social-tumblr-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-tumblr-text, $social-tumblr-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-tumblr-text, $social-tumblr-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-tumblr-text, $social-tumblr-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-twitter {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-twitter-text, $social-twitter-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-twitter-text, $social-twitter-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-twitter-text, $social-twitter-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-twitter-text, $social-twitter-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-vimeo {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-vimeo-text, $social-vimeo-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-vimeo-text, $social-vimeo-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-vimeo-text, $social-vimeo-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-vimeo-text, $social-vimeo-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-soundcloud {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-soundcloud-text, $social-soundcloud-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-soundcloud-text, $social-soundcloud-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-soundcloud-text, $social-soundcloud-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-soundcloud-text, $social-soundcloud-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-whatsapp {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-whatsapp-text, $social-whatsapp-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-whatsapp-text, $social-whatsapp-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-whatsapp-text, $social-whatsapp-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-whatsapp-text, $social-whatsapp-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-reddit {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-reddit-text, $social-reddit-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-reddit-text, $social-reddit-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-reddit-text, $social-reddit-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-reddit-text, $social-reddit-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        &.social-btn-email {
+            &.social-btn-style-default {
+               @include social-btn-style-default($social-email-text, $social-email-bg);
+            }
+            &.social-btn-style-text {
+               @include social-btn-style-text($social-email-text, $social-email-bg);
+            }
+            &.social-btn-style-border-circle {
+               @include social-btn-style-border-circle($social-email-text, $social-email-bg);
+            }
+            &.social-btn-style-box {
+               @include social-btn-style-box($social-email-text, $social-email-bg);
+            }
+            &.social-btn-style-bw {
+               @include social-btn-style-bw;
+            }
+            &.social-btn-style-section {
+               @include social-btn-style-section;
+            }
+        }
+
+        // Social btn sizes
+        &.social-btn-size-xs {
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 12px;
+
+            .svg-icon {
+                font-size: 14px;
+            }
+        }
+        &.social-btn-size-sm {
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 17px;
+
+            .svg-icon {
+                font-size: 19px;
+            }
+        }
+        &.social-btn-size-m {
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            font-size: 22px;
+
+            .svg-icon {
+                font-size: 24px;
+            }
+        }
+        &.social-btn-size-lg {
+            width: 58px;
+            height: 58px;
+            line-height: 58px;
+            font-size: 27px;
+
+            .svg-icon {
+                font-size: 29px;
+            }
+        }
+        &.social-btn-size-xl {
+            width: 68px;
+            height: 68px;
+            line-height: 68px;
+            font-size: 32px;
+
+            .svg-icon {
+                font-size: 34px;
+            }
+        }
+        &.social-btn-size-xxl {
+            width: 78px;
+            height: 78px;
+            line-height: 78px;
+            font-size: 37px;
+
+            .svg-icon {
+                font-size: 39px;
+            }
+        }
+    }
+}

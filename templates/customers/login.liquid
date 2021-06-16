@@ -4,29 +4,31 @@
 
     {% form 'login' %}
 
-        <div class="form-group">
-
-            <label>
-                {{ 'account.information.email' | t }}
-            </label>
+        <div class="form-group form-floating">
 
             <input type="email" class="form-control" name="email" id="login-email" placeholder="{{ 'login.email_placeholder' | t }}" value="{{ form.submitted.email | escape }}" required>
 
-        </div>
-
-        <div class="form-group">
-
-            <label>
-                {{ 'account.information.password' | t }}
+            <label for="login-email">
+                {{ 'account.information.email' | t }}
             </label>
 
+        </div>
+
+        <div class="form-group form-floating">
+
             <input type="password" class="form-control" name="password" id="login-password" placeholder="{{ 'login.password_placeholder' | t }}" value="{{ form.submitted.password | escape }}" required>
+
+            <label for="login-password">
+                {{ 'account.information.password' | t }}
+            </label>
 
         </div>
 
         {% render 'form-error', error: form.error %}
 
-        <button type="submit" class="btn btn-section btn-block mb-4">{{ 'login.cta' | t }}</button>
+        <button type="submit" class="btn btn-section btn-block mb-4">
+            {{ 'login.cta' | t }}
+        </button>
 
         <a href="{{ routes.account_password_recover_url }}" class="font-weight-bold text-underline-indicator">
             {{ 'login.forgot_password' | t }}

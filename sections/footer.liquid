@@ -2,9 +2,30 @@
 
 	{% for link in section.settings.menu.links %}
 
-		<a href="{{ link.url }}">
-			{{ link.title }}
-		</a>
+
+		{%- if link.url == blank -%}
+
+
+			{% for link in section.settings.menu.links %}
+
+				<a href="{{ link.url }}">
+					{{ link.title }}
+				</a>
+
+			{% endfor %}
+
+
+
+		{%- else -%}
+
+
+
+		{%- endif -%}
+
+
+		
+
+
 
 	{% endfor %}
 

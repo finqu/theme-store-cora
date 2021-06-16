@@ -3,6 +3,8 @@
         "title": "Otsikko",
         "cancel": "Peruuta",
         "submit": "Lähetä",
+        "confirm": "Vahvista",
+        "back": "Takaisin",
         "close": "Sulje",
         "next": "Seuraava",
         "previous": "Edellinen",
@@ -12,6 +14,7 @@
         "product_catalog": "Tuoteluettelo",
         "page_not_found_title": "Emme valitettavasti löytäneet haluamaasi sivua",
         "page_not_found_subtitle": "Vaikuttaa siltä, että sivu ei ole enää käytössä.",
+        "wishlist": "Toivelista",
         "product": "Tuote",
         "product_count": "{{ amount }} tuote",
         "product_plural": "Tuotetta",
@@ -23,6 +26,7 @@
         "subtotal": "Välisumma",
         "tax_free_price": "Veroton hinta",
         "tax": "Vero",
+        "back_to_home_page": "Takaisin etusivulle",
         "policy_accept_text": "Olen lukenut ja hyväksyn {{ policy }}",
         "policies": {
             "terms_and_conditions": "Käyttöehdot",
@@ -77,7 +81,9 @@
         "create_review": "Kirjoita arvostelu",
         "review_product_purchase_required": "Arvostellaaksesi tuotteen sinun pitää ostaa tuote.",
         "bulk_discount": "Määräalennus",
-        "discount_rate": "Alennusprosentti"
+        "discount_rate": "Alennusprosentti",
+        "badge_new": "Uutuus",
+        "badge_out_of_stock": "Loppu"
     },
     "cart": {
         "title": "Ostoskori",
@@ -212,10 +218,21 @@
         "inline_terms": "Valitsemalla {{ action }} hyväksyt {{ terms }}.",
         "inline_terms_with_policy": "Valitsemalla {{ action }} hyväksyt {{ terms }}. Lue {{ policy }}, joka kertoo tietojen keräämisestä, käytöstä ja jakamisesta."
     },
-    "password_reset": {
+    "password_recover": {
         "title": "Unohtuiko salasana?",
         "description": "Syötä alla olevaan kenttään sähköpostiosoite, jota käytit rekisteröitymisessä. Lähetämme ohjeet salasanan vaihdosta antamaasi osoitteeseen.",
         "success": "Ohjeet lähetettiin sähköpostiisi.",
-        "cta": "Lähetä"
+        "cta": "Lähetä",
+        "email_placeholder": "Sähköposti",
+        "login": "Kirjaudu sisään"
+    },
+    "password_protection": {
+        "title": "Tulossa pian",
+        "password_placeholder": "Salasana",
+        "cta": "Kirjaudu sisään"
+    },
+    "activate_account": {
+        "title": "Rekisteröityminen vastaanotettu",
+        "description": "Tiliä ei ole aktivoitu. Tilin aktivoinnin jälkeen pääset verkkokauppaan ostoksille. Kiitos kärsivällisyydestä."
     }
 }

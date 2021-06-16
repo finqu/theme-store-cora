@@ -10,24 +10,24 @@
 
 <ul class="pagination">
 
-	<li>
+	<li class="pagination-item-container">
 		{% if paginate.previous.url %}
 
 			<a href="{{ paginate.previous.url }}" class="paginate-item-previous">
-				{%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+				{%- render 'icon', icon: 'arrow-left-1-dzpa9L' -%}
 			</a>
 
 		{% else %}
 
 			<span class="paginate-item-previous disabled">
-				{%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+				{%- render 'icon', icon: 'arrow-left-1-dzpa9L' -%}
 			</span>
 
 		{% endif %}
 
 	</li>
 
-	<li>
+	<li class="pagination-item-container">
 
 		<span clas="paginate-item-text">
 			{{ 'general.page' | t }} {{ paginate.current_page }} / {{ paginate.pages }}
@@ -35,18 +35,18 @@
 
 	</li>
 
-	<li>
+	<li class="pagination-item-container">
 
 		{% if paginate.next.url %}
 
 			<a href="{{ paginate.next.url }}" class="paginate-item-next">
-				{%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+				{%- render 'icon', icon: 'arrow-right-1-Nc3Zm6' -%}
 			</a>
 
 		{% else %}
 
 			<span class="paginate-item-next disabled">
-				{%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+				{%- render 'icon', icon: 'arrow-right-1-Nc3Zm6' -%}
 			</span>
 
 		{% endif %}

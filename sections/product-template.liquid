@@ -8,7 +8,7 @@
 
                 <div class="product-media row">
 
-                    <div id="product-thumb-media-swiper" class="swiper-container d-none d-lg-block col-2 mr-3">
+                    <div id="product-thumb-media-swiper" class="swiper-container d-none d-lg-block col-2 mr-5 p-0">
 
                         <div class="swiper-wrapper">
 
@@ -21,7 +21,7 @@
                                         {% assign imgSize = 120,120 %}
 
                                         <img
-                                            class="lazy d-block mx-auto img-fluid"
+                                            class="lazy d-block mx-auto img-fluid c-pointer"
                                             alt="{{ product.name }}"
                                             data-src="{{ media.thumb | thumb: imgSize }}"
                                             data-srcset="{{ media.thumb | thumb: imgSize }} 1x, {{ media.thumb | thumb: imgSize | thumb: '@2x' }} 2x">
@@ -45,7 +45,7 @@
                                                 {% assign imgSize = 120,120 %}
 
                                                 <img
-                                                    class="lazy d-block mx-auto img-fluid"
+                                                    class="lazy d-block mx-auto img-fluid c-pointer"
                                                     alt="{{ product.name }}"
                                                     data-src="{{ option.image | thumb: imgSize }}"
                                                     data-srcset="{{ option.image | thumb: imgSize }} 1x, {{ option.image | thumb: imgSize | thumb: '@2x' }} 2x">
@@ -74,37 +74,7 @@
 
                     <div id="product-main-media-swiper" class="swiper-container swiper-navigation-hide-on-desktop col">
 
-                        <div class="product-badges">
-
-                            {% if product.has_discount and product.out_of_stock == false %}
-
-                                <div class="discount-badge">
-
-                                    <span class="badge-content">-{{ product.discount_percent }}%</span>
-
-                                </div>
-
-                            {% endif %}
-
-                            {% if product.is_new and product.out_of_stock == false %}
-
-                                <div class="new-badge">
-
-                                    <span class="badge-content">{{ 'product.badge_new' | t }}</span>
-
-                                </div>
-
-                            {% elsif product.out_of_stock %}
-
-                                <div class="out-of-stock-badge">
-
-                                    <span class="badge-content">{{ 'product.out_of_stock' | t }}</span>
-
-                                </div>
-
-                            {% endif %}
-
-                        </div>
+                        {% render 'product-badges', product: product, position: 'top-left' %}
 
                         <div class="swiper-wrapper">
 
@@ -112,28 +82,32 @@
 
                                 <div class="swiper-slide gallery-img">
 
-                                    {% if media.type == "image" %}
+                                    <div class="product-media-img-container aspect-ratio-container">
 
-                                        {% assign imgSizeSm = 420,420 %}
-                                        {% assign imgSizeLg = 490,700, %}
+                                        {% if media.type == "image" %}
 
-                                        <picture>
-                                            <source media="(min-width: 768px)" srcset="
-                                                {{ media.thumb | thumb: imgSizeLg }} 1x,
-                                                {{ media.thumb | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+                                            {% assign imgSizeSm = 420,420 %}
+                                            {% assign imgSizeLg = 490,700, %}
 
-                                            <source srcset="
-                                                {{ media.thumb | thumb: imgSizeSm }} 1x,
-                                                {{ media.thumb | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+                                            <picture>
+                                                <source media="(min-width: 768px)" srcset="
+                                                    {{ media.thumb | thumb: imgSizeLg }} 1x,
+                                                    {{ media.thumb | thumb: imgSizeLg | thumb: '@2x' }} 2x">
 
-                                            <img
-                                                class="d-block mx-auto img-fluid"
-                                                alt="{{ product.name }}"
-                                                data-gallery-src="{{ media.original }}"
-                                                src="{{ media.thumb | thumb: imgSizeSm }}">
-                                        </picture>
+                                                <source srcset="
+                                                    {{ media.thumb | thumb: imgSizeSm }} 1x,
+                                                    {{ media.thumb | thumb: imgSizeSm | thumb: '@2x' }} 2x">
 
-                                    {% endif %}
+                                                <img
+                                                    class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                    alt="{{ product.name }}"
+                                                    data-gallery-src="{{ media.original }}"
+                                                    src="{{ media.thumb | thumb: imgSizeSm }}">
+                                            </picture>
+
+                                        {% endif %}
+
+                                    </div>
 
                                 </div>
 
@@ -149,24 +123,28 @@
 
                                             <div class="swiper-slide">
 
-                                                {% assign imgSizeSm = 420,420 %}
-                                                {% assign imgSizeLg = 490,700, %}
+                                                <div class="product-media-img-container aspect-ratio-container">
 
-                                                <picture>
-                                                    <source media="(min-width: 768px)" srcset="
-                                                        {{ option.image | thumb: imgSizeLg }} 1x,
-                                                        {{ option.image | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+                                                    {% assign imgSizeSm = 420,420 %}
+                                                    {% assign imgSizeLg = 490,700, %}
 
-                                                    <source srcset="
-                                                        {{ option.image | thumb: imgSizeSm }} 1x,
-                                                        {{ option.image | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+                                                    <picture>
+                                                        <source media="(min-width: 768px)" srcset="
+                                                            {{ option.image | thumb: imgSizeLg }} 1x,
+                                                            {{ option.image | thumb: imgSizeLg | thumb: '@2x' }} 2x">
 
-                                                    <img
-                                                        class="d-block mx-auto img-fluid"
-                                                        alt="{{ product.name }}"
-                                                        data-gallery-src="{{ option.image }}"
-                                                        src="{{ option.image | thumb: imgSizeSm }}">
-                                                </picture>
+                                                        <source srcset="
+                                                            {{ option.image | thumb: imgSizeSm }} 1x,
+                                                            {{ option.image | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+
+                                                        <img
+                                                            class="d-block mx-auto img-fluid aspect-ratio-item"
+                                                            alt="{{ product.name }}"
+                                                            data-gallery-src="{{ option.image }}"
+                                                            src="{{ option.image | thumb: imgSizeSm }}">
+                                                    </picture>
+
+                                                </div>
 
                                             </div>
 
@@ -444,7 +422,7 @@
 
                                 {% if store.session.logged_in %}
 
-                                    <button type="button" class="btn btn-plain ml-1 product-wishlist-btn" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
+                                    <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
                                         {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
                                     </button>
 

@@ -1,0 +1,17 @@
+// Forms
+// -----------------------------------------------------------------------------------------
+
+@mixin section-form-control-focus($color, $bg, $border, $boxShadow, $focusBoxShadow) {
+	&:focus {
+		color: $color;
+		background-color: $bg;
+		border-color: color-yiq($border, darken($border, 10%), lighten($border, 10%));
+		outline: 0;
+		@if $enable-shadows {
+			@include box-shadow($boxShadow, $focusBoxShadow);
+		} @else {
+			// Avoid using mixin so we can pass custom focus shadow properly
+			box-shadow: $focusBoxShadow;
+		}
+	}
+}

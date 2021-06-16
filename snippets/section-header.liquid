@@ -7,6 +7,7 @@
 	- sectionSubtitle: {String}
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
+	- sectionHeaderAction: {String}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact'
 
 	Usage:
@@ -22,6 +23,16 @@
     <div class="row">
 
 		<div class="col">
+
+			{% if sectionHeaderAction %}
+
+				<div class="action-container">
+
+					{{- sectionHeaderAction -}}
+
+				</div>
+
+			{% endif %}
 
 			{% if sectionBreadcrumbs %}
 

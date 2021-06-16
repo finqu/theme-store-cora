@@ -1,13 +1,16 @@
 {% if page.content %}
 
+	{%- assign sectionTitle = page.meta_title | default: page.title -%}
+	{%- assign sectionBreadcrumbs = page.breadcrumbs -%}
+
 	{%- capture sectionContent -%}
 
 		{{ page.content }}
 
 	{%- endcapture -%}
 
-	<section class="section section-search">
-		{% render 'section', sectionTitle: page.meta_title sectionContent: sectionContent %}
+	<section class="section section-page">
+		{% render 'section', sectionTitle: sectionTitle, sectionContent: sectionContent, sectionBreadcrumbs: sectionBreadcrumbs %}
 	</section>
 
 {% else %}

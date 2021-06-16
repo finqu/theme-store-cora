@@ -1,0 +1,53 @@
+// Gallery
+// -----------------------------------------------------------------------------------------
+
+button[name="gallery-close"] {
+	position: absolute;
+	top: 20px;
+	right: 2%;
+	background-color: rgba(0, 0, 0, .5);
+	color: #dddddd;
+	font-size: 1.5rem;
+	line-height: 0;
+
+	&:hover {
+		color: #ffffff;
+		background-color: rgba(0, 0, 0, .9);
+	};
+}
+
+button[name="gallery-prev"] {
+	position: absolute;
+	top: 50%;
+	left: 2%;
+	margin-top: -30px;
+	height: 60px;
+	background-color: rgba(0, 0, 0, .5);
+	color: #dddddd;
+	font-size: 1.5rem;
+
+	&:hover {
+		color: #ffffff;
+		background-color: rgba(0, 0, 0, .9);
+	}
+}
+
+button[name="gallery-next"] {
+	position: absolute;
+	top: 50%;
+	right: 2%;
+	margin-top: -30px;
+	height: 60px;
+	background-color: rgba(0, 0, 0, .5);
+	color: #dddddd;
+	font-size: 1.5rem;
+
+	&:hover {
+		color: #ffffff;
+		background-color: rgba(0, 0, 0, .9);
+	}
+}
+
+.pswp--zoom-allowed .pswp__img {
+    cursor: default !important
+}

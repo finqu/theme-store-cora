@@ -1,0 +1,184 @@
+// Forms
+// -----------------------------------------------------------------------------------------
+
+
+// From control text
+.form-control-text {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+
+// Form loating
+.form-floating {
+	position: relative;
+
+	> .form-control,
+	> .form-select {
+		height: $form-floating-height;
+		padding: $form-floating-padding-y $form-floating-padding-x;
+	}
+
+	> label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		padding: $form-floating-padding-y $form-floating-padding-x;
+		pointer-events: none;
+		border: $input-border-width solid transparent;
+		transform-origin: 0 0;
+		margin-bottom: 0;
+		@include transition($form-floating-transition);
+	}
+
+	> .form-control {
+		&::placeholder {
+			color: transparent !important;
+		}
+
+		&:focus,
+		&:not(:placeholder-shown) {
+			padding-top: $form-floating-input-padding-t;
+			padding-bottom: $form-floating-input-padding-b;
+		}
+
+		&:-webkit-autofill {
+			padding-top: $form-floating-input-padding-t;
+			padding-bottom: $form-floating-input-padding-b;
+		}
+	}
+
+	> .form-select {
+		padding-top: $form-floating-input-padding-t;
+		padding-bottom: $form-floating-input-padding-b;
+	}
+
+	> .form-control:focus,
+	> .form-control:not(:placeholder-shown),
+	> .form-select {
+		~ label {
+			opacity: $form-floating-label-opacity;
+			transform: $form-floating-label-transform;
+		}
+	}
+	> .form-control:-webkit-autofill {
+		~ label {
+			opacity: $form-floating-label-opacity;
+			transform: $form-floating-label-transform;
+		}
+	}
+}
+
+
+// Check / radio
+.form-group.form-check + .form-group.form-check {
+	margin-top: -#{$form-group-margin-bottom / 2}
+}
+
+.form-check {
+	display: block;
+	min-height: $form-check-min-height;
+	padding-left: $form-check-padding-start;
+
+	.form-check-input {
+		float: left;
+		margin-left: $form-check-padding-start * -1;
+	}
+}
+
+.form-check-input {
+	width: $form-check-input-width;
+	height: $form-check-input-width;
+	margin-top: ($line-height-base - $form-check-input-width) / 2;
+	vertical-align: top;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	appearance: none;
+	cursor: pointer;
+	@include transition($form-check-transition);
+
+	&[type="checkbox"] {
+		@include border-radius($form-check-input-border-radius);
+	}
+
+	&[type="radio"] {
+		border-radius: $form-check-radio-border-radius;
+	}
+
+	&:active {
+		filter: $form-check-input-active-filter;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	&:disabled {
+		pointer-events: none;
+		filter: none;
+		opacity: $form-check-input-disabled-opacity;
+	}
+
+	&[disabled],
+	&:disabled {
+		cursor: default;
+
+		~ .form-check-label {
+			cursor: default;
+			opacity: $form-check-label-disabled-opacity;
+		}
+	}
+}
+
+.form-check-label {
+	cursor: pointer;
+}
+
+
+// Switch
+.form-switch {
+	padding-left: $form-switch-padding-start;
+
+	.form-check-input {
+		width: $form-switch-width;
+		margin-left: $form-switch-padding-start * -1;
+		background-position: left center;
+		@include border-radius($form-switch-border-radius);
+		@include transition($form-switch-transition);
+
+		&:checked {
+			background-position: $form-switch-checked-bg-position;
+		}
+	}
+}
+
+.form-check-inline {
+	display: inline-block;
+	margin-right: $form-check-inline-margin-end;
+}
+
+.btn-check {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	pointer-events: none;
+
+	&[disabled],
+	&:disabled {
+		+ .btn {
+			pointer-events: none;
+			filter: none;
+			opacity: $form-check-btn-check-disabled-opacity;
+		}
+	}
+}

@@ -2,9 +2,17 @@
 {%- assign sectionSubtitle = 'general.page_not_found_subtitle' | t -%}
 
 {%- capture sectionContent -%}
-	{%- render 'icon', icon: 'common-file-question-ZOslf3', class: 'svg-icon-8x' -%}
+
+	<div class="mb-4">
+		{%- render 'icon', icon: 'common-file-question-ZOslf3', class: 'svg-icon-10x' -%}
+	</div>
+
+	<a href="/" class="btn btn-section">
+		{{ 'general.back_to_home_page' | t }}
+	</a>
+
 {%- endcapture -%}
 
 <section class="section section-404">
-	{% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent %}
+	{% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent, sectionTextAlign: 'center' %}
 </section>

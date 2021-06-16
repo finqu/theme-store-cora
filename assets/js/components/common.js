@@ -15,26 +15,75 @@ SwiperCore.use([
 
 export default {
 	init: function() {
-		this.initCategory();
-		this.initArticle();
-		this.initWishlist();
-		this.initProduct();
-	},
-	initCategory: function() {
 
-		document.querySelectorAll('.sort-by-action').forEach(el => { el.addEventListener('click', e => {
-    		document.querySelectorAll('[name="sort-by"]')[0].value = e.target.value;
-    		document.getElementById('product-sort').submit();
-    	})});
+        const bodyEl = document.querySelector('body');
+
+        this.initSortByFilters();
+        this.initWishlist();
+
+        if (bodyEl.classList.contains('template-customers-register')) {
+            this.initRegister();
+        }
+
+        if (bodyEl.classList.contains('template-article')) {
+		    this.initArticle();
+        }
+
+        if (bodyEl.classList.contains('template-product')) {
+		    this.initProduct();
+        }
+	},
+    initRegister: function() {
+
+        const containerEl = document.querySelector('.section-register');
+        const registerCtaEl = containerEl.querySelector('#register-cta');
+        const checkInputEls = containerEl.querySelectorAll('.form-check-input');
+
+        checkInputEls.forEach(el => { el.addEventListener('change', e => {
+
+            if (Array.from(checkInputEls).every(el => el.checked)) {
+                registerCtaEl.disabled = false;
+            } else {
+                registerCtaEl.disabled = true;
+            }
+        })});
+    },
+    initSortByFilters: function() {
+
+        document.querySelectorAll('.sort-by-action').forEach(el => { el.addEventListener('click', e => {
+            document.querySelectorAll('[name="sort-by"]')[0].value = e.target.value;
+            document.getElementById('product-sort').submit();
+        })});
+
+    },
+	initCategory: function() {
 
     	const categoryTagsEl = document.querySelector('.category-tags');
 
     	if (categoryTagsEl) {
 
     		new Swiper(categoryTagsEl.querySelector('.swiper-container'), {
-				slidesPerView: 6,
-				spaceBetween: 30,
-				freeMode: true
+                slidesPerView: 3,
+                spaceBetween: 8,
+                freeMode: true,
+                watchOverflow: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                breakpoints: {
+                    500: {
+                        slidesPerView: 4
+                    },
+                    768: {
+                        slidesPerView: 5
+                    },
+                    992: {
+                        slidesPerView: 8
+                    }
+                }
 			});
     	}
 	},
@@ -62,24 +111,53 @@ export default {
 		document.querySelectorAll('[data-wishlist-add]').forEach(el => { el.addEventListener('click', e => {
 
     		const id = el.getAttribute('data-wishlist-add');
+            const itemCountEls = document.querySelectorAll('[data-wislist-item-count]');
 
     		if (!id) {
     			return;
     		}
 
-    		$.post('/api/wishlist/products/'+id);
+    		$.post('/api/wishlist/products/'+id, () => {
+
+                itemCountEls.forEach(el => {
+
+                    const value = (parseInt(el.innerText) || 0) + 1;
+
+                    if (wishlistCount > 0 && !el.classList.contains('has-items')) {
+                        el.classList.add('has-items');
+                    }
+
+                    el.innerHTML = value;
+                });
+            });
     	})});
 
     	document.querySelectorAll('[data-wishlist-remove]').forEach(el => { el.addEventListener('click', e => {
 
     		const id = el.getAttribute('data-wishlist-remove');
     		const itemEl = document.querySelector('[data-wishlist-item="'+id+'"]');
+            const itemCountEls = document.querySelectorAll('[data-wislist-item-count]');
 
     		if (!id) {
     			return;
     		}
 
     		$.delete('/api/wishlist/products/'+id, () => {
+
+                itemCountEls.forEach(el => {
+
+                    const value = (parseInt(el.innerText) || 0) - 1;
+
+                    if (value < 0) {
+                        return;
+                    }
+
+                    if (value < 1 && el.classList.contains('has-items')) {
+                        el.classList.remove('has-items');
+                    }
+
+                    el.innerHTML = value;
+                });
 
                 if (itemEl) {
                 	itemEl.remove();
@@ -92,6 +170,7 @@ export default {
     		const id = el.getAttribute('data-wishlist-toggle');
     		const itemEl = document.querySelector('[data-wishlist-item="'+id+'"]');
     		const isAdded = el.getAttribute('aria-pressed') === 'true';
+            const itemCountEls = document.querySelectorAll('[data-wislist-item-count]');
 
     		if (!id) {
     			return;
@@ -99,11 +178,26 @@ export default {
 
     		if (isAdded) {
 
-    			$.delete('/api/wishlist/products/'+id, () => {
+                $.delete('/api/wishlist/products/'+id, () => {
 
 	                if (itemEl) {
 	                	itemEl.remove();
 	                }
+
+                    itemCountEls.forEach(el => {
+
+                        const value = (parseInt(el.innerText) || 0) - 1;
+
+                        if (value < 0) {
+                            return;
+                        }
+
+                        if (value < 1 && el.classList.contains('has-items')) {
+                            el.classList.remove('has-items');
+                        }
+
+                        el.innerHTML = value;
+                    });
 
 	                el.setAttribute('aria-pressed', false);
 	            });
@@ -111,6 +205,18 @@ export default {
     		} else {
 
     			$.post('/api/wishlist/products/'+id, () => {
+
+                    itemCountEls.forEach(el => {
+
+                        const value = (parseInt(el.innerText) || 0) + 1;
+
+                        if (value > 0 && !el.classList.contains('has-items')) {
+                            el.classList.add('has-items');
+                        }
+
+                        el.innerHTML = value;
+                    });
+
 	                el.setAttribute('aria-pressed', true);
 	            });
     		}
@@ -124,7 +230,7 @@ export default {
     		const productThumbMediaSwiperCfg = {
     			direction: 'vertical',
 				spaceBetween: 16,
-				slidesPerView: 4,
+				slidesPerView: 5,
 				freeMode: true,
 				watchOverflow: true,
 				watchSlidesVisibility: true,

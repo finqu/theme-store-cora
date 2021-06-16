@@ -1,0 +1,9 @@
+// Grid
+// -----------------------------------------------------------------------------------------
+
+.container-compact {
+	@include make-container();
+	@include media-breakpoint-up(md) {
+		max-width: 650px;
+	}
+}

@@ -1,0 +1,646 @@
+// Section
+// -----------------------------------------------------------------------------------------
+
+.section {
+
+	.section-inner {
+		display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+		position: relative;
+
+		@each $name, $map in $section-styles {
+
+			&.section-style-#{str-replace(#{$name}, ' ', '-')} {
+				color: map-get($map, text_color);
+
+				&.section-overlay {
+
+					.section-header {
+
+						& + .section-content {
+
+							.container,
+							.container-fluid,
+							.container-compact {
+								padding-top: 0;
+							}
+						}
+					}
+
+					.container,
+					.container-fluid,
+					.container-compact {
+						background-color: map-get($map, background_color);
+						padding-top: spacer(6);
+						padding-bottom: spacer(6);
+						@include media-breakpoint-up(md) {
+							padding-left: spacer(6);
+							padding-right: spacer(6);
+						}
+					}
+
+					.section-bg {
+						background-color: map-get($map, overlay_background_color);
+					}
+				}
+
+				.section-bg {
+					background-color: map-get($map, background_color);
+				}
+
+				.section-header {
+
+					.title-container {
+
+						.title {
+							color: map-get($map, heading_color);
+						}
+					}
+
+					.subtitle-container {
+
+						.subtitle {
+							color: map-get($map, subheading_color);
+						}
+					}
+				}
+
+				// Typography
+				h1, h2, h3, h4, h5, h6,
+				.h1, .h2, .h3, .h4, .h5, .h6 {
+					color: map-get($map, heading_color);
+				}
+
+				hr {
+					border-top: $hr-border-width solid map-get($map, border_color);
+				}
+
+				.text-icon,
+				.svg-icon, {
+					color: map-get($map, icon_color);
+				}
+
+				.text-title {
+					color: map-get($map, heading_color);
+				}
+
+				.text-subtitle {
+					color: map-get($map, subheading_color);
+				}
+
+				.text-product-title {
+					color: map-get($map, product_title_color);
+				}
+
+				.text-price {
+					color: map-get($map, price_color);
+				}
+
+				.text-sale-price {
+					font-weight: $font-weight-bold;
+					color: map-get($map, sale_price_color);
+				}
+
+				.text-muted {
+					color: color-yiq(map-get($map, text_color), darken(map-get($map, text_color), 30%), lighten(map-get($map, text_color), 30%)) !important;
+				}
+
+				.text-underline-indicator {
+					transition: border .15s ease-in-out;
+					border-bottom: 2px solid transparent;
+					padding-bottom: 2px;
+
+					@include hover() {
+						border-bottom-color: map-get($map, indicator_color);
+					}
+				}
+
+				// Tables
+				.table {
+					color: map-get($map, table_text_color);
+					background-color: map-get($map, table_bg_color);
+
+					th,
+					td {
+						border-top: $table-border-width solid map-get($map, table_border_color);
+					}
+
+					thead th {
+						border-bottom: $table-border-width solid map-get($map, table_border_color);
+					}
+
+					tbody + tbody {
+						border-top: $table-border-width solid map-get($map, table_border_color);
+					}
+				}
+
+				.table-bordered {
+					border: $table-border-width solid map-get($map, table_border_color);
+
+					th,
+					td {
+						border: $table-border-width solid map-get($map, table_border_color);
+					}
+				}
+
+				.table-striped {
+					tbody tr:nth-of-type(#{$table-striped-order}) {
+						background-color: color-yiq(map-get($map, table_bg_color), darken(map-get($map, table_bg_color), 4%), lighten(map-get($map, table_bg_color), 4%));
+					}
+				}
+
+				.table-hover {
+					tbody tr {
+						@include hover() {
+							color: map-get($map, table_text_color);
+							background-color: color-yiq(map-get($map, table_bg_color), darken(map-get($map, table_bg_color), 4%), lighten(map-get($map, table_bg_color), 4%));
+						}
+					}
+				}
+
+				// Product
+				.product-card-grid-item {
+
+					.product-wishlist-action {
+						background-color: map-get($map, background_color);
+					}
+				}
+				.product-wishlist-action {
+
+			        &[aria-pressed="true"] {
+			            .svg-icon {
+				            path {
+				            	fill: map-get($map, indicator_color);
+				            	stroke: map-get($map, indicator_color);
+				        	}
+			            }
+			        }
+			    }
+
+				.product-badges {
+
+					.product-badge-new {
+
+						.product-badge-content {
+							background-color: map-get($map, new_badge_bg_color);
+							color: map-get($map, new_badge_text_color);
+						}
+					}
+
+					.product-badge-discount {
+
+						.product-badge-content {
+							background-color: map-get($map, discount_badge_bg_color);
+							color: map-get($map, discount_badge_text_color);
+						}
+					}
+
+					.product-badge-general {
+
+						.product-badge-content {
+							background-color: map-get($map, general_badge_bg_color);
+							color: map-get($map, general_badge_text_color);
+						}
+					}
+				}
+
+				.category-tags {
+
+				    .category-tag {
+				        border: 1px solid map-get($map, border_color);
+				    }
+				}
+
+				// Forms
+				.form-control {
+					color: map-get($map, form_text_color);
+					background-color: map-get($map, form_bg_color);
+					border: $input-border-width solid map-get($map, form_border_color);
+
+					@include border-radius($input-border-radius, 0);
+					@include section-form-control-focus(map-get($map, form_text_color), map-get($map, form_bg_color), map-get($map, form_border_color), none, none);
+
+					&::placeholder {
+						color: lighten(map-get($map, form_text_color), 15%);
+					}
+
+					&[readonly] {
+						background-color: lighten(map-get($map, form_bg_color), 15%);
+					}
+				}
+
+				select.form-control {
+					&:focus::-ms-value {
+						color: map-get($map, form_text_color);
+						background-color: map-get($map, form_bg_color);
+					}
+				}
+
+				$form-check-input-bg-gradient: linear-gradient(180deg, mix(map-get($map, form_bg_color), map-get($map, form_border_color), 15%), map-get($map, form_border_color)) repeat-x;
+
+				$form-check-input-checked-color: map-get($map, form_bg_color);
+				$form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
+
+				$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+
+				$form-check-input-indeterminate-color: map-get($map, form_bg_color);
+				$form-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>");
+
+				.form-check-input {
+					background-color: map-get($map, form_bg_color);
+					border: $form-check-input-border-width solid map-get($map, form_border_color);
+
+					&:focus {
+						border-color: color-yiq(map-get($map, form_border_color), darken(map-get($map, form_border_color), 10%), lighten(map-get($map, form_border_color), 10%));
+						box-shadow: $form-check-input-focus-box-shadow;
+					}
+
+					&:checked {
+						background-color: map-get($map, indicator_color);
+						border-color: map-get($map, indicator_color);
+
+						&[type="checkbox"] {
+							@if $enable-gradients {
+								background-image: escape-svg($form-check-input-checked-bg-image), $form-check-input-bg-gradient;
+							} @else {
+								background-image: escape-svg($form-check-input-checked-bg-image);
+							}
+						}
+
+						&[type="radio"] {
+							@if $enable-gradients {
+								background-image: escape-svg($form-check-radio-checked-bg-image), $form-check-input-bg-gradient;
+							} @else {
+								background-image: escape-svg($form-check-radio-checked-bg-image);
+							}
+						}
+					}
+
+					&[type="checkbox"]:indeterminate {
+						background-color: map-get($map, form_bg_color);
+						border-color: color-yiq(map-get($map, form_border_color), darken(map-get($map, form_border_color), 10%), lighten(map-get($map, form_border_color), 10%));
+
+						@if $enable-gradients {
+							background-image: escape-svg($form-check-input-indeterminate-bg-image), $form-check-input-bg-gradient;
+						} @else {
+							background-image: escape-svg($form-check-input-indeterminate-bg-image);
+						}
+					}
+				}
+
+				$form-switch-color: map-get($map, form_text_color);
+				$form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>");
+
+				$form-switch-focus-color: map-get($map, form_text_color);
+				$form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>");
+
+				$form-switch-checked-color: map-get($map, form_bg_color);
+				$form-switch-checked-bg-gradient: linear-gradient(180deg, mix(map-get($map, form_bg_color), map-get($map, form_border_color), 15%), map-get($map, form_border_color)) repeat-x;
+				$form-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>");
+
+				.form-switch {
+
+					.form-check-input {
+						background-image: escape-svg($form-switch-bg-image);
+
+						&:focus {
+							background-image: escape-svg($form-switch-focus-bg-image);
+						}
+
+						&:checked {
+
+							@if $enable-gradients {
+								background-image: escape-svg($form-switch-checked-bg-image), $form-switch-checked-bg-gradient;
+							} @else {
+								background-image: escape-svg($form-switch-checked-bg-image);
+							}
+						}
+					}
+				}
+
+				// Input groups
+				.input-group-text {
+					color: map-get($map, form_text_color);
+					background-color: map-get($map, form_bg_color);
+					border: $input-border-width solid solid map-get($map, form_border_color);
+					@include border-radius($input-border-radius);
+				}
+
+
+				// Links
+				a {
+					color: map-get($map, link_color);
+
+					@include hover() {
+						color: map-get($map, link_color);
+					}
+				}
+
+				// Swiper
+				.swiper-button-prev,
+				.swiper-button-next {
+					background-color: map-get($map, background_color);
+					stroke: map-get($map, text_color);
+				}
+
+				.swiper-pagination-bullet-active {
+					background: map-get($map, indicator_color);
+				}
+
+				.swiper-pagination-progressbar-fill {
+					background: map-get($map, indicator_color);
+				}
+
+				// Buttons
+				.btn {
+
+					&.btn-section {
+						@include section-button-variant(map-get($map, button_bg_color), map-get($map, button_text_color));
+					}
+
+					&.btn-outline-section {
+						@include section-button-outline-variant(map-get($map, button_bg_color), map-get($map, button_text_color));
+					}
+				}
+
+				.btn-icon {
+					color: map-get($map, icon_color);
+
+					&:hover {
+				        color: map-get($map, indicator_color);
+				    }
+
+					&.disabled,
+				    &[disabled] {
+				        &:hover {
+				            color: map-get($map, icon_color);
+				        }
+				    }
+				}
+
+				.btn-link {
+					color: map-get($map, link_color);
+
+					@include hover() {
+						color: map-get($map, link_color);
+					}
+				}
+
+				// Dropdown
+				.dropdown-menu {
+					color: map-get($map, form_text_color);
+					background-color: map-get($map, form_bg_color);
+					border: $dropdown-border-width solid map-get($map, form_border_color);
+				}
+
+				.dropdown-divider {
+					@include nav-divider(map-get($map, form_border_color), $dropdown-divider-margin-y, true);
+				}
+
+				.dropdown-item {
+					color: map-get($map, form_text_color);
+
+					@include hover-focus() {
+						color: map-get($map, form_text_color);
+						@include gradient-bg(color-yiq(map-get($map, form_bg_color), darken(map-get($map, form_bg_color), 4%), lighten(map-get($map, form_bg_color), 4%)));
+					}
+
+					&.active,
+					&:active {
+						color: map-get($map, indicator_color);
+						@include gradient-bg(color-yiq(map-get($map, form_bg_color), darken(map-get($map, form_bg_color), 4%), lighten(map-get($map, form_bg_color), 4%)));
+					}
+
+					&.disabled,
+					&:disabled {
+						color: map-get($map, form_text_color);
+					}
+				}
+
+				.dropdown-header {
+					color: map-get($map, form_text_color);
+				}
+
+				// Dropdown text
+				.dropdown-item-text {
+					color: map-get($map, form_text_color);
+				}
+
+				// Social
+				.social-buttons {
+
+					.social-btn {
+						&.social-btn-style-section {
+							background-color: map-get($map, button_bg_color);
+		    				color: map-get($map, button_text_color);
+
+		    				&:hover,
+						    &:focus {
+						        background-color: lighten(map-get($map, button_bg_color), 15%);
+						    }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.section-header {
+		display: flex;
+
+		& + .section-content {
+
+			.container,
+			.container-fluid,
+			.container-compact {
+				padding-top: 0;
+			}
+		}
+
+		.container,
+		.container-fluid,
+		.container-compact {
+			padding-top: spacer(4);
+			padding-bottom: spacer(4);
+		}
+
+		.action-container {
+
+			& + .breadcrumbs-container {
+				padding-top: spacer(3);
+			}
+
+			& + .title-container {
+				padding-top: spacer(3);
+			}
+
+			& + .subtitle-container {
+				padding-top: spacer(1);
+
+				& + .description-container {
+					padding-top: spacer(6);
+				}
+			}
+
+			& + .description-container {
+				padding-top: spacer(6);
+			}
+		}
+
+		.breadcrumbs-container {
+			display: flex;
+
+			& + .title-container {
+				padding-top: spacer(3);
+			}
+
+			& + .subtitle-container {
+				padding-top: spacer(1);
+
+				& + .description-container {
+					padding-top: spacer(6);
+				}
+			}
+
+			& + .description-container {
+				padding-top: spacer(6);
+			}
+
+			.breadcrumbs {
+				display: flex;
+				margin: 0;
+				padding: 0;
+				align-items: center;
+				list-style: none;
+
+				.item {
+					display: flex;
+					align-items: center;
+					font-size: 1rem;
+					font-weight: $font-weight-bold;
+					@include media-breakpoint-down(md) {
+						display: none;
+
+						&:nth-last-of-type(-n+2) {
+							display: flex;
+						}
+					}
+
+					.item-seperator {
+						margin-left: spacer(3);
+						margin-right: spacer(3);
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+
+		.title-container {
+
+			& + .subtitle-container {
+				padding-top: spacer(1);
+
+				& + .description-container {
+					padding-top: spacer(6);
+				}
+			}
+
+			& + .description-container {
+				padding-top: spacer(6);
+			}
+
+			.title {
+				font-size: $h1-font-size * 1.15;
+				font-weight: $font-weight-bold;
+				line-height: $headings-line-height;
+			}
+		}
+
+		.subtitle-container {
+
+			.subtitle {
+				font-size: $h3-font-size * 1.15;
+				line-height: $headings-line-height;
+			}
+		}
+
+		.description-container {
+
+			.description {
+
+			}
+		}
+	}
+
+	.section-content {
+		display: flex;
+		position: relative;
+
+		.container,
+		.container-fluid,
+		.container-compact {
+			padding-top: spacer(4);
+			padding-bottom: spacer(4);
+		}
+	}
+
+	.section-bg {
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background-size: cover;
+		background-repeat: no-repeat;
+		overflow: hidden;
+    	pointer-events: none;
+    	z-index: -1;
+	}
+
+	@each $key, $val in $section-spacers-content {
+		@include media-breakpoint-up(md) {
+			.section-spacing-content-#{$key} {
+
+				.container,
+				.container-fluid {
+
+					.row {
+						margin-left: -#{$val};
+						margin-right: -#{$val};
+
+						> .col,
+						> [class*="col-"] {
+							padding-right: $val;
+							padding-left: $val;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@each $key, $val in $section-spacers-height {
+		@include media-breakpoint-up(md) {
+			.section-height-#{$key} {
+				padding-top: $val;
+				padding-bottom: $val;
+
+				.section-header {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+	@each $key, $val in $section-spacers-inner {
+		@include media-breakpoint-up(md) {
+			.section-spacing-inner-#{$key} {
+				.container,
+				.container-fluid {
+					padding: $val;
+				}
+			}
+		}
+	}
+}

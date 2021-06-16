@@ -9,13 +9,13 @@
 
 
 {%- capture fontsStr -%}
-	{{- settings.bodyTextFont -}},{{- settings.headingFont -}},{{- settings.subheadingFont -}},{{- settings.buttonFont -}}
+	{{- settings.bodyTextFont -}},{{- settings.headingFont -}},{{- settings.subheadingFont -}},{{- settings.accentFont -}},{{- settings.buttonFont -}}
 {%- endcapture -%}
 
 {%- assign fonts =  fontsStr | replace: ' ', '+' | split: ',' | uniq -%}
 
 {%- for font in fonts -%}
 
-	<link href="https://fonts.googleapis.com/css2?family={{- font -}}:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family={{- font -}}:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 {%- endfor -%}

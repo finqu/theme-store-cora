@@ -8,12 +8,14 @@
 	- sectionSubtitle: {String}
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
+	- sectionHeaderAction: {String}
 	- sectionContent: {String}
 	- sectionBgImgSrc: {String}
 	- sectionBgImgPos: {String}
 	- sectionBgImgOverlay: {String}
 	- sectionOverlay: {boolean}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact'
+	- sectionTextAlign: {String} 'left', 'center', 'right'
 
 	Usage:
 	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionContentContainer: 'fixed' %}
@@ -36,7 +38,9 @@
 {%- assign sectionSubtitle = sectionSubtitle | default: null -%}
 {%- assign sectionDescription = sectionDescription | default: null -%}
 {%- assign sectionBreadcrumbs = sectionBreadcrumbs | default: null -%}
+{%- assign sectionHeaderAction = sectionHeaderAction | default: null -%}
 {%- assign sectionOverlay = sectionOverlay | default: false -%}
+{%- assign sectionTextAlign = sectionTextAlign | default: null -%}
 {%- assign sectionClasses = '' -%}
 
 {%- if sectionHeight -%}
@@ -64,6 +68,11 @@
     {%- assign sectionClasses = sectionClasses | append: sectionStyleClass -%}
 {%- endif -%}
 
+{%- if sectionTextAlign -%}
+    {% capture sectionTextAlignClass %} text-{{ sectionTextAlign }}{% endcapture %}
+    {%- assign sectionClasses = sectionClasses | append: sectionTextAlignClass -%}
+{%- endif -%}
+
 {%- if section.settings.sectionContentBgColorStatus -%}
     <style>
         #finqu-section-{{ section.id }} .container,
@@ -77,7 +86,7 @@
 
 	{%- if sectionTitle or sectionSubtitle or sectionDescription or sectionBreadcrumbs -%}
 
-		{%- render 'section-header',  section: section, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs, sectionContentContainer: sectionContentContainer -%}
+		{%- render 'section-header',  section: section, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionHeaderAction: sectionHeaderAction, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs, sectionContentContainer: sectionContentContainer -%}
 
 	{%- endif -%}
 

@@ -1,0 +1,69 @@
+{% comment %}
+	Renders a product badges
+
+	Accepts:
+	- product: {Object} Product Liquid object (required)
+    - position: {String} Position of badges: ''
+
+    Usage:
+    Render this snippet inside of element with "product-media-container" or "product-main-media-swiper" class.
+
+	Usage:
+	{% render 'product-badges', product: product %}
+{% endcomment %}
+
+{%- assign position = position | default: 'bottom-left'-%}
+{%- assign prefix = 'product-badge-position-' -%}
+
+{% case position %}
+
+    {% when 'top-left' %}
+        {%- assign positionClass = position | prepend: prefix -%}
+    {% when 'top-right' %}
+        {%- assign positionClass = position | prepend: prefix -%}
+    {% when 'bottom-left' %}
+        {%- assign positionClass = position | prepend: prefix -%}
+    {% when 'bottom-right' %}
+        {%- assign positionClass = position | prepend: prefix -%}
+    {% else %}
+        {%- assign positionClass = 'bottom-left' | prepend: prefix -%}
+
+{% endcase %}
+
+<div class="product-badges {{ positionClass }}">
+
+    {% if product.has_discount and product.out_of_stock == false %}
+
+        <div class="product-badge product-badge-discount">
+
+            <span class="product-badge-content">
+                -{{ product.discount_percent }}%
+            </span>
+
+        </div>
+
+    {% endif %}
+
+    {% if product.is_new and product.out_of_stock == false %}
+
+        <div class="product-badge product-badge-new">
+
+            <span class="product-badge-content">
+                {{ 'product.badge_new' | t }}
+            </span>
+
+        </div>
+
+    {% elsif product.out_of_stock %}
+
+        <div class="product-badge product-badge-general">
+
+            <span class="product-badge-content">
+                {{ 'product.out_of_stock' | t }}
+            </span>
+
+        </div>
+
+    {% endif %}
+
+</div>

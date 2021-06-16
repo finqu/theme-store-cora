@@ -218,6 +218,16 @@ export default class Cart {
             const totalEls = document.querySelectorAll('[data-cart-total]');
 
             itemCountEls.forEach(el => {
+
+                if (self.cart.item_count > 0 && !el.classList.contains('has-items')) {
+
+                    el.classList.add('has-items');
+
+                } else if (self.cart.item_count < 1 && el.classList.contains('has-items')) {
+
+                    el.classList.remove('has-items');
+                }
+
                 el.innerHTML = self.cart.item_count;
             });
 

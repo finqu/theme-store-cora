@@ -1,0 +1,306 @@
+// Variables
+// -----------------------------------------------------------------------------------------
+
+// Layout
+$enable-caret: true;
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-prefers-reduced-motion-media-query: false;
+$enable-hover-media-query: false;
+$enable-grid-classes: true;
+$enable-pointer-cursor-for-buttons: true;
+$enable-print-styles: true;
+$enable-responsive-font-sizes: false;
+$enable-validation-icons: true;
+$enable-deprecation-messages: true;
+
+$background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom;
+
+$carousel-heights: (
+	sm: 400px,
+	md: 600px,
+	lg: 800px,
+	xl: 945px
+);
+
+
+// Font
+$font-size-lg: $font-size-base * 1.125;
+$font-size-sm: $font-size-base * .875;
+
+$font-weight-light: 400;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+$line-height-base: 1.5;
+$line-height-lg: 1.5;
+$line-height-sm: 1.35;
+$line-height-computed: floor(($font-size-base * $line-height-base)); // 21 px
+
+$headings-font-weight: 700;
+$headings-line-height: 1.2;
+
+$link-decoration: none;
+$link-hover-decoration: none;
+
+
+// Button + Form
+$input-btn-border-width: 1px;
+
+$input-btn-padding-y: .6875rem;
+$input-btn-padding-x: 1rem;
+$input-btn-font-size: $font-size-base;
+$input-btn-line-height: $line-height-base;
+
+$input-btn-focus-width: 0px;
+$input-btn-focus-color: none;
+$input-btn-focus-box-shadow: none;
+
+$input-btn-padding-y-sm: .5625rem;
+$input-btn-padding-x-sm: .8125rem;
+$input-btn-font-size-sm: $font-size-sm;
+$input-btn-line-height-sm: $line-height-sm;
+
+$input-btn-padding-y-lg: .875rem;
+$input-btn-padding-x-lg: 1.25rem;
+$input-btn-font-size-lg: $font-size-lg;
+$input-btn-line-height-lg: $line-height-lg;
+
+
+// Component
+$component-active-color: #ffffff;
+$component-active-bg: #000000;
+
+
+// Input
+$input-padding-y: $input-btn-padding-y;
+$input-padding-x: $input-btn-padding-x;
+
+$input-border-width: $input-btn-border-width;
+$input-height-border: $input-border-width * 2;
+
+$input-bg: #ffffff;
+$input-disabled-bg: #e9ecef;
+$input-focus-border-color: lighten($component-active-bg, 25%);
+
+$input-focus-box-shadow: $input-btn-focus-box-shadow;
+
+
+// Button
+$btn-border-width: 2px;
+$btn-font-weight: 700;
+$btn-disabled-opacity: .65;
+
+$btn-padding-y: $input-btn-padding-y;
+$btn-padding-x: $input-btn-padding-x;
+$btn-font-size: $input-btn-font-size;
+$btn-line-height: $input-btn-line-height;
+
+$btn-padding-y-sm: $input-btn-padding-y-sm;
+$btn-padding-x-sm: $input-btn-padding-x-sm;
+$btn-font-size-sm: $input-btn-font-size-sm;
+$btn-line-height-sm: $input-btn-line-height-sm;
+
+$btn-padding-y-lg: $input-btn-padding-y-lg;
+$btn-padding-x-lg: $input-btn-padding-x-lg;
+$btn-font-size-lg: $input-btn-font-size-lg;
+$btn-line-height-lg: $input-btn-line-height-lg;
+
+$btn-icon-height: calc(#{$btn-line-height * $btn-font-size} + #{$btn-padding-y * 2});
+$btn-icon-height-sm: calc(#{$btn-line-height-sm * $btn-font-size-sm} + #{$btn-padding-y-sm * 2});
+$btn-icon-height-lg: calc(#{$btn-line-height-lg * $btn-font-size-lg} + #{$btn-padding-y-lg * 2});
+
+
+// Form
+$form-group-margin-bottom: 1.5rem;
+
+$form-floating-height: add(2.813rem, $input-height-border);
+$form-floating-padding-x: $input-padding-x;
+$form-floating-padding-y: 0.8rem;
+$form-floating-input-padding-t: 1.625rem;
+$form-floating-input-padding-b: .625rem;
+$form-floating-label-opacity: .65;
+$form-floating-label-transform: scale(.75) translateY(-.5rem) translateX(.15rem);
+$form-floating-transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+
+$form-check-input-width: 1.4em;
+$form-check-min-height: $font-size-base * $line-height-base;
+$form-check-padding-start: $form-check-input-width + .6em;
+$form-check-transition: null;
+$form-check-input-active-filter: brightness(90%);
+$form-check-input-border-width: 1px;
+$form-check-input-border-radius: .25em;
+$form-check-radio-border-radius: 50%;
+$form-check-input-focus-box-shadow: $input-btn-focus-box-shadow;
+$form-check-input-disabled-opacity: .5;
+$form-check-label-disabled-opacity: $form-check-input-disabled-opacity;
+$form-check-btn-check-disabled-opacity: $btn-disabled-opacity;
+$form-check-inline-margin-end: 1rem;
+
+$form-switch-width: 2.4em;
+$form-switch-padding-start: $form-switch-width + .6em;
+$form-switch-border-radius: $form-switch-width;
+$form-switch-transition: background-position .15s ease-in-out;
+$form-switch-checked-bg-position: right center;
+
+
+// Spacing
+$spacer: 0.875rem;
+$spacers: (
+	0: 0,
+	1: ($spacer * .28569),
+	2: ($spacer * .5),
+	3: $spacer,
+	4: ($spacer * 1.715),
+	5: ($spacer * 2),
+	6: ($spacer * 2.5715),
+	7: ($spacer * 3.5),
+	8: ($spacer * 4.5),
+	9: ($spacer * 5)
+);
+
+$sizes: (
+	0: 0%,
+	10: 10%,
+	15: 15%,
+	20: 20%,
+    25: 25%,
+    30: 30%,
+    33: 33%,
+    40: 45%,
+    50: 50%,
+    60: 60%,
+    75: 75%,
+    80: 80%,
+    90: 90%,
+    100: 100%,
+    auto: auto
+);
+
+$section-spacers-content: (
+	sm: 10px,
+	md: 20px,
+	lg: 25px,
+	xl: 50px
+);
+
+$section-spacers-height: (
+	sm: 35px,
+	md: 50px,
+	lg: 80px,
+	xl: 120px
+);
+
+$section-spacers-inner: (
+	sm: 15px,
+	md: 30px,
+	lg: 60px,
+	xl: 90px
+);
+
+
+// Grid
+$container-max-widths: (
+	md: 720px,
+	lg: 960px,
+	xl: 1200px
+);
+
+$grid-gutter-width: 40px;
+
+
+// Social
+$social-fb-text: #ffffff;
+$social-fb-bg: #007bb7;
+$social-flickr-text: #ffffff;
+$social-flickr-bg: #ff0084;
+$social-google-plus-text: #ffffff;
+$social-google-plus-bg: #dd4b39;
+$social-youtube-text: #ffffff;
+$social-youtube-bg: #c4302b;
+$social-pinterest-text: #ffffff;
+$social-pinterest-bg: #c8232c;
+$social-instagram-text: #ffffff;
+$social-instagram-bg: #3f729b;
+$social-linkedin-text: #ffffff;
+$social-linkedin-bg: #007bb6;
+$social-tumblr-text: #ffffff;
+$social-tumblr-bg: #2c4762;
+$social-twitter-text: #ffffff;
+$social-twitter-bg: #55acee;
+$social-vimeo-text: #ffffff;
+$social-vimeo-bg: #1ab7ea;
+$social-soundcloud-text: #ffffff;
+$social-soundcloud-bg: #ff8800;
+$social-whatsapp-text: #ffffff;
+$social-whatsapp-bg: #3cbc4a;
+$social-reddit-text: #ffffff;
+$social-reddit-bg: #ff4500;
+$social-email-text: #ffffff;
+$social-email-bg: #707070;
+
+
+// Swiper
+$swiper-navigation-size: 44px;
+
+
+// Awesome notifications
+$awn-container-z-index: 99998 !default;
+$awn-container-padding: 24px !default;
+
+$awn-primary-color: hsl(0, 0, 50%) !default;
+$awn-primary-background: hsl(0, 0, 92%) !default;
+$awn-primary-border-color: hsl(0, 0, 82%) !default;
+
+$awn-success-color: hsl(100, 65%, 32%) !default;
+$awn-success-background: hsl(100, 74%, 90%) !default;
+$awn-success-border-color: hsl(100, 45%, 70%) !default;
+
+$awn-info-color: hsl(201, 71%, 38%) !default;
+$awn-info-background: hsl(201, 71%, 90%) !default;
+$awn-info-border-color: hsl(201, 71%, 78%) !default;
+
+$awn-alert-color: hsl(3, 74%, 38%) !default;
+$awn-alert-background: hsl(3, 74%, 90%) !default;
+$awn-alert-border-color: hsl(3, 74%, 78%) !default;
+
+$awn-warning-color: hsl(32, 100%, 38%) !default;
+$awn-warning-background: hsl(32, 100%, 90%) !default;
+$awn-warning-border-color: hsl(32, 100%, 75%) !default;
+
+$awn-toast-width: 320px !default;
+$awn-toast-padding: 14px !default;
+$awn-toast-margin: 14px !default;
+$awn-toast-border-width: 2px !default;
+$awn-toast-border-style: solid !default;
+$awn-toast-border-color: $awn-primary-border-color !default;
+$awn-toast-border-radius: 6px !default;
+$awn-border: $awn-toast-border-width $awn-toast-border-style $awn-toast-border-color !default;
+$awn-progress-bar-height: 6px !default;
+$awn-toast-font-size: 14px !default;
+$awn-toast-title-font-size: 18px !default;
+$awn-toast-icon-size: 44px !default;
+
+$awn-popup-wrapper-bg: rgba(0, 0, 0, 0.7) !default;
+$awn-popup-wrapper-z-index: 99999 !default;
+$awn-popup-bg: #fff !default;
+$awn-popup-min-width: 320px !default;
+$awn-popup-max-width: 500px !default;
+$awn-popup-font-size: 14px !default;
+$awn-popup-icon-size: 44px !default;
+$awn-popup-padding: 24px !default;
+$awn-popup-border-radius: 6px !default;
+$awn-popup-btn-height: 32px !default;
+$awn-popup-btn-color: #fff !default;
+$awn-popup-btn-border-radius: 4px !default;
+
+$awn-popup-show-animation: awn-fade-in;
+$awn-popup-hide-animation: awn-fade-out;
+$awn-popup-animation-timing: ease-out;
+
+$awn-toast-left-show-animation: awn-slide-left;
+$awn-toast-right-show-animation: awn-slide-right;
+$awn-toast-hide-animation: awn-fade-out;
+$awn-toast-animation-timing: linear;

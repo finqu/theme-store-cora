@@ -572,16 +572,17 @@
 						"en": "Body text font",
 						"fi": "Leipäktestin fontti"
 					},
-					"default": "Lato",
+					"default": "Helvetica",
 					"families": [
 						"Open Sans",
 						"Lato",
-						"Roboto"
+						"Roboto",
+						"Helvetica",
+						"Amiri"
 					],
 					"variants": [
 						"Regular",
 						"italic",
-						"300",
 						"700"
 					]
 				},
@@ -592,16 +593,17 @@
 						"en": "Heading font",
 						"fi": "Otsikon fontti"
 					},
-					"default": "Lato",
+					"default": "Helvetica",
 					"families": [
 						"Open Sans",
 						"Lato",
-						"Roboto"
+						"Roboto",
+						"Helvetica",
+						"Amiri"
 					],
 					"variants": [
 						"Regular",
 						"italic",
-						"300",
 						"700"
 					]
 				},
@@ -612,16 +614,17 @@
 						"en": "Subheading font",
 						"fi": "Alaotsikon fontti"
 					},
-					"default": "Lato",
+					"default": "Helvetica",
 					"families": [
 						"Open Sans",
 						"Lato",
-						"Roboto"
+						"Roboto",
+						"Helvetica",
+						"Amiri"
 					],
 					"variants": [
 						"Regular",
 						"italic",
-						"300",
 						"700"
 					]
 				},
@@ -632,16 +635,38 @@
 						"en": "Button font",
 						"fi": "Napin fontti"
 					},
-					"default": "Lato",
+					"default": "Helvetica",
 					"families": [
 						"Open Sans",
 						"Lato",
-						"Roboto"
+						"Roboto",
+						"Helvetica",
+						"Amiri"
 					],
 					"variants": [
 						"Regular",
 						"italic",
-						"300",
+						"700"
+					]
+				},
+				{
+					"id": "accentFont",
+					"type": "font-picker",
+					"label": {
+						"en": "Accent font",
+						"fi": "Korostus fontti"
+					},
+					"default": "Cormorant Garamond",
+					"families": [
+						"Open Sans",
+						"Lato",
+						"Roboto",
+						"Helvetica",
+						"Amiri"
+					],
+					"variants": [
+						"Regular",
+						"italic",
 						"700"
 					]
 				}
@@ -867,6 +892,14 @@
 			},
 			"settings": [
 				{
+                    "id": "placeholderImgSrc",
+                    "type": "image-picker",
+                    "label": {
+						"en": "Placeholder image",
+						"fi": "Oletuskuva"
+					}
+                },
+				{
                     "id": "taxFreePrices",
                     "type": "checkbox",
                     "label": {
@@ -884,35 +917,22 @@
 					},
                     "default": false
                 },
-				{
-					"type": "setting-page",
+                {
+					"type": "radio",
+					"id": "policyAgreementMethod",
 					"label": {
-						"en": "Forms",
-						"fi": "Lomakkeet"
+						"en": "Policy agreement",
+						"fi": "Ehtojen hyväksyminen"
 					},
-					"title": {
-						"en": "Forms",
-						"fi": "Lomakkeet"
-					},
-					"settings": [
+					"default": "check",
+					"options": [
 						{
-							"type": "radio",
-							"id": "policyAgreementMethod",
-							"label": {
-								"en": "Policy agreeement",
-								"fi": "Ehtojen hyväksyminen"
-							},
-							"default": "check",
-							"options": [
-								{
-									"value": "check",
-									"label": "Check"
-								},
-								{
-									"value": "inline",
-									"label": "Inline"
-								}
-							]
+							"value": "check",
+							"label": "Check"
+						},
+						{
+							"value": "inline",
+							"label": "Inline"
 						}
 					]
 				}

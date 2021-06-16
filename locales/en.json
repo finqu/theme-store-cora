@@ -3,6 +3,8 @@
         "title": "Title",
         "cancel": "Cancel",
         "submit": "Send",
+        "confirm": "Confirm",
+        "back": "Back",
         "close": "Close",
         "next": "Next",
         "previous": "Previous",
@@ -12,6 +14,7 @@
         "product_catalog": "Product catalog",
         "page_not_found_title": "Sorry, we couldn't find the page you were looking for",
         "page_not_found_subtitle": "It looks like the page is no longer available.",
+        "wishlist": "Wishlist",
         "product": "Product",
         "product_count": "__amount__ product",
         "product_plural": "Products",
@@ -23,6 +26,7 @@
         "subtotal": "Subtotal",
         "tax_free_price": "Tax free price",
         "tax": "Tax",
+        "back_to_home_page": "Back to home page",
         "policy_accept_text": "I have read and agree to the __policy__",
         "policies": {
             "terms_and_conditions": "Terms & Conditions",
@@ -75,7 +79,9 @@
         "reviews": "Reviews",
         "attachments": "Attachments",
         "create_review": "Write a review",
-        "review_product_purchase_required": "You must buy the product first before you can review it."
+        "review_product_purchase_required": "You must buy the product first before you can review it.",
+        "badge_new": "New",
+        "badge_out_of_stock": "Ouf ot stock"
     },
     "cart": {
         "title": "Cart",
@@ -213,10 +219,21 @@
         "inline_terms": "By clicking __action__, you agree to our __terms__.",
         "inline_terms_with_policy": "By clicking __action__, you agree to our __terms__. Learn how we collect, use and share your data in our __policy__."
     },
-    "password_reset": {
+    "password_recover": {
         "title": "Forgotten password?",
         "description": "Fill in the email below which you gave during the registration. Instructions will be sent to this email address.",
         "success": "Instructions were sent to the given email address.",
-        "cta": "Send"
+        "cta": "Send",
+        "email_placeholder": "Email",
+        "login": "Login"
+    },
+    "password_protection": {
+        "title": "Opening soon",
+        "password_placeholder": "Password",
+        "cta": "Login"
+    },
+    "activate_account": {
+        "title": "Registration received",
+        "description": "The account has not been activated. Once your account is activated, you will be able to use the store. Thank you for your patience."
     }
 }

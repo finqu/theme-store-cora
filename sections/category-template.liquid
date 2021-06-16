@@ -1,124 +1,33 @@
 {%- assign sectionTitle = category.title -%}
-{%- assign sectionSubtitle = category.description -%}
 {%- assign sectionDescription = category.description -%}
 {%- assign sectionBreadcrumbs = category.breadcrumbs -%}
-{%- assign categoryProductsCount = category.product_count -%}
+{%- assign itemCount = category.product_count -%}
 {%- assign subCategories = category.sub_categories -%}
-
-{%- assign sectionSubtitle = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.' -%}
-{%- assign sectionDescription = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.' -%}
 
 {%- capture sectionContent -%}
 
     {%- paginate category.products by 100 -%}
 
-        <div class="row">
+        <div class="category-tags pb-4">
 
-            <div class="col">
+            <div class="swiper-container py-1">
 
-                <div class="row">
+                <div class="swiper-wrapper">
 
-                    <div class="col">
+                    {% for subCategory in subCategories %}
 
-                        <div class="category-tags">
+                        <div class="swiper-slide">
 
-                            <div class="swiper-container">
+                            <div class="category-tag">
 
-                                <div class="swiper-wrapper">
+                                <a href="{{ subCategory | page_url }}">
 
-                                    {% for subCategory in subCategories %}
-
-                                        <div class="swiper-slide">
-
-                                            <div class="category-tag border py-2 px-3">
-
-                                                <a href="{{ subCategory | page_url }}">
-                                                    {{ subCategory.title }}
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-
-                                    {% endfor %}
-
-                                </div>
+                                    <span class="category-tag-content">
+                                        {{ subCategory.title }}
+                                    </span>
+                                </a>
 
                             </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-6">
-
-                        {% if categoryProductsCount == 1 %}
-                            {{ 'general.product_count' | t: amount: categoryProductsCount }}
-                        {% else %}
-                            {{ 'general.product_plural_count' | t: amount: categoryProductsCount }}
-                        {% endif %}
-
-                    </div>
-
-                    <div class="col-6">
-
-                        {% form 'sort' id: 'product-sort' %}
-
-                            <input type="hidden" name="sort-by" value="{% if request.get.sort-by %}{{ request.get.sort-by }}{% else %}default{% endif %}">
-
-                            <div class="dropdown">
-
-                                <button type="button" class="btn btn-link dropdown-toggle sort-by-dropdown-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                    {% if request.get.sort-by == 'price-ascending' %}
-                                        {{ 'filters.sort-by.price-ascending' | t }}
-                                    {% elsif request.get.sort-by == 'price-descending' %}
-                                        {{ 'filters.sort-by.price-descending' | t }}
-                                    {% elsif request.get.sort-by == 'title-ascending' %}
-                                        {{ 'filters.sort-by.title-ascending' | t }}
-                                    {% elsif request.get.sort-by == 'title-descending' %}
-                                        {{ 'filters.sort-by.title-descending' | t }}
-                                    {% elsif request.get.sort-by == 'created-ascending' %}
-                                        {{ 'filters.sort-by.created-ascending' | t }}
-                                    {% elsif  request.get.sort-by == 'created-descending' %}
-                                        {{ 'filters.sort-by.created-descending' | t }}
-                                    {% else %}
-                                        {{ 'filters.sort-by.default' | t }}
-                                    {% endif %}
-
-                                </button>
-
-                                <div class="dropdown-menu">
-
-                                    <button type="button" class="sort-by-action dropdown-item" value="default">{{ 'filters.sort-by.default' | t }}</button>
-                                    <button type="button" class="sort-by-action dropdown-item" value="price-ascending">{{ 'filters.sort-by.price-ascending' | t }}</button>
-                                    <button type="button" class="sort-by-action dropdown-item" value="price-descending">{{ 'filters.sort-by.price-descending' | t }}</button>
-                                    <button type="button" class="sort-by-action dropdown-item" value="title-ascending">{{ 'filters.sort-by.title-ascending' | t }}</button>
-                                    <button type="button" class="sort-by-action dropdown-item" value="title-descending">{{ 'filters.sort-by.title-descending' | t }}</button>
-                                    <button type="button" class="sort-by-action dropdown-item" value="created-ascending">{{ 'filters.sort-by.created-ascending' | t }}</button>
-                                    <button type="button" class="sort-by-action dropdown-item" value="created-descending">{{ 'filters.sort-by.created-descending' | t }}</button>
-
-                                </div>
-
-                            </div>
-
-                        {% endform %}
-
-                    </div>
-
-                </div>
-
-                <div class="row row-cols-2 row-cols-sm-2 {% if category.sub_categories.size > 0 %}row-cols-md-3{% else %}row-cols-md-4{% endif %}">
-
-                    {% for product in category.products %}
-
-                        <div class="col">
-
-                            {%- render 'product-card-grid', product: product -%}
 
                         </div>
 
@@ -126,19 +35,96 @@
 
                 </div>
 
-                <div class="row">
+                <div class="swiper-button-prev">
+                    {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+                </div>
 
-                    <div class="col">
-
-                        {% render 'pagination', paginate: paginate %}
-
-                    </div>
-
+                <div class="swiper-button-next">
+                    {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
                 </div>
 
             </div>
 
         </div>
+
+        <div class="row">
+
+            <div class="col-auto">
+
+                <span class="text-muted">
+                    {% if itemCount == 1 %}
+                        {{ 'general.product_count' | t: amount: itemCount }}
+                    {% else %}
+                        {{ 'general.product_plural_count' | t: amount: itemCount }}
+                    {% endif %}
+                </span>
+
+            </div>
+
+            <div class="col text-right">
+
+                {% form 'sort' id: 'product-sort' %}
+
+                    {%- assign activeSortByFilter = request.get.sort-by | default: 'default' -%}
+                    {%- assign sortByFilters = "default,price-ascending,price-descending,title-ascending,title-descending,created-ascending,created-descending" | split: ',' -%}
+
+                    <input type="hidden" name="sort-by" value="{% if request.get.sort-by %}{{ request.get.sort-by }}{% else %}default{% endif %}">
+
+                    <div class="dropdown">
+
+                        <button type="button" class="btn btn-text text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            <span class="mr-1">
+
+                                {% for filter in sortByFilters %}
+
+                                    {% if filter == activeSortByFilter %}
+                                        {{ filter | prepend: 'filters.sort-by.' | t }}
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </span>
+
+                            {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+
+                            {% for filter in sortByFilters %}
+
+                                <button type="button" class="sort-by-action dropdown-item" value="{{ filter }}">
+                                    {{ filter | prepend: 'filters.sort-by.' | t }}
+                                </button>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                {% endform %}
+
+            </div>
+
+        </div>
+
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
+
+            {% for product in category.products %}
+
+                <div class="col pt-3 pb-4">
+
+                    {%- render 'product-card-grid', product: product, wishlist: 'toggle' -%}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% render 'pagination', paginate: paginate %}
 
     {%- endpaginate -%}
 

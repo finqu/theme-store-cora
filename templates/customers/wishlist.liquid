@@ -1,0 +1,23 @@
+{%- assign sectionTitle = 'general.wishlist' | t -%}
+
+{%- capture sectionContent -%}
+
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
+
+        {% for product in store.wishlist.products %}
+
+            <div class="col pt-3 pb-4" data-wishlist-item="{{ product.id }}">
+
+                {%- render 'product-card-grid', product: product, wishlist: 'remove' -%}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{%- endcapture -%}
+
+<section class="section section-wishlist">
+    {% render 'section', sectionTitle: sectionTitle, sectionContent: sectionContent %}
+</section>

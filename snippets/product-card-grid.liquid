@@ -3,69 +3,66 @@
 
 	Accepts:
 	- product: {Object} Product Liquid object (required)
+	- wishlist: {String} 'toggle' | 'remove' | 'add'
 
 	Usage:
 	{% render 'product-card-grid', product: product %}
 {% endcomment %}
 
-<div class="product-card-grid-item">
+{%- case wishlist -%}
+
+    {% when 'toggle' %}
+        {%- assign wishlistAction = 'toggle' -%}
+    {% when 'remove' %}
+        {%- assign wishlistAction = 'remove' -%}
+    {% when 'add' %}
+        {%- assign wishlistAction = 'add' -%}
+    {% else %}
+        {%- assign wishlistAction = false -%}
+
+{%- endcase -%}
+
+<div class="product-card-grid-item{% if product.has_discount %} product-has-discount{% endif %}">
 
 	<div class="product-media-container">
 
-		<div class="product-badges">
+		{% render 'product-badges', product: product, postion: 'left-bottom' %}
 
-			{% if product.has_discount and product.out_of_stock == false %}
+		{% if wishlistAction and store.session.logged_in %}
 
-                <div class="discount-badge">
+			<div class="product-wishlist-action-container">
 
-                    <span class="badge-content">-{{ product.discount_percent }}%</span>
+		        <button type="button" class="btn btn-text p-2 product-wishlist-action" data-wishlist-{{- wishlistAction -}}="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
+		            {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw svg-icon-2x' -%}
+		        </button>
 
-                </div>
+		    </div>
 
-            {% endif %}
-
-            {% if product.is_new and product.out_of_stock == false %}
-
-                <div class="new-badge">
-
-                    <span class="badge-content">{{ 'product.badge_new' | t }}</span>
-
-                </div>
-
-            {% elsif product.out_of_stock %}
-
-                <div class="out-of-stock-badge">
-
-                    <span class="badge-content">{{ 'product.out_of_stock' | t }}</span>
-
-                </div>
-
-            {% endif %}
-
-		</div>
+		{% endif %}
 
 		<a href="{{ product | page_url }}">
 
 			<div class="product-media{% unless product.image %} placeholder-image{% endunless%}">
 
-	  			{% if product.image %}
+				<div class="product-media-img-container aspect-ratio-container">
 
-	  				{% assign imgSizeSm = 420,420 %}
-	  				{% assign imgSizeLg = 576,576 %}
+	  				{%- assign imgSrc = product.image | default: settings.placeholderImgSrc -%}
+	  				{%- assign imgSizeSm = 420,420 -%}
+	  				{%- assign imgSizeLg = 576,576 -%}
 
 		  			<picture>
 				        <source media="(min-width: 768px)" data-srcset="
-				            {{ product.image | thumb: imgSizeLg }} 1x,
-				            {{ product.image | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+				            {{ imgSrc | thumb: imgSizeLg }} 1x,
+				            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
 				        <img
 				            alt="{{ product.name }}"
-				            data-src="{{ product.image | thumb: imgSizeSm }}"
-				            data-srcset="{{ product.image | thumb: imgSizeSm }} 1x,{{ imgSizeSm | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-				            class="lazy d-block mx-auto img-fluid">
+				            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+				            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+				            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
 				    </picture>
 
-				{% endif %}
+				</div>
 
   			</div>
 
@@ -75,31 +72,47 @@
 
 	<div class="product-caption">
 
-		<div class="product-title">
+		<a href="{{ product | page_url }}">
 
-			<a href="{{ product | page_url }}">
+			<div class="product-manufacturer">
 
-				<h3>{{ product.name }}</h3>
+				<span class="product-manufacturer-name">
+					{{ product.manufacturer.name }}
+				</span>
 
-			</a>
+			</div>
 
-		</div>
+			<div class="product-name">
 
-		<div class="product-price">
+				<h3 class="product-name-text">
+					{{ product.name }}
+				</h3>
 
-			<span class="price-text">
-				{{ product.price | in_currency }}
-			</span>
+			</div>
 
-			{% if product.has_discount %}
+			<div class="product-price">
 
-	            <span class="original-price-text">
-	            	{{ product.original_price | in_currency }}
-	            </span>
+				{% if product.has_discount %}
 
-	        {% endif %}
+					<span class="text-sale-price mr-2">
+						{{ product.price | in_currency }}
+					</span>
 
-		</div>
+		            <span class="text-decoration-line-through text-muted">
+		            	{{ product.original_price | in_currency }}
+		            </span>
+
+		        {% else %}
+
+		        	<span class="text-price">
+						{{ product.price | in_currency }}
+					</span>
+
+		        {% endif %}
+
+			</div>
+
+		</a>
 
 	</div>
 

@@ -4,20 +4,21 @@ import MoveDown1 from '@streamlinehq/streamlinehq/img/streamline-light/move-down
 import MoveUp1 from '@streamlinehq/streamlinehq/img/streamline-light/move-up-1-hNEO9b.svg';
 import ShrinkHorizontal from '@streamlinehq/streamlinehq/img/streamline-light/shrink-horizontal-y7qSce.svg';
 import ShrinkVertical from '@streamlinehq/streamlinehq/img/streamline-light/shrink-vertical-y7qZWz.svg';
-import { ArrowLeft1 as ArrowLeftLight } from '@streamlinehq/streamlinehq/img/streamline-light/arrow-left-1-itskPx.svg';
-import { ArrowRight1 as ArrowRightLight } from '@streamlinehq/streamlinehq/img/streamline-light/arrow-right-1-Ei8Dl0.svg';
+import * as AngleLeftLight from '@streamlinehq/streamlinehq/img/streamline-light/arrow-left-1-itskPx.svg';
+import * as AngleRightLight from '@streamlinehq/streamlinehq/img/streamline-light/arrow-right-1-Ei8Dl0.svg';
 import CommonFileQuestion from '@streamlinehq/streamlinehq/img/streamline-light/common-file-question-ZOslf3.svg';
 import LoadingHalf from '@streamlinehq/streamlinehq/img/streamline-light/loading-half-7QUSw4.svg';
 import Close from '@streamlinehq/streamlinehq/img/streamline-light/close-232XyC.svg';
 import Add from '@streamlinehq/streamlinehq/img/streamline-light/add-eLjfck.svg';
 import Subtract from '@streamlinehq/streamlinehq/img/streamline-light/subtract-gWaFt8.svg';
-import { RatingStar as RatingStarBold } from '@streamlinehq/streamlinehq/img/streamline-bold/rating-star-gWaXzP.svg';
-import { RatingStar as RatingStarRegular } from '@streamlinehq/streamlinehq/img/streamline-regular/rating-star-J4vaWN.svg'
+import * as RatingStarBold from '@streamlinehq/streamlinehq/img/streamline-bold/rating-star-gWaXzP.svg';
+import * as RatingStarRegular from '@streamlinehq/streamlinehq/img/streamline-regular/rating-star-J4vaWN.svg'
 import LoveIt from '@streamlinehq/streamlinehq/img/streamline-regular/love-it-08UZOs.svg';
 import DownloadBottom from '@streamlinehq/streamlinehq/img/streamline-regular/download-bottom-M5p7BQ.svg';
-import ArrowDown1 from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-down-1-dzphtd.svg';
-import { ArrowLeft1 as ArrowLeftRegular } from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-1-dzpa9L.svg';
-import { ArrowRight1 as ArrowRightRegular } from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-1-Nc3Zm6.svg';
+import * as AngleDownRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-down-1-dzphtd.svg';
+import * as AngleLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-1-dzpa9L.svg';
+import * as AngleRightRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-1-Nc3Zm6.svg';
+import * as ArrowLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-dzpnnb.svg'
 
 export default {
 	alignLeft: MoveLeft1,
@@ -26,8 +27,8 @@ export default {
 	alignTop: MoveUp1,
 	alignMiddle: ShrinkVertical,
 	alignBottom: MoveDown1,
-	angleLeftLight: ArrowLeftLight,
-	angleRightLight: ArrowRightLight,
+	angleLeftLight: AngleLeftLight,
+	angleRightLight: AngleRightLight,
 	fileQuestion: CommonFileQuestion,
 	loadingHalf: LoadingHalf,
 	close: Close,
@@ -36,7 +37,8 @@ export default {
 	ratingStarRegular: RatingStarRegular,
 	heart: LoveIt,
 	download: DownloadBottom,
-	arrowDown: ArrowDown1,
-	arrowLeftRegular: ArrowLeftRegular,
-	arrowRightRegular: ArrowRightRegular
+	angleDown: AngleDownRegular,
+	angleLeftRegular: AngleLeftRegular,
+	angleRightRegular: AngleRightRegular,
+	arrowLeftRegular: ArrowLeftRegular
 }
