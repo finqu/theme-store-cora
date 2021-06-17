@@ -1,7 +1,7 @@
 // Aspect ratio
 // -----------------------------------------------------------------------------------------
 
-@mixin aspect-ratio($width, $height, $fit: $img-fit) {
+@mixin aspect-ratio($width, $height, $fit: $img-fit, $position: null) {
     position: relative;
 
     &:before {
@@ -23,6 +23,9 @@
 	        height: 100%;
 	        object-fit: $fit;
 	        font-family: 'object-fit: #{$fit}';
+            @if $position {
+                object-position: $position;
+            }
         }
     }
 }

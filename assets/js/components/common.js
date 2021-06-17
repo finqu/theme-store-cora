@@ -23,6 +23,10 @@ export default {
         this.initSortByFilters();
         this.initWishlist();
 
+        if (bodyEl.classList.contains('template-category')) {
+            this.initCategory();
+        }
+
         if (bodyEl.classList.contains('template-customers-register')) {
             this.initRegister();
         }

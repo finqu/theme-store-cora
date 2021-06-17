@@ -156,7 +156,7 @@
 				}
 
 				.swiper-slide {
-					@include aspect-ratio(9, 13);
+					@include aspect-ratio(9, 13, $img-fit, top);
 				}
 
 				.product-media-video-container {
@@ -426,6 +426,17 @@
 		        		margin-top: spacer(3);
 		        	}
 		        }
+			}
+
+			.product-attachments {
+
+				.product-attachment-item {
+					margin-bottom: spacer(2);
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
 			}
 		}
 	}

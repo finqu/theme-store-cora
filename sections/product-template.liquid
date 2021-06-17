@@ -673,9 +673,11 @@
 
                                     {% for attachment in product.attachments %}
 
-                                        <a href="{{ attachment.href }}" class="d-block">
-                                            {%- render 'icon', icon: 'download-bottom-M5p7BQ' -%}
-                                            <span>{{ attachment.name }}</span>
+                                        <a href="{{ attachment.href }}" class="product-attachment-item d-flex align-items-center">
+
+                                            {%- render 'icon', icon: 'download-bottom-M5p7BQ', class: 'svg-icon-2x' -%}
+
+                                            <span class="ml-3">{{ attachment.name }}</span>
                                         </a>
 
                                     {% endfor %}
