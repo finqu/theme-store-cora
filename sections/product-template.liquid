@@ -12,11 +12,17 @@
 
                         <div class="swiper-wrapper">
 
+                            {%- assign hasMediaImg = false -%}
+
                             {% for media in product.media %}
 
-                                <div class="swiper-slide">
+                                {% if media.type == "image" %}
 
-                                    {% if media.type == "image" %}
+                                    <div class="swiper-slide">
+
+                                        {%- unless hasMediaImg -%}
+                                            {%- assign hasMediaImg = true -%}
+                                        {%- endunless -%}
 
                                         {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
                                         {%- assign imgSize = 120,120 -%}
@@ -27,9 +33,9 @@
                                             data-src="{{ imgSrc | thumb: imgSize }}"
                                             data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
 
-                                    {% endif %}
+                                    </div>
 
-                                </div>
+                                {% endif %}
 
                             {% endfor %}
 
@@ -40,6 +46,10 @@
                                     {% for option in variant.options %}
 
                                         {% if option.image %}
+
+                                            {%- unless hasMediaImg -%}
+                                                {%- assign hasMediaImg = true -%}
+                                            {%- endunless -%}
 
                                             <div class="swiper-slide">
 
@@ -62,6 +72,44 @@
 
                             {% endif %}
 
+                            {% unless hasMediaImg %}
+
+                                <div class="swiper-slide">
+
+                                    {%- assign imgSrc = settings.placeholderImgSrc -%}
+                                    {%- assign imgSize = 120,120 -%}
+
+                                    <img
+                                        class="lazy d-block mx-auto img-fluid c-pointer"
+                                        alt="{{ product.name }}"
+                                        data-src="{{ imgSrc | thumb: imgSize }}"
+                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                </div>
+
+                            {% endunless %}
+
+                            {% for media in product.media %}
+
+                                {% if media.type == "video" %}
+
+                                    <div class="swiper-slide">
+
+                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
+                                        {%- assign imgSize = 120,120 -%}
+
+                                        <img
+                                            class="lazy d-block mx-auto img-fluid c-pointer"
+                                            alt="{{ product.name }}"
+                                            data-src="{{ imgSrc | thumb: imgSize }}"
+                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
                         </div>
 
                         <div class="swiper-button-prev">
@@ -80,17 +128,23 @@
 
                         <div class="swiper-wrapper">
 
+                            {%- assign hasMediaImg = false -%}
+
                             {% for media in product.media %}
 
-                                <div class="swiper-slide gallery-img">
+                                {% if media.type == "image" %}
 
-                                    <div class="product-media-img-container aspect-ratio-container">
+                                    {%- unless hasMediaImg -%}
+                                        {%- assign hasMediaImg = true -%}
+                                    {%- endunless -%}
 
-                                        {% if media.type == "image" %}
+                                    <div class="swiper-slide gallery-item">
+
+                                        <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
                                             {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
                                             {%- assign imgSizeSm = 420,420 -%}
-                                            {%- assign imgSizeLg = 490,700, -%}
+                                            {%- assign imgSizeLg = 490,700 -%}
 
                                             <picture>
                                                 <source media="(min-width: 768px)" srcset="
@@ -104,15 +158,17 @@
                                                 <img
                                                     class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
                                                     alt="{{ product.name }}"
-                                                    data-gallery-src="{{ media.original }}"
+                                                    data-gallery-img-src="{{ media.original }}"
                                                     src="{{ imgSrc | thumb: imgSizeSm }}">
                                             </picture>
 
-                                        {% endif %}
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                {% elsif media.type == "video" %}
+
+                                {% endif %}
 
                             {% endfor %}
 
@@ -124,13 +180,17 @@
 
                                         {% if option.image %}
 
-                                            <div class="swiper-slide">
+                                            {%- unless hasMediaImg -%}
+                                                {%- assign hasMediaImg = true -%}
+                                            {%- endunless -%}
 
-                                                <div class="product-media-img-container aspect-ratio-container">
+                                            <div class="swiper-slide gallery-item">
+
+                                                <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
                                                     {%- assign imgSrc = option.image | default: settings.placeholderImgSrc -%}
                                                     {%- assign imgSizeSm = 420,420 -%}
-                                                    {%- assign imgSizeLg = 490,700, -%}
+                                                    {%- assign imgSizeLg = 490,700 -%}
 
                                                     <picture>
                                                         <source media="(min-width: 768px)" srcset="
@@ -142,9 +202,9 @@
                                                             {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
 
                                                         <img
-                                                            class="d-block mx-auto img-fluid aspect-ratio-item"
+                                                            class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
                                                             alt="{{ product.name }}"
-                                                            data-gallery-src="{{ imgSrc }}"
+                                                            data-gallery-img-src="{{ imgSrc }}"
                                                             src="{{ imgSrc | thumb: imgSizeSm }}">
                                                     </picture>
 
@@ -159,6 +219,68 @@
                                 {% endfor %}
 
                             {% endif %}
+
+                            {% unless hasMediaImg %}
+
+                                <div class="swiper-slide gallery-item">
+
+                                    <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
+
+                                        {%- assign imgSrc = settings.placeholderImgSrc -%}
+                                        {%- assign imgSizeSm = 420,420 -%}
+                                        {%- assign imgSizeLg = 490,700 -%}
+
+                                        <picture>
+                                            <source media="(min-width: 768px)" srcset="
+                                                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                                {{ imgSrc | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+
+                                            <source srcset="
+                                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                                {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+
+                                            <img
+                                                class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                alt="{{ product.name }}"
+                                                data-gallery-img-src="{{ imgSrc }}"
+                                                src="{{ imgSrc | thumb: imgSizeSm }}">
+                                        </picture>
+
+                                    </div>
+
+                                </div>
+
+                            {% endunless %}
+
+                            {% for media in product.media %}
+
+                                {% if media.type == "video" %}
+
+                                    <div class="swiper-slide gallery-item">
+
+                                        <div class="product-media-video-container aspect-ratio-container" data-gallery-item-init>
+
+                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
+                                            {%- assign imgSize = 120,120 -%}
+
+                                            <div class="product-media-video-icon-container c-zoom-in">
+                                                {%- render 'icon', icon: 'controls-play-af7Jis', class: 'svg-icon-fw product-media-video-icon '' -%}
+                                            </div>
+
+                                            <img
+                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item"
+                                                alt="{{ product.name }}"
+                                                data-src="{{ imgSrc | thumb: imgSize }}"
+                                                data-gallery-video-src="{{ media.url }}"
+                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                        </div>
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
 
                         </div>
 
@@ -178,7 +300,7 @@
 
         </div>
 
-        <div class="col-md-5 offset-md-1">
+        <div class="col-md-5 ml-lg-8">
 
             <div class="product-info">
 
@@ -200,7 +322,7 @@
 
                         <div class="product-discount">
 
-                            <span class="product-discount-text">
+                            <span class="product-discount-text text-sale-price">
                                 {{ 'product.discount_dynamic' | t, amount: product.discount_percent }}
                             </span>
 
@@ -208,25 +330,31 @@
 
                     {% endif %}
 
-                    <div class="product-price">
-
-                        <span class="{% if product.has_discount %}product-price-text{% else %}product-price-discount-text{% endif %}" data-product-price-dynamic>
-                            {{ product.price | in_currency }}
-                        </span>
+                    <div class="product-price-container">
 
                         {% if product.has_discount %}
 
-                            <span class="product-price-original-text">
+                            <span class="product-sale-price-text text-sale-price font-weight-bold mr-1" data-product-price-dynamic>
+                                {{ product.price | in_currency }}
+                            </span>
+
+                            <span class="product-price text-decoration-line-through text-muted">
                                 {{ product.original_price | in_currency }}
+                            </span>
+
+                        {% else %}
+
+                            <span class="text-price" data-product-price-dynamic>
+                                {{ product.price | in_currency }}
                             </span>
 
                         {% endif %}
 
                     </div>
 
-                    <div class="product-price-vat">
+                    <div class="product-vat">
 
-                        <span class="product-price-vat-text">
+                        <span class="product-vat-text text-muted">
 
                             {%- assign productTaxPercent = product.taxpercent | round -%}
 
@@ -239,27 +367,31 @@
 
                 {% if product.is_reviewed or product.can_be_reviewed %}
 
-                    <div class="product-review">
+                    <div class="product-review-rating">
 
-                        <button type="button" name="product-show-reviews" class="btn btn-plain">
+                        <button type="button" id="product-show-reviews" class="btn btn-text">
 
-                            <span class="product-review-icon">
+                            <div class="product-review-icons">
 
                                 {% for rating in (1..product.max_rating) %}
 
-                                    {% if product.rating >= rating %}
+                                    <div class="product-review-icon">
 
-                                        {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
+                                        {% if product.rating >= rating %}
 
-                                    {% else %}
+                                            {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
 
-                                        {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+                                        {% else %}
 
-                                    {% endif %}
+                                            {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+
+                                        {% endif %}
+
+                                    </div>
 
                                 {% endfor %}
 
-                            </span>
+                            </div>
 
                             <span class="product-review-text">
                                 {{ product.review_count }}
@@ -285,7 +417,7 @@
 
                     <div class="product-bulk-discounts">
 
-                        <div class="row">
+                        <div class="product-bulk-discount-header row no-gutters">
 
                             <div class="col-6">
 
@@ -309,7 +441,7 @@
 
                             {% if rate.is_percentage %}
 
-                                <div class="row">
+                                <div class="product-bulk-discount-item row no-gutters">
 
                                     <div class="col-6">
 
@@ -345,22 +477,26 @@
 
                             {% if relatedItem.is_visible %}
 
-                                <div class="item">
+                                <div class="product-related-item">
 
                                     <a href="{{ relatedItem | link }}">
 
-                                        <div class="item-media">
+                                        <div class="product-related-item-media">
 
-                                            {%- assign imgSrc = relatedItem.image | default: settings.placeholderImgSrc -%}
-                                            {%- assign imgSize = 60,80 -%}
+                                            <div class="product-related-media-img-container aspect-ratio-container">
 
-                                            <picture>
-                                                <img
-                                                    alt="{{ relatedItem.name }}"
-                                                    data-src="{{ imgSrc | thumb: imgSize }}"
-                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x"
-                                                    class="lazy d-block mx-auto img-fluid">
-                                            </picture>
+                                                {%- assign imgSrc = relatedItem.image | default: settings.placeholderImgSrc -%}
+                                                {%- assign imgSize = 60,80 -%}
+
+                                                <picture>
+                                                    <img
+                                                        alt="{{ relatedItem.name }}"
+                                                        data-src="{{ imgSrc | thumb: imgSize }}"
+                                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x"
+                                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                                </picture>
+
+                                            </div>
 
                                         </div>
 
@@ -477,7 +613,7 @@
 
                 {% endif %}
 
-                <div class="product-details mt-4 accordion">
+                <div class="product-details accordion">
 
                     {% if product.description %}
 
@@ -485,7 +621,7 @@
 
                             <div class="card-header">
 
-                                <button class="btn btn-block d-flex" data-toggle="collapse" data-target="#accordion-product-description">
+                                <button class="btn btn-block btn-text d-flex" data-toggle="collapse" data-target="#accordion-product-description">
 
                                     <span>
                                         {{ 'product.description' | t }}
@@ -517,7 +653,7 @@
 
                             <div class="card-header">
 
-                                <button class="btn btn-block d-flex" data-toggle="collapse" data-target="#accordion-product-attachments">
+                                <button class="btn btn-block btn-text d-flex" data-toggle="collapse" data-target="#accordion-product-attachments">
 
                                     <span>
                                         {{ 'product.attachments' | t }}
@@ -558,27 +694,31 @@
 
                             <div class="card-header">
 
-                                <button class="btn btn-block d-flex" data-toggle="collapse" data-target="#accordion-product-reviews">
+                                <button class="btn btn-block btn-text d-flex" data-toggle="collapse" data-target="#accordion-product-reviews">
 
                                     <span class="mr-2">{{ 'product.reviews' | t }} ({{ product.review_count }})</span>
 
-                                    <span class="product-review-icons">
+                                    <div class="product-review-icons">
 
                                         {% for rating in (1..product.max_rating) %}
 
-                                            {% if product.rating >= rating %}
+                                            <div class="product-review-icon">
 
-                                                {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
+                                                {% if product.rating >= rating %}
 
-                                            {% else %}
+                                                    {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
 
-                                                {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+                                                {% else %}
 
-                                            {% endif %}
+                                                    {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+
+                                                {% endif %}
+
+                                            </div>
 
                                         {% endfor %}
 
-                                    </span>
+                                    </div>
 
                                     <span class="accordion-indicator">
                                         {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
@@ -592,9 +732,9 @@
 
                                 <div class="product-reviews card-body">
 
-                                    {% if product.can_be_reviewed == false %}
+                                    {% if product.can_be_reviewed %}
 
-                                        <button name="product-review-create" class="btn btn-text">
+                                        <button id="product-review-create" class="btn btn-outline-section">
                                             {{ 'product.create_review' | t }}
                                         </button>
 
@@ -637,9 +777,13 @@
 
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="form-group form-floating">
 
-                                                   <input name="review_title" type="text" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.review_title | escape }}" required>
+                                                    <input name="review_title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.review_title | escape }}" required>
+
+                                                    <label for="product-review-title">
+                                                        {{ 'general.title' | t }}
+                                                    </label>
 
                                                 </div>
 
@@ -651,7 +795,7 @@
 
                                                 <div class="form-group text-right">
 
-                                                    <button type="button" name="product-review-cancel" class="btn btn-secondary">{{ 'general.cancel' | t }}</button>
+                                                    <button type="button" id="product-review-cancel" class="btn btn-outline-section">{{ 'general.cancel' | t }}</button>
 
                                                     <button type="submit" class="btn btn-section">{{ 'general.submit' | t }}</button>
 
@@ -675,37 +819,45 @@
 
                                         <div class="product-review">
 
-                                            <span class="product-review-author">
+                                            <div class="product-review-title">
 
-                                                {% assign dateFormat = 'general.date_format' | t  %}
-
-                                                <span class="mr-2">
+                                                <span class="product-review-title">
                                                     {{ review.title }}
                                                 </span>
 
+                                            </div>
+
+                                            <div class="product-review-date">
+
+                                                {%- assign dateFormat = 'general.date_format' | t  -%}
+
                                                 <i><time datetime="{{ review.created_at | date: "%F" }}">{{ review.created_at  | date: dateFormat }}</time></i>
 
-                                            </span>
+                                            </div>
 
                                             <div class="product-review-rating">
 
-                                                <span class="product-review-icons">
+                                                <div class="product-review-icons">
 
                                                     {% for rating in (1..product.max_rating) %}
 
-                                                        {% if product.rating >= rating %}
+                                                        <div class="product-review-icon">
 
-                                                            {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
+                                                            {% if product.rating >= rating %}
 
-                                                        {% else %}
+                                                                {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
 
-                                                            {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+                                                            {% else %}
 
-                                                        {% endif %}
+                                                                {%- render 'icon', icon: 'rating-star-J4vaWN' -%}
+
+                                                            {% endif %}
+
+                                                        </div>
 
                                                     {% endfor %}
 
-                                                </span>
+                                                </div>
 
                                             </div>
 

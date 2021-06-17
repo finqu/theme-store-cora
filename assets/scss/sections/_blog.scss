@@ -9,7 +9,7 @@
 		height: 100%;
 
 		.article-media {
-			@include aspect-ratio(13, 9);
+			@include aspect-ratio(13, 9, 'cover');
 		}
 
 		.article-body {

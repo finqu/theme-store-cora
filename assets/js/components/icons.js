@@ -19,6 +19,7 @@ import * as AngleDownRegular from '@streamlinehq/streamlinehq/img/streamline-reg
 import * as AngleLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-1-dzpa9L.svg';
 import * as AngleRightRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-1-Nc3Zm6.svg';
 import * as ArrowLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-dzpnnb.svg'
+import * as ControlsPlayRegular from '@streamlinehq/streamlinehq/img/streamline-regular/controls-play-af7Jis.svg'
 
 export default {
 	alignLeft: MoveLeft1,
@@ -40,5 +41,6 @@ export default {
 	angleDown: AngleDownRegular,
 	angleLeftRegular: AngleLeftRegular,
 	angleRightRegular: AngleRightRegular,
-	arrowLeftRegular: ArrowLeftRegular
+	arrowLeftRegular: ArrowLeftRegular,
+	controlsPlayRegular: ControlsPlayRegular
 }

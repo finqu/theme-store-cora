@@ -4,7 +4,7 @@
 
     {% for option in variant.options %}
 
-        <div class="checkbox">
+        <div class="form-group form-check">
 
             {% if option.price > 0 and showVariantPrice and showVariantTotalPrice and option.in_stock == true %}
 
@@ -18,7 +18,7 @@
 
             {% endif %}
 
-            <input class="product-variant{% if checkboxArgument1 or checkboxArgument2 %} has-price{% endif %}"
+            <input class="product-variant form-check-input{% if checkboxArgument1 or checkboxArgument2 %} has-price{% endif %}"
                type="checkbox"
                data-variant="{{ variant.id }}"
                id="product-option-{{ option.id }}"
@@ -26,7 +26,7 @@
                value="{{ option.id }}"
                {% if option.in_stock == false and product.ignore_storage == false %} disabled{% else %} data-is-usable{% endif %}>
 
-            <label for="product-option-{{ option.id }}">
+            <label for="product-option-{{ option.id }}" class="form-check-label">
 
                 {{ option.name }}
 

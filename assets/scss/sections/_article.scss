@@ -9,6 +9,10 @@
         @include media-breakpoint-down(md) {
             @include aspect-ratio(15, 9);
         }
+
+        .aspect-ratio-item {
+            object-position: left;
+        }
     }
 
     .article-content {

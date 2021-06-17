@@ -16,6 +16,7 @@ $enable-responsive-font-sizes: false;
 $enable-validation-icons: true;
 $enable-deprecation-messages: true;
 
+$img-fit: contain;
 $background-positions: left top, left center, left bottom, right top, right center, right bottom, center top, center center, center bottom;
 
 $carousel-heights: (
@@ -209,6 +210,25 @@ $container-max-widths: (
 );
 
 $grid-gutter-width: 40px;
+
+
+// Card
+$card-spacer-y: 1rem;
+$card-spacer-x: 1.5rem;
+$card-border-width: 1px;
+$card-border-radius: 3px;
+$card-inner-border-radius: subtract($card-border-radius, $card-border-width);
+$card-bg: transparent;
+$card-cap-bg: transparent;
+
+$card-img-overlay-padding: 1.25rem;
+
+$card-group-margin: $grid-gutter-width / 2;
+$card-deck-margin: $card-group-margin;
+
+$card-columns-count: 3;
+$card-columns-gap: 1.25rem;
+$card-columns-margin: $card-spacer-y;
 
 
 // Social

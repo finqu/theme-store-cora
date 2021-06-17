@@ -71,7 +71,6 @@ export default class Gallery {
 
 	initialize() {
 
-
 		const self = this;
 
 		this.addDomItems().then(() => {
@@ -80,9 +79,15 @@ export default class Gallery {
 
 				this.items.sort((a, b) => a.index - b.index);
 
-				this.$el.on('click.pswpInit', 'img', function() {
+				this.$el.on('click.pswpInit', '[data-gallery-item-init]', function() {
 
-					self.init($(this).parentsUntil('.gallery-img').parent().index());
+					let $parentEl = $(this).parentsUntil('.gallery-item').parent();
+
+					if (!$parentEl.length) {
+						$parentEl = $(this).parent('.gallery-item');
+					}
+
+					self.init($parentEl.index());
 		        });
 			}
 
@@ -95,25 +100,28 @@ export default class Gallery {
 	addDomItems() {
 
 		const self = this;
-		let $images = this.$el.find('img[data-gallery-src]');
-		let imagesToLoad = $images.length;
-		let maxLoadIndex = $images.length;
+		const $galleryItems = this.$el.find('.gallery-item');
+		const maxLoadIndex = $galleryItems.length;
+		let itemsToLoad =  maxLoadIndex;
 		let loadIndex = 0;
 
 		return new Promise((resolve, reject) => {
 
-			if ($images.length > 0) {
+			if ($galleryItems.length > 0) {
 
-				$images.each(function(i) {
+				$galleryItems.each(function(i) {
 
-					if (self.imgPreload) {
+					const $galleryImgSrcEl = $(this).find('[data-gallery-img-src]');
+					const $galleryVideoSrcEl = $(this).find('[data-gallery-video-src]');
 
+					if (self.imgPreload && $galleryImgSrcEl.length) {
+
+						const src = $galleryImgSrcEl.data('galleryImgSrc');
 						let img = new Image();
-						let src = $(this).data('gallerySrc');
 
 						img.onload = function() {
 
-							imagesToLoad--;
+							itemsToLoad--;
 							loadIndex++;
 
 							self.items.push({
@@ -123,26 +131,63 @@ export default class Gallery {
 				                h: this.height
 				            });
 
-				            if (imagesToLoad === 0) {
+				            if (itemsToLoad === 0) {
 
 				            	resolve();
 
-				            } else if (imagesToLoad > 0 && loadIndex === maxLoadIndex) {
+				            } else if (itemsToLoad > 0 && loadIndex === maxLoadIndex) {
 
 				            	reject();
 				            }
 						}
 
-						img.src = $(this).data('gallerySrc');
+						img.src = src;
 
-					} else {
+					} else if ($galleryImgSrcEl.length) {
+
+						itemsToLoad--;
+						loadIndex++;
 
 						self.items.push({
 							index: i,
-			                src: $(this).data('gallerySrc'),
-			                w: $(this).data('galleryWidth'),
-			                h: $(this).data('galleryHeight')
+			                src: $galleryImgSrcEl.data('galleryImgSrc'),
+			                w: $galleryImgSrcEl.data('galleryImgWidth'),
+			                h: $galleryImgSrcEl.data('galleryImgHeight')
 			            });
+
+			            if (itemsToLoad === 0) {
+
+			            	resolve();
+
+			            } else if (itemsToLoad > 0 && loadIndex === maxLoadIndex) {
+
+			            	reject();
+			            }
+
+					} else if ($galleryVideoSrcEl.length) {
+
+						itemsToLoad--;
+						loadIndex++;
+
+						self.items.push({
+							index: i,
+			                html: `
+			                	<div class="pswp__video-container">
+			                		<div class="pswp__video-aspect-ratio-container">
+				                		<iframe class="pswp__video" src="${$galleryVideoSrcEl.data('galleryVideoSrc')}" width="960" height="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				                		</div>
+			                	</div>
+			                `
+			            });
+
+			            if (itemsToLoad === 0) {
+
+			            	resolve();
+
+			            } else if (itemsToLoad > 0 && loadIndex === maxLoadIndex) {
+
+			            	reject();
+			            }
 					}
 		        });
 

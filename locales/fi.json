@@ -9,6 +9,7 @@
         "next": "Seuraava",
         "previous": "Edellinen",
         "unknown": "Tuntematon",
+        "choose": "Valitse",
         "search": "Haku",
         "search_no_results": "Haku ei tuottanut tuloksia, kokeile muita hakusanoja.",
         "search_results_for": "Hait sanalla",

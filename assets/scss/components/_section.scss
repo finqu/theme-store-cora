@@ -98,7 +98,6 @@
 				}
 
 				.text-sale-price {
-					font-weight: $font-weight-bold;
 					color: map-get($map, sale_price_color);
 				}
 
@@ -425,6 +424,28 @@
 				// Dropdown text
 				.dropdown-item-text {
 					color: map-get($map, form_text_color);
+				}
+
+				// Card & accordion
+				.card {
+					border-color: map-get($map, border_color);
+
+					.card-header {
+						border-color: map-get($map, border_color);
+					}
+				}
+
+				.accordion {
+
+					> .card {
+
+						> .card-header {
+
+							&:hover {
+								background-color: color-yiq(map-get($map, background_color), darken(map-get($map, background_color), 4%), lighten(map-get($map, background_color), 4%))
+							}
+						}
+					}
 				}
 
 				// Social

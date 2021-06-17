@@ -2,7 +2,8 @@ import Gallery from './gallery';
 import Swiper from 'swiper';
 import SwiperCore, {
 	Thumbs,
-    Navigation
+    Navigation,
+    Mousewheel
 } from 'swiper/core';
 import 'swiper/swiper.min.css';
 import 'swiper/components/thumbs/thumbs.min.css';
@@ -10,7 +11,8 @@ import 'swiper/components/controller/controller.min.css';
 
 SwiperCore.use([
 	Thumbs,
-    Navigation
+    Navigation,
+    Mousewheel
 ]);
 
 export default {
@@ -58,7 +60,8 @@ export default {
     },
 	initCategory: function() {
 
-    	const categoryTagsEl = document.querySelector('.category-tags');
+        const containerEl = document.querySelector('.section-category');
+    	const categoryTagsEl = containerEl.querySelector('.category-tags');
 
     	if (categoryTagsEl) {
 
@@ -89,18 +92,20 @@ export default {
 	},
 	initArticle: function() {
 
-		document.querySelectorAll('[name="article-comment-form-show-action"]').forEach(el => { el.addEventListener('click', e => {
+        const containerEl = document.querySelector('.section-article');
 
-    		const commentReplyContainerEl = document.querySelector('#article-comment-form-'+el.value);
+		containerEl.querySelectorAll('[name="article-comment-form-show-action"]').forEach(el => { el.addEventListener('click', e => {
+
+    		const commentReplyContainerEl = containerEl.querySelector('#article-comment-form-'+el.value);
 
     		commentReplyContainerEl.classList.remove('d-none')
     		el.classList.add('d-none');
     	})});
 
-    	document.querySelectorAll('[name="article-comment-form-close-action"]').forEach(el => { el.addEventListener('click', e => {
+    	containerEl.querySelectorAll('[name="article-comment-form-close-action"]').forEach(el => { el.addEventListener('click', e => {
 
-    		const commentReplyContainerEl = document.querySelector('#article-comment-form-'+el.value);
-    		const replyEl = document.querySelector('[name="article-comment-form-show-action"][value="'+el.value+'"]');
+    		const commentReplyContainerEl = containerEl.querySelector('#article-comment-form-'+el.value);
+    		const replyEl = containerEl.querySelector('[name="article-comment-form-show-action"][value="'+el.value+'"]');
 
     		commentReplyContainerEl.classList.add('d-none')
     		replyEl.classList.remove('d-none');
@@ -224,9 +229,11 @@ export default {
 	},
     initProduct: function() {
 
+        const containerEl = document.querySelector('.section-product-card');
+
     	const initProductMedia = () => {
 
-    		const productThumbMediaSwiperEl = '#product-thumb-media-swiper';
+    		const productThumbMediaSwiperEl = containerEl.querySelector('#product-thumb-media-swiper');
     		const productThumbMediaSwiperCfg = {
     			direction: 'vertical',
 				spaceBetween: 16,
@@ -235,6 +242,9 @@ export default {
 				watchOverflow: true,
 				watchSlidesVisibility: true,
 				watchSlidesProgress: true,
+                mousewheel: {
+                    releaseOnEdges: true,
+                },
 				navigation: {
 					nextEl: '.swiper-button-next',
 					prevEl: '.swiper-button-prev'
@@ -242,10 +252,11 @@ export default {
 			};
 
 			const productThumbMediaSwiper = new Swiper(productThumbMediaSwiperEl, productThumbMediaSwiperCfg);
+            const productThumbEls = productThumbMediaSwiperEl.querySelectorAll('.swiper-slide');
 
-			const productMainMediaSwiperEl = '#product-main-media-swiper';
+			const productMainMediaSwiperEl = containerEl.querySelector('#product-main-media-swiper');
 			const productMainMediaSwiperCfg = {
-				noSwiping: true,
+				allowTouchMove: true,
 				speed: 0,
 				navigation: {
 					nextEl: '.swiper-button-next',
@@ -253,11 +264,20 @@ export default {
 				},
 				thumbs: {
 					swiper: productThumbMediaSwiper
-				}
+				},
+                breakpoints: {
+                    992: {
+                        allowTouchMove: false,
+                    }
+                }
 			};
 
 			const productMainMediaSwiper = new Swiper(productMainMediaSwiperEl, productMainMediaSwiperCfg);
 			const productMediaGallery = new Gallery(productMainMediaSwiperEl);
+
+            productThumbEls.forEach((el, index) => { el.addEventListener('mouseover', e => {
+                productMainMediaSwiper.slideTo(index, 0, true);
+            })});
     	};
 
     	const initProductOptions = () => {
@@ -317,26 +337,25 @@ export default {
 
                 const variantId = $(this).data('variant');
                 const optionId = $(this).val();
-                const image = $(this).data('variant-image');
-                let other = $(this).parentsUntil('.product-variant-container').parent().siblings('.product-subvariant-container[data-variant="'+variantId+'"]');
+                let sibling = $(this).parentsUntil('.product-variant-container').parent().siblings('.product-subvariant-container[data-variant="'+variantId+'"]');
                 let productVariants = [];
 
-                if (!other.length) {
-                    other = $(this).parent().siblings('.product-subvariant-container[data-variant="'+variantId+'"]');
+                if (!sibling.length) {
+                    sibling = $(this).parent().siblings('.product-subvariant-container[data-variant="'+variantId+'"]');
                 }
 
                 if ($(this).is(':checkbox')) {
 
-                    other = $(this).parentsUntil('.product-variant-container').parent().siblings('.product-subvariant-container[data-option="'+optionId+'"]');
+                    sibling = $(this).parentsUntil('.product-variant-container').parent().siblings('.product-subvariant-container[data-option="'+optionId+'"]');
 
-                    if (!other.length) {
-                        other = $(this).parent().siblings('.product-subvariant-container[data-option="'+optionId+'"]');
+                    if (!sibling.length) {
+                        sibling = $(this).parent().siblings('.product-subvariant-container[data-option="'+optionId+'"]');
                     }
                 }
 
-                other.hide();
-                other.find('textarea').val('');
-                other.find('.product-variant').attr('disabled', true);
+                sibling.hide();
+                sibling.find('textarea').val('');
+                sibling.find('.product-variant').attr('disabled', true);
 
                 // Reset sub-variants if hidden
                 $('.product-subvariant-container').filter(':hidden').each(function() {
@@ -352,12 +371,6 @@ export default {
                         }
                     });
                 });
-
-                // ??
-                // Change gallery picture on radio select
-                if (image) {
-                    $('#' + image).click();
-                }
 
                 // Show variants if active
                 if (($(this).is('select') && $(this).val()) || ($(this).is(':checkbox, :radio') && $(this).is(':checked')) || ($(this).is('textarea') && $(this).val())) {
@@ -392,11 +405,11 @@ export default {
 
     	const initProductReviews = () => {
 
-    		const productReviewFormEl = document.querySelector('.product-review-form');
-    		const productReviewCreateEl = document.querySelector('[name="product-review-create"]');
-    		const productReviewCancelEl = document.querySelector('[name="product-review-cancel"]');
-    		const productShowReviewsEl = document.querySelector('[name="product-show-reviews"]');
-    		const productReviewCollapseEl = document.querySelector('#accordion-product-reviews');
+    		const productReviewFormEl = containerEl.querySelector('.product-review-form');
+    		const productReviewCreateEl = containerEl.querySelector('[id="product-review-create"]');
+    		const productReviewCancelEl = containerEl.querySelector('[id="product-review-cancel"]');
+    		const productShowReviewsEl = containerEl.querySelector('[id="product-show-reviews"]');
+    		const productReviewCollapseEl = containerEl.querySelector('#accordion-product-reviews');
 
     		if (productReviewCreateEl) {
 
