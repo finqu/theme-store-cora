@@ -15,114 +15,103 @@
 
 {%- capture sectionContent -%}
 
-	<div class="row">
+	<div class="article-media">
 
-		<div class="col">
+		<div class="article-img-container aspect-ratio-container">
 
-			{% if article.header_image %}
+			{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc -%}
+			{%- assign imgSizeSm = 717,273 -%}
+			{%- assign imgSizeLg = 920,354 -%}
 
-				<div class="item-image">
+  			<picture>
+		        <source media="(min-width: 768px)" data-srcset="
+		            {{ imgSrc | thumb: imgSizeLg }} 1x,
+		            {{ imgSrc| thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-	  				{% assign imgSizeSm = 300,185 %}
-	  				{% assign imgSizeLg = 535,185 %}
+		        <img
+		            alt="{{ article.title }}"
+		            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+		            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+		            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+		    </picture>
 
-		  			<picture>
-				        <source media="(min-width: 768px)" data-srcset="
-				            {{ article.header_image | thumb: imgSizeLg }} 1x,
-				            {{ article.header_image | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+	    </div>
 
-				        <img
-				            alt="{{ article.title }}"
-				            data-src="{{ article.header_image | thumb: imgSizeSm }}"
-				            data-srcset="{{ article.header_image | thumb: imgSizeSm }} 1x, {{ imgSizeSm | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-				            class="lazy d-block mx-auto img-fluid">
-				    </picture>
+	</div>
 
-				</div>
+	<div class="article-content">
 
-			{% endif %}
+		{{ article.content }}
 
-			<div class="item-content">
+	</div>
 
-				{{ article.content }}
+	<div class="article-share">
 
-			</div>
+		{% render 'social-share-buttons', facebook: true, twitter: true, whatsapp: true, email: true %}
 
-			<div class="item-share">
+	</div>
 
-				{% render 'social-share-buttons', facebook: true, twitter: true, whatsapp: true, email: true %}
+	<div class="article-comments{% if comments.size > 0 %} has-comments{% endif %}">
 
-			</div>
+		<span class="d-block h2 mb-4">
+        	{{ 'blog.comments' | t }}
+        </span>
 
-			<div class="item-comments{% if comments.size > 0 %} has-comments{% endif %}">
+        {% if store.session.logged_in == false and store.customer_accounts_enabled %}
 
-                {% if store.session.logged_in == false or comments.size > 0 %}
+            <p>
+            	<a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
+            </p>
 
-                    <span class="h4">
-                    	{{ 'blog.comments' | t }}
-                    </span>
+        {% endif %}
 
-                {% endif %}
+        {% if store.session.logged_in %}
 
-                {% if store.session.logged_in == false and store.customer_accounts_enabled %}
+        	<div class="article-comment-form-action">
 
-                    <p>
-                    	<a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
-                    </p>
+                <button type="button" name="article-comment-form-show-action" class="btn btn-outline-section" value="root">
+                    {{ 'blog.leave_comment' | t }}
+                </button>
 
-                {% endif %}
+            </div>
 
-                {% if store.session.logged_in %}
+            <div id="article-comment-form-root" class="article-comment-form d-none">
 
-                    {% if comments.size == 0 %}
+                {% form 'comment' %}
 
-                        <span class="h4">
-                        	{{ 'blog.leave_comment' | t }}
-                        </span>
+                    <input type="hidden" name="post_id" value="{{ article.id }}">
 
-                    {% endif %}
+                    <div class="form-group">
 
-                    <div class="item-reply">
-
-                        {% form 'blog_comment' %}
-
-                            <input type="hidden" name="post_id" value="{{ article.id }}">
-
-                            <div class="form-group">
-
-                                <label>{{ 'comment' | t }}</label>
-
-                			    <textarea class="form-control" name="comment"></textarea>
-
-                            </div>
-
-                            {% render 'form-error', error: form.error %}
-
-                            <div class="form-group text-right">
-
-                                <button type="submit" class="btn btn-section">{{ 'submit' | t }}</button>
-
-                            </div>
-
-                        {% endform %}
+                        <textarea class="form-control" name="comment"></textarea>
 
                     </div>
 
-                {% endif %}
+                    {% render 'form-error', error: form.error %}
 
-                {% if comments.size > 0 %}
+                    <button type="button" name="article-comment-form-close-action" class="btn btn-outline-section" value="root">
+                    	{{ 'general.cancel' | t }}
+                    </button>
 
-                    {% for comment in comments %}
+                    <button type="submit" class="btn btn-section">
+                    	{{ 'general.submit' | t }}
+                    </button>
 
-                    	{% render 'article-comment', article: article, comment: comment %}
+                {% endform %}
 
-                    {% endfor %}
+            </div>
 
-                {% endif %}
+        {% endif %}
 
-			</div>
+        {% if comments.size > 0 %}
 
-		</div>
+            {% for comment in comments %}
+
+            	{% render 'article-comment', article: article, comment: comment %}
+
+            {% endfor %}
+
+        {% endif %}
 
 	</div>
 

@@ -8,6 +8,7 @@
         "close": "Sulje",
         "next": "Seuraava",
         "previous": "Edellinen",
+        "unknown": "Tuntematon",
         "search": "Haku",
         "search_no_results": "Haku ei tuottanut tuloksia, kokeile muita hakusanoja.",
         "search_results_for": "Hait sanalla",
@@ -95,7 +96,6 @@
     },
     "blog": {
         "title": "Blogi",
-        "readmore": "Lue lisää",
         "no_articles": "Blogissa ei ole yhtään artikkelia.",
         "reply_comment": "Vastaa",
         "comments": "Kommentit",
@@ -201,8 +201,6 @@
         "success": "Kirjautuminen onnistui!",
         "already_logged_in": "Olet jo kirjautunut sisään.",
         "forgot_password": "Unohditko salasanasi?",
-        "email_placeholder": "Sähköposti",
-        "password_placeholder": "Salasana",
         "new_customer": "Oletko uusi asiakas?",
         "register": "Rekisteröidy nyt"
     },
@@ -210,7 +208,6 @@
         "title": "Rekisteröityminen",
         "success": "Rekisteröityminen onnistui!",
         "register": "Rekisteröidy",
-        "order_as_company": "Tilaa yritykselle",
         "already_registered": "Olet jo rekisteröitynyt.",
         "cta": "Luo tili",
         "returning_customer": "Palaava asiakas?",
@@ -218,17 +215,21 @@
         "inline_terms": "Valitsemalla {{ action }} hyväksyt {{ terms }}.",
         "inline_terms_with_policy": "Valitsemalla {{ action }} hyväksyt {{ terms }}. Lue {{ policy }}, joka kertoo tietojen keräämisestä, käytöstä ja jakamisesta."
     },
+    "password_reset": {
+        "title": "Uusi salasana",
+        "success": "Salasana vaihdettiin onnistuneesti. Voit nyt kirjautua sisään.",
+        "login": "Kirjaudu sisään",
+        "cta": "Lähetä"
+    },
     "password_recover": {
         "title": "Unohtuiko salasana?",
         "description": "Syötä alla olevaan kenttään sähköpostiosoite, jota käytit rekisteröitymisessä. Lähetämme ohjeet salasanan vaihdosta antamaasi osoitteeseen.",
         "success": "Ohjeet lähetettiin sähköpostiisi.",
         "cta": "Lähetä",
-        "email_placeholder": "Sähköposti",
         "login": "Kirjaudu sisään"
     },
     "password_protection": {
         "title": "Tulossa pian",
-        "password_placeholder": "Salasana",
         "cta": "Kirjaudu sisään"
     },
     "activate_account": {

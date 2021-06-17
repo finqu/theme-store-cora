@@ -8,6 +8,7 @@
         "close": "Close",
         "next": "Next",
         "previous": "Previous",
+        "unknown": "Unknown",
         "search": "Search",
         "search_no_results": "Your search returned no results, please try other keywords.",
         "search_results_for": "Search for",
@@ -124,7 +125,6 @@
     },
     "blog": {
         "title": "Blog",
-        "readmore": "Read more",
         "no_articles": "No articles written to the blog yet",
         "reply_comment": "Reply",
         "comments": "Comments",
@@ -202,8 +202,6 @@
         "success": "You have logged in successfully!",
         "already_logged_in": "You have already signed in",
         "forgot_password": "Forgot your password?",
-        "email_placeholder": "john@doe.com",
-        "password_placeholder": "Password",
         "new_customer": "New customer?",
         "register": "Create account"
     },
@@ -211,13 +209,18 @@
         "title": "Registration",
         "success": "Registration succesful!",
         "register": "Register",
-        "order_as_company": "Order as company",
         "already_registered": "You have already registered.",
         "cta": "Create account",
         "returning_customer": "Returning customer?",
         "login": "Sign in",
         "inline_terms": "By clicking __action__, you agree to our __terms__.",
         "inline_terms_with_policy": "By clicking __action__, you agree to our __terms__. Learn how we collect, use and share your data in our __policy__."
+    },
+    "password_reset": {
+        "title": "New password",
+        "success": "Your password was changed successfully. You can now sign in.",
+        "login": "Login",
+        "cta": "Send"
     },
     "password_recover": {
         "title": "Forgotten password?",
@@ -229,7 +232,6 @@
     },
     "password_protection": {
         "title": "Opening soon",
-        "password_placeholder": "Password",
         "cta": "Login"
     },
     "activate_account": {

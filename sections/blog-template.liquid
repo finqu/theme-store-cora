@@ -8,83 +8,92 @@
 
 		{%- paginate posts by 20 -%}
 
-			{%- for post in posts -%}
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
 
-				<div class="item row">
+				{%- for article in posts -%}
 
-					<div class="col col-sm-6">
+					<div class="col pt-3 pb-4">
 
-						<div class="item-title">
+						<div class="blog-item">
 
-							<a href="{{ post | page_url }}">
+							<div class="article-media">
 
-								<h2>{{ post.title }}</h2>
+								<div class="article-img-container aspect-ratio-container">
 
-							</a>
+									<a href="{{ article | page_url }}">
 
-						</div>
+										{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc -%}
+						  				{%- assign imgSizeSm = 300,185 -%}
+						  				{%- assign imgSizeLg = 535,185 -%}
 
-						<div class="item-info">
+							  			<picture>
+									        <source media="(min-width: 768px)" data-srcset="
+									            {{ imgSrc | thumb: imgSizeLg }} 1x,
+									            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-							 <span class="post-date">
+									        <img
+									            alt="{{ article.title }}"
+									            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+									            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+									            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+									    </picture>
 
-	                            {% assign format = 'general.date_format' | t  %}
-	                            <i><time datetime="{{ post.created_at | date: "%F" }}">{{ post.created_at | date:format }}</time></i>
+								    </a>
 
-	                        </span>
+							    </div>
 
-						</div>
+							</div>
 
-						<div class="item-content">
+							<div class="article-body">
 
-							{% if post.introduction.size > 0 %}
+								<div class="article-title">
 
-	                            <p>{{ post.introduction }}</p>
+									<a href="{{ article | page_url }}">
 
-	                        {% endif %}
+										<h2 class="article-title-text">{{ article.title }}</h2>
 
-	                        <p>{{ blog_post.content | strip_html | truncate: 140 }}</p>
+									</a>
 
-						</div>
+								</div>
 
-						<div class="item-action">
+								<div class="article-info">
 
-							<a href="{{ post | page_url }}" class="btn btn-section">{{ 'blog.readmore' | t }}</a>
+									 <span class="article-date">
+
+			                            {% assign format = 'general.date_format' | t  %}
+			                            <i><time datetime="{{ article.created_at | date: "%F" }}">{{ article.created_at | date:format }}</time></i>
+
+			                        </span>
+
+								</div>
+
+								<div class="article-content">
+
+									{%- if article.introduction.size > 0 -%}
+
+			                            <p class="article-content-text mb-0">
+			                            	{{ article.introduction }}
+			                            </p>
+
+			                        {%- else -%}
+
+			                        	<p class="article-content-text mb-0">
+			                        		{{ article.content | strip_html | truncate: 140 }}
+			                        	</p>
+
+			                        {%- endif -%}
+
+								</div>
+
+							</div>
 
 						</div>
 
 					</div>
 
-					<div class="col col-sm-6">
+				{%- endfor -%}
 
-						<div class="item-image">
-
-							{% if post.header_image %}
-
-				  				{% assign imgSizeSm = 300,185 %}
-				  				{% assign imgSizeLg = 535,185 %}
-
-					  			<picture>
-							        <source media="(min-width: 768px)" data-srcset="
-							            {{ post.image | thumb: imgSizeLg }} 1x,
-							            {{ post.image | thumb: imgSizeLg | thumb:'@2x' }} 2x">
-
-							        <img
-							            alt="{{ post.title }}"
-							            data-src="{{ post.header_image | thumb: imgSizeSm }}"
-							            data-srcset="{{ post.header_image | thumb: imgSizeSm }} 1x, {{ imgSizeSm | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-							            class="lazy d-block mx-auto img-fluid">
-							    </picture>
-
-							{% endif %}
-
-						</div>
-
-					</div>
-
-				</div>
-
-			{%- endfor -%}
+			</div>
 
 			<div class="row">
 

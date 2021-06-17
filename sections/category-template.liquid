@@ -8,44 +8,48 @@
 
     {%- paginate category.products by 100 -%}
 
-        <div class="category-tags pb-4">
+        {% if subCategories %}
 
-            <div class="swiper-container py-1">
+            <div class="category-tags pb-4">
 
-                <div class="swiper-wrapper">
+                <div class="swiper-container py-1">
 
-                    {% for subCategory in subCategories %}
+                    <div class="swiper-wrapper">
 
-                        <div class="swiper-slide">
+                        {% for subCategory in subCategories %}
 
-                            <div class="category-tag">
+                            <div class="swiper-slide">
 
-                                <a href="{{ subCategory | page_url }}">
+                                <div class="category-tag">
 
-                                    <span class="category-tag-content">
-                                        {{ subCategory.title }}
-                                    </span>
-                                </a>
+                                    <a href="{{ subCategory | page_url }}">
+
+                                        <span class="category-tag-content">
+                                            {{ subCategory.title }}
+                                        </span>
+                                    </a>
+
+                                </div>
 
                             </div>
 
-                        </div>
+                        {% endfor %}
 
-                    {% endfor %}
+                    </div>
 
-                </div>
+                    <div class="swiper-button-prev">
+                        {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+                    </div>
 
-                <div class="swiper-button-prev">
-                    {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
-                </div>
+                    <div class="swiper-button-next">
+                        {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+                    </div>
 
-                <div class="swiper-button-next">
-                    {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
                 </div>
 
             </div>
 
-        </div>
+        {% endif %}
 
         <div class="row">
 

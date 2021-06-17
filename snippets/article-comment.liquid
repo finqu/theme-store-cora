@@ -11,68 +11,56 @@
 	{% render 'article-comment', article: article, comment: comment %}
 {% endcomment %}
 
-{% assign article = article %}
-{% assign dateFormat = 'general.date_format' | t  %}
+{%- assign article = article -%}
+{%- assign dateFormat = 'general.date_format' | t  -%}
+{%- assign commentDefaultTitle = 'general.unknown' | t -%}
 
-<div id="item-comment-{{ comment.id }}" class="item-comment">
+<div id="article-comment-{{ comment.id }}" class="article-comment">
 
-    <div class="item-comment-inner">
+    <div class="article-comment-inner">
 
-        <div class="item-comment-header">
+        <div class="article-comment-header">
 
-            <span class="item-comment-title">
-            	{{ comment.customer.name }}
+            <span class="article-comment-title">
+            	{{ comment.customer.firstname | default: commentDefaultTitle }}
             </span>
 
-            {% if store.customer.id and comment.customer.id == store.customer.id %}
+        </div>
 
-                {% form 'blog_comment_remove' class="item-comment-remove-form" %}
+        <div class="article-comment-date text-muted">
 
-                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                    <input type="hidden" name="post_id" value="{{ article.id }}">
-
-                    <button type="submit" class="btn btn-text">
-                    	{{ 'remove' | t }}
-                    </button>
-
-                {% endform %}
-
-            {% endif %}
-
-            {% if store.session.logged_in and comment.parent_count < 3 %}
-
-                <button type="button" name="item-comment-reply-show-action" class="btn btn-text" value="{{ comment.id }}">
-                	{{ 'blog.reply_comment' | t }}
-                </button>
-
-            {% endif %}
+            <time datetime="{{ comment.created_at | date: "%F" }}">
+                {{ comment.created_at | date: dateFormat }}
+            </time>
 
         </div>
 
-        <div class="item-comment-datetime">
+        <div class="article-comment-content">
 
-           <time datetime="{{ comment.created_at | date: "%F" }}">{{ comment.created_at | date: dateFormat }}</time>
-
-        </div>
-
-        <div class="item-comment-content">
-
-            <p>{{ comment.comment }}</p>
+            <p class="mb-0">
+                {{ comment.comment }}
+            </p>
 
         </div>
 
         {% if store.session.logged_in and comment.parent_count < 3 %}
 
-            <div id="item-comment-reply-{{ comment.id }}" class="item-comment-reply d-none">
+            <div class="article-comment-form-action">
 
-                {% form 'blog_comment' %}
+                <button type="button" name="article-comment-form-show-action" class="btn btn-text font-weight-bold text-underline-indicator" value="{{ comment.id }}">
+                    {{ 'blog.reply_comment' | t }}
+                </button>
+
+            </div>
+
+            <div id="article-comment-form-{{ comment.id }}" class="article-comment-form d-none">
+
+                {% form 'comment' %}
 
                     <input type="hidden" name="reply_to" value="{{ comment.id }}">
-                    <input type="hidden" name="post_id" value="{{ blogpost.id }}">
+                    <input type="hidden" name="post_id" value="{{ article.id }}">
 
                     <div class="form-group">
-
-                        <label>{{ 'comment' | t }}</label>
 
                         <textarea class="form-control" name="comment"></textarea>
 
@@ -80,17 +68,13 @@
 
                     {% render 'form-error', error: form.error %}
 
-                    <div class="form-group text-right">
+                    <button type="button" name="article-comment-form-close-action" class="btn btn-outline-section" value="{{ comment.id }}">
+                    	{{ 'general.cancel' | t }}
+                    </button>
 
-                        <button type="button" name="item-comment-reply-close-action" class="btn" value="{{ comment.id }}">
-                        	{{ 'cancel' | t }}
-                        </button>
-
-                        <button type="submit" class="btn btn-section">
-                        	{{ 'submit' | t }}
-                        </button>
-
-                    </div>
+                    <button type="submit" class="btn btn-section">
+                    	{{ 'general.submit' | t }}
+                    </button>
 
                 {% endform %}
 

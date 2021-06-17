@@ -89,18 +89,18 @@ export default {
 	},
 	initArticle: function() {
 
-		document.querySelectorAll('[name="item-comment-reply-show-action"]').forEach(el => { el.addEventListener('click', e => {
+		document.querySelectorAll('[name="article-comment-form-show-action"]').forEach(el => { el.addEventListener('click', e => {
 
-    		const commentReplyContainerEl = document.querySelector('#item-comment-reply-'+el.value);
+    		const commentReplyContainerEl = document.querySelector('#article-comment-form-'+el.value);
 
     		commentReplyContainerEl.classList.remove('d-none')
     		el.classList.add('d-none');
     	})});
 
-    	document.querySelectorAll('[name="item-comment-reply-close-action"]').forEach(el => { el.addEventListener('click', e => {
+    	document.querySelectorAll('[name="article-comment-form-close-action"]').forEach(el => { el.addEventListener('click', e => {
 
-    		const commentReplyContainerEl = document.querySelector('#item-comment-reply-'+el.value);
-    		const replyEl = document.querySelector('[name="item-comment-reply-show-action"][value="'+el.value+'"]');
+    		const commentReplyContainerEl = document.querySelector('#article-comment-form-'+el.value);
+    		const replyEl = document.querySelector('[name="article-comment-form-show-action"][value="'+el.value+'"]');
 
     		commentReplyContainerEl.classList.add('d-none')
     		replyEl.classList.remove('d-none');
