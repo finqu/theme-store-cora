@@ -22,6 +22,7 @@ export default {
 
         this.initSortByFilters();
         this.initWishlist();
+        this.initCartMini();
 
         if (bodyEl.classList.contains('template-category')) {
             this.initCategory();
@@ -39,6 +40,54 @@ export default {
 		    this.initProduct();
         }
 	},
+    initCartMini: function() {
+
+        document.addEventListener('cartRendered', cartReadyEvent => {
+
+            const cartMiniEls = document.querySelectorAll('.cart-mini');
+
+            cartMiniEls.forEach(el => {
+
+                const cartItemsEl = el.querySelector('.cart-items');
+
+                if (cartItemsEl) {
+
+                    if (cartItemsEl.scrollHeight > cartItemsEl.clientHeight) {
+                        el.classList.add('cart-mini-items-hint-bottom');
+                    } else {
+                        el.classList.remove('cart-mini-items-hint-bottom');
+                        el.classList.remove('cart-mini-items-hint-top');
+                    }
+
+                    cartItemsEl.addEventListener('scroll', scrollEvent => {
+
+                        const height = scrollEvent.target.clientHeight;
+                        const offset = scrollEvent.target.scrollTop + height;
+                        const minHeight = height;
+                        const maxHeight = scrollEvent.target.scrollHeight;
+
+                        if (offset === minHeight) {
+
+                            el.classList.add('cart-mini-items-hint-bottom');
+
+                        } else if (el.classList.contains('cart-mini-items-hint-bottom')) {
+
+                            el.classList.remove('cart-mini-items-hint-bottom');
+                        }
+
+                        if (offset === maxHeight) {
+
+                            el.classList.add('cart-mini-items-hint-top');
+
+                        } else if (el.classList.contains('cart-mini-items-hint-top')) {
+
+                            el.classList.remove('cart-mini-items-hint-top');
+                        }
+                    });
+                }
+            });
+        });
+    },
     initRegister: function() {
 
         const containerEl = document.querySelector('.section-register');

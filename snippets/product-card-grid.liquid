@@ -42,11 +42,11 @@
 
 		<a href="{{ product | page_url }}">
 
-			<div class="product-media{% unless product.image %} placeholder-image{% endunless%}">
+			<div class="product-media">
 
 				<div class="product-media-img-container aspect-ratio-container">
 
-	  				{%- assign imgSrc = product.image | default: settings.placeholderImgSrc -%}
+	  				{%- assign imgSrc = product.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
 	  				{%- assign imgSizeSm = 420,420 -%}
 	  				{%- assign imgSizeLg = 576,576 -%}
 

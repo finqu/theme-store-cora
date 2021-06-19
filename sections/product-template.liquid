@@ -24,7 +24,7 @@
                                             {%- assign hasMediaImg = true -%}
                                         {%- endunless -%}
 
-                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
+                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                         {%- assign imgSize = 120,120 -%}
 
                                         <img
@@ -53,7 +53,7 @@
 
                                             <div class="swiper-slide">
 
-                                                {%- assign imgSrc = option.image | default: settings.placeholderImgSrc -%}
+                                                {%- assign imgSrc = option.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                                 {%- assign imgSize = 120,120 -%}
 
                                                 <img
@@ -76,7 +76,7 @@
 
                                 <div class="swiper-slide">
 
-                                    {%- assign imgSrc = settings.placeholderImgSrc -%}
+                                    {%- assign imgSrc = settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                     {%- assign imgSize = 120,120 -%}
 
                                     <img
@@ -95,7 +95,7 @@
 
                                     <div class="swiper-slide">
 
-                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
+                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                         {%- assign imgSize = 120,120 -%}
 
                                         <img
@@ -142,7 +142,7 @@
 
                                         <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
-                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
+                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                             {%- assign imgSizeSm = 420,420 -%}
                                             {%- assign imgSizeLg = 490,700 -%}
 
@@ -188,7 +188,7 @@
 
                                                 <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
-                                                    {%- assign imgSrc = option.image | default: settings.placeholderImgSrc -%}
+                                                    {%- assign imgSrc = option.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                                     {%- assign imgSizeSm = 420,420 -%}
                                                     {%- assign imgSizeLg = 490,700 -%}
 
@@ -226,7 +226,7 @@
 
                                     <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
-                                        {%- assign imgSrc = settings.placeholderImgSrc -%}
+                                        {%- assign imgSrc = settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                         {%- assign imgSizeSm = 420,420 -%}
                                         {%- assign imgSizeLg = 490,700 -%}
 
@@ -260,7 +260,7 @@
 
                                         <div class="product-media-video-container aspect-ratio-container" data-gallery-item-init>
 
-                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc -%}
+                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                             {%- assign imgSize = 120,120 -%}
 
                                             <div class="product-media-video-icon-container c-zoom-in">
@@ -344,7 +344,7 @@
 
                         {% else %}
 
-                            <span class="text-price" data-product-price-dynamic>
+                            <span class="product-price text-price" data-product-price-dynamic>
                                 {{ product.price | in_currency }}
                             </span>
 
@@ -485,7 +485,7 @@
 
                                             <div class="product-related-media-img-container aspect-ratio-container">
 
-                                                {%- assign imgSrc = relatedItem.image | default: settings.placeholderImgSrc -%}
+                                                {%- assign imgSrc = relatedItem.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
                                                 {%- assign imgSize = 60,80 -%}
 
                                                 <picture>
@@ -579,37 +579,17 @@
 
                 {% elsif product.ignore_storage == false and product.in_stock == false and product.only_preview != true %}
 
-                    {% if product.is_reserved %}
-
-                        <div class="product-info-reserved">
-
-                            <span class="product-info-reserved-text">
-                                {{ 'product.reserved_for_you' | t }}
-                            </span>
-
-                        </div>
-
-                    {% else %}
+                    {% if product.in_stock == false %}
 
                         <div class="product-info-out-of-stock">
 
-                            <span class="product-info-out-of-stock-text">
+                            <span class="product-info-out-of-stock-text btn btn-section btn-block disabled">
                                 {{ 'product.out-of-stock' | t }}
                             </span>
 
                         </div>
 
                     {% endif %}
-
-                {% elsif product.only_preview %}
-
-                    <div class="product-info-preview">
-
-                        <span class="product-info-preview-text">
-                            {{ 'product.preview' | t }}
-                        </span>
-
-                    </div>
 
                 {% endif %}
 

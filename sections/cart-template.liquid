@@ -1,37 +1,20 @@
+{%- assign sectionTitle = 'cart.title' | t -%}
+
 {%- capture sectionContent -%}
-
-    <span data-cart-item-count>
-        0
-    </span>
-
-    <button type="button" class="btn btn-section" data-cart-add="265" data-cart-quantity="1">
-        Add
-    </button>
-
-    <form name="test">
-
-        <input type="hidden" name="product_id" value="30">
-        <input type="hidden" name="quantity" value="2">
-
-        <button type="button" class="btn btn-section" data-cart-add data-cart-form='[name="test"]'>
-            Add serialise
-        </button>
-
-    </form>
-
-    <button type="button" class="btn btn-section" data-cart-clear>
-        Clear
-    </button>
 
 	<div class="cart" data-cart-container>
 
-		{%- render 'icon', icon: 'loading-half-7QUSw4' class: 'svg-spin' -%}
+        <div class="text-center">
+
+		  {%- render 'icon', icon: 'loading-half-7QUSw4' class: 'svg-spin svg-icon-fill svg-icon-4x' -%}
+
+        </div>
 
 	</div>
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle%}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionHeaderTextAlign: 'center', sectionContentContainer: 'compact', sectionOverlay: true %}
 
 {% schema %}
 {

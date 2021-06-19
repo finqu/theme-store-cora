@@ -1,0 +1,43 @@
+// Dropdown
+// -----------------------------------------------------------------------------------------
+
+@include section-style() {
+
+	.dropdown-menu {
+		color: section-var(form_text_color);
+		background-color: section-var(form_bg_color);
+		border: $dropdown-border-width solid section-var(form_border_color);
+	}
+
+	.dropdown-divider {
+		@include nav-divider(section-var(form_border_color), $dropdown-divider-margin-y, true);
+	}
+
+	.dropdown-item {
+		color: section-var(form_text_color);
+
+		@include hover-focus() {
+			color: section-var(form_text_color);
+			@include gradient-bg(color-yiq(section-var(form_bg_color), darken(section-var(form_bg_color), 4%), lighten(section-var(form_bg_color), 4%)));
+		}
+
+		&.active,
+		&:active {
+			color: section-var(indicator_color);
+			@include gradient-bg(color-yiq(section-var(form_bg_color), darken(section-var(form_bg_color), 4%), lighten(section-var(form_bg_color), 4%)));
+		}
+
+		&.disabled,
+		&:disabled {
+			color: section-var(form_text_color);
+		}
+	}
+
+	.dropdown-header {
+		color: section-var(form_text_color);
+	}
+
+	.dropdown-item-text {
+		color: section-var(form_text_color);
+	}
+}

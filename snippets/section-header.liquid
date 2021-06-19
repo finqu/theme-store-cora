@@ -8,6 +8,7 @@
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
 	- sectionHeaderAction: {String}
+	- sectionHeaderTextAlign: {String} 'left', 'center', 'right'
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact'
 
 	Usage:
@@ -116,7 +117,7 @@
 
 {% endcapture %}
 
-<div class="section-header">
+<div class="section-header{% if sectionHeaderTextAlign %} text-{{ sectionHeaderTextAlign }}{% endif %}">
 
 	{%- if sectionContentContainer == 'fixed' -%}
 

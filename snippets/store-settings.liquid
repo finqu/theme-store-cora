@@ -11,6 +11,7 @@
 	window.store = {
 		designMode: {{ request.design_mode | yepnope:'true','false' }},
 		locale: {{ request.locale.iso_code | json }},
+		placeholderImgSrc: {{ settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
 			decimalPlaces: {{ store.currency.decimal_places | json }}
@@ -30,10 +31,13 @@
 		},
 		translations: {
 			general: {
+				quantity: {{ 'general.quantity'  | t | json }},
+				selection: {{ 'general.selection'  | t | json }},
 				total: {{ 'general.total'  | t | json }},
 			    subtotal: {{ 'general.subtotal' | t | json }},
 			    tax_free_price: {{ 'general.tax_free_price' | t | json }},
-			    tax: {{ 'general.tax' | t | json }}
+			    tax: {{ 'general.tax' | t | json }},
+			    back_to_home_page: {{ 'general.back_to_home_page' | t | json }}
 		    },
 			cart: {
 				title: {{ 'cart.title' | t | json }},

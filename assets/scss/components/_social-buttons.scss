@@ -1,6 +1,25 @@
 // Social Buttons
 // --------------------------------------------------
 
+@include section-style() {
+
+   .social-buttons {
+
+      .social-btn {
+
+         &.social-btn-style-section {
+            background-color: section-var(button_bg_color);
+            color: section-var(button_text_color);
+
+            &:hover,
+            &:focus {
+               background-color: lighten(section-var(button_bg_color), 15%);
+            }
+         }
+      }
+   }
+}
+
 .social-buttons {
 
     .social-btn {

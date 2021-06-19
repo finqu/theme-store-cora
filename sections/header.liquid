@@ -1,69 +1,320 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{ section.settings.sectionTitle | _default:store.name }}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Pages
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          	{% for page_item in store.pages.root %}
-          		<li><a class="dropdown-item" href="{{ page_item | link }}">{{ page_item.name }}</a></li>
-          	{% endfor %}
-          </ul>
-        </li>
+{%- capture preset1 -%}
 
-        {% if store.session.logged_in %}
+	<div class="cart-mini cart-mini-expanded" data-cart-mini-container>
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ routes.account_url }}">Account</a>
-          </li>
+        <div class="cart-header">
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ routes.account_logout_url }}">Sign out</a>
-          </li>
+            {%- render 'icon', icon: 'loading-half-7QUSw4' class: 'svg-spin svg-icon-fill svg-icon-4x' -%}
 
-        {% elsif store.customer_accounts_enabled %}
+        </div>
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ routes.account_login_url }}">Sign in</a>
-          </li>
+	</div>
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ routes.account_register_url }}">Sign up</a>
-          </li>
 
-        {% endif %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#">{{ section.settings.sectionTitle | _default:store.name }}</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/">Home</a>
+	        </li>
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            Pages
+	          </a>
+	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          	{% for page_item in store.pages.root %}
+	          		<li><a class="dropdown-item" href="{{ page_item | link }}">{{ page_item.name }}</a></li>
+	          	{% endfor %}
+	          </ul>
+	        </li>
 
-      </ul>
+	        {% if store.session.logged_in %}
 
-      {% form 'search' id:header-search class:d-flex %}
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      {% endform %}
-    </div>
-  </div>
-</nav>
+	          <li class="nav-item">
+	            <a class="nav-link" aria-current="page" href="{{ routes.account_url }}">Account</a>
+	          </li>
+
+	          <li class="nav-item">
+	            <a class="nav-link" aria-current="page" href="{{ routes.account_logout_url }}">Sign out</a>
+	          </li>
+
+	        {% elsif store.customer_accounts_enabled %}
+
+	          <li class="nav-item">
+	            <a class="nav-link" aria-current="page" href="{{ routes.account_login_url }}">Sign in</a>
+	          </li>
+
+	          <li class="nav-item">
+	            <a class="nav-link" aria-current="page" href="{{ routes.account_register_url }}">Sign up</a>
+	          </li>
+
+	        {% endif %}
+
+	      </ul>
+
+	      {% form 'search' id:header-search class:d-flex %}
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form>
+	      {% endform %}
+	    </div>
+	  </div>
+	</nav>
+
+
+	{% for link in section.settings.menu.links %}
+
+		{%- if link.url == blank -%}
+
+
+			{% for link in section.settings.menu.links %}
+
+				<a href="{{ link.url }}">
+					{{ link.title }}
+				</a>
+
+			{% endfor %}
+
+
+
+		{%- else -%}
+
+
+
+		{%- endif -%}
+
+
+	{% endfor %}
+
+{%- endcapture -%}
+
+{%- capture sectionContent -%}
+
+	{%- if section.settings.preset == '1' -%}
+
+		{{- preset1 -}}
+
+	{%- endif -%}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle %}
 
 {% schema %}
 {
     "name": "Header",
-    "tag": "div",
+    "tag": "section",
     "is_creatable": false,
-    "settings": [
-        {
-            "id": "title",
-            "type": "product",
-            "label": "prod"
-        }
-    ]
+    "is_removable": false,
+    "class": "section section-header",
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": "General",
+                "settings": [
+                    {
+                        "id": "preset",
+                        "type": "select",
+                        "label": "Preset",
+                        "default": "1",
+                        "options": [
+                            {
+                                "value": "1",
+                                "label": "Preset 1"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "menu",
+                        "type": "menu",
+                        "label": "Menu",
+                        "default": "footer-menu"
+                    }
+                ]
+            },
+            {
+                "title": "Section",
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": "Layout",
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": "Section height",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Section inner spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentSpacing",
+                                    "type": "radio-pill",
+                                    "label": "Content spacing",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Background",
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": "Image"
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": "Position",
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "left-top",
+                                            "label": "Left Top"
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": "Left Center"
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": "Left Bottom"
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": "Right Top"
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": "Right Center"
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": "Right Bottom"
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": "Center Top"
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": "Center Center"
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": "Center Bottom"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": "Overlay",
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": 0,
+                                    "unit": "%"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Colors",
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "general"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }
 {% endschema %}

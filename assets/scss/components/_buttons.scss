@@ -1,6 +1,43 @@
 // Buttons
 // -----------------------------------------------------------------------------------------
 
+@include section-style() {
+
+    .btn {
+
+        &.btn-section {
+            @include section-button-variant(section-var(button_bg_color), section-var(button_text_color));
+        }
+
+        &.btn-outline-section {
+            @include section-button-outline-variant(section-var(button_bg_color), section-var(button_text_color));
+        }
+    }
+
+    .btn-icon {
+        color:section-var(icon_color);
+
+        &:hover {
+            color: section-var(indicator_color);
+        }
+
+        &.disabled,
+        &[disabled] {
+            &:hover {
+                color: section-var(icon_color);
+            }
+        }
+    }
+
+    .btn-link {
+        color: section-var(link_color);
+
+        @include hover() {
+            color: section-var(link_color);
+        }
+    }
+}
+
 .btn,
 .btn-link,
 .btn-text {

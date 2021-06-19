@@ -8,3 +8,53 @@
 .text-decoration-line-through {
 	text-decoration: line-through;
 }
+
+@include section-style() {
+
+	h1, h2, h3, h4, h5, h6,
+	.h1, .h2, .h3, .h4, .h5, .h6 {
+		color: section-var(heading_color);
+	}
+
+	hr {
+		border-top: $hr-border-width solid section-var(border_color);
+	}
+
+	.text-icon {
+		color: section-var(icon_color);
+	}
+
+	.text-title {
+		color: section-var(heading_color);
+	}
+
+	.text-subtitle {
+		color: section-var(subheading_color);
+	}
+
+	.text-product-title {
+		color: section-var(product_title_color);
+	}
+
+	.text-price {
+		color: section-var(price_color);
+	}
+
+	.text-sale-price {
+		color: section-var(sale_price_color);
+	}
+
+	.text-muted {
+		color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%)) !important;
+	}
+
+	.text-underline-indicator {
+		transition: border .15s ease-in-out;
+		border-bottom: 2px solid transparent;
+		padding-bottom: 2px;
+
+		@include hover() {
+			border-bottom-color: section-var(indicator_color);
+		}
+	}
+}

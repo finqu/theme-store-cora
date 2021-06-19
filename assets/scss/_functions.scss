@@ -87,3 +87,23 @@
 @function shift-color($color, $weight) {
 	@return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
 }
+
+@function section-vars($key: 'general', $map: $section-styles) {
+
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	@warn "Unknown `#{$key}` in $map.";
+	@return null;
+}
+
+@function section-var($key, $map: $section-style-map) {
+
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	@warn "Unknown `#{$key}` in $map.";
+	@return null;
+}

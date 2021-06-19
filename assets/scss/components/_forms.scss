@@ -1,6 +1,121 @@
 // Forms
 // -----------------------------------------------------------------------------------------
 
+@include section-style() {
+
+	.form-control {
+		color: section-var(form_text_color);
+		background-color: section-var(form_bg_color);
+		border: $input-border-width solid section-var(form_border_color);
+
+		@include border-radius($input-border-radius, 0);
+		@include section-form-control-focus(section-var(form_text_color), section-var(form_bg_color), section-var(form_border_color), none, none);
+
+		&::placeholder {
+			color: lighten(section-var(form_text_color), 15%);
+		}
+
+		&[readonly] {
+			background-color: lighten(section-var(form_bg_color), 15%);
+		}
+	}
+
+	select.form-control {
+		&:focus::-ms-value {
+			color: section-var(form_text_color);
+			background-color: section-var(form_bg_color);
+		}
+	}
+
+	$form-check-input-bg-gradient: linear-gradient(180deg, mix(section-var(form_bg_color), section-var(form_border_color), 15%), section-var(form_border_color)) repeat-x;
+
+	$form-check-input-checked-color: section-var(form_bg_color);
+	$form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
+
+	$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+
+	$form-check-input-indeterminate-color: section-var(form_bg_color);
+	$form-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>");
+
+	.form-check-input {
+		background-color: section-var(form_bg_color);
+		border: $form-check-input-border-width solid section-var(form_border_color);
+
+		&:focus {
+			border-color: color-yiq(section-var(form_border_color), darken(section-var(form_border_color), 10%), lighten(section-var(form_border_color), 10%));
+			box-shadow: $form-check-input-focus-box-shadow;
+		}
+
+		&:checked {
+			background-color: section-var(indicator_color);
+			border-color: section-var(indicator_color);
+
+			&[type="checkbox"] {
+				@if $enable-gradients {
+					background-image: escape-svg($form-check-input-checked-bg-image), $form-check-input-bg-gradient;
+				} @else {
+					background-image: escape-svg($form-check-input-checked-bg-image);
+				}
+			}
+
+			&[type="radio"] {
+				@if $enable-gradients {
+					background-image: escape-svg($form-check-radio-checked-bg-image), $form-check-input-bg-gradient;
+				} @else {
+					background-image: escape-svg($form-check-radio-checked-bg-image);
+				}
+			}
+		}
+
+		&[type="checkbox"]:indeterminate {
+			background-color: section-var(form_bg_color);
+			border-color: color-yiq(section-var(form_border_color), darken(section-var(form_border_color), 10%), lighten(section-var(form_border_color), 10%));
+
+			@if $enable-gradients {
+				background-image: escape-svg($form-check-input-indeterminate-bg-image), $form-check-input-bg-gradient;
+			} @else {
+				background-image: escape-svg($form-check-input-indeterminate-bg-image);
+			}
+		}
+	}
+
+	$form-switch-color: section-var(form_text_color);
+	$form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>");
+
+	$form-switch-focus-color: section-var(form_text_color);
+	$form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>");
+
+	$form-switch-checked-color: section-var(form_bg_color);
+	$form-switch-checked-bg-gradient: linear-gradient(180deg, mix(section-var(form_bg_color), section-var(form_border_color), 15%), section-var(form_border_color)) repeat-x;
+	$form-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>");
+
+	.form-switch {
+
+		.form-check-input {
+			background-image: escape-svg($form-switch-bg-image);
+
+			&:focus {
+				background-image: escape-svg($form-switch-focus-bg-image);
+			}
+
+			&:checked {
+
+				@if $enable-gradients {
+					background-image: escape-svg($form-switch-checked-bg-image), $form-switch-checked-bg-gradient;
+				} @else {
+					background-image: escape-svg($form-switch-checked-bg-image);
+				}
+			}
+		}
+	}
+
+	.input-group-text {
+		color: section-var(form_text_color);
+		background-color: section-var(form_bg_color);
+		border: $input-border-width solid solid section-var(form_border_color);
+		@include border-radius($input-border-radius);
+	}
+}
 
 // From control text
 .form-control-text {

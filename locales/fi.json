@@ -1,5 +1,7 @@
 {
     "general": {
+        "quantity": "Määrä",
+        "selection": "Valinta",
         "title": "Otsikko",
         "cancel": "Peruuta",
         "submit": "Lähetä",

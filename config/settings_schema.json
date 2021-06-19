@@ -899,6 +899,11 @@
 						"fi": "Oletuskuva"
 					}
                 },
+                {
+                    "id": "placeholderDefaultImgSrc",
+                    "type": "hidden",
+					"default": "media/placeholder.jpg"
+                },
 				{
                     "id": "taxFreePrices",
                     "type": "checkbox",

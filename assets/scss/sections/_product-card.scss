@@ -1,123 +1,7 @@
 // Product card
 // -----------------------------------------------------------------------------------------
 
-.section-product-card {
-
-	.section-inner {
-
-		@each $name, $map in $section-styles {
-
-			&.section-style-#{str-replace(#{$name}, ' ', '-')} {
-
-				.product-media-container {
-
-					.product-media {
-
-						#product-thumb-media-swiper {
-
-							.swiper-slide {
-
-								&.swiper-slide-thumb-active  {
-									border-color: color-yiq(map-get($map, border_color), darken(map-get($map, border_color), 50%), lighten(map-get($map, border_color), 50%));
-								}
-				    		}
-				    	}
-
-				    	#product-main-media-swiper {
-
-							.product-media-video-container {
-
-								.product-media-video-icon-container {
-
-									.product-media-video-icon {
-										background-color: map-get($map, background_color);
-										stroke: map-get($map, text_color);
-									}
-								}
-							}
-						}
-				   	}
-				}
-
-				.product-form {
-
-					.product-wishlist-action {
-						border: 2px solid map-get($map, button_bg_color);
-					}
-				}
-
-				.product-related-items {
-
-					.product-related-item {
-
-						.product-related-item-media {
-
-							&:hover {
-								border-color: color-yiq(map-get($map, border_color), darken(map-get($map, border_color), 50%), lighten(map-get($map, border_color), 50%));
-							}
-						}
-					}
-				}
-
-				.product-reviews {
-
-					.product-review-rating {
-
-						.svg-icon {
-							path {
-								stroke: map-get($map, text_color);
-							}
-						}
-
-			            > input:checked ~ label,
-			            &:not(:checked) > label:hover,
-			            &:not(:checked) > label:hover ~ label {
-
-			                .svg-icon {
-			                	color: map-get($map, text_color);
-
-								path {
-									stroke: currentColor;
-								}
-							}
-			            }
-
-			            > input:checked + label:hover,
-			            > input:checked ~ label:hover,
-			            > label:hover ~ input:checked ~ label,
-			            > input:checked ~ label:hover ~ label {
-
-			                .svg-icon {
-			                	color: map-get($map, text_color);
-
-								path {
-									stroke: currentColor;
-								}
-							}
-			            }
-			        }
-
-			        .product-review {
-
-		        		& + .product-review {
-		        			border-top: 1px solid map-get($map, border_color);
-		        		}
-		        	}
-				}
-
-				.product-bulk-discounts {
-
-					.product-bulk-discount-header {
-						border-bottom: 1px solid map-get($map, border_color);
-					}
-
-					.product-bulk-discount-item {
-						border-bottom: 1px solid map-get($map, border_color);
-					}
-				}
-			}
-		}
-	}
+@include section-style($section: 'product-card') {
 
 	.swiper-container-vertical {
 
@@ -156,13 +40,13 @@
 				}
 
 				.swiper-slide {
-					@include aspect-ratio(9, 13, $img-fit, top);
+					@include aspect-ratio(9, 13, $img-fit, center);
 				}
 
 				.product-media-video-container {
 					position: relative;
 
-					.product-media-video-icon-container{
+					.product-media-video-icon-container {
 						display: flex;
 						align-items: center;
 						justify-content: center;
@@ -174,7 +58,9 @@
 						width: 100%;
 						height: 100%;
 
-						.svg-icon {
+						.product-media-video-icon {
+							background-color: section-var(background_color);
+							stroke: section-var(text_color);
 							border-radius: 50%;
 							font-size: 2.5rem;
 							padding: spacer(2);
@@ -194,6 +80,10 @@
     				border-width: 2px;
     				border-style: solid;
     				border-color: transparent;
+
+    				&.swiper-slide-thumb-active  {
+						border-color: color-yiq(section-var(border_color), darken(section-var(border_color), 50%), lighten(section-var(border_color), 50%));
+					}
 
     				img {
     					width: 100%;
@@ -290,10 +180,12 @@
 			margin-top: spacer(6);
 
 			.product-bulk-discount-header {
+				border-bottom: 1px solid section-var(border_color);
 				padding: spacer(2) spacer(3);
 			}
 
 			.product-bulk-discount-item {
+				border-bottom: 1px solid section-var(border_color);
 				padding: spacer(2) spacer(3);
 			}
 		}
@@ -323,6 +215,10 @@
 				.product-related-item-media {
 					border: 2px solid transparent;
 					@include aspect-ratio(9, 13);
+
+					&:hover {
+						border-color: color-yiq(section-var(border_color), darken(section-var(border_color), 50%), lighten(section-var(border_color), 50%));
+					}
 				}
 			}
 		}
@@ -332,9 +228,49 @@
 
 			.product-wishlist-action {
 				text-align: center;
+				border: 2px solid section-var(button_bg_color);
 				border-radius: $btn-border-radius;
 				width: 60px;
 			}
+		}
+
+		.product-reviews {
+
+			.product-review-rating {
+
+				.svg-icon {
+					path {
+						stroke: section-var(text_color);
+					}
+				}
+
+	            > input:checked ~ label,
+	            &:not(:checked) > label:hover,
+	            &:not(:checked) > label:hover ~ label {
+
+	                .svg-icon {
+	                	color: section-var(text_color);
+
+						path {
+							stroke: currentColor;
+						}
+					}
+	            }
+
+	            > input:checked + label:hover,
+	            > input:checked ~ label:hover,
+	            > label:hover ~ input:checked ~ label,
+	            > input:checked ~ label:hover ~ label {
+
+	                .svg-icon {
+	                	color: section-var(text_color);
+
+						path {
+							stroke: currentColor;
+						}
+					}
+	            }
+	        }
 		}
 
 		.product-details {
@@ -400,6 +336,7 @@
 		        .product-review {
 
 		        	& + .product-review {
+		        		border-top: 1px solid section-var(border_color);
 		        		margin-top: spacer(4);
 		        		padding-top: spacer(4);
 		        	}

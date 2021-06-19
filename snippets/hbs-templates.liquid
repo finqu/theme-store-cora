@@ -13,71 +13,180 @@
 
     {{#ifCond cart.item_count '>' 0}}
 
-        <div class="cart-items">
+        <div class="cart-body">
 
-            {{#each cart.items as |item|}}
+            <div class="cart-items">
 
-                <div class="item">
+                {{#each cart.items as |item|}}
 
-                    <div class="row">
+                    <div class="cart-item">
 
-                        <div class="col-3">
+                        <div class="row no-gutters">
 
-                            <div class="item-image">
+                            <div class="col-auto">
 
-                                <a href="{{ item.url }}">
+                                <div class="cart-item-media">
 
-                                    <img src="{{ item.thumbs.small }}" alt="{{ item.name }}" class="img-responsive">
+                                    <div class="cart-item-media-img-container aspect-ratio-container">
 
-                                </a>
+                                        {{#if item.image}}
+                                            {{ assign 'imgSrc' item.image.original }}
+                                        {{else}}
+                                            {{ assign 'imgSrc' @root.placeholderImgSrc }}
+                                        {{/if}}
 
-                            </div>
+                                        {{ assign 'imgSizeSm' '76,114' }}
+                                        {{ assign 'imgSizeLg' '76,114' }}
 
-                        </div>
+                                        <picture>
+                                            <source media="(min-width: 768px)" data-srcset="
+                                                {{> image src=@root.imgSrc size=@root.imgSizeLg }} 1x,
+                                                {{> image src=@root.imgSrc size=@root.imgSizeLg scale='2x' }} 2x">
 
-                        <div class="col">
+                                            <img
+                                                alt="{{ item.name }}"
+                                                data-src="{{> image src=@root.imgSrc size=@root.imgSizeSm }}"
+                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSizeSm }} 1x, {{> image src=@root.imgSrc size=@root.imgSizeSm scale='2x' }} 2x"
+                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                        </picture>
 
-                            <div class="item-name">
-
-                                <a href="{{ item.url }}">{{ item.name }}</a>
-
-                            </div>
-
-                            {{#if item.variants}}
-
-                                <div class="item-variants">
-
-                                    <span class="item-variants-text">{{#if item.variants}}{{ join item.variants '<br>' }}{{/if}}</span>
+                                    </div>
 
                                 </div>
 
-                            {{/if}}
-
-                            <div class="item-price">
-                                <span class="item-price-text">{{ item.price }}</span>
                             </div>
 
-                            <div class="item-quantity-select">
+                            <div class="col pl-4">
 
-                                <button type="button" class="btn btn-plain item-quantity-decrease" data-cart-quantity-decrease="{{ item.id }}">
-                                    {{> icon icon='subtract-gWaFt8' }}
-                                </button>
+                                <div class="row no-gutters">
 
-                                <input type="tel" class="item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}" pattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
+                                    <div class="col">
 
-                                <button type="button" class="btn btn-plain item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
-                                    {{> icon icon='add-eLjfck' }}
-                                </button>
+                                        {{#if item.manufacturer}}
+
+                                            <div class="cart-item-manufacturer">
+
+                                                 <span class="cart-item-manufacturer-text">
+                                                    {{ manufacturer }}
+                                                </span>
+
+                                            </div>
+
+                                        {{/if}}
+
+                                        <div class="cart-item-name">
+
+                                            <h3 class="cart-item-name-text">
+
+                                                <a href="{{ item.url }}">
+
+                                                    {{ item.name }}
+
+                                                </a>
+
+                                            </h3>
+
+                                        </div>
+
+                                        {{#if item.attributes}}
+
+                                            <div class="cart-item-attributes">
+
+                                                {{#each item.attributes as |attribute|}}
+
+                                                    <span class="cart-item-attribute">
+                                                        {{ t 'general.selection' }}: {{ attribute.name }}
+                                                    </span>
+
+                                                {{/each}}
+
+                                            </div>
+
+                                        {{/if}}
+
+                                    </div>
+
+                                    <div class="col-auto">
+
+                                        <div class="cart-item-remove">
+
+                                            <button type="button" class="btn btn-text" data-cart-remove="{{ item.id }}">
+                                                {{> icon icon='close-232XyC' }}
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row no-gutters">
+
+                                    <div class="col">
+
+                                        <div class="cart-item-quantity">
+
+                                            <button type="button" class="btn btn-text cart-item-quantity-decrease" data-cart-quantity-decrease="{{ item.id }}">
+                                                {{> icon icon='subtract-gWaFt8' }}
+                                            </button>
+
+                                            <input type="tel" class="cart-item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}" pattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
+
+                                            <button type="button" class="btn btn-text cart-item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
+                                                {{> icon icon='add-eLjfck' }}
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-auto">
+
+                                        <div class="cart-item-price">
+
+                                            <span class="cart-item-price-text">
+                                                {{ formatCurrency item.line_price }}
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                        <div class="col-auto">
+                    </div>
 
-                            <button type="button" class="btn btn-plain" data-cart-remove="{{ item.id }}">
-                                {{> icon icon='close-232XyC' }}
-                            </button>
+                {{/each}}
+
+            </div>
+
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="cart-summary">
+
+                <div class="cart-subtotal">
+
+                    <div class="row">
+
+                        <div class="col">
+
+                            <span>
+                                {{ t 'general.subtotal' }}
+                            </span>
+
+                        </div>
+
+                        <div class="col text-right">
+
+                            <span>
+                                {{ formatCurrency cart.subtotal }}
+                            </span>
 
                         </div>
 
@@ -85,93 +194,195 @@
 
                 </div>
 
-            {{/each}}
+                {{#ifCond cart.payment_fee '>' 0}}
 
-        </div>
+                    <div class="cart-payment-fee">
 
-        <div class="cart-details">
+                        <div class="row">
 
-            <div class="cart-subtotal">
+                            <div class="col">
 
-                <span>{{ t 'general.subtotal' }}</span>
-                <span>{{ formatCurrency cart.subtotal 1 2 3 }}</span>
+                                <span>
+                                    {{ t 'general.payment_fee' }}
+                                </span>
 
-            </div>
+                            </div>
 
-            {{#ifCond cart.payment_fee '>' 0}}
+                            <div class="col text-right">
 
-                <div class="cart-payment-fee">
+                                <span>
+                                    {{ formatCurrency cart.payment_fee }}
+                                </span>
 
-                    <span>{{ t 'general.payment_fee' }}</span>
-                    <span>{{ formatCurrency cart.payment_fee }}</span>
+                            </div>
 
-                </div>
-
-            {{/ifCond}}
-
-            {{#ifCond cart.shipping_price '>' 0}}
-
-                <div class="cart-shipping-price">
-
-                    <span>{{ t 'general.shipping_price' }}</span>
-                    <span>{{ formatCurrency cart.shipping_price }}</span>
-
-                </div>
-
-            {{/ifCond}}
-
-            {{#ifCond cart.discounts '>' 0}}
-
-                <div class="cart-discounts">
-
-                    {{#each cart.discounts as |item|}}
-
-                        <div class="cart-discount">
-
-                            <span>{{ item.title }}{{#if item.code}} - {{ item.code }}{{/if}}</span>
-                            <span>{{ formatCurrency item.amount }}</span>
                         </div>
 
-                    {{/each}}
+                    </div>
+
+                {{/ifCond}}
+
+                {{#ifCond cart.shipping_price '>' 0}}
+
+                    <div class="cart-shipping-price">
+
+                        <div class="row">
+
+                            <div class="col">
+
+                                <span>
+                                    {{ t 'general.shipping_price' }}
+                                </span>
+
+                            </div>
+
+                            <div class="col text-right">
+
+                                <span>
+                                    {{ formatCurrency cart.shipping_price }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {{/ifCond}}
+
+                {{#ifCond cart.discounts '>' 0}}
+
+                    <div class="cart-discounts">
+
+                        {{#each cart.discounts as |item|}}
+
+                            <div class="cart-discount">
+
+                                <div class="row">
+
+                                    <div class="col">
+
+                                        <span>
+                                            {{ item.title }}{{#if item.code}} - {{ item.code }}{{/if}}
+                                        </span>
+
+                                    </div>
+
+                                    <div class="col text-right">
+
+                                        <span>
+                                            {{ formatCurrency item.amount }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {{/each}}
+
+                    </div>
+
+                {{/ifCond}}
+
+                <div class="cart-tax-free">
+
+                    <div class="row">
+
+                        <div class="col">
+
+                            <span>
+                                {{ t 'general.tax_free_price' }}
+                            </span>
+
+                        </div>
+
+                        <div class="col text-right">
+
+                            <span>
+                                {{ formatCurrency cart.tax_free }}
+                            </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-            {{/ifCond}}
+                <div class="cart-tax">
 
-            <div class="cart-tax-free">
+                    <div class="row">
 
-                <span>{{ t 'general.tax_free_price'}}</span>
-                <span>{{ formatCurrency cart.tax_free }}</span>
+                        <div class="col">
+
+                            <span>
+                                {{ t 'general.tax' }}
+                            </span>
+
+                        </div>
+
+                        <div class="col text-right">
+
+                            <span>
+                                {{ formatCurrency cart.tax }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="cart-total">
+
+                    <div class="row">
+
+                        <div class="col">
+
+                            <span>
+                                {{ t 'general.total' }}
+                            </span>
+
+                        </div>
+
+                        <div class="col text-right">
+
+                            <span>
+                                {{ formatCurrency cart.total }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="cart-tax">
+            <div class="cart-actions">
 
-                <span>{{ t 'general.tax'}}</span>
-                <span>{{ formatCurrency cart.tax }}</span>
-
-            </div>
-
-            <div class="cart-total">
-
-                <span><strong>{{ t 'general.total' }}</strong></span>
-                <span>{{ formatCurrency cart.total }}</span>
+                <a href="{{ checkoutUrl }}" class="btn btn-section btn-block" data-cart-checkout>
+                    {{ t 'cart.proceed_to_checkout' }}
+                </a>
 
             </div>
-
-        </div>
-
-        <div class="cart-actions">
-
-            <a href="{{ checkoutUrl }}" class="btn btn-section" data-cart-checkout>
-                {{ t 'cart.proceed_to_checkout' }}
-            </a>
 
         </div>
 
     {{else}}
 
-        <span>{{ t 'cart.empty' }}</span>
+        <div class="text-center">
+
+            <span class="d-block mb-5">
+                {{ t 'cart.empty' }}
+            </span>
+
+            <a href="/" class="btn btn-section">
+                {{ t 'general.back_to_home_page' }}
+            </a>
+
+        </div>
 
     {{/ifCond}}
 
@@ -181,73 +392,184 @@
 <script id="hbs-cart-mini-template" type="text/template">
 {% raw %}
 
+    <div class="cart-header">
+
+        <span class="cart-header-text">
+            {{ t 'cart.title' }}
+        </span>
+
+    </div>
+
     {{#ifCond cart.item_count '>' 0}}
 
-        <div class="cart-items">
+        <div class="cart-body">
 
-            {{#each cart.items as |item|}}
+            <div class="cart-items">
 
-                <div class="item">
+                {{#each cart.items as |item|}}
 
-                    <div class="row">
+                    <div class="cart-item">
 
-                        <div class="col-3">
+                        <div class="row no-gutters">
 
-                            <div class="item-image">
+                            <div class="col-auto">
 
-                                <a href="{{ item.url }}">
+                                <div class="cart-item-media">
 
-                                    <img src="{{ item.thumbs.small }}" alt="{{ item.name }}" class="img-responsive">
+                                    <div class="cart-item-media-img-container aspect-ratio-container">
 
-                                </a>
+                                        {{#if item.image}}
+                                            {{ assign 'imgSrc' item.image.original }}
+                                        {{else}}
+                                            {{ assign 'imgSrc' @root.placeholderImgSrc }}
+                                        {{/if}}
 
-                            </div>
+                                        {{ assign 'imgSizeSm' '76,114' }}
+                                        {{ assign 'imgSizeLg' '76,114' }}
 
-                        </div>
+                                        <picture>
+                                            <source media="(min-width: 768px)" data-srcset="
+                                                {{> image src=@root.imgSrc size=@root.imgSizeLg }} 1x,
+                                                {{> image src=@root.imgSrc size=@root.imgSizeLg scale='2x' }} 2x">
 
-                        <div class="col">
+                                            <img
+                                                alt="{{ item.name }}"
+                                                data-src="{{> image src=@root.imgSrc size=@root.imgSizeSm }}"
+                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSizeSm }} 1x, {{> image src=@root.imgSrc size=@root.imgSizeSm scale='2x' }} 2x"
+                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                        </picture>
 
-                            <div class="item-name">
-
-                                <a href="{{ item.url }}">{{ item.name }}</a>
-
-                            </div>
-
-                            {{#if item.variants}}
-
-                                <div class="item-variants">
-
-                                    <span class="item-variants-text">{{#if item.variants}}{{ join item.variants '<br>' }}{{/if}}</span>
+                                    </div>
 
                                 </div>
 
-                            {{/if}}
-
-                            <div class="item-price">
-                                <span class="item-price-text">{{ item.price }}</span>
                             </div>
 
-                            <div class="item-quantity-select">
+                            <div class="col pl-4">
 
-                                <button type="button" class="btn btn-plain item-quantity-decrease" data-cart-quantity-decrease="{{ item.id }}">
-                                    {{> icon icon='subtract-gWaFt8' }}
-                                </button>
+                                <div class="row no-gutters">
 
-                                <input type="tel" class="item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}" pattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
+                                    <div class="col">
 
-                                <button type="button" class="btn btn-plain item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
-                                    {{> icon icon='add-eLjfck' }}
-                                </button>
+                                        {{#if item.manufacturer}}
+
+                                            <div class="cart-item-manufacturer">
+
+                                                 <span class="cart-item-manufacturer-text">
+                                                    {{ manufacturer }}
+                                                </span>
+
+                                            </div>
+
+                                        {{/if}}
+
+                                        <div class="cart-item-name">
+
+                                            <h3 class="cart-item-name-text">
+
+                                                <a href="{{ item.url }}">
+
+                                                    {{ item.name }}
+
+                                                </a>
+
+                                            </h3>
+
+                                        </div>
+
+                                        {{#if item.attributes}}
+
+                                            <div class="cart-item-attributes">
+
+                                                {{#each item.attributes as |attribute|}}
+
+                                                    <span class="cart-item-attribute">
+                                                         {{ t 'general.selection' }}: {{ attribute.name }}
+                                                    </span>
+
+                                                {{/each}}
+
+                                            </div>
+
+                                        {{/if}}
+
+                                    </div>
+
+                                    <div class="col-auto">
+
+                                        <div class="cart-item-remove">
+
+                                            <button type="button" class="btn btn-text" data-cart-remove="{{ item.id }}">
+                                                {{> icon icon='close-232XyC' }}
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row no-gutters">
+
+                                    <div class="col">
+
+                                        <div class="cart-item-quantity">
+
+                                            <span class="cart-item-quantity-text">
+                                                 {{ t 'general.quantity' }}: {{ item.quantity }}
+                                            </spam>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-auto">
+
+                                        <div class="cart-item-price">
+
+                                            <span class="cart-item-price-text">
+                                                {{ formatCurrency item.line_price }}
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                        <div class="col-auto">
+                    </div>
 
-                            <button type="button" class="btn btn-plain" data-cart-remove="{{ item.id }}">
-                                {{> icon icon='close-232XyC' }}
-                            </button>
+                {{/each}}
+
+            </div>
+
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="cart-summary">
+
+                <div class="cart-total">
+
+                    <div class="row">
+
+                        <div class="col">
+
+                            <span>
+                                {{ t 'general.total' }}
+                            </span>
+
+                        </div>
+
+                        <div class="col text-right">
+
+                            <span>
+                                {{ formatCurrency cart.total }}
+                            </span>
 
                         </div>
 
@@ -255,93 +577,27 @@
 
                 </div>
 
-            {{/each}}
-
-        </div>
-
-        <div class="cart-details">
-
-            <div class="cart-subtotal">
-
-                <span>{{ t 'general.subtotal' }}</span>
-                <span>{{ formatCurrency cart.subtotal 1 2 3 }}</span>
-
             </div>
 
-            {{#ifCond cart.payment_fee '>' 0}}
+            <div class="cart-actions">
 
-                <div class="cart-payment-fee">
-
-                    <span>{{ t 'general.payment_fee' }}</span>
-                    <span>{{ formatCurrency cart.payment_fee }}</span>
-
-                </div>
-
-            {{/ifCond}}
-
-            {{#ifCond cart.shipping_price '>' 0}}
-
-                <div class="cart-shipping-price">
-
-                    <span>{{ t 'general.shipping_price' }}</span>
-                    <span>{{ formatCurrency cart.shipping_price }}</span>
-
-                </div>
-
-            {{/ifCond}}
-
-            {{#ifCond cart.discounts '>' 0}}
-
-                <div class="cart-discounts">
-
-                    {{#each cart.discounts as |item|}}
-
-                        <div class="cart-discount">
-
-                            <span>{{ item.title }}{{#if item.code}} - {{ item.code }}{{/if}}</span>
-                            <span>{{ formatCurrency item.amount }}</span>
-                        </div>
-
-                    {{/each}}
-
-                </div>
-
-            {{/ifCond}}
-
-            <div class="cart-tax-free">
-
-                <span>{{ t 'general.tax_free_price'}}</span>
-                <span>{{ formatCurrency cart.tax_free }}</span>
+                <a href="{{ checkoutUrl }}" class="btn btn-section btn-block" data-cart-checkout>
+                    {{ t 'cart.proceed_to_checkout' }}
+                </a>
 
             </div>
-
-            <div class="cart-tax">
-
-                <span>{{ t 'general.tax'}}</span>
-                <span>{{ formatCurrency cart.tax }}</span>
-
-            </div>
-
-            <div class="cart-total">
-
-                <span><strong>{{ t 'general.total' }}</strong></span>
-                <span>{{ formatCurrency cart.total }}</span>
-
-            </div>
-
-        </div>
-
-        <div class="cart-actions">
-
-            <a href="{{ cartUrl }}" class="btn btn-section">
-                {{ t 'cart.title' }}
-            </a>
 
         </div>
 
     {{else}}
 
-        <span>{{ t 'cart.empty' }}</span>
+        <div class="cart-footer text-center">
+
+            <span class="d-block">
+                {{ t 'cart.empty' }}
+            </span>
+
+        </div>
 
     {{/ifCond}}
 

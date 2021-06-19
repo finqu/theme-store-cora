@@ -1,11 +1,11 @@
 // Image carousel
 // -----------------------------------------------------------------------------------------
 
-.section-image-carousel {
+@include section-style($section: 'image-carousel') {
 
 	@each $key, $val in $carousel-heights {
 
-		.section-height-#{$key} {
+		&.section-height-#{$key} {
 			padding-top: 0;
 			padding-bottom: 0;
 

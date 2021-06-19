@@ -277,7 +277,8 @@ export default class Cart {
                     itemCount: self.items.length,
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
-                    checkoutUrl: self.checkoutUrl
+                    checkoutUrl: self.checkoutUrl,
+                    placeholderImgSrc: themeApp.data.placeholderImgSrc
                 });
 
                 cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {
@@ -292,13 +293,16 @@ export default class Cart {
                     itemCount: self.items.length,
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
-                    checkoutUrl: self.checkoutUrl
+                    checkoutUrl: self.checkoutUrl,
+                    placeholderImgSrc: themeApp.data.placeholderImgSrc
                 });
 
                 cartMiniContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {
                     quantityDynamic(e);
                 })});
             }
+
+            document.dispatchEvent(new CustomEvent('cartRendered'));
         }
 
         document.addEventListener('click', (e) => {

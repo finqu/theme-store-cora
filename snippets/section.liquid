@@ -8,8 +8,10 @@
 	- sectionSubtitle: {String}
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
+	- sectionHeaderTextAlign: {String} 'left', 'center', 'right'
 	- sectionHeaderAction: {String}
 	- sectionContent: {String}
+	- sectionContentTextAlign: {String} 'left', 'center', 'right'
 	- sectionBgImgSrc: {String}
 	- sectionBgImgPos: {String}
 	- sectionBgImgOverlay: {String}
@@ -29,6 +31,7 @@
 {%- assign sectionContentWidth = section.settings.sectionContentWidth | default: '12' -%}
 {%- assign sectionContentAlign = section.settings.sectionContentAlign | default: 'center' -%}
 {%- assign sectionContentContainer = sectionContentContainer | default: 'fixed' -%}
+{%- assign sectionContentTextAlign = sectionContentTextAlign | default: null -%}
 {%- assign sectionBgImgPos = section.settings.sectionBgImgPos | default: settings.sectionBgImgPos -%}
 {%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | default: '0' -%}
 {%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
@@ -39,6 +42,7 @@
 {%- assign sectionDescription = sectionDescription | default: null -%}
 {%- assign sectionBreadcrumbs = sectionBreadcrumbs | default: null -%}
 {%- assign sectionHeaderAction = sectionHeaderAction | default: null -%}
+{%- assign sectionHeaderTextAlign = sectionHeaderTextAlign | default: null -%}
 {%- assign sectionOverlay = sectionOverlay | default: false -%}
 {%- assign sectionTextAlign = sectionTextAlign | default: null -%}
 {%- assign sectionClasses = '' -%}
@@ -86,13 +90,13 @@
 
 	{%- if sectionTitle or sectionSubtitle or sectionDescription or sectionBreadcrumbs -%}
 
-		{%- render 'section-header',  section: section, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionHeaderAction: sectionHeaderAction, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs, sectionContentContainer: sectionContentContainer -%}
+		{%- render 'section-header',  section: section, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionHeaderAction: sectionHeaderAction, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs, sectionContentContainer: sectionContentContainer -%}
 
 	{%- endif -%}
 
 	{%- if sectionContent -%}
 
-		{%- render 'section-content', section: section, sectionContent: sectionContent, sectionContentWidth: sectionContentWidth, sectionContentAlign: sectionContentAlign, sectionContentContainer: sectionContentContainer -%}
+		{%- render 'section-content', section: section, sectionContent: sectionContent, sectionContentWidth: sectionContentWidth, sectionContentAlign: sectionContentAlign, sectionContentContainer: sectionContentContainer, sectionContentTextAlign: sectionContentTextAlign -%}
 
 	{%- endif -%}
 

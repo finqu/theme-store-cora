@@ -89,7 +89,7 @@ export default class App {
 
 				        		if (el.classList.contains('lazy')) {
 
-				        			this.lazyLoad.update(el);
+				        			this.lazyLoad.update();
 
 				        		} else if (!loadedImgs.includes(el)) {
 
@@ -170,6 +170,32 @@ export default class App {
 
         Handlebars.registerPartial('icon', function(data) {
             return `<img src="${self.data.routes.assetUrl}/media/${data.icon}.svg" class="svg-inline${data.class ? ' '+data.class : ''}" alt="">`;
+        });
+
+        Handlebars.registerPartial('image', function(data) {
+
+        	const src = data.src;
+        	const scale = parseInt(data.scale, 10) || 1;
+        	const size = data.size.split(',');
+        	const width = scale * size[0];
+        	const height = scale * (size[1] || size[0]);
+        	const extension = src.substring(src.lastIndexOf('.') + 1);
+        	const result = src.substring(0, src.lastIndexOf('.'))+'_'+width+'_'+height+'.'+extension;
+
+            return result;
+        });
+
+        Handlebars.registerHelper('assign', function (key, val, options) {
+
+		    if (!options.data.root) {
+		        options.data.root = {};
+		    }
+
+		    options.data.root[key] = val;
+		});
+
+		Handlebars.registerPartial('placeholderImgSrc', function(data) {
+            return self.data.placeholderImgSrc;
         });
 
 		this.hbs = Handlebars;

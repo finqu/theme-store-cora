@@ -22,7 +22,7 @@
 
 									<a href="{{ article | page_url }}">
 
-										{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc -%}
+										{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
 						  				{%- assign imgSizeSm = 300,185 -%}
 						  				{%- assign imgSizeLg = 535,185 -%}
 

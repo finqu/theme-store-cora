@@ -1,5 +1,7 @@
 {
     "general": {
+        "quantity": "Quantity",
+        "selection": "Selection",
         "title": "Title",
         "cancel": "Cancel",
         "submit": "Send",

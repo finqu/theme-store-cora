@@ -1,6 +1,13 @@
 // Icon
 // -----------------------------------------------------------------------------------------
 
+@include section-style() {
+
+	.svg-icon, {
+		color: section-var(icon_color);
+	}
+}
+
 @keyframes svg-spin {
 	0% {
 		transform: rotate(0deg);

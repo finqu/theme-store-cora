@@ -2,6 +2,23 @@
 // -----------------------------------------------------------------------------------------
 
 // Common
+@include section-style() {
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		background-color: section-var(background_color);
+		stroke: section-var(text_color);
+	}
+
+	.swiper-pagination-bullet-active {
+		background: section-var(indicator_color);
+	}
+
+	.swiper-pagination-progressbar-fill {
+		background: section-var(indicator_color);
+	}
+}
+
 .swiper-container {
 
 	&.col,

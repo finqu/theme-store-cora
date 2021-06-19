@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -50,10 +51,42 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[contenthash].css'
 		}),
-		new CleanWebpackPlugin(['app/assets/dist']),
+		new CleanWebpackPlugin(['public/js/*']),
 		new ManifestPlugin({
 			fileName: 'cache.manifest.json'
 		}),
+		{
+			apply: (compiler) => {
+				compiler.hooks.done.tap('ManifestPlugin', () => {
+
+					const cacheFilepath = './public/cache.manifest.json';
+					const file = fs.readFileSync(cacheFilepath);
+					let hasChanges = false;
+					let data = JSON.parse(file);
+
+					fs.readdirSync('./public/media').forEach(file => {
+
+						const filepath = 'media/'+file;
+						const exclude = [
+							'.DS_Store'
+						];
+
+						if (!data.hasOwnProperty(filepath) && !exclude.includes(file)) {
+
+							data[filepath] = filepath;
+
+							if (!hasChanges) {
+								hasChanges = true;
+							}
+						}
+					});
+
+					if (hasChanges) {
+	        			fs.writeFileSync(cacheFilepath, JSON.stringify(data, null, '\t'));
+	        		}
+				});
+			}
+		},
 		new webpack.ProvidePlugin({
 	      $: path.resolve('./node_modules/jquery'),
 	      jQuery: path.resolve('./node_modules/jquery'),

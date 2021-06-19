@@ -19,7 +19,7 @@
 
 		<div class="article-img-container aspect-ratio-container">
 
-			{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc -%}
+			{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
 			{%- assign imgSizeSm = 717,273 -%}
 			{%- assign imgSizeLg = 920,354 -%}
 
