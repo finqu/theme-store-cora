@@ -22,7 +22,10 @@ import * as ArrowLeftRegular from '@streamlinehq/streamlinehq/img/streamline-reg
 import * as ControlsPlayRegular from '@streamlinehq/streamlinehq/img/streamline-regular/controls-play-af7Jis.svg';
 import * as SingleNeutralRegular from '@streamlinehq/streamlinehq/img/streamline-regular/single-neutral-3ziDl0.svg';
 import * as Lock1Regular from '@streamlinehq/streamlinehq/img/streamline-regular/lock-1-g0YpCK.svg';
-import * as CommonFileText from '@streamlinehq/streamlinehq/img/streamline-regular/common-file-text-jHWHye.svg';
+import * as CommonFileTextRegular from '@streamlinehq/streamlinehq/img/streamline-regular/common-file-text-jHWHye.svg';
+import * as ShoppingBagTagRegular from '@streamlinehq/streamlinehq/img/streamline-regular/shopping-bag-tag-1-7QUX0n.svg';
+import * as SearchRegular from '@streamlinehq/streamlinehq/img/streamline-regular/search-1-jUAiDQ.svg';
+import * as NavigationMenuRegular from '@streamlinehq/streamlinehq/img/streamline-regular/navigation-menu-gWaHY4.svg';
 
 export default {
 	alignLeftLight: MoveLeft1Light,
@@ -49,5 +52,8 @@ export default {
 	controlsPlayRegular: ControlsPlayRegular,
 	singleNeutralRegular: SingleNeutralRegular,
 	lock1Regular: Lock1Regular,
-	commonFileText: CommonFileText
+	commonFileTextRegular: CommonFileTextRegular,
+	shoppingBagTagRegular: ShoppingBagTagRegular,
+	searchRegular: SearchRegular,
+	navigationMenuRegular: NavigationMenuRegular
 }

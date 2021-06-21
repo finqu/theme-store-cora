@@ -11,61 +11,136 @@
 	</div>
 
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="#">{{ section.settings.sectionTitle | _default:store.name }}</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="/">Home</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Pages
-	          </a>
-	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          	{% for page_item in store.pages.root %}
-	          		<li><a class="dropdown-item" href="{{ page_item | link }}">{{ page_item.name }}</a></li>
-	          	{% endfor %}
-	          </ul>
-	        </li>
+    <div class="site-header-container">
 
-	        {% if store.session.logged_in %}
+        <div class="site-header">
 
-	          <li class="nav-item">
-	            <a class="nav-link" aria-current="page" href="{{ routes.account_url }}">Account</a>
-	          </li>
+            <div class="site-header-top">
 
-	          <li class="nav-item">
-	            <a class="nav-link" aria-current="page" href="{{ routes.account_logout_url }}">Sign out</a>
-	          </li>
+                <div class="site-header-left">
 
-	        {% elsif store.customer_accounts_enabled %}
+                    <div class="site-header-icon-container">
 
-	          <li class="nav-item">
-	            <a class="nav-link" aria-current="page" href="{{ routes.account_login_url }}">Sign in</a>
-	          </li>
+                        <div class="site-header-icon">
 
-	          <li class="nav-item">
-	            <a class="nav-link" aria-current="page" href="{{ routes.account_register_url }}">Sign up</a>
-	          </li>
+                            <button type="button" id="mobile-menu-toggle" class="btn btn-text">
 
-	        {% endif %}
+                                {%- render 'icon', icon: 'navigation-menu-gWaHY4' -%}
 
-	      </ul>
+                            </a>
 
-	      {% form 'search' id:header-search class:d-flex %}
-	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-	        <button class="btn btn-outline-success" type="submit">Search</button>
-	      </form>
-	      {% endform %}
-	    </div>
-	  </div>
-	</nav>
+                        </div>
 
+                    </div>
+
+                    <div class="site-header-icon-container">
+
+                        <div class="site-header-icon">
+
+                            <button type="button" id="search-toggle" class="btn btn-text">
+
+                                {%- render 'icon', icon: 'search-1-jUAiDQ' -%}
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="site-header-logo">
+
+                    <a href="/">
+
+                        {%- assign imgSrc = item.image | default: section.settings.logoImgSrc -%}
+                        {%- assign imgSize = 120,30 -%}
+
+                        {% if imgSrc %}
+
+                            <picture>
+                                <img
+                                    alt="{{ item.name }}"
+                                    data-src="{{ imgSrc | thumb: imgSize }}"
+                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                            </picture>
+
+                        {% else %}
+
+                            <span class="site-header-logo-text">
+                                {{ store.name }}
+                            </span>
+
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+                <div class="site-header-right">
+
+                    {% if store.customer_accounts_enabled %}
+
+                        <div class="site-header-icon-container">
+
+                            <div class="site-header-icon">
+
+                                <a href="{{ routes.account_url }}" class="btn btn-text">
+
+                                    {%- render 'icon', icon: 'single-neutral-3ziDl0' -%}
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        {% if store.session.logged_in %}
+
+                            <div class="site-header-icon-container">
+
+                                <div class="site-header-icon">
+
+                                    <a href="{{ routes.account_wishlist_url }}" class="btn btn-text">
+
+                                        {%- render 'icon', icon: 'love-it-08UZOs' -%}
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    {% endif %}
+
+                    <div class="site-header-icon-container">
+
+                        <div class="site-header-icon">
+
+                            <a href="{{ routes.cart_url }}" class="btn btn-text">
+
+                                {%- render 'icon', icon: 'shopping-bag-tag-1-7QUX0n' -%}
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="site-header-bottom">
+
+            </div>
+
+        </div>
+
+    </div>
 
 	{% for link in section.settings.menu.links %}
 
@@ -111,7 +186,7 @@
     "tag": "section",
     "is_creatable": false,
     "is_removable": false,
-    "class": "section section-header",
+    "class": "section section-site-header",
     "settings": {
         "list_type": "tabs",
         "groups": [
