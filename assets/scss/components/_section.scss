@@ -19,6 +19,7 @@
 
 						.container,
 						.container-fluid,
+						.container-tiny,
 						.container-compact {
 							padding-top: 0;
 						}
@@ -27,6 +28,7 @@
 
 				.container,
 				.container-fluid,
+				.container-tiny,
 				.container-compact {
 					background-color: section-var(background_color);
 					padding-top: spacer(6);
@@ -72,6 +74,7 @@
 
 			.container,
 			.container-fluid,
+			.container-tiny,
 			.container-compact {
 				padding-top: 0;
 			}
@@ -79,6 +82,7 @@
 
 		.container,
 		.container-fluid,
+		.container-tiny,
 		.container-compact {
 			padding-top: spacer(4);
 			padding-bottom: spacer(4);
@@ -179,7 +183,7 @@
 		.subtitle-container {
 
 			.subtitle {
-				font-size: $h3-font-size * 1.15;
+				font-size: $h4-font-size;
 				line-height: $headings-line-height;
 			}
 		}
@@ -199,6 +203,7 @@
 
 		.container,
 		.container-fluid,
+		.container-tiny,
 		.container-compact {
 			padding-top: spacer(4);
 			padding-bottom: spacer(4);
@@ -223,7 +228,9 @@
 			.section-spacing-content-#{$key} {
 
 				.container,
-				.container-fluid {
+				.container-fluid,
+				.container-tiny,
+				.container-compact {
 
 					.row {
 						margin-left: -#{$val};
@@ -257,7 +264,9 @@
 		@include media-breakpoint-up(md) {
 			.section-spacing-inner-#{$key} {
 				.container,
-				.container-fluid {
+				.container-fluid,
+				.container-tiny,
+				.container-compact {
 					padding: $val;
 				}
 			}

@@ -892,6 +892,14 @@
 			},
 			"settings": [
 				{
+                    "id": "faviconImgSrc",
+                    "type": "image-picker",
+                    "label": {
+						"en": "Favicon image",
+						"fi": "Favicon kuva"
+					}
+                },
+				{
                     "id": "placeholderImgSrc",
                     "type": "image-picker",
                     "label": {
@@ -920,7 +928,7 @@
 						"en": "Add to cart notification",
 						"fi": "Lisää ostoskoriin -ilmoitus"
 					},
-                    "default": false
+                    "default": true
                 },
                 {
 					"type": "radio",

@@ -7,7 +7,6 @@ export default class Cart {
 
         this.cart = {};
         this.items = {};
-        this.notifyProductAdd = true;
         this.queue = [];
         this.processing = false;
         this.notify = new Notify();
@@ -20,6 +19,7 @@ export default class Cart {
     // Init
     init() {
 
+        this.cartAddNotify = themeApp.data.cartAddNotify;
         this.cartUrl = themeApp.data.routes.cartUrl;
         this.checkoutUrl = themeApp.data.routes.checkoutUrl;
         this.assetUrl = themeApp.data.routes.assetUrl;
@@ -243,7 +243,7 @@ export default class Cart {
                 el.innerHTML = self.cart.shipping_price;
             });
 
-            if (discountsEls && self.cart.discounts.length) {
+            if (discountsEls && self.cart.discounts) {
 
                 discountsEls.forEach(el => {
 
@@ -406,6 +406,16 @@ export default class Cart {
     // Get cart data from API
     _getCart(options = {}) {
 
+        if (themeApp.data.customerAccountsOptional == false &&
+            themeApp.data.customerLoggedIn == false) {
+                return;
+        }
+
+        if (themeApp.data.customerAccountsRequireApproval == true &&
+            themeApp.data.customerHasAccess == false) {
+                return;
+        }
+
         const self = this;
 
         options.type = 'GET';
@@ -440,6 +450,16 @@ export default class Cart {
             return;
         }
 
+        if (themeApp.data.customerAccountsOptional == false &&
+            themeApp.data.customerLoggedIn == false) {
+                return;
+        }
+
+        if (themeApp.data.customerAccountsRequireApproval == true &&
+            themeApp.data.customerHasAccess == false) {
+                return;
+        }
+
         const self = this;
         let data = {};
 
@@ -460,7 +480,7 @@ export default class Cart {
 
             if (lastItem) {
 
-                if (self.notifyProductAdd) {
+                if (self.cartAddNotify) {
                     self.notify.success(themeApp.t('cart.product_added_to_cart'), lastItem.name, null, () => {
                         window.location.href = self.cartUrl;
                     });

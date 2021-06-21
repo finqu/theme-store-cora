@@ -1,0 +1,157 @@
+{%- assign sectionTitle = 'account.orders_title' | t -%}
+{%- assign dateFormat = 'general.date_format' | t -%}
+
+{%- capture sectionHeaderAction -%}
+
+	<a href="{{ routes.account_url }}">
+
+		{%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'mr-1' -%}
+
+		<span>
+			{{ 'general.back' | t }}
+		</span>
+	</a>
+
+{%- endcapture -%}
+
+{%- capture sectionContent -%}
+
+    {% if customer.orders.size > 0 %}
+
+        {%- paginate customer.orders by 10 -%}
+
+            <div class="orders">
+
+                {% for order in customer.orders %}
+
+                    {%- assign item = order.items | first -%}
+                    {%- assign otherProductsCount = order.items.size | minus: 1 -%}
+
+                    <div class="order">
+
+                        <a href="{{ order | link }}">
+
+                            <div class="row no-gutters">
+
+                                <div class="col-auto">
+
+                                    <div class="order-media">
+
+                                        <div class="order-media-img-container aspect-ratio-container">
+
+                                            {%- assign imgSrc = item.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
+                                            {%- assign imgSize = 76,114 -%}
+
+                                            <picture>
+                                                <img
+                                                    alt="{{ item.name }}"
+                                                    data-src="{{ imgSrc | thumb: imgSize }}"
+                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                            </picture>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col pl-4">
+
+                                    <div class="row no-gutters">
+
+                                        <div class="col">
+
+                                            <div class="order-name">
+
+                                                <span class="order-name-text">
+
+                                                    {{ item.title }}
+
+                                                    {% if otherProductsCount > 0 %}
+
+                                                        <span class="text-muted">
+
+                                                            {%- if otherProductsCount == 1 -%}
+
+                                                                {{ 'account.order.other_product_dynamic' | t, amount: otherProductsCount }}
+
+                                                            {%- else -%}
+
+                                                                {{ 'account.order.other_product_plural_dynamic' | t, amount: otherProductsCount}}
+
+                                                            {%- endif -%}
+
+                                                        </span>
+
+                                                    {% endif %}
+
+                                                </span>
+
+                                            </div>
+
+                                            <div class="order-number">
+
+                                                <span class="order-number-text">
+                                                    {{ 'account.order.order_number' | t }}: {{ order.order_number }}
+                                                </span>
+
+                                            </div>
+
+                                            <div class="order-date">
+
+                                                {{ 'account.order.order_date' | t }}: <i><time datetime="{{ order.created_at | date: "%F" }}">{{ order.created_at | date: dateFormat }}</time></i>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-auto">
+
+                                            <div class="order-status">
+
+                                                <span class="order-status-text">
+                                                    {{ order.order_status | prepend: 'account.order.order_statuses.' | t }}
+                                                </span>
+
+                                            </div>
+
+                                            <div class="order-total-price">
+
+                                                <span class="order-total-price-text">
+                                                    {{ order.total_price | in_currency }}
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% render 'pagination', paginate: paginate %}
+
+        {%- endpaginate -%}
+
+    {% else %}
+
+        {{ 'account.order.no_orders' | t}}
+
+    {% endif %}
+
+{%- endcapture -%}
+
+<section class="section section-account-orders">
+    {% render 'section', sectionTitle: sectionTitle, sectionHeaderAction: sectionHeaderAction, sectionContent: sectionContent, sectionContentContainer: 'compact', sectionOverlay: true %}
+</section>

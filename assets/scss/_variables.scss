@@ -26,6 +26,11 @@ $carousel-heights: (
 	xl: 945px
 );
 
+$border-radius: .25rem;
+$border-radius-sm: .2rem;
+$border-radius-lg: .3rem;
+$border-radius-pill: 50rem;
+
 
 // Font
 $font-size-lg: $font-size-base * 1.125;
@@ -34,6 +39,8 @@ $font-size-sm: $font-size-base * .875;
 $font-weight-light: 400;
 $font-weight-normal: 400;
 $font-weight-bold: 700;
+
+$font-weight-base: $font-weight-normal;
 
 $line-height-base: 1.5;
 $line-height-lg: 1.5;
@@ -71,22 +78,39 @@ $input-btn-line-height-lg: $line-height-lg;
 
 
 // Component
-$component-active-color: #ffffff;
-$component-active-bg: #000000;
+$component-active-color: section-var(text_color, section-vars());
+$component-active-bg: section-var(background_color, section-vars());
 
 
 // Input
 $input-padding-y: $input-btn-padding-y;
 $input-padding-x: $input-btn-padding-x;
+$input-font-family: $font-family-base;
+$input-font-size: $input-btn-font-size;
+$input-font-weight: $font-weight-base;
+$input-line-height: $input-btn-line-height;
 
-$input-border-width: $input-btn-border-width;
-$input-height-border: $input-border-width * 2;
+$input-padding-y-sm: $input-btn-padding-y-sm;
+$input-padding-x-sm: $input-btn-padding-x-sm;
+$input-font-size-sm: input-btn-font-size-sm;
+
+$input-padding-y-lg: $input-btn-padding-y-lg;
+$input-padding-x-lg: $input-btn-padding-x-lg;
+$input-font-size-lg: $input-btn-font-size-lg;
 
 $input-bg: #ffffff;
 $input-disabled-bg: #e9ecef;
-$input-focus-border-color: lighten($component-active-bg, 25%);
 
+$input-focus-border-color: lighten(section-var(border_color, section-vars()), 25%);
+$input-focus-width: $input-btn-focus-width;
 $input-focus-box-shadow: $input-btn-focus-box-shadow;
+
+$input-border-width: $input-btn-border-width;
+
+$input-height-border: $input-border-width * 2;
+$input-height-inner: add($input-line-height * 1em, $input-padding-y * 2);
+$input-height-inner-half: add($input-line-height * .5em, $input-padding-y);
+$input-height-inner-quarter: dd($input-line-height * .25em, $input-padding-y / 2);
 
 
 // Button
@@ -120,8 +144,8 @@ $form-group-margin-bottom: 1.5rem;
 $form-floating-height: add(2.813rem, $input-height-border);
 $form-floating-padding-x: $input-padding-x;
 $form-floating-padding-y: 0.8rem;
-$form-floating-input-padding-t: 1.625rem;
-$form-floating-input-padding-b: .625rem;
+$form-floating-input-padding-t: 1.525rem;
+$form-floating-input-padding-b: .525rem;
 $form-floating-label-opacity: .65;
 $form-floating-label-transform: scale(.75) translateY(-.5rem) translateX(.15rem);
 $form-floating-transition: opacity .1s ease-in-out, transform .1s ease-in-out;
@@ -145,6 +169,36 @@ $form-switch-padding-start: $form-switch-width + .6em;
 $form-switch-border-radius: $form-switch-width;
 $form-switch-transition: background-position .15s ease-in-out;
 $form-switch-checked-bg-position: right center;
+
+$form-select-padding-y: $input-padding-y;
+$form-select-padding-x: $input-padding-x;
+$form-select-font-family: $input-font-family;
+$form-select-font-size: $input-font-size;
+$form-select-indicator-padding: $form-select-padding-x * 3;
+$form-select-font-weight: $input-font-weight;
+$form-select-line-height: $input-font-size;
+
+$form-select-bg-position: right $form-select-padding-x center;
+$form-select-bg-size: 16px 12px;
+
+$form-select-feedback-icon-padding-end: $form-select-padding-x * 2.5 + $form-select-indicator-padding;
+$form-select-feedback-icon-position: center right $form-select-indicator-padding;
+$form-select-feedback-icon-size: $input-height-inner-half $input-height-inner-half;
+
+$form-select-border-width: $input-border-width;
+$form-select-border-radius: $border-radius;
+
+$form-select-focus-width: $input-focus-width;
+
+$form-select-padding-y-sm: $input-padding-y-sm;
+$form-select-padding-x-sm: $input-padding-x-sm;
+$form-select-font-size-sm: $input-font-size-sm;
+$form-select-line-height-sm: $input-font-size-sm;
+
+$form-select-padding-y-lg: $input-padding-y-lg;
+$form-select-padding-x-lg: $input-padding-x-lg;
+$form-select-font-size-lg: $input-font-size-lg;
+$form-select-line-height-lg: $input-font-size-lg;
 
 
 // Spacing

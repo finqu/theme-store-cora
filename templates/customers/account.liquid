@@ -1,51 +1,244 @@
-<div class="container">
+{%- assign sectionTitle = 'account.information_title' | t -%}
+{%- assign sectionSubtitle = 'account.information_subtitle' | t -%}
 
-	<h2>Tilin tiedot</h2>
+{%- capture sectionContent -%}
 
-	{% form 'localization', customer id:accountLocale %}
+	<div class="pb-6 mb-6 border-bottom">
 
-		<div class="row">
+		<div class="row no-gutters">
 
-			<div class="col">
+			<div class="col-auto">
 
-				<p><a href="{{ routes.account_edit_url }}">Muokkaa yhteystietoja</a></p>
-
-			</div>
-
-			<div class="col col-auto">
-
-				<select name="currency_code" class="form-control" id="edit-account-currency">
-
-			        {% for currency in form.available_currencies %}
-
-			            <option value="{{ currency.iso_code }}"{% if currency.iso_code == form.current_currency.iso_code %} selected{% endif %}>{{ currency.iso_code }}</option>
-
-			        {% endfor %}
-
-			    </select>
+				{%- render 'icon', icon: 'single-neutral-3ziDl0' class: 'svg-icon-4x' -%}
 
 			</div>
 
-			<div class="col col-auto">
+			<div class="col pl-4">
 
-				<select name="locale_code" class="form-control" id="edit-account-locale">
+				<div class="row">
 
-			        {% for locale in form.available_locales %}
+					<div class="col">
 
-			            <option value="{{ locale.iso_code }}"{% if locale.iso_code == form.current_locale.iso_code %} selected{% endif %}>{{ locale.endonym_name }}</option>
+						<div class="row">
 
-			        {% endfor %}
+							<div class="col">
 
-			    </select>
+								<div class="mb-6">
+
+					                <span class="d-block font-weight-bold mb-2">
+					                	{{ 'account.information.name' | t }}
+					                </span>
+
+					                <div>
+
+					                	<span>
+					                		{% if customer.firstname or customer.lastname %}
+						                		{{ customer.firstname }} {{ customer.lastname }}
+						                	{% else %}
+						                		{{ 'general.no_information_found' | t }}
+						                	{% endif %}
+						                </span>
+
+					                </div>
+
+					            </div>
+
+					            <div>
+
+					                <span class="d-block font-weight-bold mb-2">
+					                	{{ 'account.information.email' | t }}
+					                </span>
+
+					                <div>
+
+						                <span>
+						                	{% if customer.email %}
+						                		{{ customer.email }}
+						                	{% else %}
+						                		{{ 'general.no_information_found' | t }}
+						                	{% endif %}
+						                </span>
+
+						            </div>
+
+					            </div>
+
+							</div>
+
+							<div class="col">
+
+								{% form 'localization', customer id: 'account-localization-form' %}
+
+									<div class="mb-6">
+
+										<span class="d-block font-weight-bold mb-2">
+											{{ 'account.information.currency' | t }}
+										</span>
+
+						                <div>
+
+						                	<select name="currency_code" class="form-control-text" id="edit-account-currency">
+
+										        {% for currency in form.available_currencies %}
+
+										            <option value="{{ currency.iso_code }}"{% if currency.iso_code == form.current_currency.iso_code %} selected{% endif %}>
+										            	{{ currency.iso_code }}
+										            </option>
+
+										        {% endfor %}
+
+										    </select>
+
+										    {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+
+						                </div>
+
+						            </div>
+
+						            <div>
+
+						                <span class="d-block font-weight-bold mb-2">
+						                	{{ 'account.information.language' | t }}
+						                </span>
+
+						                <div>
+
+							                <select name="locale_code" class="form-control-text" id="edit-account-locale">
+
+										        {% for locale in form.available_locales %}
+
+										            <option value="{{ locale.iso_code }}"{% if locale.iso_code == form.current_locale.iso_code %} selected{% endif %}>
+										            	{{ locale.endonym_name }}
+										            </option>
+
+										        {% endfor %}
+
+										    </select>
+
+										    {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+
+										</div>
+
+						            </div>
+
+					            {% endform %}
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-12 col-md-5 mt-6 mt-md-0 d-flex align-items-center">
+
+						<a href="{{ routes.account_edit_url }}" class="btn btn-outline-section btn-block">
+							{{ 'general.edit' | t }}
+						</a>
+
+					</div>
+
+				</div>
 
 			</div>
 
 		</div>
 
-		<button type="submit" class="btn btn-link">Päivitä</button>
+	</div>
 
-	{% endform %}
+	<div class="pb-6 mb-6 border-bottom">
 
-	<h2>Tilaukset ({{ customer.orders | count }})</h2>
+		<div class="row no-gutters">
 
-</div>
+			<div class="col-auto">
+
+				{%- render 'icon', icon: 'lock-1-g0YpCK' class: 'svg-icon-4x' -%}
+
+			</div>
+
+			<div class="col pl-4">
+
+				<div class="row">
+
+					<div class="col">
+
+						<span class="d-block font-weight-bold mb-2">
+		                	{{ 'account.information.password' | t }}
+		                </span>
+
+		                <div>
+
+			                <span>
+			                	***************
+			                </span>
+
+			            </div>
+
+					</div>
+
+					<div class="col-12 col-md-5 mt-6 mt-md-0 d-flex align-items-center">
+
+						<a href="{{ routes.account_password_change_url }}" class="btn btn-outline-section btn-block">
+							{{ 'general.edit' | t }}
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div>
+
+		<div class="row no-gutters">
+
+			<div class="col-auto">
+
+				{%- render 'icon', icon: 'common-file-text-jHWHye' class: 'svg-icon-4x' -%}
+
+			</div>
+
+			<div class="col pl-4">
+
+				<div class="row">
+
+					<div class="col">
+
+						<span class="d-block font-weight-bold mb-2">
+		                	{{ 'account.order_plural' | t }}
+		                </span>
+
+		                <div>
+
+			                <span>
+			                	{{ customer.orders.size }}
+			                </span>
+
+			            </div>
+
+					</div>
+
+					<div class="col-12 col-md-5 mt-6 mt-md-0 d-flex align-items-center">
+
+						<a href="{{ routes.account_orders_url }}" class="btn btn-outline-section btn-block">
+							{{ 'account.view_order_plural' | t }}
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{%- endcapture -%}
+
+<section class="section section-account">
+    {% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderAction: sectionHeaderAction, sectionContent: sectionContent, sectionContentContainer: 'compact', sectionOverlay: true %}
+</section>

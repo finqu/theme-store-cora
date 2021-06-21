@@ -512,82 +512,94 @@
 
                 {% endif %}
 
-                {% if product.ignore_storage or product.in_stock and product.only_preview != true %}
+                {% if store.customer_accounts_optional == true or customer %}
 
-                    <div class="product-form">
+                    {% if store.customer_accounts_require_approval == false or customer.has_access %}
+                        {%- assign hasApprovedAccess = true -%}
+                    {% endif %}
 
-                        {% form 'product', product %}
+                    {% if store.customer_accounts_require_approval == false or hasApprovedAccess %}
 
-                            <input type="hidden" name="product_id" value="{{ product.id }}">
-                            <input type="hidden" name="quantity" value="{{ product.min_amount }}">
+                        {% if product.ignore_storage or product.in_stock and product.only_preview != true %}
 
-                            {% if product.variants.size > 0 %}
+                            <div class="product-form">
 
-                                <div class="product-variants">
+                                {% form 'product', product %}
 
-                                    {% assign showVariantPrice = true %}
-                                    {% assign showVariantTotalPrice = true %}
-                                    {% assign showVariantStock = false %}
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <input type="hidden" name="quantity" value="{{ product.min_amount }}">
 
-                                    {% for variant in product.variants %}
+                                    {% if product.variants.size > 0 %}
 
-                                        {%- if variant.input_type == 'select' -%}
+                                        <div class="product-variants">
 
-                                            {% render 'product-variants/select', variant: variant %}
+                                            {% assign showVariantPrice = true %}
+                                            {% assign showVariantTotalPrice = true %}
+                                            {% assign showVariantStock = false %}
 
-                                        {%- elsif variant.input_type == 'radio' -%}
+                                            {% for variant in product.variants %}
 
-                                            {% render 'product-variants/radio', variant: variant %}
+                                                {%- if variant.input_type == 'select' -%}
 
-                                        {%- elsif variant.input_type == 'checkbox' -%}
+                                                    {% render 'product-variants/select', variant: variant %}
 
-                                            {% render 'product-variants/checkbox', variant: variant %}
+                                                {%- elsif variant.input_type == 'radio' -%}
 
-                                        {%- elsif variant.input_type == 'text' -%}
+                                                    {% render 'product-variants/radio', variant: variant %}
 
-                                            {% render 'product-variants/text', variant: variant %}
+                                                {%- elsif variant.input_type == 'checkbox' -%}
 
-                                        {%- endif -%}
+                                                    {% render 'product-variants/checkbox', variant: variant %}
 
-                                    {% endfor %}
+                                                {%- elsif variant.input_type == 'text' -%}
+
+                                                    {% render 'product-variants/text', variant: variant %}
+
+                                                {%- endif -%}
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                    <div class="product-action-add-to-cart d-flex">
+
+                                        <button type="button" class="btn btn-section btn-lg btn-block" data-cart-add data-cart-form>
+                                            {{ 'cart.add' | t }}
+                                        </button>
+
+                                        {% if store.session.logged_in %}
+
+                                            <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
+                                                {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
+                                            </button>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                    {% render 'form-error', error: form.error %}
+
+                                {% endform %}
+
+                            </div>
+
+                        {% elsif product.ignore_storage == false and product.in_stock == false and product.only_preview != true %}
+
+                            {% if product.in_stock == false %}
+
+                                <div class="product-info-out-of-stock">
+
+                                    <span class="product-info-out-of-stock-text btn btn-section btn-block disabled">
+                                        {{ 'product.out-of-stock' | t }}
+                                    </span>
 
                                 </div>
 
                             {% endif %}
 
-                            <div class="product-action-add-to-cart d-flex">
-
-                                <button type="button" class="btn btn-section btn-lg btn-block" data-cart-add data-cart-form>
-                                    {{ 'cart.add' | t }}
-                                </button>
-
-                                {% if store.session.logged_in %}
-
-                                    <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
-                                        {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
-                                    </button>
-
-                                {% endif %}
-
-                            </div>
-
-                            {% render 'form-error', error: form.error %}
-
-                        {% endform %}
-
-                    </div>
-
-                {% elsif product.ignore_storage == false and product.in_stock == false and product.only_preview != true %}
-
-                    {% if product.in_stock == false %}
-
-                        <div class="product-info-out-of-stock">
-
-                            <span class="product-info-out-of-stock-text btn btn-section btn-block disabled">
-                                {{ 'product.out-of-stock' | t }}
-                            </span>
-
-                        </div>
+                        {% endif %}
 
                     {% endif %}
 

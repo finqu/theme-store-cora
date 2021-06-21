@@ -24,6 +24,10 @@ export default {
         this.initWishlist();
         this.initCartMini();
 
+        if (bodyEl.classList.contains('template-customers-account')) {
+            this.initAccount();
+        }
+
         if (bodyEl.classList.contains('template-category')) {
             this.initCategory();
         }
@@ -40,6 +44,21 @@ export default {
 		    this.initProduct();
         }
 	},
+    initAccount: function() {
+
+        const containerEl = document.querySelector('.section-account');
+        const localizationFormEl = containerEl.querySelector('#account-localization-form');
+        const accountCurrencyEl = containerEl.querySelector('#edit-account-currency');
+        const accountLocaleEl = containerEl.querySelector('#edit-account-locale');
+
+        accountCurrencyEl.addEventListener('change', e => {
+            localizationFormEl.submit();
+        });
+
+        accountLocaleEl.addEventListener('change', e => {
+            localizationFormEl.submit();
+        });
+    },
     initCartMini: function() {
 
         document.addEventListener('cartRendered', cartReadyEvent => {

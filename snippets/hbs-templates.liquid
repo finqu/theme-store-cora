@@ -35,18 +35,13 @@
                                             {{ assign 'imgSrc' @root.placeholderImgSrc }}
                                         {{/if}}
 
-                                        {{ assign 'imgSizeSm' '76,114' }}
-                                        {{ assign 'imgSizeLg' '76,114' }}
+                                        {{ assign 'imgSize' '76,114' }}
 
                                         <picture>
-                                            <source media="(min-width: 768px)" data-srcset="
-                                                {{> image src=@root.imgSrc size=@root.imgSizeLg }} 1x,
-                                                {{> image src=@root.imgSrc size=@root.imgSizeLg scale='2x' }} 2x">
-
                                             <img
                                                 alt="{{ item.name }}"
-                                                data-src="{{> image src=@root.imgSrc size=@root.imgSizeSm }}"
-                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSizeSm }} 1x, {{> image src=@root.imgSrc size=@root.imgSizeSm scale='2x' }} 2x"
+                                                data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
+                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
                                                 class="lazy d-block mx-auto img-fluid aspect-ratio-item">
                                         </picture>
 
@@ -424,18 +419,13 @@
                                             {{ assign 'imgSrc' @root.placeholderImgSrc }}
                                         {{/if}}
 
-                                        {{ assign 'imgSizeSm' '76,114' }}
-                                        {{ assign 'imgSizeLg' '76,114' }}
+                                        {{ assign 'imgSize' '76,114' }}
 
                                         <picture>
-                                            <source media="(min-width: 768px)" data-srcset="
-                                                {{> image src=@root.imgSrc size=@root.imgSizeLg }} 1x,
-                                                {{> image src=@root.imgSrc size=@root.imgSizeLg scale='2x' }} 2x">
-
                                             <img
                                                 alt="{{ item.name }}"
-                                                data-src="{{> image src=@root.imgSrc size=@root.imgSizeSm }}"
-                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSizeSm }} 1x, {{> image src=@root.imgSrc size=@root.imgSizeSm scale='2x' }} 2x"
+                                                data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
+                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
                                                 class="lazy d-block mx-auto img-fluid aspect-ratio-item">
                                         </picture>
 
@@ -484,7 +474,7 @@
                                                 {{#each item.attributes as |attribute|}}
 
                                                     <span class="cart-item-attribute">
-                                                         {{ t 'general.selection' }}: {{ attribute.name }}
+                                                        {{ t 'general.selection' }}: {{ attribute.name }}
                                                     </span>
 
                                                 {{/each}}

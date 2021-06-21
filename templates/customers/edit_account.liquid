@@ -1,146 +1,260 @@
-<div class="container">
+{%- assign sectionTitle = 'account.edit_information_title' | t -%}
 
-    <p><a href="{{ routes.account_url }}">Takaisin</a></p>
+{%- capture sectionHeaderAction -%}
+
+    <a href="{{ routes.account_url }}">
+
+        {%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'mr-1' -%}
+
+        <span>
+            {{ 'general.back' | t }}
+        </span>
+    </a>
+
+{%- endcapture -%}
+
+{%- capture sectionContent -%}
 
     {% form 'edit_customer' %}
 
-        <h4>{{ 'account.contact_information' | t }}</h4>
+        <div class="mb-4">
 
-        <div class="row">
+            <h4 class="mb-4">
+                {{ 'account.contact_information' | t }}
+            </h4>
 
-            <div class="form-group col-sm-6 col-xs-12">
+            <div class="row">
 
-                <label>{{ 'account.information.firstname' | t }}</label>
-                <input type="text" class="form-control" name="firstname" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.first_name }}" required>
+                <div class="form-group col-12 col-md">
 
-            </div>
+                    <div class="form-floating">
 
-            <div class="form-group col-sm-6 col-xs-12">
+                        <input type="text" class="form-control" name="firstname" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.first_name }}" required>
 
-                <label>{{ 'account.information.lastname' | t }}</label>
-                <input type="text" class="form-control" name="lastname" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.last_name }}" required>
+                        <label for="edit-account-firstname">
+                            {{ 'account.information.firstname' | t }}
+                        </label>
 
-            </div>
+                    </div>
 
-        </div>
+                </div>
 
-        <div class="row">
+                <div class="form-group col-12 col-md">
 
-            <div class="form-group col-sm-6 col-xs-12">
+                    <div class="form-floating">
 
-                <label>{{ 'account.information.email' | t }}</label>
-                <input type="email" class="form-control" name="email" id="edit-account-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.email }}" required>
+                        <input type="text" class="form-control" name="lastname" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.last_name }}" required>
 
-            </div>
+                        <label for="edit-account-lastname">
+                            {{ 'account.information.lastname' | t }}
+                        </label>
 
-            <div class="form-group col-sm-6 col-xs-12">
+                    </div>
 
-                <label>{{ 'account.information.phonenumber' | t }}</label>
-                <input type="tel" class="form-control" name="phonenumber" id="edit-account-phonenumber" placeholder="{{ 'account.information.phonenumber' | t }}" value="{{ form.phonenumber }}">
-
-            </div>
-
-        </div>
-
-        <h4>{{ 'account.address' | t }}</h4>
-
-        <div class="form-group">
-
-            <label>{{ 'account.information.street_address' | t }}</label>
-            <input type="text" class="form-control" name="address_1" id="edit-account-address_1" placeholder="{{ 'account.information.street_address' | t }}" value="{{ form.address_1 }}">
-
-        </div>
-
-        <div class="row">
-
-            <div class="form-group col-sm-3 col-xs-12">
-
-                <label>{{ 'account.information.country' | t }}</label>
-
-                <select name="country" class="form-control" id="edit-account-country">
-
-                    {{ country_option_tags }}
-
-                </select>
+                </div>
 
             </div>
 
-            <div class="form-group col-sm-3 col-xs-12">
+            <div class="row">
 
-                <label>{{ 'account.information.zipcode' | t }}</label>
-                <input type="text" class="form-control" name="zipcode" id="edit-account-zipcode" placeholder="{{ 'account.information.zipcode' | t }}" value="{{ form.zipcode }}">
+                <div class="form-group col-12 col-md">
 
-            </div>
+                    <div class="form-floating">
 
-            <div class="form-group col-sm-6 col-xs-12">
+                        <input type="email" class="form-control" name="email" id="edit-account-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.email }}" required>
 
-                <label>{{ 'account.information.city' | t }}</label>
-                <input type="text" class="form-control" name="city" id="edit-account-city" placeholder="{{ 'account.information.city' | t }}" value="{{ form.city }}">
+                        <label for="edit-account-email">
+                            {{ 'account.information.email' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="tel" class="form-control" name="phonenumber" id="edit-account-phonenumber" placeholder="{{ 'account.information.phonenumber' | t }}" value="{{ form.phonenumber }}">
+
+                        <label for="edit-account-phonenumber">
+                            {{ 'account.information.phonenumber' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-        <h4>{{ 'account.company_information' | t }}</h4>
+        <div class="mb-4">
 
-        <div class="row">
+            <h4 class="mb-4">
+                {{ 'account.address_information' | t }}
+            </h4>
 
-            <div class="form-group col-sm-6 col-xs-12">
+            <div class="form-group">
 
-                <label>{{ 'account.information.company' | t }}</label>
-                <input type="text" class="form-control" name="company" id="edit-account-company" value="{{ form.company }}">
+                <div class="form-floating">
+
+                    <input type="text" class="form-control" name="address_1" id="edit-account-address-1" placeholder="{{ 'account.information.street_address' | t }}" value="{{ form.address_1 }}">
+
+                    <label for="edit-account-address-1">
+                        {{ 'account.information.street_address' | t }}
+                    </label>
+
+                </div>
 
             </div>
 
-            <div class="form-group col-sm-3 col-xs-12">
+            <div class="row">
 
-                <label>{{ 'account.information.businessid' | t }}</label>
-                <input type="text" class="form-control" name="businessid" id="edit-account-businessid" value="{{ form.businessid }}">
+                <div class="form-group col-12 col-md">
 
-            </div>
+                    <div class="form-floating">
 
-            <div class="form-group col-sm-3 col-xs-12">
+                        <select name="country" class="form-select" id="edit-account-country">
 
-                <label>{{ 'account.information.vatid' | t }}</label>
-                <input type="text" class="form-control" name="vatid" id="edit-account-vatid" value="{{ form.vatid }}">
+                            {{ country_option_tags }}
+
+                        </select>
+
+                        <label for="edit-account-country">
+                            {{ 'account.information.country' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="zipcode" id="edit-account-zipcode" placeholder="{{ 'account.information.zipcode' | t }}" value="{{ form.zipcode }}">
+
+                        <label>{{ 'account.information.zipcode' | t }}</label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md-6">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="city" id="edit-account-city" placeholder="{{ 'account.information.city' | t }}" value="{{ form.city }}">
+
+                        <label for="edit-account-city">
+                            {{ 'account.information.city' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-        <div class="form-group">
+        <div class="mb-4">
 
-            <div class="checkbox">
+            <h4 class="mb-4">
+                {{ 'account.company_information' | t }}
+            </h4>
 
-                <input type="checkbox" name="accepts_marketing" id="edit-account-accepts_marketing"{% if form.accepts_marketing %} checked{% endif %}>
-                <label for="edit-account-newsletter">{{ 'subscribe_to_newsletter' | t }} </label>
+            <div class="row">
+
+                <div class="form-group col-12 col-md-6">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="company" id="edit-account-company" value="{{ form.company }}" placeholder="{{ 'account.information.company' | t }}">
+
+                        <label for="edit-account-company">
+                            {{ 'account.information.company' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="businessid" id="edit-account-businessid" value="{{ form.businessid }}" placeholder="{{ 'account.information.businessid' | t }}">
+
+                        <label for="edit-account-businessid">
+                            {{ 'account.information.businessid' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-sm-3 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="vatid" id="edit-account-vatid" value="{{ form.vatid }}" placeholder="{{ 'account.information.vatid' | t }}">
+
+                        <label for="edit-account-vatid">
+                            {{ 'account.information.vatid' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-        {% if form.posted_succesfully? %}
+        <div class="mb-4">
 
-            <div class="form-group text-center">
+            <h4 class="mb-4">
+                {{ 'account.marketing_information' | t }}
+            </h4>
 
-                <span class="text-success"><i class="fa fa-check fa-fw" aria-hidden="true"></i> {{ 'account.information_update_success' | t }}</span>
+            <div class="form-group form-check mb-8">
+
+                <input type="checkbox" name="accepts_marketing" id="edit-account-accepts-marketing" class="form-check-input"{% if form.accepts_marketing %} checked{% endif %}>
+
+                <label for="edit-account-accepts-marketing" class="form-check-label">
+
+                    {{- 'account.subscribe_to_newsletter' | t -}}
+
+                </label>
+
+            </div>
+
+        </div>
+
+        {% if form.posted_succesfully %}
+
+            <div class="form-group">
+
+                <span class="d-block">
+                    {{ 'account.information_update_success' | t }}
+                </span>
 
             </div>
 
         {% endif %}
 
-        {% if form.error %}
+        {% render 'form-error', error: form.error %}
 
-            <div class="form-group text-center">
-
-                <span class="text-danger"><i class="fa fa-exclamation fa-fw" aria-hidden="true"></i> {{ form.error | prepend:'form.error.' | t }}</span>
-
-            </div>
-
-        {% endif %}
-
-        <button type="submit" class="btn btn-section btn-block">{{ 'update' | t }}</button>
+        <button type="submit" class="btn btn-section btn-block">
+            {{ 'general.save' | t }}
+        </button>
 
     {% endform %}
 
-</div>
+{%- endcapture -%}
+
+<section class="section section-account-edit">
+    {% render 'section', sectionTitle: sectionTitle, sectionHeaderAction: sectionHeaderAction, sectionContent: sectionContent, sectionContentContainer: 'compact', sectionOverlay: true %}
+</section>

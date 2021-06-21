@@ -9,7 +9,7 @@
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
 	- sectionHeaderAction: {String}
 	- sectionHeaderTextAlign: {String} 'left', 'center', 'right'
-	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact'
+	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact', 'tiny'
 
 	Usage:
 	Render this snippet inside of element with a "section" class.
@@ -138,6 +138,14 @@
     {%- elsif sectionContentContainer == 'compact' -%}
 
         <div class="container-compact">
+
+            {{- content -}}
+
+        </div>
+
+    {%- elsif sectionContentContainer == 'tiny' -%}
+
+        <div class="container-tiny">
 
             {{- content -}}
 

@@ -9,9 +9,16 @@
 
 <script>
 	window.store = {
-		designMode: {{ request.design_mode | yepnope:'true','false' }},
+		designMode: {{ request.design_mode | yepnope: 'true','false' }},
 		locale: {{ request.locale.iso_code | json }},
 		placeholderImgSrc: {{ settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url | json }},
+		cartAddNotify: {{ settings.addToCartNotification | json }},
+		customerAccountsEnabled: {{ store.customer_accounts_enabled | json }},
+		customerAccountsOptional: {{ store.customer_accounts_optional | json }},
+		customerAccountsRequireApproval: {{ store.customer_accounts_require_approval | json }},
+		customerLoggedIn: {{ customer | yepnope: 'true','false' }},
+		customerHasAccess: {{ store.customer.has_access | json }},
+		cataloBrowsingRequiresAccount: {{ store.catalog_browsing_requires_account | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
 			decimalPlaces: {{ store.currency.decimal_places | json }}
@@ -24,6 +31,8 @@
 			accountLogoutUrl: {{ routes.account_logout_url | json }},
 			accountRegisterUrl: {{ routes.account_register_url | json }},
 			accountPasswordRecoverUrl: {{ routes.account_password_recover_url | json }},
+			accountPasswordChangeUrl: {{ routes.account_password_change_url | json }},
+			accountOrdersUrl: {{ routes.account_orders_url | json }},
 			searchUrl: {{ routes.search_url | json }},
 			cartUrl: {{ routes.cart_url | json }},
 			checkoutUrl: {{ routes.checkout_url | json }},

@@ -7,7 +7,6 @@
 		color: section-var(form_text_color);
 		background-color: section-var(form_bg_color);
 		border: $input-border-width solid section-var(form_border_color);
-
 		@include border-radius($input-border-radius, 0);
 		@include section-form-control-focus(section-var(form_text_color), section-var(form_bg_color), section-var(form_border_color), none, none);
 
@@ -24,6 +23,13 @@
 		&:focus::-ms-value {
 			color: section-var(form_text_color);
 			background-color: section-var(form_bg_color);
+		}
+	}
+
+	.form-floating {
+
+		> label {
+			color: lighten(section-var(form_text_color), 15%);
 		}
 	}
 
@@ -115,6 +121,41 @@
 		border: $input-border-width solid solid section-var(form_border_color);
 		@include border-radius($input-border-radius);
 	}
+
+	$box-shadow-inset: inset 0 1px 2px rgba(section-var(form_border_color), .075);
+	$form-select-color: section-var(form_text_color);
+	$form-select-bg: section-var(form_bg_color);
+	$form-select-disabled-color: null;
+	$form-select-disabled-bg: color-yiq(section-var(form_bg_color), darken(section-var(form_bg_color), 10%), lighten(section-var(form_bg_color), 10%));
+	$form-select-disabled-border-color:  color-yiq(section-var(form_border_color), darken(section-var(form_border_color), 10%), lighten(section-var(form_border_color), 10%));
+
+	$form-select-indicator-color: section-var(icon_color);
+	$form-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+
+	$form-select-border-color: section-var(form_border_color);
+	$form-select-box-shadow: none;
+
+	$form-select-focus-border-color: section-var(form_border_color);
+	$form-select-focus-box-shadow: none;
+
+	.form-select {
+		color: $form-select-color;
+		background-color: $form-select-bg;
+		background-image: escape-svg($form-select-indicator);
+		border: $form-select-border-width solid $form-select-border-color;
+		@include box-shadow($form-select-box-shadow);
+		@include section-form-control-focus($form-select-color, $form-select-bg, $form-select-border-color, none, none);
+
+		&:disabled {
+			color: $form-select-disabled-color;
+			background-color: $form-select-disabled-bg;
+			border-color: $form-select-disabled-border-color;
+		}
+
+		&:-moz-focusring {
+			text-shadow: 0 0 0 $form-select-color;
+		}
+	}
 }
 
 // From control text
@@ -133,65 +174,50 @@
 }
 
 
-// Form loating
-.form-floating {
-	position: relative;
+// Select
+.form-select {
+	display: block;
+	width: 100%;
+	padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
+	font-family: $form-select-font-family;
+	@include font-size($form-select-font-size);
+	font-weight: $form-select-font-weight;
+	line-height: $form-select-line-height;
+	background-repeat: no-repeat;
+	background-position: $form-select-bg-position;
+	background-size: $form-select-bg-size;
+	@include border-radius($form-select-border-radius, 0);
+	appearance: none;
 
-	> .form-control,
-	> .form-select {
-		height: $form-floating-height;
-		padding: $form-floating-padding-y $form-floating-padding-x;
+	&:focus {
+		outline: 0;
 	}
 
-	> label {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		padding: $form-floating-padding-y $form-floating-padding-x;
-		pointer-events: none;
-		border: $input-border-width solid transparent;
-		transform-origin: 0 0;
-		margin-bottom: 0;
-		@include transition($form-floating-transition);
+	&[multiple],
+	&[size]:not([size="1"]) {
+		padding-right: $form-select-padding-x;
+		background-image: none;
 	}
 
-	> .form-control {
-		&::placeholder {
-			color: transparent !important;
-		}
-
-		&:focus,
-		&:not(:placeholder-shown) {
-			padding-top: $form-floating-input-padding-t;
-			padding-bottom: $form-floating-input-padding-b;
-		}
-
-		&:-webkit-autofill {
-			padding-top: $form-floating-input-padding-t;
-			padding-bottom: $form-floating-input-padding-b;
-		}
+	&:-moz-focusring {
+		color: transparent;
 	}
+}
 
-	> .form-select {
-		padding-top: $form-floating-input-padding-t;
-		padding-bottom: $form-floating-input-padding-b;
-	}
+.form-select-sm {
+	padding-top: $form-select-padding-y-sm;
+	padding-bottom: $form-select-padding-y-sm;
+	padding-left: $form-select-padding-x-sm;
+	line-height: $form-select-line-height-sm;
+	@include font-size($form-select-font-size-sm);
+}
 
-	> .form-control:focus,
-	> .form-control:not(:placeholder-shown),
-	> .form-select {
-		~ label {
-			opacity: $form-floating-label-opacity;
-			transform: $form-floating-label-transform;
-		}
-	}
-	> .form-control:-webkit-autofill {
-		~ label {
-			opacity: $form-floating-label-opacity;
-			transform: $form-floating-label-transform;
-		}
-	}
+.form-select-lg {
+	padding-top: $form-select-padding-y-lg;
+	padding-bottom: $form-select-padding-y-lg;
+	padding-left: $form-select-padding-x-lg;
+	line-height: $form-select-line-height-lg;
+	@include font-size($form-select-font-size-lg);
 }
 
 
@@ -294,6 +320,68 @@
 			pointer-events: none;
 			filter: none;
 			opacity: $form-check-btn-check-disabled-opacity;
+		}
+	}
+}
+
+
+// Form floating
+.form-floating {
+	position: relative;
+
+	> .form-control,
+	> .form-select {
+		height: $form-floating-height;
+		padding: $form-floating-padding-y $form-floating-padding-x;
+	}
+
+	> label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		padding: $form-floating-padding-y $form-floating-padding-x;
+		pointer-events: none;
+		border: $input-border-width solid transparent;
+		transform-origin: 0 0;
+		margin-bottom: 0;
+		@include transition($form-floating-transition);
+	}
+
+	> .form-control {
+		&::placeholder {
+			color: transparent !important;
+		}
+
+		&:focus,
+		&:not(:placeholder-shown) {
+			padding-top: $form-floating-input-padding-t;
+			padding-bottom: $form-floating-input-padding-b;
+		}
+
+		&:-webkit-autofill {
+			padding-top: $form-floating-input-padding-t;
+			padding-bottom: $form-floating-input-padding-b;
+		}
+	}
+
+	> .form-select {
+		padding-top: $form-floating-input-padding-t;
+		padding-bottom: $form-floating-input-padding-b;
+	}
+
+	> .form-control:focus,
+	> .form-control:not(:placeholder-shown),
+	> .form-select {
+		~ label {
+			opacity: $form-floating-label-opacity;
+			transform: $form-floating-label-transform;
+		}
+	}
+	> .form-control:-webkit-autofill {
+		~ label {
+			opacity: $form-floating-label-opacity;
+			transform: $form-floating-label-transform;
 		}
 	}
 }

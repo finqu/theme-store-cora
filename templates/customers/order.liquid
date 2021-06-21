@@ -1,603 +1,596 @@
-<div class="container">
-
-	<h2>Tilaus #{{ order.order_number }}</h2>
-
-	<dl>
-		<dt>is_cancelled</dt>
-		<dd>{{ order.is_cancelled | json }}</dd>
-	</dl>
-	<dl>
-		<dt>created_at</dt>
-		<dd>{{ order.created_at | date:'r' }}</dd>
-	</dl>
-	<dl>
-		<dt>financial_status</dt>
-		<dd>{{ order.financial_status }}</dd>
-	</dl>
-	<dl>
-		<dt>subtotal_price</dt>
-		<dd>{{ order.subtotal_price | money_with_currency }}</dd>
-	</dl>
-	<dl>
-		<dt>total_price</dt>
-		<dd>{{ order.total_price | money_with_currency }}</dd>
-	</dl>
-	<dl>
-		<dt>tax_lines</dt>
-		<dd>{{ order.tax_lines | json }}</dd>
-	</dl>
-	<dl>
-		<dt>is_paid</dt>
-		<dd>{{ order.is_paid | json }}</dd>
-	</dl>
-	<dl>
-		<dt>is_refunded</dt>
-		<dd>{{ order.is_refunded | json }}</dd>
-	</dl>
-	<dl>
-		<dt>is_fulfilled</dt>
-		<dd>{{ order.is_fulfilled | json }}</dd>
-	</dl>
-	<dl>
-		<dt>is_delivered</dt>
-		<dd>{{ order.is_delivered | json }}</dd>
-	</dl>
-	<dl>
-		<dt>order_status</dt>
-		<dd>{{ order.order_status }}</dd>
-	</dl>
-	<dl>
-		<dt>payment_method_name</dt>
-		<dd>{{ order.payment_method_name }}</dd>
-	</dl>
-	<dl>
-		<dt>payment_fee</dt>
-		<dd>{{ order.payment_fee | money_with_currency }}</dd>
-	</dl>
-	<dl>
-		<dt>shipping_price</dt>
-		<dd>{{ order.shipping_price | money_with_currency }}</dd>
-	</dl>
-	<dl>
-		<dt>available_order_statuses</dt>
-		<dd>{{ available_order_statuses | json }}</dd>
-	</dl>
-	<dl>
-		<dt>available_return_statuses</dt>
-		<dd>{{ available_return_statuses | json }}</dd>
-	</dl>
-	<dl>
-		<dt>available_return_reasons</dt>
-		<dd>{{ available_return_reasons | json }}</dd>
-	</dl>
-
-	<hr>
-
-	<h4>Laskutusosoite</h4>
-
-	<address>
-		email: {{ order.billing_address.email }}<br>
-		phone: {{ order.billing_address.phone }}<br>
-		--<br>
-		first_name: {{ order.billing_address.first_name }}<br>
-		last_name: {{ order.billing_address.last_name }}<br>
-		address1: {{ order.billing_address.address1 }}<br>
-		address2: {{ order.billing_address.address2 }}<br>
-		zipcode: {{ order.billing_address.zipcode }}<br>
-		city: {{ order.billing_address.city }}<br>
-		state_code: {{ order.billing_address.state_code }}<br>
-		country: {{ order.billing_address.country.iso_code }}<br>
-		--<br>
-		company: {{ order.billing_address.company }}<br>
-		company_id: {{ order.billing_address.company_id }}<br>
-		vat_number: {{ order.billing_address.vat_number }}<br>
-		--<br>
-		latitude: {{ order.billing_address.latitude }}<br>
-		longitude: {{ order.billing_address.longitude }}
-	</address>
-
-	<hr>
-
-	<h4>Toimitusosoite</h4>
-
-	<address>
-		email: {{ order.shipping_address.email }}<br>
-		phone: {{ order.shipping_address.phone }}<br>
-		--<br>
-		first_name: {{ order.shipping_address.first_name }}<br>
-		last_name: {{ order.shipping_address.last_name }}<br>
-		address1: {{ order.shipping_address.address1 }}<br>
-		address2: {{ order.shipping_address.address2 }}<br>
-		zipcode: {{ order.shipping_address.zipcode }}<br>
-		city: {{ order.shipping_address.city }}<br>
-		state_code: {{ order.shipping_address.state_code }}<br>
-		country: {{ order.shipping_address.country.iso_code }}<br>
-		--<br>
-		company: {{ order.shipping_address.company }}<br>
-		company_id: {{ order.shipping_address.company_id }}<br>
-		vat_number: {{ order.shipping_address.vat_number }}<br>
-		--<br>
-		latitude: {{ order.shipping_address.latitude }}<br>
-		longitude: {{ order.shipping_address.longitude }}
-	</address>
-
-	<hr>
-
-	<h4>Noutopiste</h4>
-
-	<address>
-		name: {{ order.drop_point.name }}<br>
-		address1: {{ order.drop_point.address1 }}<br>
-		address2: {{ order.drop_point.address2 }}<br>
-		zipcode: {{ order.drop_point.zipcode }}<br>
-		city: {{ order.drop_point.city }}<br>
-		state_code: {{ order.drop_point.state_code }}<br>
-		country: {{ order.drop_point.country.iso_code }}<br>
-		--<br>
-		info: {{ order.drop_point.info }}<br>
-		--<br>
-		latitude: {{ order.drop_point.latitude }}<br>
-		longitude: {{ order.drop_point.longitude }}
-	</address>
-
-	<hr>
-
-	<h4>Tuotteet</h4>
-
-	{% for item in order.items %}
-		<dl>
-			<dt>title</dt>
-			<dd>{{ item.title }}</dd>
-		</dl>
-
-		<dl>
-			<dt>model</dt>
-			<dd>{{ item.model }}</dd>
-		</dl>
-
-		<dl>
-			<dt>sku</dt>
-			<dd>{{ item.sku }}</dd>
-		</dl>
-
-		<dl>
-			<dt>image</dt>
-			<dd>{{ item.image }}</dd>
-		</dl>
-
-		<dl>
-			<dt>price</dt>
-			<dd>{{ item.price | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>line_price</dt>
-			<dd>{{ item.line_price | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>category_path</dt>
-			<dd>{{ item.category_path | json }}</dd>
-		</dl>
-
-		<dl>
-			<dt>attachment</dt>
-			<dd>{{ item.attachment }}</dd>
-		</dl>
-
-		<dl>
-			<dt>gift_card_code</dt>
-			<dd>{{ item.gift_card_code }}</dd>
-		</dl>
-
-		<dl>
-			<dt>gift_card_value</dt>
-			<dd>{{ item.gift_card_value }}</dd>
-		</dl>
-
-		<dl>
-			<dt>gift_card_expiry</dt>
-			<dd>{{ item.gift_card_expiry }}</dd>
-		</dl>
-
-		<dl>
-			<dt>product_id</dt>
-			<dd>{{ item.product_id }}</dd>
-		</dl>
-
-		<dl>
-			<dt>quantity</dt>
-			<dd>{{ item.quantity }}</dd>
-		</dl>
-
-		<dl>
-			<dt>attributes_label</dt>
-			<dd>{{ item.attributes_label }}</dd>
-		</dl>
-
-		<dl>
-			<dt>gtin</dt>
-			<dd>{{ item.gtin }}</dd>
-		</dl>
-
-		<dl>
-			<dt>unit</dt>
-			<dd>{{ item.unit }}</dd>
-		</dl>
-
-		<dl>
-			<dt>product</dt>
-			<dd>{{ item.product }}</dd>
-		</dl>
-
-		<dl>
-			<dt>rate</dt>
-			<dd>{{ item.rate }}</dd>
-		</dl>
-
-		<dl>
-			<dt>rate_percentage</dt>
-			<dd>{{ item.rate_percentage }}</dd>
-		</dl>
-
-		{% for bundle_item in item.bundle_items %}
-			<dl>
-				<dt>bundle_item.title</dt>
-				<dd>{{ bundle_item.title }}</dd>
-			</dl>
-		{% endfor %}
-
-	{% endfor %}
-
-	<hr>
-
-	<h4>Maksutavat</h4>
-
-	{% for payment_method in order.payment_methods %}
-		<dl>
-			<dt>title</dt>
-			<dd>{{ payment_method.title }}</dd>
-		</dl>
-
-		<dl>
-			<dt>status</dt>
-			<dd>{{ payment_method.status }}</dd>
-		</dl>
-
-		<dl>
-			<dt>type</dt>
-			<dd>{{ payment_method.type }}</dd>
-		</dl>
-
-		<dl>
-			<dt>info</dt>
-			<dd>{{ payment_method.info }}</dd>
-		</dl>
-
-		<dl>
-			<dt>description</dt>
-			<dd>{{ payment_method.description }}</dd>
-		</dl>
-
-		<dl>
-			<dt>currency</dt>
-			<dd>{{ payment_method.currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>fee</dt>
-			<dd>{{ payment_method.fee | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>rate</dt>
-			<dd>{{ payment_method.rate }}</dd>
-		</dl>
-
-		<dl>
-			<dt>rate_percentage</dt>
-			<dd>{{ payment_method.rate_percentage }}</dd>
-		</dl>
-
-		<dl>
-			<dt>price</dt>
-			<dd>{{ payment_method.price | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>line_price</dt>
-			<dd>{{ payment_method.line_price | money_with_currency }}</dd>
-		</dl>
-
-		{% if payment_method.gift_card %}
-			<dl>
-				<dt>code</dt>
-				<dd>{{ payment_method.gift_card.code }}</dd>
-			</dl>
-
-			<dl>
-				<dt>expires</dt>
-				<dd>{{ payment_method.gift_card.expires }}</dd>
-			</dl>
-
-			<dl>
-				<dt>value</dt>
-				<dd>{{ payment_method.gift_card.value | money_with_currency }}</dd>
-			</dl>
-
-			<dl>
-				<dt>value_left</dt>
-				<dd>{{ payment_method.gift_card.value_left | money_with_currency }}</dd>
-			</dl>
-		{% endif %}
-	{% endfor %}
-
-	<hr>
-
-	<h4>Toimitustavat</h4>
-
-	{% for shipping_method in order.shipping_methods %}
-		<dl>
-			<dt>title</dt>
-			<dd>{{ shipping_method.title }}</dd>
-		</dl>
-
-		<dl>
-			<dt>type</dt>
-			<dd>{{ shipping_method.type }}</dd>
-		</dl>
-
-		<dl>
-			<dt>info</dt>
-			<dd>{{ shipping_method.info }}</dd>
-		</dl>
-
-		<dl>
-			<dt>description</dt>
-			<dd>{{ shipping_method.description }}</dd>
-		</dl>
-
-		<dl>
-			<dt>fee</dt>
-			<dd>{{ shipping_method.fee | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>rate</dt>
-			<dd>{{ shipping_method.rate }}</dd>
-		</dl>
-
-		<dl>
-			<dt>rate_percentage</dt>
-			<dd>{{ shipping_method.rate_percentage }}</dd>
-		</dl>
-
-		<dl>
-			<dt>price</dt>
-			<dd>{{ shipping_method.price | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>line_price</dt>
-			<dd>{{ shipping_method.line_price | money_with_currency }}</dd>
-		</dl>
-
-		<dl>
-			<dt>pickup_address</dt>
-			<dd>
-				<address>
-					name: {{ shipping_method.pickup_address.name }}<br>
-					address1: {{ shipping_method.pickup_address.address1 }}<br>
-					address2: {{ shipping_method.pickup_address.address2 }}<br>
-					zipcode: {{ shipping_method.pickup_address.zipcode }}<br>
-					city: {{ shipping_method.pickup_address.city }}<br>
-					state_code: {{ shipping_method.pickup_address.state_code }}<br>
-					country: {{ shipping_method.pickup_address.country.iso_code }}<br>
-					--<br>
-					info: {{ shipping_method.pickup_address.info }}<br>
-					--<br>
-					latitude: {{ shipping_method.pickup_address.latitude }}<br>
-					longitude: {{ shipping_method.pickup_address.longitude }}
-				</address>
-			</dd>
-		</dl>
-	{% endfor %}
-
-	<h4>Alennukset</h4>
-
-	{% for discount in order.discounts %}
-		<dl>
-			<dt>title</dt>
-			<dd>{{ discount.title }}</dd>
-		</dl>
-		<dl>
-			<dt>code</dt>
-			<dd>{{ discount.code }}</dd>
-		</dl>
-		<dl>
-			<dt>description</dt>
-			<dd>{{ discount.description }}</dd>
-		</dl>
-		<dl>
-			<dt>discount_percent</dt>
-			<dd>{{ discount.discount_percent }}</dd>
-		</dl>
-		<dl>
-			<dt>type</dt>
-			<dd>{{ discount.type }}</dd>
-		</dl>
-		<dl>
-			<dt>amount</dt>
-			<dd>{{ discount.amount | money_with_currency }}</dd>
-		</dl>
-		<dl>
-			<dt>total_amount</dt>
-			<dd>{{ discount.total_amount | money_with_currency }}</dd>
-		</dl>
-		<dl>
-			<dt>savings</dt>
-			<dd>{{ discount.savings | money_with_currency }}</dd>
-		</dl>
-		<dl>
-			<dt>total_savings</dt>
-			<dd>{{ discount.total_savings | money_with_currency }}</dd>
-		</dl>
-		<dl>
-			<dt>coupon_type</dt>
-			<dd>{{ discount.coupon_type }}</dd>
-		</dl>
-	{% endfor %}
-
-	<h4>Toimitukset</h4>
-
-	{% for shipment in order.shipments %}
-		<dl>
-			<dt>title</dt>
-			<dd>{{ shipment.title }}</dd>
-		</dl>
-		<dl>
-			<dt>carrier</dt>
-			<dd>{{ shipment.carrier }}</dd>
-		</dl>
-		<dl>
-			<dt>carrier_product</dt>
-			<dd>{{ shipment.carrier_product }}</dd>
-		</dl>
-		<dl>
-			<dt>cod_amount</dt>
-			<dd>{{ shipment.cod_amount }}</dd>
-		</dl>
-		<dl>
-			<dt>cod_reference</dt>
-			<dd>{{ shipment.cod_reference }}</dd>
-		</dl>
-		<dl>
-			<dt>cod_bank</dt>
-			<dd>{{ shipment.cod_bank }}</dd>
-		</dl>
-		<dl>
-			<dt>cod_bic</dt>
-			<dd>{{ shipment.cod_bic }}</dd>
-		</dl>
-		<dl>
-			<dt>description</dt>
-			<dd>{{ shipment.description }}</dd>
-		</dl>
-
-		<dl>
-			<dt>address</dt>
-			<dd>
-				<address>
-					email: {{ shipment.address.email }}<br>
-					phone: {{ shipment.address.phone }}<br>
-					--<br>
-					first_name: {{ shipment.address.first_name }}<br>
-					last_name: {{ shipment.address.last_name }}<br>
-					address1: {{ shipment.address.address1 }}<br>
-					address2: {{ shipment.address.address2 }}<br>
-					zipcode: {{ shipment.address.zipcode }}<br>
-					city: {{ shipment.address.city }}<br>
-					state_code: {{ shipment.address.state_code }}<br>
-					country: {{ shipment.address.country.iso_code }}<br>
-					--<br>
-					info: {{ shipment.address.info }}<br>
-					--<br>
-					latitude: {{ shipment.address.latitude }}<br>
-					longitude: {{ shipment.address.longitude }}
-				</address>
-			</dd>
-		</dl>
-
-		<dl>
-			<dt>pickup_address</dt>
-			<dd>
-				<address>
-					name: {{ shipment.pickup_address.name }}<br>
-					address1: {{ shipment.pickup_address.address1 }}<br>
-					address2: {{ shipment.pickup_address.address2 }}<br>
-					zipcode: {{ shipment.pickup_address.zipcode }}<br>
-					city: {{ shipment.pickup_address.city }}<br>
-					state_code: {{ shipment.pickup_address.state_code }}<br>
-					country: {{ shipment.pickup_address.country.iso_code }}<br>
-					--<br>
-					info: {{ shipment.pickup_address.info }}<br>
-					--<br>
-					latitude: {{ shipment.pickup_address.latitude }}<br>
-					longitude: {{ shipment.pickup_address.longitude }}
-				</address>
-			</dd>
-		</dl>
-
-		{% for package in shipment.packages %}
-
-			<dl>
-				<dt>package.description</dt>
-				<dd>{{ package.description }}</dd>
-			</dl>
-			<dl>
-				<dt>package.width</dt>
-				<dd>{{ package.width }}</dd>
-			</dl>
-			<dl>
-				<dt>package.height</dt>
-				<dd>{{ package.height }}</dd>
-			</dl>
-			<dl>
-				<dt>package.length</dt>
-				<dd>{{ package.length }}</dd>
-			</dl>
-			<dl>
-				<dt>package.weight</dt>
-				<dd>{{ package.weight }}</dd>
-			</dl>
-			<dl>
-				<dt>package.tracking_url</dt>
-				<dd>{{ package.tracking_url }}</dd>
-			</dl>
-			<dl>
-				<dt>package.tracking_code</dt>
-				<dd>{{ package.tracking_code }}</dd>
-			</dl>
-
-			{% for item in package.items %}
-				<dl>
-					<dt>package.item.shipped_quantity</dt>
-					<dd>{{item.shipped_quantity}}</dd>
-				</dl>
-				<dl>
-					<dt>package.item.line_item</dt>
-					<dd>{{item.line_item}}</dd>
-				</dl>
-				<dl>
-					<dt>package.item.width</dt>
-					<dd>{{item.width}}</dd>
-				</dl>
-				<dl>
-					<dt>package.item.height</dt>
-					<dd>{{item.height}}</dd>
-				</dl>
-				<dl>
-					<dt>package.item.length</dt>
-					<dd>{{item.length}}</dd>
-				</dl>
-				<dl>
-					<dt>package.item.weight</dt>
-					<dd>{{item.weight}}</dd>
-				</dl>
+{%- assign dateFormat = 'general.date_format' | t -%}
+
+{%- capture sectionTitle -%}
+	{{ 'account.order_title_dynamic' | t, id: order.order_number }}
+{%- endcapture -%}
+
+{%- capture sectionSubtitle -%}
+
+	<div class="row">
+
+		<div class="col">
+
+			<div>
+
+				<spa>
+					{{ order.order_status | prepend: 'account.order.order_statuses.' | t }}
+				</span>
+
+			</div>
+
+			<div>
+
+				<span class="small text-muted">
+					{{ order.created_at | date: dateFormat }}
+				</span>
+
+			</div>
+
+		</div>
+
+		<div class="col-auto">
+
+			{% if order.is_paid %}
+
+				<div class="d-flex justify-content-md-end">
+
+                    <a href="{{ order | receipt_url_href }}" class="btn btn-outline-section">
+                    	{{ 'account.order.download_receipt' | t }}
+                   	</a>
+
+                </div>
+
+            {% endif %}
+
+		</div>
+
+	</div>
+
+{%- endcapture -%}
+
+{%- assign sectionTitle = sectionTitle -%}
+{%- assign sectionSubtitle = sectionSubtitle -%}
+
+{%- capture sectionHeaderAction -%}
+
+	<a href="{{ routes.account_orders_url }}">
+
+		{%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'mr-1' -%}
+
+		<span>
+			{{ 'general.back' | t }}
+		</span>
+	</a>
+
+{%- endcapture -%}
+
+{%- capture sectionContent -%}
+
+	<div class="order">
+
+		<div class="order-details">
+
+			<div class="row">
+
+				<div class="col-12 col-md mb-4 mb-md-0">
+
+					<div class="order-shipping-address">
+
+						<div class="order-shipping-address-line mb-2">
+
+							<span class="order-shipping-address-line-text font-weight-bold">
+								{{ 'account.order.delivery_address' | t }}
+							</span>
+
+						</div>
+
+						<div class="order-shipping-address-line">
+
+							<span class="order-shipping-address-line-text">
+								{{ order.shipping_address.firstname }} {{ order.shipping_address.lastname }}
+							</span>
+
+						</div>
+
+						<div class="order-shipping-address-line">
+
+							<span class="order-shipping-address-line-text">
+								{{ order.shipping_address.address1 }}
+							</span>
+
+						</div>
+
+						<div class="order-shipping-address-line">
+
+							<span class="order-shipping-address-line-text">
+								{{ order.shipping_address.zipcode }} {{ order.shipping_address.city }}
+							</span>
+
+						</div>
+
+						<div class="order-shipping-address-line">
+
+							<span class="order-shipping-address-line-text">
+								{{ order.shipping_address.country.name }}
+							</span>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-12 col-md mb-4 mb-md-0">
+
+					<div class="order-billing-address">
+
+						<div class="order-billing-address-line mb-2">
+
+							<span class="order-billing-address-line-text font-weight-bold">
+								{{ 'account.order.billing_address' | t }}
+							</span>
+
+						</div>
+
+						<div class="order-billing-address-line">
+
+							<span class="order-billing-address-line-text">
+								{{ order.billing_address.firstname }} {{ order.billing_address.lastname }}
+							</span>
+
+						</div>
+
+						<div class="order-billing-address-line">
+
+							<span class="order-billing-address-line-text">
+								{{ order.billing_address.address1 }}
+							</span>
+
+						</div>
+
+						<div class="order-billing-address-line">
+
+							<span class="order-billing-address-line-text">
+								{{ order.billing_address.zipcode }} {{ order.billing_address.city }}
+							</span>
+
+						</div>
+
+						<div class="order-billing-address-line">
+
+							<span class="order-billing-address-line-text">
+								{{ order.billing_address.country.name }}
+							</span>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-12 col-md mb-4 mb-md-0">
+
+					<div class="mb-2">
+
+						<span class="font-weight-bold">
+
+							{% if shipping_methods.size > 1 %}
+								{{ 'account.order.shipping_method_plural' | t }}
+							{% else %}
+								{{ 'account.order.shipping_method' | t }}
+							{% endif %}
+						</span>
+
+					</div>
+
+					{% for shipping_method in order.shipping_methods %}
+
+						<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
+
+							<div>
+
+								<span>
+									{{ shipping_method.title }}
+								</span>
+
+							</div>
+
+							<div>
+
+								<span>
+									{{ shipping_method.pickup_address.name }}
+								</span>
+
+							</div>
+
+							<div>
+
+								<span>
+									{{ shipping_method.pickup_address.address1 }}
+								</span>
+
+							</div>
+
+							<div>
+
+								<span>
+									{{ shipping_method.pickup_address.zipcode }} {{ shipping_method.pickup_address.city }}
+								</span>
+
+							</div>
+
+							<div>
+
+								<span>
+									{{ shipping_method.pickup_address.country.name }}
+								</span>
+
+							</div>
+
+							{% for package in shipment.packages %}
+
+								<div>
+
+									<a href="{{ shipment.tracking_url }}" target="_blank">
+										{{ shipment.tracking_code }}
+									</span>
+
+								</div>
+
+							{% endfor %}
+
+						</div>
+
+					{% endfor %}
+
+				</div>
+
+				<div class="col-12 col-md">
+
+					<div class="mb-2">
+
+						<span class="font-weight-bold">
+
+							{% if payment_methods.size > 1 %}
+								{{ 'account.order.payment_method_plural' | t }}
+							{% else %}
+								{{ 'account.order.payment_method' | t }}
+							{% endif %}
+						</span>
+
+					</div>
+
+					{% for payment_method in order.payment_methods %}
+
+						<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
+
+							<div>
+
+								<span>
+									{{ payment_method.title }}
+								</span>
+
+							</div>
+
+						</div>
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="order-items">
+
+			{% for item in order.items %}
+
+				<div class="order-item">
+
+					<div class="row no-gutters">
+
+						<div class="col-auto">
+
+                            <div class="order-item-media">
+
+                                <div class="order-item-media-img-container aspect-ratio-container">
+
+                                    {%- assign imgSrc = item.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
+                                    {%- assign imgSize = 76,114 -%}
+
+                                    <picture>
+                                        <img
+                                            alt="{{ item.name }}"
+                                            data-src="{{ imgSrc | thumb: imgSize }}"
+                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                    </picture>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                       <div class="col pl-4">
+
+                       		<div class="row no-gutters">
+
+                            	<div class="col">
+
+                            		<div class="order-item-name">
+
+                                        <span class="order-item-name-text">
+                                            {{ item.title }}
+                                        </span>
+
+                                    </div>
+
+                                    <div class="order-item-quantity">
+
+                                        <span class="order-item-quantity-text">
+                                        	{{ 'general.quantity' | t }}: {{ item.quantity }}
+                                        </span>
+
+                                    </div>
+
+                                    {% if item.model %}
+
+	                                    <div class="order-item-product-number">
+
+	                                    	<span class="order-item-product-number-text">
+	                                        	{{ 'general.product_number' | t }}: {{ item.model }}
+	                                        </span>
+
+	                                    </div>
+
+                                    {% endif %}
+
+                                    {% if item.attributes_label %}
+
+	                                    <div class="order-item-attributes">
+
+	                                    	{%- assign attributes = item.attributes_label | split: ',' -%}
+
+		                                    {% for attribute in attributes %}
+
+		                                    	<div class="order-item-attribute">
+
+		                                    		<span class="order-item-attribute-text">
+		                                    			{{ 'general.selection' | t }}: {{ attribute }}
+		                                    		</span>
+
+		                                    	</div>
+
+		                                    {% endfor %}
+
+		                                </div>
+
+	                                {% endif %}
+
+                            	</div>
+
+                            	<div class="col-auto pl-2">
+
+                            		<div class="order-item-price">
+
+                                        <span class="order-item-price-text">
+                                            {{ item.price | in_currency }}
+                                        </span>
+
+                                    </div>
+
+                            	</div>
+
+                            </div>
+
+                       </div>
+
+					</div>
+
+				</div>
+
 			{% endfor %}
-		{% endfor %}
 
-		<dl>
-			<dt>tracking_url</dt>
-			<dd>{{ shipment.tracking_url }}</dd>
-		</dl>
-		<dl>
-			<dt>tracking_code</dt>
-			<dd>{{ shipment.tracking_code }}</dd>
-		</dl>
-		<dl>
-			<dt>created_at</dt>
-			<dd>{{ shipment.created_at }}</dd>
-		</dl>
-	{% endfor %}
-</div>
+		</div>
+
+		<div class="order-summary">
+
+			<div class="order-subtotal">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <span>
+                            {{ 'general.subtotal' | t }}
+                        </span>
+
+                    </div>
+
+                    <div class="col text-right">
+
+                        <span>
+                        	{{ order.subtotal | in_currency }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+	       	{% if order.payment_fee %}
+
+	            <div class="order-payment-fee">
+
+	                <div class="row">
+
+	                    <div class="col">
+
+	                        <span>
+	                            {{ 'general.payment_fee' | t }}
+	                        </span>
+
+	                    </div>
+
+	                    <div class="col text-right">
+
+	                        <span>
+	                        	{{ order.payment_fee | in_currency }}
+	                        </span>
+
+	                    </div>
+
+	                </div>
+
+	            </div>
+
+            {% endif %}
+
+	       	{% if order.shipping_price %}
+
+	            <div class="order-shipping-price">
+
+	                <div class="row">
+
+	                    <div class="col">
+
+	                        <span>
+	                            {{ 'general.shipping_price' | t }}
+	                        </span>
+
+	                    </div>
+
+	                    <div class="col text-right">
+
+	                        <span>
+	                        	{{ order.shipping_price | in_currency }}
+	                        </span>
+
+	                    </div>
+
+	                </div>
+
+	            </div>
+
+            {% endif %}
+
+            {% if order.discounts %}
+
+	            <div class="order-discounts">
+
+	            	{% for discount in order.discounts %}
+
+		            	<div class="order-discount">
+
+			                <div class="row">
+
+			                    <div class="col">
+
+			                        <span>
+			                            {{ discount.title }}{% if discount.code %} - {{ discount.code }}{% endif %}
+			                        </span>
+
+			                    </div>
+
+			                    <div class="col text-right">
+
+			                        <span>
+			                        	{{ discount.amount | in_currency }}
+			                        </span>
+
+			                    </div>
+
+			                </div>
+
+			            </div>
+
+	                {% endfor %}
+
+	            </div>
+
+            {% endif %}
+
+            <div class="order-tax-free">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <span>
+                            {{ 'general.tax_free_price' | t }}
+                        </span>
+
+                    </div>
+
+                    <div class="col text-right">
+
+                        <span>
+                        	{{ order.tax_free | in_currency }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="order-tax">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <span>
+                            {{ 'general.tax' | t }}
+                        </span>
+
+                    </div>
+
+                    <div class="col text-right">
+
+                        <span>
+                        	{{ order.tax | in_currency }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="order-total">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <span>
+                            {{ 'general.total' | t }}
+                        </span>
+
+                    </div>
+
+                    <div class="col text-right">
+
+                        <span>
+                        	{{ order.total | in_currency }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+		</div>
+
+	</div>
+
+{%- endcapture -%}
+
+<section class="section section-account-order">
+    {% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderAction: sectionHeaderAction, sectionContent: sectionContent, sectionContentContainer: 'compact', sectionOverlay: true %}
+</section>
