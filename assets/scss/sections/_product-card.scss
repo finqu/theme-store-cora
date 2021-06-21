@@ -96,6 +96,31 @@
 		}
 	}
 
+	.product-badges {
+		flex-direction: column;
+		flex-wrap: wrap;
+
+		.product-badge {
+			margin-right: 0;
+		}
+
+		&.product-badge-position-top-left,
+		&.product-badge-position-bottom-left {
+
+			.product-badge {
+				align-self: flex-start;
+			}
+		}
+
+		&.product-badge-position-top-right,
+		&.product-badge-position-bottom-right {
+
+			.product-badge {
+				align-self: flex-end;
+			}
+		}
+	}
+
 	.product-info {
 
 		.product-manufacturer {

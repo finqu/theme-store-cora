@@ -169,7 +169,7 @@ export default class App {
 		});
 
         Handlebars.registerPartial('icon', function(data) {
-            return `<img src="${self.data.routes.assetUrl}/media/${data.icon}.svg" class="svg-inline${data.class ? ' '+data.class : ''}" alt="">`;
+            return `<img src="${self.data.routes.assetUrl}/assets/${data.icon}.svg" class="svg-inline${data.class ? ' '+data.class : ''}" alt="">`;
         });
 
         Handlebars.registerPartial('image', function(data) {

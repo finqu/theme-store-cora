@@ -30,7 +30,7 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: '[name].[ext]',
-							outputPath: 'media/'
+							outputPath: 'assets/'
 						}
 					}
 				]
@@ -64,9 +64,9 @@ module.exports = {
 					let hasChanges = false;
 					let data = JSON.parse(file);
 
-					fs.readdirSync('./public/media').forEach(file => {
+					fs.readdirSync('./public/assets').forEach(file => {
 
-						const filepath = 'media/'+file;
+						const filepath = 'assets/'+file;
 						const exclude = [
 							'.DS_Store'
 						];

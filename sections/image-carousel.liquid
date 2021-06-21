@@ -1,20 +1,21 @@
-{%- capture carouselSettings -%} data-carousel-autoplay="{{- section.settings.autoplay | boolval -}}"{%- endcapture -%}
+{%- capture carouselSettings -%} data-carousel-autoplay="{{- section.settings.autoplay -}}"{%- endcapture -%}
 
 {%- if section.settings.autoplay -%}
     {% capture autoplaySpeedAttr %} data-carousel-autoplay-speed="{{- section.settings.autoplaySpeed -}}"{% endcapture %}
     {%- assign carouselSettings = carouselSettings | append: autoplaySpeedAttr -%}
 {%- endif -%}
 
-{% capture paginationAttr %} data-carousel-pagination="{{- section.settings.pagination | boolval -}}"{% endcapture %}
+{% capture paginationAttr %} data-carousel-pagination="{{- section.settings.pagination -}}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: paginationAttr -%}
 
-{% capture loopAttr %} data-carousel-loop="{{ section.settings.loop | boolval }}"{% endcapture %}
+{% capture loopAttr %} data-carousel-loop="{{ section.settings.loop }}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: loopAttr -%}
 
 {% capture effectAttr %} data-carousel-effect="{{- section.settings.effect -}}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: effectAttr -%}
 
 {%- assign carouselClasses = '' -%}
+{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 
 {%- if section.settings.pagination == 'hover' -%}
     {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
@@ -45,51 +46,52 @@
 
     {% for item in section.settings.setting_blocks.items %}
 
+        {%- assign imgSrc = item.settings.imgSrc -%}
+        {%- assign imgSizeSm = '768,400' -%}
+
+        {%- case sectionHeight -%}
+            {%- when 'sm' -%}
+                {%- assign imgSizeMd = '768,400' -%}
+                {%- assign imgSizeLg = '1100,400' -%}
+                {%- assign imgSizeXl = '1905,400' -%}
+            {%- when 'md' -%}
+                {%- assign imgSizeMd = '768,600' -%}
+                {%- assign imgSizeLg = '1100,600' -%}
+                {%- assign imgSizeXl = '1905,600' -%}
+            {%- when 'lg' -%}
+                {%- assign imgSizeMd = '768,800' -%}
+                {%- assign imgSizeLg = '1100,800' -%}
+                {%- assign imgSizeXl = '1905,800' -%}
+            {%- when 'xl' -%}
+                {%- assign imgSizeMd = '768,945' -%}
+                {%- assign imgSizeLg = '1100,945' -%}
+                {%- assign imgSizeXl = '1905,945' -%}
+        {%- endcase -%}
+
         <div class="swiper-slide">
 
-            {% if item.settings.imgSrc %}
+            {% if imgSrc %}
 
                 <div class="slide-bg-img">
-
-                    {%- assign imgSizeSm = '768,400' -%}
-
-                    {%- case sectionHeight -%}
-                        {%- when 'sm' -%}
-                            {%- assign imgSizeMd = '768,400' -%}
-                            {%- assign imgSizeLg = '1100,400' -%}
-                            {%- assign imgSizeXl = '1905,400' -%}
-                        {%- when 'md' -%}
-                            {%- assign imgSizeMd = '768,600' -%}
-                            {%- assign imgSizeLg = '1100,600' -%}
-                            {%- assign imgSizeXl = '1905,600' -%}
-                        {%- when 'lg' -%}
-                            {%- assign imgSizeMd = '768,800' -%}
-                            {%- assign imgSizeLg = '1100,800' -%}
-                            {%- assign imgSizeXl = '1905,800' -%}
-                        {%- when 'xl' -%}
-                            {%- assign imgSizeMd = '768,945' -%}
-                            {%- assign imgSizeLg = '1100,945' -%}
-                            {%- assign imgSizeXl = '1905,945' -%}
-                    {%- endcase -%}
 
                     <picture>
 
                         <source media="(min-width: 768px)" data-srcset="
-                            {{ item.settings.imgSrc | thumb: imgSizeMd }} 1x,
-                            {{ item.settings.imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+                            {{ imgSrc | thumb: imgSizeMd }} 1x,
+                            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
 
                         <source media="(min-width: 992px)" data-srcset="
-                            {{ item.settings.imgSrc | thumb: imgSizeLg }} 1x,
-                            {{ item.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                            {{ imgSrc | thumb: imgSizeLg }} 1x,
+                            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
                         <source media="(min-width: 1200px)" data-srcset="
-                            {{ item.settings.imgSrc | thumb: imgSizeXl }} 1x,
-                            {{ item.settings.imgSrc | thumb: imgSizeXl | thumb:'@2x' }} 2x">
+                            {{ imgSrc | thumb: imgSizeXl }} 1x,
+                            {{ imgSrc | thumb: imgSizeXl | thumb:'@2x' }} 2x">
 
                         <img
                             alt="{{ item.settings.imgAlt }}"
-                            data-src="{{ item.settings.imgSizeSm | thumb: imgSizeMobile }}"
-                            data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                            data-src="{{ imgSrc | thumb: imgSizeMobile }}"
+                            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
                             class="slide-lazy-img">
 
                     </picture>

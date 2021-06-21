@@ -6,6 +6,8 @@
 	- sectionTitle: {String}
 	- sectionTitleTag {String}
 	- sectionSubtitle: {String}
+	- sectionHeight {String}
+	- sectionInnerSpacing {String}
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
 	- sectionHeaderTextAlign: {String} 'left', 'center', 'right'
@@ -15,7 +17,7 @@
 	- sectionBgImgSrc: {String}
 	- sectionBgImgPos: {String}
 	- sectionBgImgOverlay: {String}
-	- sectionOverlay: {boolean}
+	- sectionOverlay: {Boolean}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact', 'tiny'
 	- sectionTextAlign: {String} 'left', 'center', 'right'
 
@@ -24,8 +26,8 @@
 {% endcomment %}
 
 {%- assign section = section -%}
-{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
-{%- assign sectionInnerSpacing = section.settings.sectionInnerSpacing | default: 'off' -%}
+{%- assign sectionHeight = sectionHeight | default: section.settings.sectionHeight | default: settings.sectionHeight -%}
+{%- assign sectionInnerSpacing = sectionInnerSpacing | default: section.settings.sectionInnerSpacing | default: 'off' -%}
 {%- assign sectionContent = sectionContent | default: null -%}
 {%- assign sectionContentSpacing = section.settings.sectionContentSpacing -%}
 {%- assign sectionContentWidth = section.settings.sectionContentWidth | default: '12' -%}
@@ -47,7 +49,7 @@
 {%- assign sectionTextAlign = sectionTextAlign | default: null -%}
 {%- assign sectionClasses = '' -%}
 
-{%- if sectionHeight -%}
+{%- if sectionHeight != 'off' -%}
     {% capture sectionHeightClass %} section-height-{{ sectionHeight }}{% endcapture %}
     {%- assign sectionClasses = sectionClasses | append: sectionHeightClass -%}
 {%- endif -%}

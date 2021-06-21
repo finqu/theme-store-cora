@@ -15,7 +15,7 @@
 
 {%- capture sectionContent -%}
 
-    {% form 'edit_customer' %}
+    {% form 'edit_customer', customer %}
 
         <div class="mb-4">
 
@@ -29,7 +29,7 @@
 
                     <div class="form-floating">
 
-                        <input type="text" class="form-control" name="firstname" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.first_name }}" required>
+                        <input type="text" class="form-control" name="first_name" id="edit-account-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.first_name }}" required>
 
                         <label for="edit-account-firstname">
                             {{ 'account.information.firstname' | t }}
@@ -43,7 +43,7 @@
 
                     <div class="form-floating">
 
-                        <input type="text" class="form-control" name="lastname" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.last_name }}" required>
+                        <input type="text" class="form-control" name="last_name" id="edit-account-lastname" placeholder="{{ 'account.information.lastname' | t }}" value="{{ form.last_name }}" required>
 
                         <label for="edit-account-lastname">
                             {{ 'account.information.lastname' | t }}
@@ -75,10 +75,10 @@
 
                     <div class="form-floating">
 
-                        <input type="tel" class="form-control" name="phonenumber" id="edit-account-phonenumber" placeholder="{{ 'account.information.phonenumber' | t }}" value="{{ form.phonenumber }}">
+                        <input type="tel" class="form-control" name="phone" id="edit-account-phone" placeholder="{{ 'account.information.phone' | t }}" value="{{ form.phone }}">
 
-                        <label for="edit-account-phonenumber">
-                            {{ 'account.information.phonenumber' | t }}
+                        <label for="edit-account-phone">
+                            {{ 'account.information.phone' | t }}
                         </label>
 
                     </div>
@@ -185,10 +185,10 @@
 
                     <div class="form-floating">
 
-                        <input type="text" class="form-control" name="businessid" id="edit-account-businessid" value="{{ form.businessid }}" placeholder="{{ 'account.information.businessid' | t }}">
+                        <input type="text" class="form-control" name="company_id" id="edit-account-company-id" value="{{ form.company_id }}" placeholder="{{ 'account.information.company_id' | t }}">
 
-                        <label for="edit-account-businessid">
-                            {{ 'account.information.businessid' | t }}
+                        <label for="edit-account-company-id">
+                            {{ 'account.information.company_id' | t }}
                         </label>
 
                     </div>
@@ -199,10 +199,10 @@
 
                     <div class="form-floating">
 
-                        <input type="text" class="form-control" name="vatid" id="edit-account-vatid" value="{{ form.vatid }}" placeholder="{{ 'account.information.vatid' | t }}">
+                        <input type="text" class="form-control" name="vat_number" id="edit-account-vat-number" value="{{ form.vat_number }}" placeholder="{{ 'account.information.vat_number' | t }}">
 
-                        <label for="edit-account-vatid">
-                            {{ 'account.information.vatid' | t }}
+                        <label for="edit-account-vat-number">
+                            {{ 'account.information.vat_number' | t }}
                         </label>
 
                     </div>

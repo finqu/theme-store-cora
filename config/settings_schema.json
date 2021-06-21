@@ -910,7 +910,7 @@
                 {
                     "id": "placeholderDefaultImgSrc",
                     "type": "hidden",
-					"default": "media/placeholder.jpg"
+					"default": "assets/placeholder.jpg"
                 },
 				{
                     "id": "taxFreePrices",

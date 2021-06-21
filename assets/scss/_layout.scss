@@ -6,8 +6,114 @@ html {
 }
 
 // Header
-.section-site-header {
+@include section-style('site-header') {
 
+    &.section-inner {
+        z-index: 2;
+    }
+
+    .site-annoucement-container {
+
+        .site-annoucement {
+            display: flex;
+            justify-content: center;
+            background-color: section-var(overlay_background_color);
+            padding: spacer(3);
+
+            .site-annoucement-text {
+                font-weight: $font-weight-bold;
+                font-size: 90%;
+            }
+        }
+    }
+
+    .site-header-container {
+
+        .site-header {
+            padding: spacer(2);
+
+            .site-header-item-container {
+
+                .site-header-item {
+                    position: relative;
+                    padding: spacer(2);
+                    font-size: $font-size-base * 1.6;
+                    border: 1px solid transparent;
+
+                    &.site-header-item-cart {
+
+                        &.cart-mini-expanded {
+                            border-left-color: section-var(border_color);
+                            border-top-color: section-var(border_color);
+                            border-right-color: section-var(border_color);
+                            background-color: section-var(background_color);
+                            z-index: 2;
+                        }
+                    }
+
+                    .site-header-item-counter {
+                        position: absolute;
+                        top: 7px;
+                        right: 4px;
+                        height: 16px;
+                        min-width: 16px;
+                        border-radius: 50%;
+                        display: none;
+                        background-color: section-var(indicator_color);
+                        color: color-yiq(section-var(indicator_color), #000, #fff);
+
+                        &.has-items {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        .site-header-item-counter-text {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .site-header-cart-container {
+                position: absolute;
+                right: 0;
+            }
+
+            .site-header-top {
+                display: flex;
+                justify-content: space-between;
+
+                .site-header-top-left {
+                    display: flex;
+                }
+
+                .site-header-top-logo {
+                    display: flex;
+
+                    .site-header-top-logo-text {
+                        font-size: $font-size-base * 2.3;
+                    }
+                }
+
+                .site-header-top-right {
+                    display: flex;
+                    position: relative;
+                }
+            }
+
+            .site-header-bottom {
+
+            }
+        }
+    }
+
+    .container,
+    .container-fluid,
+    .container-tiny,
+    .container-compact {
+        padding: 0;
+    }
 }
 
 // Footer
@@ -118,9 +224,13 @@ html {
 
         .product-badge {
             flex: 0 0 auto;
-            margin-right: spacer(1);
-            margin-top: spacer(1);
+            margin-right: spacer(2);
+            margin-bottom: spacer(2);
             white-space: nowrap;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
 
             &.product-badge-new {
 

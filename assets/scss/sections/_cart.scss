@@ -121,10 +121,12 @@
     .cart-mini {
     	max-height: 0;
 	    transition: max-height .5s ease-in-out;
+	    background-color: section-var(background_color);
     	overflow: hidden;
     	width: 335px;
     	visibility: hidden;
     	opacity: 0;
+    	z-index: 2;
 
     	&.cart-mini-items-hint-top {
 

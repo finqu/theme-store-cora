@@ -20,6 +20,7 @@ export default {
 
         const bodyEl = document.querySelector('body');
 
+        this.initSiteHeader();
         this.initSortByFilters();
         this.initWishlist();
         this.initCartMini();
@@ -44,6 +45,36 @@ export default {
 		    this.initProduct();
         }
 	},
+    initSiteHeader: function() {
+
+        const containerEl = document.querySelector('.section-site-header');
+        const siteHeaderItemCartEl = containerEl.querySelector('.site-header-item-cart');
+        const siteHeaderCartContainerEl = containerEl.querySelector('.site-header-cart-container');
+        const siteHeaderCartEl = containerEl.querySelector('.site-header-cart');
+        const siteHeaderItemCartHeight = siteHeaderItemCartEl.offsetHeight - 1;
+
+        siteHeaderCartContainerEl.style.top = siteHeaderItemCartHeight+'px';
+
+        siteHeaderItemCartEl.addEventListener('mouseenter', e => {
+            siteHeaderItemCartEl.classList.add('cart-mini-expanded');
+            siteHeaderCartEl.classList.add('cart-mini-expanded');
+        });
+
+        siteHeaderCartContainerEl.addEventListener('mouseenter', e => {
+            siteHeaderItemCartEl.classList.add('cart-mini-expanded');
+            siteHeaderCartEl.classList.add('cart-mini-expanded');
+        });
+
+        siteHeaderItemCartEl.addEventListener('mouseleave', e => {
+            siteHeaderItemCartEl.classList.remove('cart-mini-expanded');
+            siteHeaderCartEl.classList.remove('cart-mini-expanded');
+        });
+
+        siteHeaderCartContainerEl.addEventListener('mouseleave', e => {
+            siteHeaderItemCartEl.classList.remove('cart-mini-expanded');
+            siteHeaderCartEl.classList.remove('cart-mini-expanded');
+        });
+    },
     initAccount: function() {
 
         const containerEl = document.querySelector('.section-account');
@@ -200,8 +231,8 @@ export default {
 
                     const value = (parseInt(el.innerText) || 0) + 1;
 
-                    if (wishlistCount > 0 && !el.classList.contains('has-items')) {
-                        el.classList.add('has-items');
+                    if (wishlistCount > 0 && !el.parentNode.classList.contains('has-items')) {
+                        el.parentNode.classList.add('has-items');
                     }
 
                     el.innerHTML = value;
@@ -229,8 +260,8 @@ export default {
                         return;
                     }
 
-                    if (value < 1 && el.classList.contains('has-items')) {
-                        el.classList.remove('has-items');
+                    if (value < 1 && el.parentNode.classList.contains('has-items')) {
+                        el.parentNode.classList.remove('has-items');
                     }
 
                     el.innerHTML = value;
@@ -269,8 +300,8 @@ export default {
                             return;
                         }
 
-                        if (value < 1 && el.classList.contains('has-items')) {
-                            el.classList.remove('has-items');
+                        if (value < 1 && el.parentNode.classList.contains('has-items')) {
+                            el.parentNode.classList.remove('has-items');
                         }
 
                         el.innerHTML = value;
@@ -287,8 +318,8 @@ export default {
 
                         const value = (parseInt(el.innerText) || 0) + 1;
 
-                        if (value > 0 && !el.classList.contains('has-items')) {
-                            el.classList.add('has-items');
+                        if (value > 0 && !el.parentNode.classList.contains('has-items')) {
+                            el.parentNode.classList.add('has-items');
                         }
 
                         el.innerHTML = value;
