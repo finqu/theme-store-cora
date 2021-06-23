@@ -321,9 +321,23 @@
 
                             		<div class="order-item-name">
 
-                                        <span class="order-item-name-text">
-                                            {{ item.title }}
-                                        </span>
+                            			{% if item.product_url %}
+
+                            				<a href="{{ item.product_url }}">
+
+		                                        <span class="order-item-name-text">
+		                                            {{ item.title }}
+		                                        </span>
+
+		                                    </a>
+
+                            			{% else %}
+
+                            				<span class="order-item-name-text">
+												{{ item.title }}
+											</span>
+
+                            			{% endif %}
 
                                     </div>
 

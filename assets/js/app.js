@@ -32,7 +32,6 @@ export default class App {
 			container: document,
 			elements_selector: '.lazy',
             show_while_loading: true,
-            use_native: true,
             callback_reveal: function (img) {
                 picturefill({
                     elements: [img]
@@ -333,4 +332,22 @@ export default class App {
             maximumFractionDigits: maximumFractionDigits || this.data.currency.decimalPlaces
         });
     }
+
+    animate = (el, animation, prefix = 'animate__') => new Promise((resolve, reject) => {
+
+		const animationName = `${prefix}${animation}`;
+		const node = el && el.nodeType ? el : document.querySelector(el);
+
+		node.classList.add(`${prefix}animated`, animationName);
+
+		function handleAnimationEnd(e) {
+
+			e.stopPropagation();
+			node.classList.remove(`${prefix}animated`, animationName);
+
+			resolve('Animation ended');
+		}
+
+		node.addEventListener('animationend', handleAnimationEnd, {once: true});
+	});
 }

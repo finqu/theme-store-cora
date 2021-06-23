@@ -14,8 +14,10 @@
         "previous": "Edellinen",
         "unknown": "Tuntematon",
         "choose": "Valitse",
+        "account": "Tili",
         "no_information_found": "Tietoa ei löydy",
         "search": "Haku",
+        "search_products": "Hae tuotteita",
         "search_no_results": "Haku ei tuottanut tuloksia, kokeile muita hakusanoja.",
         "search_results_for": "Hait sanalla",
         "product_catalog": "Tuoteluettelo",
@@ -111,6 +113,7 @@
         "leave_comment": "Jätä kommentti"
     },
     "account": {
+        "title": "Oma tili",
         "information_title": "Omat tietoni",
         "information_subtitle": "Täällä voit tarkastella ja päivittää omia tietojasi.",
         "edit_information_title": "Muokkaa käyttäjätietoja",
@@ -121,6 +124,7 @@
         "view_order": "Tarkastele tilausta",
         "view_order_plural": "Tarkastele tilauksia",
         "subscribe_to_newsletter": "Tilaa uutiskirje",
+        "logout": "Kirjaudu ulos",
         "contact_information": "Yhteystiedot",
         "address_information": "Osoitetiedot",
         "company_information": "Yritystiedot",
@@ -139,13 +143,13 @@
             "city": "Kaupunki",
             "zipcode": "Postinumero",
             "country": "Maa",
-            "phonenumber": "Puhelinnumero",
+            "phone": "Puhelinnumero",
             "email": "Sähköpostiosoite",
             "language": "Kieli",
             "currency": "Valuutta",
             "company": "Yritys",
-            "businessid": "Y-tunnus",
-            "vatid": "ALV-numero"
+            "company_id": "Y-tunnus",
+            "vat_number": "ALV-numero"
         },
         "order": {
             "no_orders": "Ei tilauksia näytettävänä.",

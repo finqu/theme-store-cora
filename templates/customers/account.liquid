@@ -46,14 +46,14 @@
 					            <div>
 
 					                <span class="d-block font-weight-bold mb-2">
-					                	{{ 'account.information.email' | t }}
+					                	{{ 'account.information.phone' | t }}
 					                </span>
 
 					                <div>
 
 						                <span>
-						                	{% if customer.email %}
-						                		{{ customer.email }}
+						                	{% if customer.phonenumber %}
+						                		{{ customer.phonenumber }}
 						                	{% else %}
 						                		{{ 'general.no_information_found' | t }}
 						                	{% endif %}
@@ -191,7 +191,7 @@
 
 	</div>
 
-	<div>
+	<div class="pb-6 mb-6 border-bottom">
 
 		<div class="row no-gutters">
 
@@ -225,6 +225,52 @@
 
 						<a href="{{ routes.account_orders_url }}" class="btn btn-outline-section btn-block">
 							{{ 'account.view_order_plural' | t }}
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div>
+
+		<div class="row no-gutters">
+
+			<div class="col-auto">
+
+				{%- render 'icon', icon: 'login-P2Woe5', class: 'svg-icon-4x' -%}
+
+			</div>
+
+			<div class="col pl-4">
+
+				<div class="row">
+
+					<div class="col">
+
+						<span class="d-block font-weight-bold mb-2">
+		                	{{ 'general.account' | t }}
+		                </span>
+
+		                <div>
+
+			                <span>
+			                	{{ customer.email }}
+			                </span>
+
+			            </div>
+
+					</div>
+
+					<div class="col-12 col-md-5 mt-6 mt-md-0 d-flex align-items-center">
+
+						<a href="{{ routes.account_logout_url }}" class="btn btn-outline-section btn-block">
+							{{ 'account.logout' | t }}
 						</a>
 
 					</div>

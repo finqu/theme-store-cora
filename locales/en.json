@@ -14,8 +14,10 @@
         "previous": "Previous",
         "unknown": "Unknown",
         "choose": "Choose",
+        "account": "Account",
         "no_information_found": "No information found",
         "search": "Search",
+        "search_products": "Search products",
         "search_no_results": "Your search returned no results, please try other keywords.",
         "search_results_for": "Search for",
         "product_catalog": "Product catalog",
@@ -140,6 +142,7 @@
         "leave_comment": "Leave a comment"
     },
     "account": {
+        "title": "My account",
         "information_title": "My information",
         "information_subtitle": "Here you can view and update your own information.",
         "edit_information_title": "Edit information",
@@ -150,6 +153,7 @@
         "view_order": "View order",
         "view_order_plural": "View orders",
         "subscribe_to_newsletter": "Subscribe to newsletter",
+        "logout": "Logout",
         "contact_information": "Contact information",
         "address_information": "Address information",
         "company_information": "Company information",
@@ -168,13 +172,13 @@
             "city": "City",
             "zipcode": "Zipcode",
             "country": "Country",
-            "phonenumber": "Phonenumber",
+            "phone": "Phonenumber",
             "email": "E-mail address",
             "language": "Language",
             "currency": "Currency",
             "company": "Company",
-            "businessid": "Business ID",
-            "vatid": "VAT number"
+            "company_id": "Business ID",
+            "vat_number": "VAT number"
         },
         "order": {
             "no_orders": "No orders to display.",

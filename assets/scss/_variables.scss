@@ -322,7 +322,8 @@ $swiper-navigation-size: 44px;
 
 // Awesome notifications
 $awn-container-z-index: 99998;
-$awn-container-padding: 24px;
+$awn-container-offset-x: 24px;
+$awn-container-offset-y: 100px;
 
 $awn-primary-color: section-var(text_color, section-vars());
 $awn-primary-background: section-var(background_color, section-vars());

@@ -9,6 +9,7 @@ export default class Cart {
         this.items = {};
         this.queue = [];
         this.processing = false;
+        this.initialized = false;
         this.notify = new Notify();
         this.cartTemplateEl = document.querySelector('#hbs-cart-template');
         this.cartMiniTemplateEl = document.querySelector('#hbs-cart-mini-template');
@@ -228,6 +229,10 @@ export default class Cart {
                     el.parentNode.classList.remove('has-items');
                 }
 
+                if (self.initialized) {
+                    themeApp.animate(el.parentNode, 'bounce');
+                }
+
                 el.innerHTML = self.cart.item_count;
             });
 
@@ -337,7 +342,12 @@ export default class Cart {
         });
 
         document.addEventListener('cartUpdated', (e) => {
+
             render(e)
+
+            if (!this.initialized) {
+                this.initialized = true;
+            }
         });
     }
 

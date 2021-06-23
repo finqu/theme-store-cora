@@ -19,6 +19,7 @@ import * as AngleDownRegular from '@streamlinehq/streamlinehq/img/streamline-reg
 import * as AngleLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-1-dzpa9L.svg';
 import * as AngleRightRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-1-Nc3Zm6.svg';
 import * as ArrowLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-dzpnnb.svg';
+import * as ArrowRightRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-Nc34uf.svg';
 import * as ControlsPlayRegular from '@streamlinehq/streamlinehq/img/streamline-regular/controls-play-af7Jis.svg';
 import * as SingleNeutralRegular from '@streamlinehq/streamlinehq/img/streamline-regular/single-neutral-3ziDl0.svg';
 import * as Lock1Regular from '@streamlinehq/streamlinehq/img/streamline-regular/lock-1-g0YpCK.svg';
@@ -26,6 +27,7 @@ import * as CommonFileTextRegular from '@streamlinehq/streamlinehq/img/streamlin
 import * as ShoppingBagTagRegular from '@streamlinehq/streamlinehq/img/streamline-regular/shopping-bag-tag-1-7QUX0n.svg';
 import * as SearchRegular from '@streamlinehq/streamlinehq/img/streamline-regular/search-jUAwYE.svg';
 import * as NavigationMenuRegular from '@streamlinehq/streamlinehq/img/streamline-regular/navigation-menu-gWaHY4.svg';
+import * as LoginRegular from '@streamlinehq/streamlinehq/img/streamline-regular/login-P2Woe5.svg';
 
 export default {
 	alignLeftLight: MoveLeft1Light,
@@ -49,11 +51,13 @@ export default {
 	angleLeftRegular: AngleLeftRegular,
 	angleRightRegular: AngleRightRegular,
 	arrowLeftRegular: ArrowLeftRegular,
+	arrowRightRegular: ArrowRightRegular,
 	controlsPlayRegular: ControlsPlayRegular,
 	singleNeutralRegular: SingleNeutralRegular,
 	lock1Regular: Lock1Regular,
 	commonFileTextRegular: CommonFileTextRegular,
 	shoppingBagTagRegular: ShoppingBagTagRegular,
 	searchRegular: SearchRegular,
-	navigationMenuRegular: NavigationMenuRegular
+	navigationMenuRegular: NavigationMenuRegular,
+	loginRegular: LoginRegular
 }

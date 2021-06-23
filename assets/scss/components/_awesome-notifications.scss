@@ -208,13 +208,13 @@
 #awn-toast-container {
 	position: fixed;
 	z-index: $awn-container-z-index;
-	bottom: $awn-container-padding;
-	right: $awn-container-padding;
+	bottom:$awn-container-offset-y;
+	right: $awn-container-offset-x;
 	box-sizing: border-box;
 
 	&.awn-top-left,
 	&.awn-top-right {
-		top: $awn-container-padding;
+		top: $awn-container-offset-y;
 		bottom: auto;
 
 		.awn-toast:first-child {
@@ -224,7 +224,7 @@
 
 	&.awn-top-left,
 	&.awn-bottom-left {
-		left: $awn-container-padding;
+		left: $awn-container-offset-x;
 		right: auto;
 
 		.awn-toast {

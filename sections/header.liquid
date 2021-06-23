@@ -9,7 +9,7 @@
     </style>
 {%- endif -%}
 
-{%- capture preset1 -%}
+{%- capture sectionContent -%}
 
     {% if section.settings.annoucementStatus and section.settings.annoucementText %}
 
@@ -33,17 +33,17 @@
 
         <div class="site-header">
 
-            <div class="container">
+            <div class="site-header-top">
 
-                <div class="site-header-top">
+                <div class="container">
 
                     <div class="site-header-top-left">
 
-                        <div class="site-header-item-container">
+                        <div class="site-header-item-container d-md-none">
 
-                            <div class="site-header-item site-header-item-mobile-menu-toggle">
+                            <div class="site-header-item">
 
-                                <button type="button" id="mobile-menu-toggle" class="btn btn-text">
+                                <button type="button" id="site-mobile-navigation-toggle" class="btn btn-text">
 
                                     {%- render 'icon', icon: 'navigation-menu-gWaHY4', class: 'svg-icon-fw' -%}
 
@@ -57,11 +57,45 @@
 
                             <div class="site-header-item site-header-item-search">
 
-                                <button type="button" id="search-toggle" class="btn btn-text">
+                                <button type="button" id="site-header-search-toggle" class="btn btn-text">
 
                                     {%- render 'icon', icon: 'search-jUAwYE', class: 'svg-icon-fw' -%}
 
                                 </button>
+
+                                <div class="site-header-search-container">
+
+                                    <div class="site-header-search">
+
+                                        <div class="site-header-search-form-container">
+
+                                            {% form 'search', id: site-header-search-form %}
+
+                                                <div class="site-header-search-form-icon">
+
+                                                    {%- render 'icon', icon: 'search-jUAwYE', class: 'svg-icon-fw' -%}
+
+                                                </div>
+
+                                                <div class="site-header-search-form-input">
+
+                                                    <input class="form-control me-2" type="search" placeholder="{{ 'general.search_products' | t }}" name="q" value="{{ request.get.q }}">
+
+                                                </div>
+
+                                            {% endform %}
+
+                                        </div>
+
+                                        <div class="site-header-search-results-container">
+
+                                            <div class="site-header-search-results"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -73,7 +107,7 @@
 
                         <a href="/">
 
-                            {%- assign imgSrc = item.image | default: section.settings.logoImgSrc -%}
+                            {%- assign imgSrc = section.settings.logoImgSrc -%}
                             {%- assign imgSize = 120,30 -%}
 
                             {% if imgSrc %}
@@ -102,7 +136,7 @@
 
                         {% if store.customer_accounts_enabled %}
 
-                            <div class="site-header-item-container">
+                            <div class="site-header-item-container site-header-item-account-container">
 
                                 <div class="site-header-item site-header-item-account">
 
@@ -144,7 +178,7 @@
 
                         {% endif %}
 
-                        <div class="site-header-item-container">
+                        <div class="site-header-item-container site-header-item-cart-container">
 
                             <div class="site-header-item site-header-item-cart">
 
@@ -184,25 +218,205 @@
 
                 </div>
 
-                <div class="site-header-bottom">
+            </div>
+
+            <nav class="site-header-bottom">
+
+                <div class="site-header-menu-container">
+
+                    <div class="container">
+
+                        <ul class="site-header-menu">
+
+                            {% for item in section.settings.menu.links %}
+
+                                {%- if item.object -%}
+                                    {%- assign itemTitle = item.object.title -%}
+                                    {%- assign itemUrl = item.object | link -%}
+                                {%- else -%}
+                                    {%- assign itemTitle = item.title -%}
+                                    {%- assign itemUrl = item.url -%}
+                                {% endif %}
+
+                                <li class="site-header-menu-item{% if item.active %} site-header-menu-item-active{% endif %}"{% if item.links %} data-menu-child-id="{{ forloop.index }}"{% endif %}>
+
+                                    {%- if itemUrl == blank -%}
+
+                                        <a href="{{ itemUrl }}" class="site-header-menu-item-text text-underline-indicator">
+                                            {{ itemTitle }}
+                                        </a>
+
+                                    {%- else -%}
+
+                                        <span class="site-header-menu-item-text text-underline-indicator">
+                                            {{ itemTitle }}
+                                        </span>
+
+                                    {%- endif -%}
+
+                                </li>
+
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
 
                 </div>
+
+                <div class="site-header-submenus-container">
+
+                    {% for item in section.settings.menu.links %}
+
+                        {%- if item.links -%}
+
+                            <div class="site-header-submenu" data-submenu-id="{{ forloop.index }}">
+
+                                <div class="container">
+
+                                    <div class="row">
+
+                                        {% for item in item.links %}
+
+                                            {%- if item.object -%}
+                                                {%- assign itemTitle = item.object.title -%}
+                                                {%- assign itemUrl = item.object | link -%}
+                                            {%- else -%}
+                                                {%- assign itemTitle = item.title -%}
+                                                {%- assign itemUrl = item.url -%}
+                                            {% endif %}
+
+                                            <div class="site-header-submenu-column col">
+
+                                                <div class="site-header-submenu-column-title text-muted">
+
+                                                    {%- if itemUrl == blank -%}
+
+                                                        <a href="{{ itemUrl }}" class="site-header-submenu-column-title-text">
+                                                            {{ itemTitle }}
+                                                        </a>
+
+                                                    {%- else -%}
+
+                                                        <span class="site-header-submenu-column-title-text">
+                                                            {{ itemTitle }}
+                                                        </span>
+
+                                                    {%- endif -%}
+
+                                                </div>
+
+                                                <ul class="site-header-submenu-column-menu">
+
+                                                    {% for item in item.links %}
+
+                                                        {%- if item.object -%}
+                                                            {%- assign itemTitle = item.object.title -%}
+                                                            {%- assign itemUrl = item.object | link -%}
+                                                        {%- else -%}
+                                                            {%- assign itemTitle = item.title -%}
+                                                            {%- assign itemUrl = item.url -%}
+                                                        {% endif %}
+
+                                                        <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
+
+                                                            {%- if itemUrl == blank -%}
+
+                                                                <a href="{{ itemUrl }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ itemTitle }}
+                                                                </a>
+
+                                                            {%- else -%}
+
+                                                                <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ itemTitle }}
+                                                                </span>
+
+                                                            {%- endif -%}
+
+                                                        </li>
+
+                                                    {% endfor %}
+
+                                                </ul>
+
+                                            </div>
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+    <div class="site-mobile-navigation-container">
+
+        <div id="site-mobile-navigation-overlay"></div>
+
+        <div class="site-mobile-navigation-inner">
+
+            {% if store.customer_accounts_enabled %}
+
+                <div class="site-mobile-navigation-account">
+
+                    {% if store.session.logged_in %}
+
+                        <a href="{{ routes.account_url }}">
+
+                            <div class="site-mobile-navigation-account-inner">
+
+                                <span class="site-mobile-navigation-account-text">
+                                    {{ 'account.title' | t }}
+                                </span>
+
+                                {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+                            </div>
+
+                        </a>
+
+                    {% else %}
+
+                        <a href="{{ routes.account_login_url }}">
+
+                            <div class="site-mobile-navigation-account-inner">
+
+                                <span class="site-mobile-navigation-account-text">
+                                    {{ 'login.title' | t }}
+                                </span>
+
+                                {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+                            </div>
+
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
+
+            <div class="site-mobile-navigation-menu">
 
             </div>
 
         </div>
 
     </div>
-
-{%- endcapture -%}
-
-{%- capture sectionContent -%}
-
-	{%- if section.settings.preset == '1' -%}
-
-		{{- preset1 -}}
-
-	{%- endif -%}
 
 {%- endcapture -%}
 
@@ -222,18 +436,6 @@
                 "title": "General",
                 "settings": [
                     {
-                        "id": "preset",
-                        "type": "select",
-                        "label": "Preset",
-                        "default": "1",
-                        "options": [
-                            {
-                                "value": "1",
-                                "label": "Preset 1"
-                            }
-                        ]
-                    },
-                    {
                         "id": "menu",
                         "type": "menu",
                         "label": {
@@ -241,6 +443,14 @@
                             "fi": "Navigaatio"
                         },
                         "default": "footer-menu"
+                    },
+                    {
+                        "id": "logoImgSrc",
+                        "type": "image-picker",
+                        "label": {
+                            "en": "Logo",
+                            "fi": "Logo"
+                        }
                     },
                     {
                         "type": "spacer"
