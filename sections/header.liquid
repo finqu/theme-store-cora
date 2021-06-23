@@ -136,21 +136,21 @@
 
                         {% if store.customer_accounts_enabled %}
 
-                            <div class="site-header-item-container site-header-item-account-container">
+                            {% if store.session.logged_in %}
 
-                                <div class="site-header-item site-header-item-account">
+                                <div class="site-header-item-container site-header-item-account-container">
 
-                                    <a href="{{ routes.account_url }}" class="btn btn-text">
+                                    <div class="site-header-item site-header-item-account">
 
-                                        {%- render 'icon', icon: 'single-neutral-3ziDl0', class: 'svg-icon-fw' -%}
+                                        <a href="{{ routes.account_url }}" class="btn btn-text">
 
-                                    </a>
+                                            {%- render 'icon', icon: 'single-neutral-3ziDl0', class: 'svg-icon-fw' -%}
+
+                                        </a>
+
+                                    </div>
 
                                 </div>
-
-                            </div>
-
-                            {% if store.session.logged_in %}
 
                                 <div class="site-header-item-container">
 
@@ -167,6 +167,22 @@
                                             </span>
 
                                             {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-fw' -%}
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            {% else %}
+
+                                <div class="site-header-item-container site-header-item-account-container">
+
+                                    <div class="site-header-item site-header-item-account">
+
+                                        <a href="{{ routes.account_login_url }}" class="btn btn-text">
+
+                                            {%- render 'icon', icon: 'single-neutral-3ziDl0', class: 'svg-icon-fw' -%}
 
                                         </a>
 
