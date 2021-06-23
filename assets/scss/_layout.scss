@@ -68,6 +68,15 @@ body > #search-overlay {
                 border-bottom: 1px solid section-var(border_color);
             }
 
+            @include media-breakpoint-up(sm) {
+                &.site-header-social-media-buttons-enabled {
+
+                    .site-header-top-logo {
+                        margin-left: -44px;
+                    }
+                }
+            }
+
             .site-header-item-container {
 
                 &.site-header-item-cart-container {
@@ -75,6 +84,9 @@ body > #search-overlay {
                 }
 
                 .site-header-item {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
                     position: relative;
                     padding: spacer(2);
                     font-size: $font-size-base * 1.6;
@@ -163,6 +175,8 @@ body > #search-overlay {
                                 > input {
                                     border: 0;
                                     border-radius: 0;
+                                    background-color: section-var(background_color);
+                                    color: section-var(text_color);
                                 }
                             }
                         }
@@ -358,12 +372,44 @@ body > #search-overlay {
 
                 .site-mobile-navigation-account-inner {
                     display: flex;
+                    align-items: center;
+                    justify-content: space-between;
 
                     .site-mobile-navigation-account-text {
                         font-family: $accent-font-family;
                         font-size: $font-size-base * 2;
+                        margin-right: spacer(2);
                     }
                 }
+            }
+
+            .site-mobile-navigation-menu {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0;
+                @include list-unstyled();
+
+                .site-mobile-navigation-menu-item {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: spacer(4);
+                    border-bottom: 1px solid section-var(border_color);
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    .site-mobile-navigation-menu-item-text {
+                        font-weight: $font-weight-bold;
+                    }
+                }
+            }
+
+            .site-mobile-navigation-social-media-buttons-container {
+                display: flex;
+                justify-content: space-between;
+                padding: spacer(4);
+                box-shadow: 0px -6px 10px rgba(0, 0, 0, .05);
             }
         }
 

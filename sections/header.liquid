@@ -31,7 +31,7 @@
 
     <div class="site-header-container">
 
-        <div class="site-header">
+        <div class="site-header{% if section.settings.socialMediaIconsStatus %} site-header-social-media-buttons-enabled{% endif %}">
 
             <div class="site-header-top">
 
@@ -100,6 +100,80 @@
                             </div>
 
                         </div>
+
+                        {% if section.settings.socialMediaIconsStatus %}
+
+                            {% if settings.facebookPageUrl %}
+
+                                <div class="site-header-item-container d-none d-md-block">
+
+                                    <div class="site-header-item">
+
+                                        {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal', size: 'inherit' %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if settings.instagramPageUrl %}
+
+                                 <div class="site-header-item-container d-none d-md-block">
+
+                                    <div class="site-header-item">
+
+                                        {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal', size: 'inherit' %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if settings.twitterPageUrl %}
+
+                                 <div class="site-header-item-container d-none d-md-block">
+
+                                    <div class="site-header-item">
+
+                                        {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal', size: 'inherit' %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if settings.pinterestPageUrl %}
+
+                                 <div class="site-header-item-container d-none d-md-block">
+
+                                    <div class="site-header-item">
+
+                                        {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal', size: 'inherit' %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if settings.youtubePageUrl %}
+
+                                 <div class="site-header-item-container d-none d-md-block">
+
+                                    <div class="site-header-item">
+
+                                        {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal', size: 'inherit' %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endif %}
 
                     </div>
 
@@ -246,26 +320,18 @@
 
                             {% for item in section.settings.menu.links %}
 
-                                {%- if item.object -%}
-                                    {%- assign itemTitle = item.object.title -%}
-                                    {%- assign itemUrl = item.object | link -%}
-                                {%- else -%}
-                                    {%- assign itemTitle = item.title -%}
-                                    {%- assign itemUrl = item.url -%}
-                                {% endif %}
+                                <li class="site-header-menu-item{% if item.active %} site-header-menu-item-active{% endif %}"{% if item.links %} data-header-menu-child-id="{{ forloop.index }}"{% endif %}>
 
-                                <li class="site-header-menu-item{% if item.active %} site-header-menu-item-active{% endif %}"{% if item.links %} data-menu-child-id="{{ forloop.index }}"{% endif %}>
+                                    {%- if item.url -%}
 
-                                    {%- if itemUrl == blank -%}
-
-                                        <a href="{{ itemUrl }}" class="site-header-menu-item-text text-underline-indicator">
-                                            {{ itemTitle }}
+                                        <a href="{{ item.url }}" class="site-header-menu-item-text text-underline-indicator">
+                                            {{ item.title }}
                                         </a>
 
                                     {%- else -%}
 
                                         <span class="site-header-menu-item-text text-underline-indicator">
-                                            {{ itemTitle }}
+                                            {{ item.title }}
                                         </span>
 
                                     {%- endif -%}
@@ -286,7 +352,7 @@
 
                         {%- if item.links -%}
 
-                            <div class="site-header-submenu" data-submenu-id="{{ forloop.index }}">
+                            <div class="site-header-submenu" data-header-submenu-id="{{ forloop.index }}">
 
                                 <div class="container">
 
@@ -294,28 +360,20 @@
 
                                         {% for item in item.links %}
 
-                                            {%- if item.object -%}
-                                                {%- assign itemTitle = item.object.title -%}
-                                                {%- assign itemUrl = item.object | link -%}
-                                            {%- else -%}
-                                                {%- assign itemTitle = item.title -%}
-                                                {%- assign itemUrl = item.url -%}
-                                            {% endif %}
-
                                             <div class="site-header-submenu-column col">
 
                                                 <div class="site-header-submenu-column-title text-muted">
 
-                                                    {%- if itemUrl == blank -%}
+                                                    {%- if item.url -%}
 
-                                                        <a href="{{ itemUrl }}" class="site-header-submenu-column-title-text">
-                                                            {{ itemTitle }}
+                                                        <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
+                                                            {{ item.title }}
                                                         </a>
 
                                                     {%- else -%}
 
                                                         <span class="site-header-submenu-column-title-text">
-                                                            {{ itemTitle }}
+                                                            {{ item.title }}
                                                         </span>
 
                                                     {%- endif -%}
@@ -326,26 +384,18 @@
 
                                                     {% for item in item.links %}
 
-                                                        {%- if item.object -%}
-                                                            {%- assign itemTitle = item.object.title -%}
-                                                            {%- assign itemUrl = item.object | link -%}
-                                                        {%- else -%}
-                                                            {%- assign itemTitle = item.title -%}
-                                                            {%- assign itemUrl = item.url -%}
-                                                        {% endif %}
-
                                                         <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
 
-                                                            {%- if itemUrl == blank -%}
+                                                            {%- if item.url -%}
 
-                                                                <a href="{{ itemUrl }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
-                                                                    {{ itemTitle }}
+                                                                <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ item.title }}
                                                                 </a>
 
                                                             {%- else -%}
 
                                                                 <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
-                                                                    {{ itemTitle }}
+                                                                    {{ item.title }}
                                                                 </span>
 
                                                             {%- endif -%}
@@ -378,7 +428,7 @@
 
     </div>
 
-    <div class="site-mobile-navigation-container">
+    <nav class="site-mobile-navigation-container">
 
         <div id="site-mobile-navigation-overlay"></div>
 
@@ -426,13 +476,109 @@
 
             {% endif %}
 
-            <div class="site-mobile-navigation-menu">
+            <ul class="site-mobile-navigation-menu">
 
-            </div>
+                {% for item in section.settings.menu.links %}
+
+                    <li class="site-mobile-navigation-menu-item{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}"{% if item.links %} data-mobile-navigation-menu-child-id="{{ forloop.index }}"{% endif %}>
+
+                        {%- if item.url -%}
+
+                            <a href="{{ item.url }}" class="site-mobile-navigation-menu-item-text">
+                                {{ item.title }}
+                            </a>
+
+                            {%- if item.links -%}
+
+                                <button type="button" name="site-mobile-navigation-menu-item-toggle" class="btn btn-text" value="{{ forloop.index }}">
+                                    {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+                                </button>
+
+                            {% endif %}
+
+                        {%- else -%}
+
+                            <span class="site-mobile-navigation-menu-item-text">
+                                {{ item.title }}
+                            </span>
+
+                            {%- if item.links -%}
+
+                                <button type="button" name="site-mobile-navigation-menu-item-toggle" class="btn btn-text" value="{{ forloop.index }}">
+                                    {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+                                </button>
+
+                            {% endif %}
+
+                        {%- endif -%}
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% if section.settings.socialMediaIconsStatus %}
+
+                <div class="site-mobile-navigation-social-media-buttons-container">
+
+                    {% if settings.facebookPageUrl %}
+
+                        <div class="site-mobile-navigation-social-media-btn">
+
+                            {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if settings.instagramPageUrl %}
+
+                        <div class="site-mobile-navigation-social-media-btn">
+
+                            {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if settings.twitterPageUrl %}
+
+                        <div class="site-mobile-navigation-social-media-btn">
+
+                            {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if settings.pinterestPageUrl %}
+
+                        <div class="site-mobile-navigation-social-media-btn">
+
+                            {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if settings.youtubePageUrl %}
+
+                        <div class="site-mobile-navigation-social-media-btn">
+
+                            {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
 
         </div>
 
-    </div>
+    </nav>
 
 {%- endcapture -%}
 
@@ -467,6 +613,15 @@
                             "en": "Logo",
                             "fi": "Logo"
                         }
+                    },
+                    {
+                        "id": "socialMediaIconsStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Social media icons",
+                            "fi": "Sosiaalisen median kuvakkeet"
+                        },
+                        "default": true
                     },
                     {
                         "type": "spacer"

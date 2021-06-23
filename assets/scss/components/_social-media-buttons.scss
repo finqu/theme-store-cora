@@ -1,0 +1,370 @@
+// Social media buttons
+// --------------------------------------------------
+
+@include section-style() {
+
+	.social-media-btn {
+
+		&.social-media-btn-style-minimal {
+			color: section-var(icon_color);
+		}
+	}
+}
+
+.social-media-btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin: 2px;
+	text-align: center;
+
+	&:last-child {
+		margin-right: auto;
+	}
+
+	// Social btns
+	&.social-media-btn-fb {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-fb-text, $social-fb-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-fb-text, $social-fb-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-fb-text, $social-fb-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-fb-text, $social-fb-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-flickr {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-flickr-text, $social-flickr-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-flickr-text, $social-flickr-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-flickr-text, $social-flickr-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-flickr-text, $social-flickr-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-youtube {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-youtube-text, $social-youtube-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-youtube-text, $social-youtube-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-youtube-text, $social-youtube-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-youtube-text, $social-youtube-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-pinterest {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-pinterest-text, $social-pinterest-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-pinterest-text, $social-pinterest-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-pinterest-text, $social-pinterest-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-pinterest-text, $social-pinterest-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-instagram {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-instagram-text, $social-instagram-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-instagram-text, $social-instagram-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-instagram-text, $social-instagram-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-instagram-text, $social-instagram-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-linkedin {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-linkedin-text, $social-linkedin-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-linkedin-text, $social-linkedin-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-linkedin-text, $social-linkedin-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-linkedin-text, $social-linkedin-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-tumblr {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-tumblr-text, $social-tumblr-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-tumblr-text, $social-tumblr-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-tumblr-text, $social-tumblr-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-tumblr-text, $social-tumblr-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-twitter {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-twitter-text, $social-twitter-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-twitter-text, $social-twitter-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-twitter-text, $social-twitter-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-twitter-text, $social-twitter-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-vimeo {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-vimeo-text, $social-vimeo-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-vimeo-text, $social-vimeo-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-vimeo-text, $social-vimeo-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-vimeo-text, $social-vimeo-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-soundcloud {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-soundcloud-text, $social-soundcloud-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-soundcloud-text, $social-soundcloud-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-soundcloud-text, $social-soundcloud-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-soundcloud-text, $social-soundcloud-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-whatsapp {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-whatsapp-text, $social-whatsapp-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-whatsapp-text, $social-whatsapp-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-whatsapp-text, $social-whatsapp-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-whatsapp-text, $social-whatsapp-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-reddit {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-reddit-text, $social-reddit-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-reddit-text, $social-reddit-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-reddit-text, $social-reddit-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-reddit-text, $social-reddit-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-email {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-email-text, $social-email-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-email-text, $social-email-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-email-text, $social-email-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-email-text, $social-email-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	// Social btn sizes
+	&.social-media-btn-size-xs {
+		width: 28px;
+		height: 28px;
+		font-size: 12px;
+
+		.svg-icon {
+			font-size: 14px;
+		}
+	}
+
+	&.social-media-btn-size-sm {
+		width: 38px;
+		height: 38px;
+		font-size: 17px;
+
+		.svg-icon {
+			font-size: 19px;
+		}
+	}
+
+	&.social-media-btn-size-m {
+		width: 48px;
+		height: 48px;
+		font-size: 22px;
+
+		.svg-icon {
+			font-size: 24px;
+		}
+	}
+
+	&.social-media-btn-size-lg {
+		width: 58px;
+		height: 58px;
+		font-size: 27px;
+
+		.svg-icon {
+			font-size: 29px;
+		}
+	}
+
+	&.social-media-btn-size-xl {
+		width: 68px;
+		height: 68px;
+		font-size: 32px;
+
+		.svg-icon {
+			font-size: 34px;
+		}
+	}
+
+	&.social-media-btn-size-xxl {
+		width: 78px;
+		height: 78px;
+		font-size: 37px;
+
+		.svg-icon {
+			font-size: 39px;
+		}
+	}
+
+	&.social-media-btn-size-inherit {
+		width: auto;
+		height: auto;
+		font-size: inherit;
+
+		.svg-icon {
+			font-size: inherit;
+		}
+	}
+}

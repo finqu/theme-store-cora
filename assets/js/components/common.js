@@ -170,11 +170,11 @@ export default {
 
             siteHeaderMenuItemEls.forEach(el => {
 
-                const submenuId = el.dataset.menuChildId;
+                const submenuId = el.dataset.headerMenuChildId;
 
                 if (submenuId) {
 
-                    const submenuEl = containerEl.querySelector('.site-header-submenu[data-submenu-id="'+submenuId+'"]');
+                    const submenuEl = containerEl.querySelector('.site-header-submenu[data-header-submenu-id="'+submenuId+'"]');
 
                     if (submenuEl) {
 

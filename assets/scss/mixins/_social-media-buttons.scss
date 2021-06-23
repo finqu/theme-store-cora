@@ -1,0 +1,94 @@
+// Social media buttons
+// -----------------------------------------------------------------------------------------
+
+@mixin social-media-btn-style-default($color, $bg) {
+	background-color: $bg !important;
+	color: $color !important;
+	border-radius: 50%;
+
+	.svg-icon {
+		color: inherit !important;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: lighten($bg, 5%) !important;
+	}
+}
+
+@mixin social-media-btn-style-text($color, $bg) {
+	background-color: $bg !important;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 6px;
+	color: $color !important;
+	width: auto;
+	padding: 0 4px;
+
+	.svg-icon {
+		vertical-align: baseline;
+		color: inherit !important;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: lighten($bg, 5%) !important;
+	}
+}
+
+@mixin social-media-btn-style-border-circle($color, $bg) {
+	background-color: transparent;
+	border: 2px solid $bg !important;
+	border-radius: 50%;
+	color: $bg !important;
+	transition: color .15s linear, background-color .15s linear;
+
+	.svg-icon {
+		vertical-align: baseline;
+		color: inherit !important;
+	}
+
+	&:hover,
+	&:focus {
+		color: $color !important;
+		background-color: $bg !important;
+	}
+}
+
+@mixin social-media-btn-style-box($color, $bg) {
+	background-color: $bg !important;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 6px;
+	color: $color !important;
+
+	.svg-icon {
+		color: inherit !important;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: lighten($bg, 5%) !important;
+	}
+}
+
+@mixin social-media-btn-style-bw {
+	background-color: #3b3b3b !important;
+	color: #ffffff !important;
+	border-radius: 50%;
+
+	.svg-icon {
+		color: inherit !important;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: lighten(#3b3b3b, 5%) !important;
+	}
+}
+
+@mixin social-media-btn-style-minimal {
+	border-radius: 50%;
+
+	.svg-icon {
+		color: inherit !important;
+	}
+}
