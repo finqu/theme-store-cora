@@ -54,6 +54,36 @@ export default {
         const siteMobileNavigationToggleEl = containerEl.querySelector('#site-mobile-navigation-toggle');
         const siteMobileNavigationOverlayEl = containerEl.querySelector('#site-mobile-navigation-overlay');
 
+        const siteMobileNavigationLayerChildEls = containerEl.querySelectorAll('.site-mobile-navigation-layer-child');
+        const siteMobileNavigationShowLayerEls = containerEl.querySelectorAll('[name="site-mobile-navigation-show-layer"]');
+        const siteMobileNavigationHideLayerEls = containerEl.querySelectorAll('[name="site-mobile-navigation-hide-layer"]');
+
+        siteMobileNavigationLayerChildEls.forEach(el => { el.addEventListener('transitionend', (e) => {
+
+            e.preventDefault();
+
+            if (!el.classList.contains('site-mobile-navigation-layer-active')) {
+                el.classList.remove('site-mobile-navigation-layer-visible');
+            }
+        })});
+
+        siteMobileNavigationShowLayerEls.forEach(el => { el.addEventListener('click', (e) => {
+
+            const id = e.target.value;
+            const navigationLayerEl = containerEl.querySelector('.site-mobile-navigation-layer[data-mobile-navigation-layer-id="'+id+'"]');
+
+            navigationLayerEl.classList.add('site-mobile-navigation-layer-visible');
+            navigationLayerEl.classList.add('site-mobile-navigation-layer-active');
+        })});
+
+        siteMobileNavigationHideLayerEls.forEach(el => { el.addEventListener('click', (e) => {
+
+            const id = e.target.value;
+            const navigationLayerEl = containerEl.querySelector('.site-mobile-navigation-layer[data-mobile-navigation-layer-id="'+id+'"]');
+
+            navigationLayerEl.classList.remove('site-mobile-navigation-layer-active');
+        })});
+
         siteMobileNavigationToggleEl.addEventListener('click', (e) => {
 
             siteMobileNavigationContainerEl.classList.add('site-mobile-navigation-visible');

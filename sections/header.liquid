@@ -31,7 +31,33 @@
 
     <div class="site-header-container">
 
-        <div class="site-header{% if section.settings.socialMediaIconsStatus %} site-header-social-media-buttons-enabled{% endif %}">
+        {%- if section.settings.socialMediaIconsStatus -%}
+
+            {% assign socialMediaIconCount = 0 %}
+
+            {% if settings.facebookPageUrl %}
+                {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
+            {% endif %}
+
+            {% if settings.instagramPageUrl %}
+                {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
+            {% endif %}
+
+            {% if settings.twitterPageUrl %}
+               {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
+            {% endif %}
+
+            {% if settings.pinterestPageUrl %}
+                {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
+            {% endif %}
+
+            {% if settings.youtubePageUrl %}
+               {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
+            {% endif %}
+
+        {%- endif -%}
+
+        <div class="site-header{% if section.settings.socialMediaIconsStatus %} site-header-social-media-buttons-enabled{% endif %}"{% if section.settings.socialMediaIconsStatus %} data-header-social-icon-count="{{ socialMediaIconCount }}"{% endif %}>
 
             <div class="site-header-top">
 
@@ -432,7 +458,133 @@
 
         <div id="site-mobile-navigation-overlay"></div>
 
-        <div class="site-mobile-navigation-inner">
+        {% for item in section.settings.menu.links %}
+
+            {%- assign parentIndex = forloop.index -%}
+
+            {% if item.links %}
+
+                <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ forloop.index }}">
+
+                    <div class="site-mobile-navigation-header">
+
+                        <div class="site-mobile-navigation-header-inner">
+
+                            <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ forloop.index }}">
+                                {%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'svg-icon-fw' -%}
+                            </button>
+
+                            <span class="site-mobile-navigation-header-text">
+                                {{ item.title }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <ul class="site-mobile-navigation-menu">
+
+                        {% for item in item.links %}
+
+                            <li class="site-mobile-navigation-menu-item{% if item.links %} site-mobile-navigation-menu-item-parent{% endif %}{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}">
+
+                                {%- if item.url -%}
+
+                                    <a href="{{ item.url }}" class="site-mobile-navigation-menu-item-text">
+                                        {{ item.title }}
+                                    </a>
+
+                                    {%- if item.links -%}
+
+                                        <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ parentIndex }}-{{ forloop.index }}">
+                                            {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+                                        </button>
+
+                                    {% endif %}
+
+                                {%- else -%}
+
+                                    <span class="site-mobile-navigation-menu-item-text">
+                                        {{ item.title }}
+                                    </span>
+
+                                    {%- if item.links -%}
+
+                                        <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ parentIndex }}-{{ forloop.index }}">
+                                            {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+                                        </button>
+
+                                    {% endif %}
+
+                                {%- endif -%}
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+                {% for item in item.links %}
+
+                    {% if item.links %}
+
+                        <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ parentIndex }}-{{ forloop.index }}">
+
+                            <div class="site-mobile-navigation-header">
+
+                                <div class="site-mobile-navigation-header-inner">
+
+                                    <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ parentIndex }}-{{ forloop.index }}">
+                                        {%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'svg-icon-fw' -%}
+                                    </button>
+
+                                    <span class="site-mobile-navigation-header-text">
+                                        {{ item.title }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <ul class="site-mobile-navigation-menu">
+
+                                {% for item in item.links %}
+
+                                    <li class="site-mobile-navigation-menu-item{% if item.links %} site-mobile-navigation-menu-item-parent{% endif %}{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}">
+
+                                        {%- if item.url -%}
+
+                                            <a href="{{ item.url }}" class="site-mobile-navigation-menu-item-text">
+                                                {{ item.title }}
+                                            </a>
+
+                                        {%- else -%}
+
+                                            <span class="site-mobile-navigation-menu-item-text">
+                                                {{ item.title }}
+                                            </span>
+
+                                        {%- endif -%}
+
+                                    </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endfor %}
+
+        <div class="site-mobile-navigation-layer site-mobile-navigation-layer-root">
 
             {% if store.customer_accounts_enabled %}
 
@@ -480,7 +632,7 @@
 
                 {% for item in section.settings.menu.links %}
 
-                    <li class="site-mobile-navigation-menu-item{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}"{% if item.links %} data-mobile-navigation-menu-child-id="{{ forloop.index }}"{% endif %}>
+                    <li class="site-mobile-navigation-menu-item{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}">
 
                         {%- if item.url -%}
 
@@ -490,7 +642,7 @@
 
                             {%- if item.links -%}
 
-                                <button type="button" name="site-mobile-navigation-menu-item-toggle" class="btn btn-text" value="{{ forloop.index }}">
+                                <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ forloop.index }}">
                                     {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
                                 </button>
 
@@ -504,7 +656,7 @@
 
                             {%- if item.links -%}
 
-                                <button type="button" name="site-mobile-navigation-menu-item-toggle" class="btn btn-text" value="{{ forloop.index }}">
+                                <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ forloop.index }}">
                                     {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
                                 </button>
 

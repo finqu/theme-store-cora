@@ -16,8 +16,11 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	margin: 2px;
 	text-align: center;
+
+	& + .social-media-btn {
+		margin-left: 4px;
+	}
 
 	&:last-child {
 		margin-right: auto;

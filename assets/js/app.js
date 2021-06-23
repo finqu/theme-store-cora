@@ -32,20 +32,28 @@ export default class App {
 			container: document,
 			elements_selector: '.lazy',
             show_while_loading: true,
-            callback_reveal: function (img) {
+            callback_loading: function (el) {
+
                 picturefill({
-                    elements: [img]
+                    elements: [el]
                 });
 
-                objectFitImages(img);
+                objectFitImages(el);
 
-                loadedImgs.push(img);
+                loadedImgs.push(el);
             },
-            callback_loaded: function (img) {
+            callback_loaded: function (el) {
             	// Loaded
             },
-            callback_error: function (img) {
-               // Error
+            callback_error: function (el) {
+
+            	el.src = self.data.placeholderImgSrc;
+
+             	picturefill({
+                    elements: [el]
+                });
+
+                objectFitImages(el);
             }
         });
 
