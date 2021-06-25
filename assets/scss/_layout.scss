@@ -483,7 +483,6 @@ body > #search-overlay {
             }
 
             .site-footer-top {
-                border-bottom: 1px solid section-var(border_color);
 
                 .site-footer-menu-container {
                     @include media-breakpoint-down(md) {
@@ -520,7 +519,7 @@ body > #search-overlay {
             }
 
             .site-footer-middle {
-                border-bottom: 1px solid section-var(border_color);
+                border-top: 1px solid section-var(border_color);
 
                 .site-footer-social-media-buttons-container {
                     display: flex;
@@ -549,7 +548,7 @@ body > #search-overlay {
             }
 
             .site-footer-bottom {
-
+                border-top: 1px solid section-var(border_color);
             }
         }
     }
