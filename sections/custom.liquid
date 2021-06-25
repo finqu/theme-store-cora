@@ -1,0 +1,18 @@
+{%- capture sectionContent -%}
+
+    {{ content_for_blocks }}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'none' %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Blocks section",
+        "fi": "Mukautettava osio"
+    },
+    "tag": "section",
+    "class": "section section-custom",
+}
+{% endschema %}
