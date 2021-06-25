@@ -73,86 +73,126 @@
 
 	.order {
 
-		.order-details {
+		.order-details-container {
 			margin-bottom: spacer(6);
 		}
 
-		.order-addresses {
-			margin-bottom: spacer(4);
+		.order-shipments-container {
+			margin-bottom: spacer(6);
 
-			.order-shipping-address,
-			.order-billing-address {
-				border: 1px solid section-var(border_color);
-				padding: spacer(4);
-			}
-		}
-		.order-items {
+			.order-shipment-packages {
 
-			.order-item {
-				border-bottom: 1px solid section-var(border_color);
-				padding-top: spacer(4);
-				padding-bottom: spacer(4);
+				.order-shipment-package {
+					border-bottom: 1px solid section-var(border_color);
+					padding-top: spacer(3);
+					padding-bottom: spacer(3);
 
-				.order-item-media {
-					width: 70px;
-					@include aspect-ratio(9, 13);
-				}
+					.order-shipment-package-media {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 70px;
+						height: 100%;
+					}
 
-				.order-item-name {
-					margin-bottom: spacer(1);
+					.order-shipment-package-carrier-name {
 
-					.order-item-name-text {
-						font-size: $font-size-base;
-	                    font-weight: $font-weight-normal;
-	                    line-height: $line-height-base;
-	                    margin-bottom: 0;
+						& + .order-shipment-package-tracking-code {
+							margin-top: spacer(1);
+						}
+
+						.order-shipment-package-carrier-name-text {
+							font-size: $font-size-base;
+		                    font-weight: $font-weight-normal;
+		                    line-height: $line-height-base;
+		                    margin-bottom: 0;
+						}
+					}
+
+					.order-shipment-package-tracking-code {
+
+						.order-shipment-package-tracking-code-text {
+							display: block;
+	    					font-size: 90%;
+	    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
+						}
 					}
 				}
-
-				.order-item-quantity {
-
-					.order-item-quantity-text {
-						display: block;
-    					margin-bottom: spacer(1);
-    					font-size: 90%;
-    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
-					}
-				}
-
-				.order-item-product-number {
-
-					.order-item-product-number-text {
-						display: block;
-    					margin-bottom: spacer(1);
-    					font-size: 90%;
-    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
-					}
-				}
-
-
-				.order-item-attributes {
-    				margin-top: spacer(1);
-
-    				.order-item-attribute {
-    					display: block;
-    					margin-bottom: spacer(1);
-    					font-size: 90%;
-    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
-
-    					&:last-child {
-    						margin-bottom: 0;
-    					}
-    				}
-    			}
 			}
 		}
 
-		.order-summary {
+		.order-items-container {
+
+			.order-items {
+
+				.order-item {
+					border-bottom: 1px solid section-var(border_color);
+					padding-top: spacer(3);
+					padding-bottom: spacer(3);
+
+					.order-item-media {
+						width: 70px;
+						@include aspect-ratio(9, 13);
+					}
+
+					.order-item-name {
+						margin-bottom: spacer(1);
+
+						.order-item-name-text {
+							font-size: $font-size-base;
+		                    font-weight: $font-weight-normal;
+		                    line-height: $line-height-base;
+		                    margin-bottom: 0;
+						}
+					}
+
+					.order-item-quantity {
+
+						.order-item-quantity-text {
+							display: block;
+	    					margin-bottom: spacer(1);
+	    					font-size: 90%;
+	    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
+						}
+					}
+
+					.order-item-product-number {
+
+						.order-item-product-number-text {
+							display: block;
+	    					margin-bottom: spacer(1);
+	    					font-size: 90%;
+	    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
+						}
+					}
+
+
+					.order-item-attributes {
+	    				margin-top: spacer(1);
+
+	    				.order-item-attribute {
+	    					display: block;
+	    					margin-bottom: spacer(1);
+	    					font-size: 90%;
+	    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
+
+	    					&:last-child {
+	    						margin-bottom: 0;
+	    					}
+	    				}
+	    			}
+				}
+			}
+		}
+
+		.order-summary-container {
 			margin-top: spacer(4);
 
-			.order-total {
-    			font-weight: $font-weight-bold;
-    		}
+			.order-summary {
+				.order-total {
+	    			font-weight: $font-weight-bold;
+	    		}
+	    	}
 		}
 	}
 }

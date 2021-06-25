@@ -1,47 +1,314 @@
-{%- capture preset1 -%}
-
-	{% for link in section.settings.menu.links %}
-
-
-		{%- if link.url == blank -%}
-
-
-			{% for link in section.settings.menu.links %}
-
-				<a href="{{ link.url }}">
-					{{ link.title }}
-				</a>
-
-			{% endfor %}
-
-
-
-		{%- else -%}
-
-
-
-		{%- endif -%}
-
-
-		
-
-
-
-	{% endfor %}
-
-{%- endcapture -%}
-
 {%- capture sectionContent -%}
 
-    {%- if section.settings.preset == '1' -%}
+    <div class="site-footer-container">
 
-        {{- preset1 -}}
+        <div class="site-footer">
 
-    {%- endif -%}
+            <div class="site-footer-top">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        {% for item in section.settings.menu.links %}
+
+                            {% if item.links %}
+
+                                <div class="col-12 col-md">
+
+                                    <div class="site-footer-menu-container">
+
+                                        <div class="site-footer-title">
+
+                                            {%- if item.url -%}
+
+                                                <a href="{{ item.url }}" class="site-footer-menu-title-text">
+                                                    {{ item.title }}
+                                                </a>
+
+                                            {%- else -%}
+
+                                                <span class="site-footer-menu-title-text">
+                                                    {{ item.title }}
+                                                </span>
+
+                                            {%- endif -%}
+
+                                        </div>
+
+                                        <ul class="site-footer-menu">
+
+                                            {% for item in item.links %}
+
+                                                <li class="site-footer-menu-item">
+
+                                                    {%- if item.url -%}
+
+                                                        <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                            {{ item.title }}
+                                                        </a>
+
+                                                    {%- else -%}
+
+                                                        <span class="site-footer-menu-item-text">
+                                                            {{ item.title }}
+                                                        </span>
+
+                                                    {%- endif -%}
+
+                                                </li>
+
+                                            {% endfor %}
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                        {% if section.settings.footerTopTextStatus %}
+
+                            <div class="col-12 col-md">
+
+                                <div class="site-footer-text-container">
+
+                                    {% if section.settings.footerTopTextTitle %}
+
+                                        <div class="site-footer-title">
+
+                                            {{ section.settings.footerTopTextTitle }}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                    <div class="site-footer-text">
+
+                                        {{ section.settings.footerTopTextContent }}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                        {% if section.settings.footerTopNewsletterStatus %}
+
+                            <div class="col-12 col-md">
+
+                                <div class="site-footer-newsletter-container">
+
+                                    {% if section.settings.footerTopNewsletterTitle %}
+
+                                        <div class="site-footer-title">
+
+                                            {{ section.settings.footerTopNewsletterTitle }}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                    <div class="site-footer-newsletter">
+
+                                        {% form 'customer' %}
+
+                                            {% if section.settings.footerTopNewsletterContent %}
+
+                                                <p>
+                                                    {{  section.settings.footerTopNewsletterContent }}
+                                                </p>
+
+                                            {% endif %}
+
+                                            {% if customer and customer.newsletter %}
+
+                                                {{ 'general.newsletter_subscribed' | t }}
+
+                                            {% elsif form.was_success %}
+
+                                                {{ 'general.newsletter_subscribed' | t }}
+
+                                            {% else %}
+
+                                                <div class="form-group form-floating">
+
+                                                    <input id="footer-middle-newsletter" class="form-control" type="email" name="email" value="" placeholder="{{ 'general.email' | t }}" required>
+
+                                                    <label for="footer-middle-newsletter">
+                                                        {{ 'general.email' | t }}
+                                                    </label>
+
+                                                </div>
+
+                                                {% render 'form-error', error: form.error %}
+
+                                                <button type="submit" class="btn btn-outline-section">
+                                                    {{ 'general.subscribe' | t }}
+                                                </button>
+
+                                            {% endif %}
+
+                                        {% endform %}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% if section.settings.footerMiddleSocialMediaButtonsStatus or section.settings.footerMiddlePaymentMethodsStatus %}
+
+                <div class="site-footer-middle">
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            {% if section.settings.footerMiddleSocialMediaButtonsStatus %}
+
+                                <div class="col-12 col-md">
+
+                                    <div class="site-footer-social-media-buttons-container">
+
+                                        {% if settings.facebookPageUrl %}
+
+                                            <div class="site-footer-social-media-btn">
+
+                                                {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                        {% if settings.instagramPageUrl %}
+
+                                            <div class="site-footer-social-media-btn">
+
+                                                {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                        {% if settings.twitterPageUrl %}
+
+                                            <div class="site-mobile-navigation-social-media-btn">
+
+                                                {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                        {% if settings.pinterestPageUrl %}
+
+                                            <div class="site-mobile-navigation-social-media-btn">
+
+                                                {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                        {% if settings.youtubePageUrl %}
+
+                                            <div class="site-mobile-navigation-social-media-btn">
+
+                                                {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if section.settings.footerMiddlePaymentMethodsStatus %}
+
+                                <div class="col-12 col-md">
+
+                                    <div class="site-footer-payment-methods-container">
+
+                                        {% for payment_method in store.payment_methods %}
+
+                                            {%- assign imgSrc = payment_method.image -%}
+
+                                            {% if imgSrc %}
+
+                                                {%- assign imgSize = 45,30 -%}
+
+                                                <div class="site-footer-payment-method">
+
+                                                    <picture>
+                                                        <img
+                                                            alt="{{ payment_method.name }}"
+                                                            data-src="{{ imgSrc | thumb: imgSize }}"
+                                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                            class="lazy d-block mx-auto img-fluid">
+                                                    </picture>
+
+                                                </div>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+            {% if section.settings.footerBottomTextStatus %}
+
+                <div class="site-footer-bottom">
+
+                    <div class="container">
+
+                        <div class="site-footer-bottom-text">
+
+                            {{ section.settings.footerBottomTextContent }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionContentContainer: 'none'  %}
 
 {% schema %}
 {
@@ -57,22 +324,128 @@
                 "title": "General",
                 "settings": [
                     {
-                        "id": "preset",
-                        "type": "select",
-                        "label": "Preset",
-                        "default": "1",
-                        "options": [
-                            {
-                                "value": "1",
-                                "label": "Preset 1"
-                            }
-                        ]
-                    },
-                    {
                     	"id": "menu",
                     	"type": "menu",
-                    	"label": "Menu",
+                    	"label": {
+                            "en": "Menu",
+                            "fi": "Valikko"
+                        },
                     	"default": "footer-menu"
+                    },
+                    {
+                        "id": "footerTopTextStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show textarea 1",
+                            "fi": "Näytä tekstialue 1"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "footerBottomTextStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show textarea 2",
+                            "fi": "Näytä tekstialue 2"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "footerTopNewsletterStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show newsletter subscribe",
+                            "fi": "Näytä uutiskirjeen tilaus 2"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "footerMiddleSocialMediaButtonsStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show social media buttons",
+                            "fi": "Näytä sosiaalisen median kuvakkeet"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "footerMiddlePaymentMethodsStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show payment methods",
+                            "fi": "Näytä maksutavat"
+                        },
+                        "default": true
+                    },
+                    {
+                        "type": "spacer"
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Textarea 1",
+                            "fi": "Tekstialue 1"
+                        }
+                    },
+                    {
+                        "id": "footerTopTextTitle",
+                        "type": "text",
+                        "label": {
+                            "en": "Title",
+                            "fi": "Otsikko"
+                        }
+                    },
+                    {
+                        "id": "footerTopTextContent",
+                        "type": "richtext",
+                        "label": {
+                            "en": "Content",
+                            "fi": "Sisältö"
+                        }
+                    },
+                    {
+                        "type": "spacer"
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Textarea 2",
+                            "fi": "Tekstialue 2"
+                        }
+                    },
+                    {
+                        "id": "footerBottomTextContent",
+                        "type": "richtext",
+                        "label": {
+                            "en": "Content",
+                            "fi": "Sisältö"
+                        }
+                    },
+                    {
+                        "type": "spacer"
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Newsletter",
+                            "fi": "Uutiskirje"
+                        }
+                    },
+                    {
+                        "id": "footerTopNewsletterTitle",
+                        "type": "text",
+                        "label": {
+                            "en": "Title",
+                            "fi": "Otsikko"
+                        }
+                    },
+                    {
+                        "id": "footerTopNewsletterContent",
+                        "type": "richtext",
+                        "label": {
+                            "en": "Content",
+                            "fi": "Sisältö"
+                        }
                     }
                 ]
             },
@@ -82,12 +455,18 @@
                     "list_type": "tabs",
                     "groups": [
                         {
-                            "title": "Layout",
+                            "title": {
+                                "en": "Layout",
+                                "fi": "Näkymä"
+                            },
                             "settings": [
                                 {
                                     "id": "sectionHeight",
                                     "type": "radio-pill",
-                                    "label": "Section height",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -115,7 +494,10 @@
                                 {
                                     "id": "sectionInnerSpacing",
                                     "type": "radio-pill",
-                                    "label": "Section inner spacing",
+                                    "label": {
+                                        "en": "Content spacing",
+                                        "fi": "Sisällön tilavuus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -143,7 +525,10 @@
                                 {
                                     "id": "sectionContentSpacing",
                                     "type": "radio-pill",
-                                    "label": "Content spacing",
+                                    "label": {
+                                        "en": "Content spacing",
+                                        "fi": "Sisällön tilavuus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -171,75 +556,10 @@
                             ]
                         },
                         {
-                            "title": "Background",
-                            "settings": [
-                                {
-                                    "id": "sectionBgImgSrc",
-                                    "type": "image-picker",
-                                    "label": "Image"
-                                },
-                                {
-                                    "id": "sectionBgImgPos",
-                                    "type": "select",
-                                    "label": "Position",
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "left-top",
-                                            "label": "Left Top"
-                                        },
-                                        {
-                                            "value": "left-center",
-                                            "label": "Left Center"
-                                        },
-                                        {
-                                            "value": "left-bottom",
-                                            "label": "Left Bottom"
-                                        },
-                                        {
-                                            "value": "right-top",
-                                            "label": "Right Top"
-                                        },
-                                        {
-                                            "value": "right-center",
-                                            "label": "Right Center"
-                                        },
-                                        {
-                                            "value": "right-bottom",
-                                            "label": "Right Bottom"
-                                        },
-                                        {
-                                            "value": "center-top",
-                                            "label": "Center Top"
-                                        },
-                                        {
-                                            "value": "center-center",
-                                            "label": "Center Center"
-                                        },
-                                        {
-                                            "value": "center-bottom",
-                                            "label": "Center Bottom"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionBgImgOverlay",
-                                    "label": "Overlay",
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 90,
-                                    "step": 10,
-                                    "default": 0,
-                                    "unit": "%"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Colors",
+                            "title": {
+                                "en": "Colors",
+                                "fi": "Värit"
+                            },
                             "settings": [
                                 {
                                     "id": "sectionStyle",

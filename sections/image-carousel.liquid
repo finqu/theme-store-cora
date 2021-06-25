@@ -190,52 +190,82 @@
 
 {% schema %}
 {
-    "name": "Image carousel",
+    "name": {
+        "en": "Image carousel",
+        "fi": "Kuvakaruselli"
+    },
     "tag": "section",
     "class": "section section-image-carousel",
     "settings": {
         "list_type": "tabs",
         "groups": [
             {
-                "title": "Content",
+                "title": {
+                    "en": "Content",
+                    "fi": "Sisältö"
+                },
                 "id": "items",
                 "max_blocks": 4,
-                "call_to_action": "Add a item",
+                "call_to_action": {
+                    "en": "Add a item",
+                    "fi": "Lisää kohde"
+                },
                 "is_sortable": true,
                 "setting_blocks": [
                     {
                         "type": "item",
-                        "title": "Item",
+                        "title": {
+                            "en": "Item",
+                            "fi": "Kohde"
+                        },
                         "settings": [
                             {
                                 "id": "imgSrc",
                                 "type": "image-picker",
-                                "label": "Image"
+                                "label": {
+                                    "en": "Image",
+                                    "fi": "Kuva"
+                                }
                             },
                             {
                                 "id": "imgAlt",
                                 "type": "text",
-                                "label": "Image alt"
+                                "label": {
+                                    "en": "Image alt",
+                                    "fi": "Kuvan alt-teksti"
+                                }
                             },
                             {
                                 "id": "title",
                                 "type": "text",
-                                "label": "Title"
+                                "label": {
+                                    "en": "Title",
+                                    "fi": "Otsikko"
+                                }
                             },
                             {
                                 "id": "description",
                                 "type": "textarea",
-                                "label": "Description"
+                                "label": {
+                                    "en": "Description",
+                                    "fi": "Kuvaus"
+                                }
                             },
                             {
                                 "id": "btnLabel",
                                 "type": "text",
-                                "label": "Button label"
+                                "label": {
+                                    "en": "Button label",
+                                    "fi": "Napin teksti"
+                                }
                             },
                             {
                                 "id": "btnResource",
                                 "type": "url",
-                                "label": "Button link"
+                                "label": {
+                                    "en": "Button link",
+                                    "fi": "Napin linkki"
+                                }
                             }
                         ]
                     }
@@ -247,23 +277,35 @@
                     "list_type": "tabs",
                     "groups": [
                         {
-                            "title": "Settings",
+                            "title": {
+                                "en": "Settings",
+                                "fi": "Asetukset"
+                            },
                             "settings": [
                                 {
                                     "id": "loop",
                                     "type": "checkbox",
-                                    "label": "Loop",
+                                    "label": {
+                                        "en": "Loop",
+                                        "fi": "Silmukka"
+                                    },
                                     "default": true
                                 },
                                 {
                                     "id": "autoplay",
                                     "type": "checkbox",
-                                    "label": "Autoplay",
+                                    "label": {
+                                        "en": "Autoplay",
+                                        "fi": "Automaattinen toisto"
+                                    },
                                     "default": true
                                 },
                                 {
                                     "id": "autoplaySpeed",
-                                    "label": "Autoplay Speed",
+                                    "label": {
+                                        "en": "Autoplay speed",
+                                        "fi": "Automaattisen toiston nopeus"
+                                    },
                                     "type": "range",
                                     "min": 3,
                                     "max": 20,
@@ -275,63 +317,99 @@
                                 {
                                     "id": "navigation",
                                     "type": "radio-pill",
-                                    "label": "Show navigation",
+                                    "label": {
+                                        "en": "Show navigation buttons",
+                                        "fi": "Näytä navigointipainikkeet"
+                                    },
                                     "default": "hover",
                                     "options": [
                                         {
                                             "value": "",
-                                            "label": "Off"
+                                            "label": {
+                                                "en": "Off",
+                                                "fi": "Off"
+                                            }
                                         },
                                         {
                                             "value": "hover",
-                                            "label": "On Hover"
+                                            "label": {
+                                                "en": "On hover",
+                                                "fi": "Osoitin päällä"
+                                            }
                                         },
                                         {
                                             "value": "on",
-                                            "label": "Always"
+                                            "label": {
+                                                "en": "Always",
+                                                "fi": "Aina"
+                                            }
                                         }
                                     ]
                                 },
                                 {
                                     "id": "pagination",
                                     "type": "radio-pill",
-                                    "label": "Show pagination",
+                                    "label": {
+                                        "en": "Show pagination",
+                                        "fi": "Näytä sivutus"
+                                    },
                                     "default": "hover",
                                     "options": [
                                         {
                                             "value": "",
-                                            "label": "Off"
+                                            "label": {
+                                                "en": "Off",
+                                                "fi": "Off"
+                                            }
                                         },
                                         {
                                             "value": "hover",
-                                            "label": "On Hover"
+                                            "label": {
+                                                "en": "On hover",
+                                                "fi": "Osoitin päällä"
+                                            }
                                         },
                                         {
                                             "value": "on",
-                                            "label": "Always"
+                                            "label": {
+                                                "en": "Always",
+                                                "fi": "Aina"
+                                            }
                                         }
                                     ]
                                 },
                                 {
                                     "id": "effect",
                                     "type": "radio-pill",
-                                    "label": "Effect",
+                                    "label": {
+                                        "en": "Effect",
+                                        "fi": "Effekti"
+                                    },
                                     "default": "slide",
                                     "options": [
                                         {
                                             "value": "slide",
-                                            "label": "Slide"
+                                            "label": {
+                                                "en": "Slide",
+                                                "fi": "Liuku"
+                                            }
                                         },
                                         {
                                             "value": "fade",
-                                            "label": "Fade"
+                                            "label": {
+                                                "en": "Fade",
+                                                "fi": "Häivytä"
+                                            }
                                         }
                                     ]
                                 },
                                 {
                                     "id": "sectionHeight",
                                     "type": "radio-pill",
-                                    "label": "Section height",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -358,7 +436,10 @@
                                 },
                                 {
                                     "id": "slideImgOverlay",
-                                    "label": "Overlay",
+                                    "label": {
+                                        "en": "Overlay",
+                                        "fi": "Taustan tummuus"
+                                    },
                                     "type": "range",
                                     "min": 0,
                                     "max": 90,
@@ -369,7 +450,10 @@
                             ]
                         },
                         {
-                            "title": "Colors",
+                            "title": {
+                                "en": "Colors",
+                                "fi": "Värit"
+                            },
                             "settings": [
                                 {
                                     "id": "sectionStyle",

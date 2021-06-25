@@ -398,6 +398,8 @@ export default {
 	},
 	initWishlist: function() {
 
+        const isWishlistTemplate = document.querySelector('body').classList.contains('template-customers-wishlist');
+
 		document.querySelectorAll('[data-wishlist-add]').forEach(el => { el.addEventListener('click', e => {
 
             const iconEl = el.querySelector('.svg-icon');
@@ -464,7 +466,12 @@ export default {
                 }
 
                 if (itemEl) {
+
                 	itemEl.remove();
+
+                    if (isWishlistTemplate && document.querySelectorAll('[data-wishlist-item]').length < 1) {
+                        document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.t('general.wishlist_empty');
+                    }
                 }
             });
     	})});
@@ -486,7 +493,14 @@ export default {
                 $.delete('/api/wishlist/products/'+id, () => {
 
 	                if (itemEl) {
+
 	                	itemEl.remove();
+
+                        if (isWishlistTemplate && document.querySelectorAll('[data-wishlist-item]').length < 1) {
+                            document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.t('general.wishlist_empty');
+                        }
+
+                        return;
 	                }
 
                     itemCountEls.forEach(el => {

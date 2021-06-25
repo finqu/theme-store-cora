@@ -28,6 +28,7 @@ import * as ShoppingBagTagRegular from '@streamlinehq/streamlinehq/img/streamlin
 import * as SearchRegular from '@streamlinehq/streamlinehq/img/streamline-regular/search-jUAwYE.svg';
 import * as NavigationMenuRegular from '@streamlinehq/streamlinehq/img/streamline-regular/navigation-menu-gWaHY4.svg';
 import * as LoginRegular from '@streamlinehq/streamlinehq/img/streamline-regular/login-P2Woe5.svg';
+import * as ShipmentUploadRegular from '@streamlinehq/streamlinehq/img/streamline-regular/shipment-upload-PvJIK9.svg';
 
 export default {
 	alignLeftLight: MoveLeft1Light,
@@ -59,5 +60,6 @@ export default {
 	shoppingBagTagRegular: ShoppingBagTagRegular,
 	searchRegular: SearchRegular,
 	navigationMenuRegular: NavigationMenuRegular,
-	loginRegular: LoginRegular
+	loginRegular: LoginRegular,
+	shipmentUploadRegular: ShipmentUploadRegular
 }

@@ -16,6 +16,9 @@
         "choose": "Valitse",
         "account": "Tili",
         "no_information_found": "Tietoa ei löydy",
+        "subscribe": "Tilaa",
+        "newsletter_subscribed": "Uutiskirje tilattu.",
+        "email": "Sähköposti",
         "search": "Haku",
         "search_products": "Hae tuotteita",
         "search_no_results": "Haku ei tuottanut tuloksia, kokeile muita hakusanoja.",
@@ -24,6 +27,7 @@
         "page_not_found_title": "Emme valitettavasti löytäneet haluamaasi sivua",
         "page_not_found_subtitle": "Vaikuttaa siltä, että sivu ei ole enää käytössä.",
         "wishlist": "Toivelista",
+        "wishlist_empty": "Toivelistasi on tyhjä.",
         "product": "Tuote",
         "product_number": "Tuotenumero",
         "product_count": "{{ amount }} tuote",
@@ -152,6 +156,9 @@
             "vat_number": "ALV-numero"
         },
         "order": {
+            "product_plural": "Tuotteet",
+            "shipment_plural": "Toimitukset",
+            "track_shipment": "Seuraa toimitusta",
             "no_orders": "Ei tilauksia näytettävänä.",
             "other_product_dynamic": "ja {{ amount }} muu tuote",
             "other_product_plural_dynamic": "ja {{ amount }} muuta tuotetta",
@@ -190,7 +197,8 @@
                 "incomplete": "Kesken",
                 "reminded": "Muistutettu",
                 "shipped": "Lähetetty",
-                "in_manufacturing": "Valmistuksessa"
+                "in_manufacturing": "Valmistuksessa",
+                "refunded": "Hyvitetty"
             },
             "return_statuses": {
                 "received": "Vastaanotettu",

@@ -16,6 +16,9 @@
         "choose": "Choose",
         "account": "Account",
         "no_information_found": "No information found",
+        "subscribe": "Subscribed",
+        "newsletter_subscribed": "Newsletter subscribed.",
+        "email": "Email",
         "search": "Search",
         "search_products": "Search products",
         "search_no_results": "Your search returned no results, please try other keywords.",
@@ -24,6 +27,7 @@
         "page_not_found_title": "Sorry, we couldn't find the page you were looking for",
         "page_not_found_subtitle": "It looks like the page is no longer available.",
         "wishlist": "Wishlist",
+        "wishlist_empty": "Wishlist is empty.",
         "product": "Product",
         "product_number": "Product number",
         "product_count": "__amount__ product",
@@ -96,7 +100,7 @@
     "cart": {
         "title": "Cart",
         "add": "Add to cart",
-        "empty": "Cart is empty",
+        "empty": "Cart is empty.",
         "proceed_to_checkout": "Proceed to checkout",
         "view_cart": "View cart",
         "product_added_to_cart": "The product was added to the shopping cart",
@@ -181,6 +185,9 @@
             "vat_number": "VAT number"
         },
         "order": {
+            "product_plural": "Products",
+            "shipment_plural": "Shipments",
+            "track_shipment": "Track shipment",
             "no_orders": "No orders to display.",
             "other_product_dynamic": "and {{ amount }} other product",
             "other_product_plural_dynamic": "and {{ amount }} other products",
@@ -215,7 +222,8 @@
                 "incomplete": "Incomplete",
                 "reminded": "Reminded",
                 "shipped": "Shipped",
-                "in_manufacturing": "In manufacturing"
+                "in_manufacturing": "In manufacturing",
+                "refunded": "Refunded"
             },
             "return_statuses": {
                 "received": "Received",

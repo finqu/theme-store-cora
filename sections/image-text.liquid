@@ -88,19 +88,28 @@
 
 {% schema %}
 {
-    "name": "Image text",
+    "name": {
+        "en": "Image and text",
+        "fi": "Kuva ja teksti"
+    },
     "tag": "section",
     "class": "section section-image-text has-lazy",
     "settings": {
         "list_type": "tabs",
         "groups": [
             {
-                "title": "General",
+                "title": {
+                    "en": "General",
+                    "fi": "Yleinen"
+                },
                 "settings": [
                     {
                         "id": "contentColumnArrangement",
                         "type": "select",
-                        "label": "Column Arrangement",
+                        "label": {
+                            "en": "Column arrangement",
+                            "fi": "Sarakejärjestely"
+                        },
                         "default": "6,6",
                         "options": [
                             {
@@ -136,7 +145,10 @@
                     {
                         "id": "contentImgSide",
                         "type": "radio-pill",
-                        "label": "Image side",
+                        "label": {
+                            "en": "Image side",
+                            "fi": "Kuvan puoli"
+                        },
                         "default": "left",
                         "options": [
                             {
@@ -152,7 +164,10 @@
                     {
                         "id": "contentImgAlign",
                         "type": "radio-pill",
-                        "label": "Image align",
+                        "label": {
+                            "en": "Image align",
+                            "fi": "Kuvan tasaus"
+                        },
                         "default": "middle",
                         "options": [
                             {
@@ -172,32 +187,50 @@
                     {
                         "id": "contentImgAlt",
                         "type": "text",
-                        "label": "Image alt"
+                        "label": {
+                            "en": "Image alt",
+                            "fi": "Kuvan alt-teksti"
+                        }
                     },
                     {
                         "id": "contentImgEffect",
                         "type": "select",
-                        "label": "Image effect",
+                        "label": {
+                            "en": "Image effect",
+                            "fi": "Kuvan effekti"
+                        },
                         "default": "none",
                         "options": [
                             {
                                 "value": "none",
-                                "label": "None"
+                                "label": {
+                                    "en": "None",
+                                    "fi": "Ei mitään"
+                                }
                             },
                             {
                                 "value": "rounded",
-                                "label": "Rounded"
+                                "label": {
+                                    "en": "Rounded",
+                                    "fi": "Pyöristetty"
+                                }
                             },
                             {
                                 "value": "rounded-circle",
-                                "label": "Cicle"
+                                "label": {
+                                    "en": "Circle",
+                                    "fi": "Ympyrä"
+                                }
                             }
                         ]
                     },
                     {
                         "id": "contentRichtextAlign",
                         "type": "radio-pill",
-                        "label": "Text align",
+                        "label": {
+                            "en": "Text align",
+                            "fi": "Tekstin tasaus"
+                        },
                         "default": "middle",
                         "options": [
                             {
@@ -217,12 +250,18 @@
                     {
                         "id": "contentBtnLabel",
                         "type": "text",
-                        "label": "Button label"
+                        "label": {
+                            "en": "Button label",
+                            "fi": "Napin teksti"
+                        }
                     },
                     {
                         "id": "contentBtnResource",
                         "type": "url",
-                        "label": "Button link"
+                        "label": {
+                            "en": "Button link",
+                            "fi": "Napin linkki"
+                        }
                     },
                     {
                         "id": "contentImgSrc",
@@ -232,23 +271,31 @@
                     {
                         "id": "contentRichtextHtml",
                         "type": "richtext",
-                        "inline": "true",
-                        "default": "<h2>Tervetuloa paremman myynnin maailmaan</h2><h4><br></h4><h4>Myy kaikkialla</h4><p>Et tarvitse useita eri järjestelmiä tai kalliita integraatioita myydäksesi siellä missä asiakkaasi ovat. Sisään rakennettu monikanavaisuus mahdollistaa myymisen kaikkialla, kuten verkossa, kivijalkaliikkeessä ja tapahtumissa. Finqu verkkokauppa ja Finqu POS tekevät myymisen helpoksi ja säästät selvää rahaa yhdellä keskitetyllä kaupankäynnin alustalla.</p><h4>Hallitse yhdestä paikasta</h4><p>Hallitse kaikkea myyntiä yhdestä paikassa riippumatta siitä, missä myynti on tapahtunut. Keskitetyn tiedon ansiosta et enää koskaan kärsi päällekkäisistä asiakas- tai tuotetiedoista tai varaston yli myynnistä. Samalla nautit kampanjoista, jotka toimivat läpi kaikkien myyntikanavien. Vähemmän vaivaa, enemmän myyntiä.</p><h4>Älä maksa turhasta</h4><p>Finqun joustavalla hinnoittelulla saat ensin 2 viikkoa ilmaista aikaa kaupallesi ja käynnistät myynnin vain muutamalla eurolla kuukaudessa. Älä turhaan maksa korkeita kuukausikustannuksia etukäteen. Maksa vasta, kun saat liiketoiminnan käyntiin ja myynnin kunnolla rullaamaan.</p>"
+                        "inline": "true"
                     }
                 ]
             },
             {
-                "title": "Section",
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
                 "settings": {
                     "list_type": "tabs",
                     "groups": [
                         {
-                            "title": "Layout",
+                            "title": {
+                                "en": "Layout",
+                                "fi": "Näkymä"
+                            },
                             "settings": [
                                 {
                                     "id": "sectionHeight",
                                     "type": "radio-pill",
-                                    "label": "Section height",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -276,7 +323,10 @@
                                 {
                                     "id": "sectionInnerSpacing",
                                     "type": "radio-pill",
-                                    "label": "Section inner spacing",
+                                    "label": {
+                                        "en": "Inner spacing",
+                                        "fi": "Sisäinen tilavuus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -304,7 +354,10 @@
                                 {
                                     "id": "sectionContentSpacing",
                                     "type": "radio-pill",
-                                    "label": "Content spacing",
+                                    "label": {
+                                        "en": "Content spacing",
+                                        "fi": "Sisällön tilavuus"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
@@ -332,7 +385,10 @@
                                 {
                                     "id": "sectionContentWidth",
                                     "type": "radio-pill",
-                                    "label": "Content width",
+                                    "label": {
+                                        "en": "Content width",
+                                        "fi": "Sisällön leveys"
+                                    },
                                     "default": "12",
                                     "options": [
                                         {
@@ -352,7 +408,10 @@
                                 {
                                     "id": "sectionContentAlign",
                                     "type": "radio-pill",
-                                    "label": "Content alignment",
+                                    "label": {
+                                        "en": "Content alignment",
+                                        "fi": "Sisällön ryhmittyminen"
+                                    },
                                     "default": "center",
                                     "options": [
                                         {
@@ -372,64 +431,99 @@
                             ]
                         },
                         {
-                            "title": "Background",
+                            "title": {
+                                "en": "Background",
+                                "fi": "Tausta"
+                            },
                             "settings": [
                                 {
                                     "id": "sectionBgImgSrc",
                                     "type": "image-picker",
-                                    "label": "Image"
+                                    "label": {
+                                        "en": "Image",
+                                        "fi": "Kuva"
+                                    }
                                 },
                                 {
                                     "id": "sectionBgImgPos",
                                     "type": "select",
-                                    "label": "Position",
+                                    "label": {
+                                        "en": "Image position",
+                                        "fi": "Kuvan sijainti"
+                                    },
                                     "default": "",
                                     "options": [
                                         {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
                                             "value": "left-top",
-                                            "label": "Left Top"
+                                            "label": {
+                                                "en": "Left Top",
+                                                "fi": "Vasemmalla ylhäällä"
+                                            }
                                         },
                                         {
                                             "value": "left-center",
-                                            "label": "Left Center"
+                                            "label": {
+                                                "en": "Left Center",
+                                                "fi": "Vasemmalla"
+                                            }
                                         },
                                         {
                                             "value": "left-bottom",
-                                            "label": "Left Bottom"
+                                            "label": {
+                                                "en": "Left Bottom",
+                                                "fi": "Vasemmalla alhaalla"
+                                            }
                                         },
                                         {
                                             "value": "right-top",
-                                            "label": "Right Top"
+                                            "label": {
+                                                "en": "Right Top",
+                                                "fi": "Oikealla ylhäällä"
+                                            }
                                         },
                                         {
                                             "value": "right-center",
-                                            "label": "Right Center"
+                                            "label": {
+                                                "en": "Right Center",
+                                                "fi": "Oikealla"
+                                            }
                                         },
                                         {
                                             "value": "right-bottom",
-                                            "label": "Right Bottom"
+                                            "label": {
+                                                "en": "Right Bottom",
+                                                "fi": "Oikealla alhaalla"
+                                            }
                                         },
                                         {
                                             "value": "center-top",
-                                            "label": "Center Top"
+                                            "label": {
+                                                "en": "Center Top",
+                                                "fi": "Keskellä ylhäällä"
+                                            }
                                         },
                                         {
                                             "value": "center-center",
-                                            "label": "Center Center"
+                                            "label": {
+                                                "en": "Center Center",
+                                                "fi": "Keskellä"
+                                            }
                                         },
                                         {
                                             "value": "center-bottom",
-                                            "label": "Center Bottom"
+                                            "label": {
+                                                "en": "Center Bottom",
+                                                "fi": "Keskellä alhaalla"
+                                            }
                                         }
                                     ]
                                 },
                                 {
                                     "id": "sectionBgImgOverlay",
-                                    "label": "Overlay",
+                                    "label": {
+                                        "en": "Overlay",
+                                        "fi": "Taustan tummuus"
+                                    },
                                     "type": "range",
                                     "min": 0,
                                     "max": 90,
@@ -440,20 +534,29 @@
                                 {
                                     "id": "sectionContentBgColorStatus",
                                     "type": "checkbox",
-                                    "label": "Enable content background",
+                                    "label": {
+                                        "en": "Enable content background",
+                                        "fi": "Näytä sisällön tausta"
+                                    },
                                     "default": false
                                 },
                                 {
                                     "id": "sectionContentBgColor",
                                     "type": "color",
-                                    "label": "Content background color",
+                                    "label": {
+                                        "en": "Content background color",
+                                        "fi": "Sisällön taustaväri"
+                                    },
                                     "default": "#ffffff",
                                     "conditions": ["sectionContentBgColorStatus:truthy eq true"]
                                 }
                             ]
                         },
                         {
-                            "title": "Colors",
+                            "title": {
+                                "en": "Colors",
+                                "fi": "Värit"
+                            },
                             "settings": [
                                 {
                                     "id": "sectionStyle",

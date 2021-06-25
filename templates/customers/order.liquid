@@ -12,8 +12,16 @@
 
 			<div>
 
-				<spa>
-					{{ order.order_status | prepend: 'account.order.order_statuses.' | t }}
+				<span>
+					{% if order.is_refunded %}
+
+						{{ order.order_status_refunded' | t }}
+
+					{% else %}
+
+						{{ order.order_status | prepend: 'account.order.order_statuses.' | t }}
+
+					{% endif %}
 				</span>
 
 			</div>
@@ -68,213 +76,205 @@
 
 	<div class="order">
 
-		<div class="order-details">
+		<div class="order-details-container">
 
-			<div class="row">
+			<div class="order-details">
 
-				<div class="col-12 col-md mb-4 mb-md-0">
+				<div class="row">
 
-					<div class="order-shipping-address">
+					<div class="col-12 col-md mb-4 mb-md-0">
 
-						<div class="order-shipping-address-line mb-2">
+						<div class="order-shipping-address">
 
-							<span class="order-shipping-address-line-text font-weight-bold">
-								{{ 'account.order.delivery_address' | t }}
-							</span>
+							<div class="order-shipping-address-line mb-2">
 
-						</div>
+								<span class="order-shipping-address-line-text font-weight-bold">
+									{{ 'account.order.delivery_address' | t }}
+								</span>
 
-						<div class="order-shipping-address-line">
+							</div>
 
-							<span class="order-shipping-address-line-text">
-								{{ order.shipping_address.firstname }} {{ order.shipping_address.lastname }}
-							</span>
+							<div class="order-shipping-address-line">
 
-						</div>
+								<span class="order-shipping-address-line-text">
+									{{ order.shipping_address.firstname }} {{ order.shipping_address.lastname }}
+								</span>
 
-						<div class="order-shipping-address-line">
+							</div>
 
-							<span class="order-shipping-address-line-text">
-								{{ order.shipping_address.address1 }}
-							</span>
+							<div class="order-shipping-address-line">
 
-						</div>
+								<span class="order-shipping-address-line-text">
+									{{ order.shipping_address.address1 }}
+								</span>
 
-						<div class="order-shipping-address-line">
+							</div>
 
-							<span class="order-shipping-address-line-text">
-								{{ order.shipping_address.zipcode }} {{ order.shipping_address.city }}
-							</span>
+							<div class="order-shipping-address-line">
 
-						</div>
+								<span class="order-shipping-address-line-text">
+									{{ order.shipping_address.zipcode }} {{ order.shipping_address.city }}
+								</span>
 
-						<div class="order-shipping-address-line">
+							</div>
 
-							<span class="order-shipping-address-line-text">
-								{{ order.shipping_address.country.name }}
-							</span>
+							<div class="order-shipping-address-line">
+
+								<span class="order-shipping-address-line-text">
+									{{ order.shipping_address.country.name }}
+								</span>
+
+							</div>
 
 						</div>
 
 					</div>
 
-				</div>
+					<div class="col-12 col-md mb-4 mb-md-0">
 
-				<div class="col-12 col-md mb-4 mb-md-0">
+						<div class="order-billing-address">
 
-					<div class="order-billing-address">
+							<div class="order-billing-address-line mb-2">
 
-						<div class="order-billing-address-line mb-2">
+								<span class="order-billing-address-line-text font-weight-bold">
+									{{ 'account.order.billing_address' | t }}
+								</span>
 
-							<span class="order-billing-address-line-text font-weight-bold">
-								{{ 'account.order.billing_address' | t }}
-							</span>
+							</div>
 
-						</div>
+							<div class="order-billing-address-line">
 
-						<div class="order-billing-address-line">
+								<span class="order-billing-address-line-text">
+									{{ order.billing_address.firstname }} {{ order.billing_address.lastname }}
+								</span>
 
-							<span class="order-billing-address-line-text">
-								{{ order.billing_address.firstname }} {{ order.billing_address.lastname }}
-							</span>
+							</div>
 
-						</div>
+							<div class="order-billing-address-line">
 
-						<div class="order-billing-address-line">
+								<span class="order-billing-address-line-text">
+									{{ order.billing_address.address1 }}
+								</span>
 
-							<span class="order-billing-address-line-text">
-								{{ order.billing_address.address1 }}
-							</span>
+							</div>
 
-						</div>
+							<div class="order-billing-address-line">
 
-						<div class="order-billing-address-line">
+								<span class="order-billing-address-line-text">
+									{{ order.billing_address.zipcode }} {{ order.billing_address.city }}
+								</span>
 
-							<span class="order-billing-address-line-text">
-								{{ order.billing_address.zipcode }} {{ order.billing_address.city }}
-							</span>
+							</div>
 
-						</div>
+							<div class="order-billing-address-line">
 
-						<div class="order-billing-address-line">
+								<span class="order-billing-address-line-text">
+									{{ order.billing_address.country.name }}
+								</span>
 
-							<span class="order-billing-address-line-text">
-								{{ order.billing_address.country.name }}
-							</span>
+							</div>
 
 						</div>
 
 					</div>
 
-				</div>
+					<div class="col-12 col-md mb-4 mb-md-0">
 
-				<div class="col-12 col-md mb-4 mb-md-0">
+						<div class="mb-2">
 
-					<div class="mb-2">
+							<span class="font-weight-bold">
 
-						<span class="font-weight-bold">
+								{% if shipping_methods.size > 1 %}
+									{{ 'account.order.shipping_method_plural' | t }}
+								{% else %}
+									{{ 'account.order.shipping_method' | t }}
+								{% endif %}
+							</span>
 
-							{% if shipping_methods.size > 1 %}
-								{{ 'account.order.shipping_method_plural' | t }}
-							{% else %}
-								{{ 'account.order.shipping_method' | t }}
-							{% endif %}
-						</span>
+						</div>
 
-					</div>
+						{% for shipping_method in order.shipping_methods %}
 
-					{% for shipping_method in order.shipping_methods %}
-
-						<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
-
-							<div>
-
-								<span>
-									{{ shipping_method.title }}
-								</span>
-
-							</div>
-
-							<div>
-
-								<span>
-									{{ shipping_method.pickup_address.name }}
-								</span>
-
-							</div>
-
-							<div>
-
-								<span>
-									{{ shipping_method.pickup_address.address1 }}
-								</span>
-
-							</div>
-
-							<div>
-
-								<span>
-									{{ shipping_method.pickup_address.zipcode }} {{ shipping_method.pickup_address.city }}
-								</span>
-
-							</div>
-
-							<div>
-
-								<span>
-									{{ shipping_method.pickup_address.country.name }}
-								</span>
-
-							</div>
-
-							{% for package in shipment.packages %}
+							<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
 
 								<div>
 
-									<a href="{{ shipment.tracking_url }}" target="_blank">
-										{{ shipment.tracking_code }}
+									<span>
+										{{ shipping_method.title }}
 									</span>
 
 								</div>
 
-							{% endfor %}
+								<div>
 
-						</div>
+									<span>
+										{{ shipping_method.pickup_address.name }}
+									</span>
 
-					{% endfor %}
+								</div>
 
-				</div>
+								<div>
 
-				<div class="col-12 col-md">
+									<span>
+										{{ shipping_method.pickup_address.address1 }}
+									</span>
 
-					<div class="mb-2">
+								</div>
 
-						<span class="font-weight-bold">
+								<div>
 
-							{% if payment_methods.size > 1 %}
-								{{ 'account.order.payment_method_plural' | t }}
-							{% else %}
-								{{ 'account.order.payment_method' | t }}
-							{% endif %}
-						</span>
+									<span>
+										{{ shipping_method.pickup_address.zipcode }} {{ shipping_method.pickup_address.city }}
+									</span>
 
-					</div>
+								</div>
 
-					{% for payment_method in order.payment_methods %}
+								<div>
 
-						<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
+									<span>
+										{{ shipping_method.pickup_address.country.name }}
+									</span>
 
-							<div>
-
-								<span>
-									{{ payment_method.title }}
-								</span>
+								</div>
 
 							</div>
 
+						{% endfor %}
+
+					</div>
+
+					<div class="col-12 col-md">
+
+						<div class="mb-2">
+
+							<span class="font-weight-bold">
+
+								{% if payment_methods.size > 1 %}
+									{{ 'account.order.payment_method_plural' | t }}
+								{% else %}
+									{{ 'account.order.payment_method' | t }}
+								{% endif %}
+							</span>
+
 						</div>
 
-					{% endfor %}
+						{% for payment_method in order.payment_methods %}
+
+							<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
+
+								<div>
+
+									<span>
+										{{ payment_method.title }}
+									</span>
+
+								</div>
+
+							</div>
+
+						{% endfor %}
+
+					</div>
 
 				</div>
 
@@ -282,169 +282,243 @@
 
 		</div>
 
-		<div class="order-items">
+		{% if order.shipments %}
 
-			{% for item in order.items %}
+			<div class="order-shipments-container">
 
-				<div class="order-item">
+				<span class="font-weight-bold">
+					{{ 'account.order.shipment_plural' | t }}
+				</span>
 
-					<div class="row no-gutters">
+				<div class="order-shipment-packages">
 
-						<div class="col-auto">
+					{% for shipment in order.shipments %}
 
-                            <div class="order-item-media">
+						{% for package in shipment.packages %}
 
-                                <div class="order-item-media-img-container aspect-ratio-container">
+							<div class="order-shipment-package">
 
-                                    {%- assign imgSrc = item.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                    {%- assign imgSize = 76,114 -%}
+								<div class="row no-gutters">
 
-                                    <picture>
-                                        <img
-                                            alt="{{ item.name }}"
-                                            data-src="{{ imgSrc | thumb: imgSize }}"
-                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-                                    </picture>
+									<div class="col-auto">
 
-                                </div>
+			                            <div class="order-shipment-package-media">
 
-                            </div>
+			                               {%- render 'icon', icon: 'shipment-upload-PvJIK9', class: 'svg-icon-fw svg-icon-4x' -%}
 
-                        </div>
+			                            </div>
 
-                       <div class="col pl-4">
+			                        </div>
 
-                       		<div class="row no-gutters">
+			                       <div class="col pl-4">
 
-                            	<div class="col">
+			                       		<div class="row no-gutters">
 
-                            		<div class="order-item-name">
+			                            	<div class="col">
 
-                            			{% if item.product_url %}
+			                            		<div class="order-shipment-package-carrier-name">
 
-                            				<a href="{{ item.product_url }}">
+			                            			<span class="order-shipment-package-carrier-name-text">
+														{{ shipment.carrier }}
+													</span>
 
-		                                        <span class="order-item-name-text">
-		                                            {{ item.title }}
-		                                        </span>
+			                                    </div>
 
-		                                    </a>
+			                                    {% if package.tracking_code %}
 
-                            			{% else %}
+				                                    <div class="order-shipment-package-tracking-code">
 
-                            				<span class="order-item-name-text">
-												{{ item.title }}
-											</span>
+				                                        <span class="order-shipment-package-tracking-code-text">
+				                                        	{{ package.tracking_code }}
+				                                        </span>
 
-                            			{% endif %}
+				                                    </div>
 
-                                    </div>
+			                                    {% endif %}
 
-                                    <div class="order-item-quantity">
+			                            	</div>
 
-                                        <span class="order-item-quantity-text">
-                                        	{{ 'general.quantity' | t }}: {{ item.quantity }}
-                                        </span>
+			                            	{% if package.tracking_url %}
 
-                                    </div>
+				                            	<div class="col-12 col-md-auto mt-2 mt-md-0 pl-md-2">
 
-                                    {% if item.model %}
+				                            		<div class="order-shipment-package-tracking">
 
-	                                    <div class="order-item-product-number">
+				                                        <a href="{{ package.tracking_url }}" class="btn btn-outline-section order-shipment-package-tracking-btn">
+				                                            {{ 'account.order.track_shipment' | t }}
+				                                        </span>
 
-	                                    	<span class="order-item-product-number-text">
-	                                        	{{ 'general.product_number' | t }}: {{ item.model }}
+				                                    </div>
+
+				                            	</div>
+
+			                            	{% endif %}
+
+			                            </div>
+
+			                       </div>
+
+								</div>
+
+							</div>
+
+						{% endfor %}
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+		{% endif %}
+
+		<div class="order-items-container">
+
+			<span class="font-weight-bold">
+				{{ 'account.order.product_plural' | t }}
+			</span>
+
+			<div class="order-items">
+
+				{% for item in order.items %}
+
+					<div class="order-item">
+
+						<div class="row no-gutters">
+
+							<div class="col-auto">
+
+	                            <div class="order-item-media">
+
+	                                <div class="order-item-media-img-container aspect-ratio-container">
+
+	                                    {%- assign imgSrc = item.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
+	                                    {%- assign imgSize = 76,114 -%}
+
+	                                    <picture>
+	                                        <img
+	                                            alt="{{ item.name }}"
+	                                            data-src="{{ imgSrc | thumb: imgSize }}"
+	                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+	                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+	                                    </picture>
+
+	                                </div>
+
+	                            </div>
+
+	                        </div>
+
+	                       <div class="col pl-4">
+
+	                       		<div class="row no-gutters">
+
+	                            	<div class="col">
+
+	                            		<div class="order-item-name">
+
+	                            			{% if item.product_url %}
+
+	                            				<a href="{{ item.product_url }}">
+
+			                                        <span class="order-item-name-text">
+			                                            {{ item.title }}
+			                                        </span>
+
+			                                    </a>
+
+	                            			{% else %}
+
+	                            				<span class="order-item-name-text">
+													{{ item.title }}
+												</span>
+
+	                            			{% endif %}
+
+	                                    </div>
+
+	                                    <div class="order-item-quantity">
+
+	                                        <span class="order-item-quantity-text">
+	                                        	{{ 'general.quantity' | t }}: {{ item.quantity }}
 	                                        </span>
 
 	                                    </div>
 
-                                    {% endif %}
+	                                    {% if item.model %}
 
-                                    {% if item.attributes_label %}
+		                                    <div class="order-item-product-number">
 
-	                                    <div class="order-item-attributes">
+		                                    	<span class="order-item-product-number-text">
+		                                        	{{ 'general.product_number' | t }}: {{ item.model }}
+		                                        </span>
 
-	                                    	{%- assign attributes = item.attributes_label | split: ',' -%}
+		                                    </div>
 
-		                                    {% for attribute in attributes %}
+	                                    {% endif %}
 
-		                                    	<div class="order-item-attribute">
+	                                    {% if item.attributes_label %}
 
-		                                    		<span class="order-item-attribute-text">
-		                                    			{{ 'general.selection' | t }}: {{ attribute }}
-		                                    		</span>
+		                                    <div class="order-item-attributes">
 
-		                                    	</div>
+		                                    	{%- assign attributes = item.attributes_label | split: ',' -%}
 
-		                                    {% endfor %}
+			                                    {% for attribute in attributes %}
 
-		                                </div>
+			                                    	<div class="order-item-attribute">
 
-	                                {% endif %}
+			                                    		<span class="order-item-attribute-text">
+			                                    			{{ 'general.selection' | t }}: {{ attribute }}
+			                                    		</span>
 
-                            	</div>
+			                                    	</div>
 
-                            	<div class="col-auto pl-2">
+			                                    {% endfor %}
 
-                            		<div class="order-item-price">
+			                                </div>
 
-                                        <span class="order-item-price-text">
-                                            {{ item.price | in_currency }}
-                                        </span>
+		                                {% endif %}
 
-                                    </div>
+	                            	</div>
 
-                            	</div>
+	                            	<div class="col-auto pl-2">
 
-                            </div>
+	                            		<div class="order-item-price">
 
-                       </div>
+	                                        <span class="order-item-price-text">
+	                                            {{ item.price | in_currency }}
+	                                        </span>
+
+	                                    </div>
+
+	                            	</div>
+
+	                            </div>
+
+	                       </div>
+
+						</div>
 
 					</div>
 
-				</div>
+				{% endfor %}
 
-			{% endfor %}
+			</div>
 
 		</div>
 
-		<div class="order-summary">
+		<div class="order-summary-container">
 
-			<div class="order-subtotal">
+			<div class="order-summary">
 
-                <div class="row">
-
-                    <div class="col">
-
-                        <span>
-                            {{ 'general.subtotal' | t }}
-                        </span>
-
-                    </div>
-
-                    <div class="col text-right">
-
-                        <span>
-                        	{{ order.subtotal | in_currency }}
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-	       	{% if order.payment_fee %}
-
-	            <div class="order-payment-fee">
+				<div class="order-subtotal">
 
 	                <div class="row">
 
 	                    <div class="col">
 
 	                        <span>
-	                            {{ 'general.payment_fee' | t }}
+	                            {{ 'general.subtotal' | t }}
 	                        </span>
 
 	                    </div>
@@ -452,7 +526,7 @@
 	                    <div class="col text-right">
 
 	                        <span>
-	                        	{{ order.payment_fee | in_currency }}
+	                        	{{ order.subtotal | in_currency }}
 	                        </span>
 
 	                    </div>
@@ -461,18 +535,106 @@
 
 	            </div>
 
-            {% endif %}
+		       	{% if order.payment_fee %}
 
-	       	{% if order.shipping_price %}
+		            <div class="order-payment-fee">
 
-	            <div class="order-shipping-price">
+		                <div class="row">
+
+		                    <div class="col">
+
+		                        <span>
+		                            {{ 'general.payment_fee' | t }}
+		                        </span>
+
+		                    </div>
+
+		                    <div class="col text-right">
+
+		                        <span>
+		                        	{{ order.payment_fee | in_currency }}
+		                        </span>
+
+		                    </div>
+
+		                </div>
+
+		            </div>
+
+	            {% endif %}
+
+		       	{% if order.shipping_price %}
+
+		            <div class="order-shipping-price">
+
+		                <div class="row">
+
+		                    <div class="col">
+
+		                        <span>
+		                            {{ 'general.shipping_price' | t }}
+		                        </span>
+
+		                    </div>
+
+		                    <div class="col text-right">
+
+		                        <span>
+		                        	{{ order.shipping_price | in_currency }}
+		                        </span>
+
+		                    </div>
+
+		                </div>
+
+		            </div>
+
+	            {% endif %}
+
+	            {% if order.discounts %}
+
+		            <div class="order-discounts">
+
+		            	{% for discount in order.discounts %}
+
+			            	<div class="order-discount">
+
+				                <div class="row">
+
+				                    <div class="col">
+
+				                        <span>
+				                            {{ discount.title }}{% if discount.code %} - {{ discount.code }}{% endif %}
+				                        </span>
+
+				                    </div>
+
+				                    <div class="col text-right">
+
+				                        <span>
+				                        	{{ discount.amount | in_currency }}
+				                        </span>
+
+				                    </div>
+
+				                </div>
+
+				            </div>
+
+		                {% endfor %}
+
+		            </div>
+
+	            {% endif %}
+
+	            <div class="order-tax-free">
 
 	                <div class="row">
 
 	                    <div class="col">
 
 	                        <span>
-	                            {{ 'general.shipping_price' | t }}
+	                            {{ 'general.tax_free_price' | t }}
 	                        </span>
 
 	                    </div>
@@ -480,7 +642,7 @@
 	                    <div class="col text-right">
 
 	                        <span>
-	                        	{{ order.shipping_price | in_currency }}
+	                        	{{ order.tax_free | in_currency }}
 	                        </span>
 
 	                    </div>
@@ -489,115 +651,55 @@
 
 	            </div>
 
-            {% endif %}
+	            <div class="order-tax">
 
-            {% if order.discounts %}
+	                <div class="row">
 
-	            <div class="order-discounts">
+	                    <div class="col">
 
-	            	{% for discount in order.discounts %}
+	                        <span>
+	                            {{ 'general.tax' | t }}
+	                        </span>
 
-		            	<div class="order-discount">
+	                    </div>
 
-			                <div class="row">
+	                    <div class="col text-right">
 
-			                    <div class="col">
+	                        <span>
+	                        	{{ order.tax | in_currency }}
+	                        </span>
 
-			                        <span>
-			                            {{ discount.title }}{% if discount.code %} - {{ discount.code }}{% endif %}
-			                        </span>
+	                    </div>
 
-			                    </div>
-
-			                    <div class="col text-right">
-
-			                        <span>
-			                        	{{ discount.amount | in_currency }}
-			                        </span>
-
-			                    </div>
-
-			                </div>
-
-			            </div>
-
-	                {% endfor %}
+	                </div>
 
 	            </div>
 
-            {% endif %}
+	            <div class="order-total">
 
-            <div class="order-tax-free">
+	                <div class="row">
 
-                <div class="row">
+	                    <div class="col">
 
-                    <div class="col">
+	                        <span>
+	                            {{ 'general.total' | t }}
+	                        </span>
 
-                        <span>
-                            {{ 'general.tax_free_price' | t }}
-                        </span>
+	                    </div>
 
-                    </div>
+	                    <div class="col text-right">
 
-                    <div class="col text-right">
+	                        <span>
+	                        	{{ order.total | in_currency }}
+	                        </span>
 
-                        <span>
-                        	{{ order.tax_free | in_currency }}
-                        </span>
+	                    </div>
 
-                    </div>
+	                </div>
 
-                </div>
+	            </div>
 
-            </div>
-
-            <div class="order-tax">
-
-                <div class="row">
-
-                    <div class="col">
-
-                        <span>
-                            {{ 'general.tax' | t }}
-                        </span>
-
-                    </div>
-
-                    <div class="col text-right">
-
-                        <span>
-                        	{{ order.tax | in_currency }}
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="order-total">
-
-                <div class="row">
-
-                    <div class="col">
-
-                        <span>
-                            {{ 'general.total' | t }}
-                        </span>
-
-                    </div>
-
-                    <div class="col text-right">
-
-                        <span>
-                        	{{ order.total | in_currency }}
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
+	        </div>
 
 		</div>
 

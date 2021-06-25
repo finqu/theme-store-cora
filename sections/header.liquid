@@ -31,33 +31,7 @@
 
     <div class="site-header-container">
 
-        {%- if section.settings.socialMediaIconsStatus -%}
-
-            {% assign socialMediaIconCount = 0 %}
-
-            {% if settings.facebookPageUrl %}
-                {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
-            {% endif %}
-
-            {% if settings.instagramPageUrl %}
-                {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
-            {% endif %}
-
-            {% if settings.twitterPageUrl %}
-               {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
-            {% endif %}
-
-            {% if settings.pinterestPageUrl %}
-                {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
-            {% endif %}
-
-            {% if settings.youtubePageUrl %}
-               {% assign socialMediaIconCount = socialMediaIconCount | plus: 1 %}
-            {% endif %}
-
-        {%- endif -%}
-
-        <div class="site-header{% if section.settings.socialMediaIconsStatus %} site-header-social-media-buttons-enabled{% endif %}"{% if section.settings.socialMediaIconsStatus %} data-header-social-icon-count="{{ socialMediaIconCount }}"{% endif %}>
+        <div class="site-header">
 
             <div class="site-header-top">
 
@@ -65,7 +39,7 @@
 
                     <div class="site-header-top-left">
 
-                        <div class="site-header-item-container d-md-none">
+                        <div class="site-header-item-container d-lg-none">
 
                             <div class="site-header-item">
 
@@ -127,80 +101,6 @@
 
                         </div>
 
-                        {% if section.settings.socialMediaIconsStatus %}
-
-                            {% if settings.facebookPageUrl %}
-
-                                <div class="site-header-item-container d-none d-md-block">
-
-                                    <div class="site-header-item">
-
-                                        {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal', size: 'inherit' %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                            {% if settings.instagramPageUrl %}
-
-                                 <div class="site-header-item-container d-none d-md-block">
-
-                                    <div class="site-header-item">
-
-                                        {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal', size: 'inherit' %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                            {% if settings.twitterPageUrl %}
-
-                                 <div class="site-header-item-container d-none d-md-block">
-
-                                    <div class="site-header-item">
-
-                                        {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal', size: 'inherit' %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                            {% if settings.pinterestPageUrl %}
-
-                                 <div class="site-header-item-container d-none d-md-block">
-
-                                    <div class="site-header-item">
-
-                                        {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal', size: 'inherit' %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                            {% if settings.youtubePageUrl %}
-
-                                 <div class="site-header-item-container d-none d-md-block">
-
-                                    <div class="site-header-item">
-
-                                        {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal', size: 'inherit' %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                        {% endif %}
-
                     </div>
 
                     <div class="site-header-top-logo">
@@ -217,7 +117,7 @@
                                         alt="{{ item.name }}"
                                         data-src="{{ imgSrc | thumb: imgSize }}"
                                         data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                        class="lazy d-block mx-auto img-fluid">
                                 </picture>
 
                             {% else %}
@@ -767,10 +667,20 @@
                         }
                     },
                     {
+                        "type": "spacer"
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Mobile navigation",
+                            "fi": "Mobiilinavigointi"
+                        }
+                    },
+                    {
                         "id": "socialMediaIconsStatus",
                         "type": "checkbox",
                         "label": {
-                            "en": "Social media icons",
+                            "en": "Show Social media icons",
                             "fi": "Sosiaalisen median kuvakkeet"
                         },
                         "default": true
