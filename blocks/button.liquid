@@ -1,9 +1,41 @@
+<a href="{{- block.settings.btnResource.url -}}" class="btn btn-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
+    {{ block.settings.btnLabel }}
+</a>
+
 {% schema %}
 {
-    "name": "Button",
+    "name": {
+        "en": "Button",
+        "fi": "Nappi"
+    },
     "tag": "div",
     "class": "block block-button",
-    "settings": "settings": [
+    "settings": [
+        {
+            "id": "btnLabel",
+            "type": "text",
+            "label": {
+                "en": "Button label",
+                "fi": "Napin teksti"
+            }
+        },
+        {
+            "id": "btnResource",
+            "type": "url",
+            "label": {
+                "en": "Button link",
+                "fi": "Napin linkki"
+            }
+        },
+        {
+            "id": "openInNewWindowStatus",
+            "type": "checkbox",
+            "label": {
+                "en": "Open in a new window",
+                "fi": "Avaa uudessa ikkunassa"
+            },
+            "default": true
+        }
     ]
 }
 {% endschema %}

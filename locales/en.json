@@ -19,6 +19,10 @@
         "subscribe": "Subscribed",
         "newsletter_subscribed": "Newsletter subscribed.",
         "email": "Email",
+        "name": "Name",
+        "phone": "Phonenumber",
+        "subject": "Subject",
+        "message": "Message",
         "search": "Search",
         "search_products": "Search products",
         "search_no_results": "Your search returned no results, please try other keywords.",
@@ -310,5 +314,15 @@
     "activate_account": {
         "title": "Registration received",
         "description": "The account has not been activated. Once your account is activated, you will be able to use the store. Thank you for your patience."
+    },
+    "contact": {
+        "title": "Contact us",
+        "email": "Email",
+        "name": "Name",
+        "phone": "Phonenumber",
+        "subject": "Subject",
+        "message": "Message",
+        "cta": "Send",
+        "success": "Message sent successfully."
     }
 }

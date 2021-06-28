@@ -7,6 +7,12 @@ export default {
             }
         });
 
+        document.addEventListener('finqu:block:load', (e) => {
+            if (e.target.classList.contains('has-lazy')) {
+                themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
+            }
+        });
+
         document.addEventListener('finqu:section:edit', (e) => {
 
         	const el = e.detail.settingsContainerEl;

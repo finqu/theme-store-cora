@@ -19,6 +19,10 @@
         "subscribe": "Tilaa",
         "newsletter_subscribed": "Uutiskirje tilattu.",
         "email": "Sähköposti",
+        "name": "Nimi",
+        "phone": "Puhelinnumero",
+        "subject": "Aihe",
+        "message": "Viesti",
         "search": "Haku",
         "search_products": "Hae tuotteita",
         "search_no_results": "Haku ei tuottanut tuloksia, kokeile muita hakusanoja.",
@@ -313,5 +317,15 @@
     "activate_account": {
         "title": "Rekisteröityminen vastaanotettu",
         "description": "Tiliä ei ole aktivoitu. Tilin aktivoinnin jälkeen pääset verkkokauppaan ostoksille. Kiitos kärsivällisyydestä."
+    },
+    "contact": {
+        "title": "Ota yhteyttä",
+        "email": "Sähköposti",
+        "name": "Nimi",
+        "phone": "Puhelinnumero",
+        "subject": "Aihe",
+        "message": "Viesti",
+        "cta": "Lähetä",
+        "success": "Viesti lähetettiin onnistuneesti."
     }
 }

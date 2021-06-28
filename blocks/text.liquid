@@ -1,9 +1,19 @@
+<div data-finqu-inline-editor="richtextHtml">{{ block.settings.contentRichtextHtml }}</div>
+
 {% schema %}
 {
-    "name": "Text",
+    "name": {
+        "en": "Text",
+        "fi": "Teksti"
+    },
     "tag": "div",
     "class": "block block-text",
-    "settings": "settings": [
+    "settings": [
+        {
+            "id": "richtextHtml",
+            "type": "richtext",
+            "inline": "true"
+        }
     ]
 }
 {% endschema %}

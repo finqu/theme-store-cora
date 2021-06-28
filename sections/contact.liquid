@@ -1,0 +1,149 @@
+{%- assign contactTitle = 'contact.title' | t -%}
+{%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
+{%- assign sectionTitle = section.settings.title | default: contactTitle -%}
+{%- assign sectionSubtitle = section.settings.subtitle -%}
+{%- assign sectionDescription = section.settings.text -%}
+
+{%- capture sectionContent -%}
+
+    {% form 'contact' %}
+
+        {% if form.was_success %}
+
+            {{ 'contact.success' | t }}
+
+        {% else %}
+
+            <div class="row">
+
+                <div class="col-12 col-md form-group">
+
+                    <label>
+                        {{ 'contact.name' | t }}
+                    </label>
+
+                    <input type="text" class="form-control" name="name" value="{{ form.submitted.name | escape }}" required>
+
+                </div>
+
+                <div class="col-12 col-md form-group">
+
+                    <label>
+                        {{ 'contact.email' | t }}
+                    </label>
+
+                    <input type="text" class="form-control" name="email" value="{{ form.submitted.email | escape }}" required>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-12 col-md form-group">
+
+                    <label>
+                        {{ 'contact.phone' | t }}
+                    </label>
+
+                    <input type="text" class="form-control" name="phonenumber" value="{{ form.submitted.phonenumber | escape }}">
+
+                </div>
+
+                <div class="col-12 col-md form-group">
+
+                    <label>
+                        {{ 'contact.subject' | t }}
+                    </label>
+
+                    <input type="text" class="form-control" name="subject" value="{{ form.submitted.subject | escape }}">
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    {{ 'contact.message' | t }}
+                </label>
+
+                <textarea name="message" class="form-control" rows="5" required>
+                    {{ form.submitted.message | escape }}
+                </textarea>
+
+            </div>
+
+            {% render 'form-error', error: form.error %}
+
+            <button type="submit" class="btn btn-section btn-block">
+                {{ 'contact.cta' | t }}
+            </button>
+
+        {% endif %}
+
+    {% endform %}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Contact",
+        "fi": "Yhteydenotto"
+    },
+    "tag": "section",
+    "class": "section section-contact",
+    "settings": [
+        {
+            "id": "title",
+            "type": "text",
+            "label": {
+                "en": "Title",
+                "fi": "Otsikko"
+            }
+        },
+        {
+            "id": "subtitle",
+            "type": "text",
+            "label": {
+                "en": "Subtitle",
+                "fi": "Alaotsikko"
+            }
+        },
+        {
+            "id": "text",
+            "type": "richtext",
+            "label": {
+                "en": "Text",
+                "fi": "Teksti"
+            }
+        },
+        {
+            "id": "textAlign",
+            "type": "radio-pill",
+            "label": {
+                "en": "Text align",
+                "fi": "Tekstin tasaus"
+            },
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "{# icon.alignLeftLight #}"
+                },
+                {
+                    "value": "center",
+                    "label": "{# icon.alignCenterLight #}"
+                },
+                {
+                    "value": "right",
+                    "label": "{# icon.alignRightLight #}"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

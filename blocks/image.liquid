@@ -1,9 +1,75 @@
+{%- assign imgSizeSm = '420' -%}
+{%- assign imgSizeLg = '1200' -%}
+
+<picture>
+
+    <source media="(min-width: 768px)" data-srcset="
+        {{ block.settings.imgSrc | thumb: imgSizeLg }} 1x,
+        {{ block.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+    <img
+        alt="{{ block.settings.imgAlt }}"
+        data-src="{{ block.settings.imgSrc | thumb: imgSizeSm }}"
+        data-srcset="{{ block.settings.imgSrc | thumb: imgSizeSm }} 1x, {{ block.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+        class="lazy d-block mx-auto img-fluid {% if block.settings.imgEffect != 'none' %} {{ block.settings.imgEffect }}{% endif %}"
+        data-finqu-inline-editor="imgSrc">
+
+</picture>
+
 {% schema %}
 {
-    "name": "Image",
+    "name": {
+        "en": "Image",
+        "fi": "Kuva"
+    },
     "tag": "div",
-    "class": "block block-image",
-    "settings": "settings": [
+    "class": "block block-image has-lazy",
+    "settings": [
+        {
+            "id": "imgSrc",
+            "type": "image-picker",
+            "inline": "true"
+        },
+        {
+            "id": "imgAlt",
+            "type": "text",
+            "label": {
+                "en": "Image alt",
+                "fi": "Kuvan alt-teksti"
+            }
+        },
+        {
+            "id": "imgEffect",
+            "type": "select",
+            "label": {
+                "en": "Image effect",
+                "fi": "Kuvan effekti"
+            },
+            "default": "none",
+            "options": [
+                {
+                    "value": "none",
+                    "label": {
+                        "en": "None",
+                        "fi": "Ei mitään"
+                    }
+                },
+                {
+                    "value": "rounded",
+                    "label": {
+                        "en": "Rounded",
+                        "fi": "Pyöristetty"
+                    }
+                },
+                {
+                    "value": "rounded-circle",
+                    "label": {
+                        "en": "Circle",
+                        "fi": "Ympyrä"
+                    }
+                }
+            ]
+        }
     ]
 }
 {% endschema %}
