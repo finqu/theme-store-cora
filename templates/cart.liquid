@@ -4,15 +4,16 @@
 
 {{ content_for_index }}
 
-{% section 'cart-template' %}
-
-{{ content_for_index }}
-
 {% schema %}
 {
 	"name": {
 		"en": "Cart",
 		"fi": "Ostoskori"
-	}
+	},
+	"template_sections": [
+		{
+			"name": "cart-template"
+		}
+	]
 }
 {% endschema %}
