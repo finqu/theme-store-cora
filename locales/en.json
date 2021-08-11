@@ -34,10 +34,10 @@
         "wishlist_empty": "Wishlist is empty.",
         "product": "Product",
         "product_number": "Product number",
-        "product_count": "__amount__ product",
+        "product_count": "{{ amount }} product",
         "product_plural": "Products",
-        "product_plural_count": "__amount__ products",
-        "Page": "Page",
+        "product_plural_count": "{{ amount }} products",
+        "page": "Page",
         "sort_by": "Sort by",
         "date_format": "%-d.%-m.%Y",
         "total": "Total",
@@ -45,7 +45,7 @@
         "tax_free_price": "Tax free price",
         "tax": "Tax",
         "back_to_home_page": "Back to home page",
-        "policy_accept_text": "I have read and agree to the __policy__",
+        "policy_accept_text": "I have read and agree to the {{ policy }}",
         "policies": {
             "terms_and_conditions": "Terms & Conditions",
             "refund_policy": "Refund policy",
@@ -290,8 +290,8 @@
         "cta": "Create account",
         "returning_customer": "Returning customer?",
         "login": "Sign in",
-        "inline_terms": "By clicking __action__, you agree to our __terms__.",
-        "inline_terms_with_policy": "By clicking __action__, you agree to our __terms__. Learn how we collect, use and share your data in our __policy__."
+        "inline_terms": "By clicking {{ action }}, you agree to our {{ terms }}.",
+        "inline_terms_with_policy": "By clicking {{ action }}, you agree to our {{ terms }}. Learn how we collect, use and share your data in our {{ policy }}."
     },
     "password_reset": {
         "title": "New password",

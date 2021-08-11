@@ -4,15 +4,16 @@
 
 {{ content_for_index }}
 
-{% section 'blog-template' %}
-
-{{ content_for_index }}
-
 {% schema %}
 {
 	"name": {
 		"en": "Blog",
 		"fi": "Blogi"
-	}
+	},
+	"template_sections": [
+		{
+			"name": "blog-template"
+		}
+	]
 }
 {% endschema %}

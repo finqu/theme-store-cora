@@ -4,15 +4,16 @@
 
 {{ content_for_index }}
 
-{% section 'product-template' %}
-
-{{ content_for_index }}
-
 {% schema %}
 {
 	"name": {
 		"en": "Product",
 		"fi": "Tuote"
-	}
+	},
+	"template_sections": [
+		{
+			"name": "product-template"
+		}
+	]
 }
 {% endschema %}

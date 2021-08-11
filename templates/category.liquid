@@ -4,15 +4,16 @@
 
 {{ content_for_index }}
 
-{% section 'category-template' %}
-
-{{ content_for_index }}
-
 {% schema %}
 {
 	"name": {
 		"en": "Category",
 		"fi": "Tuoteryhmä"
-	}
+	},
+	"template_sections": [
+		{
+			"name": "category-template"
+		}
+	]
 }
 {% endschema %}
