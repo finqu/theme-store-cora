@@ -610,31 +610,31 @@ export default {
 
     		const productId = $('[name="product_id"]').val();
 
-    		// If variant is visible show it
-            $('.product-variant[data-is-usable]').filter(':visible').each(function() {
+    		// If attribute is visible show it
+            $('.product-attribute[data-is-usable]').filter(':visible').each(function() {
 
                 $(this).removeAttr('disabled');
 
                 const optionId = $(this).val();
 
-                if ($('.product-subvariant-container[data-option="'+optionId+'"]').length) {
+                if ($('.product-subattribute-container[data-option="'+optionId+'"]').length) {
 
-                    $('.product-subvariant-container[data-option="'+optionId+'"]').show();
-                    $('.product-subvariant-container[data-option="'+optionId+'"]').find('.product-variant[data-is-usable]').removeAttr('disabled');
+                    $('.product-subattribute-container[data-option="'+optionId+'"]').show();
+                    $('.product-subattribute-container[data-option="'+optionId+'"]').find('.product-attribute[data-is-usable]').removeAttr('disabled');
                 }
             });
 
-            // Variants product price total option
-            $('.product-variant.has-price, option.has-price').each(function() {
+            // Attributes product price total option
+            $('.product-attribute.has-price, option.has-price').each(function() {
 
                 if ($(this).is('option')) {
 
                     $(this).each(function() {
 
                         const self = this;
-                        const variantId = $(this).val();
+                        const attributeId = $(this).val();
 
-                        $.get('/api/products/'+productId+'/price?variants['+variantId+']=true', (res) => {
+                        $.get('/api/products/'+productId+'/price?attributes['+attributeId+']=true', (res) => {
                         	$(self).append('('+res.price+')');
                         });
                     });
@@ -642,51 +642,51 @@ export default {
                 } else if ($(this).is(':checkbox, :radio')) {
 
                     const self = this;
-                    const variantId = $(this).val();
+                    const attributeId = $(this).val();
 
-                    $.get('/api/products/'+productId+'/price?variants['+variantID+']=true', (res) => {
+                    $.get('/api/products/'+productId+'/price?attributes['+attributeId+']=true', (res) => {
                     	$(self).siblings('label').append('('+res.price+')');
                     });
 
                 } else if ($(this).is('textarea')) {
 
                 	const self = this;
-                    const variantId = $(this).attr('name');
+                    const attributeId = $(this).attr('name');
 
-                    $.get('/api/products/'+productId+'/price?variants['+variantID+']=true', (res) => {
+                    $.get('/api/products/'+productId+'/price?attributes['+attributeId+']=true', (res) => {
                     	$(self).siblings('label').append('('+res.price+')');
                     });
                 }
             });
 
-            $('.product-variant').on('change', function() {
+            $('.product-attribute').on('change', function() {
 
-                const variantId = $(this).data('variant');
+                const attributeId = $(this).data('attribute');
                 const optionId = $(this).val();
-                let sibling = $(this).parentsUntil('.product-variant-container').parent().siblings('.product-subvariant-container[data-variant="'+variantId+'"]');
-                let productVariants = [];
+                let sibling = $(this).parentsUntil('.product-attribute-container').parent().siblings('.product-subattribute-container[data-attribute="'+attributeId+'"]');
+                let productAttributes = [];
 
                 if (!sibling.length) {
-                    sibling = $(this).parent().siblings('.product-subvariant-container[data-variant="'+variantId+'"]');
+                    sibling = $(this).parent().siblings('.product-subattribute-container[data-attribute="'+attributeId+'"]');
                 }
 
                 if ($(this).is(':checkbox')) {
 
-                    sibling = $(this).parentsUntil('.product-variant-container').parent().siblings('.product-subvariant-container[data-option="'+optionId+'"]');
+                    sibling = $(this).parentsUntil('.product-attribute-container').parent().siblings('.product-subattribute-container[data-option="'+optionId+'"]');
 
                     if (!sibling.length) {
-                        sibling = $(this).parent().siblings('.product-subvariant-container[data-option="'+optionId+'"]');
+                        sibling = $(this).parent().siblings('.product-subattribute-container[data-option="'+optionId+'"]');
                     }
                 }
 
                 sibling.hide();
                 sibling.find('textarea').val('');
-                sibling.find('.product-variant').attr('disabled', true);
+                sibling.find('.product-attribute').attr('disabled', true);
 
-                // Reset sub-variants if hidden
-                $('.product-subvariant-container').filter(':hidden').each(function() {
+                // Reset subattributes if hidden
+                $('.product-subattribute-container').filter(':hidden').each(function() {
 
-                    $(this).find('.product-variant').each(function() {
+                    $(this).find('.product-attribute').each(function() {
 
                         if ($(this).is(':checkbox, :radio')) {
                             $(this).prop('checked', false);
@@ -698,32 +698,32 @@ export default {
                     });
                 });
 
-                // Show variants if active
+                // Show attributes if active
                 if (($(this).is('select') && $(this).val()) || ($(this).is(':checkbox, :radio') && $(this).is(':checked')) || ($(this).is('textarea') && $(this).val())) {
 
                     $('[data-option="'+optionId+'"]').show();
                     $('[data-option="'+optionId+'"]').find('[data-is-usable]').removeAttr('disabled');
                 }
 
-                // Get variants prices
-                $('.product-variant').each(function() {
+                // Get attributes prices
+                $('.product-attribute').each(function() {
 
                     if ($(this).is('select') && $(this).val()) {
 
-                        productVariants.push('variants['+$(this).val()+']');
+                        productAttributes.push('attributes['+$(this).val()+']');
 
                     } else if ($(this).is(':checkbox, :radio') && $(this).is(':checked')) {
 
-                        productVariants.push('variants['+$(this).val()+']');
+                        productAttributes.push('attributes['+$(this).val()+']');
 
                     } else if ($(this).is('textarea') && $(this).val()) {
 
-                        productVariants.push('variants['+$(this).attr('name')+']');
+                        productAttributes.push('attributes['+$(this).attr('name')+']');
                     }
                 });
 
                 // Get jsons and change prices
-                $.get('/api/products/'+productId+'/price?'+productVariants.join('&')+'=true', (res) => {
+                $.get('/api/products/'+productId+'/price?'+productAttributes.join('&')+'=true', (res) => {
                     $('[data-product-price-dynamic]').html(themeApp.formatCurrency(res.price));
                 });
             });

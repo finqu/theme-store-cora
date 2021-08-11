@@ -68,7 +68,7 @@ export default class Cart {
                     const data = $(cartFormEl).serializeJSON();
                     let itemId = e.target.getAttribute('data-cart-add');
                     let quantity = e.target.getAttribute('data-cart-quantity');
-                    let variants = [];
+                    let attributes = [];
 
                     delete data['form_type'];
                     delete data['form_id'];
@@ -85,7 +85,7 @@ export default class Cart {
 
                         } else {
 
-                            variants.push({
+                            attributes.push({
                                 name: key,
                                 value: data[key]
                             });
@@ -96,7 +96,7 @@ export default class Cart {
                         return false;
                     }
 
-                    return self.addItem(parseInt(itemId, 10), parseInt(quantity, 10), variants);
+                    return self.addItem(parseInt(itemId, 10), parseInt(quantity, 10), attributes);
                 }
 
                 return false;
@@ -191,7 +191,7 @@ export default class Cart {
                 obj.list_name = '';
                 obj.brand = '';
                 obj.category = '';
-                obj.variant = item.variant_label;
+                obj.attribute = item.attribute_label;
                 obj.list_position = '';
                 obj.quantity = item.price;
                 obj.price = item.price_raw;
@@ -454,7 +454,7 @@ export default class Cart {
     }
 
     // Add item
-    addItem(id = null, quantity = 1, variants = [], options = {}) {
+    addItem(id = null, quantity = 1, attributes = [], options = {}) {
 
         if (id === null) {
             return;
@@ -476,7 +476,7 @@ export default class Cart {
         data.product = id;
         data.quantity = quantity;
 
-        variants.forEach((item, i) => {
+        attributes.forEach((item, i) => {
             data[item.name] = item.value;
         });
 
@@ -504,7 +504,7 @@ export default class Cart {
                 obj.list_name = '';
                 obj.brand = '';
                 obj.category = '';
-                obj.variant = lastItem.variant_label;
+                obj.attribute = lastItem.attribute_label;
                 obj.list_position = '';
                 obj.quantity = lastItem.amount;
                 obj.price = lastItem.price_raw;
@@ -580,7 +580,7 @@ export default class Cart {
                 obj.list_name = '';
                 obj.brand = '';
                 obj.category = '';
-                obj.variant = itemToBeRemoved.variant_label;
+                obj.attribute = itemToBeRemoved.attribute_label;
                 obj.list_position = '';
                 obj.quantity = itemToBeRemoved.amount;
                 obj.price = itemToBeRemoved.price_raw;

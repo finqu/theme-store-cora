@@ -1,0 +1,66 @@
+<div class="product-attribute-container form-group">
+
+    {% if attribute.name %}<label>{{ attribute.name }}</label>{% endif %}
+
+    {% for option in attribute.options %}
+
+        <div class="form-group form-check">
+
+            {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
+
+                {% assign radioArgument1 = true %}
+
+            {% endif %}
+
+            {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
+
+                {% assign radioArgument2 = true %}
+
+            {% endif %}
+
+            <input class="product-attribute form-check-input{% if radioArgument1 or radioArgument2 %} has-price{% endif %}"
+               type="radio"
+               data-attribute="{{ attribute.id }}"
+               id="product-option-{{ option.id }}"
+               name="{{ attribute.id }}"
+               value="{{ option.id }}"
+               {% if option.image %} data-attribute-image="product-option-image-{{ option.id }}"{% endif %}
+               {% if option.in_stock == false and product.ignore_storage == false %} disabled{% else %} data-is-usable{% endif %}>
+
+            <label for="product-option-{{ option.id }}" class="form-check-label">
+
+                {{ option.name }}
+
+                {% if showAttributeStock and product.ignore_storage == false and product.only_preview != true and option.in_stock == true and option.subattribute == false %}
+
+                    ({{ option.stock }} {{ product.unit }})
+
+                {% endif %}
+
+                {% if option.in_stock == false and product.ignore_storage == false %}
+
+                    ({{ 'product.out_of_stock' | t }})
+
+                {% elsif option.price > 0 and showAttributePrice and showAttributeTotalPrice == blank %}
+
+                    (+{{ option.price | in_currency }})
+
+                {% endif %}
+
+            </label>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% for option in attribute.options %}
+
+    {% if option.subattribute %}
+
+        {% render 'product-attributes/subattribute', option: option %}
+
+    {% endif %}
+
+{% endfor %}

@@ -39,11 +39,11 @@
 
                             {% endfor %}
 
-                            {% if product.variants.size > 0 %}
+                            {% if product.attributes.size > 0 %}
 
-                                {% for variant in product.variants %}
+                                {% for attribute in product.attributes %}
 
-                                    {% for option in variant.options %}
+                                    {% for option in attribute.options %}
 
                                         {% if option.image %}
 
@@ -172,11 +172,11 @@
 
                             {% endfor %}
 
-                            {% if product.variants.size > 0 %}
+                            {% if product.attributes.size > 0 %}
 
-                                {% for variant in product.variants %}
+                                {% for attribute in product.attributes %}
 
-                                    {% for option in variant.options %}
+                                    {% for option in attribute.options %}
 
                                         {% if option.image %}
 
@@ -533,31 +533,31 @@
                                     <input type="hidden" name="product_id" value="{{ product.id }}">
                                     <input type="hidden" name="quantity" value="{{ product.min_amount }}">
 
-                                    {% if product.variants.size > 0 %}
+                                    {% if product.attributes.size > 0 %}
 
-                                        <div class="product-variants">
+                                        <div class="product-attributes">
 
-                                            {% assign showVariantPrice = true %}
-                                            {% assign showVariantTotalPrice = true %}
-                                            {% assign showVariantStock = false %}
+                                            {% assign showAttributePrice = true %}
+                                            {% assign showAttributeTotalPrice = true %}
+                                            {% assign showAttributeStock = false %}
 
-                                            {% for variant in product.variants %}
+                                            {% for attribute in product.attributes %}
 
-                                                {%- if variant.input_type == 'select' -%}
+                                                {%- if attribute.input_type == 'select' -%}
 
-                                                    {% render 'product-variants/select', variant: variant %}
+                                                    {% render 'product-attributes/select', attribute: attribute %}
 
-                                                {%- elsif variant.input_type == 'radio' -%}
+                                                {%- elsif attribute.input_type == 'radio' -%}
 
-                                                    {% render 'product-variants/radio', variant: variant %}
+                                                    {% render 'product-attributes/radio', attribute: attribute %}
 
-                                                {%- elsif variant.input_type == 'checkbox' -%}
+                                                {%- elsif attribute.input_type == 'checkbox' -%}
 
-                                                    {% render 'product-variants/checkbox', variant: variant %}
+                                                    {% render 'product-attributes/checkbox', attribute: attribute %}
 
-                                                {%- elsif variant.input_type == 'text' -%}
+                                                {%- elsif attribute.input_type == 'text' -%}
 
-                                                    {% render 'product-variants/text', variant: variant %}
+                                                    {% render 'product-attributes/text', attribute: attribute %}
 
                                                 {%- endif -%}
 
