@@ -191,7 +191,7 @@ export default class Cart {
                 obj.list_name = '';
                 obj.brand = '';
                 obj.category = '';
-                obj.attribute = item.attribute_label;
+                obj.variant = item.attribute_label;
                 obj.list_position = '';
                 obj.quantity = item.price;
                 obj.price = item.price_raw;
@@ -504,7 +504,7 @@ export default class Cart {
                 obj.list_name = '';
                 obj.brand = '';
                 obj.category = '';
-                obj.attribute = lastItem.attribute_label;
+                obj.variant = lastItem.attribute_label;
                 obj.list_position = '';
                 obj.quantity = lastItem.amount;
                 obj.price = lastItem.price_raw;
@@ -580,7 +580,7 @@ export default class Cart {
                 obj.list_name = '';
                 obj.brand = '';
                 obj.category = '';
-                obj.attribute = itemToBeRemoved.attribute_label;
+                obj.variant = itemToBeRemoved.attribute_label;
                 obj.list_position = '';
                 obj.quantity = itemToBeRemoved.amount;
                 obj.price = itemToBeRemoved.price_raw;
