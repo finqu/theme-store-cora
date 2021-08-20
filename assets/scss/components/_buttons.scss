@@ -57,6 +57,7 @@
     align-items: center;
     flex-shrink: 0;
     border-radius: 50%;
+    position: relative;
 
     &.btn-sm {
         width: $btn-icon-height-sm;

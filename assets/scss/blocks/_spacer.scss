@@ -1,0 +1,29 @@
+// Spacer
+// -----------------------------------------------------------------------------------------
+
+$block-spacers: (
+	1: 25px,
+	2: 50px,
+	3: 75px,
+	4: 100px,
+	5: 150px,
+	6: 200px,
+	7: 250px,
+	8: 300px,
+	9: 400px,
+	10: 450px,
+);
+
+.block + .block-spacer {
+	margin-top: -#{spacer(4)};
+}
+
+.block-spacer {
+	margin-bottom: 0;
+
+	@each $key, $val in $block-spacers {
+		.block-spacer-#{$key} {
+			height: $val
+		}
+	}
+}

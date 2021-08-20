@@ -1,0 +1,92 @@
+{%- assign defaultTitle = 'system.placeholder_text' | t -%}
+{%- assign title = block.settings.title | default: defaultTitle -%}
+
+{%- render 'section-header', sectionTitle: title, sectionTitleTag: block.settings.titleTag, sectionHeaderTextAlign: block.settings.textAlign, sectionSubtitle: block.settings.subtitle, sectionContentContainer: 'none' -%}
+
+{% schema %}
+{
+    "name": {
+        "en": "Heading",
+        "fi": "Otsikko"
+    },
+    "tag": "div",
+    "class": "block block-heading",
+    "category": "basic",
+    "settings": [
+        {
+            "id": "titleTag",
+            "type": "select",
+            "label": {
+                "en": "Heading type",
+                "fi": "Otsikon tyyppi"
+            },
+            "default": "h2",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "H1"
+                },
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },
+                {
+                    "value": "h5",
+                    "label": "H5"
+                },
+                {
+                    "value": "h6",
+                    "label": "H6"
+                }
+            ]
+        },
+        {
+            "id": "title",
+            "type": "text",
+            "label": {
+                "en": "Title",
+                "fi": "Otsikko"
+            }
+        },
+        {
+            "id": "subtitle",
+            "type": "text",
+            "label": {
+                "en": "Subtitle",
+                "fi": "Väliotsikko"
+            }
+        },
+        {
+            "id": "textAlign",
+            "type": "radio-pill",
+            "label": {
+                "en": "Text align",
+                "fi": "Tekstin tasaus"
+            },
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "{# icon.alignLeftLight #}"
+                },
+                {
+                    "value": "center",
+                    "label": "{# icon.alignCenterLight #}"
+                },
+                {
+                    "value": "right",
+                    "label": "{# icon.alignRightLight #}"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

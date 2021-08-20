@@ -583,7 +583,7 @@
 
                                     </div>
 
-                                    {% render 'form-error', error: form.error %}
+                                    {% render 'form-error', error: form.error, class: 'form-group' %}
 
                                 {% endform %}
 
@@ -799,7 +799,7 @@
 
                                                 </div>
 
-                                                {% render 'form-error', error: form.error %}
+                                                {% render 'form-error', error: form.error, class: 'form-group' %}
 
                                             {% endform %}
 
@@ -889,7 +889,10 @@
 
 {% schema %}
 {
-    "name": "Product",
+    "name": {
+        "en": "Product",
+        "fi": "Tuote"
+    },
     "tag": "div",
     "class": "section section-product-card",
     "is_creatable": false

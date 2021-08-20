@@ -117,7 +117,7 @@
 
 {% endcapture %}
 
-<div class="section-header{% if sectionHeaderTextAlign %} text-{{ sectionHeaderTextAlign }}{% endif %}">
+<div class="section-header{% if sectionHeaderTextAlign %} text-{{ sectionHeaderTextAlign }}{% endif %}{% if sectionContentContainer == 'none' %} d-block{% endif %}">
 
 	{%- if sectionContentContainer == 'fixed' -%}
 

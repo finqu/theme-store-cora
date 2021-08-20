@@ -20,11 +20,17 @@ export default {
 
         const bodyEl = document.querySelector('body');
 
-        this.initMobileNavigation();
-        this.initSiteHeader();
-        this.initSortByFilters();
-        this.initWishlist();
-        this.initCartMini();
+        if (!bodyEl.classList.contains('template-password')) {
+            this.initMobileNavigation();
+            this.initSiteHeader();
+            this.initSortByFilters();
+            this.initWishlist();
+            this.initCartMini();
+        }
+
+        if (bodyEl.classList.contains('template-password')) {
+            this.initPassword();
+        }
 
         if (bodyEl.classList.contains('template-customers-account')) {
             this.initAccount();
@@ -46,6 +52,20 @@ export default {
 		    this.initProduct();
         }
 	},
+    initPassword: function() {
+        const containerEl = document.querySelector('.section-password');
+        const passwordOverlayContainerEl = document.querySelector('.password-overlay-container');
+        const passwordOverlayActionShowEl = containerEl.querySelector('#password-overlay-action-show');
+        const passwordOverlayActionHideEl = containerEl.querySelector('#password-overlay-action-hide');
+
+        passwordOverlayActionShowEl.addEventListener('click', (e) => {
+            passwordOverlayContainerEl.classList.add('active');
+        });
+
+        passwordOverlayActionHideEl.addEventListener('click', (e) => {
+            passwordOverlayContainerEl.classList.remove('active');
+        });
+    },
     initMobileNavigation: function() {
 
         const containerEl = document.querySelector('.section-site-header');
@@ -113,12 +133,43 @@ export default {
             const siteHeaderItemCartEl = containerEl.querySelector('.site-header-item-cart');
             const siteHeaderCartContainerEl = containerEl.querySelector('.site-header-cart-container');
             const siteHeaderCartEl = containerEl.querySelector('.site-header-cart');
-            const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetHeight - 1;
+            const siteHeaderLogoImgEl = containerEl.querySelector('.site-header-top-logo img');
+
+            if (siteHeaderLogoImgEl) {
+
+                const observer = new MutationObserver((mutations) => {
+
+                    for (const { target } of mutations) {
+
+                        if (target.classList.contains('loaded')) {
+
+                            const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.offsetHeight - 1;
+
+                            siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
+
+                            observer.disconnect();
+
+                            break;
+                        }
+                    }
+                });
+
+                observer.observe(siteHeaderLogoImgEl, {
+                    attributes: true,
+                    attributeFilter: ['class'],
+                    childList: false,
+                    characterData: false
+                });
+
+            } else {
+
+                const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.offsetHeight - 1;
+
+                siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
+            }
 
             const delay = 500;
             let delayTimer = null;
-
-            siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
 
             siteHeaderItemCartEl.addEventListener('mouseenter', e => {
 

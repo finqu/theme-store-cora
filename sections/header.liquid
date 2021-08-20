@@ -1,3 +1,4 @@
+{%- assign mainMenu = linklists[section.settings.menu] -%}
 {%- assign sectionHeight = 'off' -%}
 
 {%- if section.settings.annoucementStatus and section.settings.annoucementText -%}
@@ -244,7 +245,7 @@
 
                         <ul class="site-header-menu">
 
-                            {% for item in section.settings.menu.links %}
+                            {% for item in mainMenu.links %}
 
                                 <li class="site-header-menu-item{% if item.active %} site-header-menu-item-active{% endif %}"{% if item.links %} data-header-menu-child-id="{{ forloop.index }}"{% endif %}>
 
@@ -274,7 +275,7 @@
 
                 <div class="site-header-submenus-container">
 
-                    {% for item in section.settings.menu.links %}
+                    {% for item in mainMenu.links %}
 
                         {%- if item.links -%}
 
@@ -358,7 +359,7 @@
 
         <div id="site-mobile-navigation-overlay"></div>
 
-        {% for item in section.settings.menu.links %}
+        {% for item in mainMenu.links %}
 
             {%- assign parentIndex = forloop.index -%}
 
@@ -530,7 +531,7 @@
 
             <ul class="site-mobile-navigation-menu">
 
-                {% for item in section.settings.menu.links %}
+                {% for item in mainMenu.links %}
 
                     <li class="site-mobile-navigation-menu-item{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}">
 
@@ -638,7 +639,10 @@
 
 {% schema %}
 {
-    "name": "Header",
+    "name": {
+        "en": "Header",
+        "fi": "Ylätunniste"
+    },
     "tag": "section",
     "is_creatable": false,
     "is_removable": false,
@@ -647,7 +651,10 @@
         "list_type": "tabs",
         "groups": [
             {
-                "title": "General",
+                "title": {
+                    "en": "General",
+                    "fi": "Yleinen"
+                },
                 "settings": [
                     {
                         "id": "menu",
@@ -656,7 +663,7 @@
                             "en": "Menu",
                             "fi": "Navigaatio"
                         },
-                        "default": "footer-menu"
+                        "default": "main-menu"
                     },
                     {
                         "id": "logoImgSrc",
@@ -733,7 +740,10 @@
                 ]
             },
             {
-                "title": "Section",
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
                 "settings": [
                     {
                         "type": "title",

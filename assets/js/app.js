@@ -11,6 +11,7 @@ import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
 import Handlebars from 'handlebars';
 import ImageCarousel from './components/sections/image-carousel';
+import ProductCarousel from './components/sections/product-carousel';
 
 export default class App {
 
@@ -29,8 +30,6 @@ export default class App {
 		this.cart = new Cart();
 		this.icons = icons;
 		this.lazyLoad = new LazyLoad({
-			container: document,
-			elements_selector: '.lazy',
             show_while_loading: true,
             callback_loading: function (el) {
 
@@ -41,9 +40,6 @@ export default class App {
                 objectFitImages(el);
 
                 loadedImgs.push(el);
-            },
-            callback_loaded: function (el) {
-            	// Loaded
             },
             callback_error: function (el) {
 
@@ -266,13 +262,19 @@ export default class App {
 
 	init() {
 
-		this.cart.init();
+		if (!document.querySelector('body').classList.contains('template-password')) {
+			this.cart.init();
+		}
+
 		common.init();
 
     	for (const el of document.querySelectorAll('.section-image-carousel')) {
     		new ImageCarousel(el);
     	}
 
+    	for (const el of document.querySelectorAll('.section-product-carousel')) {
+    		new ProductCarousel(el);
+    	}
 	}
 
     t(key, vars = {}) {

@@ -54,6 +54,7 @@
         }
     },
     "system": {
+        "placeholder_text": "Placeholder text",
         "pages": {
             "terms_and_conditions": "Terms & Conditions",
             "refund_policy": "Refund policy",
@@ -309,7 +310,12 @@
     },
     "password_protection": {
         "title": "Opening soon",
-        "cta": "Login"
+        "subtitle": "Subscribe to our newsletter",
+        "description": "We announce in a newsletter about promotions, new products and sales.",
+        "newsletter_subscribed": "Newsletter subscribed.",
+        "newsletter_cta": "Subscribe to the newsletter",
+        "login_to_store": "Log in to the store",
+        "login_to_store_cta": "Confirm"
     },
     "activate_account": {
         "title": "Registration received",

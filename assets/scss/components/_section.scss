@@ -162,7 +162,7 @@
 		.title-container {
 
 			& + .subtitle-container {
-				padding-top: spacer(1);
+				padding-top: spacer(3);
 
 				& + .description-container {
 					padding-top: spacer(6);
@@ -177,6 +177,7 @@
 				font-size: $h1-font-size * 1.15;
 				font-weight: $font-weight-bold;
 				line-height: $headings-line-height;
+				margin-bottom: 0;
 			}
 		}
 
@@ -257,6 +258,12 @@
 					margin-top: 0;
 				}
 			}
+		}
+	}
+
+	@each $key, $val in $section-view-heights {
+		.section-view-height-#{$key} {
+			height: $val;
 		}
 	}
 

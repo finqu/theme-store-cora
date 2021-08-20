@@ -27,7 +27,6 @@ export default class ImageCarousel {
             effect: this.opts.carouselEffect,
             parallax: true,
             grabCursor: true,
-            centerSlides: true,
             pagination: {
                 el: '.swiper-pagination'
             },
@@ -37,8 +36,6 @@ export default class ImageCarousel {
             },
             on: {
                 init: function() {
-
-                    window.themeApp.lazyLoad.update(this.el.querySelectorAll('.slide-lazy-img'));
 
                     const swiper = this;
 

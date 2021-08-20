@@ -54,6 +54,7 @@
         }
     },
     "system": {
+        "placeholder_text": "Placeholder-teksti",
         "pages": {
             "terms_and_conditions": "Käyttöehdot",
             "refund_policy": "Peruutusehdot",
@@ -312,7 +313,12 @@
     },
     "password_protection": {
         "title": "Tulossa pian",
-        "cta": "Kirjaudu sisään"
+        "subtitle": "Liity uutiskirjeen tilaajaksi",
+        "description": "Ilmoitamme uutiskirjeellä kampanjoista, uusista tuotteista ja tarjouksista.",
+        "newsletter_subscribed": "Uutiskirje tilattu.",
+        "newsletter_cta": "Tilaa uutiskirje",
+        "login_to_store": "Kirjaudu kauppaan",
+        "login_to_store_cta": "Vahvista"
     },
     "activate_account": {
         "title": "Rekisteröityminen vastaanotettu",

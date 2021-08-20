@@ -4,6 +4,11 @@
 	Accepts:
 	- product: {Object} Product Liquid object (required)
 	- wishlist: {String} 'toggle' | 'remove' | 'add'
+	- itemsPerRow {Number} Number of product card grid siblings
+	- showBadges: {Boolean} true | false
+	- showManufacturer: {Boolean} true | false
+	- showProductName: {Boolean} true | false
+	- showPricing: {Boolean} true | false
 
 	Usage:
 	{% render 'product-card-grid', product: product %}
@@ -22,11 +27,35 @@
 
 {%- endcase -%}
 
+{%- if itemsPerRow != false -%}
+	{%- assign itemsPerRow = 4 -%}
+{%- endif -%}
+
+{%- if showBadges != false -%}
+	{%- assign showBadges = true -%}
+{%- endif -%}
+
+{%- if showManufacturer != false -%}
+	{%- assign showManufacturer = true -%}
+{%- endif -%}
+
+{%- if showProductName != false -%}
+	{%- assign showProductName = true -%}
+{%- endif -%}
+
+{%- if showPricing != false -%}
+	{%- assign showPricing = true -%}
+{%- endif -%}
+
 <div class="product-card-grid-item{% if product.has_discount %} product-has-discount{% endif %}">
 
 	<div class="product-media-container">
 
-		{% render 'product-badges', product: product, postion: 'left-bottom' %}
+		{% if showBadges %}
+
+			{% render 'product-badges', product: product, postion: 'left-bottom' %}
+
+		{% endif %}
 
 		{% if wishlistAction and store.session.logged_in %}
 
@@ -47,13 +76,32 @@
 				<div class="product-media-img-container aspect-ratio-container">
 
 	  				{%- assign imgSrc = product.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-	  				{%- assign imgSizeSm = 420,420 -%}
-	  				{%- assign imgSizeLg = 576,576 -%}
+	  				{%- assign imgSizeSm = 348,348 -%}
+	  				{%- assign imgSizeMd = 290,290 -%}
+
+	  				{%- case itemsPerRow -%}
+
+					    {% when '2' %}
+					        {%- assign imgSizeLg = 810,810 -%}
+					    {% when '3' %}
+					        {%- assign imgSizeLg = 520,520 -%}
+					    {% when '4' %}
+					        {%- assign imgSizeLg = 376,376 -%}
+					    {% when '5' %}
+					        {%- assign imgSizeLg = 290,290 -%}
+					    {% when '6' %}
+					    	{%- assign imgSizeLg = 232,232 -%}
+
+					{%- endcase -%}
 
 		  			<picture>
-				        <source media="(min-width: 768px)" data-srcset="
+				        <source media="(min-width: 992px)" data-srcset="
 				            {{ imgSrc | thumb: imgSizeLg }} 1x,
 				            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+				            <source media="(min-width: 576px)" data-srcset="
+				            {{ imgSrc | thumb: imgSizeMd }} 1x,
+				            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
 
 				        <img
 				            alt="{{ product.name }}"
@@ -74,43 +122,55 @@
 
 		<a href="{{ product | page_url }}">
 
-			<div class="product-manufacturer">
+			{% if showManufacturer %}
 
-				<span class="product-manufacturer-name">
-					{{ product.manufacturer.name }}
-				</span>
+				<div class="product-manufacturer">
 
-			</div>
-
-			<div class="product-name">
-
-				<h3 class="product-name-text">
-					{{ product.name }}
-				</h3>
-
-			</div>
-
-			<div class="product-price">
-
-				{% if product.has_discount %}
-
-					<span class="text-sale-price font-weight-bold mr-2">
-						{{ product.price | in_currency }}
+					<span class="product-manufacturer-name">
+						{{ product.manufacturer.name }}
 					</span>
 
-		            <span class="text-decoration-line-through text-muted">
-		            	{{ product.original_price | in_currency }}
-		            </span>
+				</div>
 
-		        {% else %}
+			{% endif %}
 
-		        	<span class="text-price">
-						{{ product.price | in_currency }}
-					</span>
+			{% if showProductName %}
 
-		        {% endif %}
+				<div class="product-name">
 
-			</div>
+					<h3 class="product-name-text">
+						{{ product.name }}
+					</h3>
+
+				</div>
+
+			{% endif %}
+
+			{% if showPricing %}
+
+				<div class="product-price">
+
+					{% if product.has_discount %}
+
+						<span class="text-sale-price font-weight-bold mr-2">
+							{{ product.price | in_currency }}
+						</span>
+
+			            <span class="text-decoration-line-through text-muted">
+			            	{{ product.original_price | in_currency }}
+			            </span>
+
+			        {% else %}
+
+			        	<span class="text-price">
+							{{ product.price | in_currency }}
+						</span>
+
+			        {% endif %}
+
+				</div>
+
+			{% endif %}
 
 		</a>
 

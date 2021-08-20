@@ -11,7 +11,7 @@
 
 {% if error %}
 
-	<div class="form-error {% if class %} {{ class }}{% endif %}">
+	<div class="form-error{% if class %} {{ class }}{% endif %}">
 
         <span class="d-block">
         	{{ error | prepend: 'error.' | t }}

@@ -87,7 +87,7 @@
 
                     </div>
 
-                    {% render 'form-error', error: form.error %}
+                    {% render 'form-error', error: form.error, class: 'form-group' %}
 
                     <button type="button" name="article-comment-form-close-action" class="btn btn-outline-section" value="root">
                     	{{ 'general.cancel' | t }}
@@ -121,7 +121,10 @@
 
 {% schema %}
 {
-    "name": "Article",
+    "name": {
+        "en": "Article",
+        "fi": "Artikkeli"
+    },
     "tag": "section",
     "class": "section section-article",
     "is_creatable": false

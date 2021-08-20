@@ -1,6 +1,8 @@
+{%- assign footerMenu = linklists[section.settings.menu] -%}
+
 {%- capture sectionContent -%}
 
-    <div class="site-footer-container">
+    <div class="site-footer-container {{ section.settings.menu }}">
 
         <div class="site-footer">
 
@@ -10,7 +12,7 @@
 
                     <div class="row">
 
-                        {% for item in section.settings.menu.links %}
+                        {% for item in footerMenu.links %}
 
                             {% if item.links %}
 
@@ -146,7 +148,7 @@
 
                                                 </div>
 
-                                                {% render 'form-error', error: form.error %}
+                                                {% render 'form-error', error: form.error, class: 'form-group' %}
 
                                                 <button type="submit" class="btn btn-outline-section">
                                                     {{ 'general.subscribe' | t }}
@@ -312,7 +314,10 @@
 
 {% schema %}
 {
-	"name": "Footer",
+	"name": {
+        "en": "Footer",
+        "fi": "Alatunniste"
+    },
 	"tag": "section",
 	"is_creatable": false,
 	"is_removable": false,
@@ -321,7 +326,10 @@
         "list_type": "tabs",
         "groups": [
             {
-                "title": "General",
+                "title": {
+                    "en": "General",
+                    "fi": "Yleinen"
+                },
                 "settings": [
                     {
                     	"id": "menu",
@@ -450,7 +458,10 @@
                 ]
             },
             {
-                "title": "Section",
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
                 "settings": {
                     "list_type": "tabs",
                     "groups": [

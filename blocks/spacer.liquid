@@ -1,0 +1,28 @@
+<div class="block-spacer-{{ block.settings.spacerVariant }}"></div>
+
+{% schema %}
+{
+    "name": {
+        "en": "Spacer",
+        "fi": "Väli"
+    },
+    "tag": "div",
+    "class": "block block-spacer",
+    "category": "basic",
+    "settings": [
+        {
+            "id": "spacerVariant",
+            "label": {
+                "en": "Spacer size",
+                "fi": "Välin koko"
+            },
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "default": 3,
+            "unit": " "
+        }
+    ]
+}
+{% endschema %}

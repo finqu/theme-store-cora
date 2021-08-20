@@ -1,6 +1,24 @@
-<a href="{{- block.settings.btnResource.url -}}" class="btn btn-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
-    {{ block.settings.btnLabel }}
-</a>
+{%- assign defaultBtnLabel = 'system.placeholder_text' | t -%}
+{%- assign btnLabel = block.settings.btnLabel | default: defaultBtnLabel -%}
+{%- assign imgSizeSm = '420' -%}
+{%- assign imgSizeLg = '1200' -%}
+
+{%- case block.settings.contentAlign -%}
+    {% when 'left' %}
+        {%- assign contentAlign = 'justify-content-start' -%}
+    {% when 'center' %}
+        {%- assign contentAlign = 'justify-content-center' -%}
+    {% when 'right' %}
+        {%- assign contentAlign = 'justify-content-end' -%}
+{%- endcase -%}
+
+<div class="d-flex {{ contentAlign }}">
+
+    <a href="{{- block.settings.btnResource.url -}}" class="btn btn-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
+        {{ btnLabel }}
+    </a>
+
+</div>
 
 {% schema %}
 {
@@ -10,6 +28,7 @@
     },
     "tag": "div",
     "class": "block block-button",
+    "category": "basic",
     "settings": [
         {
             "id": "btnLabel",
@@ -35,6 +54,29 @@
                 "fi": "Avaa uudessa ikkunassa"
             },
             "default": true
+        },
+        {
+            "id": "contentAlign",
+            "type": "radio-pill",
+            "label": {
+                "en": "Content alignment",
+                "fi": "Sisällön ryhmittyminen"
+            },
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "{# icon.alignLeftLight #}"
+                },
+                {
+                    "value": "center",
+                    "label": "{# icon.alignCenterLight #}"
+                },
+                {
+                    "value": "right",
+                    "label": "{# icon.alignRightLight #}"
+                }
+            ]
         }
     ]
 }

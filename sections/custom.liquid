@@ -13,6 +13,305 @@
         "fi": "Mukautettava osio"
     },
     "tag": "section",
-    "class": "section section-custom",
+    "class": "section section-custom has-lazy",
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Layout",
+                                "fi": "Näkymä"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Inner spacing",
+                                        "fi": "Sisäinen tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content spacing",
+                                        "fi": "Sisällön tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content width",
+                                        "fi": "Sisällön leveys"
+                                    },
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content alignment",
+                                        "fi": "Sisällön ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Background",
+                                "fi": "Tausta"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": {
+                                        "en": "Image",
+                                        "fi": "Kuva"
+                                    }
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Image position",
+                                        "fi": "Kuvan sijainti"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "left-top",
+                                            "label": {
+                                                "en": "Left Top",
+                                                "fi": "Vasemmalla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": {
+                                                "en": "Left Center",
+                                                "fi": "Vasemmalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": {
+                                                "en": "Left Bottom",
+                                                "fi": "Vasemmalla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": {
+                                                "en": "Right Top",
+                                                "fi": "Oikealla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": {
+                                                "en": "Right Center",
+                                                "fi": "Oikealla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": {
+                                                "en": "Right Bottom",
+                                                "fi": "Oikealla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": {
+                                                "en": "Center Top",
+                                                "fi": "Keskellä ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": {
+                                                "en": "Center Center",
+                                                "fi": "Keskellä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": {
+                                                "en": "Center Bottom",
+                                                "fi": "Keskellä alhaalla"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": {
+                                        "en": "Overlay",
+                                        "fi": "Taustan tummuus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": 0,
+                                    "unit": "%"
+                                },
+                                {
+                                    "id": "sectionContentBgColorStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Enable content background",
+                                        "fi": "Näytä sisällön tausta"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "sectionContentBgColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Content background color",
+                                        "fi": "Sisällön taustaväri"
+                                    },
+                                    "default": "#ffffff",
+                                    "conditions": ["sectionContentBgColorStatus:truthy eq true"]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Colors",
+                                "fi": "Värit"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "general"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }
 {% endschema %}

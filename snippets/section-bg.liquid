@@ -13,4 +13,4 @@
 	{% render 'section-bg', sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: '0', sectionContentBgColorStatus: 'true' %}
 {% endcomment %}
 
-<div class="section-bg{% if sectionBgImgSrc %} bg-img-pos-{{ sectionBgImgPos }} lazy{% if section.settings.sectionContentBgColorStatus %} hide-bg-sm{% endif %}{% endif %}"{% if sectionBgImgSrc and sectionBgImgOverlay > 0 %} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% elsif sectionBgImgSrc %} data-bg="url({{ sectionBgImgSrc }})"{% endif %}></div>
+<div class="section-bg{% if sectionBgImgSrc %} bg-img-pos-{{ sectionBgImgPos }} lazy{% if section.settings.sectionContentBgColorStatus %} hide-bg-sm{% endif %}{% endif %}"{% if sectionBgImgSrc and sectionBgImgOverlay > 0 %} data-bg-multi="linear-gradient(0deg, rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%), rgb(0,0,0, {{ section.settings.sectionBgImgOverlay }}%)), url({{ sectionBgImgSrc }})"{% elsif sectionBgImgSrc %} data-bg="{{ sectionBgImgSrc }}"{% endif %}></div>

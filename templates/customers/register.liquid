@@ -19,7 +19,7 @@
             <input type="text" class="form-control" name="lastname" id="register-lastname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.lastname | escape }}" required>
 
             <label for="register-lastname">
-                {{ 'account.information.password' | t }}
+                {{ 'account.information.lastname' | t }}
             </label>
 
         </div>
@@ -86,7 +86,7 @@
 
         {% endif %}
 
-        {% render 'form-error', error: form.error %}
+        {% render 'form-error', error: form.error, class: 'form-group' %}
 
         <button type="submit" id="register-cta" class="btn btn-section btn-block mb-4"{% if settings.policyAgreementMethod == 'check' %} disabled{% endif %}>
             {{ 'register.cta' | t }}

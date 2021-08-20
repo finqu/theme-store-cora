@@ -1,102 +1,19 @@
-{%- assign sectionTitle = manufacturer.name -%}
-{%- assign sectionDescription = manufacturer.description -%}
-{%- assign itemCount = manufacturer.products.size -%}
+{% comment %}
+    The contents of the manufacturer.liquid template can be found in /sections/manufacturer-template.liquid
+{% endcomment %}
 
-{%- capture sectionContent -%}
+{{ content_for_index }}
 
-	{%- paginate manufacturer.products by 100 -%}
-
-		<div class="row">
-
-            <div class="col-auto">
-
-                <span class="text-muted">
-                    {% if itemCount == 1 %}
-                        {{ 'general.product_count' | t: amount: itemCount }}
-                    {% else %}
-                        {{ 'general.product_plural_count' | t: amount: itemCount }}
-                    {% endif %}
-                </span>
-
-            </div>
-
-            <div class="col text-right">
-
-                {% form 'sort' id: 'product-sort' %}
-
-                	{%- assign activeSortByFilter = request.get.sort-by | default: 'default' -%}
-                    {%- assign sortByFilters = "default,price-ascending,price-descending,title-ascending,title-descending,created-ascending,created-descending" | split: ',' -%}
-
-                    <input type="hidden" name="sort-by" value="{% if request.get.sort-by %}{{ request.get.sort-by }}{% else %}default{% endif %}">
-
-                    <div class="dropdown">
-
-                        <button type="button" class="btn btn-text text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            <span class="mr-1">
-
-                                {% for filter in sortByFilters %}
-
-                                    {% if filter == activeSortByFilter %}
-                                        {{ filter | prepend: 'filters.sort-by.' | t }}
-                                    {% endif %}
-
-                                {% endfor %}
-
-                            </span>
-
-                            {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
-
-                        </button>
-
-                        <div class="dropdown-menu dropdown-menu-right">
-
-                            {% for filter in sortByFilters %}
-
-                                <button type="button" class="sort-by-action dropdown-item" value="{{ filter }}">
-                                    {{ filter | prepend: 'filters.sort-by.' | t }}
-                                </button>
-
-                            {% endfor %}
-
-                        </div>
-
-                    </div>
-
-                {% endform %}
-
-            </div>
-
-        </div>
-
-	    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
-
-	        {% for product in manufacturer.products %}
-
-	            <div class="col pt-3 pb-4">
-
-	                {%- render 'product-card-grid', product: product, wishlist: 'toggle' -%}
-
-	            </div>
-
-	        {% endfor %}
-
-	    </div>
-
-	    <div class="row">
-
-	        <div class="col">
-
-	            {% render 'pagination', paginate: paginate %}
-
-	        </div>
-
-	    </div>
-
-	{%- endpaginate -%}
-
-{%- endcapture -%}
-
-<section class="section section-manufacturer">
-	{% render 'section', sectionTitle: sectionTitle, sectionDescription: sectionDescription, sectionContent: sectionContent %}
-</section>
+{% schema %}
+{
+    "name": {
+        "en": "Manufacturer",
+        "fi": "Valmistaja"
+    },
+    "template_sections": [
+        {
+            "name": "manufacturer-template"
+        }
+    ]
+}
+{% endschema %}

@@ -1,20 +1,41 @@
+{%- case block.settings.contentAlign -%}
+    {% when 'left' %}
+        {%- assign contentAlign = 'justify-content-start' -%}
+    {% when 'center' %}
+        {%- assign contentAlign = 'justify-content-center' -%}
+    {% when 'right' %}
+        {%- assign contentAlign = 'justify-content-end' -%}
+{%- endcase -%}
+
 {%- assign imgSizeSm = '420' -%}
 {%- assign imgSizeLg = '1200' -%}
 
-<picture>
+<div class="d-flex {{ contentAlign }}">
 
-    <source media="(min-width: 768px)" data-srcset="
-        {{ block.settings.imgSrc | thumb: imgSizeLg }} 1x,
-        {{ block.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+    {%- if block.settings.imgSrc -%}
 
-    <img
-        alt="{{ block.settings.imgAlt }}"
-        data-src="{{ block.settings.imgSrc | thumb: imgSizeSm }}"
-        data-srcset="{{ block.settings.imgSrc | thumb: imgSizeSm }} 1x, {{ block.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-        class="lazy d-block mx-auto img-fluid {% if block.settings.imgEffect != 'none' %} {{ block.settings.imgEffect }}{% endif %}"
-        data-finqu-inline-editor="imgSrc">
+        <picture>
 
-</picture>
+            <source media="(min-width: 768px)" data-srcset="
+                {{ block.settings.imgSrc | thumb: imgSizeLg }} 1x,
+                {{ block.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+            <img
+                alt="{{ block.settings.imgAlt }}"
+                data-src="{{ block.settings.imgSrc | thumb: imgSizeSm }}"
+                data-srcset="{{ block.settings.imgSrc | thumb: imgSizeSm }} 1x, {{ block.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                class="lazy d-block mx-auto img-fluid {% if block.settings.imgEffect != 'none' %} {{ block.settings.imgEffect }}{% endif %}"
+                data-finqu-inline-editor="imgSrc">
+
+        </picture>
+
+    {%- else -%}
+
+        {{ 'image' | placeholder_svg_tag, '', imgSizeSm }}
+
+    {%- endif -%}
+
+</div>
 
 {% schema %}
 {
@@ -24,11 +45,15 @@
     },
     "tag": "div",
     "class": "block block-image has-lazy",
+    "category": "basic",
     "settings": [
         {
             "id": "imgSrc",
             "type": "image-picker",
-            "inline": "true"
+            "label": {
+                "en": "Image",
+                "fi": "Kuva"
+            }
         },
         {
             "id": "imgAlt",
@@ -67,6 +92,29 @@
                         "en": "Circle",
                         "fi": "Ympyrä"
                     }
+                }
+            ]
+        },
+        {
+            "id": "contentAlign",
+            "type": "radio-pill",
+            "label": {
+                "en": "Content alignment",
+                "fi": "Sisällön ryhmittyminen"
+            },
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "{# icon.alignLeftLight #}"
+                },
+                {
+                    "value": "center",
+                    "label": "{# icon.alignCenterLight #}"
+                },
+                {
+                    "value": "right",
+                    "label": "{# icon.alignRightLight #}"
                 }
             ]
         }

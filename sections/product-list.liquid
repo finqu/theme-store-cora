@@ -1,95 +1,50 @@
-{%- assign sectionTitle = section.settings.sectionTitle -%}
-{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
-{%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
-
-{%- capture carouselSettings -%}
-    data-carousel-pagination="{{- section.settings.pagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}"
-{%- endcapture -%}
-
-{%- assign carouselClasses = '' -%}
-{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
-
-{%- if section.settings.pagination == 'hover' -%}
-    {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
-    {%- assign carouselClasses = carouselClasses | append: paginationHoverClass -%}
-{%- endif -%}
-
-{%- if section.settings.navigation == 'hover' -%}
-    {% capture navigationHoverClass %} swiper-navigation-hover{% endcapture %}
-    {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
-{%- endif -%}
-
-{%- case section.settings.listType -%}
-    {% when 'popular' %}
-        {%- assign items = products.popular -%}
-    {% when 'discounted' %}
-        {%- assign items = products.discounted -%}
-    {% when 'new' %}
-        {%- assign items = products.new_products -%}
-    {% when 'tag' %}
-        {%- assign items = products.tags[section.settings.tagId] -%}
-    {% when 'resource' %}
-        {%- assign items = section.settings.resource.object.products -%}
-{%- endcase -%}
-
-{%- assign items = items | slice: 0, section.settings.itemAmount -%}
-
-{%- capture content -%}
-
-    {% for product in items %}
-
-        <div class="swiper-slide">
-
-            {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerView, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
-
-        </div>
-
-    {% endfor %}
-
-{%- endcapture -%}
-
 {%- capture sectionContent -%}
 
-    <div class="swiper-container carousel-style-{{ section.settings.carouselStyle }}{{ carouselClasses }}" {{ carouselSettings }}>
+    {%- case section.settings.listType -%}
+        {% when 'popular' %}
+            {%- assign items = products.popular -%}
+        {% when 'discounted' %}
+            {%- assign items = products.discounted -%}
+        {% when 'new' %}
+            {%- assign items = products.new_products -%}
+        {% when 'tag' %}
+            {%- assign items = products.tags[section.settings.tagId] -%}
+        {% when 'resource' %}
+            {%- assign items = section.settings.resource.object.products -%}
+    {%- endcase -%}
 
-        <div class="swiper-wrapper">
+    {%- assign items = items | slice: 0, section.settings.itemAmount -%}
 
-            {{- content -}}
+    <div class="{{ section.settings.listType }} row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
 
-        </div>
+        {% for product in items %}
 
-        {%- if section.settings.navigation -%}
+            <div class="col pt-3 pb-4">
 
-            <div class="swiper-button-prev">
-                {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+
             </div>
 
-            <div class="swiper-button-next">
-                {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
-            </div>
-
-        {%- endif -%}
-
-        {%- if section.settings.pagination -%}
-
-            <div class="swiper-pagination"></div>
-
-        {%- endif -%}
+        {% endfor %}
 
     </div>
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'fixed', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{%- assign sectionTitle = section.settings.sectionTitle -%}
+{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
+{%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign %}
 
 {% schema %}
 {
     "name": {
-        "en": "Product carousel",
-        "fi": "Tuorekaruselli"
+        "en": "Product list",
+        "fi": "Tuotelista"
     },
     "tag": "section",
-    "class": "section section-product-carousel has-lazy",
+    "class": "section section-image-text has-lazy",
     "settings": {
         "list_type": "tabs",
         "groups": [
@@ -135,95 +90,6 @@
                             {
                                 "value": "right",
                                 "label": "{# icon.alignRightLight #}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "carouselStyle",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Style",
-                            "fi": "Tyyli"
-                        },
-                        "default": "1",
-                        "options": [
-                            {
-                                "value": "1",
-                                "label": {
-                                    "en": "Style 1",
-                                    "fi": "Tyyli 1"
-                                }
-                            },
-                            {
-                                "value": "2",
-                                "label": {
-                                    "en": "Style 2",
-                                    "fi": "Tyyli 2"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "id": "navigation",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Show navigation buttons",
-                            "fi": "Näytä navigointipainikkeet"
-                        },
-                        "default": "hover",
-                        "options": [
-                            {
-                                "value": "",
-                                "label": {
-                                    "en": "Off",
-                                    "fi": "Off"
-                                }
-                            },
-                            {
-                                "value": "hover",
-                                "label": {
-                                    "en": "On hover",
-                                    "fi": "Osoitin päällä"
-                                }
-                            },
-                            {
-                                "value": "on",
-                                "label": {
-                                    "en": "Always",
-                                    "fi": "Aina"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "id": "pagination",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Show pagination",
-                            "fi": "Näytä sivutus"
-                        },
-                        "default": "hover",
-                        "options": [
-                            {
-                                "value": "",
-                                "label": {
-                                    "en": "Off",
-                                    "fi": "Off"
-                                }
-                            },
-                            {
-                                "value": "hover",
-                                "label": {
-                                    "en": "On hover",
-                                    "fi": "Osoitin päällä"
-                                }
-                            },
-                            {
-                                "value": "on",
-                                "label": {
-                                    "en": "Always",
-                                    "fi": "Aina"
-                                }
                             }
                         ]
                     },
@@ -298,20 +164,20 @@
                             "fi": "Tuotemäärä"
                         },
                         "type": "range",
-                        "min": 3,
-                        "max": 50,
+                        "min": 1,
+                        "max": 20,
                         "step": 1,
-                        "default": 20,
+                        "default": 8,
                         "unit": " "
                     },
                     {
-                        "id": "itemsPerView",
+                        "id": "itemsPerRow",
                         "label": {
-                            "en": "Products per view",
-                            "fi": "Tuotteita per näkymä"
+                            "en": "Products per row",
+                            "fi": "Tuotteita per rivi"
                         },
                         "type": "range",
-                        "min": 3,
+                        "min": 2,
                         "max": 6,
                         "step": 1,
                         "default": 4,
