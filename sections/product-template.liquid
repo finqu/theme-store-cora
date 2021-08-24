@@ -336,20 +336,30 @@
 
                     <div class="product-price-container">
 
+                        {%- if settings.taxFreePrices -%}
+                            {% assign itemPrice = product.net_price %}
+                            {% assign itemOriginalPrice = product.original_net_price %}
+                            {% assign itemTaxPercent = 0 %}
+                        {%- else -%}
+                            {% assign itemPrice = product.price %}
+                            {% assign itemOriginalPrice = product.original_price %}
+                            {% assign itemTaxPercent = product.taxpercent | round %}
+                        {%- endif -%}
+
                         {% if product.has_discount %}
 
                             <span class="product-sale-price-text text-sale-price font-weight-bold mr-1" data-product-price-dynamic>
-                                {{ product.price | in_currency }}
+                                {{ itemPrice | in_currency }}
                             </span>
 
                             <span class="product-price text-decoration-line-through text-muted">
-                                {{ product.original_price | in_currency }}
+                                {{ itemOriginalPrice | in_currency }}
                             </span>
 
                         {% else %}
 
                             <span class="product-price text-price" data-product-price-dynamic>
-                                {{ product.price | in_currency }}
+                                {{ itemPrice | in_currency }}
                             </span>
 
                         {% endif %}
@@ -359,10 +369,7 @@
                     <div class="product-vat">
 
                         <span class="product-vat-text text-muted">
-
-                            {%- assign productTaxPercent = product.taxpercent | round -%}
-
-                            {{ 'product.vat_included_dynamic' | t, amount: productTaxPercent }}
+                            {{ 'product.vat_included_dynamic' | t, amount: itemTaxPercent }}
                         </span>
 
                     </div>

@@ -2,26 +2,32 @@
 
     {% for option in attribute.options %}
 
-        {% if option.name or option.price > 0 %}
+        {%- if settings.taxFreePrices -%}
+            {% assign itemPrice = option.net_price %}
+        {%- else -%}
+            {% assign itemPrice = option.price %}
+        {%- endif -%}
+
+        {% if option.name or itemPrice > 0 %}
 
             <label for="product-attribute-{{ option.id }}">
 
                 {{ option.name }}
-                {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice == blank %}(+{{ option.price | in_currency }}) {% endif %}
+                {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == blank %}(+{{ itemPrice | in_currency }}) {% endif %}
 
             </label>
 
         {% endif %}
 
-        {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
+        {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
 
-              {% assign textArgument1 = true %}
+            {% assign textArgument1 = true %}
 
         {% endif %}
 
-        {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
+        {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
 
-              {% assign textArgument2 = true %}
+            {% assign textArgument2 = true %}
 
         {% endif %}
 

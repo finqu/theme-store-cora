@@ -1,6 +1,15 @@
 {
 	"name": "cora",
 	"theme_name": "Cora",
+	"section_categories": [
+		{
+			"id": "theme-basic",
+			"name": {
+				"en": "Basic",
+				"fi": "Yleinen"
+			}
+		}
+	],
 	"settings": [
 		{
 			"type": "setting-page",
@@ -920,6 +929,15 @@
 						"fi": "Lisää ostoskoriin -ilmoitus"
 					},
                     "default": true
+                },
+                {
+                    "id": "taxFreePrices",
+                    "type": "checkbox",
+                    "label": {
+						"en": "Tax-free prices",
+						"fi": "Verottomat hinnat"
+					},
+                    "default": false
                 },
                 {
 					"type": "radio",

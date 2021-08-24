@@ -20,6 +20,7 @@ export default class Cart {
     // Init
     init() {
 
+        this.taxFreePrices = themeApp.data.taxFreePrices;
         this.cartAddNotify = themeApp.data.cartAddNotify;
         this.cartUrl = themeApp.data.routes.cartUrl;
         this.checkoutUrl = themeApp.data.routes.checkoutUrl;
@@ -283,7 +284,8 @@ export default class Cart {
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
-                    placeholderImgSrc: themeApp.data.placeholderImgSrc
+                    placeholderImgSrc: themeApp.data.placeholderImgSrc,
+                    taxFreePrices: self.taxFreePrices
                 });
 
                 cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {
@@ -299,7 +301,8 @@ export default class Cart {
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
-                    placeholderImgSrc: themeApp.data.placeholderImgSrc
+                    placeholderImgSrc: themeApp.data.placeholderImgSrc,
+                    taxFreePrices: self.taxFreePrices
                 });
 
                 cartMiniContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {

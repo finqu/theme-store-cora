@@ -46,6 +46,9 @@
         "tax": "Tax",
         "back_to_home_page": "Back to home page",
         "policy_accept_text": "I have read and agree to the {{ policy }}",
+        "payment_fee": "Payment fee",
+        "shipping_price": "Shipping costs",
+        "vat_included": "inc. vat",
         "policies": {
             "terms_and_conditions": "Terms & Conditions",
             "refund_policy": "Refund policy",

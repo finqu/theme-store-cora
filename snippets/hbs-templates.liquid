@@ -90,7 +90,7 @@
                                                 {{#each item.attributes as |attribute|}}
 
                                                     <span class="cart-item-attribute">
-                                                        {{ t 'general.selection' }}: {{ attribute.name }}
+                                                        {{ t 'general.selection' }}: {{ attribute }}
                                                     </span>
 
                                                 {{/each}}
@@ -139,8 +139,14 @@
 
                                         <div class="cart-item-price">
 
+                                            {{#if @root.taxFreePrices}}
+                                                {{ assign 'itemPrice' item.net_price }}
+                                            {{else}}
+                                                {{ assign 'itemPrice' item.line_price }}
+                                            {{/if}}
+
                                             <span class="cart-item-price-text">
-                                                {{ formatCurrency item.line_price }}
+                                                {{ formatCurrency @root.itemPrice }}
                                             </span>
 
                                         </div>
@@ -163,59 +169,37 @@
 
         <div class="cart-footer">
 
-            <div class="cart-summary">
+            <div class="cart-subtotal">
 
-                <div class="cart-subtotal">
+                <div class="row">
 
-                    <div class="row">
+                    <div class="col">
 
-                        <div class="col">
+                        <span>
+                            {{ t 'general.subtotal' }}
+                        </span>
 
-                            <span>
-                                {{ t 'general.subtotal' }}
-                            </span>
+                    </div>
 
-                        </div>
+                    <div class="col text-right">
 
-                        <div class="col text-right">
+                        {{#if @root.taxFreePrices}}
+                            {{ assign 'cartSubtotal' cart.tax_free_subtotal }}
+                        {{else}}
+                            {{ assign 'cartSubtotal' cart.subtotal }}
+                        {{/if}}
 
-                            <span>
-                                {{ formatCurrency cart.subtotal }}
-                            </span>
-
-                        </div>
+                        <span>
+                            {{ formatCurrency @root.cartSubtotal }}
+                        </span>
 
                     </div>
 
                 </div>
 
-                {{#ifCond cart.payment_fee '>' 0}}
+            </div>
 
-                    <div class="cart-payment-fee">
-
-                        <div class="row">
-
-                            <div class="col">
-
-                                <span>
-                                    {{ t 'general.payment_fee' }}
-                                </span>
-
-                            </div>
-
-                            <div class="col text-right">
-
-                                <span>
-                                    {{ formatCurrency cart.payment_fee }}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                {{/ifCond}}
+            <div class="cart-summary">
 
                 {{#ifCond cart.shipping_price '>' 0}}
 
@@ -226,7 +210,7 @@
                             <div class="col">
 
                                 <span>
-                                    {{ t 'general.shipping_price' }}
+                                     {{#if @root.taxFreePrices}}+{{/if}} {{ t 'general.shipping_price' }}
                                 </span>
 
                             </div>
@@ -245,7 +229,63 @@
 
                 {{/ifCond}}
 
-                {{#ifCond cart.discounts '>' 0}}
+                {{#ifCond cart.payment_fee '>' 0}}
+
+                    <div class="cart-payment-fee">
+
+                        <div class="row">
+
+                            <div class="col">
+
+                                <span>
+                                     {{#if @root.taxFreePrices}}+{{/if}} {{ t 'general.payment_fee' }}
+                                </span>
+
+                            </div>
+
+                            <div class="col text-right">
+
+                                <span>
+                                    {{ formatCurrency cart.payment_fee }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {{/ifCond}}
+
+                {{#ifCond @root.taxFreePrices '==' true}}
+
+                    <div class="cart-tax">
+
+                        <div class="row">
+
+                            <div class="col">
+
+                                <span>
+                                    {{#if @root.taxFreePrices}}+{{/if}} {{ t 'general.tax' }}
+                                </span>
+
+                            </div>
+
+                            <div class="col text-right">
+
+                                <span>
+                                    {{ formatCurrency cart.tax }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {{/ifCond}}
+
+                {{#if cart.discounts}}
 
                     <div class="cart-discounts">
 
@@ -258,7 +298,7 @@
                                     <div class="col">
 
                                         <span>
-                                            {{ item.title }}{{#if item.code}} - {{ item.code }}{{/if}}
+                                            {{#if @root.taxFreePrices}}-{{/if}} {{ item.name }}{{#if item.code}} - {{ item.code }}{{/if}}
                                         </span>
 
                                     </div>
@@ -279,55 +319,7 @@
 
                     </div>
 
-                {{/ifCond}}
-
-                <div class="cart-tax-free">
-
-                    <div class="row">
-
-                        <div class="col">
-
-                            <span>
-                                {{ t 'general.tax_free_price' }}
-                            </span>
-
-                        </div>
-
-                        <div class="col text-right">
-
-                            <span>
-                                {{ formatCurrency cart.tax_free }}
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="cart-tax">
-
-                    <div class="row">
-
-                        <div class="col">
-
-                            <span>
-                                {{ t 'general.tax' }}
-                            </span>
-
-                        </div>
-
-                        <div class="col text-right">
-
-                            <span>
-                                {{ formatCurrency cart.tax }}
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                {{/if}}
 
                 <div class="cart-total">
 
@@ -336,7 +328,7 @@
                         <div class="col">
 
                             <span>
-                                {{ t 'general.total' }}
+                                {{ t 'general.total' }}{{#if @root.taxFreePrices}} {{ t 'general.vat_included' }}{{/if}}
                             </span>
 
                         </div>
@@ -474,7 +466,7 @@
                                                 {{#each item.attributes as |attribute|}}
 
                                                     <span class="cart-item-attribute">
-                                                        {{ t 'general.selection' }}: {{ attribute.name }}
+                                                        {{ t 'general.selection' }}: {{ attribute }}
                                                     </span>
 
                                                 {{/each}}
@@ -517,8 +509,14 @@
 
                                         <div class="cart-item-price">
 
+                                            {{#if @root.taxFreePrices}}
+                                                {{ assign 'itemPrice' item.net_price }}
+                                            {{else}}
+                                                {{ assign 'itemPrice' item.line_price }}
+                                            {{/if}}
+
                                             <span class="cart-item-price-text">
-                                                {{ formatCurrency item.line_price }}
+                                                {{ formatCurrency @root.itemPrice }}
                                             </span>
 
                                         </div>
@@ -550,15 +548,21 @@
                         <div class="col">
 
                             <span>
-                                {{ t 'general.total' }}
+                                {{ t 'general.subtotal' }}
                             </span>
 
                         </div>
 
                         <div class="col text-right">
 
+                            {{#if @root.taxFreePrices}}
+                                {{ assign 'cartSubtotal' cart.tax_free_subtotal }}
+                            {{else}}
+                                {{ assign 'cartSubtotal' cart.subtotal }}
+                            {{/if}}
+
                             <span>
-                                {{ formatCurrency cart.total }}
+                                {{ formatCurrency @root.cartSubtotal }}
                             </span>
 
                         </div>

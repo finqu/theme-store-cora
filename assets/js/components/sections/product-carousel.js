@@ -21,7 +21,7 @@ export default class ProductCarousel {
         let itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
 
         this.swiperCfg = {
-            spaceBetween: 30,
+            spaceBetween: 40,
             slidesPerView: 2,
             slidesPerGroup: 2,
             grabCursor: true,

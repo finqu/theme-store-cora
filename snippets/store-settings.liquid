@@ -19,6 +19,7 @@
 		customerLoggedIn: {{ customer | yepnope: 'true','false' }},
 		customerHasAccess: {{ store.customer.has_access | json }},
 		cataloBrowsingRequiresAccount: {{ store.catalog_browsing_requires_account | json }},
+		taxFreePrices: {{ settings.taxFreePrices | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
 			decimalPlaces: {{ store.currency.decimal_places | json }}
@@ -47,7 +48,10 @@
 			    tax_free_price: {{ 'general.tax_free_price' | t | json }},
 			    tax: {{ 'general.tax' | t | json }},
 			    back_to_home_page: {{ 'general.back_to_home_page' | t | json }},
-			    wishlist_empty: {{ 'general.wishlist_empty' | t | json }}
+			    wishlist_empty: {{ 'general.wishlist_empty' | t | json }},
+			    payment_fee: {{ 'general.payment_fee' | t | json }},
+			    shipping_price: {{ 'general.shipping_price' | t | json }},
+			    vat_included: {{ 'general.vat_included' | t | json }}
 		    },
 			cart: {
 				title: {{ 'cart.title' | t | json }},

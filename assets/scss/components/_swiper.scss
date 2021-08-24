@@ -103,14 +103,14 @@
 	.swiper-button-prev,
 	.swiper-container-rtl .swiper-button-next {
 		font-size: $swiper-navigation-size;
-		left: 0;
+		left: 5px;
 		right: auto;
 	}
 
 	.swiper-button-next,
 	.swiper-container-rtl .swiper-button-prev {
 		font-size: $swiper-navigation-size;
-		right: 0;
+		right: 5px;
 		left: auto;
 	}
 }

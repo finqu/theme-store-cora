@@ -4,15 +4,21 @@
 
     {% for option in attribute.options %}
 
+        {%- if settings.taxFreePrices -%}
+            {% assign itemPrice = option.net_price %}
+        {%- else -%}
+            {% assign itemPrice = option.price %}
+        {%- endif -%}
+
         <div class="form-group form-check">
 
-            {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
+            {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
 
                 {% assign checkboxArgument1 = true %}
 
             {% endif %}
 
-            {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
+            {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
 
                 {% assign checkboxArgument2 = true %}
 
@@ -30,9 +36,9 @@
 
                 {{ option.name }}
 
-                {% if option.price > 0 and showAttributePrice and showAttributeTotalPrice == blank %}
+                {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == blank %}
 
-                    (+{{ option.price | in_currency }})
+                    (+{{ itemPrice | in_currency }})
 
                 {% endif %}
 

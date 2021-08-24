@@ -109,11 +109,23 @@
     		}
     	}
 
+    	.cart-subtotal {
+    		display: flex;
+    		flex-direction: column;
+    		margin-bottom: spacer(6);
+    	}
+
     	.cart-summary {
+    		display: flex;
+    		flex-direction: column;
+    		margin-left: auto;
     		margin-bottom: spacer(4);
 
     		.cart-total {
     			font-weight: $font-weight-bold;
+    			border-top: 1px solid section-var(border_color);
+    			margin-top: spacer(3);
+    			padding-top: spacer(3);
     		}
     	}
     }

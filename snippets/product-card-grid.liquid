@@ -150,20 +150,28 @@
 
 				<div class="product-price">
 
+					{%- if settings.taxFreePrices -%}
+						{% assign itemPrice = product.net_price %}
+						{% assign itemOriginalPrice = product.original_net_price %}
+					{%- else -%}
+						{% assign itemPrice = product.price %}
+						{% assign itemOriginalPrice = product.original_price %}
+					{%- endif -%}
+
 					{% if product.has_discount %}
 
 						<span class="text-sale-price font-weight-bold mr-2">
-							{{ product.price | in_currency }}
+							{{ itemPrice | in_currency }}
 						</span>
 
 			            <span class="text-decoration-line-through text-muted">
-			            	{{ product.original_price | in_currency }}
+			            	{{ itemOriginalPrice | in_currency }}
 			            </span>
 
 			        {% else %}
 
 			        	<span class="text-price">
-							{{ product.price | in_currency }}
+							{{ itemPrice | in_currency }}
 						</span>
 
 			        {% endif %}

@@ -686,7 +686,10 @@ export default {
                         const attributeId = $(this).val();
 
                         $.get('/api/products/'+productId+'/price?attributes['+attributeId+']=true', (res) => {
-                        	$(self).append('('+res.price+')');
+
+                            const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
+
+                        	$(self).append('('+price+')');
                         });
                     });
 
@@ -696,7 +699,10 @@ export default {
                     const attributeId = $(this).val();
 
                     $.get('/api/products/'+productId+'/price?attributes['+attributeId+']=true', (res) => {
-                    	$(self).siblings('label').append('('+res.price+')');
+
+                        const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
+
+                    	$(self).siblings('label').append('('+price+')');
                     });
 
                 } else if ($(this).is('textarea')) {
@@ -705,7 +711,10 @@ export default {
                     const attributeId = $(this).attr('name');
 
                     $.get('/api/products/'+productId+'/price?attributes['+attributeId+']=true', (res) => {
-                    	$(self).siblings('label').append('('+res.price+')');
+
+                        const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
+
+                    	$(self).siblings('label').append('('+price+')');
                     });
                 }
             });
@@ -775,7 +784,10 @@ export default {
 
                 // Get jsons and change prices
                 $.get('/api/products/'+productId+'/price?'+productAttributes.join('&')+'=true', (res) => {
-                    $('[data-product-price-dynamic]').html(themeApp.formatCurrency(res.price));
+
+                    const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
+
+                    $('[data-product-price-dynamic]').html(themeApp.formatCurrency(price));
                 });
             });
     	};

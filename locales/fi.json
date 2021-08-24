@@ -46,6 +46,9 @@
         "tax": "Vero",
         "back_to_home_page": "Takaisin etusivulle",
         "policy_accept_text": "Olen lukenut ja hyväksyn {{ policy }}",
+        "payment_fee": "Maksutapalisä",
+        "shipping_price": "Toimituskulut",
+        "vat_included": "sis. alv",
         "policies": {
             "terms_and_conditions": "Käyttöehdot",
             "refund_policy": "Peruutusehdot",
