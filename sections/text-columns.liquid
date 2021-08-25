@@ -6,7 +6,11 @@
 
             <div class="col-12 col-lg{% if section.settings.setting_blocks.items.size > 1 %} col-md-6{% endif %} py-4">
 
-                {% if item.settings.imgSrc %}
+                {% if item.settings.imgSrc == 'placeholder' %}
+
+                    {{ 'image' | placeholder_svg_tag, 'svg-placeholder mb-4' }}
+
+                {% elsif item.settings.imgSrc %}
 
                     {%- assign imgSizeSm = '375' -%}
                     {%- assign imgSizeMd = '680' -%}
@@ -445,6 +449,140 @@
                 }
             }
         ]
-    }
+    },
+    "presets": [
+        {
+            "category": "theme-basic",
+            "settings": {
+                "sectionHeight": "",
+                "sectionInnerSpacing": "",
+                "sectionContentSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
+                "sectionBgImgOverlay": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general",
+                "setting_blocks": {
+                    "items": {
+                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        },
+                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        },
+                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "category": "theme-basic",
+            "settings": {
+                "sectionHeight": "",
+                "sectionInnerSpacing": "",
+                "sectionContentSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
+                "sectionBgImgOverlay": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general",
+                "setting_blocks": {
+                    "items": {
+                        "B82d6f21-fe88-48f7-9a65-b3b74befa415": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        },
+                        "B024a4fb-7d95-49d0-9016-73820b1d3902": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "category": "theme-basic",
+            "settings": {
+                "sectionHeight": "",
+                "sectionInnerSpacing": "",
+                "sectionContentSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
+                "sectionBgImgOverlay": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general",
+                "setting_blocks": {
+                    "items": {
+                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "placeholder",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        },
+                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "placeholder",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        },
+                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "placeholder",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
 }
 {% endschema %}

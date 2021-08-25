@@ -8,6 +8,20 @@
 				"en": "Basic",
 				"fi": "Yleinen"
 			}
+		},
+		{
+			"id": "theme-form",
+			"name": {
+				"en": "Form",
+				"fi": "Lomake"
+			}
+		},
+		{
+			"id": "theme-product",
+			"name": {
+				"en": "Product",
+				"fi": "Tuote"
+			}
 		}
 	],
 	"settings": [
