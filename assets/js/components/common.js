@@ -389,8 +389,12 @@ export default {
     initSortByFilters: function() {
 
         document.querySelectorAll('.sort-by-action').forEach(el => { el.addEventListener('click', e => {
-            document.querySelectorAll('[name="sort-by"]')[0].value = e.target.value;
-            document.getElementById('product-sort').submit();
+
+            const url = new URL(window.location);
+
+            url.searchParams.set('sort-by', e.target.value);
+
+            window.location = url.href;
         })});
 
     },

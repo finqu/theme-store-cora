@@ -1,4 +1,4 @@
-{%- capture carouselSettings -%} data-carousel-autoplay="{{- section.settings.autoplay -}}"{%- endcapture -%}
+{%- capture carouselSettings -%} data-carousel-autoplay="{{- section.settings.autoplay | json -}}"{%- endcapture -%}
 
 {%- if section.settings.autoplay -%}
     {% capture autoplaySpeedAttr %} data-carousel-autoplay-speed="{{- section.settings.autoplaySpeed -}}"{% endcapture %}
@@ -8,7 +8,7 @@
 {% capture paginationAttr %} data-carousel-pagination="{{- section.settings.pagination -}}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: paginationAttr -%}
 
-{% capture loopAttr %} data-carousel-loop="{{ section.settings.loop }}"{% endcapture %}
+{% capture loopAttr %} data-carousel-loop="{{ section.settings.loop | json }}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: loopAttr -%}
 
 {% capture effectAttr %} data-carousel-effect="{{- section.settings.effect -}}"{% endcapture %}

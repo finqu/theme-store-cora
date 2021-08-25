@@ -3,6 +3,8 @@
 {%- assign sectionBreadcrumbs = category.breadcrumbs -%}
 {%- assign itemCount = category.product_count -%}
 {%- assign subCategories = category.sub_categories -%}
+{%- assign activeSortOption = category.sort_by | default: category.default_sort_by -%}
+{%- assign sortOptions = category.sort_options -%}
 
 {%- capture sectionContent -%}
 
@@ -67,48 +69,39 @@
 
             <div class="col text-right">
 
-                {% form 'sort' id: 'product-sort' %}
+                <div class="dropdown">
 
-                    {%- assign activeSortByFilter = request.get.sort-by | default: 'default' -%}
-                    {%- assign sortByFilters = "default,price-ascending,price-descending,title-ascending,title-descending,created-ascending,created-descending" | split: ',' -%}
+                    <button type="button" class="btn btn-text text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                    <input type="hidden" name="sort-by" value="{% if request.get.sort-by %}{{ request.get.sort-by }}{% else %}default{% endif %}">
+                        <span class="mr-1">
 
-                    <div class="dropdown">
+                            {% for option in sortOptions %}
 
-                        <button type="button" class="btn btn-text text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            <span class="mr-1">
-
-                                {% for filter in sortByFilters %}
-
-                                    {% if filter == activeSortByFilter %}
-                                        {{ filter | prepend: 'filters.sort-by.' | t }}
-                                    {% endif %}
-
-                                {% endfor %}
-
-                            </span>
-
-                            {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
-
-                        </button>
-
-                        <div class="dropdown-menu dropdown-menu-right">
-
-                            {% for filter in sortByFilters %}
-
-                                <button type="button" class="sort-by-action dropdown-item" value="{{ filter }}">
-                                    {{ filter | prepend: 'filters.sort-by.' | t }}
-                                </button>
+                                {% if option == activeSortOption %}
+                                    {{ option | prepend: 'filters.sort-by.' | t }}
+                                {% endif %}
 
                             {% endfor %}
 
-                        </div>
+                        </span>
+
+                        {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        {% for option in sortOptions %}
+
+                            <button type="button" class="sort-by-action dropdown-item" value="{{ option }}">
+                                {{ option | prepend: 'filters.sort-by.' | t }}
+                            </button>
+
+                        {% endfor %}
 
                     </div>
 
-                {% endform %}
+                </div>
 
             </div>
 
