@@ -70,7 +70,15 @@
 
         <div class="swiper-slide">
 
-            {% if imgSrc %}
+            {% if item.settings.imgPlaceholder and imgSrc == '' %}
+
+                <div class="slide-bg-img slide-bg-placeholder">
+
+                    {{ 'background-1' | placeholder_svg_tag, 'svg-placeholder' }}
+
+                </div>
+
+            {% elsif imgSrc %}
 
                 <div class="slide-bg-img">
 
@@ -92,7 +100,7 @@
                             alt="{{ item.settings.imgAlt }}"
                             data-src="{{ imgSrc | thumb: imgSizeMobile }}"
                             data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                            class="slide-lazy-img">
+                            class="lazy slide-lazy-img">
 
                     </picture>
 
@@ -195,7 +203,7 @@
         "fi": "Kuvakaruselli"
     },
     "tag": "section",
-    "class": "section section-image-carousel",
+    "class": "section section-image-carousel has-lazy",
     "settings": {
         "list_type": "tabs",
         "groups": [
@@ -219,6 +227,10 @@
                             "fi": "Kohde"
                         },
                         "settings": [
+                            {
+                                "id": "imgPlaceholder",
+                                "type": "hidden"
+                            },
                             {
                                 "id": "imgSrc",
                                 "type": "image-picker",
@@ -444,7 +456,7 @@
                                     "min": 0,
                                     "max": 90,
                                     "step": 10,
-                                    "default": 0,
+                                    "default": "0",
                                     "unit": "%"
                                 }
                             ]
@@ -467,6 +479,58 @@
                 }
             }
         ]
-    }
+    },
+    "presets": [
+        {
+            "category": "theme-basic",
+            "settings": {
+                "loop": true,
+                "autoplay": true,
+                "autoplaySpeed": "3",
+                "navigation": "hover",
+                "pagination": "hover",
+                "effect": "slide",
+                "sectionHeight": "",
+                "slideImgOverlay": "0",
+                "sectionStyle": "general",
+                "setting_blocks": {
+                    "items": {
+                        "F4c98887-2f85-4be6-a1b8-607600aa691c": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgPlaceholder": true,
+                                "title": "",
+                                "description": "",
+                                "btnLabel": "",
+                                "btnResource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                }
+                            }
+                        },
+                        "81e92083-2c17-4507-89d8-5e5487784360": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgPlaceholder": true,
+                                "title": "",
+                                "description": "",
+                                "btnLabel": "",
+                                "btnResource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
 }
 {% endschema %}

@@ -12,9 +12,25 @@
 			.swiper-container {
 				@include media-breakpoint-down(md) {
 					height: 350px;
+
+					.slide-bg-placeholder {
+
+						.svg-placeholder {
+							width: 100%;
+							height: 350px;
+						}
+					}
 				}
 				@include media-breakpoint-up(md) {
 					height: $val;
+
+					.slide-bg-placeholder {
+
+						.svg-placeholder {
+							width: 100%;
+							height: $val;
+						}
+					}
 				}
 			}
 		}
@@ -33,18 +49,6 @@
 			position: relative;
 			overflow: hidden;
 
-			.slide-title {
-
-			}
-
-			.slide-description {
-
-			}
-
-			.slide-action {
-
-			}
-
 			.slide-bg-img img {
 				width: 100%;
 		        height: 100%;
@@ -55,6 +59,14 @@
 		        right: 0;
 		        transform: none;
 		        z-index: 1;
+			}
+
+			.slide-bg-placeholder {
+				position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 100vw;
+			    height: 100vh;
 			}
 		}
 	}

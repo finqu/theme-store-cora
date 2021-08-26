@@ -7,18 +7,30 @@
     {%- assign imgSizeSm = '420' -%}
     {%- assign imgSizeLg = '755' -%}
 
-    <picture>
-        <source media="(min-width: 768px)" data-srcset="
-            {{ section.settings.contentImgSrc | thumb: imgSizeLg }} 1x,
-            {{ section.settings.contentImgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+    {% if section.settings.contentImgPlaceholder and section.settings.contentImgSrc == '' %}
 
-        <img
-            alt="{{ section.settings.contentImgAlt }}"
-            data-src="{{ section.settings.contentImgSrc | thumb: imgSizeSm }}"
-            data-srcset="{{ section.settings.contentImgSrc | thumb: imgSizeSm }} 1x,{{ section.settings.contentImgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-            class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
-            data-finqu-inline-editor="contentImgSrc">
-    </picture>
+        <div data-finqu-inline-editor="contentImgSrc">
+
+            {{ 'image' | placeholder_svg_tag, 'svg-placeholder' }}
+
+        </div>
+
+    {% elsif section.settings.imgSrc %}
+
+        <picture>
+            <source media="(min-width: 768px)" data-srcset="
+                {{ section.settings.contentImgSrc | thumb: imgSizeLg }} 1x,
+                {{ section.settings.contentImgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+            <img
+                alt="{{ section.settings.contentImgAlt }}"
+                data-src="{{ section.settings.contentImgSrc | thumb: imgSizeSm }}"
+                data-srcset="{{ section.settings.contentImgSrc | thumb: imgSizeSm }} 1x,{{ section.settings.contentImgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
+                data-finqu-inline-editor="contentImgSrc">
+        </picture>
+
+    {% endif %}
 
 {%- endcapture -%}
 
@@ -103,6 +115,10 @@
                     "fi": "Yleinen"
                 },
                 "settings": [
+                    {
+                        "id": "contentImgPlaceholder",
+                        "type": "hidden"
+                    },
                     {
                         "id": "contentColumnArrangement",
                         "type": "select",
@@ -528,7 +544,7 @@
                                     "min": 0,
                                     "max": 90,
                                     "step": 10,
-                                    "default": 0,
+                                    "default": "0",
                                     "unit": "%"
                                 },
                                 {
@@ -570,6 +586,35 @@
                 }
             }
         ]
-    }
+    },
+    "presets": [
+        {
+            "category": "theme-basic",
+            "settings": {
+                "contentColumnArrangement": "6,6",
+                "contentImgSide": "left",
+                "contentImgAlign": "middle",
+                "contentImgAlt": null,
+                "contentImgEffect": "none",
+                "contentRichtextAlign": "middle",
+                "contentBtnLabel": null,
+                "contentBtnResource": null,
+                "contentImgSrc": "",
+                "contentImgPlaceholder": true,
+                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
+                "sectionHeight": "",
+                "sectionInnerSpacing": "",
+                "sectionContentSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": null,
+                "sectionBgImgPos": "",
+                "sectionBgImgOverlay": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general"
+            }
+        }
+    ]
 }
 {% endschema %}
