@@ -47,7 +47,18 @@
 	{%- assign showPricing = true -%}
 {%- endif -%}
 
-<div class="product-card-grid-item{% if product.has_discount %} product-has-discount{% endif %}">
+{%- assign productInWishlist = product.in_wishlist | default: false -%}
+{%- assign productImage = product.image | default: '' -%}
+{%- assign productName = product.name | default: 'Example product' -%}
+{%- assign productManufacturerName = product.manufacturer.name | default: 'Example manufacturer' -%}
+{%- assign productPrice = product.price | default: '29.90' -%}
+{%- assign productNetPrice = product.net_price | default: '24.90' -%}
+{%- assign productOriginalNetPrice = product.original_net_price | default: '24.90' -%}
+{%- assign productOriginalPrice = product.original_price | default: '29.90' -%}
+{%- assign productHasDiscount = product.has_discount | default: false -%}
+{%- assign productUrl = product | page_url | default: false -%}
+
+<div class="product-card-grid-item{% if productHasDiscount %} product-has-discount{% endif %}">
 
 	<div class="product-media-container">
 
@@ -57,77 +68,105 @@
 
 		{% endif %}
 
-		{% if wishlistAction and store.session.logged_in %}
+		{% if product %}
 
-			<div class="product-wishlist-action-container">
+			{% if wishlistAction and store.session.logged_in %}
 
-		        <button type="button" class="btn btn-text p-2 product-wishlist-action" data-wishlist-{{- wishlistAction -}}="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
-		            {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw svg-icon-2x' -%}
-		        </button>
+				<div class="product-wishlist-action-container">
 
-		    </div>
+			        <button type="button" class="btn btn-text p-2 product-wishlist-action" data-wishlist-{{- wishlistAction -}}="{{ product.id }}" aria-pressed="{{ productInWishlist | yepnope: 'true', 'false' }}">
+			            {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw svg-icon-2x' -%}
+			        </button>
+
+			    </div>
+
+			{% endif %}
 
 		{% endif %}
 
-		<a href="{{ product | page_url }}">
+		{%- capture productMedia -%}
 
 			<div class="product-media">
 
 				<div class="product-media-img-container aspect-ratio-container">
 
-	  				{%- assign imgSrc = product.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-	  				{%- assign imgSizeSm = 348,348 -%}
-	  				{%- assign imgSizeMd = 290,290 -%}
+					{% if product %}
 
-	  				{%- case itemsPerRow -%}
+		  				{%- assign imgSrc = productImage | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
+		  				{%- assign imgSizeSm = 348,348 -%}
+		  				{%- assign imgSizeMd = 290,290 -%}
 
-					    {% when '2' %}
-					        {%- assign imgSizeLg = 810,810 -%}
-					    {% when '3' %}
-					        {%- assign imgSizeLg = 520,520 -%}
-					    {% when '4' %}
-					        {%- assign imgSizeLg = 376,376 -%}
-					    {% when '5' %}
-					        {%- assign imgSizeLg = 290,290 -%}
-					    {% when '6' %}
-					    	{%- assign imgSizeLg = 232,232 -%}
+		  				{%- case itemsPerRow -%}
 
-					{%- endcase -%}
+						    {% when '2' %}
+						        {%- assign imgSizeLg = 810,810 -%}
+						    {% when '3' %}
+						        {%- assign imgSizeLg = 520,520 -%}
+						    {% when '4' %}
+						        {%- assign imgSizeLg = 376,376 -%}
+						    {% when '5' %}
+						        {%- assign imgSizeLg = 290,290 -%}
+						    {% when '6' %}
+						    	{%- assign imgSizeLg = 232,232 -%}
 
-		  			<picture>
-				        <source media="(min-width: 992px)" data-srcset="
-				            {{ imgSrc | thumb: imgSizeLg }} 1x,
-				            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+						{%- endcase -%}
 
-				            <source media="(min-width: 576px)" data-srcset="
-				            {{ imgSrc | thumb: imgSizeMd }} 1x,
-				            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+			  			<picture>
+					        <source media="(min-width: 992px)" data-srcset="
+					            {{ imgSrc | thumb: imgSizeLg }} 1x,
+					            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-				        <img
-				            alt="{{ product.name }}"
-				            data-src="{{ imgSrc | thumb: imgSizeSm }}"
-				            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-				            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-				    </picture>
+					            <source media="(min-width: 576px)" data-srcset="
+					            {{ imgSrc | thumb: imgSizeMd }} 1x,
+					            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+					        <img
+					            alt="{{ productName }}"
+					            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+					            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+					            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+					    </picture>
+
+				    {% else %}
+
+				    	{%- assign placeholders = "product-1, product-2, product-3, product-4, product-5, product-6, product-7, product-8, product-9, product-10, product-11, product-12" | split: ", " -%}
+
+				    	{{ placeholders | random | placeholder_svg_tag, 'svg-placeholder aspect-ratio-item' }}
+
+				    {% endif %}
 
 				</div>
 
   			</div>
 
-		</a>
+		{%- endcapture -%}
+
+		{%- if productUrl -%}
+
+			<a href="{{ productUrl }}">
+				{{ productMedia }}
+			</a>
+
+		{%- else -%}
+
+			<div>
+				{{ productMedia }}
+			</div>
+
+		{%- endif -%}
 
 	</div>
 
 	<div class="product-caption">
 
-		<a href="{{ product | page_url }}">
+		{%- capture productCaptionInner -%}
 
 			{% if showManufacturer %}
 
 				<div class="product-manufacturer">
 
 					<span class="product-manufacturer-name">
-						{{ product.manufacturer.name }}
+						{{ productManufacturerName }}
 					</span>
 
 				</div>
@@ -139,7 +178,7 @@
 				<div class="product-name">
 
 					<h3 class="product-name-text">
-						{{ product.name }}
+						{{ productName }}
 					</h3>
 
 				</div>
@@ -151,14 +190,14 @@
 				<div class="product-price">
 
 					{%- if settings.taxFreePrices -%}
-						{% assign itemPrice = product.net_price %}
-						{% assign itemOriginalPrice = product.original_net_price %}
+						{% assign itemPrice = productNetPrice %}
+						{% assign itemOriginalPrice = productOriginalNetPrice %}
 					{%- else -%}
-						{% assign itemPrice = product.price %}
-						{% assign itemOriginalPrice = product.original_price %}
+						{% assign itemPrice = productPrice %}
+						{% assign itemOriginalPrice = productOriginalPrice %}
 					{%- endif -%}
 
-					{% if product.has_discount %}
+					{% if productHasDiscount %}
 
 						<span class="text-sale-price font-weight-bold mr-2">
 							{{ itemPrice | in_currency }}
@@ -180,7 +219,21 @@
 
 			{% endif %}
 
-		</a>
+		{%- endcapture -%}
+
+		{%- if product -%}
+
+			<a href="{{ productUrl }}">
+				{{ productCaptionInner }}
+			</a>
+
+		{%- else -%}
+
+			<div>
+				{{ productCaptionInner }}
+			</div>
+
+		{%- endif -%}
 
 	</div>
 

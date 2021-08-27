@@ -36,15 +36,31 @@
 
 {%- capture content -%}
 
-    {% for product in items %}
+    {% if items.size > 0 %}
 
-        <div class="swiper-slide">
+       {% for product in items %}
 
-            {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerView, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+            <div class="swiper-slide">
 
-        </div>
+                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerView, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
 
-    {% endfor %}
+            </div>
+
+        {% endfor %}
+
+    {% else if request.design_mode %}
+
+        {% for num in (1..section.settings.itemAmount) %}
+
+            <div class="swiper-slide">
+
+                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerView, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
 
 {%- endcapture -%}
 

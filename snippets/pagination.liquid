@@ -30,7 +30,7 @@
 	<li class="pagination-item-container">
 
 		<span clas="paginate-item-text">
-			{{ 'general.page' | t }} {{ paginate.current_page }} / {{ paginate.pages }}
+			{{ 'general.page' | t }} {{ paginate.current_page }} / {{ paginate.pages | default: 1 }}
 		</span>
 
 	</li>

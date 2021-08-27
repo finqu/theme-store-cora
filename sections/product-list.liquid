@@ -17,15 +17,32 @@
 
     <div class="{{ section.settings.listType }} row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
 
-        {% for product in items %}
+        {% if items.size > 0 %}
 
-            <div class="col pt-3 pb-4">
+            {% for product in items %}
 
-                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+                <div class="col pt-3 pb-4">
 
-            </div>
+                    {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
 
-        {% endfor %}
+                </div>
+
+            {% endfor %}
+
+        {% else if request.design_mode %}
+
+            {% for num in (1..section.settings.itemAmount) %}
+
+                <div class="col pt-3 pb-4">
+
+                    {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+
+                </div>
+
+            {% endfor %}
+
+
+        {% endif %}
 
     </div>
 

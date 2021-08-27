@@ -595,13 +595,15 @@
 						"en": "Body text font",
 						"fi": "Leipäktestin fontti"
 					},
-					"default": "Helvetica",
+					"default": "Inter",
 					"families": [
 						"Open Sans",
 						"Lato",
 						"Roboto",
-						"Helvetica",
-						"Amiri"
+						"Inter",
+						"Amiri",
+						"Cormorant Garamond",
+						"Work Sans"
 					],
 					"variants": [
 						"Regular",
@@ -616,13 +618,15 @@
 						"en": "Heading font",
 						"fi": "Otsikon fontti"
 					},
-					"default": "Helvetica",
+					"default": "Inter",
 					"families": [
 						"Open Sans",
 						"Lato",
 						"Roboto",
-						"Helvetica",
-						"Amiri"
+						"Inter",
+						"Amiri",
+						"Cormorant Garamond",
+						"Work Sans"
 					],
 					"variants": [
 						"Regular",
@@ -637,13 +641,15 @@
 						"en": "Subheading font",
 						"fi": "Alaotsikon fontti"
 					},
-					"default": "Helvetica",
+					"default": "Inter",
 					"families": [
 						"Open Sans",
 						"Lato",
 						"Roboto",
-						"Helvetica",
-						"Amiri"
+						"Inter",
+						"Amiri",
+						"Cormorant Garamond",
+						"Work Sans"
 					],
 					"variants": [
 						"Regular",
@@ -658,13 +664,15 @@
 						"en": "Button font",
 						"fi": "Napin fontti"
 					},
-					"default": "Helvetica",
+					"default": "Inter",
 					"families": [
 						"Open Sans",
 						"Lato",
 						"Roboto",
-						"Helvetica",
-						"Amiri"
+						"Inter",
+						"Amiri",
+						"Cormorant Garamond",
+						"Work Sans"
 					],
 					"variants": [
 						"Regular",
@@ -684,8 +692,10 @@
 						"Open Sans",
 						"Lato",
 						"Roboto",
-						"Helvetica",
-						"Amiri"
+						"Inter",
+						"Amiri",
+						"Cormorant Garamond",
+						"Work Sans"
 					],
 					"variants": [
 						"Regular",

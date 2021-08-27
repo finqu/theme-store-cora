@@ -23,9 +23,12 @@ export default {
         if (!bodyEl.classList.contains('template-password')) {
             this.initMobileNavigation();
             this.initSiteHeader();
-            this.initSortByFilters();
             this.initWishlist();
             this.initCartMini();
+        }
+
+        if (!bodyEl.classList.contains('template-category') && !bodyEl.classList.contains('template-password')) {
+            this.initSortByFilters();
         }
 
         if (bodyEl.classList.contains('template-password')) {
@@ -402,6 +405,100 @@ export default {
 
         const containerEl = document.querySelector('.section-category');
     	const categoryTagsEl = containerEl.querySelector('.category-tags');
+        const categoryFiltersFormEl = containerEl.querySelector('.category-filters');
+        const $categoryFiltersFormEl = $(categoryFiltersFormEl);
+        const facetResultCountEls = containerEl.querySelectorAll('[data-facet-result-count]');
+        let categoryDynamicContentEl = containerEl.querySelector('.category-dynamic-content');
+
+        const renderDynamicContent = (url) => {
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = () => {
+
+                if (xhr.readyState === 4) {
+
+                    const dom = new DOMParser().parseFromString(xhr.responseText, 'text/html');
+                    const newCategoryDynamicContent = dom.querySelector('.section-category .category-dynamic-content');
+
+                    facetResultCountEls.forEach(el => {
+                        el.innerText = dom.querySelector('[data-facet-result-count="'+el.dataset.facetResultCount+'"]').innerText;
+                    });
+
+                    categoryDynamicContentEl.replaceWith(newCategoryDynamicContent);
+                    categoryDynamicContentEl = newCategoryDynamicContent;
+
+                    if (history.pushState) {
+                        window.history.pushState({path:url},'',url);
+                    }
+
+                    bindEvents();
+                }
+            };
+
+            xhr.send();
+        };
+
+        const bindEvents = () => {
+
+            containerEl.querySelectorAll('.sort-by-action').forEach(el => { el.addEventListener('click', e => {
+
+                const url = new URL(window.location);
+
+                url.searchParams.set('sort-by', e.target.value);
+
+                renderDynamicContent(url.href);
+            })});
+
+            containerEl.querySelector('.paginate-item-previous').addEventListener('click', e => {
+
+                e.preventDefault();
+
+                if (e.target.hasAttribute('href')) {
+                    renderDynamicContent(e.target.getAttribute('href'));
+                }
+            });
+
+            containerEl.querySelector('.paginate-item-next').addEventListener('click', e => {
+
+                e.preventDefault();
+
+                if (e.target.hasAttribute('href')) {
+                    renderDynamicContent(e.target.getAttribute('href'));
+                }
+            });
+        };
+
+        if (categoryFiltersFormEl) {
+
+            categoryFiltersFormEl.querySelectorAll('input').forEach(el => { el.addEventListener('input', e => {
+                $categoryFiltersFormEl.submit();
+            })});
+
+            $categoryFiltersFormEl.on('submit', (e) => {
+
+                e.preventDefault();
+
+                const pageUrl = new URL(window.location);
+                const pageId = pageUrl.searchParams.get('page');
+                const sortBy = pageUrl.searchParams.get('sort-by');
+                const formData = new FormData(categoryFiltersFormEl);
+                let searchParams = new URLSearchParams(formData)
+
+                if (pageId) {
+                    searchParams.append('page', pageId);
+                }
+
+                if (sortBy) {
+                    searchParams.append('sort-by', sortBy);
+                }
+
+                const url = `${window.location.pathname}?${searchParams.toString()}`;
+
+                renderDynamicContent(url);
+            });
+        }
 
     	if (categoryTagsEl) {
 
@@ -429,6 +526,8 @@ export default {
                 }
 			});
     	}
+
+        bindEvents();
 	},
 	initArticle: function() {
 

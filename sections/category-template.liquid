@@ -5,10 +5,17 @@
 {%- assign subCategories = category.sub_categories -%}
 {%- assign activeSortOption = category.sort_by | default: category.default_sort_by -%}
 {%- assign sortOptions = category.sort_options -%}
+{%- assign categoryFilters = category.filters -%}
+
+{% if category.products.size == 0 and request.design_mode %}
+    {%- assign itemCount = section.settings.itemsPerRow | times: 3 -%}
+{% else %}
+    {%- assign itemCount = category.product_count -%}
+{% endif %}
 
 {%- capture sectionContent -%}
 
-    {%- paginate category.products by 100 -%}
+    {%- paginate category.products by 2 -%}
 
         {% if subCategories %}
 
@@ -53,51 +60,154 @@
 
         {% endif %}
 
-        <div class="row">
+        {% if categoryFilters.size > 0 %}
 
-            <div class="col-auto">
+            <form class="category-filters">
 
-                <span class="text-muted">
-                    {% if itemCount == 1 %}
-                        {{ 'general.product_count' | t: amount: itemCount }}
-                    {% else %}
-                        {{ 'general.product_plural_count' | t: amount: itemCount }}
-                    {% endif %}
-                </span>
+                {% for filter in categoryFilters %}
 
-            </div>
+                    <div class="uk-inline uk-padding uk-text-left">
 
-            <div class="col text-right">
+                        <button class="uk-button uk-button-link" type="button" uk-icon="icon: chevron-down;ratio: 0.7;">{{ filter.label }}</button>
 
-                <div class="dropdown">
+                        <div uk-dropdown="pos: bottom-center;">
 
-                    <button type="button" class="btn btn-text text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="uk-width-medium">
 
-                        <span class="mr-1">
+                                {% if filter.type == 'list' %}
+
+                                    {% if filter.param_name == 'filter.availability' %}
+
+                                        <div class="uk-form-controls">
+
+                                            {% for value in filter.values %}
+
+                                                <div class="uk-margin-small">
+
+                                                    <label>
+                                                        <input class="uk-radio uk-margin-right-small" type="radio" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+
+                                                        <span>{{ value.label }}</span>
+
+                                                        <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
+
+                                                    </label>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="uk-form-controls">
+
+                                            {% for value in filter.values %}
+
+                                                <div class="uk-margin-small">
+
+                                                    <label>
+
+                                                        <input class="uk-checkbox uk-margin-right-small" type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+
+                                                        <span>{{ value.label }}</span>
+
+                                                        <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
+
+                                                    </label>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                {% elsif filter.type == 'range' %}
+
+                                    <div class="uk-form-controls uk-grid-small" uk-grid>
+
+                                        <div class="uk-width-1-2">
+
+                                            <label>From</label>
+                                            <input class="uk-input" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+
+                                        </div>
+
+                                        <div class="uk-width-1-2">
+
+                                            <label>To</label>
+                                            <input class="uk-input" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+
+                                        </div>
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </form>
+
+        {% endif %}
+
+        <div class="category-dynamic-content">
+
+            <div class="row">
+
+                <div class="col-auto">
+
+                    <span class="text-muted">
+                        {% if itemCount == 1 %}
+                            {{ 'general.product_count' | t: amount: itemCount }}
+                        {% else %}
+                            {{ 'general.product_plural_count' | t: amount: itemCount }}
+                        {% endif %}
+                    </span>
+
+                </div>
+
+                <div class="col text-right">
+
+                    <div class="dropdown">
+
+                        <button type="button" class="btn btn-text text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            <span class="mr-1">
+
+                                {% for option in sortOptions %}
+
+                                    {% if option == activeSortOption %}
+                                        {{ option | prepend: 'filters.sort-by.' | t }}
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </span>
+
+                            {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
+
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-right">
 
                             {% for option in sortOptions %}
 
-                                {% if option == activeSortOption %}
+                                <button type="button" class="sort-by-action dropdown-item" value="{{ option }}">
                                     {{ option | prepend: 'filters.sort-by.' | t }}
-                                {% endif %}
+                                </button>
 
                             {% endfor %}
 
-                        </span>
-
-                        {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
-
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-right">
-
-                        {% for option in sortOptions %}
-
-                            <button type="button" class="sort-by-action dropdown-item" value="{{ option }}">
-                                {{ option | prepend: 'filters.sort-by.' | t }}
-                            </button>
-
-                        {% endfor %}
+                        </div>
 
                     </div>
 
@@ -105,23 +215,40 @@
 
             </div>
 
+            <div class="category-items row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
+
+                {% if category.products.size > 0 %}
+
+                    {% for product in category.products %}
+
+                        <div class="col pt-3 pb-4">
+
+                            {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else if request.design_mode %}
+
+                    {% for num in (1..itemCount) %}
+
+                        <div class="col pt-3 pb-4">
+
+                            {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+
+                        </div>
+
+                    {% endfor %}
+
+
+                {% endif %}
+
+            </div>
+
+            {% render 'pagination', paginate: paginate %}
+
         </div>
-
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
-
-            {% for product in category.products %}
-
-                <div class="col pt-3 pb-4">
-
-                    {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
-
-                </div>
-
-            {% endfor %}
-
-        </div>
-
-        {% render 'pagination', paginate: paginate %}
 
     {%- endpaginate -%}
 

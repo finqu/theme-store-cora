@@ -30,21 +30,26 @@
 
 {% endcase %}
 
+{%- assign productHasDiscount = product.has_discount | default: false -%}
+{%- assign productOutOfStock = product.out_of_stock | default: false -%}
+{%- assign productIsNew = product.is_new | default: false -%}
+{%- assign productDiscountPercent = product.discount_percent | default: 0 -%}
+
 <div class="product-badges {{ positionClass }}">
 
-    {% if product.has_discount and product.out_of_stock == false %}
+    {% if productHasDiscount and productOutOfStock == false %}
 
         <div class="product-badge product-badge-discount">
 
             <span class="product-badge-content">
-                -{{ product.discount_percent }}%
+                -{{ productDiscountPercent }}%
             </span>
 
         </div>
 
     {% endif %}
 
-    {% if product.is_new and product.out_of_stock == false %}
+    {% if productIsNew and productOutOfStock == false %}
 
         <div class="product-badge product-badge-new">
 
@@ -54,7 +59,7 @@
 
         </div>
 
-    {% elsif product.out_of_stock %}
+    {% elsif productOutOfStock %}
 
         <div class="product-badge product-badge-general">
 
