@@ -6,6 +6,7 @@
 {%- assign activeSortOption = category.sort_by | default: category.default_sort_by -%}
 {%- assign sortOptions = category.sort_options -%}
 {%- assign categoryFilters = category.filters -%}
+{%- assign categoryActiveFilters = category.active_filters -%}
 
 {% if category.products.size == 0 and request.design_mode %}
     {%- assign itemCount = section.settings.itemsPerRow | times: 3 -%}
@@ -66,11 +67,11 @@
 
                 {% for filter in categoryFilters %}
 
-                    <div class="dropdown d-inline-block mb-3 mr-2">
+                    <div class="category-filter-dropdown dropdown">
 
-                        <button class="btn border" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="category-filter-btn btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                            <span class="font-weight-normal mr-2">
+                            <span class="category-filter-btn-text">
                                 {{ filter.label }}
                             </span>
 
@@ -78,7 +79,7 @@
 
                         </button>
 
-                        <div class="dropdown-menu p-4" style="min-width: 250px;">
+                        <div class="category-filter-dropdown-menu dropdown-menu p-4">
 
                             {% if filter.type == 'list' %}
 
@@ -88,9 +89,9 @@
 
                                         <div class="form-group form-check{% if forloop.last == true %} mb-0{% endif %}">
 
-                                            <input type="radio" id="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+                                            <input type="radio" id="input-{{ value.param_name }}-{{ value.value }}" class="input-{{ value.param_name | replace: '.', '-' | handle }} form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
 
-                                            <label for="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-label">
+                                            <label for="input-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
                                                 <span>{{ value.label }}</span>
 
@@ -108,9 +109,9 @@
 
                                         <div class="form-group form-check{% if forloop.last == true %} mb-0{% endif %}">
 
-                                            <input type="checkbox" id="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+                                            <input type="checkbox" id="input-{{ value.param_name }}-{{ value.value }}" class="input-{{ value.param_name | replace: '.', '-' | handle }} form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
 
-                                            <label for="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-label">
+                                            <label for="input-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
                                                 <span>{{ value.label }}</span>
 
@@ -132,7 +133,7 @@
 
                                         <div class="col">
 
-                                            <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                            <input class="input-{{ filter.param_name | replace: '.', '-' | handle }} form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
 
                                         </div>
 
@@ -142,7 +143,7 @@
 
                                         <div class="col">
 
-                                            <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+                                            <input class="input-{{ filter.param_name | replace: '.', '-' | handle }} form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
 
                                         </div>
 
@@ -163,6 +164,46 @@
         {% endif %}
 
         <div class="category-dynamic-content">
+
+             {% if categoryActiveFilters %}
+
+                <div class="category-activated-filters">
+
+                   {% for filter in categoryActiveFilters %}
+
+                        <div class="item">
+
+                            <button type="button" class="category-remove-filter" value="{{ filter.param_name | replace: '.', '-' | handle }}">
+
+                                <span class="category-activated-filter-text">
+                                    {{ filter.label }}
+                                </span>
+
+                                <span class="category-activated-filter-icon">
+                                    {%- render 'icon', icon: 'close-232XyC' -%}
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                   {% endfor %}
+
+                   <div class="item">
+
+                        <button type="button" class="category-reset-filters">
+
+                            <span class="category-reset-filters-text">
+                                Tyhjennät suodattimet
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
 
             <div class="row">
 

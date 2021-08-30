@@ -760,6 +760,82 @@ body > #search-overlay {
             }
         }
     }
+
+    // Category filters
+    .category-filters {
+
+        .category-filter-dropdown {
+            display: inline-flex;
+
+            .category-filter-btn {
+                font-size: $font-size-base;
+                border: 1px solid section-var(border_color);
+                border-radius: 0;
+                margin-bottom: spacer(3);
+                margin-right: spacer(2);
+                background-color: section-var(background_color);
+                color: section-var(text_color);
+                transition: none;
+                min-width: 138px;
+
+                &[aria-expanded="true"] {
+                    z-index: $zindex-dropdown + 2;
+                    border-bottom-color: section-var(background_color);
+
+                    & + .category-filter-dropdown-menu {
+                        z-index: $zindex-dropdown + 1;
+                    }
+
+                    .svg-icon {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                .category-filter-btn-text {
+                    font-weight: $font-weight-normal;
+                    margin-right: spacer(2);
+                }
+            }
+
+            .category-filter-dropdown-menu {
+                margin-top: -1px;
+                min-width: 250px;
+                border-radius: 0;
+            }
+        }
+    }
+
+    .category-activated-filters {
+        margin-bottom: spacer(4);
+
+        .item {
+            display: inline-flex;
+
+            button {
+                border: 0;
+                border-radius: 0;
+                margin: 0;
+                padding: spacer(1) spacer(2);
+                font-size: $font-size-base * 0.95;
+
+                &.category-remove-filter {
+                    margin-right: spacer(2);
+                    color: section-var(text_color);
+                    background-color: color-yiq(section-var(background_color), darken(section-var(background_color), 10%), lighten(section-var(background_color), 10%));
+
+                    .category-activated-filter-icon {
+                        margin-left: spacer(1);
+                    }
+                }
+
+                &.category-reset-filters {
+                    margin-left: -#{spacer(2)};
+                    color: section-var(text_color);
+                    background-color: section-var(background_color);
+                }
+            }
+        }
+    }
 }
 
 

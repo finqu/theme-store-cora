@@ -1,69 +1,138 @@
 {
     "disable_draft": true,
     "asset_cache": {
-        "main.css": "main.854b9d004410f53c753d591e216e5876.css"
+        "main.css": "main.6e12daad7f35d9b44d6905a9a59018b6.css"
     },
     "current": {
         "templates": {
             "frontpage": {
                 "sections": [
                     {
-                        "id": "ed1619721a59614ac3591e9d9df11547",
-                        "name": "contact",
+                        "id": "92c800c0da1d0aee57d41ba5afa3792c",
+                        "name": "custom",
                         "settings": {
-                            "title": null,
-                            "subtitle": null,
-                            "text": null,
-                            "textAlign": "center"
+                            "sectionHeight": "xl",
+                            "sectionInnerSpacing": "",
+                            "sectionContentSpacing": "",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1593642532973-d31b6557fa68?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYyOTk3NjA0OQ&ixlib=rb-1.2.1&q=85",
+                            "sectionBgImgPos": "center-center",
+                            "sectionBgImgOverlay": "30",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "darkest"
                         },
-                        "blocks": []
-                    },
-                    {
-                        "id": "19ac93247eb66eb985df55ea2a12fb72",
-                        "name": "image-carousel",
-                        "settings": {
-                            "loop": true,
-                            "autoplay": true,
-                            "autoplaySpeed": "3",
-                            "navigation": "hover",
-                            "pagination": "hover",
-                            "effect": "slide",
-                            "sectionHeight": "",
-                            "slideImgOverlay": "50",
-                            "sectionStyle": "general",
-                            "setting_blocks": {
-                                "items": {
-                                    "7f08783d-268a-46f4-812c-a048ac6f35cd": {
-                                        "type": "item",
-                                        "settings": {
-                                            "imgSrc": "https:\/\/cdn.finqu.ninja\/users\/1\/images\/uploads\/4.jpeg",
-                                            "imgAlt": "",
-                                            "title": "[object Object]",
-                                            "description": "",
-                                            "btnLabel": "",
-                                            "btnResource": {
-                                                "type": "url",
-                                                "record_id": "",
-                                                "url": ""
-                                            },
-                                            "type": "item"
-                                        }
-                                    }
+                        "blocks": [
+                            {
+                                "id": "275e33d0219b2b6bc6dcc110a1f827ce",
+                                "name": "heading",
+                                "settings": {
+                                    "titleTag": "h2",
+                                    "title": null,
+                                    "subtitle": null,
+                                    "textAlign": "center"
+                                }
+                            },
+                            {
+                                "id": "c22fb5460c8e079f9a17bc698b87b3e0",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p style=\"text-align: center;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.<\/p>"
+                                }
+                            },
+                            {
+                                "id": "7b34528f310283312dc270da387dcabb",
+                                "name": "button",
+                                "settings": {
+                                    "btnLabel": null,
+                                    "btnResource": null,
+                                    "openInNewWindowStatus": true,
+                                    "contentAlign": "center"
                                 }
                             }
-                        },
-                        "blocks": []
+                        ]
                     },
                     {
-                        "id": "d7b3e03496763c30fc6188663c96a5d9",
-                        "name": "contact",
+                        "id": "5ccd31d19390585f8bf5b38b5165ca9a",
+                        "name": "product-list",
                         "settings": {
-                            "title": "Lorem ipsum dolor sit amet",
-                            "subtitle": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem.",
-                            "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
-                            "textAlign": "left"
+                            "sectionTitle": "",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "listType": "popular",
+                            "tagId": "",
+                            "resource": {
+                                "type": "url",
+                                "record_id": "",
+                                "url": ""
+                            },
+                            "itemAmount": "8",
+                            "itemsPerRow": "4",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
                         },
                         "blocks": []
+                    }
+                ]
+            },
+            "cart": {
+                "sections": [
+                    {
+                        "name": "cart-template",
+                        "id": "cart-template",
+                        "blocks": [],
+                        "settings": [],
+                        "sticky": true
+                    }
+                ]
+            },
+            "search": {
+                "sections": [
+                    {
+                        "name": "search-template",
+                        "id": "search-template",
+                        "blocks": [],
+                        "settings": [],
+                        "sticky": true
+                    }
+                ]
+            },
+            "password": {
+                "sections": [
+                    {
+                        "name": "password-template",
+                        "id": "password-template",
+                        "blocks": [],
+                        "settings": [],
+                        "sticky": true
+                    }
+                ]
+            },
+            "manufacturer": {
+                "sections": [
+                    {
+                        "name": "manufacturer-template",
+                        "id": "manufacturer-template",
+                        "blocks": [],
+                        "settings": {
+                            "itemsPerRow": "4",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true
+                        },
+                        "sticky": true
                     }
                 ]
             }
@@ -268,27 +337,28 @@
                 }
             },
             "textScale": "0.875",
-            "bodyTextFont": "Helvetica",
-            "headingFont": "Helvetica",
-            "subheadingFont": "Helvetica",
-            "buttonFont": "Helvetica",
-            "accentFont": "Amiri",
+            "bodyTextFont": "Inter",
+            "headingFont": "Inter",
+            "subheadingFont": "Inter",
+            "buttonFont": "Inter",
+            "accentFont": "Cormorant Garamond",
             "buttonBorderRadius": "3px",
             "sectionHeight": "md",
             "sectionInnerSpacing": "off",
             "sectionContentSpacing": "md",
             "sectionBgImgPos": "center-center",
-            "faviconImgSrc": "https:\/\/cdn.finqu.ninja\/users\/1\/images\/uploads\/img-17.jpg",
+            "faviconImgSrc": "",
             "placeholderImgSrc": "https:\/\/cdn.finqu.ninja\/users\/1\/images\/uploads\/placeholder.png",
             "placeholderDefaultImgSrc": "media\/placeholder.jpg",
             "addToCartNotification": true,
+            "taxFreePrices": true,
             "policyAgreementMethod": "check",
-            "facebookPageUrl": "https:\/\/google.fi",
-            "instagramPageUrl": "https:\/\/google.fi",
-            "twitterPageUrl": "https:\/\/google.fi",
-            "pinterestPageUrl": "google.fi",
-            "youtubePageUrl": "https:\/\/google.fi",
-            "taxFreePrices": false,
+            "facebookPageUrl": "",
+            "instagramPageUrl": "",
+            "twitterPageUrl": "",
+            "pinterestPageUrl": "",
+            "youtubePageUrl": "",
+            "taxTreePrices": true,
             "sectionBgImgPosition": "center-center"
         },
         "sections": [
@@ -296,12 +366,9 @@
                 "id": "header",
                 "name": "header",
                 "settings": {
-                    "menu": {
-                        "type": "menu",
-                        "id": "main-menu"
-                    },
-                    "logoImgSrc": "https:\/\/cdn.finqu.ninja\/users\/1\/images\/uploads\/rocket.png",
-                    "socialMediaIconsStatus": false,
+                    "menu": "main-menu",
+                    "logoImgSrc": "",
+                    "socialMediaIconsStatus": true,
                     "annoucementStatus": true,
                     "annoucementBgColor": "#000000",
                     "annoucementTextColor": "#ffffff",
@@ -313,10 +380,7 @@
                 "id": "footer",
                 "name": "footer",
                 "settings": {
-                    "menu": {
-                        "type": "menu",
-                        "id": "footer-menu"
-                    },
+                    "menu": "footer-menu",
                     "footerTopTextStatus": true,
                     "footerBottomTextStatus": true,
                     "footerTopNewsletterStatus": true,
@@ -332,7 +396,429 @@
                     "sectionContentSpacing": "",
                     "sectionStyle": "dark"
                 }
+            },
+            {
+                "id": "category-template",
+                "name": "category-template",
+                "settings": {
+                    "itemsPerRow": "3",
+                    "showBadges": true,
+                    "showManufacturer": true,
+                    "showProductName": true,
+                    "showPricing": true
+                }
             }
         ]
-    }
+    },
+    "presets": [
+        {
+            "name": "Default",
+            "default": true,
+            "templates": {
+                "frontpage": {
+                    "sections": [
+                        {
+                            "id": "92c800c0da1d0aee57d41ba5afa3792c",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "xl",
+                                "sectionInnerSpacing": "",
+                                "sectionContentSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1593642532973-d31b6557fa68?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYyOTk3NjA0OQ&ixlib=rb-1.2.1&q=85",
+                                "sectionBgImgPos": "center-center",
+                                "sectionBgImgOverlay": "30",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "darkest"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "275e33d0219b2b6bc6dcc110a1f827ce",
+                                    "name": "heading",
+                                    "settings": {
+                                        "titleTag": "h2",
+                                        "title": null,
+                                        "subtitle": null,
+                                        "textAlign": "center"
+                                    }
+                                },
+                                {
+                                    "id": "c22fb5460c8e079f9a17bc698b87b3e0",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p style=\"text-align: center;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.<\/p>"
+                                    }
+                                },
+                                {
+                                    "id": "7b34528f310283312dc270da387dcabb",
+                                    "name": "button",
+                                    "settings": {
+                                        "btnLabel": null,
+                                        "btnResource": null,
+                                        "openInNewWindowStatus": true,
+                                        "contentAlign": "center"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "5ccd31d19390585f8bf5b38b5165ca9a",
+                            "name": "product-list",
+                            "settings": {
+                                "sectionTitle": "",
+                                "sectionSubtitle": "",
+                                "sectionHeaderTextAlign": "left",
+                                "listType": "popular",
+                                "tagId": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "itemAmount": "8",
+                                "itemsPerRow": "4",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        }
+                    ]
+                },
+                "cart": {
+                    "sections": [
+                        {
+                            "name": "cart-template",
+                            "id": "cart-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "search": {
+                    "sections": [
+                        {
+                            "name": "search-template",
+                            "id": "search-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "password": {
+                    "sections": [
+                        {
+                            "name": "password-template",
+                            "id": "password-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "manufacturer": {
+                    "sections": [
+                        {
+                            "name": "manufacturer-template",
+                            "id": "manufacturer-template",
+                            "blocks": [],
+                            "settings": {
+                                "itemsPerRow": "4",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true
+                            },
+                            "sticky": true
+                        }
+                    ]
+                }
+            },
+            "settings": {
+                "styles": {
+                    "general": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#1a1a1a",
+                        "link_color": "#1a1a1a",
+                        "border_color": "#d0d1d3",
+                        "indicator_color": "#ff6900",
+                        "icon_color": "#1a1a1a",
+                        "heading_color": "#1a1a1a",
+                        "subheading_color": "#1a1a1a",
+                        "button_bg_color": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#cccccc",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#cccccc",
+                        "product_title_color": "#1a1a1a",
+                        "price_color": "#1a1a1a",
+                        "sale_price_color": "#eb0037",
+                        "new_badge_bg_color": "#1a1a1a",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#eb0037",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#1a1a1a",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "lightest": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#000000",
+                        "link_color": "#000000",
+                        "border_color": "#000000",
+                        "indicator_color": "#000000",
+                        "icon_color": "#000000",
+                        "heading_color": "#000000",
+                        "subheading_color": "#000000",
+                        "button_bg_color": "#000000",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#000000",
+                        "product_title_color": "#000000",
+                        "price_color": "#000000",
+                        "sale_price_color": "#000000",
+                        "new_badge_bg_color": "#000000",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#000000",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#000000",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "light": {
+                        "background_color": "#ebebeb",
+                        "overlay_background_color": "#e4e4e4",
+                        "text_color": "#000000",
+                        "link_color": "#000000",
+                        "border_color": "#cacaca",
+                        "indicator_color": "#000000",
+                        "icon_color": "#000000",
+                        "heading_color": "#000000",
+                        "subheading_color": "#000000",
+                        "button_bg_color": "#000000",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#cacaca",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#cacaca",
+                        "product_title_color": "#000000",
+                        "price_color": "#000000",
+                        "sale_price_color": "#000000",
+                        "new_badge_bg_color": "#a8a6a1",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#a8a6a1",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#a8a6a1",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "dark": {
+                        "background_color": "#333333",
+                        "overlay_background_color": "#2b2b2b",
+                        "text_color": "#999999",
+                        "link_color": "#ffffff",
+                        "border_color": "#292929",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#333333",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#292929",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#292929",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#333333",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#333333",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#333333"
+                    },
+                    "darkest": {
+                        "background_color": "#000000",
+                        "overlay_background_color": "#1d1d1d",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#000000",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#ffffff",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "custom1": {
+                        "background_color": "#ff0000",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#1a1a1a",
+                        "link_color": "#1a1a1a",
+                        "border_color": "#d0d1d3",
+                        "indicator_color": "#ff6900",
+                        "icon_color": "#1a1a1a",
+                        "heading_color": "#1a1a1a",
+                        "subheading_color": "#1a1a1a",
+                        "button_bg_color": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#cccccc",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#cccccc",
+                        "product_title_color": "#1a1a1a",
+                        "price_color": "#1a1a1a",
+                        "sale_price_color": "#eb0037",
+                        "new_badge_bg_color": "#1a1a1a",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#eb0037",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#1a1a1a",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "custom2": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#1a1a1a",
+                        "link_color": "#1a1a1a",
+                        "border_color": "#d0d1d3",
+                        "indicator_color": "#ff6900",
+                        "icon_color": "#1a1a1a",
+                        "heading_color": "#1a1a1a",
+                        "subheading_color": "#1a1a1a",
+                        "button_bg_color": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#cccccc",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#cccccc",
+                        "product_title_color": "#1a1a1a",
+                        "price_color": "#1a1a1a",
+                        "sale_price_color": "#eb0037",
+                        "new_badge_bg_color": "#1a1a1a",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#eb0037",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#1a1a1a",
+                        "general_badge_text_color": "#ffffff"
+                    }
+                },
+                "textScale": "0.875",
+                "bodyTextFont": "Inter",
+                "headingFont": "Inter",
+                "subheadingFont": "Inter",
+                "buttonFont": "Inter",
+                "accentFont": "Cormorant Garamond",
+                "buttonBorderRadius": "3px",
+                "sectionHeight": "md",
+                "sectionInnerSpacing": "off",
+                "sectionContentSpacing": "md",
+                "sectionBgImgPos": "center-center",
+                "faviconImgSrc": "",
+                "placeholderImgSrc": "https:\/\/cdn.finqu.ninja\/users\/1\/images\/uploads\/placeholder.png",
+                "placeholderDefaultImgSrc": "media\/placeholder.jpg",
+                "addToCartNotification": true,
+                "taxFreePrices": true,
+                "policyAgreementMethod": "check",
+                "facebookPageUrl": "",
+                "instagramPageUrl": "",
+                "twitterPageUrl": "",
+                "pinterestPageUrl": "",
+                "youtubePageUrl": "",
+                "taxTreePrices": true,
+                "sectionBgImgPosition": "center-center"
+            },
+            "sections": [
+                {
+                    "id": "header",
+                    "name": "header",
+                    "settings": {
+                        "menu": "main-menu",
+                        "logoImgSrc": "",
+                        "socialMediaIconsStatus": true,
+                        "annoucementStatus": true,
+                        "annoucementBgColor": "#000000",
+                        "annoucementTextColor": "#ffffff",
+                        "annoucementText": " Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ",
+                        "sectionStyle": "general"
+                    }
+                },
+                {
+                    "id": "footer",
+                    "name": "footer",
+                    "settings": {
+                        "menu": "footer-menu",
+                        "footerTopTextStatus": true,
+                        "footerBottomTextStatus": true,
+                        "footerTopNewsletterStatus": true,
+                        "footerMiddleSocialMediaButtonsStatus": true,
+                        "footerMiddlePaymentMethodsStatus": true,
+                        "footerTopTextTitle": "Lorem ipsum dolor sit amet",
+                        "footerTopTextContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien.<\/p>",
+                        "footerBottomTextContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                        "footerTopNewsletterTitle": "Lorem ipsum dolor sit amet",
+                        "footerTopNewsletterContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                        "sectionHeight": "",
+                        "sectionInnerSpacing": "",
+                        "sectionContentSpacing": "",
+                        "sectionStyle": "dark"
+                    }
+                },
+                {
+                    "id": "category-template",
+                    "name": "category-template",
+                    "settings": {
+                        "itemsPerRow": "3",
+                        "showBadges": true,
+                        "showManufacturer": true,
+                        "showProductName": true,
+                        "showPricing": true
+                    }
+                }
+            ]
+        }
+    ]
 }

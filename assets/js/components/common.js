@@ -407,12 +407,27 @@ export default {
     	const categoryTagsEl = containerEl.querySelector('.category-tags');
         const categoryFiltersFormEl = containerEl.querySelector('.category-filters');
         const $categoryFiltersFormEl = $(categoryFiltersFormEl);
+        const categoryFilterInputEls = containerEl.querySelectorAll('input');
         const facetResultCountEls = containerEl.querySelectorAll('[data-facet-result-count]');
         let categoryDynamicContentEl = containerEl.querySelector('.category-dynamic-content');
+        let isProcessing = false;
 
         const renderDynamicContent = (url) => {
 
             const xhr = new XMLHttpRequest();
+
+            isProcessing = true;
+
+            categoryFilterInputEls.forEach(el => {
+                el.disabled = true;
+            });
+
+            categoryDynamicContentEl.querySelectorAll('.sort-by-action').forEach(el => {
+                el.disabled = true;
+            });
+
+            categoryDynamicContentEl.querySelector('.paginate-item-previous').disabled = true;
+            categoryDynamicContentEl.querySelector('.paginate-item-next').disabled = true;
 
             xhr.open('GET', url, true);
             xhr.onreadystatechange = () => {
@@ -433,6 +448,19 @@ export default {
                         window.history.pushState({path:url},'',url);
                     }
 
+                    isProcessing = false;
+
+                    categoryFilterInputEls.forEach(el => {
+                        el.disabled = false;
+                    });
+
+                    categoryDynamicContentEl.querySelectorAll('.sort-by-action').forEach(el => {
+                        el.disabled = false;
+                    });
+
+                    categoryDynamicContentEl.querySelector('.paginate-item-previous').disabled = false;
+                    categoryDynamicContentEl.querySelector('.paginate-item-next').disabled = false;
+
                     bindEvents();
                 }
             };
@@ -442,7 +470,13 @@ export default {
 
         const bindEvents = () => {
 
+            const categoryResetFiltersEl = categoryDynamicContentEl.querySelector('.category-reset-filters');
+
             containerEl.querySelectorAll('.sort-by-action').forEach(el => { el.addEventListener('click', e => {
+
+                if (isProcessing) {
+                    return;
+                }
 
                 const url = new URL(window.location);
 
@@ -453,6 +487,10 @@ export default {
 
             containerEl.querySelector('.paginate-item-previous').addEventListener('click', e => {
 
+                if (isProcessing) {
+                    return;
+                }
+
                 e.preventDefault();
 
                 if (e.target.hasAttribute('href')) {
@@ -462,17 +500,72 @@ export default {
 
             containerEl.querySelector('.paginate-item-next').addEventListener('click', e => {
 
+                if (isProcessing) {
+                    return;
+                }
+
                 e.preventDefault();
 
                 if (e.target.hasAttribute('href')) {
                     renderDynamicContent(e.target.getAttribute('href'));
                 }
             });
+
+            categoryDynamicContentEl.querySelectorAll('.category-remove-filter').forEach(el => { el.addEventListener('click', e => {
+
+                if (isProcessing) {
+                    return;
+                }
+
+                categoryFiltersFormEl.querySelectorAll('.input-'+el.value).forEach(el => {
+
+                    if (el.type === 'checkbox' || el.type ==='radio') {
+
+                        el.checked = false;
+
+                    } else if (el.type === 'number') {
+
+                        el.value = '';
+                    }
+                });
+
+                $categoryFiltersFormEl.submit();
+            })});
+
+            if (categoryResetFiltersEl) {
+
+                categoryResetFiltersEl.addEventListener('click', e => {
+
+                    if (isProcessing) {
+                        return;
+                    }
+
+                    categoryFilterInputEls.forEach(el => {
+
+                        if (el.type === 'checkbox' || el.type ==='radio') {
+
+                            el.checked = false;
+
+                        } else if (el.type === 'number') {
+
+                            el.value = '';
+                        }
+
+                    });
+
+                    $categoryFiltersFormEl.submit();
+                });
+            }
         };
 
         if (categoryFiltersFormEl) {
 
-            categoryFiltersFormEl.querySelectorAll('input').forEach(el => { el.addEventListener('input', e => {
+            categoryFilterInputEls.forEach(el => { el.addEventListener('input', e => {
+
+                if (isProcessing) {
+                    return;
+                }
+
                 $categoryFiltersFormEl.submit();
             })});
 
