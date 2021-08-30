@@ -498,6 +498,10 @@ export default {
 
                 renderDynamicContent(url);
             });
+
+            categoryFiltersFormEl.querySelectorAll('.dropdown-menu').forEach(el => { el.addEventListener('click', e => {
+                e.stopPropagation();
+            })});
         }
 
     	if (categoryTagsEl) {

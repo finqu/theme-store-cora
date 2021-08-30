@@ -15,7 +15,7 @@
 
 {%- capture sectionContent -%}
 
-    {%- paginate category.products by 2 -%}
+    {%- paginate category.products by 100 -%}
 
         {% if subCategories %}
 
@@ -62,92 +62,95 @@
 
         {% if categoryFilters.size > 0 %}
 
-            <form class="category-filters">
+            <form class="category-filters mb-2">
 
                 {% for filter in categoryFilters %}
 
-                    <div class="uk-inline uk-padding uk-text-left">
+                    <div class="dropdown d-inline-block mb-3 mr-2">
 
-                        <button class="uk-button uk-button-link" type="button" uk-icon="icon: chevron-down;ratio: 0.7;">{{ filter.label }}</button>
+                        <button class="btn border" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        <div uk-dropdown="pos: bottom-center;">
+                            <span class="font-weight-normal mr-2">
+                                {{ filter.label }}
+                            </span>
 
-                            <div class="uk-width-medium">
+                            {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
 
-                                {% if filter.type == 'list' %}
+                        </button>
 
-                                    {% if filter.param_name == 'filter.availability' %}
+                        <div class="dropdown-menu p-4" style="min-width: 250px;">
 
-                                        <div class="uk-form-controls">
+                            {% if filter.type == 'list' %}
 
-                                            {% for value in filter.values %}
+                                {% if filter.param_name == 'filter.availability' %}
 
-                                                <div class="uk-margin-small">
+                                    {% for value in filter.values %}
 
-                                                    <label>
-                                                        <input class="uk-radio uk-margin-right-small" type="radio" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+                                        <div class="form-group form-check{% if forloop.last == true %} mb-0{% endif %}">
 
-                                                        <span>{{ value.label }}</span>
+                                            <input type="radio" id="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
 
-                                                        <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
+                                            <label for="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-label">
 
-                                                    </label>
+                                                <span>{{ value.label }}</span>
 
-                                                </div>
+                                                <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
 
-                                            {% endfor %}
-
-                                        </div>
-
-                                    {% else %}
-
-                                        <div class="uk-form-controls">
-
-                                            {% for value in filter.values %}
-
-                                                <div class="uk-margin-small">
-
-                                                    <label>
-
-                                                        <input class="uk-checkbox uk-margin-right-small" type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
-
-                                                        <span>{{ value.label }}</span>
-
-                                                        <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
-
-                                                    </label>
-
-                                                </div>
-
-                                            {% endfor %}
+                                            </label>
 
                                         </div>
 
-                                    {% endif %}
+                                    {% endfor %}
 
-                                {% elsif filter.type == 'range' %}
+                                {% else %}
 
-                                    <div class="uk-form-controls uk-grid-small" uk-grid>
+                                    {% for value in filter.values %}
 
-                                        <div class="uk-width-1-2">
+                                        <div class="form-group form-check{% if forloop.last == true %} mb-0{% endif %}">
 
-                                            <label>From</label>
-                                            <input class="uk-input" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                            <input type="checkbox" id="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+
+                                            <label for="filter-input-{{ value.param_name }}-{{ forloop.index }}" class="form-check-label">
+
+                                                <span>{{ value.label }}</span>
+
+                                                <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
+
+                                            </label>
 
                                         </div>
 
-                                        <div class="uk-width-1-2">
+                                    {% endfor %}
 
-                                            <label>To</label>
-                                            <input class="uk-input" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+                                {% endif %}
+
+                            {% elsif filter.type == 'range' %}
+
+                                <div class="form-group{% if forloop.last == true %} mb-0{% endif %}">
+
+                                    <div class="form-row align-items-center">
+
+                                        <div class="col">
+
+                                            <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+
+                                        </div>
+
+                                        <div class="col-auto text-center">
+                                            -
+                                        </div>
+
+                                        <div class="col">
+
+                                            <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
 
                                         </div>
 
                                     </div>
 
-                                {% endif %}
+                                </div>
 
-                            </div>
+                            {% endif %}
 
                         </div>
 
