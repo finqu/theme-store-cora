@@ -1,3 +1,6 @@
+import ImageCarousel from './sections/image-carousel';
+import ProductCarousel from './sections/product-carousel';
+
 export default {
     init: function() {
 
@@ -53,6 +56,37 @@ export default {
 					}
         		}
         	}
+        });
+
+        const observer = new MutationObserver((mutations) => {
+
+            mutations.forEach((mutation) => {
+
+                for (const { addedNodes } of mutations) {
+
+                    for (const node of addedNodes) {
+
+                        if (node.tagName && node.nodeType === 1) {
+
+                            if (node.classList.contains('section-product-carousel')) {
+
+                                new ProductCarousel(node);
+
+                            } else if (node.classList.contains('section-image-carousel')) {
+
+                                new ImageCarousel(node);
+                            }
+
+                            return;
+                        }
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
         });
     }
 }

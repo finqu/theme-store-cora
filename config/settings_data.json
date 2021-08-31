@@ -370,7 +370,7 @@
                     "annoucementStatus": true,
                     "annoucementBgColor": "#000000",
                     "annoucementTextColor": "#ffffff",
-                    "annoucementText": " Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ",
+                    "annoucementText": "",
                     "sectionStyle": "general"
                 }
             },
@@ -778,7 +778,7 @@
                         "annoucementStatus": true,
                         "annoucementBgColor": "#000000",
                         "annoucementTextColor": "#ffffff",
-                        "annoucementText": " Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ",
+                        "annoucementText": "",
                         "sectionStyle": "general"
                     }
                 },
