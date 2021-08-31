@@ -280,7 +280,7 @@
                     "general_badge_text_color": "#000000"
                 },
                 "custom1": {
-                    "background_color": "#ff0000",
+                    "background_color": "#ffffff",
                     "overlay_background_color": "#f1f1f1",
                     "text_color": "#1a1a1a",
                     "link_color": "#1a1a1a",

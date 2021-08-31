@@ -74,9 +74,7 @@
 
                 <div class="slide-bg-img slide-bg-placeholder">
 
-                    {%- assign placeholders = "background-1, background-2, background-3" | split: ", " -%}
-
-                    {{ placeholders | random | placeholder_svg_tag, 'svg-placeholder' }}
+                    {% render 'placeholder-svg', type: 'background' %}
 
                 </div>
 

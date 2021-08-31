@@ -10,7 +10,7 @@
 
                     <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
 
-                        {{ 'image' | placeholder_svg_tag, 'svg-placeholder mb-4' }}
+                        {% render 'placeholder-svg', type: 'image', class: 'mb-4' %}
 
                     </div>
 
