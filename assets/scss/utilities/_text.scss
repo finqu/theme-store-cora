@@ -48,6 +48,10 @@
 		color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%)) !important;
 	}
 
+	.text-section {
+		color: section-var(text_color);
+	}
+
 	.text-underline-indicator {
 		transition: border .15s ease-in-out;
 		border-bottom: 2px solid transparent;

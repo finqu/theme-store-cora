@@ -39,16 +39,31 @@
 
                                         <div class="order-media-img-container aspect-ratio-container">
 
-                                            {%- assign imgSrc = item.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                            {%- assign imgSize = 76,114 -%}
+                                            {% if item.image %}
 
-                                            <picture>
+                                                {%- assign imgSrc = item.image | asset_url -%}
+                                                {%- assign imgSize = 76,114 -%}
+
+                                                <picture>
+                                                    <img
+                                                        alt="{{ item.name }}"
+                                                        data-src="{{ imgSrc | thumb: imgSize }}"
+                                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                                </picture>
+
+                                            {% else %}
+
+                                                {%- capture imgSrc -%}
+                                                    {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                {%- endcapture -%}
+
                                                 <img
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
                                                     alt="{{ item.name }}"
-                                                    data-src="{{ imgSrc | thumb: imgSize }}"
-                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-                                            </picture>
+                                                    data-src="{{ imgSrc }}">
+
+                                            {% endif %}
 
                                         </div>
 

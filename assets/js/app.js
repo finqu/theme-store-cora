@@ -43,7 +43,8 @@ export default class App {
             },
             callback_error: function (el) {
 
-            	el.src = self.data.placeholderImgSrc;
+            	el.src = self.data.placeholders['image'];
+            	el.classList.add('svg-placeholder');
 
              	picturefill({
                     elements: [el]
@@ -175,6 +176,69 @@ export default class App {
             return `<img src="${self.data.routes.assetUrl}/assets/${data.icon}.svg" class="svg-inline${data.class ? ' '+data.class : ''}" alt="">`;
         });
 
+        Handlebars.registerPartial('placeholder_svg', function(data) {
+
+        	const type = data.type || 'image';
+        	let placeholders = null;
+
+        	switch(type) {
+
+				case 'category':
+					placeholders = [
+						'category-1',
+						'category-2',
+						'category-3',
+						'category-4',
+						'category-5',
+						'category-6',
+						'category-7'
+					];
+					break;
+
+				case 'background':
+					placeholders = [
+						'background-1',
+						'background-2',
+						'background-3'
+					];
+					break;
+
+				case 'product':
+					placeholders = [
+						'product-1',
+						'product-2',
+						'product-3',
+						'product-4',
+						'product-5',
+						'product-6',
+						'product-7',
+						'product-8',
+						'product-9',
+						'product-10',
+						'product-11',
+						'product-12'
+					];
+					break;
+
+				case 'image':
+					placeholders = [
+						'image'
+					];
+					break;
+			}
+
+			const placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+
+			if (data.base64) {
+
+				return 'data:image/svg+xml;base64,'+self.data.placeholders[placeholder];
+
+			} else {
+
+	            return `<img src="data:image/svg+xml;base64,${self.data.placeholders[placeholder]}" class="svg-placeholder${data.class ? ' '+data.class : ''}"${data.width ? ' width="'+data.width+'"' : ''}${data.height ? ' height="'+data.height+'"' : ''} alt="">`;
+	        }
+        });
+
         Handlebars.registerPartial('image', function(data) {
 
         	const src = data.src;
@@ -196,10 +260,6 @@ export default class App {
 
 		    options.data.root[key] = val;
 		});
-
-		Handlebars.registerPartial('placeholderImgSrc', function(data) {
-            return self.data.placeholderImgSrc;
-        });
 
 		this.hbs = Handlebars;
 

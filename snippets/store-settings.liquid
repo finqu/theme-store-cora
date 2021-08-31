@@ -11,7 +11,6 @@
 	window.store = {
 		designMode: {{ request.design_mode | yepnope: 'true','false' }},
 		locale: {{ request.locale.iso_code | json }},
-		placeholderImgSrc: {{ settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url | json }},
 		cartAddNotify: {{ settings.addToCartNotification | json }},
 		customerAccountsEnabled: {{ store.customer_accounts_enabled | json }},
 		customerAccountsOptional: {{ store.customer_accounts_optional | json }},
@@ -88,6 +87,31 @@
 		        min_length: "merkkiä vähintään.",
 		        privacy_policy: "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
 			}
+		},
+		placeholders: {
+			'category-1': {{ 'category-1' | placeholder_svg_tag | base64_encode | json }},
+			'category-2': {{ 'category-2' | placeholder_svg_tag | base64_encode | json }},
+			'category-3': {{ 'category-3' | placeholder_svg_tag | base64_encode | json }},
+			'category-4': {{ 'category-4' | placeholder_svg_tag | base64_encode | json }},
+			'category-5': {{ 'category-5' | placeholder_svg_tag | base64_encode | json }},
+			'category-6': {{ 'category-6' | placeholder_svg_tag | base64_encode | json }},
+			'category-7': {{ 'category-7' | placeholder_svg_tag | base64_encode | json }},
+			'background-1': {{ 'background-1' | placeholder_svg_tag | base64_encode | json }},
+			'background-2': {{ 'background-2' | placeholder_svg_tag | base64_encode | json }},
+			'background-3': {{ 'background-3' | placeholder_svg_tag | base64_encode | json }},
+			'product-1': {{ 'product-1' | placeholder_svg_tag | base64_encode | json }},
+			'product-2': {{ 'product-2' | placeholder_svg_tag | base64_encode | json }},
+			'product-3': {{ 'product-3' | placeholder_svg_tag | base64_encode | json }},
+			'product-4': {{ 'product-4' | placeholder_svg_tag | base64_encode | json }},
+			'product-5': {{ 'product-5' | placeholder_svg_tag | base64_encode | json }},
+			'product-6': {{ 'product-6' | placeholder_svg_tag | base64_encode | json }},
+			'product-7': {{ 'product-7' | placeholder_svg_tag | base64_encode | json }},
+			'product-8': {{ 'product-8' | placeholder_svg_tag | base64_encode | json }},
+			'product-9': {{ 'product-9' | placeholder_svg_tag | base64_encode | json }},
+			'product-10': {{ 'product-10' | placeholder_svg_tag | base64_encode | json }},
+			'product-11': {{ 'product-11' | placeholder_svg_tag | base64_encode | json }},
+			'product-12': {{ 'product-12' | placeholder_svg_tag | base64_encode | json }},
+			'image': {{ 'image' | placeholder_svg_tag | base64_encode | json }}
 		}
 	};
 </script>

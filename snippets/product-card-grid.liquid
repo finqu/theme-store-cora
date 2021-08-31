@@ -92,46 +92,52 @@
 
 					{% if product %}
 
-		  				{%- assign imgSrc = productImage | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-		  				{%- assign imgSizeSm = 348,348 -%}
-		  				{%- assign imgSizeMd = 290,290 -%}
+						{% if productImage %}
 
-		  				{%- case itemsPerRow -%}
+			  				{%- assign imgSrc = productImage | asset_url -%}
+			  				{%- assign imgSizeSm = 348,348 -%}
+			  				{%- assign imgSizeMd = 290,290 -%}
 
-						    {% when '2' %}
-						        {%- assign imgSizeLg = 810,810 -%}
-						    {% when '3' %}
-						        {%- assign imgSizeLg = 520,520 -%}
-						    {% when '4' %}
-						        {%- assign imgSizeLg = 376,376 -%}
-						    {% when '5' %}
-						        {%- assign imgSizeLg = 290,290 -%}
-						    {% when '6' %}
-						    	{%- assign imgSizeLg = 232,232 -%}
+			  				{%- case itemsPerRow -%}
 
-						{%- endcase -%}
+							    {% when '2' %}
+							        {%- assign imgSizeLg = 810,810 -%}
+							    {% when '3' %}
+							        {%- assign imgSizeLg = 520,520 -%}
+							    {% when '4' %}
+							        {%- assign imgSizeLg = 376,376 -%}
+							    {% when '5' %}
+							        {%- assign imgSizeLg = 290,290 -%}
+							    {% when '6' %}
+							    	{%- assign imgSizeLg = 232,232 -%}
 
-			  			<picture>
-					        <source media="(min-width: 992px)" data-srcset="
-					            {{ imgSrc | thumb: imgSizeLg }} 1x,
-					            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+							{%- endcase -%}
 
-					            <source media="(min-width: 576px)" data-srcset="
-					            {{ imgSrc | thumb: imgSizeMd }} 1x,
-					            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+				  			<picture>
+						        <source media="(min-width: 992px)" data-srcset="
+						            {{ imgSrc | thumb: imgSizeLg }} 1x,
+						            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-					        <img
-					            alt="{{ productName }}"
-					            data-src="{{ imgSrc | thumb: imgSizeSm }}"
-					            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-					            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-					    </picture>
+						            <source media="(min-width: 576px)" data-srcset="
+						            {{ imgSrc | thumb: imgSizeMd }} 1x,
+						            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+						        <img
+						            alt="{{ productName }}"
+						            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+						            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+						            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+						    </picture>
+
+						{% else %}
+
+							{% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+						{% endif %}
 
 				    {% else %}
 
-				    	{%- assign placeholders = "product-1, product-2, product-3, product-4, product-5, product-6, product-7, product-8, product-9, product-10, product-11, product-12" | split: ", " -%}
-
-				    	{{ placeholders | random | placeholder_svg_tag, 'svg-placeholder aspect-ratio-item' }}
+				    	{% render 'placeholder-svg', type: 'product', class: 'aspect-ratio-item' %}
 
 				    {% endif %}
 

@@ -284,7 +284,6 @@ export default class Cart {
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
-                    placeholderImgSrc: themeApp.data.placeholderImgSrc,
                     taxFreePrices: self.taxFreePrices
                 });
 
@@ -301,7 +300,6 @@ export default class Cart {
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
-                    placeholderImgSrc: themeApp.data.placeholderImgSrc,
                     taxFreePrices: self.taxFreePrices
                 });
 

@@ -15,29 +15,33 @@
 
 {%- capture sectionContent -%}
 
-	<div class="article-media">
+    {% if article.header_image %}
 
-		<div class="article-img-container aspect-ratio-container">
+    	<div class="article-media">
 
-			{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-			{%- assign imgSizeSm = 717,273 -%}
-			{%- assign imgSizeLg = 920,354 -%}
+    		<div class="article-img-container aspect-ratio-container">
 
-  			<picture>
-		        <source media="(min-width: 768px)" data-srcset="
-		            {{ imgSrc | thumb: imgSizeLg }} 1x,
-		            {{ imgSrc| thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                {%- assign imgSrc = article.header_image | asset_url -%}
+                {%- assign imgSizeSm = 717,273 -%}
+                {%- assign imgSizeLg = 920,354 -%}
 
-		        <img
-		            alt="{{ article.title }}"
-		            data-src="{{ imgSrc | thumb: imgSizeSm }}"
-		            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-		            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-		    </picture>
+                <picture>
+                    <source media="(min-width: 768px)" data-srcset="
+                        {{ imgSrc | thumb: imgSizeLg }} 1x,
+                        {{ imgSrc| thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-	    </div>
+                    <img
+                        alt="{{ article.title }}"
+                        data-src="{{ imgSrc | thumb: imgSizeSm }}"
+                        data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                        class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                </picture>
 
-	</div>
+    	    </div>
+
+    	</div>
+
+    {% endif %}
 
 	<div class="article-content">
 

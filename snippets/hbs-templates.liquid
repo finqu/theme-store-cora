@@ -30,20 +30,26 @@
                                     <div class="cart-item-media-img-container aspect-ratio-container">
 
                                         {{#if item.image}}
+
                                             {{ assign 'imgSrc' item.image.original }}
+                                            {{ assign 'imgSize' '76,114' }}
+
+                                            <picture>
+                                                <img
+                                                    alt="{{ item.name }}"
+                                                    data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
+                                                    data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                            </picture>
+
                                         {{else}}
-                                            {{ assign 'imgSrc' @root.placeholderImgSrc }}
-                                        {{/if}}
 
-                                        {{ assign 'imgSize' '76,114' }}
-
-                                        <picture>
                                             <img
+                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
                                                 alt="{{ item.name }}"
-                                                data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
-                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
-                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-                                        </picture>
+                                                data-src="{{> placeholder_svg type='image' base64=true }}">
+
+                                        {{/if}}
 
                                     </div>
 
@@ -406,20 +412,26 @@
                                     <div class="cart-item-media-img-container aspect-ratio-container">
 
                                         {{#if item.image}}
+
                                             {{ assign 'imgSrc' item.image.original }}
+                                            {{ assign 'imgSize' '76,114' }}
+
+                                            <picture>
+                                                <img
+                                                    alt="{{ item.name }}"
+                                                    data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
+                                                    data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                            </picture>
+
                                         {{else}}
-                                            {{ assign 'imgSrc' @root.placeholderImgSrc }}
-                                        {{/if}}
 
-                                        {{ assign 'imgSize' '76,114' }}
-
-                                        <picture>
                                             <img
+                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
                                                 alt="{{ item.name }}"
-                                                data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
-                                                data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
-                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-                                        </picture>
+                                                data-src="{{> placeholder_svg type='image' base64=true }}">
+
+                                        {{/if}}
 
                                     </div>
 

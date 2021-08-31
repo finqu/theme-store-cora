@@ -932,19 +932,6 @@
 						"fi": "Favicon kuva"
 					}
                 },
-				{
-                    "id": "placeholderImgSrc",
-                    "type": "image-picker",
-                    "label": {
-						"en": "Placeholder image",
-						"fi": "Oletuskuva"
-					}
-                },
-                {
-                    "id": "placeholderDefaultImgSrc",
-                    "type": "hidden",
-					"default": "assets/placeholder.jpg"
-                },
                 {
                     "id": "addToCartNotification",
                     "type": "checkbox",

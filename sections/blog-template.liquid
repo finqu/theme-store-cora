@@ -22,21 +22,36 @@
 
 									<a href="{{ article | page_url }}">
 
-										{%- assign imgSrc = article.header_image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-						  				{%- assign imgSizeSm = 300,185 -%}
-						  				{%- assign imgSizeLg = 535,185 -%}
+										{% if article.header_image %}
 
-							  			<picture>
-									        <source media="(min-width: 768px)" data-srcset="
-									            {{ imgSrc | thumb: imgSizeLg }} 1x,
-									            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+							                {%- assign imgSrc = article.header_image | asset_url -%}
+							  				{%- assign imgSizeSm = 300,185 -%}
+							  				{%- assign imgSizeLg = 535,185 -%}
 
-									        <img
-									            alt="{{ article.title }}"
-									            data-src="{{ imgSrc | thumb: imgSizeSm }}"
-									            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-									            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-									    </picture>
+							                <picture>
+										        <source media="(min-width: 768px)" data-srcset="
+										            {{ imgSrc | thumb: imgSizeLg }} 1x,
+										            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+										        <img
+										            alt="{{ article.title }}"
+										            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+										            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+										            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+										    </picture>
+
+							            {% else %}
+
+							                {%- capture imgSrc -%}
+							                    {% render 'placeholder-svg', type: 'image', base64: true %}
+							                {%- endcapture -%}
+
+							                <img
+							                    class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
+							                    alt="{{ article.title }}"
+							                    data-src="{{ imgSrc }}">
+
+							            {% endif %}
 
 								    </a>
 

@@ -24,14 +24,29 @@
                                             {%- assign hasMediaImg = true -%}
                                         {%- endunless -%}
 
-                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                        {%- assign imgSize = 120,120 -%}
+                                        {% if media.thumb %}
 
-                                        <img
-                                            class="lazy d-block mx-auto img-fluid c-pointer"
-                                            alt="{{ product.name }}"
-                                            data-src="{{ imgSrc | thumb: imgSize }}"
-                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                            {%- assign imgSrc = media.thumb | asset_url -%}
+                                            {%- assign imgSize = 120,120 -%}
+
+                                            <img
+                                                class="lazy d-block mx-auto img-fluid c-pointer"
+                                                alt="{{ product.name }}"
+                                                data-src="{{ imgSrc | thumb: imgSize }}"
+                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                        {% else %}
+
+                                            {%- capture imgSrc -%}
+                                                {% render 'placeholder-svg', type: 'image', base64: true %}
+                                            {%- endcapture -%}
+
+                                            <img
+                                                class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
+                                                alt="{{ product.name }}"
+                                                data-src="{{ imgSrc }}">
+
+                                        {% endif %}
 
                                     </div>
 
@@ -53,14 +68,29 @@
 
                                             <div class="swiper-slide">
 
-                                                {%- assign imgSrc = option.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                                {%- assign imgSize = 120,120 -%}
+                                                {% if option.image %}
 
-                                                <img
-                                                    class="lazy d-block mx-auto img-fluid c-pointer"
-                                                    alt="{{ product.name }}"
-                                                    data-src="{{ imgSrc | thumb: imgSize }}"
-                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                                    {%- assign imgSrc = option.image | asset_url -%}
+                                                    {%- assign imgSize = 120,120 -%}
+
+                                                    <img
+                                                        class="lazy d-block mx-auto img-fluid c-pointer"
+                                                        alt="{{ product.name }}"
+                                                        data-src="{{ imgSrc | thumb: imgSize }}"
+                                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                                {% else %}
+
+                                                    {%- capture imgSrc -%}
+                                                        {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                    {%- endcapture -%}
+
+                                                    <img
+                                                        class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
+                                                        alt="{{ product.name }}"
+                                                        data-src="{{ imgSrc }}">
+
+                                                {% endif %}
 
                                             </div>
 
@@ -76,14 +106,14 @@
 
                                 <div class="swiper-slide">
 
-                                    {%- assign imgSrc = settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                    {%- assign imgSize = 120,120 -%}
+                                    {%- capture imgSrc -%}
+                                        {% render 'placeholder-svg', type: 'image', base64: true %}
+                                    {%- endcapture -%}
 
                                     <img
-                                        class="lazy d-block mx-auto img-fluid c-pointer"
+                                        class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
                                         alt="{{ product.name }}"
-                                        data-src="{{ imgSrc | thumb: imgSize }}"
-                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                        data-src="{{ imgSrc }}">
 
                                 </div>
 
@@ -95,14 +125,29 @@
 
                                     <div class="swiper-slide">
 
-                                        {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                        {%- assign imgSize = 120,120 -%}
+                                        {% if media.thumb %}
 
-                                        <img
-                                            class="lazy d-block mx-auto img-fluid c-pointer"
-                                            alt="{{ product.name }}"
-                                            data-src="{{ imgSrc | thumb: imgSize }}"
-                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                            {%- assign imgSrc = media.thumb | asset_url -%}
+                                            {%- assign imgSize = 120,120 -%}
+
+                                            <img
+                                                class="lazy d-block mx-auto img-fluid c-pointer"
+                                                alt="{{ product.name }}"
+                                                data-src="{{ imgSrc | thumb: imgSize }}"
+                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                        {% else %}
+
+                                            {%- capture imgSrc -%}
+                                                {% render 'placeholder-svg', type: 'image', base64: true %}
+                                            {%- endcapture -%}
+
+                                            <img
+                                                class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
+                                                alt="{{ product.name }}"
+                                                data-src="{{ imgSrc }}">
+
+                                        {% endif %}
 
                                     </div>
 
@@ -142,25 +187,41 @@
 
                                         <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
-                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                            {%- assign imgSizeSm = 420,420 -%}
-                                            {%- assign imgSizeLg = 490,700 -%}
+                                            {% if media.thumb %}
 
-                                            <picture>
-                                                <source media="(min-width: 768px)" srcset="
-                                                    {{ imgSrc | thumb: imgSizeLg }} 1x,
-                                                    {{ imgSrc | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+                                                {%- assign imgSrc = media.thumb | asset_url -%}
+                                                {%- assign imgSizeSm = 420,420 -%}
+                                                {%- assign imgSizeLg = 490,700 -%}
 
-                                                <source srcset="
-                                                    {{ imgSrc | thumb: imgSizeSm }} 1x,
-                                                    {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+                                                <picture>
+                                                    <source media="(min-width: 768px)" srcset="
+                                                        {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                                        {{ imgSrc | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+
+                                                    <source srcset="
+                                                        {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                                        {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+
+                                                    <img
+                                                        class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                        alt="{{ product.name }}"
+                                                        data-gallery-img-src="{{ media.original }}"
+                                                        src="{{ imgSrc | thumb: imgSizeSm }}">
+                                                </picture>
+
+                                            {% else %}
+
+                                                {%- capture imgSrc -%}
+                                                    {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                {%- endcapture -%}
 
                                                 <img
-                                                    class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item c-zoom-in svg-placeholder"
                                                     alt="{{ product.name }}"
-                                                    data-gallery-img-src="{{ media.original }}"
-                                                    src="{{ imgSrc | thumb: imgSizeSm }}">
-                                            </picture>
+                                                    data-gallery-img-src="{{ imgSrc }}"
+                                                    data-src="{{ imgSrc }}">
+
+                                            {% endif %}
 
                                         </div>
 
@@ -188,25 +249,41 @@
 
                                                 <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
-                                                    {%- assign imgSrc = option.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                                    {%- assign imgSizeSm = 420,420 -%}
-                                                    {%- assign imgSizeLg = 490,700 -%}
+                                                    {% if option.image %}
 
-                                                    <picture>
-                                                        <source media="(min-width: 768px)" srcset="
-                                                            {{ imgSrc | thumb: imgSizeLg }} 1x,
-                                                            {{ imgSrc | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+                                                        {%- assign imgSrc = option.image | asset_url -%}
+                                                        {%- assign imgSizeSm = 420,420 -%}
+                                                        {%- assign imgSizeLg = 490,700 -%}
 
-                                                        <source srcset="
-                                                            {{ imgSrc | thumb: imgSizeSm }} 1x,
-                                                            {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+                                                        <picture>
+                                                            <source media="(min-width: 768px)" srcset="
+                                                                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                                                {{ imgSrc | thumb: imgSizeLg | thumb: '@2x' }} 2x">
+
+                                                            <source srcset="
+                                                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                                                {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
+
+                                                            <img
+                                                                class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                                alt="{{ product.name }}"
+                                                                data-gallery-img-src="{{ media.original }}"
+                                                                src="{{ imgSrc | thumb: imgSizeSm }}">
+                                                        </picture>
+
+                                                    {% else %}
+
+                                                        {%- capture imgSrc -%}
+                                                            {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                        {%- endcapture -%}
 
                                                         <img
-                                                            class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-zoom-in svg-placeholder"
                                                             alt="{{ product.name }}"
                                                             data-gallery-img-src="{{ imgSrc }}"
-                                                            src="{{ imgSrc | thumb: imgSizeSm }}">
-                                                    </picture>
+                                                            data-src="{{ imgSrc }}">
+
+                                                    {% endif %}
 
                                                 </div>
 
@@ -226,25 +303,15 @@
 
                                     <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
-                                        {%- assign imgSrc = settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                        {%- assign imgSizeSm = 420,420 -%}
-                                        {%- assign imgSizeLg = 490,700 -%}
+                                        {%- capture imgSrc -%}
+                                            {% render 'placeholder-svg', type: 'image', base64: true %}
+                                        {%- endcapture -%}
 
-                                        <picture>
-                                            <source media="(min-width: 768px)" srcset="
-                                                {{ imgSrc | thumb: imgSizeLg }} 1x,
-                                                {{ imgSrc | thumb: imgSizeLg | thumb: '@2x' }} 2x">
-
-                                            <source srcset="
-                                                {{ imgSrc | thumb: imgSizeSm }} 1x,
-                                                {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
-
-                                            <img
-                                                class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
-                                                alt="{{ product.name }}"
-                                                data-gallery-img-src="{{ imgSrc }}"
-                                                src="{{ imgSrc | thumb: imgSizeSm }}">
-                                        </picture>
+                                        <img
+                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-zoom-in svg-placeholder"
+                                            alt="{{ product.name }}"
+                                            data-gallery-img-src="{{ imgSrc }}"
+                                            data-src="{{ imgSrc }}">
 
                                     </div>
 
@@ -260,19 +327,36 @@
 
                                         <div class="product-media-video-container aspect-ratio-container" data-gallery-item-init>
 
-                                            {%- assign imgSrc = media.thumb | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                            {%- assign imgSize = 120,120 -%}
+                                            {% if media.thumb %}
 
-                                            <div class="product-media-video-icon-container c-zoom-in">
-                                                {%- render 'icon', icon: 'controls-play-af7Jis', class: 'svg-icon-fw product-media-video-icon '' -%}
-                                            </div>
+                                                {%- assign imgSrc = media.thumb | asset_url -%}
+                                                {%- assign imgSize = 120,120 -%}
 
-                                            <img
-                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item"
-                                                alt="{{ product.name }}"
-                                                data-src="{{ imgSrc | thumb: imgSize }}"
-                                                data-gallery-video-src="{{ media.url }}"
-                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                                <div class="product-media-video-icon-container c-zoom-in">
+                                                    {%- render 'icon', icon: 'controls-play-af7Jis', class: 'svg-icon-fw product-media-video-icon '' -%}
+                                                </div>
+
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ imgSrc | thumb: imgSize }}"
+                                                    data-gallery-video-src="{{ media.url }}"
+                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                            {% else %}
+
+                                                {%- capture imgSrc -%}
+                                                    {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                {%- endcapture -%}
+
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ imgSrc }}"
+                                                    data-gallery-video-src="{{ media.url }}"
+                                                    data-srcset="{{ imgSrc }}">
+
+                                            {% endif %}
 
                                         </div>
 
@@ -496,16 +580,31 @@
 
                                             <div class="product-related-media-img-container aspect-ratio-container">
 
-                                                {%- assign imgSrc = relatedItem.image | default: settings.placeholderImgSrc | default: settings.placeholderDefaultImgSrc | asset_url -%}
-                                                {%- assign imgSize = 60,80 -%}
+                                                {% if relatedItem.image %}
 
-                                                <picture>
+                                                    {%- assign imgSrc = relatedItem.image | asset_url -%}
+                                                    {%- assign imgSize = 60,80 -%}
+
+                                                    <picture>
+                                                        <img
+                                                            alt="{{ relatedItem.name }}"
+                                                            data-src="{{ imgSrc | thumb: imgSize }}"
+                                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x"
+                                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+                                                    </picture>
+
+                                                {% else %}
+
+                                                    {%- capture imgSrc -%}
+                                                        {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                    {%- endcapture -%}
+
                                                     <img
+                                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
                                                         alt="{{ relatedItem.name }}"
-                                                        data-src="{{ imgSrc | thumb: imgSize }}"
-                                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x"
-                                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-                                                </picture>
+                                                        data-src="{{ imgSrc }}">
+
+                                                {% endif %}
 
                                             </div>
 
