@@ -598,6 +598,7 @@ body > #search-overlay {
                 min-height: 21px;
 
                 .product-manufacturer-name {
+                    display: block;
                     font-family: $accent-font-family;
                     font-size: $font-size-base * 1.15;
                     line-height: $line-height-base;
@@ -614,6 +615,7 @@ body > #search-overlay {
                 }
 
                 .product-name-text {
+                    display: block;
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;

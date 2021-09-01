@@ -286,11 +286,11 @@
 
             {% endif %}
 
-            {% if section.settings.footerBottomTextStatus %}
+            <div class="site-footer-bottom">
 
-                <div class="site-footer-bottom">
+                <div class="container">
 
-                    <div class="container">
+                    {% if section.settings.footerBottomTextStatus %}
 
                         <div class="site-footer-bottom-text">
 
@@ -298,19 +298,19 @@
 
                         </div>
 
-                        <div class="site-footer-bottom-power-by-text">
+                    {% endif %}
 
-                            <a target="_blank" rel="nofollow" class="text-section" href="https://www.finqu.fi?utm_campaign=poweredby&utm_medium=finqu&utm_source=onlinestore">
-                                Powered by Finqu
-                            </a>
+                    <div class="site-footer-bottom-power-by-text">
 
-                        </div>
+                        <a target="_blank" rel="nofollow" class="text-section" href="https://www.finqu.fi?utm_campaign=poweredby&utm_medium=finqu&utm_source=onlinestore">
+                            Powered by Finqu
+                        </a>
 
                     </div>
 
                 </div>
 
-            {% endif %}
+            </div>
 
         </div>
 
@@ -382,7 +382,7 @@
                             "en": "Show social media buttons",
                             "fi": "Näytä sosiaalisen median kuvakkeet"
                         },
-                        "default": true
+                        "default": false
                     },
                     {
                         "id": "footerMiddlePaymentMethodsStatus",
@@ -391,7 +391,7 @@
                             "en": "Show payment methods",
                             "fi": "Näytä maksutavat"
                         },
-                        "default": true
+                        "default": false
                     },
                     {
                         "type": "spacer"

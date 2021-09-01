@@ -176,6 +176,7 @@
 			.title {
 				font-size: $h1-font-size * 1.15;
 				font-weight: $font-weight-bold;
+				font-family: $headings-font-family;
 				line-height: $headings-line-height;
 				margin-bottom: 0;
 			}
@@ -185,6 +186,7 @@
 
 			.subtitle {
 				font-size: $h4-font-size;
+				font-family: $subheadings-font-family;
 				line-height: $headings-line-height;
 			}
 		}
