@@ -13,6 +13,10 @@
 		border-color: $hover-border;
 	}
 
+	.svg-icon {
+		color: $color;
+	}
+
 	&:focus,
 	&.focus {
 		color: $color;

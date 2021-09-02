@@ -74,8 +74,8 @@ export default {
         const containerEl = document.querySelector('.section-site-header');
         const siteMobileNavigationContainerEl = containerEl.querySelector('.site-mobile-navigation-container');
         const siteMobileNavigationInnerEl = containerEl.querySelector('.site-mobile-navigation-inner');
-        const siteMobileNavigationToggleEl = containerEl.querySelector('#site-mobile-navigation-toggle');
-        const siteMobileNavigationOverlayEl = containerEl.querySelector('#site-mobile-navigation-overlay');
+        const siteMobileNavigationToggleEl = containerEl.querySelector('.site-mobile-navigation-toggle');
+        const siteMobileNavigationOverlayEl = containerEl.querySelector('.site-mobile-navigation-overlay');
 
         const siteMobileNavigationLayerChildEls = containerEl.querySelectorAll('.site-mobile-navigation-layer-child');
         const siteMobileNavigationShowLayerEls = containerEl.querySelectorAll('[name="site-mobile-navigation-show-layer"]');
@@ -595,6 +595,32 @@ export default {
             categoryFiltersFormEl.querySelectorAll('.dropdown-menu').forEach(el => { el.addEventListener('click', e => {
                 e.stopPropagation();
             })});
+
+            // Mobile filters menu
+            const containerEl = document.querySelector('.section-category');
+            const filtersMobileNavigationContainerEl = containerEl.querySelector('.filters-mobile-navigation-container');
+            const filtersMobileNavigationShowEls = containerEl.querySelectorAll('[name="filters-mobile-navigation-show"]');
+            const filtersMobileNavigationHideEls = containerEl.querySelectorAll('[name="filters-mobile-navigation-hide"]');
+
+            filtersMobileNavigationShowEls.forEach(el => { el.addEventListener('click', (e) => {
+
+                filtersMobileNavigationContainerEl.classList.add('filters-mobile-navigation-visible');
+                filtersMobileNavigationContainerEl.classList.add('filters-mobile-navigation-active');
+            })});
+
+            filtersMobileNavigationHideEls.forEach(el => { el.addEventListener('click', (e) => {
+
+                filtersMobileNavigationContainerEl.classList.remove('filters-mobile-navigation-active');
+            })});
+
+            filtersMobileNavigationContainerEl.addEventListener('transitionend', e => {
+
+                e.preventDefault();
+
+                if (!filtersMobileNavigationContainerEl.classList.contains('filters-mobile-navigation-active')) {
+                    filtersMobileNavigationContainerEl.classList.remove('filters-mobile-navigation-visible');
+                }
+            });
         }
 
     	if (categoryTagsEl) {

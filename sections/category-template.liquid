@@ -63,7 +63,17 @@
 
         {% if categoryFilters.size > 0 %}
 
-            <form class="category-filters mb-2">
+             <button type="button" name="filters-mobile-navigation-show" class="d-lg-none btn btn-section btn-block btn-sm mb-4">
+
+                {%- render 'icon', icon: 'navigation-menu-gWaHY4', class: 'svg-icon-fw' -%}
+
+                <span>
+                    Suodattimet
+                </span>
+
+            </button>
+
+            <form class="category-filters mb-2 d-none d-lg-block">
 
                 {% for filter in categoryFilters %}
 
@@ -295,6 +305,36 @@
         </div>
 
     {%- endpaginate -%}
+
+    <nav class="filters-mobile-navigation-container">
+
+        <div class="filters-mobile-navigation">
+
+            <div class="site-mobile-navigation-header">
+
+                <div class="site-mobile-navigation-header-inner">
+
+                    <button type="button" name="filters-mobile-navigation-hide" class="btn btn-text">
+                        {%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'svg-icon-fw' -%}
+                    </button>
+
+                    <span class="site-mobile-navigation-header-text">
+                        {{ item.title }}
+                    </span>
+
+                </div>
+
+            </div>
+
+            <ul class="filters-mobile-navigation-menu">
+
+                test
+
+            </ul>
+
+        </div>
+
+    </nav>
 
 {%- endcapture -%}
 
