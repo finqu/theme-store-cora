@@ -1138,46 +1138,6 @@
 		{
 			"type": "setting-page",
 			"label": {
-				"en": "Buttons",
-				"fi": "Napit"
-			},
-			"title": {
-				"en": "Buttons",
-				"fi": "Napit"
-			},
-			"settings": [
-				{
-					"id": "buttonBorderRadius",
-					"type": "radio-pill",
-					"label": {
-						"en": "Border radius",
-						"fi": "Reunan pyöristys"
-					},
-					"default": "3px",
-					"options": [
-						{
-							"value": "0px",
-							"label": "OFF"
-						},
-						{
-							"value": "3px",
-							"label": "S"
-						},
-						{
-							"value": "7px",
-							"label": "M"
-						},
-						{
-							"value": "15px",
-							"label": "L"
-						}
-					]
-				}
-			]
-		},
-		{
-			"type": "setting-page",
-			"label": {
 				"en": "Sections",
 				"fi": "Osiot"
 			},
@@ -1396,6 +1356,33 @@
 						{
 							"value": "inline",
 							"label": "Inline"
+						}
+					]
+				},
+				{
+					"id": "buttonBorderRadius",
+					"type": "radio-pill",
+					"label": {
+						"en": "Button border radius",
+						"fi": "Napin reunan pyöreys"
+					},
+					"default": "3px",
+					"options": [
+						{
+							"value": "0px",
+							"label": "OFF"
+						},
+						{
+							"value": "3px",
+							"label": "S"
+						},
+						{
+							"value": "7px",
+							"label": "M"
+						},
+						{
+							"value": "15px",
+							"label": "L"
 						}
 					]
 				}

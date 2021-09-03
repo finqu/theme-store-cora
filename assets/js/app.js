@@ -347,15 +347,16 @@ export default class App {
 
 		} else {
 
-			const matches = str.match(/__(.*?)__/g) || [];
+			const matches = str.match(/{{(.*?)}}/g) || [];
 
 			if (matches.length > 0) {
 
 				for (const index in matches) {
 
-					const key = matches[index].replaceAll('__', '');
+					let varKey = matches[index];
 
-					str = str.replace(matches[index], vars[key] || '');
+					varKey = varKey.replaceAll('{{', '').replaceAll('}}', '').trim();
+					str = str.replace(matches[index], vars[varKey] || '');
 				}
 
 				str = str.trim();

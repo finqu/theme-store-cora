@@ -52,6 +52,10 @@
 			    shipping_price: {{ 'general.shipping_price' | t | json }},
 			    vat_included: {{ 'general.vat_included' | t | json }}
 		    },
+		    filters: {
+		        show_result: {{ 'filters.show_result' | t | json }},
+		        show_result_plural: {{ 'filters.show_result_plural' | t | json }}
+		    },
 			cart: {
 				title: {{ 'cart.title' | t | json }},
 				product_added_to_cart: {{ 'cart.product_added_to_cart' | t | json }},

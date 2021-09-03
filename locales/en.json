@@ -84,6 +84,9 @@
         }
     },
     "filters": {
+        "title": "Filters",
+        "show_result":" Show {{ amount }} product",
+        "show_result_plural":" Show {{ amount }} products",
         "sort-by": {
             "default": "Default",
             "price-ascending": "Price (Lowest)",

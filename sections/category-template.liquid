@@ -63,9 +63,7 @@
 
         {% if categoryFilters.size > 0 %}
 
-             <button type="button" name="filters-mobile-navigation-show" class="d-lg-none btn btn-section btn-block btn-sm mb-4">
-
-                {%- render 'icon', icon: 'navigation-menu-gWaHY4', class: 'svg-icon-fw' -%}
+             <button type="button" name="filters-mobile-navigation-show" class="d-lg-none btn btn-outline-section btn-block btn-sm mb-4">
 
                 <span>
                     Suodattimet
@@ -219,7 +217,7 @@
 
                 <div class="col-auto">
 
-                    <span class="text-muted">
+                    <span class="text-muted" data-category-item-count-text>
                         {% if itemCount == 1 %}
                             {{ 'general.product_count' | t: amount: itemCount }}
                         {% else %}
@@ -269,7 +267,7 @@
 
             </div>
 
-            <div class="category-items row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
+            <div class="category-items row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}" data-category-items-count="{{ itemCount }}">
 
                 {% if category.products.size > 0 %}
 
@@ -310,27 +308,143 @@
 
         <div class="filters-mobile-navigation">
 
-            <div class="site-mobile-navigation-header">
+            <div class="filters-mobile-navigation-header">
 
-                <div class="site-mobile-navigation-header-inner">
+                <div class="filters-mobile-navigation-header-inner">
 
                     <button type="button" name="filters-mobile-navigation-hide" class="btn btn-text">
-                        {%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'svg-icon-fw' -%}
+                        {%- render 'icon', icon: 'close-232XyC', class: 'svg-icon-fw' -%}
                     </button>
 
-                    <span class="site-mobile-navigation-header-text">
-                        {{ item.title }}
+                    <span class="filters-mobile-navigation-header-text">
+                        {{ 'filters.title' | t }}
                     </span>
 
                 </div>
 
             </div>
 
-            <ul class="filters-mobile-navigation-menu">
+            <div class="filters-mobile-navigation-menu-container">
 
-                test
+                <form class="category-filters">
 
-            </ul>
+                    <ul class="filters-mobile-navigation-menu">
+
+                        {% for filter in categoryFilters %}
+
+                            <li class="filters-mobile-navigation-menu-item">
+
+                                <div class="filters-mobile-navigation-menu-item-header">
+
+                                    <span class="filters-mobile-navigation-menu-item-header-text">
+                                        {{ filter.label }}
+                                    </span>
+
+                                </div>
+
+                                <div class="filters-mobile-navigation-menu-item-content">
+
+                                    {% if filter.type == 'list' %}
+
+                                        {% if filter.param_name == 'filter.availability' %}
+
+                                            {% for value in filter.values %}
+
+                                                <div class="form-group form-check{% if forloop.last == true %} mb-0{% endif %}">
+
+                                                    <input type="radio" id="input-mobile-{{ value.param_name }}-{{ value.value }}" class="input-mobile-{{ value.param_name | replace: '.', '-' | handle }} form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+
+                                                    <label for="input-mobile-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
+
+                                                        <span>{{ value.label }}</span>
+
+                                                        <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
+
+                                                    </label>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        {% else %}
+
+                                            {% for value in filter.values %}
+
+                                                <div class="form-group form-check{% if forloop.last == true %} mb-0{% endif %}">
+
+                                                    <input type="checkbox" id="input-mobile-{{ value.param_name }}-{{ value.value }}" class="input-mobile-{{ value.param_name | replace: '.', '-' | handle }} form-check-input" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked="true"{% endif %}>
+
+                                                    <label for="input-mobile-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
+
+                                                        <span>{{ value.label }}</span>
+
+                                                        <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
+
+                                                    </label>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        {% endif %}
+
+                                    {% elsif filter.type == 'range' %}
+
+                                        <div class="form-group{% if forloop.last == true %} mb-0{% endif %}">
+
+                                            <div class="form-row align-items-center">
+
+                                                <div class="col">
+
+                                                    <input class="input-mobile-{{ filter.param_name | replace: '.', '-' | handle }} form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+
+                                                </div>
+
+                                                <div class="col-auto text-center">
+                                                    -
+                                                </div>
+
+                                                <div class="col">
+
+                                                    <input class="input-mobile-{{ filter.param_name | replace: '.', '-' | handle }} form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </form>
+
+            </div>
+
+            <div class="filters-mobile-navigation-footer">
+
+                <div class="filters-mobile-navigation-footer-inner">
+
+                    <button type="button" name="filters-mobile-navigation-hide" class="filters-mobile-navigation-footer-inner-cta btn btn-section btn-block">
+
+                        {% if itemCount == 1 %}
+                            {{ 'filters.show_result' | t: amount: itemCount }}
+                        {% else %}
+                            {{ 'filters.show_result_plural' | t: amount: itemCount }}
+                        {% endif %}
+
+                    </button>
+
+                </div>
+
+            </div>
 
         </div>
 

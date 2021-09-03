@@ -405,10 +405,18 @@ export default {
 
         const containerEl = document.querySelector('.section-category');
     	const categoryTagsEl = containerEl.querySelector('.category-tags');
-        const categoryFiltersFormEl = containerEl.querySelector('.category-filters');
+        let categoryFiltersFormEl = null;
+
+        if (window.innerWidth < 992) {
+            categoryFiltersFormEl = containerEl.querySelector('.filters-mobile-navigation-container .category-filters');
+        } else {
+            categoryFiltersFormEl = containerEl.querySelector('.container > .category-filters');
+        }
+
         const $categoryFiltersFormEl = $(categoryFiltersFormEl);
         const categoryFilterInputEls = containerEl.querySelectorAll('input');
         const facetResultCountEls = containerEl.querySelectorAll('[data-facet-result-count]');
+        const filtersMobileNavigationCtaEl = containerEl.querySelector('.filters-mobile-navigation-container .filters-mobile-navigation-footer-inner-cta');
         let categoryDynamicContentEl = containerEl.querySelector('.category-dynamic-content');
         let isProcessing = false;
 
@@ -436,10 +444,24 @@ export default {
 
                     const dom = new DOMParser().parseFromString(xhr.responseText, 'text/html');
                     const newCategoryDynamicContent = dom.querySelector('.section-category .category-dynamic-content');
+                    const itemCount = dom.querySelector('[data-category-items-count]').getAttribute('data-category-items-count');
 
                     facetResultCountEls.forEach(el => {
                         el.innerText = dom.querySelector('[data-facet-result-count="'+el.dataset.facetResultCount+'"]').innerText;
                     });
+
+                    if (itemCount == 1) {
+
+                        filtersMobileNavigationCtaEl.innerText = window.themeApp.t('filters.show_result', {
+                            amount: itemCount
+                        });
+
+                    } else {
+
+                        filtersMobileNavigationCtaEl.innerText = window.themeApp.t('filters.show_result_plural', {
+                            amount: itemCount
+                        });
+                    }
 
                     categoryDynamicContentEl.replaceWith(newCategoryDynamicContent);
                     categoryDynamicContentEl = newCategoryDynamicContent;
@@ -529,6 +551,18 @@ export default {
                     }
                 });
 
+                categoryFiltersFormEl.querySelectorAll('.input-mobile-'+el.value).forEach(el => {
+
+                    if (el.type === 'checkbox' || el.type ==='radio') {
+
+                        el.checked = false;
+
+                    } else if (el.type === 'number') {
+
+                        el.value = '';
+                    }
+                });
+
                 $categoryFiltersFormEl.submit();
             })});
 
@@ -597,7 +631,6 @@ export default {
             })});
 
             // Mobile filters menu
-            const containerEl = document.querySelector('.section-category');
             const filtersMobileNavigationContainerEl = containerEl.querySelector('.filters-mobile-navigation-container');
             const filtersMobileNavigationShowEls = containerEl.querySelectorAll('[name="filters-mobile-navigation-show"]');
             const filtersMobileNavigationHideEls = containerEl.querySelectorAll('[name="filters-mobile-navigation-hide"]');
@@ -606,11 +639,15 @@ export default {
 
                 filtersMobileNavigationContainerEl.classList.add('filters-mobile-navigation-visible');
                 filtersMobileNavigationContainerEl.classList.add('filters-mobile-navigation-active');
+
+                document.body.classList.add('disable-scroll');
             })});
 
             filtersMobileNavigationHideEls.forEach(el => { el.addEventListener('click', (e) => {
 
                 filtersMobileNavigationContainerEl.classList.remove('filters-mobile-navigation-active');
+
+                document.body.classList.remove('disable-scroll');
             })});
 
             filtersMobileNavigationContainerEl.addEventListener('transitionend', e => {
