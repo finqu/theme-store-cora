@@ -63,7 +63,7 @@
 
 {%- assign locales = 'de-DE en-DE da-DK en-DK en-FI fi-FI sv-FI en-GB en-NO no-NO en-SE sv-SE en-NL nl-NL de-AT en-AT' | split: ' ' -%}
 {%- assign requestLocaleArr = request.locale | split: '-' -%}
-{%- assign country = requestLocaleArr[1] | default: request.country -%}
+{%- assign country = requestLocaleArr[1] | default: request.country | upcase  -%}
 {%- assign locale = requestLocaleArr[0] | append: '-' | append: country -%}
 {%- assign klarnaLocale = locales | find: locale %}
 
