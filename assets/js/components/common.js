@@ -1051,6 +1051,15 @@ export default {
                     const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
                     $('[data-product-price-dynamic]').html(themeApp.formatCurrency(price));
+
+                    if (window.themeApp.data.klarnaPlacementsClientId && window.KlarnaOnsiteService) {
+
+                        containerEl.querySelectorAll('klarna-placement[data-purchase-amount]').forEach(el => {
+                            el.setAttribute('data-purchase-amount', price);
+                        });
+
+                        window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' });
+                    }
                 });
             });
     	};

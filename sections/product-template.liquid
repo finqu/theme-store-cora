@@ -691,6 +691,22 @@
 
                                     {% render 'form-error', error: form.error, class: 'form-group' %}
 
+                                    {% if settings.klarnaPlacementsClientId %}
+
+                                        {%- if settings.taxFreePrices -%}
+                                            {% assign itemPrice = product.net_price %}
+                                        {%- else -%}
+                                            {% assign itemPrice = product.price %}
+                                        {%- endif -%}
+
+                                        <div class="mt-3">
+
+                                            {% render 'klarna-placement', type: 'credit-promotion-auto-size', purchaseAmount: itemPrice %}
+
+                                        </div>
+
+                                    {% endif %}
+
                                 {% endform %}
 
                             </div>

@@ -5,6 +5,7 @@ import SwiperCore, {
 } from 'swiper/core';
 import 'swiper/swiper.min.css';
 import 'swiper/components/controller/controller.min.css';
+import { debounce } from '../utils';
 
 SwiperCore.use([
     Navigation
@@ -51,43 +52,9 @@ export default class ProductCarousel {
 
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', () => debounce(() => {
             this.swiper.destroy();
             this.swiper = new Swiper(this.containerEl, this.swiperCfg);
-        });
-
-        document.addEventListener('finqu:section:load', (e) => {
-
-            if (e.target.classList.contains('section-product-carousel')) {
-
-                this.swiper.destroy();
-                this.containerEl = e.target.querySelector('.swiper-container');
-                this.opts = this.containerEl.dataset;
-
-                itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
-
-                this.swiperCfg.breakpoints[992].slidesPerView = itemsPerView;
-                this.swiperCfg.breakpoints[992].slidesPerGroup = itemsPerView;
-
-                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
-            }
-        });
-
-        document.addEventListener('finqu:section:editRefresh', (e) => {
-
-            if (e.target.classList.contains('section-product-carousel')) {
-
-                this.swiper.destroy();
-                this.containerEl = e.target.querySelector('.swiper-container');
-                this.opts = this.containerEl.dataset;
-
-                itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
-
-                this.swiperCfg.breakpoints[992].slidesPerView = itemsPerView;
-                this.swiperCfg.breakpoints[992].slidesPerGroup = itemsPerView;
-
-                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
-            }
-        });
+        }, 150, false));
     }
 }

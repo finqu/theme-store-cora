@@ -31,11 +31,18 @@
 				"en": "Colors",
 				"fi": "Värit"
 			},
-			"title": {
-				"en": "Colors",
-				"fi": "Värit"
-			},
 			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "Colors",
+						"fi": "Värit"
+					},
+					"subheading": {
+						"en": "Use colors as is or customize them to fit.",
+						"fi": "Käytä värejä sellaisenaan tai muokkaa niistä sopivat."
+					}
+				},
 				{
 					"id": "styles",
 					"type": "style-editor",
@@ -906,11 +913,18 @@
 				"en": "Typography",
 				"fi": "Teksti"
 			},
-			"title": {
-				"en": "Typography",
-				"fi": "Teksti"
-			},
 			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "Typography",
+						"fi": "Teksti"
+					},
+					"subheading": {
+						"en": "Customize the letters to fit the style of the store.",
+						"fi": "Mukauta kirjaimet sopimaan kaupan tyyliin."
+					}
+				},
 				{
 					"id": "textScale",
 					"type": "radio-pill",
@@ -937,6 +951,9 @@
 							"label": "XL"
 						}
 					]
+				},
+				{
+					"type": "spacer"
 				},
 				{
 					"id": "bodyTextFont",
@@ -1141,11 +1158,18 @@
 				"en": "Sections",
 				"fi": "Osiot"
 			},
-			"title": {
-				"en": "Sections",
-				"fi": "Osiot"
-			},
 			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "Sections",
+						"fi": "Osiot"
+					},
+					"subheading": {
+						"en": "Edit sections settings centrally.",
+						"fi": "Muokkaa osioiden asetuksia keskitetysti."
+					}
+				},
 				{
 					"id": "sectionHeight",
 					"type": "radio-pill",
@@ -1309,11 +1333,18 @@
 				"en": "General",
 				"fi": "Yleinen"
 			},
-			"title": {
-				"en": "General",
-				"fi": "Yleinen"
-			},
 			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "General",
+						"fi": "Yleinen"
+					},
+					"subheading": {
+						"en": "Adjust store's general settings",
+						"fi": "Säädä kaupan yleisiä asetuksia."
+					}
+				},
 				{
                     "id": "faviconImgSrc",
                     "type": "image-picker",
@@ -1322,6 +1353,36 @@
 						"fi": "Favicon kuva"
 					}
                 },
+                {
+                	"type": "spacer"
+                },
+				{
+					"id": "buttonBorderRadius",
+					"type": "radio-pill",
+					"label": {
+						"en": "Button border radius",
+						"fi": "Napin reunan pyöreys"
+					},
+					"default": "3px",
+					"options": [
+						{
+							"value": "0px",
+							"label": "OFF"
+						},
+						{
+							"value": "3px",
+							"label": "S"
+						},
+						{
+							"value": "7px",
+							"label": "M"
+						},
+						{
+							"value": "15px",
+							"label": "L"
+						}
+					]
+				},
                 {
                     "id": "addToCartNotification",
                     "type": "checkbox",
@@ -1358,33 +1419,6 @@
 							"label": "Inline"
 						}
 					]
-				},
-				{
-					"id": "buttonBorderRadius",
-					"type": "radio-pill",
-					"label": {
-						"en": "Button border radius",
-						"fi": "Napin reunan pyöreys"
-					},
-					"default": "3px",
-					"options": [
-						{
-							"value": "0px",
-							"label": "OFF"
-						},
-						{
-							"value": "3px",
-							"label": "S"
-						},
-						{
-							"value": "7px",
-							"label": "M"
-						},
-						{
-							"value": "15px",
-							"label": "L"
-						}
-					]
 				}
 			]
 		},
@@ -1394,11 +1428,18 @@
 				"en": "Social media",
 				"fi": "Sosiaalinen media"
 			},
-			"title": {
-				"en": "Social media",
-				"fi": "Sosiaalinen media"
-			},
 			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "Social media",
+						"fi": "Sosiaalinen media"
+					},
+					"subheading": {
+						"en": "Add your own social media channels to the store.",
+						"fi": "Lisää kauppaan omat sosiaalisen median kanavat."
+					}
+				},
 				{
                     "id": "facebookPageUrl",
                     "type": "text",
@@ -1439,6 +1480,50 @@
 						"fi": "Youtube-sivun URL-osoite"
 					}
                 }
+			]
+		},
+		{
+			"type": "setting-page",
+			"label": {
+				"en": "Payment & Shipping",
+				"fi": "Maksu & Toimitus"
+			},
+			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "Payment & Shipping",
+						"fi": "Maksu & Toimitus"
+					},
+					"subheading": {
+						"en": "Add a variety of widgets to the store.",
+						"fi": "Lisää kauppaan erilaisia widgettejä."
+					}
+				},
+				{
+					"type": "setting-page",
+					"label": "Klarna",
+					"settings": [
+						{
+							"type": "heading",
+							"label": "Klarna",
+							"subheading": {
+								"en": "Set-up Klarna On-site messaging by setting the client id.",
+								"fi": "Ota käyttöön Klarna On-site messaging asettamalla asiakastunnus."
+							}
+						},
+						{
+							"type": "text",
+							"id": "klarnaPlacementsClientId",
+							"type": "text",
+							"label": {
+								"en": "Client id",
+								"fi": "Asiakastunnus"
+							},
+							"placeholder": "11111111-2222-3333-4444-555555555555"
+						}
+					]
+				}
 			]
 		}
 	]

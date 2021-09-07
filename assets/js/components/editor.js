@@ -5,14 +5,20 @@ export default {
     init: function() {
 
         document.addEventListener('finqu:section:load', (e) => {
+
             if (e.target.classList.contains('has-lazy')) {
                 themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
             }
         });
 
         document.addEventListener('finqu:block:load', (e) => {
+
             if (e.target.classList.contains('has-lazy')) {
                 themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
+            }
+
+            if (window.KlarnaOnsiteService && e.target.classList.contains('block-klarna')) {
+                window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' });
             }
         });
 

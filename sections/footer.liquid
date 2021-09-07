@@ -248,29 +248,37 @@
 
                                     <div class="site-footer-payment-methods-container">
 
-                                        {% for payment_method in store.payment_methods %}
+                                        {% if settings.klarnaPlacementsClientId %}
 
-                                            {%- assign imgSrc = payment_method.image -%}
+                                            {% render 'klarna-placement', type: 'footer-promotion-auto-size' %}
 
-                                            {% if imgSrc %}
+                                        {% else %}
 
-                                                {%- assign imgSize = 45,30 -%}
+                                            {% for payment_method in store.payment_methods %}
 
-                                                <div class="site-footer-payment-method">
+                                                {%- assign imgSrc = payment_method.image -%}
 
-                                                    <picture>
-                                                        <img
-                                                            alt="{{ payment_method.name }}"
-                                                            data-src="{{ imgSrc | thumb: imgSize }}"
-                                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                            class="lazy d-block mx-auto img-fluid">
-                                                    </picture>
+                                                {% if imgSrc %}
 
-                                                </div>
+                                                    {%- assign imgSize = 45,30 -%}
 
-                                            {% endif %}
+                                                    <div class="site-footer-payment-method">
 
-                                        {% endfor %}
+                                                        <picture>
+                                                            <img
+                                                                alt="{{ payment_method.name }}"
+                                                                data-src="{{ imgSrc | thumb: imgSize }}"
+                                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                                class="lazy d-block mx-auto img-fluid">
+                                                        </picture>
+
+                                                    </div>
+
+                                                {% endif %}
+
+                                            {% endfor %}
+
+                                        {% endif %}
 
                                     </div>
 

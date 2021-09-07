@@ -9,6 +9,7 @@ import SwiperCore, {
 import 'swiper/swiper.min.css';
 import 'swiper/components/controller/controller.min.css';
 import 'swiper/components/effect-fade/effect-fade.min.css';
+import { debounce } from '../utils';
 
 SwiperCore.use([
     Navigation,
@@ -86,16 +87,9 @@ export default class ImageCarousel {
 
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', () => debounce(() => {
             this.swiper.destroy();
             this.swiper = new Swiper(this.containerEl, this.swiperCfg);
-        });
-
-        document.addEventListener('finqu:section:load', (e) => {
-            if (e.target.classList.contains('section-image-carousel')) {
-                this.containerEl = e.target.querySelector('.swiper-container');
-                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
-            }
-        });
+        }, 150, false));
     }
 }

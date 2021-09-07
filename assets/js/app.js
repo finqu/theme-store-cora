@@ -322,6 +322,13 @@ export default class App {
 
 	init() {
 
+		if (this.data.klarnaPlacementsClientId) {
+
+			this.loadScript('https://eu-library.playground.klarnaservices.com/lib.js', {
+				'clientId': this.data.klarnaPlacementsClientId
+			});
+		}
+
 		if (!document.querySelector('body').classList.contains('template-password')) {
 			this.cart.init();
 		}
@@ -420,5 +427,29 @@ export default class App {
 		}
 
 		node.addEventListener('animationend', handleAnimationEnd, {once: true});
+	});
+
+	loadScript = (src, data = {}) => new Promise((resolve, reject) => {
+
+		let script = document.querySelector('script[src="'+src+'"]') || null;
+
+		if (script) {
+			script.remove();
+		}
+
+	    script = document.createElement('script');
+
+	    script.src = src;
+	    script.onload = resolve;
+	    script.onerror = reject;
+
+	    if (Object.entries(data).length > 0) {
+
+	    	for (const key of Object.keys(data)) {
+				script.dataset[key] = data[key];
+			}
+	    }
+
+	    document.head.appendChild(script);
 	});
 }
