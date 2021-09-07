@@ -1,2 +1,2 @@
-# Cool Themes
+# Cora theme for Finqu stores
 
