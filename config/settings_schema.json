@@ -960,7 +960,7 @@
 					"type": "font-picker",
 					"label": {
 						"en": "Body text font",
-						"fi": "Leipäktestin fontti"
+						"fi": "Leipätekstin fontti"
 					},
 					"default": "Inter",
 					"families": [
