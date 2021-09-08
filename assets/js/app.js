@@ -370,7 +370,7 @@ export default class App {
 			}
 		}
 
-        return str;
+        return '';
     }
 
     formatCurrency(value, defaultValue, minimumFractionDigits, maximumFractionDigits) {

@@ -105,6 +105,8 @@
         "attachments": "Attachments",
         "create_review": "Write a review",
         "review_product_purchase_required": "You must buy the product first before you can review it.",
+        "bulk_discount": "Bulkrate discount",
+        "discount_rate": "Discount rate",
         "badge_new": "New",
         "badge_out_of_stock": "Ouf ot stock"
     },
@@ -114,9 +116,7 @@
         "empty": "Cart is empty.",
         "proceed_to_checkout": "Proceed to checkout",
         "view_cart": "View cart",
-        "product_added_to_cart": "The product was added to the shopping cart",
-        "bulk_discount": "Bulkrate discount",
-        "discount_rate": "Discount rate"
+        "product_added_to_cart": "The product was added to the shopping cart"
     },
     "error": {
         "general": "An error occurred",

@@ -35,9 +35,14 @@ export default {
 
                     for (const index in matches) {
 
-                        const key = matches[index].match(/(?<=\{# icon.).+?(?=\ #})/g)[0];
+                        const arr = Array.from(matches[index].matchAll(/{# icon.(.*?) #}/g));
 
-                        labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
+                        if (arr.length > 0 && arr[0].length >= 2) {
+
+                            const key = arr[0][1];
+
+                            labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
+                        }
                     }
                 }
             }
@@ -56,9 +61,14 @@ export default {
 
         			for (const index in matches) {
 
-        				const key = matches[index].match(/(?<=\{# icon.).+?(?=\ #})/g)[0];
+        				const arr = Array.from(matches[index].matchAll(/{# icon.(.*?) #}/g));
 
-						labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
+                        if (arr.length > 0 && arr[0].length >= 2) {
+
+                            const key = arr[0][1];
+
+						    labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
+                        }
 					}
         		}
         	}

@@ -278,6 +278,11 @@
 				    justify-content: flex-end;
 				    height: 100%;
     				font-size: $font-size-base * 1.1;
+
+    				button {
+    					width: 20px;
+    					text-align: center;
+    				}
     			}
     		}
     	}
