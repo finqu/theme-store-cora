@@ -571,7 +571,15 @@
 
             </ul>
 
-            {% if section.settings.socialMediaIconsStatus %}
+            {%- capture hasSocialMediaIcons -%}
+                {{ settings.facebookPageUrl | yepnope: 'true', 'false' }},
+                {{ settings.instagramPageUrl | yepnope: 'true', 'false' }},
+                {{ settings.twitterPageUrl | yepnope: 'true', 'false' }},
+                {{ settings.pinterestPageUrl | yepnope: 'true', 'false' }},
+                {{ settings.youtubePageUrl | yepnope: 'true', 'false' }}
+            {%- endcapture -%}
+
+            {% if section.settings.socialMediaIconsStatus and hasSocialMediaIcons contains 'true' %}
 
                 <div class="site-mobile-navigation-social-media-buttons-container">
 
