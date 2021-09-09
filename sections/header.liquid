@@ -247,7 +247,7 @@
 
                             {% for item in mainMenu.links %}
 
-                                <li class="site-header-menu-item{% if item.active %} site-header-menu-item-active{% endif %}"{% if item.links %} data-header-menu-child-id="{{ forloop.index }}"{% endif %}>
+                                <li class="site-header-menu-item{% if item.current %} site-header-menu-item-active{% endif %}"{% if item.links %} data-header-menu-child-id="{{ forloop.index }}"{% endif %}>
 
                                     {%- if item.url -%}
 
