@@ -541,7 +541,7 @@
 	                    <div class="col text-right">
 
 	                        <span>
-	                        	{{ order.subtotal | in_currency }}
+	                        	{{ order.subtotal_price | in_currency }}
 	                        </span>
 
 	                    </div>
@@ -642,53 +642,41 @@
 
 	            {% endif %}
 
-	            <div class="order-tax-free">
+	            {% if order.tax_lines %}
 
-	                <div class="row">
+		            <div class="order-taxes">
 
-	                    <div class="col">
+		            	{% for tax in order.tax_lines %}
 
-	                        <span>
-	                            {{ 'general.tax_free_price' | t }}
-	                        </span>
+			            	<div class="order-tax">
 
-	                    </div>
+				                <div class="row">
 
-	                    <div class="col text-right">
+				                    <div class="col">
 
-	                        <span>
-	                        	{{ order.tax_free | in_currency }}
-	                        </span>
+				                        <span>
+				                           {{ 'general.tax' | t }} {{ tax.rate_percentage }} %
+				                        </span>
 
-	                    </div>
+				                    </div>
 
-	                </div>
+				                    <div class="col text-right">
 
-	            </div>
+				                        <span>
+				                        	{{ tax.price | in_currency }}
+				                        </span>
 
-	            <div class="order-tax">
+				                    </div>
 
-	                <div class="row">
+				                </div>
 
-	                    <div class="col">
+				            </div>
 
-	                        <span>
-	                            {{ 'general.tax' | t }}
-	                        </span>
+		                {% endfor %}
 
-	                    </div>
+		            </div>
 
-	                    <div class="col text-right">
-
-	                        <span>
-	                        	{{ order.tax | in_currency }}
-	                        </span>
-
-	                    </div>
-
-	                </div>
-
-	            </div>
+	            {% endif %}
 
 	            <div class="order-total">
 
@@ -705,7 +693,7 @@
 	                    <div class="col text-right">
 
 	                        <span>
-	                        	{{ order.total | in_currency }}
+	                        	{{ order.total_price | in_currency }}
 	                        </span>
 
 	                    </div>
