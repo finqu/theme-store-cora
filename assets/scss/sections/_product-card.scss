@@ -40,7 +40,7 @@
 				}
 
 				.swiper-slide {
-					@include aspect-ratio(9, 13, $img-fit, center);
+					@include aspect-ratio(9, 13, $img-fit, top);
 				}
 
 				.product-media-video-container {
