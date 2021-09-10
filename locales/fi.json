@@ -178,7 +178,7 @@
             "shipping_method": "Toimitustapa",
             "shipping_method_plural": "Toimitustavat",
             "payment_method": "Maksutapa",
-            "payment_methods": "Maksutavat",
+            "payment_method_plural": "Maksutavat",
             "delivery_address": "Toimitusosoite",
             "billing_address": "Laskutusosoite",
             "download_receipt": "Lataa kuitti",
