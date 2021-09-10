@@ -107,8 +107,8 @@
         "review_product_purchase_required": "Arvostellaaksesi tuotteen sinun pitää ostaa tuote.",
         "bulk_discount": "Määräalennus",
         "discount_rate": "Alennusprosentti",
-        "badge_new": "Uutuus",
-        "badge_out_of_stock": "Loppu"
+        "new": "Uutuus",
+        "out_of_stock": "Loppunut"
     },
     "cart": {
         "title": "Ostoskori",

@@ -107,8 +107,8 @@
         "review_product_purchase_required": "You must buy the product first before you can review it.",
         "bulk_discount": "Bulkrate discount",
         "discount_rate": "Discount rate",
-        "badge_new": "New",
-        "badge_out_of_stock": "Ouf ot stock"
+        "new": "New",
+        "out_of_stock": "Ouf ot stock"
     },
     "cart": {
         "title": "Cart",
