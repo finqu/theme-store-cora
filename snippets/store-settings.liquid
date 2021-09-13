@@ -7,10 +7,14 @@
 	{% render 'store-settings' %}
 {% endcomment %}
 
+{%- capture locale -%}
+	{{- request.locale.iso_code -}}-{{- request.country | upcase -}}
+{%- endcapture -%}
+
 <script>
 	window.store = {
 		designMode: {{ request.design_mode | yepnope: 'true','false' }},
-		locale: {{ request.locale.iso_code | json }},
+		locale: {{ locale | json }},
 		cartAddNotify: {{ settings.addToCartNotification | json }},
 		customerAccountsEnabled: {{ store.customer_accounts_enabled | json }},
 		customerAccountsOptional: {{ store.customer_accounts_optional | json }},
