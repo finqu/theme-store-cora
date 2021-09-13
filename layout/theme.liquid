@@ -44,7 +44,7 @@
 
 	</head>
 
-	<body class="{% if store.customer_accounts_enabled %}customer-accounts-enabled {% endif %}{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }} layout-theme">
+	<body class="{% if request.design_mode %}design-mode {% endif %}{% if store.customer_accounts_enabled %}customer-accounts-enabled {% endif %}{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }} layout-theme">
 
 		{% section 'header' %}
 

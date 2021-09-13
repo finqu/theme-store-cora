@@ -1,6 +1,10 @@
 // Product card
 // -----------------------------------------------------------------------------------------
 
+body.design-mode #product-main-media-swiper .aspect-ratio-item {
+	cursor: default;
+}
+
 @include section-style($section: 'product-card') {
 
 	.swiper-container-vertical {

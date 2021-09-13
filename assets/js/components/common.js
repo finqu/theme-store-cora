@@ -913,7 +913,10 @@ export default {
 			};
 
 			const productMainMediaSwiper = new Swiper(productMainMediaSwiperEl, productMainMediaSwiperCfg);
-			const productMediaGallery = new Gallery(productMainMediaSwiperEl);
+
+            if (window.themeApp.data.designMode === false) {
+			    const productMediaGallery = new Gallery(productMainMediaSwiperEl);
+            }
 
             productThumbEls.forEach((el, index) => { el.addEventListener('mouseover', e => {
                 productMainMediaSwiper.slideTo(index, 0, true);
