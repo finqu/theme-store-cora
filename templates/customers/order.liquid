@@ -642,42 +642,6 @@
 
 	            {% endif %}
 
-	            {% if order.tax_lines %}
-
-		            <div class="order-taxes">
-
-		            	{% for tax in order.tax_lines %}
-
-			            	<div class="order-tax">
-
-				                <div class="row">
-
-				                    <div class="col">
-
-				                        <span>
-				                           {{ 'general.tax' | t }} {{ tax.rate_percentage }} %
-				                        </span>
-
-				                    </div>
-
-				                    <div class="col text-right">
-
-				                        <span>
-				                        	{{ tax.price | in_currency }}
-				                        </span>
-
-				                    </div>
-
-				                </div>
-
-				            </div>
-
-		                {% endfor %}
-
-		            </div>
-
-	            {% endif %}
-
 	            <div class="order-total">
 
 	                <div class="row">
