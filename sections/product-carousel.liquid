@@ -20,8 +20,6 @@
 {%- endif -%}
 
 {%- case section.settings.listType -%}
-    {% when 'popular' %}
-        {%- assign items = products.popular -%}
     {% when 'discounted' %}
         {%- assign items = products.discounted -%}
     {% when 'new' %}
@@ -250,15 +248,8 @@
                             "en": "List type",
                             "fi": "Listan tyyppi"
                         },
-                        "default": "popular",
+                        "default": "new",
                         "options": [
-                            {
-                                "value": "popular",
-                                "label": {
-                                    "en": "Popular products",
-                                    "fi": "Suositut tuotteet"
-                                }
-                            },
                             {
                                 "value": "discounted",
                                 "label": {
