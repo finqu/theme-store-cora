@@ -19,7 +19,6 @@
 
 			.order-media {
 				width: 70px;
-				@include aspect-ratio(9, 13);
 			}
 
 			.order-name {
@@ -132,7 +131,6 @@
 
 					.order-item-media {
 						width: 70px;
-						@include aspect-ratio(9, 13);
 					}
 
 					.order-item-name {

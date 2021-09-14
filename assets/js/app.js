@@ -403,12 +403,63 @@ export default class App {
             number = parseFloat(number, 10);
         }
 
-        return number.toLocaleString(this.data.locale, {
-            style: 'currency',
+        const formatter = Intl.NumberFormat(this.data.locale, {
+        	style: 'currency',
             currency: this.data.currency.code,
             minimumFractionDigits: minimumFractionDigits || this.data.currency.decimalPlaces,
             maximumFractionDigits: maximumFractionDigits || this.data.currency.decimalPlaces
         });
+
+        let currencySymbolLeft = null;
+        let currencySymbolRight = null;
+        let currencyGroup = null;
+        let currencyDecimal = null;
+        const testGroup1 = ['ZAR', 'EUR', 'AUD', 'PLN'];
+        const testGroup2 = ['THB', 'TRY', 'GBP', 'BGN', 'JPY', 'USD', 'CAD', 'CNY', 'HKD', 'PHP', 'NZD', 'MYR', 'MXN', 'KRW', 'INR', 'SGD', 'ILS'];
+        const testDecimals1 = ['SEK', 'KRW', 'JPY', 'HUF'];
+        const testDecimals2 = ['EUR', 'HRK', 'RUB', 'BRL'];
+
+        if (testGroup1.includes(this.data.currency.code)) {
+        	currencyGroup = ' ';
+        } else if (testGroup2.includes(this.data.currency.code)) {
+        	currencyGroup = ',';
+        } else {
+        	currencyGroup = '.';
+        }
+
+        if (testDecimals1.includes(this.data.currency.code)) {
+        	currencyDecimal = ' ';
+        } else if (testDecimals2.includes(this.data.currency.code)) {
+        	currencyDecimal = ',';
+        } else if (this.data.currency.code === 'CHF') {
+        	currencyDecimal = "'";
+        } else {
+        	currencyDecimal = '.';
+        }
+
+        const currencyParts = formatter.formatToParts(number);
+        const currencySymbol = currencyParts.find(obj => obj.type === 'currency').value;
+        const currencyValue = currencyParts.map(item => {
+
+        	if (item.type === 'literal' || item.type === 'currency') {
+        		return;
+        	} else if (item.type === 'group') {
+        		return currencyGroup;
+        	} else if (item.type === 'decimal') {
+        		return currencyDecimal;
+        	}
+
+        	return item.value;
+
+        }).join('');
+
+        if (this.data.currency.code === 'USD' || this.data.currency.code === 'GBP') {
+        	currencySymbolLeft = currencySymbol;
+        } else {
+        	currencySymbolRight = currencySymbol;
+        }
+
+        return `${currencySymbolLeft ? currencySymbolLeft+' ' : ''}${currencyValue}${currencySymbolRight ? ' '+currencySymbolRight : ''}`;
     }
 
     animate = (el, animation, prefix = 'animate__') => new Promise((resolve, reject) => {

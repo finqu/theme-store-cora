@@ -1,8 +1,15 @@
 // Product card
 // -----------------------------------------------------------------------------------------
 
-body.design-mode #product-main-media-swiper .aspect-ratio-item {
-	cursor: default;
+body {
+	&.design-mode {
+		#product-main-media-swiper {
+			.aspect-ratio-item,
+			.product-media-video-icon-container {
+				cursor: default;
+			}
+		}
+	}
 }
 
 @include section-style($section: 'product-card') {
@@ -43,10 +50,6 @@ body.design-mode #product-main-media-swiper .aspect-ratio-item {
 					margin-right: $grid-gutter-width / 2;
 				}
 
-				.swiper-slide {
-					@include aspect-ratio(9, 13, $img-fit, top);
-				}
-
 				.product-media-video-container {
 					position: relative;
 
@@ -75,26 +78,16 @@ body.design-mode #product-main-media-swiper .aspect-ratio-item {
 			}
 
 			#product-thumb-media-swiper {
-				height: 537px;
-				@include media-breakpoint-up(xl) {
-					height: 681px;
-				}
 
     			.swiper-slide {
     				border-width: 2px;
     				border-style: solid;
     				border-color: transparent;
+    				height: auto;
 
     				&.swiper-slide-thumb-active  {
 						border-color: color-yiq(section-var(border_color), darken(section-var(border_color), 50%), lighten(section-var(border_color), 50%));
 					}
-
-    				img {
-    					width: 100%;
-				        height: 100%;
-				        object-fit: $img-fit;
-				        font-family: 'object-fit: #{$img-fit}';
-    				}
     			}
 			}
 		}
@@ -126,6 +119,9 @@ body.design-mode #product-main-media-swiper .aspect-ratio-item {
 	}
 
 	.product-info {
+		@include media-breakpoint-down(md) {
+			margin-top: spacer(4);
+		}
 
 		.product-manufacturer {
 			margin-bottom: spacer(1);
@@ -240,7 +236,6 @@ body.design-mode #product-main-media-swiper .aspect-ratio-item {
 
 				.product-related-item-media {
 					border: 2px solid transparent;
-					@include aspect-ratio(9, 13);
 
 					&:hover {
 						border-color: color-yiq(section-var(border_color), darken(section-var(border_color), 50%), lighten(section-var(border_color), 50%));

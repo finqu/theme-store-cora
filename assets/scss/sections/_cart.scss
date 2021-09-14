@@ -6,7 +6,7 @@
     .cart {
 
     	.cart-footer {
-    		padding-top: spacer(4);
+    		padding-top: spacer(3);
     	}
 
     	.cart-items {
@@ -22,7 +22,6 @@
 
     			.cart-item-media {
     				width: 70px;
-    				@include aspect-ratio(9, 13);
     			}
 
     			.cart-item-manufacturer {
@@ -112,7 +111,6 @@
     	.cart-subtotal {
     		display: flex;
     		flex-direction: column;
-    		margin-bottom: spacer(6);
     	}
 
     	.cart-summary {
@@ -195,7 +193,6 @@
 
     			.cart-item-media {
     				width: 70px;
-    				@include aspect-ratio(9, 13);
     			}
 
     			.cart-item-manufacturer {

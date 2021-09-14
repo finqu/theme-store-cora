@@ -18,35 +18,39 @@
 
                                 {% if media.type == "image" %}
 
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide aspect-ratio-product">
 
-                                        {%- unless hasMediaImg -%}
-                                            {%- assign hasMediaImg = true -%}
-                                        {%- endunless -%}
+                                        <div class="aspect-ratio-container">
 
-                                        {% if media.thumb %}
+                                            {%- unless hasMediaImg -%}
+                                                {%- assign hasMediaImg = true -%}
+                                            {%- endunless -%}
 
-                                            {%- assign imgSrc = media.thumb | asset_url -%}
-                                            {%- assign imgSize = 120,120 -%}
+                                            {% if media.thumb %}
 
-                                            <img
-                                                class="lazy d-block mx-auto img-fluid c-pointer"
-                                                alt="{{ product.name }}"
-                                                data-src="{{ imgSrc | thumb: imgSize }}"
-                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                                {%- assign imgSrc = media.thumb | asset_url -%}
+                                                {%- assign imgSize = 120,120 -%}
 
-                                        {% else %}
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ imgSrc | thumb: imgSize }}"
+                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
 
-                                            {%- capture imgSrc -%}
-                                                {% render 'placeholder-svg', type: 'image', base64: true %}
-                                            {%- endcapture -%}
+                                            {% else %}
 
-                                            <img
-                                                class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
-                                                alt="{{ product.name }}"
-                                                data-src="{{ imgSrc }}">
+                                                {%- capture imgSrc -%}
+                                                    {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                {%- endcapture -%}
 
-                                        {% endif %}
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer svg-placeholder"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ imgSrc }}">
+
+                                            {% endif %}
+
+                                        </div>
 
                                     </div>
 
@@ -66,31 +70,35 @@
                                                 {%- assign hasMediaImg = true -%}
                                             {%- endunless -%}
 
-                                            <div class="swiper-slide">
+                                            <div class="swiper-slide aspect-ratio-product">
 
-                                                {% if option.image %}
+                                                <div class="aspect-ratio-container">
 
-                                                    {%- assign imgSrc = option.image | asset_url -%}
-                                                    {%- assign imgSize = 120,120 -%}
+                                                    {% if option.image %}
 
-                                                    <img
-                                                        class="lazy d-block mx-auto img-fluid c-pointer"
-                                                        alt="{{ product.name }}"
-                                                        data-src="{{ imgSrc | thumb: imgSize }}"
-                                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                                        {%- assign imgSrc = option.image | asset_url -%}
+                                                        {%- assign imgSize = 120,120 -%}
 
-                                                {% else %}
+                                                        <img
+                                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer"
+                                                            alt="{{ product.name }}"
+                                                            data-src="{{ imgSrc | thumb: imgSize }}"
+                                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
 
-                                                    {%- capture imgSrc -%}
-                                                        {% render 'placeholder-svg', type: 'image', base64: true %}
-                                                    {%- endcapture -%}
+                                                    {% else %}
 
-                                                    <img
-                                                        class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
-                                                        alt="{{ product.name }}"
-                                                        data-src="{{ imgSrc }}">
+                                                        {%- capture imgSrc -%}
+                                                            {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                        {%- endcapture -%}
 
-                                                {% endif %}
+                                                        <img
+                                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer svg-placeholder"
+                                                            alt="{{ product.name }}"
+                                                            data-src="{{ imgSrc }}">
+
+                                                    {% endif %}
+
+                                                </div>
 
                                             </div>
 
@@ -104,16 +112,20 @@
 
                             {% unless hasMediaImg %}
 
-                                <div class="swiper-slide">
+                                <div class="swiper-slide aspect-ratio-product">
 
-                                    {%- capture imgSrc -%}
-                                        {% render 'placeholder-svg', type: 'image', base64: true %}
-                                    {%- endcapture -%}
+                                    <div class="aspect-ratio-container">
 
-                                    <img
-                                        class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
-                                        alt="{{ product.name }}"
-                                        data-src="{{ imgSrc }}">
+                                        {%- capture imgSrc -%}
+                                            {% render 'placeholder-svg', type: 'image', base64: true %}
+                                        {%- endcapture -%}
+
+                                        <img
+                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer svg-placeholder"
+                                            alt="{{ product.name }}"
+                                            data-src="{{ imgSrc }}">
+
+                                    </div>
 
                                 </div>
 
@@ -123,31 +135,35 @@
 
                                 {% if media.type == "video" %}
 
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide aspect-ratio-product">
 
-                                        {% if media.thumb %}
+                                        <div class="aspect-ratio-container">
 
-                                            {%- assign imgSrc = media.thumb | asset_url -%}
-                                            {%- assign imgSize = 120,120 -%}
+                                            {% if media.thumb %}
 
-                                            <img
-                                                class="lazy d-block mx-auto img-fluid c-pointer"
-                                                alt="{{ product.name }}"
-                                                data-src="{{ imgSrc | thumb: imgSize }}"
-                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+                                                {%- assign imgSrc = media.thumb | asset_url -%}
+                                                {%- assign imgSize = 120,120 -%}
 
-                                        {% else %}
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid c-pointer aspect-ratio-item"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ imgSrc | thumb: imgSize }}"
+                                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
 
-                                            {%- capture imgSrc -%}
-                                                {% render 'placeholder-svg', type: 'image', base64: true %}
-                                            {%- endcapture -%}
+                                            {% else %}
 
-                                            <img
-                                                class="lazy d-block mx-auto img-fluid c-pointer svg-placeholder"
-                                                alt="{{ product.name }}"
-                                                data-src="{{ imgSrc }}">
+                                                {%- capture imgSrc -%}
+                                                    {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                {%- endcapture -%}
 
-                                        {% endif %}
+                                                <img
+                                                    class="lazy d-block mx-auto img-fluid c-pointer aspect-ratio-item svg-placeholder"
+                                                    alt="{{ product.name }}"
+                                                    data-src="{{ imgSrc }}">
+
+                                            {% endif %}
+
+                                        </div>
 
                                     </div>
 
@@ -183,7 +199,7 @@
                                         {%- assign hasMediaImg = true -%}
                                     {%- endunless -%}
 
-                                    <div class="swiper-slide gallery-item">
+                                    <div class="swiper-slide gallery-item aspect-ratio-product">
 
                                         <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
@@ -203,7 +219,7 @@
                                                         {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
 
                                                     <img
-                                                        class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                        class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in{% if settings.aspectRatioProductImage == '9:13' %} aspect-ratio-item-position-top{% endif %}"
                                                         alt="{{ product.name }}"
                                                         data-gallery-img-src="{{ media.original }}"
                                                         src="{{ imgSrc | thumb: imgSizeSm }}">
@@ -227,8 +243,6 @@
 
                                     </div>
 
-                                {% elsif media.type == "video" %}
-
                                 {% endif %}
 
                             {% endfor %}
@@ -245,7 +259,7 @@
                                                 {%- assign hasMediaImg = true -%}
                                             {%- endunless -%}
 
-                                            <div class="swiper-slide gallery-item">
+                                            <div class="swiper-slide gallery-item aspect-ratio-product">
 
                                                 <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
@@ -265,7 +279,7 @@
                                                                 {{ imgSrc | thumb: imgSizeSm | thumb: '@2x' }} 2x">
 
                                                             <img
-                                                                class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in"
+                                                                class="d-block mx-auto img-fluid aspect-ratio-item c-zoom-in{% if settings.aspectRatioProductImage == '9:13' %} aspect-ratio-item-position-top{% endif %}"
                                                                 alt="{{ product.name }}"
                                                                 data-gallery-img-src="{{ media.original }}"
                                                                 src="{{ imgSrc | thumb: imgSizeSm }}">
@@ -299,7 +313,7 @@
 
                             {% unless hasMediaImg %}
 
-                                <div class="swiper-slide gallery-item">
+                                <div class="swiper-slide gallery-item aspect-ratio-product">
 
                                     <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
@@ -308,7 +322,7 @@
                                         {%- endcapture -%}
 
                                         <img
-                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-zoom-in svg-placeholder"
+                                            class="lazy d-block mx-auto img-fluid aspect-ratio-item c-zoom-in svg-placeholder{% if settings.aspectRatioProductImage == '9:13' %} aspect-ratio-item-position-top{% endif %}"
                                             alt="{{ product.name }}"
                                             data-gallery-img-src="{{ imgSrc }}"
                                             data-src="{{ imgSrc }}">
@@ -325,7 +339,7 @@
 
                                     <div class="swiper-slide gallery-item">
 
-                                        <div class="product-media-video-container aspect-ratio-container" data-gallery-item-init>
+                                        <div class="product-media-video-container" data-gallery-item-init>
 
                                             {% if media.thumb %}
 
@@ -350,7 +364,7 @@
                                                 {%- endcapture -%}
 
                                                 <img
-                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
+                                                    class="lazy d-block mx-auto img-fluid svg-placeholder"
                                                     alt="{{ product.name }}"
                                                     data-src="{{ imgSrc }}"
                                                     data-gallery-video-src="{{ media.url }}"
@@ -576,7 +590,7 @@
 
                                     <a href="{{ relatedItem | link }}">
 
-                                        <div class="product-related-item-media">
+                                        <div class="product-related-item-media aspect-ratio-product">
 
                                             <div class="product-related-media-img-container aspect-ratio-container">
 

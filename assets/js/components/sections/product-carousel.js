@@ -52,7 +52,7 @@ export default class ProductCarousel {
 
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
-        window.addEventListener('resize', () => debounce(() => {
+        window.addEventListener('resize', debounce(() => {
             this.swiper.destroy();
             this.swiper = new Swiper(this.containerEl, this.swiperCfg);
         }, 150, false));

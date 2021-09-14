@@ -1,0 +1,46 @@
+// Aspect ratio
+// -----------------------------------------------------------------------------------------
+
+@each $key, $val in $aspect-ratios {
+
+	$ratioArr: str-split(#{$val}, ':');
+	$fit: contain;
+
+	@if $key == product {
+        $fit: $aspect-ratio-product-image-fit;
+    }
+
+	.aspect-ratio-#{$key} {
+		@include aspect-ratio(to-number(nth($ratioArr, 1)), to-number(nth($ratioArr, 2)), $fit);
+	}
+}
+
+.aspect-ratio-item-cover {
+	object-fit: cover;
+	font-family: 'object-fit: cover';
+}
+
+.aspect-ratio-item-contain {
+	object-fit: contain;
+	font-family: 'object-fit: contain';
+}
+
+.aspect-ratio-item-position-left {
+	object-position: left;
+}
+
+.aspect-ratio-item-position-top {
+	object-position: top;
+}
+
+.aspect-ratio-item-position-right {
+	object-position: right;
+}
+
+.aspect-ratio-item-position-bottom {
+	object-position: bottom;
+}
+
+.aspect-ratio-item-position-center {
+	object-position: center;
+}

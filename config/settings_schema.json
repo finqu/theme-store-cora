@@ -1346,42 +1346,77 @@
 					}
 				},
 				{
-                    "id": "faviconImgSrc",
-                    "type": "image-picker",
-                    "label": {
-						"en": "Favicon image",
-						"fi": "Favicon kuva"
+					"type": "title",
+					"label": {
+						"en": "Favicon",
+						"fi": "Favicon"
 					}
+				},
+				{
+                    "id": "faviconImgSrc",
+                    "type": "image-picker"
                 },
                 {
                 	"type": "spacer"
                 },
 				{
-					"id": "buttonBorderRadius",
+					"type": "title",
+					"label": {
+						"en": "Product images",
+						"fi": "Tuotekuvat"
+					}
+				},
+                {
+                    "id": "aspectRatioProductImage",
+                    "type": "select",
+                    "label": {
+						"en": "Aspect ratio",
+						"fi": "Kuvasuhde"
+					},
+                    "default": "9:13",
+                    "options": [
+                        {
+                            "value": "9:13",
+                            "label": "9:13"
+                        },
+                        {
+                            "value": "4:3",
+                            "label": "4:3"
+                        },
+                        {
+                            "value": "1:1",
+                            "label": "1:1"
+                        }
+                    ]
+                },
+                {
+					"id": "aspectRatioProductImageFit",
 					"type": "radio-pill",
 					"label": {
-						"en": "Button border radius",
-						"fi": "Napin reunan pyöreys"
+						"en": "Image area fill",
+						"fi": "Kuva-alueen täyttö"
 					},
-					"default": "3px",
+					"default": "contain",
 					"options": [
 						{
-							"value": "0px",
+							"value": "contain",
 							"label": "OFF"
 						},
 						{
-							"value": "3px",
-							"label": "S"
-						},
-						{
-							"value": "7px",
-							"label": "M"
-						},
-						{
-							"value": "15px",
-							"label": "L"
+							"value": "cover",
+							"label": "ON"
 						}
 					]
+				},
+                {
+                	"type": "spacer"
+                },
+				{
+					"type": "title",
+					"label": {
+						"en": "Purchase",
+						"fi": "Ostaminen"
+					}
 				},
                 {
                     "id": "addToCartNotification",
@@ -1402,6 +1437,16 @@
                     "default": false
                 },
                 {
+                	"type": "spacer"
+                },
+                {
+					"type": "title",
+					"label": {
+						"en": "Registration",
+						"fi": "Rekisteröinti"
+					}
+				},
+                {
 					"type": "radio",
 					"id": "policyAgreementMethod",
 					"label": {
@@ -1417,6 +1462,47 @@
 						{
 							"value": "inline",
 							"label": "Inline"
+						}
+					]
+				},
+				{
+                	"type": "spacer"
+                },
+				{
+					"type": "title",
+					"label": {
+						"en": "Buttons",
+						"fi": "Napit"
+					}
+				},
+				{
+					"id": "buttonBorderRadius",
+					"type": "radio-pill",
+					"label": {
+						"en": "Border radius",
+						"fi": "Reunan pyöreys"
+					},
+					"default": "3px",
+					"options": [
+						{
+							"value": "0px",
+							"label": "OFF"
+						},
+						{
+							"value": "3px",
+							"label": "S"
+						},
+						{
+							"value": "7px",
+							"label": "M"
+						},
+						{
+							"value": "15px",
+							"label": "L"
+						},
+						{
+							"value": "30px",
+							"label": "XL"
 						}
 					]
 				}

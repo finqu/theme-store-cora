@@ -8,6 +8,7 @@ import SwiperCore, {
 import 'swiper/swiper.min.css';
 import 'swiper/components/thumbs/thumbs.min.css';
 import 'swiper/components/controller/controller.min.css';
+import { debounce } from './utils';
 
 SwiperCore.use([
 	Thumbs,
@@ -874,10 +875,12 @@ export default {
     	const initProductMedia = () => {
 
     		const productThumbMediaSwiperEl = containerEl.querySelector('#product-thumb-media-swiper');
+            let productMainMediaSwiperEl = containerEl.querySelector('#product-main-media-swiper');
+
     		const productThumbMediaSwiperCfg = {
     			direction: 'vertical',
 				spaceBetween: 16,
-				slidesPerView: 5,
+				slidesPerView: 'auto',
 				freeMode: true,
 				watchOverflow: true,
 				watchSlidesVisibility: true,
@@ -891,26 +894,26 @@ export default {
 				}
 			};
 
-			const productThumbMediaSwiper = new Swiper(productThumbMediaSwiperEl, productThumbMediaSwiperCfg);
-            const productThumbEls = productThumbMediaSwiperEl.querySelectorAll('.swiper-slide');
+            productThumbMediaSwiperEl.style.height = productMainMediaSwiperEl.getBoundingClientRect().height+'px';
 
-			const productMainMediaSwiperEl = containerEl.querySelector('#product-main-media-swiper');
-			const productMainMediaSwiperCfg = {
-				allowTouchMove: true,
-				speed: 0,
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev'
-				},
-				thumbs: {
-					swiper: productThumbMediaSwiper
-				},
+            const productThumbMediaSwiper = new Swiper(productThumbMediaSwiperEl, productThumbMediaSwiperCfg);
+
+            const productMainMediaSwiperCfg = {
+                allowTouchMove: true,
+                speed: 0,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                thumbs: {
+                    swiper: productThumbMediaSwiper
+                },
                 breakpoints: {
                     992: {
                         allowTouchMove: false,
                     }
                 }
-			};
+            };
 
 			const productMainMediaSwiper = new Swiper(productMainMediaSwiperEl, productMainMediaSwiperCfg);
 
@@ -918,9 +921,16 @@ export default {
 			    const productMediaGallery = new Gallery(productMainMediaSwiperEl);
             }
 
+            const productThumbEls = productThumbMediaSwiperEl.querySelectorAll('.swiper-slide');
+
             productThumbEls.forEach((el, index) => { el.addEventListener('mouseover', e => {
                 productMainMediaSwiper.slideTo(index, 0, true);
             })});
+
+            window.addEventListener('resize', debounce(() => {
+                productMainMediaSwiperEl = containerEl.querySelector('#product-main-media-swiper');
+                productThumbMediaSwiperEl.style.height = productMainMediaSwiperEl.getBoundingClientRect().height+'px';
+            }, 150, false));
     	};
 
     	const initProductOptions = () => {

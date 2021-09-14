@@ -600,10 +600,6 @@ body > #search-overlay {
                     font-size: $font-size-base * .7;
                 }
             }
-
-            .product-media {
-                @include aspect-ratio(9, 13);
-            }
         }
 
         .product-caption {

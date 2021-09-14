@@ -27,7 +27,18 @@ $accent-font-family: {{- settings.accentFont -}};
 
 $btn-font-family: {{- settings.buttonFont -}};
 $btn-border-radius: {{- settings.buttonBorderRadius -}};
+$btn-border-radius-lg: {{- settings.buttonBorderRadius -}};
+$btn-border-radius-sm: {{- settings.buttonBorderRadius -}};
 
 $section-styles: ({{ sectionStyles }});
+
+$aspect-ratios: (
+	'9-13': '9:13',
+	'4-3': '4:3',
+	'1-1': '1:1',
+	'product': '{{- settings.aspectRatioProductImage -}}'
+);
+
+$aspect-ratio-product-image-fit: {{- settings.aspectRatioProductImageFit -}};
 
 @import "scss/theme";
