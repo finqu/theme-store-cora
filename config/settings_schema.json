@@ -1,6 +1,8 @@
 {
 	"name": "cora",
 	"theme_name": "Cora",
+	"theme_author": "Finqu",
+	"theme_documentation_url": "https://help.finqu.com/fi/articles/5550390-cora-teema",
 	"section_categories": [
 		{
 			"id": "theme-basic",
@@ -988,11 +990,7 @@
 						"Tourney",
 						"Grandstander"
 					],
-					"variants": [
-						"Regular",
-						"italic",
-						"700"
-					]
+					"variants": ["Regular", "italic", "700"]
 				},
 				{
 					"id": "headingFont",
@@ -1027,11 +1025,7 @@
 						"Tourney",
 						"Grandstander"
 					],
-					"variants": [
-						"Regular",
-						"italic",
-						"700"
-					]
+					"variants": ["Regular", "italic", "700"]
 				},
 				{
 					"id": "subheadingFont",
@@ -1066,11 +1060,7 @@
 						"Tourney",
 						"Grandstander"
 					],
-					"variants": [
-						"Regular",
-						"italic",
-						"700"
-					]
+					"variants": ["Regular", "italic", "700"]
 				},
 				{
 					"id": "buttonFont",
@@ -1105,11 +1095,7 @@
 						"Tourney",
 						"Grandstander"
 					],
-					"variants": [
-						"Regular",
-						"italic",
-						"700"
-					]
+					"variants": ["Regular", "italic", "700"]
 				},
 				{
 					"id": "accentFont",
@@ -1144,11 +1130,7 @@
 						"Tourney",
 						"Grandstander"
 					],
-					"variants": [
-						"Regular",
-						"italic",
-						"700"
-					]
+					"variants": ["Regular", "italic", "700"]
 				}
 			]
 		},
@@ -1251,80 +1233,80 @@
 						}
 					]
 				},
-                {
-                    "id": "sectionBgImgPos",
-                    "type": "select",
-                    "label": {
+				{
+					"id": "sectionBgImgPos",
+					"type": "select",
+					"label": {
 						"en": "Background position",
 						"fi": "Taustakuvan sijainti"
 					},
-                    "default": "center-center",
-                    "options": [
-                        {
-                            "value": "left-top",
-                            "label": {
+					"default": "center-center",
+					"options": [
+						{
+							"value": "left-top",
+							"label": {
 								"en": "Left Top",
 								"fi": "Vasemmalla ylhäällä"
 							}
-                        },
-                        {
-                            "value": "left-center",
-                            "label": {
+						},
+						{
+							"value": "left-center",
+							"label": {
 								"en": "Left Center",
 								"fi": "Vasemmalla"
 							}
-                        },
-                        {
-                            "value": "left-bottom",
-                            "label": {
+						},
+						{
+							"value": "left-bottom",
+							"label": {
 								"en": "Left Bottom",
 								"fi": "Vasemmalla alhaalla"
 							}
-                        },
-                        {
-                            "value": "right-top",
-                            "label": {
+						},
+						{
+							"value": "right-top",
+							"label": {
 								"en": "Right Top",
 								"fi": "Oikealla ylhäällä"
 							}
-                        },
-                        {
-                            "value": "right-center",
-                            "label": {
+						},
+						{
+							"value": "right-center",
+							"label": {
 								"en": "Right Center",
 								"fi": "Oikealla"
 							}
-                        },
-                        {
-                            "value": "right-bottom",
-                            "label": {
+						},
+						{
+							"value": "right-bottom",
+							"label": {
 								"en": "Right Bottom",
 								"fi": "Oikealla alhaalla"
 							}
-                        },
-                        {
-                            "value": "center-top",
-                            "label": {
+						},
+						{
+							"value": "center-top",
+							"label": {
 								"en": "Center Top",
 								"fi": "Keskellä ylhäällä"
 							}
-                        },
-                        {
-                            "value": "center-center",
-                            "label": {
+						},
+						{
+							"value": "center-center",
+							"label": {
 								"en": "Center Center",
 								"fi": "Keskellä"
 							}
-                        },
-                        {
-                            "value": "center-bottom",
-                            "label": {
+						},
+						{
+							"value": "center-bottom",
+							"label": {
 								"en": "Center Bottom",
 								"fi": "Keskellä alhaalla"
 							}
-                        }
-                    ]
-                }
+						}
+					]
+				}
 			]
 		},
 		{
@@ -1353,12 +1335,12 @@
 					}
 				},
 				{
-                    "id": "faviconImgSrc",
-                    "type": "image-picker"
-                },
-                {
-                	"type": "spacer"
-                },
+					"id": "faviconImgSrc",
+					"type": "image-picker"
+				},
+				{
+					"type": "spacer"
+				},
 				{
 					"type": "title",
 					"label": {
@@ -1366,30 +1348,30 @@
 						"fi": "Tuotekuvat"
 					}
 				},
-                {
-                    "id": "aspectRatioProductImage",
-                    "type": "select",
-                    "label": {
+				{
+					"id": "aspectRatioProductImage",
+					"type": "select",
+					"label": {
 						"en": "Aspect ratio",
 						"fi": "Kuvasuhde"
 					},
-                    "default": "9:13",
-                    "options": [
-                        {
-                            "value": "9:13",
-                            "label": "9:13"
-                        },
-                        {
-                            "value": "4:3",
-                            "label": "4:3"
-                        },
-                        {
-                            "value": "1:1",
-                            "label": "1:1"
-                        }
-                    ]
-                },
-                {
+					"default": "9:13",
+					"options": [
+						{
+							"value": "9:13",
+							"label": "9:13"
+						},
+						{
+							"value": "4:3",
+							"label": "4:3"
+						},
+						{
+							"value": "1:1",
+							"label": "1:1"
+						}
+					]
+				},
+				{
 					"id": "aspectRatioProductImageFit",
 					"type": "radio-pill",
 					"label": {
@@ -1408,9 +1390,9 @@
 						}
 					]
 				},
-                {
-                	"type": "spacer"
-                },
+				{
+					"type": "spacer"
+				},
 				{
 					"type": "title",
 					"label": {
@@ -1418,35 +1400,35 @@
 						"fi": "Ostaminen"
 					}
 				},
-                {
-                    "id": "addToCartNotification",
-                    "type": "checkbox",
-                    "label": {
+				{
+					"id": "addToCartNotification",
+					"type": "checkbox",
+					"label": {
 						"en": "Add to cart notification",
 						"fi": "Lisää ostoskoriin -ilmoitus"
 					},
-                    "default": true
-                },
-                {
-                    "id": "taxFreePrices",
-                    "type": "checkbox",
-                    "label": {
+					"default": true
+				},
+				{
+					"id": "taxFreePrices",
+					"type": "checkbox",
+					"label": {
 						"en": "Tax-free prices",
 						"fi": "Verottomat hinnat"
 					},
-                    "default": false
-                },
-                {
-                	"type": "spacer"
-                },
-                {
+					"default": false
+				},
+				{
+					"type": "spacer"
+				},
+				{
 					"type": "title",
 					"label": {
 						"en": "Registration",
 						"fi": "Rekisteröinti"
 					}
 				},
-                {
+				{
 					"type": "radio",
 					"id": "policyAgreementMethod",
 					"label": {
@@ -1466,8 +1448,8 @@
 					]
 				},
 				{
-                	"type": "spacer"
-                },
+					"type": "spacer"
+				},
 				{
 					"type": "title",
 					"label": {
@@ -1527,45 +1509,45 @@
 					}
 				},
 				{
-                    "id": "facebookPageUrl",
-                    "type": "text",
-                    "label": {
+					"id": "facebookPageUrl",
+					"type": "text",
+					"label": {
 						"en": "Facebook page URL",
 						"fi": "Facebook-sivun URL-osoite"
 					}
-                },
-                {
-                    "id": "instagramPageUrl",
-                    "type": "text",
-                    "label": {
+				},
+				{
+					"id": "instagramPageUrl",
+					"type": "text",
+					"label": {
 						"en": "Instagram page URL",
 						"fi": "Instagram-sivun URL-osoite"
 					}
-                },
-                {
-                    "id": "twitterPageUrl",
-                    "type": "text",
-                    "label": {
+				},
+				{
+					"id": "twitterPageUrl",
+					"type": "text",
+					"label": {
 						"en": "Twitter page URL",
 						"fi": "Twitter-sivun URL-osoite"
 					}
-                },
-                {
-                    "id": "pinterestPageUrl",
-                    "type": "text",
-                    "label": {
+				},
+				{
+					"id": "pinterestPageUrl",
+					"type": "text",
+					"label": {
 						"en": "Pinterest page URL",
 						"fi": "Pinterest-sivun URL-osoite"
 					}
-                },
-                {
-                    "id": "youtubePageUrl",
-                    "type": "text",
-                    "label": {
+				},
+				{
+					"id": "youtubePageUrl",
+					"type": "text",
+					"label": {
 						"en": "Youtube page URL",
 						"fi": "Youtube-sivun URL-osoite"
 					}
-                }
+				}
 			]
 		},
 		{
