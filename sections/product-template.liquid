@@ -474,7 +474,7 @@
 
                 </div>
 
-                {% if product.is_reviewed or product.can_be_reviewed %}
+                {% if product.review_count > 0 and store.product_reviews_are_enabled %}
 
                     <div class="product-review-rating">
 
@@ -822,7 +822,7 @@
 
                     {% endif %}
 
-                    {% if product.is_reviewed or product.can_be_reviewed %}
+                    {% if store.product_reviews_are_enabled %}
 
                         <div class="card">
 
@@ -866,7 +866,7 @@
 
                                 <div class="product-reviews card-body">
 
-                                    {% if product.can_be_reviewed %}
+                                    {% if product.customer_can_review %}
 
                                         <button id="product-review-create" class="btn btn-outline-section">
                                             {{ 'product.create_review' | t }}
@@ -941,11 +941,27 @@
 
                                         </div>
 
-                                    {% elsif store.session.logged_in and product.is_reviewed == false %}
+                                    {% elsif store.session.logged_in == false and store.product_reviews_require_account %}
+
+                                        <span>
+                                            {{ 'product.review_product_account_required' | t }}
+                                        </span>
+
+                                    {% elsif product.customer_has_purchased == false and store.product_reviews_require_purchase %}
 
                                         <span>
                                             {{ 'product.review_product_purchase_required' | t }}
                                         </span>
+
+                                    {% elsif product.customer_has_reviewed %}
+
+                                        <span>
+                                            {{ 'product.review_product_already_given' | t }}
+                                        </span>
+
+                                        {% if store.product_reviews_require_approval %}
+                                            <p>Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.</p>
+                                        {% endif %}
 
                                     {% endif %}
 
@@ -977,7 +993,7 @@
 
                                                         <div class="product-review-icon">
 
-                                                            {% if product.rating >= rating %}
+                                                            {% if review.rating >= rating %}
 
                                                                 {%- render 'icon', icon: 'rating-star-gWaXzP' -%}
 
