@@ -47,7 +47,7 @@
 	{%- assign showPricing = true -%}
 {%- endif -%}
 
-{%- assign productInWishlist = product.in_wishlist | default: false -%}
+{%- assign productInWishlist = product.in_customers_wishlist | default: false -%}
 {%- assign productImage = product.image | default: '' -%}
 {%- assign productName = product.name | default: 'Example product' -%}
 {%- assign productManufacturerName = product.manufacturer.name | default: 'Example manufacturer' -%}

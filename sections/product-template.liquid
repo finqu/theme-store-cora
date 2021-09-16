@@ -474,7 +474,7 @@
 
                 </div>
 
-                {% if product.is_reviewed or product.can_be_reviewed %}
+                {% if product.customer_has_reviewed or product.customer_can_review %}
 
                     <div class="product-review-rating">
 
@@ -695,7 +695,7 @@
 
                                         {% if store.session.logged_in %}
 
-                                            <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
+                                            <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_customers_wishlist | yepnope: 'true', 'false' }}">
                                                 {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
                                             </button>
 
@@ -822,7 +822,7 @@
 
                     {% endif %}
 
-                    {% if product.is_reviewed or product.can_be_reviewed %}
+                    {% if product.customer_has_reviewed or product.customer_can_review %}
 
                         <div class="card">
 
@@ -866,7 +866,7 @@
 
                                 <div class="product-reviews card-body">
 
-                                    {% if product.can_be_reviewed %}
+                                    {% if product.customer_can_review %}
 
                                         <button id="product-review-create" class="btn btn-outline-section">
                                             {{ 'product.create_review' | t }}
@@ -941,7 +941,7 @@
 
                                         </div>
 
-                                    {% elsif store.session.logged_in and product.is_reviewed == false %}
+                                    {% elsif store.session.logged_in and product.customer_has_reviewed == false %}
 
                                         <span>
                                             {{ 'product.review_product_purchase_required' | t }}
