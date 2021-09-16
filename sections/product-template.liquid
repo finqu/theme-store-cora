@@ -874,9 +874,7 @@
 
                                         <div class="product-review-form d-none">
 
-                                            {% form 'product_review' %}
-
-                                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                            {% form 'review', product %}
 
                                                 <div class="form-group">
 
@@ -913,7 +911,7 @@
 
                                                 <div class="form-group form-floating">
 
-                                                    <input name="review_title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.review_title | escape }}" required>
+                                                    <input name="title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.title | escape }}" required>
 
                                                     <label for="product-review-title">
                                                         {{ 'general.title' | t }}
@@ -923,7 +921,7 @@
 
                                                 <div class="form-group">
 
-                                                    <textarea name="review_comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.review_comment | escape }}" required></textarea>
+                                                    <textarea name="comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.comment | escape }}" required></textarea>
 
                                                 </div>
 

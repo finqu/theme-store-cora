@@ -61,49 +61,69 @@
         	{{ 'blog.comments' | t }}
         </span>
 
-        {% if store.session.logged_in == false and store.customer_accounts_enabled %}
+        {% if blog.comments_are_enabled %}
 
-            <p>
-            	<a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
-            </p>
+            {% if store.session.logged_in == false and blog.comments_require_account  %}
 
-        {% endif %}
+                <p>
+                    <a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
+                </p>
 
-        {% if store.session.logged_in %}
+            {% else %}
 
-        	<div class="article-comment-form-action">
+            	<div class="article-comment-form-action">
 
-                <button type="button" name="article-comment-form-show-action" class="btn btn-outline-section" value="root">
-                    {{ 'blog.leave_comment' | t }}
-                </button>
-
-            </div>
-
-            <div id="article-comment-form-root" class="article-comment-form d-none">
-
-                {% form 'comment' %}
-
-                    <input type="hidden" name="post_id" value="{{ article.id }}">
-
-                    <div class="form-group">
-
-                        <textarea class="form-control" name="comment"></textarea>
-
-                    </div>
-
-                    {% render 'form-error', error: form.error, class: 'form-group' %}
-
-                    <button type="button" name="article-comment-form-close-action" class="btn btn-outline-section" value="root">
-                    	{{ 'general.cancel' | t }}
+                    <button type="button" name="article-comment-form-show-action" class="btn btn-outline-section" value="root">
+                        {{ 'blog.leave_comment' | t }}
                     </button>
 
-                    <button type="submit" class="btn btn-section">
-                    	{{ 'general.submit' | t }}
-                    </button>
+                </div>
 
-                {% endform %}
+                {% assign wasPostedSuccesfully = false %}
 
-            </div>
+                <div id="article-comment-form-root" class="article-comment-form d-none">
+
+                    {% form 'comment', article %}
+
+                        {% assign wasPostedSuccesfully = form.posted_successfully? %}
+
+                        <div class="form-group form-floating">
+
+                            <input name="name" type="text" id="comment-article-{{ article.id }}-name" class="form-control" placeholder="{{ 'general.name' | t }}" value="{{ form.submitted.name | escape }}" required>
+
+                            <label for="comment-article-{{ article.id }}-name">
+                                {{ 'general.name' | t }}
+                            </label>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <textarea class="form-control" name="comment"></textarea>
+
+                        </div>
+
+                        {% render 'form-error', error: form.error, class: 'form-group' %}
+
+                        <button type="button" name="article-comment-form-close-action" class="btn btn-outline-section" value="root">
+                        	{{ 'general.cancel' | t }}
+                        </button>
+
+                        <button type="submit" class="btn btn-section">
+                        	{{ 'general.submit' | t }}
+                        </button>
+
+                    {% endform %}
+
+                </div>
+
+                {% if wasPostedSuccesfully and blog.comments_require_approval %}
+
+                    <p>Kiitos kommentistasi! Tarkistamme vielä sisällön ennen kuin julkaisemme sen.</p>
+
+                {% endif %}
+
+            {% endif %}
 
         {% endif %}
 
