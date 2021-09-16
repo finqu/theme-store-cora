@@ -866,111 +866,123 @@
 
                                 <div class="product-reviews card-body">
 
-                                    {% if product.customer_can_review %}
+                                    <div class="mb-4">
+                                        {% if product.customer_can_review %}
 
-                                        <button id="product-review-create" class="btn btn-outline-section">
-                                            {{ 'product.create_review' | t }}
-                                        </button>
+                                            <button id="product-review-create" class="btn btn-outline-section">
+                                                {{ 'product.create_review' | t }}
+                                            </button>
 
-                                        <div class="product-review-form d-none">
+                                            <div class="product-review-form d-none">
 
-                                            {% form 'review', product %}
+                                                {% form 'review', product %}
 
-                                                <div class="form-group">
+                                                    <div class="form-group">
 
-                                                    <fieldset class="product-review-rating">
+                                                        <fieldset class="product-review-rating">
 
-                                                        <input type="radio" id="product-review-rating-5" name="rating" value="5"{% if form.submitted.rating | escape == '5' %} checked{% endif %}>
-                                                        <label for="product-review-rating-5" title="5">
-                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                            <input type="radio" id="product-review-rating-5" name="rating" value="5"{% if form.submitted.rating | escape == '5' %} checked{% endif %}>
+                                                            <label for="product-review-rating-5" title="5">
+                                                                {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                            </label>
+
+                                                            <input type="radio" id="product-review-rating-4" name="rating" value="4"{% if form.submitted.rating | escape == '4' %} checked{% endif %}>
+                                                            <label for="product-review-rating-4" title="4">
+                                                                {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                            </label>
+
+                                                            <input type="radio" id="product-review-rating-3" name="rating" value="3"{% if form.submitted.rating | escape == '3' %} checked{% endif %}>
+                                                            <label for="product-review-rating-3" title="3">
+                                                               {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                            </label>
+
+                                                            <input type="radio" id="product-review-rating-2" name="rating" value="2"{% if form.submitted.rating | escape == '2' %} checked{% endif %}>
+                                                            <label for="product-review-rating-2" title="2">
+                                                                {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                            </label>
+
+                                                            <input type="radio" id="product-review-rating-1" name="rating" value="1"{% if form.submitted.rating | escape == '1' %} checked{% endif %}>
+                                                            <label for="product-review-rating-1" title="1">
+                                                                {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                            </label>
+
+                                                        </fieldset>
+
+                                                    </div>
+
+                                                    <div class="form-group form-floating">
+
+                                                        <input name="name" type="text" id="comment-article-{{ article.id }}-name" class="form-control" placeholder="{{ 'general.name' | t }}" value="{{ form.submitted.name | escape }}" required>
+
+                                                        <label for="comment-article-{{ article.id }}-name">
+                                                            {{ 'general.name' | t }}
                                                         </label>
 
-                                                        <input type="radio" id="product-review-rating-4" name="rating" value="4"{% if form.submitted.rating | escape == '4' %} checked{% endif %}>
-                                                        <label for="product-review-rating-4" title="4">
-                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
+                                                    </div>
+
+                                                    <div class="form-group form-floating">
+
+                                                        <input name="title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.title | escape }}" required>
+
+                                                        <label for="product-review-title">
+                                                            {{ 'general.title' | t }}
                                                         </label>
 
-                                                        <input type="radio" id="product-review-rating-3" name="rating" value="3"{% if form.submitted.rating | escape == '3' %} checked{% endif %}>
-                                                        <label for="product-review-rating-3" title="3">
-                                                           {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
-                                                        </label>
+                                                    </div>
 
-                                                        <input type="radio" id="product-review-rating-2" name="rating" value="2"{% if form.submitted.rating | escape == '2' %} checked{% endif %}>
-                                                        <label for="product-review-rating-2" title="2">
-                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
-                                                        </label>
+                                                    <div class="form-group">
 
-                                                        <input type="radio" id="product-review-rating-1" name="rating" value="1"{% if form.submitted.rating | escape == '1' %} checked{% endif %}>
-                                                        <label for="product-review-rating-1" title="1">
-                                                            {%- render 'icon', icon: 'rating-star-gWaXzP', class: 'svg-icon-fill' -%}
-                                                        </label>
+                                                        <textarea name="comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.comment | escape }}" required></textarea>
 
-                                                    </fieldset>
+                                                    </div>
 
-                                                </div>
+                                                    <div class="form-group text-right">
 
-                                                <div class="form-group form-floating">
+                                                        <button type="button" id="product-review-cancel" class="btn btn-outline-section">{{ 'general.cancel' | t }}</button>
 
-                                                    <input name="title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.title | escape }}" required>
+                                                        <button type="submit" class="btn btn-section">{{ 'general.submit' | t }}</button>
 
-                                                    <label for="product-review-title">
-                                                        {{ 'general.title' | t }}
-                                                    </label>
+                                                    </div>
 
-                                                </div>
+                                                    {% render 'form-error', error: form.error, class: 'form-group' %}
 
-                                                <div class="form-group">
+                                                {% endform %}
 
-                                                    <textarea name="comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.comment | escape }}" required></textarea>
+                                            </div>
 
-                                                </div>
+                                        {% elsif store.session.logged_in == false and store.product_reviews_require_account %}
 
-                                                <div class="form-group text-right">
+                                            <span>
+                                                {{ 'product.review_product_account_required' | t }}
+                                            </span>
 
-                                                    <button type="button" id="product-review-cancel" class="btn btn-outline-section">{{ 'general.cancel' | t }}</button>
+                                        {% elsif product.customer_has_purchased == false and store.product_reviews_require_purchase %}
 
-                                                    <button type="submit" class="btn btn-section">{{ 'general.submit' | t }}</button>
+                                            <span>
+                                                {{ 'product.review_product_purchase_required' | t }}
+                                            </span>
 
-                                                </div>
+                                        {% elsif product.customer_has_reviewed %}
 
-                                                {% render 'form-error', error: form.error, class: 'form-group' %}
+                                            <span>
+                                                {{ 'product.review_product_already_given' | t }}
+                                            </span>
 
-                                            {% endform %}
+                                            {% if store.product_reviews_require_approval %}
+                                                <p>Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.</p>
+                                            {% endif %}
 
-                                        </div>
-
-                                    {% elsif store.session.logged_in == false and store.product_reviews_require_account %}
-
-                                        <span>
-                                            {{ 'product.review_product_account_required' | t }}
-                                        </span>
-
-                                    {% elsif product.customer_has_purchased == false and store.product_reviews_require_purchase %}
-
-                                        <span>
-                                            {{ 'product.review_product_purchase_required' | t }}
-                                        </span>
-
-                                    {% elsif product.customer_has_reviewed %}
-
-                                        <span>
-                                            {{ 'product.review_product_already_given' | t }}
-                                        </span>
-
-                                        {% if store.product_reviews_require_approval %}
-                                            <p>Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.</p>
                                         {% endif %}
-
-                                    {% endif %}
+                                    </div>
 
                                     {% for review in product.reviews %}
 
                                         <div class="product-review">
 
-                                            <div class="product-review-title">
+                                            <div class="product-review-title mb-0">
 
                                                 <span class="product-review-title">
-                                                    {{ review.title }}
+                                                    {{ review.name }}
                                                 </span>
 
                                             </div>
@@ -1010,6 +1022,8 @@
                                             </div>
 
                                             <div class="product-review-content">
+                                                <p class="mb-0"><strong>{{ review.title }}</strong></p>
+
                                                 {{ review.review }}
                                             </div>
 
