@@ -122,19 +122,21 @@
 
                                             {% if section.settings.footerTopNewsletterContent %}
 
-                                                <p>
-                                                    {{  section.settings.footerTopNewsletterContent }}
-                                                </p>
+                                                {{ section.settings.footerTopNewsletterContent }}
 
                                             {% endif %}
 
                                             {% if customer and customer.accepts_marketing %}
 
-                                                {{ 'general.newsletter_subscribed' | t }}
+                                                <span class="d-block font-weight-bold">
+                                                    {{ 'general.newsletter_subscribed' | t }}
+                                                </span>
 
-                                            {% elsif form.was_success %}
+                                            {% elsif form.posted_successfully %}
 
-                                                {{ 'general.newsletter_subscribed' | t }}
+                                                <span class="d-block font-weight-bold">
+                                                    {{ 'general.newsletter_subscribed' | t }}
+                                                </span>
 
                                             {% else %}
 
