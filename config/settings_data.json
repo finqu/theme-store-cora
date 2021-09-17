@@ -740,14 +740,13 @@
             "aspectRatioProductImage": "9:13",
             "aspectRatioProductImageFit": "contain",
             "addToCartNotification": true,
-            "taxFreePrices": true,
+            "taxFreePrices": false,
             "policyAgreementMethod": "check",
             "facebookPageUrl": "",
             "instagramPageUrl": "",
             "twitterPageUrl": "",
             "pinterestPageUrl": "",
             "youtubePageUrl": "",
-            "taxTreePrices": true,
             "sectionBgImgPosition": "center-center"
         },
         "sections": [
@@ -1543,14 +1542,13 @@
                 "aspectRatioProductImage": "9:13",
                 "aspectRatioProductImageFit": "contain",
                 "addToCartNotification": true,
-                "taxFreePrices": true,
+                "taxFreePrices": false,
                 "policyAgreementMethod": "check",
                 "facebookPageUrl": "",
                 "instagramPageUrl": "",
                 "twitterPageUrl": "",
                 "pinterestPageUrl": "",
                 "youtubePageUrl": "",
-                "taxTreePrices": true,
                 "sectionBgImgPosition": "center-center"
             },
             "sections": [
