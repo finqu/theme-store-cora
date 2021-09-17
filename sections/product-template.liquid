@@ -695,7 +695,7 @@
 
                                         {% if store.session.logged_in %}
 
-                                            <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_wishlist | yepnope: 'true', 'false' }}">
+                                            <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_customers_wishlist | yepnope: 'true', 'false' }}">
                                                 {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
                                             </button>
 

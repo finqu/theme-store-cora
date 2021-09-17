@@ -50,15 +50,15 @@ body > #search-overlay {
 
 @include section-style('site-header') {
 
-    .site-annoucement-container {
+    .site-announcement-container {
 
-        .site-annoucement {
+        .site-announcement {
             display: flex;
             justify-content: center;
             background-color: section-var(overlay_background_color);
             padding: spacer(3);
 
-            .site-annoucement-text {
+            .site-announcement-text {
                 font-weight: $font-weight-bold;
                 font-size: 90%;
             }
