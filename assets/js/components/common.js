@@ -935,20 +935,11 @@ export default {
 
     	const initProductOptions = () => {
 
-    		const productId = $('[name="product_id"]').val();
+    		const productId = containerEl.querySelector('[name="product"]').value;
 
     		// If attribute is visible show it
             $('.product-attribute[data-is-usable]').filter(':visible').each(function() {
-
                 $(this).removeAttr('disabled');
-
-                const optionId = $(this).val();
-
-                if ($('.product-subattribute-container[data-option="'+optionId+'"]').length) {
-
-                    $('.product-subattribute-container[data-option="'+optionId+'"]').show();
-                    $('.product-subattribute-container[data-option="'+optionId+'"]').find('.product-attribute[data-is-usable]').removeAttr('disabled');
-                }
             });
 
             // Attributes product price total option
