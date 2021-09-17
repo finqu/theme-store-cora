@@ -474,7 +474,7 @@
 
                 </div>
 
-                {% if product.review_count > 0 and store.product_reviews_are_enabled %}
+                {% if product.review_count > 0 and product.reviews_are_enabled %}
 
                     <div class="product-review-rating">
 
@@ -822,7 +822,7 @@
 
                     {% endif %}
 
-                    {% if store.product_reviews_are_enabled %}
+                    {% if product.reviews_are_enabled %}
 
                         <div class="card">
 
@@ -950,13 +950,13 @@
 
                                             </div>
 
-                                        {% elsif store.session.logged_in == false and store.product_reviews_require_account %}
+                                        {% elsif store.session.logged_in == false and product.reviews_require_account %}
 
                                             <span>
                                                 {{ 'product.review_product_account_required' | t }}
                                             </span>
 
-                                        {% elsif product.customer_has_purchased == false and store.product_reviews_require_purchase %}
+                                        {% elsif product.customer_has_purchased == false and product.reviews_require_purchase %}
 
                                             <span>
                                                 {{ 'product.review_product_purchase_required' | t }}
@@ -968,7 +968,7 @@
                                                 {{ 'product.review_product_already_given' | t }}
                                             </span>
 
-                                            {% if store.product_reviews_require_approval %}
+                                            {% if product.reviews_require_approval %}
                                                 <p>Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.</p>
                                             {% endif %}
 

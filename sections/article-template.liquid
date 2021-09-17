@@ -55,15 +55,15 @@
 
 	</div>
 
-	<div class="article-comments{% if comments.size > 0 %} has-comments{% endif %}">
+    {% if article.comments_are_enabled %}
 
-		<span class="d-block h2 mb-4">
-        	{{ 'blog.comments' | t }}
-        </span>
+    	<div class="article-comments{% if comments.size > 0 %} has-comments{% endif %}">
 
-        {% if blog.comments_are_enabled %}
+    		<span class="d-block h2 mb-4">
+            	{{ 'blog.comments' | t }}
+            </span>
 
-            {% if store.session.logged_in == false and blog.comments_require_account  %}
+            {% if store.session.logged_in == false and article.comments_require_account  %}
 
                 <p>
                     <a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
@@ -117,7 +117,7 @@
 
                 </div>
 
-                {% if wasPostedSuccesfully and blog.comments_require_approval %}
+                {% if wasPostedSuccesfully and article.comments_require_approval %}
 
                     <p>Kiitos kommentistasi! Tarkistamme vielä sisällön ennen kuin julkaisemme sen.</p>
 
@@ -125,19 +125,19 @@
 
             {% endif %}
 
-        {% endif %}
+            {% if comments.size > 0 %}
 
-        {% if comments.size > 0 %}
+                {% for comment in comments %}
 
-            {% for comment in comments %}
+                	{% render 'article-comment', article: article, comment: comment %}
 
-            	{% render 'article-comment', article: article, comment: comment %}
+                {% endfor %}
 
-            {% endfor %}
+            {% endif %}
 
-        {% endif %}
+    	</div>
 
-	</div>
+    {% endif %}
 
 {%- endcapture -%}
 
