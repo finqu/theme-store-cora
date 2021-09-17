@@ -1,26 +1,26 @@
 {%- assign mainMenu = linklists[section.settings.menu] -%}
 {%- assign sectionHeight = 'off' -%}
 
-{%- if section.settings.annoucementStatus and section.settings.annoucementText -%}
+{%- if section.settings.announcementStatus and section.settings.announcementText -%}
     <style>
-        #finqu-section-{{ section.id }} .site-annoucement {
-            background-color: {{ section.settings.annoucementBgColor }};
-            color: {{ section.settings.annoucementTextColor }};
+        #finqu-section-{{ section.id }} .site-announcement {
+            background-color: {{ section.settings.announcementBgColor }};
+            color: {{ section.settings.announcementTextColor }};
         }
     </style>
 {%- endif -%}
 
 {%- capture sectionContent -%}
 
-    {% if section.settings.annoucementStatus and section.settings.annoucementText %}
+    {% if section.settings.announcementStatus and section.settings.announcementText %}
 
-        <div class="site-annoucement-container">
+        <div class="site-announcement-container">
 
-            <div class="site-annoucement">
+            <div class="site-announcement">
 
-                <span class="site-annoucement-text">
+                <span class="site-announcement-text">
 
-                    {{ section.settings.annoucementText }}
+                    {{ section.settings.announcementText }}
 
                 </span>
 
@@ -706,12 +706,12 @@
                     {
                         "type": "title",
                         "label": {
-                            "en": "Annoucement",
+                            "en": "Announcement",
                             "fi": "Ilmoitus"
                         }
-                    },
+                    },Announcement
                     {
-                        "id": "annoucementStatus",
+                        "id": "announcementStatus",
                         "type": "checkbox",
                         "label": {
                             "en": "Show",
@@ -720,7 +720,7 @@
                         "default": false
                     },
                     {
-                        "id": "annoucementBgColor",
+                        "id": "announcementBgColor",
                         "type": "color",
                         "label": {
                             "en": "Background color",
@@ -729,7 +729,7 @@
                         "default": "#000000"
                     },
                     {
-                        "id": "annoucementTextColor",
+                        "id": "announcementTextColor",
                         "type": "color",
                         "label": {
                             "en": "Text color",
@@ -738,7 +738,7 @@
                         "default": "#ffffff"
                     },
                     {
-                        "id": "annoucementText",
+                        "id": "announcementText",
                         "type": "text",
                         "label": {
                             "en": "Text",

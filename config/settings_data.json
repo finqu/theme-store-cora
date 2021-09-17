@@ -759,10 +759,10 @@
                     "menu": "main-menu",
                     "logoImgSrc": "",
                     "socialMediaIconsStatus": true,
-                    "annoucementStatus": true,
-                    "annoucementBgColor": "#000000",
-                    "annoucementTextColor": "#ffffff",
-                    "annoucementText": "",
+                    "announcementStatus": true,
+                    "announcementBgColor": "#000000",
+                    "announcementTextColor": "#ffffff",
+                    "announcementText": "",
                     "sectionStyle": "general"
                 }
             },
@@ -1563,10 +1563,10 @@
                         "menu": "main-menu",
                         "logoImgSrc": "",
                         "socialMediaIconsStatus": true,
-                        "annoucementStatus": true,
-                        "annoucementBgColor": "#000000",
-                        "annoucementTextColor": "#ffffff",
-                        "annoucementText": "",
+                        "announcementStatus": true,
+                        "announcementBgColor": "#000000",
+                        "announcementTextColor": "#ffffff",
+                        "announcementText": "",
                         "sectionStyle": "general"
                     }
                 },
