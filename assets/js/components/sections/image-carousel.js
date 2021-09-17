@@ -60,10 +60,10 @@ export default class ImageCarousel {
             }
         };
 
-        if (this.opts.carouselAutoplay == true) {
+        if (this.opts.carouselAutoplay === 'true') {
 
             this.swiperCfg.autoplay = {
-                delay: this.opts.carouselAutoplaySpeed ? this.opts.carouselAutoplaySpeed * 1000 : 3000,
+                delay: this.opts.carouselAutoplaySpeed ? parseInt(this.opts.carouselAutoplaySpeed, 10) * 1000 : 3000,
                 pauseOnMouseEnter: true
             };
 
