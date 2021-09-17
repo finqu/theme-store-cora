@@ -48,7 +48,7 @@
         "policy_accept_text": "I have read and agree to the {{ policy }}",
         "payment_fee": "Payment fee",
         "shipping_price": "Shipping costs",
-        "vat_included": "inc. vat",
+        "vat_included": "VAT included",
         "policies": {
             "terms_and_conditions": "Terms & Conditions",
             "refund_policy": "Refund policy",
@@ -99,7 +99,7 @@
     },
     "product": {
         "description": "Description",
-        "vat_included_dynamic": "inc. {{ amount }} % vat",
+        "vat_included_dynamic": "incl. {{ amount }} % VAT",
         "discount_dynamic": "{{ amount }} % discount",
         "reviews": "Reviews",
         "attachments": "Attachments",

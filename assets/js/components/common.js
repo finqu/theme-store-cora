@@ -935,7 +935,7 @@ export default {
 
     	const initProductOptions = () => {
 
-    		const productId = containerEl.querySelector('[name="product"]').value;
+    		const productId = containerEl.querySelector('[name="product_id"]').value;
 
     		// If attribute is visible show it
             $('.product-attribute[data-is-usable]').filter(':visible').each(function() {

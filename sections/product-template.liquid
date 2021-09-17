@@ -650,6 +650,7 @@
 
                                 {% form 'product', product %}
 
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
                                     <input type="hidden" name="quantity" value="{{ product.min_amount }}">
 
                                     {% if product.attributes.size > 0 %}
