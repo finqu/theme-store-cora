@@ -90,8 +90,14 @@
         "show_result_plural":" Show {{ amount }} products",
         "filter": {
             "availability": {
-                "in_stock": "Available",
-                "out_of_stock": "Out of stock"
+                "title": "Availability",
+                "values": {
+                    "in_stock": "Available",
+                    "out_of_stock": "Out of stock"
+                }
+            },
+            "manufacturer": {
+                "title": "Manufacturer"
             }
         },
         "sort-by": {

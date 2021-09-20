@@ -90,8 +90,14 @@
         "show_result_plural":" Näytä {{ amount }} tuotetta",
         "filter": {
             "availability": {
-                "in_stock": "Saatavissa",
-                "out_of_stock": "Loppunut"
+                "title": "Saatavuus",
+                "values": {
+                    "in_stock": "Saatavissa",
+                    "out_of_stock": "Loppunut"
+                }
+            },
+            "manufacturer": {
+                "title": "Valmistaja"
             }
         },
         "sort-by": {

@@ -80,7 +80,21 @@
                         <button class="category-filter-btn btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                             <span class="category-filter-btn-text">
-                                {{ filter.label }}
+
+                                {% if filter.param_name contains 'filter.attribute' %}
+
+                                    <span>{{ filter.label }}</span>
+
+                                {% else %}
+
+                                    {%- capture paramTranslationKey -%}
+                                        filters.{{- filter.param_name | replace: '-', '_' -}}.title
+                                    {%- endcapture -%}
+
+                                    <span>{{ paramTranslationKey | strip | t }}</span>
+
+                                {% endif %}
+
                             </span>
 
                             {%- render 'icon', icon: 'arrow-down-1-dzphtd' -%}
@@ -102,7 +116,7 @@
                                             <label for="input-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
                                                 {%- capture paramTranslationKey -%}
-                                                    filters.{{- value.param_name -}}.{{- value.label | handle | replace: '-', '_' -}}
+                                                    filters.{{- value.param_name -}}.values.{{- value.label | handle | replace: '-', '_' -}}
                                                 {%- endcapture -%}
 
                                                 <span>{{ paramTranslationKey | strip | t }}</span>
@@ -132,7 +146,7 @@
                                                 {% else %}
 
                                                     {%- capture paramTranslationKey -%}
-                                                        filters.{{- value.param_name -}}.{{- value.value | handle | replace: '-', '_' -}}
+                                                        filters.{{- value.param_name -}}.values.{{- value.value | handle | replace: '-', '_' -}}
                                                     {%- endcapture -%}
 
                                                     <span>{{ paramTranslationKey | strip | t }}</span>
@@ -174,7 +188,21 @@
                             <button type="button" class="category-remove-filter" value="{{ filter.param_name | replace: '.', '-' | handle }}">
 
                                 <span class="category-activated-filter-text">
-                                    {{ filter.label }}
+
+                                    {% if filter.param_name contains 'filter.attribute' %}
+
+                                        <span>{{ filter.label }}</span>
+
+                                    {% else %}
+
+                                        {%- capture paramTranslationKey -%}
+                                            filters.{{- filter.param_name | replace: '-', '_' -}}.title
+                                        {%- endcapture -%}
+
+                                        <span>{{ paramTranslationKey | strip | t }}</span>
+
+                                    {% endif %}
+
                                 </span>
 
                                 <span class="category-activated-filter-icon">
@@ -327,7 +355,21 @@
                                 <div class="filters-mobile-navigation-menu-item-header">
 
                                     <span class="filters-mobile-navigation-menu-item-header-text">
-                                        {{ filter.label }}
+
+                                        {% if filter.param_name contains 'filter.attribute' %}
+
+                                            <span>{{ filter.label }}</span>
+
+                                        {% else %}
+
+                                            {%- capture paramTranslationKey -%}
+                                                filters.{{- filter.param_name | replace: '-', '_' -}}.title
+                                            {%- endcapture -%}
+
+                                            <span>{{ paramTranslationKey | strip | t }}</span>
+
+                                        {% endif %}
+
                                     </span>
 
                                 </div>
@@ -347,7 +389,7 @@
                                                     <label for="input-mobile-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
                                                         {%- capture paramTranslationKey -%}
-                                                            filters.{{- value.param_name -}}.{{- value.label | handle | replace: '-', '_' -}}
+                                                            filters.{{- value.param_name -}}.values.{{- value.label | handle | replace: '-', '_' -}}
                                                         {%- endcapture -%}
 
                                                         <span>{{ paramTranslationKey | strip | t }}</span>
@@ -377,7 +419,7 @@
                                                         {% else %}
 
                                                             {%- capture paramTranslationKey -%}
-                                                                filters.{{- value.param_name -}}.{{- value.value | handle | replace: '-', '_' -}}
+                                                                filters.{{- value.param_name -}}.values.{{- value.value | handle | replace: '-', '_' -}}
                                                             {%- endcapture -%}
 
                                                             <span>{{ paramTranslationKey | strip | t }}</span>
