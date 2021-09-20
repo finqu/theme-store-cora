@@ -85,8 +85,15 @@
     },
     "filters": {
         "title": "Suodattimet",
+        "clear_filters": "Tyhjennä suodattimet",
         "show_result":" Näytä {{ amount }} tuote",
         "show_result_plural":" Näytä {{ amount }} tuotetta",
+        "filter": {
+            "availability": {
+                "in_stock": "Saatavissa",
+                "out_of_stock": "Loppunut"
+            }
+        },
         "sort-by": {
             "default": "Oletus",
             "price-ascending": "Hinta (Pienin)",

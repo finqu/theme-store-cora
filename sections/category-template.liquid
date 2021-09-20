@@ -66,7 +66,7 @@
              <button type="button" name="filters-mobile-navigation-show" class="d-lg-none btn btn-outline-section btn-block btn-sm mb-4">
 
                 <span>
-                    Suodattimet
+                    {{ 'filters.title' | t }}
                 </span>
 
             </button>
@@ -101,7 +101,11 @@
 
                                             <label for="input-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
-                                                <span>{{ value.label }}</span>
+                                                {%- capture paramTranslationKey -%}
+                                                    filters.{{- value.param_name -}}.{{- value.label | handle | replace: '-', '_' -}}
+                                                {%- endcapture -%}
+
+                                                <span>{{ paramTranslationKey | strip | t }}</span>
 
                                                 <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
 
@@ -121,7 +125,19 @@
 
                                             <label for="input-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
-                                                <span>{{ value.label }}</span>
+                                                {% if filter.param_name contains 'filter.attribute' or filter.param_name contains 'filter.manufacturer' %}
+
+                                                    <span>{{ value.label }}</span>
+
+                                                {% else %}
+
+                                                    {%- capture paramTranslationKey -%}
+                                                        filters.{{- value.param_name -}}.{{- value.value | handle | replace: '-', '_' -}}
+                                                    {%- endcapture -%}
+
+                                                    <span>{{ paramTranslationKey | strip | t }}</span>
+
+                                                {% endif %}
 
                                                 <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
 
@@ -176,7 +192,7 @@
                         <button type="button" class="category-reset-filters">
 
                             <span class="category-reset-filters-text">
-                                Tyhjennät suodattimet
+                                {{ 'filters.clear_filters' | t }}
                             </span>
 
                         </button>
@@ -330,7 +346,11 @@
 
                                                     <label for="input-mobile-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
-                                                        <span>{{ value.label }}</span>
+                                                        {%- capture paramTranslationKey -%}
+                                                            filters.{{- value.param_name -}}.{{- value.label | handle | replace: '-', '_' -}}
+                                                        {%- endcapture -%}
+
+                                                        <span>{{ paramTranslationKey | strip | t }}</span>
 
                                                         <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
 
@@ -350,7 +370,19 @@
 
                                                     <label for="input-mobile-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
-                                                        <span>{{ value.label }}</span>
+                                                        {% if filter.param_name contains 'filter.attribute' or filter.param_name contains 'filter.manufacturer' %}
+
+                                                            <span>{{ value.label }}</span>
+
+                                                        {% else %}
+
+                                                            {%- capture paramTranslationKey -%}
+                                                                filters.{{- value.param_name -}}.{{- value.value | handle | replace: '-', '_' -}}
+                                                            {%- endcapture -%}
+
+                                                            <span>{{ paramTranslationKey | strip | t }}</span>
+
+                                                        {% endif %}
 
                                                         <span data-facet-result-count="{{ value.param_name }}-{{ value.value }}">({{ value.count }})</span>
 
@@ -361,32 +393,6 @@
                                             {% endfor %}
 
                                         {% endif %}
-
-                                    {% elsif filter.type == 'range' %}
-
-                                        <div class="form-group{% if forloop.last == true %} mb-0{% endif %}">
-
-                                            <div class="form-row align-items-center">
-
-                                                <div class="col">
-
-                                                    <input class="input-mobile-{{ filter.param_name | replace: '.', '-' | handle }} form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
-
-                                                </div>
-
-                                                <div class="col-auto text-center">
-                                                    -
-                                                </div>
-
-                                                <div class="col">
-
-                                                    <input class="input-mobile-{{ filter.param_name | replace: '.', '-' | handle }} form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
 
                                     {% endif %}
 

@@ -85,8 +85,15 @@
     },
     "filters": {
         "title": "Filters",
+        "clear_filters": "Clear filters",
         "show_result":" Show {{ amount }} product",
         "show_result_plural":" Show {{ amount }} products",
+        "filter": {
+            "availability": {
+                "in_stock": "Available",
+                "out_of_stock": "Out of stock"
+            }
+        },
         "sort-by": {
             "default": "Default",
             "price-ascending": "Price (Lowest)",
