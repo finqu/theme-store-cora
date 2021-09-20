@@ -867,7 +867,7 @@
                                 <div class="product-reviews card-body">
 
                                     <div class="mb-4">
-                                        {% if product.customer_can_review %}
+                                        {% if product.reviews_are_enabled %}
 
                                             <button id="product-review-create" class="btn btn-outline-section">
                                                 {{ 'product.create_review' | t }}
