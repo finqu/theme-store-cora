@@ -6,12 +6,12 @@
 		"start": "webpack --progress --watch --config webpack.dev.js"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.15.0",
+		"@babel/core": "^7.15.5",
 		"@babel/plugin-proposal-class-properties": "^7.14.5",
-		"@babel/plugin-proposal-decorators": "^7.14.5",
+		"@babel/plugin-proposal-decorators": "^7.15.4",
 		"@babel/plugin-transform-runtime": "^7.15.0",
-		"@babel/preset-env": "^7.15.0",
-		"@babel/runtime": "^7.15.3",
+		"@babel/preset-env": "^7.15.6",
+		"@babel/runtime": "^7.15.4",
 		"@iconfu/svg-inject": "^1.2.3",
 		"@streamlinehq/streamlinehq": "^2.1.0",
 		"autoprefixer": "^9.8.0",
@@ -42,7 +42,7 @@
 		"precss": "^4.0.0",
 		"sass-loader": "^7.3.1",
 		"style-loader": "^0.23.1",
-		"swiper": "^6.8.2",
+		"swiper": "^6.8.4",
 		"terser-webpack-plugin": "^1.4.3",
 		"unsplash": "^4.2.0",
 		"vanilla-lazyload": "^17.4.0",
@@ -55,6 +55,6 @@
 	},
 	"dependencies": {
 		"animate.css": "^4.1.1",
-		"core-js": "^3.16.1"
+		"core-js": "^3.18.0"
 	}
 }

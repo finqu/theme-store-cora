@@ -24,7 +24,7 @@
                                 "name": "heading",
                                 "settings": {
                                     "titleTag": "h2",
-                                    "title": null,
+                                    "title": "Lorem ipsum dolor",
                                     "subtitle": null,
                                     "textAlign": "center"
                                 }
@@ -40,7 +40,7 @@
                                 "id": "7b34528f310283312dc270da387dcabb",
                                 "name": "button",
                                 "settings": {
-                                    "btnLabel": null,
+                                    "btnLabel": "Lorem ipsum dolor",
                                     "btnResource": null,
                                     "openInNewWindowStatus": true,
                                     "contentAlign": "center"
@@ -826,7 +826,7 @@
                                     "name": "heading",
                                     "settings": {
                                         "titleTag": "h2",
-                                        "title": null,
+                                        "title": "Lorem ipsum dolor",
                                         "subtitle": null,
                                         "textAlign": "center"
                                     }
@@ -842,7 +842,7 @@
                                     "id": "7b34528f310283312dc270da387dcabb",
                                     "name": "button",
                                     "settings": {
-                                        "btnLabel": null,
+                                        "btnLabel": "Lorem ipsum dolor",
                                         "btnResource": null,
                                         "openInNewWindowStatus": true,
                                         "contentAlign": "center"

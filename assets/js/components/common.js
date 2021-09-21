@@ -421,7 +421,7 @@ export default {
         let categoryDynamicContentEl = containerEl.querySelector('.category-dynamic-content');
         let isProcessing = false;
 
-        const renderDynamicContent = (url) => {
+        const renderDynamicContent = (url, scrollTop = false) => {
 
             const xhr = new XMLHttpRequest();
 
@@ -484,6 +484,11 @@ export default {
                     categoryDynamicContentEl.querySelector('.paginate-item-previous').disabled = false;
                     categoryDynamicContentEl.querySelector('.paginate-item-next').disabled = false;
 
+                    if (scrollTop) {
+                        document.body.scrollTop = containerEl.offsetTop;
+                        document.documentElement.scrollTop = containerEl.offsetTop;
+                    }
+
                     bindEvents();
                 }
             };
@@ -517,7 +522,7 @@ export default {
                 e.preventDefault();
 
                 if (e.target.hasAttribute('href')) {
-                    renderDynamicContent(e.target.getAttribute('href'));
+                    renderDynamicContent(e.target.getAttribute('href'), true);
                 }
             });
 
@@ -530,7 +535,7 @@ export default {
                 e.preventDefault();
 
                 if (e.target.hasAttribute('href')) {
-                    renderDynamicContent(e.target.getAttribute('href'));
+                    renderDynamicContent(e.target.getAttribute('href'), true);
                 }
             });
 
