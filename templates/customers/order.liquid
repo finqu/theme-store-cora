@@ -59,18 +59,20 @@
 {%- assign sectionTitle = sectionTitle -%}
 {%- assign sectionSubtitle = sectionSubtitle -%}
 
-{%- capture sectionHeaderAction -%}
+{%- if session.logged_in -%}
+	{%- capture sectionHeaderAction -%}
 
-	<a href="{{ routes.account_orders_url }}">
+		<a href="{{ routes.account_orders_url }}">
 
-		{%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'mr-1' -%}
+			{%- render 'icon', icon: 'arrow-left-dzpnnb', class: 'mr-1' -%}
 
-		<span>
-			{{ 'general.back' | t }}
-		</span>
-	</a>
+			<span>
+				{{ 'general.back' | t }}
+			</span>
+		</a>
 
-{%- endcapture -%}
+	{%- endcapture -%}
+{%- endif -%}
 
 {%- capture sectionContent -%}
 
