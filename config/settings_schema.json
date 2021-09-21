@@ -27,6 +27,10 @@
 				"en": "Product",
 				"fi": "Tuote"
 			}
+		},
+		{
+			"id": "theme-klarna",
+			"name": "Klarna"
 		}
 	],
 	"settings": [

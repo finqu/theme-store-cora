@@ -56,6 +56,9 @@
             "privacy_policy": "Tietosuojaseloste"
         }
     },
+    "klarna": {
+        "enable_klarna_from_settings": "Ota Klarna On-Site messaging käyttöön teeman asetuksista nähdäksesi tämän sisällön."
+    },
     "system": {
         "placeholder_text": "Placeholder-teksti",
         "pages": {
@@ -86,8 +89,8 @@
     "filters": {
         "title": "Suodattimet",
         "clear_filters": "Tyhjennä suodattimet",
-        "show_result":" Näytä {{ amount }} tuote",
-        "show_result_plural":" Näytä {{ amount }} tuotetta",
+        "show_result": " Näytä {{ amount }} tuote",
+        "show_result_plural": " Näytä {{ amount }} tuotetta",
         "filter": {
             "availability": {
                 "title": "Saatavuus",

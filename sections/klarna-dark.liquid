@@ -1,0 +1,29 @@
+{%- if settings.klarnaPlacementsClientId -%}
+
+    <div class="d-flex justify-content-center p-4" style="background-color: black;">
+
+        {% render 'klarna-placement', type: 'homepage-promotion-wide' theme:'dark' %}
+
+    </div>
+
+{%- else -%}
+
+    <div class="text-center p-4">
+
+        <img src="{{ 'assets/klarna.svg' | asset_url }}">
+        <p class="mt-4 mb-0">{{ 'klarna.enable_klarna_from_settings' | t }}</p>
+
+    </div>
+
+{%- endif %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Klarna dark",
+        "fi": "Klarna tumma"
+    },
+    "class": "section",
+    "category": "theme-klarna"
+}
+{% endschema %}

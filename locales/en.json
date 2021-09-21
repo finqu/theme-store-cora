@@ -56,6 +56,9 @@
             "privacy_policy": "Privacy policy"
         }
     },
+    "klarna": {
+        "enable_klarna_from_settings": "Enable Klarna On-Site messaging from theme settings to view this content."
+    },
     "system": {
         "placeholder_text": "Placeholder text",
         "pages": {
@@ -86,8 +89,8 @@
     "filters": {
         "title": "Filters",
         "clear_filters": "Clear filters",
-        "show_result":" Show {{ amount }} product",
-        "show_result_plural":" Show {{ amount }} products",
+        "show_result": " Show {{ amount }} product",
+        "show_result_plural": " Show {{ amount }} products",
         "filter": {
             "availability": {
                 "title": "Availability",

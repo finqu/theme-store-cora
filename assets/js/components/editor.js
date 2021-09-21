@@ -9,16 +9,16 @@ export default {
             if (e.target.classList.contains('has-lazy')) {
                 themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
             }
+
+            if (window.KlarnaOnsiteService) {
+                window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' });
+            }
         });
 
         document.addEventListener('finqu:block:load', (e) => {
 
             if (e.target.classList.contains('has-lazy')) {
                 themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
-            }
-
-            if (window.KlarnaOnsiteService && e.target.classList.contains('block-klarna')) {
-                window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' });
             }
         });
 

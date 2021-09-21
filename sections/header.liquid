@@ -12,6 +12,13 @@
 
 {%- capture sectionContent -%}
 
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+
+        {% assign theme = section.settings.announcementKlarnaDark | yepnope: 'dark', 'light' %}
+        {% render 'klarna-placement', type:section.settings.announcementKlarnaType theme:theme %}
+
+    {%- endif -%}
+
     {% if section.settings.announcementStatus and section.settings.announcementText %}
 
         <div class="site-announcement-container">
@@ -744,6 +751,65 @@
                             "en": "Text",
                             "fi": "Teksti"
                         }
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Klarna",
+                            "fi": "Klarna"
+                        }
+                    },
+                    {
+                        "id": "announcementKlarna",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show banner",
+                            "fi": "Näytä banneri"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "announcementKlarnaType",
+                        "type": "select",
+                        "label": {
+                            "en": "Layout",
+                            "fi": "Asettelu"
+                        },
+                        "default": "top-strip-promotion-standard",
+                        "options": [
+                            {
+                                "value": "top-strip-promotion-standard",
+                                "label": {
+                                    "en": "Banner 1",
+                                    "fi": "Banneri 1"
+                                }
+                            },
+                            {
+                                "value": "top-strip-promotion-badge",
+                                "label": {
+                                    "en": "Banner 2",
+                                    "fi": "Banneri 2"
+                                }
+                            },
+                            {
+                                "value": "top-strip-promotion-auto-size",
+                                "label": {
+                                    "en": "Banner 3",
+                                    "fi": "Banneri 3"
+                                }
+                            }
+                        ],
+                        "conditions": ["announcementKlarna eq true"]
+                    },
+                    {
+                        "id": "announcementKlarnaDark",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Dark theme",
+                            "fi": "Tumma teema"
+                        },
+                        "default": false,
+                        "conditions": ["announcementKlarna eq true"]
                     }
                 ]
             },

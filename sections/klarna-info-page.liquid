@@ -1,0 +1,29 @@
+{%- if settings.klarnaPlacementsClientId -%}
+
+    <div class="d-flex justify-content-center p-4">
+
+        {% render 'klarna-placement', type: 'info-page' theme:'light' %}
+
+    </div>
+
+{%- else -%}
+
+    <div class="text-center p-4">
+
+        <img src="{{ 'assets/klarna.svg' | asset_url }}">
+        <p class="mt-4">{{ 'klarna.enable_klarna_from_settings' | t }}</p>
+
+    </div>
+
+{%- endif %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Klarna info page",
+        "fi": "Klarnan info sivu"
+    },
+    "class": "section",
+    "category": "theme-klarna"
+}
+{% endschema %}
