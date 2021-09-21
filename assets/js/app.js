@@ -335,13 +335,16 @@ export default class App {
 
 		common.init();
 
-    	for (const el of document.querySelectorAll('.section-image-carousel')) {
-    		new ImageCarousel(el);
-    	}
+		if (!this.data.designMode) {
 
-    	for (const el of document.querySelectorAll('.section-product-carousel')) {
-    		new ProductCarousel(el);
-    	}
+	    	for (const el of document.querySelectorAll('.section-image-carousel')) {
+	    		new ImageCarousel(el);
+	    	}
+
+	    	for (const el of document.querySelectorAll('.section-product-carousel')) {
+	    		new ProductCarousel(el);
+	    	}
+	    }
 	}
 
     t(key, vars = {}) {

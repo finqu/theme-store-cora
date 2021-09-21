@@ -56,5 +56,9 @@ export default class ProductCarousel {
             this.swiper.destroy();
             this.swiper = new Swiper(this.containerEl, this.swiperCfg);
         }, 150, false));
+
+        document.addEventListener('finqu:section:unload', () => {
+            this.swiper.destroy();
+        });
     }
 }
