@@ -969,7 +969,9 @@
                                             </span>
 
                                             {% if product.reviews_require_approval %}
-                                                <p>Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.</p>
+                                                <p>
+                                                    {{ 'product.review_publish_pending' | t }}
+                                                </p>
                                             {% endif %}
 
                                         {% endif %}

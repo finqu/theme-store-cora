@@ -124,7 +124,8 @@
         "bulk_discount": "Bulkrate discount",
         "discount_rate": "Discount rate",
         "new": "New",
-        "out_of_stock": "Ouf ot stock"
+        "out_of_stock": "Ouf ot stock",
+        "review_publish_pending": "The review is still to be confirmed by the merchant before it is published."
     },
     "cart": {
         "title": "Cart",
@@ -170,7 +171,8 @@
         "comments": "Comments",
         "comment_login": "Sign in",
         "comment_login_subtext": "in order to write a comment",
-        "leave_comment": "Leave a comment"
+        "leave_comment": "Leave a comment",
+        "comment_publish_pending": "Thank you for your comment! We are still reviewing the content before we publish it."
     },
     "account": {
         "title": "My account",

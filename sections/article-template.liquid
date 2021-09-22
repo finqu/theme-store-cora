@@ -119,7 +119,9 @@
 
                 {% if wasPostedSuccesfully and article.comments_require_approval %}
 
-                    <p>Kiitos kommentistasi! Tarkistamme vielä sisällön ennen kuin julkaisemme sen.</p>
+                    <p>
+                        {{ 'blog.comment_publish_pending' | t }}
+                    </p>
 
                 {% endif %}
 
