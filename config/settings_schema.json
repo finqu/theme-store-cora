@@ -1494,6 +1494,23 @@
 							"label": "XL"
 						}
 					]
+				},
+				{
+					"type": "spacer"
+				},
+				{
+					"type": "title",
+					"label": "Klarna"
+				},
+				{
+					"type": "text",
+					"id": "klarnaPlacementsClientId",
+					"type": "text",
+					"label": {
+						"en": "Client id",
+						"fi": "Asiakastunnus"
+					},
+					"placeholder": "11111111-2222-3333-4444-555555555555"
 				}
 			]
 		},
@@ -1554,50 +1571,6 @@
 						"en": "Youtube page URL",
 						"fi": "Youtube-sivun URL-osoite"
 					}
-				}
-			]
-		},
-		{
-			"type": "setting-page",
-			"label": {
-				"en": "Payment & Shipping",
-				"fi": "Maksu & Toimitus"
-			},
-			"settings": [
-				{
-					"type": "heading",
-					"label": {
-						"en": "Payment & Shipping",
-						"fi": "Maksu & Toimitus"
-					},
-					"subheading": {
-						"en": "Add a variety of widgets to the store.",
-						"fi": "Lisää kauppaan erilaisia widgettejä."
-					}
-				},
-				{
-					"type": "setting-page",
-					"label": "Klarna",
-					"settings": [
-						{
-							"type": "heading",
-							"label": "Klarna",
-							"subheading": {
-								"en": "Set-up Klarna On-site messaging by setting the client id.",
-								"fi": "Ota käyttöön Klarna On-site messaging asettamalla asiakastunnus."
-							}
-						},
-						{
-							"type": "text",
-							"id": "klarnaPlacementsClientId",
-							"type": "text",
-							"label": {
-								"en": "Client id",
-								"fi": "Asiakastunnus"
-							},
-							"placeholder": "11111111-2222-3333-4444-555555555555"
-						}
-					]
 				}
 			]
 		}
