@@ -186,7 +186,7 @@
 
 							<span class="font-weight-bold">
 
-								{% if shipping_methods.size > 1 %}
+								{% if order.shipping_methods.size > 1 %}
 									{{ 'account.order.shipping_method_plural' | t }}
 								{% else %}
 									{{ 'account.order.shipping_method' | t }}
@@ -197,7 +197,7 @@
 
 						{% for shipping_method in order.shipping_methods %}
 
-							<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
+							<div {%- unless forloop.last %} class="mb-4"{% endunless %}>
 
 								<div>
 
@@ -251,7 +251,7 @@
 
 							<span class="font-weight-bold">
 
-								{% if payment_methods.size > 1 %}
+								{% if order.payment_methods.size > 1 %}
 									{{ 'account.order.payment_method_plural' | t }}
 								{% else %}
 									{{ 'account.order.payment_method' | t }}
@@ -262,7 +262,7 @@
 
 						{% for payment_method in order.payment_methods %}
 
-							<div{%- unless forloop.last -%} class="mb-4"{% endunless %}>
+							<div {%- unless forloop.last %} class="mb-1"{% endunless %}>
 
 								<div>
 
@@ -348,7 +348,7 @@
 
 				                                        <a href="{{ package.tracking_url }}" class="btn btn-outline-section order-shipment-package-tracking-btn">
 				                                            {{ 'account.order.track_shipment' | t }}
-				                                        </span>
+				                                        </a>
 
 				                                    </div>
 
@@ -386,7 +386,7 @@
 
 					<div class="order-item">
 
-						<div class="row no-gutters">
+						<div class="row align-items-center no-gutters">
 
 							<div class="col-auto">
 
