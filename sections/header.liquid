@@ -144,7 +144,7 @@
 
                         {% if store.customer_accounts_enabled %}
 
-                            {% if store.session.logged_in %}
+                            {% if session.logged_in %}
 
                                 <div class="site-header-item-container site-header-item-account-container">
 
@@ -166,10 +166,10 @@
 
                                         <a href="{{ routes.account_wishlist_url }}" class="btn btn-text">
 
-                                            <span class="site-header-item-counter{% if store.wishlist.products.size > 0 %} has-items{% endif %}">
+                                            <span class="site-header-item-counter{% if wishlist.products.size > 0 %} has-items{% endif %}">
 
                                                 <span class="site-header-item-counter-text" data-wislist-item-count>
-                                                    {{ store.wishlist.products.size }}
+                                                    {{ wishlist.products.size }}
                                                 </span>
 
                                             </span>
@@ -498,7 +498,7 @@
 
                 <div class="site-mobile-navigation-account">
 
-                    {% if store.session.logged_in %}
+                    {% if session.logged_in %}
 
                         <a href="{{ routes.account_url }}">
 
@@ -678,7 +678,7 @@
                             "en": "Menu",
                             "fi": "Navigaatio"
                         },
-                        "default": "main-menu"
+                        "default": "main"
                     },
                     {
                         "id": "logoImgSrc",

@@ -45,7 +45,7 @@
 
         {% if article.comments_are_enabled and comment.parent_count < 3 %}
 
-            {% if store.session.logged_in or article.comments_require_account == false  %}
+            {% if session.logged_in or article.comments_require_account == false  %}
 
                 <div class="article-comment-form-action">
 

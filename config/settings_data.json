@@ -754,7 +754,7 @@
                 "id": "header",
                 "name": "header",
                 "settings": {
-                    "menu": "main-menu",
+                    "menu": "main",
                     "logoImgSrc": "",
                     "socialMediaIconsStatus": true,
                     "announcementStatus": true,
@@ -768,7 +768,7 @@
                 "id": "footer",
                 "name": "footer",
                 "settings": {
-                    "menu": "footer-menu",
+                    "menu": "footer",
                     "footerTopTextStatus": true,
                     "footerBottomTextStatus": true,
                     "footerTopNewsletterStatus": true,
@@ -1556,7 +1556,7 @@
                     "id": "header",
                     "name": "header",
                     "settings": {
-                        "menu": "main-menu",
+                        "menu": "main",
                         "logoImgSrc": "",
                         "socialMediaIconsStatus": true,
                         "announcementStatus": true,
@@ -1570,7 +1570,7 @@
                     "id": "footer",
                     "name": "footer",
                     "settings": {
-                        "menu": "footer-menu",
+                        "menu": "footer",
                         "footerTopTextStatus": true,
                         "footerBottomTextStatus": true,
                         "footerTopNewsletterStatus": true,

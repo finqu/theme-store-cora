@@ -20,7 +20,7 @@
 		customerAccountsOptional: {{ store.customer_accounts_optional | json }},
 		customerAccountsRequireApproval: {{ store.customer_accounts_require_approval | json }},
 		customerLoggedIn: {{ customer | yepnope: 'true','false' }},
-		customerHasAccess: {{ store.customer.has_access | json }},
+		customerHasAccess: {{ customer.has_access | json }},
 		cataloBrowsingRequiresAccount: {{ store.catalog_browsing_requires_account | json }},
 		taxFreePrices: {{ settings.taxFreePrices | json }},
 		klarnaPlacementsClientId: {{ settings.klarnaPlacementsClientId | json }},

@@ -125,7 +125,8 @@
         "discount_rate": "Alennusprosentti",
         "new": "Uutuus",
         "out_of_stock": "Loppunut",
-        "review_publish_pending": "Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista."
+        "review_publish_pending": "Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.",
+        "review_grade": "Arvosana"
     },
     "cart": {
         "title": "Ostoskori",

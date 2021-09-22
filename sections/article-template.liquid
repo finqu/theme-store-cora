@@ -63,7 +63,7 @@
             	{{ 'blog.comments' | t }}
             </span>
 
-            {% if store.session.logged_in == false and article.comments_require_account  %}
+            {% if session.logged_in == false and article.comments_require_account  %}
 
                 <p>
                     <a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
@@ -71,19 +71,19 @@
 
             {% else %}
 
-            	<div class="article-comment-form-action">
-
-                    <button type="button" name="article-comment-form-show-action" class="btn btn-outline-section" value="root">
-                        {{ 'blog.leave_comment' | t }}
-                    </button>
-
-                </div>
-
                 {% assign wasPostedSuccesfully = false %}
 
-                <div id="article-comment-form-root" class="article-comment-form d-none">
+                {% form 'comment', article %}
 
-                    {% form 'comment', article %}
+                    <div class="article-comment-form-action">
+
+                        <button type="button" name="article-comment-form-show-action" class="btn btn-outline-section{% if form.error %} d-none{% endif %}" value="root">
+                            {{ 'blog.leave_comment' | t }}
+                        </button>
+
+                    </div>
+
+                    <div id="article-comment-form-root" class="article-comment-form{% unless form.error %} d-none{% endunless %}">
 
                         {% assign wasPostedSuccesfully = form.posted_successfully? %}
 
@@ -113,13 +113,13 @@
                         	{{ 'general.submit' | t }}
                         </button>
 
-                    {% endform %}
+                    </div>
 
-                </div>
+                {% endform %}
 
                 {% if wasPostedSuccesfully and article.comments_require_approval %}
 
-                    <p>
+                    <p class="mt-4 mb-0">
                         {{ 'blog.comment_publish_pending' | t }}
                     </p>
 

@@ -125,7 +125,8 @@
         "discount_rate": "Discount rate",
         "new": "New",
         "out_of_stock": "Ouf ot stock",
-        "review_publish_pending": "The review is still to be confirmed by the merchant before it is published."
+        "review_publish_pending": "The review is still to be confirmed by the merchant before it is published.",
+        "review_grade": "Grade"
     },
     "cart": {
         "title": "Cart",

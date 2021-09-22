@@ -693,7 +693,7 @@
                                             {{ 'cart.add' | t }}
                                         </button>
 
-                                        {% if store.session.logged_in %}
+                                        {% if session.logged_in %}
 
                                             <button type="button" class="btn btn-text ml-1 btn btn-text p-2 product-wishlist-action bordered" data-wishlist-toggle="{{ product.id }}" aria-pressed="{{ product.in_customers_wishlist | yepnope: 'true', 'false' }}">
                                                 {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-lg svg-icon-fw' -%}
@@ -877,9 +877,39 @@
 
                                                 {% form 'review', product %}
 
+                                                    <div class="form-group form-floating">
+
+                                                        <input name="name" type="text" id="comment-article-{{ article.id }}-name" class="form-control" placeholder="{{ 'general.name' | t }}" value="{{ form.submitted.name | escape }}" required>
+
+                                                        <label for="comment-article-{{ article.id }}-name">
+                                                            {{ 'general.name' | t }}
+                                                        </label>
+
+                                                    </div>
+
+                                                    <div class="form-group form-floating">
+
+                                                        <input name="title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.title | escape }}" required>
+
+                                                        <label for="product-review-title">
+                                                            {{ 'general.title' | t }}
+                                                        </label>
+
+                                                    </div>
+
                                                     <div class="form-group">
 
-                                                        <fieldset class="product-review-rating">
+                                                        <textarea name="comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.comment | escape }}" required></textarea>
+
+                                                    </div>
+
+                                                    <div class="form-group d-flex justify-content-between align-items-center">
+
+                                                        <span class="h5 mb-0">
+                                                            {{ 'product.review_grade' | t }}
+                                                        </span>
+
+                                                        <fieldset class="product-review-rating ml-2">
 
                                                             <input type="radio" id="product-review-rating-5" name="rating" value="5"{% if form.submitted.rating | escape == '5' %} checked{% endif %}>
                                                             <label for="product-review-rating-5" title="5">
@@ -910,31 +940,7 @@
 
                                                     </div>
 
-                                                    <div class="form-group form-floating">
-
-                                                        <input name="name" type="text" id="comment-article-{{ article.id }}-name" class="form-control" placeholder="{{ 'general.name' | t }}" value="{{ form.submitted.name | escape }}" required>
-
-                                                        <label for="comment-article-{{ article.id }}-name">
-                                                            {{ 'general.name' | t }}
-                                                        </label>
-
-                                                    </div>
-
-                                                    <div class="form-group form-floating">
-
-                                                        <input name="title" type="text" id="product-review-title" class="form-control" placeholder="{{ 'general.title' | t }}" value="{{ form.submitted.title | escape }}" required>
-
-                                                        <label for="product-review-title">
-                                                            {{ 'general.title' | t }}
-                                                        </label>
-
-                                                    </div>
-
-                                                    <div class="form-group">
-
-                                                        <textarea name="comment" class="form-control" rows="5" placeholder="{{ 'product.create_review' | t }}" value="{{ form.submitted.comment | escape }}" required></textarea>
-
-                                                    </div>
+                                                    {% render 'form-error', error: form.error, class: 'form-group' %}
 
                                                     <div class="form-group text-right">
 
@@ -944,13 +950,11 @@
 
                                                     </div>
 
-                                                    {% render 'form-error', error: form.error, class: 'form-group' %}
-
                                                 {% endform %}
 
                                             </div>
 
-                                        {% elsif store.session.logged_in == false and product.reviews_require_account %}
+                                        {% elsif session.logged_in == false and product.reviews_require_account %}
 
                                             <span>
                                                 {{ 'product.review_product_account_required' | t }}
