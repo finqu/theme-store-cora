@@ -26,7 +26,7 @@ export default class ImageCarousel {
         this.swiperCfg = {
             loop: JSON.parse(this.opts.carouselLoop),
             speed: 1000,
-            effect: this.opts.carouselEffect,
+            effect: 'slide',
             watchSlidesProgress: true,
             parallax: true,
             grabCursor: true,
