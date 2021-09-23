@@ -49,7 +49,7 @@ export default {
 
                             const key = arr[0][1];
 
-                            labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
+                            labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img width="15px" src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
                         }
                     }
                 }
@@ -75,7 +75,7 @@ export default {
 
                             const key = arr[0][1];
 
-						    labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
+						    labelEl.innerHTML = labelEl.innerHTML.replace(matches[index], `<img width="15px" src="${ themeApp.data.routes.assetUrl+'/'+themeApp.icons[key] }">`);
                         }
 					}
         		}

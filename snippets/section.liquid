@@ -97,6 +97,17 @@
     </style>
 {%- endif -%}
 
+{%- if sectionHeight == 'custom' -%}
+	<style>
+		@media (min-width: 768px) {
+	        #finqu-section-{{ section.id }} .section-height-custom {
+	        	padding-top: {{ section.settings.sectionHeightCustomTop }}px;
+				padding-bottom: {{ section.settings.sectionHeightCustomBottom }}px;
+	        }
+	    }
+	</style>
+{%- endif -%}
+
 <div class="section-inner {{ sectionClasses | strip }}">
 
 	{%- if sectionTitle or sectionSubtitle or sectionDescription or sectionBreadcrumbs -%}

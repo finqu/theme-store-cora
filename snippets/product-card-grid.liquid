@@ -27,9 +27,9 @@
 
 {%- endcase -%}
 
-{%- if itemsPerRow != false -%}
+{%- unless itemsPerRow -%}
 	{%- assign itemsPerRow = 4 -%}
-{%- endif -%}
+{%- endunless -%}
 
 {%- if showBadges != false -%}
 	{%- assign showBadges = true -%}
@@ -58,7 +58,7 @@
 {%- assign productHasDiscount = product.has_discount | default: false -%}
 {%- assign productUrl = product | page_url | default: false -%}
 
-<div class="product-card-grid-item{% if productHasDiscount %} product-has-discount{% endif %}">
+<div class="product-card-grid-item{% if productHasDiscount %} product-has-discount{% endif %} {{ itemsPerRow }}">
 
 	<div class="product-media-container">
 

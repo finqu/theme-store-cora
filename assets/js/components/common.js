@@ -1,18 +1,13 @@
 import Gallery from './gallery';
-import Swiper from 'swiper';
-import SwiperCore, {
-	Thumbs,
-    Navigation,
-    Mousewheel
-} from 'swiper/core';
+import Swiper, { Navigation, Thumbs, Mousewheel } from 'swiper';
 import 'swiper/swiper.min.css';
 import 'swiper/components/thumbs/thumbs.min.css';
 import 'swiper/components/controller/controller.min.css';
 import { debounce } from './utils';
 
-SwiperCore.use([
-	Thumbs,
+Swiper.use([
     Navigation,
+    Thumbs,
     Mousewheel
 ]);
 

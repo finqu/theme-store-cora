@@ -1,14 +1,11 @@
-import Swiper from 'swiper';
-import SwiperCore, {
-    Navigation,
-    Pagination
-} from 'swiper/core';
+import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/swiper.min.css';
 import 'swiper/components/controller/controller.min.css';
 import { debounce } from '../utils';
 
-SwiperCore.use([
-    Navigation
+Swiper.use([
+    Navigation,
+    Pagination
 ]);
 
 export default class ProductCarousel {
@@ -19,7 +16,7 @@ export default class ProductCarousel {
         this.containerEl = el.querySelector('.swiper-container');
         this.opts = this.containerEl.dataset;
 
-        let itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
+        const itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
 
         this.swiperCfg = {
             spaceBetween: 40,
@@ -46,10 +43,6 @@ export default class ProductCarousel {
             }
         };
 
-        if (this.opts.carouselPagination) {
-            SwiperCore.use(Pagination);
-        }
-
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
         window.addEventListener('resize', debounce(() => {
@@ -57,8 +50,10 @@ export default class ProductCarousel {
             this.swiper = new Swiper(this.containerEl, this.swiperCfg);
         }, 150, false));
 
-        document.addEventListener('finqu:section:unload', () => {
-            this.swiper.destroy();
-        });
+        document.addEventListener('finqu:section:unload', debounce((e) => {
+            if (e.target.classList.contains('section-product-carousel')) {
+                this.swiper.destroy();
+            }
+        }, 250, false));
     }
 }

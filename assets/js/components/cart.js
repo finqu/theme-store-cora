@@ -187,22 +187,39 @@ export default class Cart {
 
                 let obj = {};
 
-                obj.id = item.id;
-                obj.name = item.name;
-                obj.list_name = '';
-                obj.brand = '';
-                obj.category = '';
-                obj.variant = item.attribute_label;
-                obj.list_position = '';
-                obj.quantity = item.price;
-                obj.price = item.price_raw;
+                obj.item_id = item.id;
+                obj.item_name = item.name;
+                obj.item_brand = item.manufacturer;
+                obj.item_variant = item.attribute_label;
+                obj.price = item.price;
+                obj.quantity = item.quantity;
+
+                if (item.category_path.length > 0) {
+
+                    item.category_path.forEach((categoryName, i) => {
+
+                        const index = i++;
+
+                        if (index == 1) {
+
+                            obj.item_category = categoryName;
+
+                        } else if (index <= 5) {
+
+                            obj['item_category'+index] = categoryName;
+                        }
+
+                        return;
+                    });
+                }
 
                 items.push(obj);
             });
 
-            self._addDataLayerArgs('event', 'begin_checkout', {
-                'items': items,
-                'coupon': ''
+            themeApp.addDataLayerItem('event', 'begin_checkout', {
+                'currency': self.cart.currency,
+                'value': self.cart.total,
+                'items': items
             });
         }
 
@@ -407,13 +424,6 @@ export default class Cart {
         return $.ajax(params);
     }
 
-    // Add information to datalyer for tracking libs
-    _addDataLayerArgs(args) {
-        if (window.dataLayer) {
-            dataLayer.push(args);
-        }
-    }
-
     // Get cart data from API
     _getCart(options = {}) {
 
@@ -500,19 +510,37 @@ export default class Cart {
                 let items = [];
                 let obj = {};
 
-                obj.id = lastItem.id;
-                obj.name = lastItem.name;
-                obj.list_name = '';
-                obj.brand = '';
-                obj.category = '';
-                obj.variant = lastItem.attribute_label;
-                obj.list_position = '';
-                obj.quantity = lastItem.amount;
-                obj.price = lastItem.price_raw;
+                obj.item_id = lastItem.id;
+                obj.item_name = lastItem.name;
+                obj.item_brand = lastItem.manufacturer;
+                obj.item_variant = lastItem.attribute_label;
+                obj.price = lastItem.price;
+                obj.quantity = lastItem.quantity;
+
+                if (lastItem.category_path.length > 0) {
+
+                    lastItem.category_path.forEach((categoryName, i) => {
+
+                        const index = i++;
+
+                        if (index == 1) {
+
+                            obj.item_category = categoryName;
+
+                        } else if (index <= 5) {
+
+                            obj['item_category'+index] = categoryName;
+                        }
+
+                        return;
+                    });
+                }
 
                 items.push(obj);
 
-                self._addDataLayerArgs('event', 'add_to_cart', {
+                themeApp.addDataLayerItem('event', 'add_to_cart', {
+                    'currency': self.cart.currency,
+                    'value': lastItem.price,
                     'items': items
                 });
             }
@@ -576,19 +604,37 @@ export default class Cart {
                 let items = [];
                 let obj = {};
 
-                obj.id = itemToBeRemoved.id;
-                obj.name = itemToBeRemoved.name;
-                obj.list_name = '';
-                obj.brand = '';
-                obj.category = '';
-                obj.variant = itemToBeRemoved.attribute_label;
-                obj.list_position = '';
-                obj.quantity = itemToBeRemoved.amount;
-                obj.price = itemToBeRemoved.price_raw;
+                obj.item_id = itemToBeRemoved.id;
+                obj.item_name = itemToBeRemoved.name;
+                obj.item_brand = itemToBeRemoved.manufacturer;
+                obj.item_variant = itemToBeRemoved.attribute_label;
+                obj.price = itemToBeRemoved.price;
+                obj.quantity = itemToBeRemoved.quantity;
+
+                if (itemToBeRemoved.category_path.length > 0) {
+
+                    itemToBeRemoved.category_path.forEach((categoryName, i) => {
+
+                        const index = i++;
+
+                        if (index == 1) {
+
+                            obj.item_category = categoryName;
+
+                        } else if (index <= 5) {
+
+                            obj['item_category'+index] = categoryName;
+                        }
+
+                        return;
+                    });
+                }
 
                 items.push(obj);
 
-                self._addDataLayerArgs('event', 'remove_from_cart', {
+                themeApp.addDataLayerItem('event', 'remove_from_cart', {
+                    'currency': self.cart.currency,
+                    'value': itemToBeRemoved.price,
                     'items': items
                 });
             }

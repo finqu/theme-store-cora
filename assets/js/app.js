@@ -506,4 +506,10 @@ export default class App {
 
 	    document.head.appendChild(script);
 	});
+
+	addDataLayerItem(item) {
+        if (window.dataLayer) {
+            dataLayer.push(item);
+        }
+    }
 }

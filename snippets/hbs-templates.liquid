@@ -587,8 +587,12 @@
 
             <div class="cart-actions">
 
-                <a href="{{ cartUrl }}" class="btn btn-section btn-block" data-cart-checkout>
+                <a href="{{ cartUrl }}" class="btn btn-outline-section btn-block mt-2">
                     {{ t 'cart.title' }}
+                </a>
+
+                <a href="{{ checkoutUrl }}" class="btn btn-section btn-block mt-3" data-cart-checkout>
+                    {{ t 'cart.proceed_to_checkout' }}
                 </a>
 
             </div>

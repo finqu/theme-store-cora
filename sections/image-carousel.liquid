@@ -142,7 +142,7 @@
 
                             <div class="slide-action">
 
-                                <a href="{{- item.settings.btnResource.url -}}" class="btn btn-section">
+                                <a href="{{- item.settings.btnResource.url -}}" class="btn btn-section"{% if item.settings.btnResourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
                                     {{ item.settings.btnLabel }}
                                 </a>
 
@@ -278,6 +278,15 @@
                                     "en": "Button link",
                                     "fi": "Napin linkki"
                                 }
+                            },
+                            {
+                                "id": "btnResourceOpenInNewWindowStatus",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Open link in a new window",
+                                    "fi": "Avaa linkki uudessa ikkunassa"
+                                },
+                                "default": true
                             }
                         ]
                     }
@@ -483,7 +492,8 @@
                                     "type": "url",
                                     "record_id": "",
                                     "url": ""
-                                }
+                                },
+                                "btnResourceOpenInNewWindowStatus": true
                             }
                         },
                         "81e92083-2c17-4507-89d8-5e5487784360": {
@@ -499,7 +509,8 @@
                                     "type": "url",
                                     "record_id": "",
                                     "url": ""
-                                }
+                                },
+                                "btnResourceOpenInNewWindowStatus": true
                             }
                         }
                     }

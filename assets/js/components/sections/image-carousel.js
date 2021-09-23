@@ -1,18 +1,14 @@
-import Swiper from 'swiper';
-import SwiperCore, {
-    Navigation,
-    Pagination,
-    Autoplay,
-    EffectFade,
-    Parallax
-} from 'swiper/core';
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Parallax } from 'swiper';
 import 'swiper/swiper.min.css';
 import 'swiper/components/controller/controller.min.css';
 import 'swiper/components/effect-fade/effect-fade.min.css';
 import { debounce } from '../utils';
 
-SwiperCore.use([
+Swiper.use([
     Navigation,
+    Pagination,
+    Autoplay,
+    EffectFade,
     Parallax
 ]);
 
@@ -28,7 +24,6 @@ export default class ImageCarousel {
             speed: 1000,
             effect: 'slide',
             watchSlidesProgress: true,
-            parallax: true,
             grabCursor: true,
             pagination: {
                 el: '.swiper-pagination'
@@ -42,19 +37,22 @@ export default class ImageCarousel {
 
                     const swiper = this;
 
-                    for (let i = 0; i < swiper.slides.length; i++) {
+                    if (swiper.params.parallax) {
 
-                        $(swiper.slides[i])
-                            .find('.slide-title')
-                            .attr('data-swiper-parallax', 0.75 * swiper.width);
+                        for (let i = 0; i < swiper.slides.length; i++) {
 
-                        $(swiper.slides[i])
-                            .find('.slide-description')
-                            .attr('data-swiper-parallax', 0.65 * swiper.width);
+                            $(swiper.slides[i])
+                                .find('.slide-title')
+                                .attr('data-swiper-parallax', 0.75 * swiper.width);
 
-                        $(swiper.slides[i])
-                            .find('.slide-action')
-                            .attr('data-swiper-parallax', 0.5 * swiper.width);
+                            $(swiper.slides[i])
+                                .find('.slide-description')
+                                .attr('data-swiper-parallax', 0.65 * swiper.width);
+
+                            $(swiper.slides[i])
+                                .find('.slide-action')
+                                .attr('data-swiper-parallax', 0.5 * swiper.width);
+                        }
                     }
                 }
             }
@@ -68,8 +66,6 @@ export default class ImageCarousel {
                 disableOnInteraction: false
             };
 
-            SwiperCore.use(Autoplay);
-
         } else {
 
             this.swiperCfg.autoplay = false;
@@ -79,11 +75,9 @@ export default class ImageCarousel {
 
             this.swiperCfg.parallax = false;
 
-            SwiperCore.use(EffectFade);
-        }
+        } else if (this.opts.carouselEffect === 'slide') {
 
-        if (this.opts.carouselPagination) {
-            SwiperCore.use(Pagination);
+            this.swiperCfg.parallax = true;
         }
 
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
@@ -93,8 +87,10 @@ export default class ImageCarousel {
             this.swiper = new Swiper(this.containerEl, this.swiperCfg);
         }, 150, false));
 
-        document.addEventListener('finqu:section:unload', () => {
-            this.swiper.destroy();
-        });
+        document.addEventListener('finqu:section:unload', debounce((e) => {
+            if (e.target.classList.contains('section-image-carousel')) {
+                this.swiper.destroy();
+            }
+        }, 250, false));
     }
 }

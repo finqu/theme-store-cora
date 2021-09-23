@@ -26,8 +26,10 @@
         {%- assign items = products.new_products -%}
     {% when 'tag' %}
         {%- assign items = products.tags[section.settings.tagId] -%}
-    {% when 'resource' %}
-        {%- assign items = section.settings.resource.object.products -%}
+    {% when 'category' %}
+        {%- assign items = categories[section.settings.category.id].products -%}
+    {% when 'manufacturer' %}
+        {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
 {%- endcase -%}
 
 {%- assign items = items | slice: 0, section.settings.itemAmount -%}
@@ -272,10 +274,17 @@
                                 }
                             },
                             {
-                                "value": "resource",
+                                "value": "category",
                                 "label": {
-                                    "en": "Product category or manufaturer products",
-                                    "fi": "Tuoteryhmän tai valmistajan tuotteet"
+                                    "en": "Product category products",
+                                    "fi": "Tuoteryhmän tuotteet"
+                                }
+                            },
+                            {
+                                "value": "manufacturer",
+                                "label": {
+                                    "en": "Manufaturer products",
+                                    "fi": "Valmistajan tuotteet"
                                 }
                             }
                         ]
@@ -290,13 +299,22 @@
                         "conditions": ["listType eq tag"]
                     },
                     {
-                        "id": "resource",
-                        "type": "url",
+                        "id": "category",
+                        "type": "category",
                         "label": {
-                            "en": "Choose product category or manufacturer",
-                            "fi": "Valitse tuoteryhmä tai valmistaja"
+                            "en": "Category",
+                            "fi": "Tuoteryhmä"
                         },
-                        "conditions": ["listType eq resource"]
+                        "conditions": ["listType eq category"]
+                    },
+                    {
+                        "id": "manufacturer",
+                        "type": "manufacturer",
+                        "label": {
+                            "en": "manufacturer",
+                            "fi": "Valmistaja"
+                        },
+                        "conditions": ["listType eq manufacturer"]
                     },
                     {
                         "id": "itemAmount",
@@ -404,8 +422,40 @@
                                         {
                                             "value": "xl",
                                             "label": "XL"
+                                        },
+                                        {
+                                            "value": "custom",
+                                            "label": "{# icon.pencilRegular #}"
                                         }
                                     ]
+                                },
+                                {
+                                    "id": "sectionHeightCustomTop",
+                                    "label": {
+                                        "en": "Top height",
+                                        "fi": "Yläosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionHeightCustomBottom",
+                                    "label": {
+                                        "en": "Bottom height",
+                                        "fi": "Alaosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 5,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
                                 },
                                 {
                                     "id": "sectionInnerSpacing",

@@ -9,9 +9,16 @@ html {
 body.customer-accounts-enabled {
 
     @include media-breakpoint-up(sm) {
-        .site-header-top-logo {
-            margin-right: -88px;
 
+        &.customer-logged-in {
+            .site-header-top-logo {
+                margin-right: -88px;
+
+            }
+        }
+
+        .site-header-top-logo {
+            margin-right: -44px;
         }
     }
 

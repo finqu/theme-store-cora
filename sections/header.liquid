@@ -5,6 +5,9 @@
     <style>
         #finqu-section-{{ section.id }} .site-announcement {
             background-color: {{ section.settings.announcementBgColor }};
+        }
+
+        #finqu-section-{{ section.id }} .site-announcement .site-announcement-text {
             color: {{ section.settings.announcementTextColor }};
         }
     </style>
@@ -25,11 +28,23 @@
 
             <div class="site-announcement">
 
-                <span class="site-announcement-text">
+                {% if section.settings.announcementLink.url %}
 
-                    {{ section.settings.announcementText }}
+                    <a href="{{- section.settings.announcementLink.url -}}" class="site-announcement-text"{% if section.settings.announcementLinkOpenInNewWindowStatus %} target="_blank"{% endif %}>
 
-                </span>
+                        {{ section.settings.announcementText }}
+
+                    </a>
+
+                {% else %}
+
+                    <span class="site-announcement-text">
+
+                        {{ section.settings.announcementText }}
+
+                    </span>
+
+                {% endif %}
 
             </div>
 
@@ -733,7 +748,8 @@
                             "en": "Background color",
                             "fi": "Taustanväri"
                         },
-                        "default": "#000000"
+                        "default": "#000000",
+                        "conditions": ["announcementStatus eq true"]
                     },
                     {
                         "id": "announcementTextColor",
@@ -742,7 +758,8 @@
                             "en": "Text color",
                             "fi": "Tekstin väri"
                         },
-                        "default": "#ffffff"
+                        "default": "#ffffff",
+                        "conditions": ["announcementStatus eq true"]
                     },
                     {
                         "id": "announcementText",
@@ -750,7 +767,27 @@
                         "label": {
                             "en": "Text",
                             "fi": "Teksti"
-                        }
+                        },
+                        "conditions": ["announcementStatus eq true"]
+                    },
+                    {
+                        "id": "announcementLink",
+                        "type": "url",
+                        "label": {
+                            "en": "Announcement link",
+                            "fi": "Ilmoituksen linkki"
+                        },
+                        "conditions": ["announcementStatus eq true"]
+                    },
+                    {
+                        "id": "announcementLinkOpenInNewWindowStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Open link in a new window",
+                            "fi": "Avaa linkki uudessa ikkunassa"
+                        },
+                        "default": true,
+                        "conditions": ["announcementStatus eq true"]
                     },
                     {
                         "type": "title",
