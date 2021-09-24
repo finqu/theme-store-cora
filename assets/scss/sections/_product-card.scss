@@ -37,6 +37,68 @@ body {
 		}
 	}
 
+	.product-create-review-layout {
+
+		.product-review-rating {
+			display: inline-flex;
+		    flex-direction: row-reverse;
+		    line-height: 0;
+
+            > input {
+                display: none;
+            }
+
+            > label {
+                font-size: $font-size-base * 2.2;
+				padding-right: spacer(1);
+				margin-bottom: 0;
+				line-height: 0;
+				cursor: pointer;
+
+				&:last-child {
+					padding-left: 0;
+				}
+
+                .svg-icon {
+                	color: transparent;
+				}
+            }
+
+            .svg-icon {
+				path {
+					stroke: section-var(text_color);
+				}
+			}
+
+            > input:checked ~ label,
+            &:not(:checked) > label:hover,
+            &:not(:checked) > label:hover ~ label {
+
+                .svg-icon {
+                	color: section-var(text_color);
+
+					path {
+						stroke: currentColor;
+					}
+				}
+            }
+
+            > input:checked + label:hover,
+            > input:checked ~ label:hover,
+            > label:hover ~ input:checked ~ label,
+            > input:checked ~ label:hover ~ label {
+
+                .svg-icon {
+                	color: section-var(text_color);
+
+					path {
+						stroke: currentColor;
+					}
+				}
+            }
+        }
+	}
+
 	.product-media-container {
 
 		.product-media {

@@ -933,7 +933,7 @@ export default {
             }, 150, false));
     	};
 
-    	const initProductOptions = () => {
+    	const initProductAttributes = () => {
 
     		const productId = containerEl.querySelector('[name="product_id"]').value;
 
@@ -1110,8 +1110,16 @@ export default {
 	    	}
     	};
 
-    	initProductMedia();
-    	initProductOptions();
-    	initProductReviews();
+        if (containerEl.querySelector('.product-media-container')) {
+            initProductMedia();
+        }
+
+        if (containerEl.querySelector('.product-reviews')) {
+            initProductReviews();
+        }
+
+        if (containerEl.querySelector('.product-attributes')) {
+            initProductAttributes();
+        }
     }
 }

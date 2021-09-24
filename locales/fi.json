@@ -126,7 +126,8 @@
         "new": "Uutuus",
         "out_of_stock": "Loppunut",
         "review_publish_pending": "Kauppias vielä vahvistaa arvostelun ennen sen julkaisemista.",
-        "review_grade": "Arvosana"
+        "review_grade": "Arvosana",
+        "create_product_review_title": "Kirjoita tuotearvostelu"
     },
     "cart": {
         "title": "Ostoskori",
@@ -202,6 +203,7 @@
             "billing_address": "Laskutusosoite",
             "download_receipt": "Lataa kuitti",
             "order_status": "Tilauksen tila",
+            "create_review": "Arvostele tuote",
             "order_statuses": {
                 "billed": "Laskutettu",
                 "cancelled": "Peruutettu",
@@ -300,7 +302,8 @@
         "stock": "Tuotetta ei ole tarpeeksi varastossa.",
         "terms_of_use": "Sinun on hyväksyttävä käyttöehdot.",
         "min_length": "merkkiä vähintään.",
-        "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
+        "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias.",
+        "requires_account": "Sinun on kirjauduttava sisään"
     },
     "login": {
         "title": "Kirjaudu sisään",

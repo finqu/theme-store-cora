@@ -9,7 +9,7 @@
                         "settings": {
                             "sectionHeight": "xl",
                             "sectionInnerSpacing": "",
-                            "sectionContentWidth": "12",
+                            "sectionContentWidth": "9",
                             "sectionContentAlign": "center",
                             "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1575561723050-3a69691d9700?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=85",
                             "sectionBgImgPos": "center-center",
@@ -23,48 +23,55 @@
                                 "id": "275e33d0219b2b6bc6dcc110a1f827ce",
                                 "name": "heading",
                                 "settings": {
-                                    "titleTag": "h2",
-                                    "title": "Lorem ipsum dolor",
-                                    "subtitle": null,
-                                    "textAlign": "center"
+                                    "title": "Uutuudet saapuneet",
+                                    "subtitle": "",
+                                    "textAlign": "center",
+                                    "titleTag": "h2"
                                 }
                             },
                             {
                                 "id": "c22fb5460c8e079f9a17bc698b87b3e0",
                                 "name": "text",
                                 "settings": {
-                                    "richtextHtml": "<p style=\"text-align: center;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.<\/p>"
+                                    "richtextHtml": "<p style=\"text-align: center;\"><strong>Paljon uutuuksia saapunut varastoon. Katso ja poimi omasi!<\/strong><\/p>"
                                 }
                             },
                             {
                                 "id": "7b34528f310283312dc270da387dcabb",
                                 "name": "button",
                                 "settings": {
-                                    "btnLabel": "Lorem ipsum dolor",
-                                    "btnResource": null,
-                                    "openInNewWindowStatus": true,
+                                    "btnLabel": "Katso uutuudet",
+                                    "btnResource": {
+                                        "type": "url",
+                                        "record_id": "6809149",
+                                        "url": "Uutuudet"
+                                    },
+                                    "openInNewWindowStatus": false,
                                     "contentAlign": "center"
                                 }
                             }
                         ]
                     },
                     {
-                        "id": "5ccd31d19390585f8bf5b38b5165ca9a",
-                        "name": "product-list",
+                        "id": "4d6c39f493aa6621d3085b9bdee1563f",
+                        "name": "product-carousel",
                         "settings": {
-                            "sectionTitle": "Lorem ipsum dolor sit amet",
-                            "sectionSubtitle": "Lorem ipsum dolor sit amet",
-                            "sectionHeaderTextAlign": "center",
-                            "listType": "popular",
-                            "tagId": "",
+                            "sectionTitle": "Suosittua naisille",
+                            "sectionSubtitle": "Suosittua juuri nyt",
+                            "sectionHeaderTextAlign": "left",
+                            "carouselStyle": "1",
+                            "navigation": "on",
+                            "pagination": "on",
+                            "listType": "tag",
+                            "tagId": "naiset",
                             "resource": {
                                 "type": "url",
                                 "record_id": "",
                                 "url": ""
                             },
-                            "itemAmount": "8",
-                            "itemsPerRow": "4",
-                            "showBadges": true,
+                            "itemAmount": "20",
+                            "itemsPerView": "4",
+                            "showBadges": false,
                             "showManufacturer": true,
                             "showProductName": true,
                             "showPricing": true,
@@ -75,7 +82,41 @@
                             "sectionBgImgOverlay": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
-                            "sectionStyle": "general"
+                            "sectionStyle": "teal"
+                        },
+                        "blocks": []
+                    },
+                    {
+                        "id": "baa5f2aa52d9f6a529e866e31ea4ce3d",
+                        "name": "product-carousel",
+                        "settings": {
+                            "sectionTitle": "Suosittua miehille",
+                            "sectionSubtitle": "Suosittua juuri nyt",
+                            "sectionHeaderTextAlign": "left",
+                            "carouselStyle": "1",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "listType": "tag",
+                            "tagId": "miehet",
+                            "resource": {
+                                "type": "url",
+                                "record_id": "",
+                                "url": ""
+                            },
+                            "itemAmount": "20",
+                            "itemsPerView": "4",
+                            "showBadges": false,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "green"
                         },
                         "blocks": []
                     },
@@ -83,6 +124,7 @@
                         "id": "8fe1266f5c41014a155c4438d6292e09",
                         "name": "image-text",
                         "settings": {
+                            "contentImgPlaceholder": true,
                             "contentColumnArrangement": "6,6",
                             "contentImgSide": "left",
                             "contentImgAlign": "middle",
@@ -91,9 +133,8 @@
                             "contentRichtextAlign": "middle",
                             "contentBtnLabel": null,
                             "contentBtnResource": null,
-                            "contentImgSrc": "",
-                            "contentImgPlaceholder": true,
-                            "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
+                            "contentImgSrc": "https:\/\/images.unsplash.com\/photo-1495121605193-b116b5b9c5fe?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwxOHx8ZmFzaGlvbnxlbnwwfHx8fDE2MzIzOTA4NTI&ixlib=rb-1.2.1&q=85",
+                            "contentRichtextHtml": "<h2>Oikea vaatekoko helpolla keinolla<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
                             "sectionHeight": "",
                             "sectionInnerSpacing": "",
                             "sectionContentSpacing": "",
@@ -125,8 +166,8 @@
                                 "record_id": "",
                                 "url": ""
                             },
-                            "contentImgSrc": "",
-                            "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
+                            "contentImgSrc": "https:\/\/images.unsplash.com\/photo-1479064555552-3ef4979f8908?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwyM3x8ZmFzaGlvbnxlbnwwfHx8fDE2MzIzOTA4MTM&ixlib=rb-1.2.1&q=85",
+                            "contentRichtextHtml": "<h2>Matkalle mukaan lempivaatteet<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
                             "sectionHeight": "",
                             "sectionInnerSpacing": "",
                             "sectionContentSpacing": "",
@@ -138,58 +179,6 @@
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
-                        },
-                        "blocks": []
-                    },
-                    {
-                        "id": "bf9427edc15060b617ca582ee14b94b4",
-                        "name": "text-columns",
-                        "settings": {
-                            "sectionHeight": "",
-                            "sectionInnerSpacing": "",
-                            "sectionContentSpacing": "",
-                            "sectionContentWidth": "12",
-                            "sectionContentAlign": "center",
-                            "sectionBgImgSrc": "",
-                            "sectionBgImgPos": "left-top",
-                            "sectionBgImgOverlay": "0",
-                            "sectionContentBgColorStatus": false,
-                            "sectionContentBgColor": "#ffffff",
-                            "sectionStyle": "general",
-                            "setting_blocks": {
-                                "items": {
-                                    "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
-                                        "type": "item",
-                                        "settings": {
-                                            "imgSrc": "",
-                                            "imgAlt": "",
-                                            "imgPlaceholder": true,
-                                            "imgEffect": "none",
-                                            "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                                        }
-                                    },
-                                    "A024a4fb-7d95-49d0-9016-73820b1d3902": {
-                                        "type": "item",
-                                        "settings": {
-                                            "imgSrc": "",
-                                            "imgAlt": "",
-                                            "imgPlaceholder": true,
-                                            "imgEffect": "none",
-                                            "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                                        }
-                                    },
-                                    "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
-                                        "type": "item",
-                                        "settings": {
-                                            "imgSrc": "",
-                                            "imgAlt": "",
-                                            "imgPlaceholder": true,
-                                            "imgEffect": "none",
-                                            "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                                        }
-                                    }
-                                }
-                            }
                         },
                         "blocks": []
                     }
@@ -244,7 +233,414 @@
                         "sticky": true
                     }
                 ]
-            }
+            },
+            "blog": {
+                "sections": [
+                    {
+                        "name": "blog-template",
+                        "id": "blog-template",
+                        "blocks": [],
+                        "settings": [],
+                        "sticky": true
+                    }
+                ]
+            },
+            "category": {
+                "sections": [
+                    {
+                        "name": "category-template",
+                        "id": "category-template",
+                        "blocks": [],
+                        "settings": {
+                            "itemsPerRow": "3",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true
+                        },
+                        "sticky": true
+                    }
+                ]
+            },
+            "product": {
+                "sections": [
+                    {
+                        "name": "product-template",
+                        "id": "product-template",
+                        "blocks": [],
+                        "settings": [],
+                        "sticky": true
+                    }
+                ]
+            },
+            "page:131739": {
+                "sections": [
+                    {
+                        "id": "1acdf0d7b21dd587796669f4f20c06a3",
+                        "name": "product-list",
+                        "settings": {
+                            "sectionTitle": "Viimeksi saapuneet",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "listType": "tag",
+                            "tagId": "uutuus",
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "",
+                                "name": ""
+                            },
+                            "itemAmount": "7",
+                            "itemsPerRow": "3",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    }
+                ]
+            },
+            "page:131744": {
+                "sections": [
+                    {
+                        "id": "b00458da3fbce1071f943842af6e9816",
+                        "name": "image-carousel",
+                        "settings": {
+                            "loop": true,
+                            "autoplay": true,
+                            "autoplaySpeed": "3",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "sectionHeight": "",
+                            "slideImgOverlay": "0",
+                            "sectionStyle": "general",
+                            "setting_blocks": {
+                                "items": {
+                                    "F4c98887-2f85-4be6-a1b8-607600aa691c": {
+                                        "type": "item",
+                                        "settings": {
+                                            "imgPlaceholder": true,
+                                            "imgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
+                                            "imgAlt": "",
+                                            "title": "",
+                                            "description": "",
+                                            "btnLabel": "",
+                                            "btnResource": {
+                                                "type": "url",
+                                                "record_id": "",
+                                                "url": ""
+                                            }
+                                        }
+                                    },
+                                    "81e92083-2c17-4507-89d8-5e5487784360": {
+                                        "type": "item",
+                                        "settings": {
+                                            "imgPlaceholder": true,
+                                            "imgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
+                                            "imgAlt": "",
+                                            "title": "",
+                                            "description": "",
+                                            "btnLabel": "",
+                                            "btnResource": {
+                                                "type": "url",
+                                                "record_id": "",
+                                                "url": ""
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "blocks": []
+                    },
+                    {
+                        "id": "ea7f282d83f7ae5af423f47a3af37231",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "sm",
+                            "sectionInnerSpacing": "off",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "e8135d32a15704738e7218c88eab2d1d",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Outlet",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h1"
+                                }
+                            },
+                            {
+                                "id": "3d908a6cc0cb87a8d74e823cb8583a1e",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p>Tuotteita alennettuun hintaan parhailta merkeilt&auml;.<\/p>"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3482600b43541809a55d8a08ceb36c79",
+                        "name": "product-list",
+                        "settings": {
+                            "sectionTitle": "",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "listType": "discounted",
+                            "tagId": "",
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "",
+                                "name": ""
+                            },
+                            "itemAmount": "5",
+                            "itemsPerRow": "3",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "sm",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    }
+                ]
+            },
+            "page:131749": [],
+            "page:131754": [],
+            "page:131759": [],
+            "page:131764": {
+                "sections": [
+                    {
+                        "id": "c01b97982fad2f08463cc9dbb2935ba7",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "sm",
+                            "sectionInnerSpacing": "sm",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "a9f08a2ebbf197b2da7353836994a47e",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Br\u00e4ndit",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3f4ab41a7aabf9da4c614a342c655992",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "xl",
+                            "sectionInnerSpacing": "lg",
+                            "sectionContentWidth": "9",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
+                            "sectionBgImgPos": "center-top",
+                            "sectionBgImgOverlay": "40",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "darkest"
+                        },
+                        "blocks": [
+                            {
+                                "id": "16ed338f500036f031efe07a2cc8f276",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Superdry",
+                                    "subtitle": "",
+                                    "textAlign": "center",
+                                    "titleTag": "h2"
+                                }
+                            },
+                            {
+                                "id": "9d559d3ec895684d7f508659fbff5a23",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p style=\"text-align: center;\">L&ouml;yd&auml; ainutlaatuinen ja itsen&auml;inen tyylisi tuotemerkkiemme avulla: Original &amp; Vintage, autenttinen, ikoninen, vapaamielinen; Studios, hienostunut ja minimalistinen; CODE, klassista urheilu- ja katumuotia; X, huomiota her&auml;tt&auml;vi&auml; sek&auml; miehille ett&auml; naisille sopivia vaatteita.<\/p>"
+                                }
+                            },
+                            {
+                                "id": "482e2b38c028ae2e0e9edfd2117acb4a",
+                                "name": "button",
+                                "settings": {
+                                    "btnLabel": "Katso kaikki tuotteet",
+                                    "btnResource": {
+                                        "type": "url",
+                                        "record_id": "6751164",
+                                        "url": "Superdry"
+                                    },
+                                    "openInNewWindowStatus": false,
+                                    "contentAlign": "center"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "333758e78041b38d8184ddbf2bd90a60",
+                        "name": "product-carousel",
+                        "settings": {
+                            "sectionTitle": "Suosittelemme",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "carouselStyle": "1",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "listType": "resource",
+                            "tagId": "",
+                            "resource": {
+                                "type": "url",
+                                "record_id": "6751164",
+                                "url": "Superdry"
+                            },
+                            "itemAmount": "8",
+                            "itemsPerView": "5",
+                            "showBadges": false,
+                            "showManufacturer": false,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    },
+                    {
+                        "id": "e13f3832b4a8dd78c079cc958778d4ef",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "xl",
+                            "sectionInnerSpacing": "lg",
+                            "sectionContentWidth": "9",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
+                            "sectionBgImgPos": "center-top",
+                            "sectionBgImgOverlay": "40",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "darkest"
+                        },
+                        "blocks": [
+                            {
+                                "id": "16ed338f500036f031efe07a2cc8f276",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "ECCO",
+                                    "subtitle": "",
+                                    "textAlign": "center",
+                                    "titleTag": "h2"
+                                }
+                            },
+                            {
+                                "id": "9d559d3ec895684d7f508659fbff5a23",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p style=\"text-align: center;\">Parhaimmat tyylit kest&auml;v&auml;t pidemp&auml;&auml;n kuin yhden sesongin. Tutustu tyylikk&auml;isiin ja rentoihin kenkiin, joita haluat k&auml;ytt&auml;&auml; yh&auml; uudelleen.<\/p>"
+                                }
+                            },
+                            {
+                                "id": "482e2b38c028ae2e0e9edfd2117acb4a",
+                                "name": "button",
+                                "settings": {
+                                    "btnLabel": "Katso kaikki tuotteet",
+                                    "btnResource": {
+                                        "type": "url",
+                                        "record_id": "6792894",
+                                        "url": "ECCO"
+                                    },
+                                    "openInNewWindowStatus": false,
+                                    "contentAlign": "center"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "5eaae6b958836f22fef89c52ad0a8377",
+                        "name": "product-carousel",
+                        "settings": {
+                            "sectionTitle": "Suosittelemme",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "carouselStyle": "1",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "listType": "resource",
+                            "tagId": "",
+                            "resource": {
+                                "type": "url",
+                                "record_id": "6792894",
+                                "url": "ECCO"
+                            },
+                            "itemAmount": "8",
+                            "itemsPerView": "5",
+                            "showBadges": false,
+                            "showManufacturer": false,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    }
+                ]
+            },
+            "page:131769": []
         },
         "settings": {
             "styles": {
@@ -731,7 +1127,6 @@
             "subheadingFont": "Inter",
             "buttonFont": "Inter",
             "accentFont": "Cormorant Garamond",
-            "buttonBorderRadius": "3px",
             "sectionHeight": "md",
             "sectionInnerSpacing": "off",
             "sectionContentSpacing": "md",
@@ -742,6 +1137,8 @@
             "addToCartNotification": true,
             "taxFreePrices": false,
             "policyAgreementMethod": "check",
+            "buttonBorderRadius": "3px",
+            "klarnaPlacementsClientId": null,
             "facebookPageUrl": "",
             "instagramPageUrl": "",
             "twitterPageUrl": "",
@@ -774,11 +1171,11 @@
                     "footerTopNewsletterStatus": true,
                     "footerMiddleSocialMediaButtonsStatus": false,
                     "footerMiddlePaymentMethodsStatus": false,
-                    "footerTopTextTitle": "Lorem ipsum dolor sit amet",
-                    "footerTopTextContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien.<\/p>",
-                    "footerBottomTextContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
-                    "footerTopNewsletterTitle": "Lorem ipsum dolor sit amet",
-                    "footerTopNewsletterContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                    "footerTopTextTitle": "Cora - trendej\u00e4 vuodesta 2000",
+                    "footerTopTextContent": "<p>Olemme t&auml;m&auml;n vuosituhannen muotikaupan edell&auml;k&auml;vij&auml;. Parhaat merkit parhaaseen hintaan ja ymp&auml;rist&ouml;tietoisuus kaupan p&auml;&auml;lle. Kaikista tilauksista istutamme puun.<\/p>",
+                    "footerBottomTextContent": "<p>T&auml;m&auml; on Cora teema Finqu verkkokauppaan<\/p>",
+                    "footerTopNewsletterTitle": "Liity sis\u00e4piiriin",
+                    "footerTopNewsletterContent": "<p>Tilaa uutiskirjeemme ja tied\u00e4t ensimm\u00e4isen\u00e4 kaiken!<\/p>",
                     "sectionHeight": "",
                     "sectionInnerSpacing": "",
                     "sectionContentSpacing": "",
@@ -1600,5 +1997,8 @@
                 }
             ]
         }
-    ]
+    ],
+    "asset_cache": {
+        "main.css": "main.a642b5896a50a2df785edb05183df1e9.css"
+    }
 }
