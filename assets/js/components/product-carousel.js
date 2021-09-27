@@ -1,7 +1,7 @@
 import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/swiper.min.css';
 import 'swiper/components/controller/controller.min.css';
-import { debounce } from '../utils';
+import { debounce } from './utils';
 
 Swiper.use([
     Navigation,
@@ -51,8 +51,19 @@ export default class ProductCarousel {
         }, 150, false));
 
         document.addEventListener('finqu:section:unload', debounce((e) => {
+
             if (e.target.classList.contains('section-product-carousel')) {
                 this.swiper.destroy();
+            }
+
+            for (const el of e.target.querySelectorAll('.product-carousel')) {
+
+                const swiperEl = el.querySelector('.swiper-container');
+                const swiper = swiperEl.swiper;
+
+                if (swiperEl && swiper) {
+                    swiper.destroy();
+                }
             }
         }, 250, false));
     }

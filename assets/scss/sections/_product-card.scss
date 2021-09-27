@@ -459,5 +459,30 @@ body {
 				}
 			}
 		}
+
+		.product-delivery-time {
+			display: flex;
+			align-items: center;
+			border: 1px solid section-var(border_color);
+			padding: 1rem;
+			margin-top: spacer(6);
+
+			& + .product-return-time {
+				margin-top: 0;
+				border-top: 0;
+			}
+		}
+
+		.product-return-time {
+			display: flex;
+			align-items: center;
+			border: 1px solid section-var(border_color);
+			padding: 1rem;
+			margin-top: spacer(6);
+		}
+	}
+
+	.section-header .title-container .title {
+		font-size: $font-size-base * 2;
 	}
 }

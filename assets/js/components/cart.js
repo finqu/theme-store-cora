@@ -427,13 +427,21 @@ export default class Cart {
     // Get cart data from API
     _getCart(options = {}) {
 
+        // Customer account required to purchase
         if (themeApp.data.customerAccountsOptional == false &&
             themeApp.data.customerLoggedIn == false) {
+
+                document.dispatchEvent(new CustomEvent('cartUpdated'));
+
                 return;
         }
 
+        // Customer account requires approval in order to purchase
         if (themeApp.data.customerAccountsRequireApproval == true &&
             themeApp.data.customerHasAccess == false) {
+
+                document.dispatchEvent(new CustomEvent('cartUpdated'));
+
                 return;
         }
 
@@ -467,15 +475,18 @@ export default class Cart {
     // Add item
     addItem(id = null, quantity = 1, attributes = [], options = {}) {
 
+        // Missing item id
         if (id === null) {
             return;
         }
 
+        // Customer account required to purchase
         if (themeApp.data.customerAccountsOptional == false &&
             themeApp.data.customerLoggedIn == false) {
                 return;
         }
 
+        // Customer account requires approval in order to purchase
         if (themeApp.data.customerAccountsRequireApproval == true &&
             themeApp.data.customerHasAccess == false) {
                 return;

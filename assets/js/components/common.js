@@ -1071,9 +1071,9 @@ export default {
     	const initProductReviews = () => {
 
     		const productReviewFormEl = containerEl.querySelector('.product-review-form');
-    		const productReviewCreateEl = containerEl.querySelector('[id="product-review-create"]');
-    		const productReviewCancelEl = containerEl.querySelector('[id="product-review-cancel"]');
-    		const productShowReviewsEl = containerEl.querySelector('[id="product-show-reviews"]');
+    		const productReviewCreateEl = containerEl.querySelector('#product-review-create');
+    		const productReviewCancelEl = containerEl.querySelector('#product-review-cancel');
+    		const productShowReviewsEl = containerEl.querySelector('#product-show-reviews');
     		const productReviewCollapseEl = containerEl.querySelector('#accordion-product-reviews');
 
     		if (productReviewCreateEl) {

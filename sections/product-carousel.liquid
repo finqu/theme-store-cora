@@ -1,23 +1,7 @@
 {%- assign sectionTitle = section.settings.sectionTitle -%}
 {%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
-
-{%- capture carouselSettings -%}
-    data-carousel-pagination="{{- section.settings.pagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}"
-{%- endcapture -%}
-
-{%- assign carouselClasses = '' -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
-
-{%- if section.settings.pagination == 'hover' -%}
-    {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
-    {%- assign carouselClasses = carouselClasses | append: paginationHoverClass -%}
-{%- endif -%}
-
-{%- if section.settings.navigation == 'hover' -%}
-    {% capture navigationHoverClass %} swiper-navigation-hover{% endcapture %}
-    {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
-{%- endif -%}
 
 {%- case section.settings.listType -%}
     {% when 'discounted' %}
@@ -32,67 +16,9 @@
         {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
 {%- endcase -%}
 
-{%- assign items = items | slice: 0, section.settings.itemAmount -%}
-
-{%- capture content -%}
-
-    {% if items.size > 0 %}
-
-       {% for product in items %}
-
-            <div class="swiper-slide">
-
-                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerView, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
-
-            </div>
-
-        {% endfor %}
-
-    {% elsif request.design_mode %}
-
-        {% for num in (1..section.settings.itemAmount) %}
-
-            <div class="swiper-slide">
-
-                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerView, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
-
-            </div>
-
-        {% endfor %}
-
-    {% endif %}
-
-{%- endcapture -%}
-
 {%- capture sectionContent -%}
 
-    <div class="swiper-container carousel-style-{{ section.settings.carouselStyle }}{{ carouselClasses }}" {{ carouselSettings }}>
-
-        <div class="swiper-wrapper">
-
-            {{- content -}}
-
-        </div>
-
-        {%- if section.settings.navigation -%}
-
-            <div class="swiper-button-prev">
-                {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
-            </div>
-
-            <div class="swiper-button-next">
-                {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
-            </div>
-
-        {%- endif -%}
-
-        {%- if section.settings.pagination -%}
-
-            <div class="swiper-pagination"></div>
-
-        {%- endif -%}
-
-    </div>
+    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: section.settings.itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing %}
 
 {%- endcapture -%}
 

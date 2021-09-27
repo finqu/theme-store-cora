@@ -1,0 +1,118 @@
+{% comment %}
+	Renders a Product carousel
+
+	Accepts:
+	- items: {Array} Itemm to show (Required)
+	- pagination: {String} Show pagination '' | hover | on
+	- navigation: {String} Show navigation '' | hover | on
+	- itemAmount: {Int} How many items is displayed
+	- itemsPerView: {Int} Items per one slide
+	- style: {Int} Style of carousel 1 | 2
+	- productShowBadges: {Boolean} Show product badges
+	- productShowManufacturer: {Boolean} Show product manufacturer
+	- productShowName: {Boolean} Show product name
+	- productShowPricing: {Boolean} Show product pricing
+
+	Usage:
+	{% render 'product-carousel', items: items, pagination: 'hover, navigation: 'hover', itemAmount: 20, itemsPerView: 4, style: 1 %}
+{% endcomment %}
+
+{%- assign carouselClasses = '' -%}
+{%- assign carouselPagination = pagination -%}
+{%- assign carouselNavigation = navigation -%}
+{%- assign carouselItemAmount = itemAmount | default: items.size | default: 20 -%}
+{%- assign carouselItemsPerView = itemsPerView | default: 4 -%}
+{%- assign carouselItems = items | slice: 0, carouselItemAmount -%}
+{%- assign carouselStyle = style | default: 1 -%}
+{%- assign carouselProductShowBadges = productShowBadges %}
+{%- assign carouselProductShowManufacturer = productShowManufacturer %}
+{%- assign carouselProductShowName = productShowName %}
+{%- assign carouselProductShowPricing = productShowPricing %}
+
+{%- if carouselProductShowBadges != false -%}
+	{%- assign carouselProductShowBadges = true -%}
+{%- endif -%}
+
+{%- if carouselProductShowManufacturer != false -%}
+	{%- assign carouselProductShowManufacturer = true -%}
+{%- endif -%}
+
+{%- if carouselProductShowName != false -%}
+	{%- assign carouselProductShowName = true -%}
+{%- endif -%}
+
+{%- if carouselProductShowPricing != false -%}
+	{%- assign carouselProductShowPricing = true -%}
+{%- endif -%}
+
+{%- capture carouselSettings -%}
+    data-carousel-pagination="{{- carouselPagination -}}" data-carousel-items-per-view="{{- carouselItemsPerView -}}"
+{%- endcapture -%}
+
+{%- if carouselPagination == 'hover' -%}
+    {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: paginationHoverClass -%}
+{%- endif -%}
+
+{%- if carouselNavigation == 'hover' -%}
+    {% capture navigationHoverClass %} swiper-navigation-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
+{%- endif -%}
+
+{%- capture carouselSlideContent -%}
+
+    {% if carouselItems.size > 0 %}
+
+       {% for product in carouselItems %}
+
+            <div class="swiper-slide">
+
+                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing -%}
+
+            </div>
+
+        {% endfor %}
+
+    {% elsif request.design_mode %}
+
+        {% for num in (1..carouselItemAmount) %}
+
+            <div class="swiper-slide">
+
+                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing -%}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{%- endcapture -%}
+
+<div class="swiper-container carousel-style-{{ carouselStyle }}{{ carouselClasses }}" {{ carouselSettings }}>
+
+    <div class="swiper-wrapper">
+
+        {{- carouselSlideContent -}}
+
+    </div>
+
+    {%- if carouselNavigation -%}
+
+        <div class="swiper-button-prev">
+            {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+        </div>
+
+        <div class="swiper-button-next">
+            {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+        </div>
+
+    {%- endif -%}
+
+    {%- if carouselPagination -%}
+
+        <div class="swiper-pagination"></div>
+
+    {%- endif -%}
+
+</div>

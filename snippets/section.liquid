@@ -22,6 +22,8 @@
 	- sectionOverlay: {Boolean}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact', 'tiny'
 	- sectionTextAlign: {String} 'left', 'center', 'right'
+	- sectionHeightCustomTop : {String}
+	- sectionHeightCustomBottom : {String}
 
 	Usage:
 	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionContentContainer: 'fixed' %}
@@ -51,7 +53,9 @@
 {%- assign sectionHeaderTextAlign = sectionHeaderTextAlign | default: null -%}
 {%- assign sectionOverlay = sectionOverlay | default: false -%}
 {%- assign sectionTextAlign = sectionTextAlign | default: null -%}
-{%- assign sectionClasses = '' -%}
+{%- assign sectionInnerSpacing = sectionInnerSpacing | default: section.settings.sectionInnerSpacing | default: 'off' -%}
+{%- assign sectionHeightCustomTop = sectionHeightCustomTop | default: section.settings.sectionHeightCustomTop -%}
+{%- assign sectionHeightCustomBottom = sectionHeightCustomBottom | default: section.settings.sectionHeightCustomBottom -%}
 
 {%- if sectionHeight != 'off' -%}
     {% capture sectionHeightClass %} section-height-{{ sectionHeight }}{% endcapture %}
@@ -101,8 +105,8 @@
 	<style>
 		@media (min-width: 768px) {
 	        #finqu-section-{{ section.id }} .section-height-custom {
-	        	padding-top: {{ section.settings.sectionHeightCustomTop }}px;
-				padding-bottom: {{ section.settings.sectionHeightCustomBottom }}px;
+	        	padding-top: {{ sectionHeightCustomTop }}px;
+				padding-bottom: {{ sectionHeightCustomBottom }}px;
 	        }
 	    }
 	</style>

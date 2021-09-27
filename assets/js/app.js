@@ -11,7 +11,7 @@ import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
 import Handlebars from 'handlebars';
 import ImageCarousel from './components/sections/image-carousel';
-import ProductCarousel from './components/sections/product-carousel';
+import ProductCarousel from './components/product-carousel';
 
 export default class App {
 
@@ -342,6 +342,10 @@ export default class App {
 	    	}
 
 	    	for (const el of document.querySelectorAll('.section-product-carousel')) {
+	    		new ProductCarousel(el);
+	    	}
+
+	    	for (const el of document.querySelectorAll('.product-carousel')) {
 	    		new ProductCarousel(el);
 	    	}
 	    }

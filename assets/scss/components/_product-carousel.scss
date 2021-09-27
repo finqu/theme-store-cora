@@ -1,11 +1,12 @@
 // Product carousel
 // -----------------------------------------------------------------------------------------
 
-@include section-style($section: 'product-carousel') {
+.section-product-carousel .section-content {
+	overflow: hidden;
+}
 
-	.section-content {
-		overflow: hidden;
-	}
+.section-product-carousel,
+.product-carousel {
 
 	.swiper-container {
 		width: 100%;
