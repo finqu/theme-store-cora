@@ -131,15 +131,23 @@
                         <a href="/">
 
                             {%- assign imgSrc = section.settings.logoImgSrc -%}
-                            {%- assign imgSize = 120,30 -%}
+                            {%- assign imgSizeSm = '150,50' -%}
+                            {%- assign imgSizeLg = '160,100' -%}
 
                             {% if imgSrc %}
 
                                 <picture>
+                                    <source media="(min-width: 997px)" data-srcset="
+                                        {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                        {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                    <source data-srcset="
+                                        {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                        {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
                                     <img
                                         alt="{{ item.name }}"
-                                        data-src="{{ imgSrc | thumb: imgSize }}"
-                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                        src="{{ imgSrc | thumb: imgSizeSm }}"
                                         class="lazy d-block mx-auto img-fluid">
                                 </picture>
 

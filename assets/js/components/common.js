@@ -4,6 +4,9 @@ import 'swiper/swiper.min.css';
 import 'swiper/components/thumbs/thumbs.min.css';
 import 'swiper/components/controller/controller.min.css';
 import { debounce } from './utils';
+import picturefill from 'picturefill';
+import objectFitImages from 'object-fit-images';
+import LazyLoad from 'vanilla-lazyload';
 
 Swiper.use([
     Navigation,
@@ -916,6 +919,34 @@ export default {
             };
 
 			const productMainMediaSwiper = new Swiper(productMainMediaSwiperEl, productMainMediaSwiperCfg);
+            const productImageEls = productMainMediaSwiperEl.querySelectorAll('.lazy');
+
+            // Preload product images so those are available when customer clicks thumb
+            if (productImageEls.length > 0) {
+
+                productImageEls.forEach((el, index) => {
+
+                    LazyLoad.load(el, {
+                        show_while_loading: true,
+                        callback_loading: function (el) {
+
+                            picturefill({
+                                elements: [el]
+                            });
+
+                            objectFitImages(el);
+                        },
+                        callback_error: function (el) {
+
+                            picturefill({
+                                elements: [el]
+                            });
+
+                            objectFitImages(el);
+                        }
+                    });
+                });
+            }
 
             if (window.themeApp.data.designMode === false) {
 			    const productMediaGallery = new Gallery(productMainMediaSwiperEl);

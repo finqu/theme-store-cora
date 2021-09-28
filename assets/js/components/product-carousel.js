@@ -51,19 +51,8 @@ export default class ProductCarousel {
         }, 150, false));
 
         document.addEventListener('finqu:section:unload', debounce((e) => {
-
-            if (e.target.classList.contains('section-product-carousel')) {
+            if (this.el === e.target) {
                 this.swiper.destroy();
-            }
-
-            for (const el of e.target.querySelectorAll('.product-carousel')) {
-
-                const swiperEl = el.querySelector('.swiper-container');
-                const swiper = swiperEl.swiper;
-
-                if (swiperEl && swiper) {
-                    swiper.destroy();
-                }
             }
         }, 250, false));
     }

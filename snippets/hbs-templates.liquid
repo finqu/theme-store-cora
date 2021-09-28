@@ -32,7 +32,18 @@
                                         {{#if item.image}}
 
                                             {{ assign 'imgSrc' item.image.original }}
-                                            {{ assign 'imgSize' '76,114' }}
+
+                                            {{#ifCond aspectRatioProductImage '===' 9:13}}
+                                                {{ assign 'imgSize' '70,102' }}
+                                            {{/ifCond}}
+
+                                            {{#ifCond aspectRatioProductImage '===' 4:3}}
+                                                {{ assign 'imgSize' '70,53' }}
+                                            {{/ifCond}}
+
+                                            {{#ifCond aspectRatioProductImage '===' 1:1}}
+                                                {{ assign 'imgSize' '70,70' }}
+                                            {{/ifCond}}
 
                                             <picture>
                                                 <img
@@ -414,7 +425,18 @@
                                         {{#if item.image}}
 
                                             {{ assign 'imgSrc' item.image.original }}
-                                            {{ assign 'imgSize' '76,114' }}
+
+                                            {{#ifCond aspectRatioProductImage '===' 9:13}}
+                                                {{ assign 'imgSize' '70,102' }}
+                                            {{/ifCond}}
+
+                                            {{#ifCond aspectRatioProductImage '===' 4:3}}
+                                                {{ assign 'imgSize' '70,53' }}
+                                            {{/ifCond}}
+
+                                            {{#ifCond aspectRatioProductImage '===' 1:1}}
+                                                {{ assign 'imgSize' '70,70' }}
+                                            {{/ifCond}}
 
                                             <picture>
                                                 <img

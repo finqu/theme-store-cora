@@ -401,7 +401,20 @@
 	                                	{% if item.image %}
 
                                         	{%- assign imgSrc = item.image | asset_url -%}
-	                                    	{%- assign imgSize = 76,114 -%}
+
+                                        	{% if settings.aspectRatioProductImage == '9:13' %}
+
+                                                {%- assign imgSize = '70,102' -%}
+
+                                            {% elsif settings.aspectRatioProductImage == '4:3' %}
+
+                                                {%- assign imgSize = '70,53' -%}
+
+                                            {% elsif settings.aspectRatioProductImage == '1:1' %}
+
+                                                {%- assign imgSize = '70,70' -%}
+
+                                            {% endif %}
 
                                             <picture>
 		                                        <img

@@ -1,334 +1,24 @@
-{%- assign footerMenu = linklists[section.settings.menu] -%}
+{%- if section.settings.footerLayout == '1' -%}
 
-{%- capture sectionContent -%}
+    {%- render 'footers/layout-1', section: section -%}
 
-    <div class="site-footer-container {{ section.settings.menu }}">
+{%- elsif section.settings.footerLayout == '2' -%}
 
-        <div class="site-footer">
+    {%- render 'footers/layout-2', section: section -%}
 
-            <div class="site-footer-top">
+{%- elsif section.settings.footerLayout == '3' -%}
 
-                <div class="container">
+    {%- render 'footers/layout-3', section: section -%}
 
-                    <div class="row">
+{%- elsif section.settings.footerLayout == '4' -%}
 
-                        {% for item in footerMenu.links %}
+    {%- render 'footers/layout-4', section: section -%}
 
-                            {% if item.links %}
+{%- elsif section.settings.footerLayout == '5' -%}
 
-                                <div class="col-12 col-md">
+    {%- render 'footers/layout-5', section: section -%}
 
-                                    <div class="site-footer-menu-container">
-
-                                        <div class="site-footer-title">
-
-                                            {%- if item.url -%}
-
-                                                <a href="{{ item.url }}" class="site-footer-menu-title-text">
-                                                    {{ item.title }}
-                                                </a>
-
-                                            {%- else -%}
-
-                                                <span class="site-footer-menu-title-text">
-                                                    {{ item.title }}
-                                                </span>
-
-                                            {%- endif -%}
-
-                                        </div>
-
-                                        <ul class="site-footer-menu">
-
-                                            {% for item in item.links %}
-
-                                                <li class="site-footer-menu-item">
-
-                                                    {%- if item.url -%}
-
-                                                        <a href="{{ item.url }}" class="site-footer-menu-item-text">
-                                                            {{ item.title }}
-                                                        </a>
-
-                                                    {%- else -%}
-
-                                                        <span class="site-footer-menu-item-text">
-                                                            {{ item.title }}
-                                                        </span>
-
-                                                    {%- endif -%}
-
-                                                </li>
-
-                                            {% endfor %}
-
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                        {% endfor %}
-
-                        {% if section.settings.footerTopTextStatus %}
-
-                            <div class="col-12 col-md">
-
-                                <div class="site-footer-text-container">
-
-                                    {% if section.settings.footerTopTextTitle %}
-
-                                        <div class="site-footer-title">
-
-                                            {{ section.settings.footerTopTextTitle }}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                    <div class="site-footer-text">
-
-                                        {{ section.settings.footerTopTextContent }}
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        {% endif %}
-
-                        {% if section.settings.footerTopNewsletterStatus %}
-
-                            <div class="col-12 col-md">
-
-                                <div class="site-footer-newsletter-container">
-
-                                    {% if section.settings.footerTopNewsletterTitle %}
-
-                                        <div class="site-footer-title">
-
-                                            {{ section.settings.footerTopNewsletterTitle }}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                    <div class="site-footer-newsletter">
-
-                                        {% form 'customer', customer %}
-
-                                            {% if section.settings.footerTopNewsletterContent %}
-
-                                                {{ section.settings.footerTopNewsletterContent }}
-
-                                            {% endif %}
-
-                                            {% if customer and customer.accepts_marketing %}
-
-                                                <span class="d-block font-weight-bold">
-                                                    {{ 'general.newsletter_subscribed' | t }}
-                                                </span>
-
-                                            {% elsif form.posted_successfully? %}
-
-                                                <span class="d-block font-weight-bold">
-                                                    {{ 'general.newsletter_subscribed' | t }}
-                                                </span>
-
-                                            {% else %}
-
-                                                <div class="form-group test form-floating">
-
-                                                    <input id="footer-middle-newsletter" class="form-control" type="email" name="email" value="" placeholder="{{ 'general.email' | t }}" required>
-
-                                                    <label for="footer-middle-newsletter">
-                                                        {{ 'general.email' | t }}
-                                                    </label>
-
-                                                </div>
-
-                                                {% render 'form-error', error: form.error, class: 'form-group' %}
-
-                                                <button type="submit" class="btn btn-outline-section">
-                                                    {{ 'general.subscribe' | t }}
-                                                </button>
-
-                                            {% endif %}
-
-                                        {% endform %}
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        {% endif %}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            {% if section.settings.footerMiddleSocialMediaButtonsStatus or section.settings.footerMiddlePaymentMethodsStatus %}
-
-                <div class="site-footer-middle">
-
-                    <div class="container">
-
-                        <div class="row">
-
-                            {% if section.settings.footerMiddleSocialMediaButtonsStatus %}
-
-                                <div class="col-12 col-md">
-
-                                    <div class="site-footer-social-media-buttons-container">
-
-                                        {% if settings.facebookPageUrl %}
-
-                                            <div class="site-footer-social-media-btn">
-
-                                                {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
-
-                                            </div>
-
-                                        {% endif %}
-
-                                        {% if settings.instagramPageUrl %}
-
-                                            <div class="site-footer-social-media-btn">
-
-                                                {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
-
-                                            </div>
-
-                                        {% endif %}
-
-                                        {% if settings.twitterPageUrl %}
-
-                                            <div class="site-mobile-navigation-social-media-btn">
-
-                                                {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
-
-                                            </div>
-
-                                        {% endif %}
-
-                                        {% if settings.pinterestPageUrl %}
-
-                                            <div class="site-mobile-navigation-social-media-btn">
-
-                                                {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
-
-                                            </div>
-
-                                        {% endif %}
-
-                                        {% if settings.youtubePageUrl %}
-
-                                            <div class="site-mobile-navigation-social-media-btn">
-
-                                                {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
-
-                                            </div>
-
-                                        {% endif %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                            {% if section.settings.footerMiddlePaymentMethodsStatus %}
-
-                                <div class="col-12 col-md">
-
-                                    <div class="site-footer-payment-methods-container">
-
-                                        {% if settings.klarnaPlacementsClientId %}
-
-                                            {% render 'klarna-placement', type: 'footer-promotion-auto-size' %}
-
-                                        {% else %}
-
-                                            {% for payment_method in store.payment_methods %}
-
-                                                {%- assign imgSrc = payment_method.image -%}
-
-                                                {% if imgSrc %}
-
-                                                    {%- assign imgSize = 45,30 -%}
-
-                                                    <div class="site-footer-payment-method">
-
-                                                        <picture>
-                                                            <img
-                                                                alt="{{ payment_method.name }}"
-                                                                data-src="{{ imgSrc | thumb: imgSize }}"
-                                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                                class="lazy d-block mx-auto img-fluid">
-                                                        </picture>
-
-                                                    </div>
-
-                                                {% endif %}
-
-                                            {% endfor %}
-
-                                        {% endif %}
-
-                                    </div>
-
-                                </div>
-
-                            {% endif %}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            {% endif %}
-
-            <div class="site-footer-bottom">
-
-                <div class="container">
-
-                    {% if section.settings.footerBottomTextStatus %}
-
-                        <div class="site-footer-bottom-text">
-
-                            {{ section.settings.footerBottomTextContent }}
-
-                        </div>
-
-                    {% endif %}
-
-                    <div class="site-footer-bottom-power-by-text">
-
-                        <a target="_blank" rel="nofollow" class="text-section" href="https://www.finqu.fi?utm_campaign=poweredby&utm_medium=finqu&utm_source=onlinestore">
-                            Powered by Finqu
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-{%- endcapture -%}
-
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionContentContainer: 'none'  %}
+{%- endif -%}
 
 {% schema %}
 {
@@ -339,7 +29,7 @@
 	"tag": "section",
 	"is_creatable": false,
 	"is_removable": false,
-	"class": "section section-site-footer",
+	"class": "section section-site-footer has-lazy",
 	"settings": {
         "list_type": "tabs",
         "groups": [
@@ -348,132 +38,298 @@
                     "en": "General",
                     "fi": "Yleinen"
                 },
-                "settings": [
-                    {
-                    	"id": "menu",
-                    	"type": "menu",
-                    	"label": {
-                            "en": "Menu",
-                            "fi": "Valikko"
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Menus",
+                                "fi": "Valikot"
+                            },
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Menu 1",
+                                        "fi": "Valikko 1"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu1Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu1",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "Menu",
+                                        "fi": "Valikko"
+                                    },
+                                    "default": "footer"
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Menu 2",
+                                        "fi": "Valikko 2"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu2Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu2",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "Menu",
+                                        "fi": "Valikko"
+                                    },
+                                    "default": "footer"
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Menu 3",
+                                        "fi": "Valikko 3"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu3Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu3",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "Menu",
+                                        "fi": "Valikko"
+                                    },
+                                    "default": "footer"
+                                }
+                            ]
                         },
-                    	"default": "footer"
-                    },
-                    {
-                        "id": "footerTopTextStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show textarea 1",
-                            "fi": "Näytä tekstialue 1"
+                        {
+                            "title": {
+                                "en": "Texts",
+                                "fi": "Tekstit"
+                            },
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Textarea 1",
+                                        "fi": "Tekstialue 1"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea1Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea1Content",
+                                    "type": "richtext",
+                                    "label": {
+                                        "en": "Content",
+                                        "fi": "Sisältö"
+                                    }
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Textarea 2",
+                                        "fi": "Tekstialue 2"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea2Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea2Content",
+                                    "type": "richtext",
+                                    "label": {
+                                        "en": "Content",
+                                        "fi": "Sisältö"
+                                    }
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Nesletter",
+                                        "fi": "Uutiskirje"
+                                    }
+                                },
+                                {
+                                    "id": "footerNewsletterTitle",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerNewsletterContent",
+                                    "type": "richtext",
+                                    "label": {
+                                        "en": "Content",
+                                        "fi": "Sisältö"
+                                    }
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Social media",
+                                        "fi": "Sosiaalinen media"
+                                    }
+                                },
+                                {
+                                    "id": "footerSocialMediaTitle",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerSocialMediaContent",
+                                    "type": "richtext",
+                                    "label": {
+                                        "en": "Content",
+                                        "fi": "Sisältö"
+                                    }
+                                }
+                            ]
                         },
-                        "default": true
-                    },
-                    {
-                        "id": "footerBottomTextStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show textarea 2",
-                            "fi": "Näytä tekstialue 2"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "footerTopNewsletterStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show newsletter subscribe",
-                            "fi": "Näytä uutiskirjeen tilaus"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "footerMiddleSocialMediaButtonsStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show social media buttons",
-                            "fi": "Näytä sosiaalisen median kuvakkeet"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "footerMiddlePaymentMethodsStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show payment methods",
-                            "fi": "Näytä maksutavat"
-                        },
-                        "default": false
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Textarea 1",
-                            "fi": "Tekstialue 1"
+                        {
+                            "title": {
+                                "en": "Settings",
+                                "fi": "Asetukset"
+                            },
+                            "settings": [
+                                {
+                                    "id": "footerLayout",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Layout",
+                                        "fi": "Asettelu"
+                                    },
+                                    "default": "1",
+                                    "options": [
+                                        {
+                                            "value": "1",
+                                            "label": {
+                                                "en": "Layout 1",
+                                                "fi": "Asettelu 1"
+                                            }
+                                        },
+                                        {
+                                            "value": "2",
+                                            "label": {
+                                                "en": "Layout 2",
+                                                "fi": "Asettelu 2"
+                                            }
+                                        },
+                                        {
+                                            "value": "3",
+                                            "label": {
+                                                "en": "Layout 3",
+                                                "fi": "Asettelu 3"
+                                            }
+                                        },
+                                        {
+                                            "value": "4",
+                                            "label": {
+                                                "en": "Layout 4",
+                                                "fi": "Asettelu 4"
+                                            }
+                                        },
+                                        {
+                                            "value": "5",
+                                            "label": {
+                                                "en": "Layout 5",
+                                                "fi": "Asettelu 5"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "footerPaymentMethodsImgSrc",
+                                    "type": "image-picker",
+                                    "label": {
+                                        "en": "Payment methods",
+                                        "fi": "Maksutavat"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea1Status",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show textarea 1",
+                                        "fi": "Näytä tekstialue 1"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "footerTextArea2Status",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show textarea 2",
+                                        "fi": "Näytä tekstialue 2"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "footerNewsletterStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show newsletter subscribe",
+                                        "fi": "Näytä uutiskirjeen tilaus"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "footerSocialMediaButtonsStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show social media buttons",
+                                        "fi": "Näytä sosiaalisen median kuvakkeet"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "footerPaymentMethodsStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show payment methods",
+                                        "fi": "Näytä maksutavat"
+                                    },
+                                    "default": false
+                                }
+                            ]
                         }
-                    },
-                    {
-                        "id": "footerTopTextTitle",
-                        "type": "text",
-                        "label": {
-                            "en": "Title",
-                            "fi": "Otsikko"
-                        }
-                    },
-                    {
-                        "id": "footerTopTextContent",
-                        "type": "richtext",
-                        "label": {
-                            "en": "Content",
-                            "fi": "Sisältö"
-                        }
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Textarea 2",
-                            "fi": "Tekstialue 2"
-                        }
-                    },
-                    {
-                        "id": "footerBottomTextContent",
-                        "type": "richtext",
-                        "label": {
-                            "en": "Content",
-                            "fi": "Sisältö"
-                        }
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Newsletter",
-                            "fi": "Uutiskirje"
-                        }
-                    },
-                    {
-                        "id": "footerTopNewsletterTitle",
-                        "type": "text",
-                        "label": {
-                            "en": "Title",
-                            "fi": "Otsikko"
-                        }
-                    },
-                    {
-                        "id": "footerTopNewsletterContent",
-                        "type": "richtext",
-                        "label": {
-                            "en": "Content",
-                            "fi": "Sisältö"
-                        }
-                    }
-                ]
+                    ]
+                }
             },
             {
                 "title": {

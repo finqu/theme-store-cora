@@ -25,6 +25,7 @@ export default class Cart {
         this.cartUrl = themeApp.data.routes.cartUrl;
         this.checkoutUrl = themeApp.data.routes.checkoutUrl;
         this.assetUrl = themeApp.data.routes.assetUrl;
+        this.aspectRatioProductImage = themeApp.data.aspectRatioProductImage;
 
         if (this.cartTemplateEl) {
             this.cartTemplate = themeApp.hbs.compile(this.cartTemplateEl.innerHTML);
@@ -301,7 +302,8 @@ export default class Cart {
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
-                    taxFreePrices: self.taxFreePrices
+                    taxFreePrices: self.taxFreePrices,
+                    aspectRatioProductImage: self.aspectRatioProductImage
                 });
 
                 cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {
@@ -317,7 +319,8 @@ export default class Cart {
                     assetUrl: self.assetUrl,
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
-                    taxFreePrices: self.taxFreePrices
+                    taxFreePrices: self.taxFreePrices,
+                    aspectRatioProductImage: self.aspectRatioProductImage
                 });
 
                 cartMiniContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {

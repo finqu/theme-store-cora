@@ -22,7 +22,7 @@ export default class ImageCarousel {
         this.swiperCfg = {
             loop: JSON.parse(this.opts.carouselLoop),
             speed: 1000,
-            effect: 'slide',
+            effect: this.opts.carouselEffect,
             watchSlidesProgress: true,
             grabCursor: true,
             pagination: {
@@ -88,7 +88,7 @@ export default class ImageCarousel {
         }, 150, false));
 
         document.addEventListener('finqu:section:unload', debounce((e) => {
-            if (e.target.classList.contains('section-image-carousel')) {
+            if (this.el === e.target) {
                 this.swiper.destroy();
             }
         }, 250, false));

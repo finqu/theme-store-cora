@@ -94,33 +94,82 @@
 
 						{% if productImage %}
 
-			  				{%- assign imgSrc = productImage | asset_url -%}
-			  				{%- assign imgSizeSm = 348,348 -%}
-			  				{%- assign imgSizeMd = 290,290 -%}
+							{%- assign imgSrc = productImage | asset_url -%}
 
-			  				{%- case itemsPerRow -%}
+							{% if settings.aspectRatioProductImage == '9:13' %}
 
-							    {% when '2' %}
-							        {%- assign imgSizeLg = 810,810 -%}
-							    {% when '3' %}
-							        {%- assign imgSizeLg = 520,520 -%}
-							    {% when '4' %}
-							        {%- assign imgSizeLg = 376,376 -%}
-							    {% when '5' %}
-							        {%- assign imgSizeLg = 290,290 -%}
-							    {% when '6' %}
-							    	{%- assign imgSizeLg = 232,232 -%}
+								{%- assign imgSizeSm = '348,348' -%}
+				  				{%- assign imgSizeMd = '290,290' -%}
 
-							{%- endcase -%}
+				  				{%- case itemsPerRow -%}
+
+								    {% when '2' %}
+								        {%- assign imgSizeLg = '810,810' -%}
+								    {% when '3' %}
+								        {%- assign imgSizeLg = '520,520' -%}
+								    {% when '4' %}
+								        {%- assign imgSizeLg = '376,376' -%}
+								    {% when '5' %}
+								        {%- assign imgSizeLg = '290,290' -%}
+								    {% when '6' %}
+								    	{%- assign imgSizeLg = '232,232' -%}
+
+								{%- endcase -%}
+
+							{% elsif settings.aspectRatioProductImage == '4:3' %}
+
+								{%- assign imgSizeSm = '240,180' -%}
+				  				{%- assign imgSizeMd = '200,150' -%}
+
+				  				{%- case itemsPerRow -%}
+
+								    {% when '2' %}
+								        {%- assign imgSizeLg = '560,420' -%}
+								    {% when '3' %}
+								        {%- assign imgSizeLg = '360,270' -%}
+								    {% when '4' %}
+								        {%- assign imgSizeLg = '260,195' -%}
+								    {% when '5' %}
+								        {%- assign imgSizeLg = '200,150' -%}
+								    {% when '6' %}
+								    	{%- assign imgSizeLg = '160,120' -%}
+
+								{%- endcase -%}
+
+							{% elsif settings.aspectRatioProductImage == '1:1' %}
+
+								{%- assign imgSizeSm = '240,240' -%}
+				  				{%- assign imgSizeMd = '200,200' -%}
+
+				  				{%- case itemsPerRow -%}
+
+								    {% when '2' %}
+								        {%- assign imgSizeLg = '560,560' -%}
+								    {% when '3' %}
+								        {%- assign imgSizeLg = '360,360' -%}
+								    {% when '4' %}
+								        {%- assign imgSizeLg = '260,260' -%}
+								    {% when '5' %}
+								        {%- assign imgSizeLg = '200,200' -%}
+								    {% when '6' %}
+								    	{%- assign imgSizeLg = '160,160' -%}
+
+								{%- endcase -%}
+
+							{% endif %}
 
 				  			<picture>
 						        <source media="(min-width: 992px)" data-srcset="
 						            {{ imgSrc | thumb: imgSizeLg }} 1x,
 						            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-						            <source media="(min-width: 576px)" data-srcset="
+						        <source media="(min-width: 576px)" data-srcset="
 						            {{ imgSrc | thumb: imgSizeMd }} 1x,
 						            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+						        <source data-srcset="
+	                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+	                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
 
 						        <img
 						            alt="{{ productName }}"

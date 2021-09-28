@@ -25,8 +25,8 @@
 										{% if article.header_image %}
 
 							                {%- assign imgSrc = article.header_image | asset_url -%}
-							  				{%- assign imgSizeSm = 300,185 -%}
-							  				{%- assign imgSizeLg = 535,185 -%}
+							  				{%- assign imgSizeSm = '300,185' -%}
+							  				{%- assign imgSizeLg = '535,185' -%}
 
 							                <picture>
 										        <source media="(min-width: 768px)" data-srcset="
@@ -76,7 +76,7 @@
 									 <span class="article-date">
 
 			                            {% assign format = 'general.date_format' | t  %}
-			                            <i><time datetime="{{ article.created_at | date: "%F" }}">{{ article.created_at | date:format }}</time></i>
+			                            <i><time datetime="{{ article.published_at | date: "%F" }}">{{ article.published_at | date:format }}</time></i>
 
 			                        </span>
 
@@ -84,10 +84,10 @@
 
 								<div class="article-content">
 
-									{%- if article.introduction.size > 0 -%}
+									{%- if article.summary.size > 0 -%}
 
 			                            <p class="article-content-text mb-0">
-			                            	{{ article.introduction }}
+			                            	{{ article.summary }}
 			                            </p>
 
 			                        {%- else -%}

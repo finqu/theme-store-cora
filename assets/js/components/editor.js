@@ -27,6 +27,19 @@ export default {
             }
         });
 
+        document.addEventListener('finqu:section:unload', (e) => {
+
+            for (const el of e.target.querySelectorAll('.product-carousel')) {
+
+                const swiperEl = el.querySelector('.swiper-container');
+                const swiper = swiperEl.swiper;
+
+                if (swiperEl && swiper) {
+                    swiper.destroy();
+                }
+            }
+        });
+
         document.addEventListener('finqu:block:load', (e) => {
 
             if (e.target.classList.contains('has-lazy')) {

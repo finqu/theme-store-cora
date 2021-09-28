@@ -47,17 +47,21 @@
 
             {% if session.logged_in or article.comments_require_account == false  %}
 
+                {%- capture formId -%}
+                    comment-form-{{- comment.id -}}
+                {%- endcapture -%}
+
                 <div class="article-comment-form-action">
 
-                    <button type="button" name="article-comment-form-show-action" class="btn btn-text font-weight-bold text-underline-indicator" value="{{ comment.id }}">
+                    <button type="button" name="article-comment-form-show-action" class="btn btn-text font-weight-bold text-underline-indicator{% if submitted_form.id == formId and submitted_form.error %} d-none{% endif %}" value="{{ comment.id }}">
                         {{ 'blog.reply_comment' | t }}
                     </button>
 
                 </div>
 
-                <div id="article-comment-form-{{ comment.id }}" class="article-comment-form d-none">
+                <div id="article-comment-form-{{ comment.id }}" class="article-comment-form{% unless submitted_form.id == formId and submitted_form.error %} d-none{% endunless %}">
 
-                    {% form 'comment', comment %}
+                    {% form 'comment', comment, id: formId %}
 
                         <div class="form-group form-floating">
 

@@ -17,10 +17,11 @@ img.lazy {
 	opacity: 0;
 }
 
-img:not(.initial) {
+img:not(.initial):not(.lazy-disable-transition) {
 	transition: opacity .5s;
 }
 
+img.lazy-disable-transition,
 img.initial,
 img.loaded,
 img.error {
