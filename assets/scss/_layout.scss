@@ -539,8 +539,6 @@ body > #search-overlay {
 
             .site-footer-social-media-buttons-container {
                 display: flex;
-                height: 100%;
-                align-items: center;
 
                 .site-footer-social-media-btn {
                     display: inline-flex;
@@ -550,6 +548,8 @@ body > #search-overlay {
             .site-footer-payment-methods-container {
                 display: flex;
                 justify-content: flex-end;
+                height: 100%;
+                align-items: center;
                 @include media-breakpoint-down(md) {
                     justify-content: flex-start;
                 }
@@ -567,7 +567,7 @@ body > #search-overlay {
             .site-footer-middle {
                 border-top: 1px solid section-var(border_color);
 
-                .site-footer-payment-methods-container {
+                .site-footer-social-media-buttons-container {
                     height: 100%;
                     align-items: center;
                 }
