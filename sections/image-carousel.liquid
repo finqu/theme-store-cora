@@ -11,9 +11,6 @@
 {% capture loopAttr %} data-carousel-loop="{{ section.settings.loop | json }}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: loopAttr -%}
 
-{% capture effectAttr %} data-carousel-effect="{{- section.settings.effect -}}"{% endcapture %}
-{%- assign carouselSettings = carouselSettings | append: effectAttr -%}
-
 {%- assign carouselClasses = '' -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 
@@ -400,31 +397,6 @@
                                     ]
                                 },
                                 {
-                                    "id": "effect",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Effect",
-                                        "fi": "Effekti"
-                                    },
-                                    "default": "slide",
-                                    "options": [
-                                        {
-                                            "value": "slide",
-                                            "label": {
-                                                "en": "Slide",
-                                                "fi": "Liuku"
-                                            }
-                                        },
-                                        {
-                                            "value": "fade",
-                                            "label": {
-                                                "en": "Fade",
-                                                "fi": "Häivytä"
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
                                     "id": "sectionHeight",
                                     "type": "radio-pill",
                                     "label": {
@@ -498,7 +470,6 @@
                 "autoplaySpeed": "3",
                 "navigation": "hover",
                 "pagination": "hover",
-                "effect": "slide",
                 "sectionHeight": "",
                 "slideImgOverlay": "0",
                 "sectionStyle": "general",

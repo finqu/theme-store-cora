@@ -26,7 +26,7 @@
                                     "title": "Uutuudet saapuneet",
                                     "subtitle": "",
                                     "textAlign": "center",
-                                    "titleTag": "h2"
+                                    "titleTag": "h1"
                                 }
                             },
                             {
@@ -56,7 +56,7 @@
                         "id": "4d6c39f493aa6621d3085b9bdee1563f",
                         "name": "product-carousel",
                         "settings": {
-                            "sectionTitle": "Suosittua naisille",
+                            "sectionTitle": "Naisille",
                             "sectionSubtitle": "Suosittua juuri nyt",
                             "sectionHeaderTextAlign": "left",
                             "carouselStyle": "1",
@@ -64,10 +64,15 @@
                             "pagination": "on",
                             "listType": "tag",
                             "tagId": "naiset",
-                            "resource": {
-                                "type": "url",
-                                "record_id": "",
-                                "url": ""
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "",
+                                "name": ""
                             },
                             "itemAmount": "20",
                             "itemsPerView": "4",
@@ -76,6 +81,8 @@
                             "showProductName": true,
                             "showPricing": true,
                             "sectionHeight": "",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "0",
                             "sectionInnerSpacing": "",
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
@@ -90,7 +97,7 @@
                         "id": "baa5f2aa52d9f6a529e866e31ea4ce3d",
                         "name": "product-carousel",
                         "settings": {
-                            "sectionTitle": "Suosittua miehille",
+                            "sectionTitle": "Miehille",
                             "sectionSubtitle": "Suosittua juuri nyt",
                             "sectionHeaderTextAlign": "left",
                             "carouselStyle": "1",
@@ -98,10 +105,15 @@
                             "pagination": "hover",
                             "listType": "tag",
                             "tagId": "miehet",
-                            "resource": {
-                                "type": "url",
-                                "record_id": "",
-                                "url": ""
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "",
+                                "name": ""
                             },
                             "itemAmount": "20",
                             "itemsPerView": "4",
@@ -110,6 +122,8 @@
                             "showProductName": true,
                             "showPricing": true,
                             "sectionHeight": "",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "0",
                             "sectionInnerSpacing": "",
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
@@ -640,7 +654,79 @@
                     }
                 ]
             },
-            "page:131769": []
+            "page:131769": [],
+            "page": {
+                "sections": [
+                    {
+                        "id": "55a5ea78761df6041767d2bc257686f7",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "custom",
+                            "sectionHeightCustomTop": "50",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "1a51c129fbaeaa96f5eac77e609decb3",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Viimeksi saapuneet",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a487256f15c14d85c36b2af4ee6c07bd",
+                        "name": "product-list",
+                        "settings": {
+                            "sectionTitle": "",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "listType": "tag",
+                            "tagId": "uutuus",
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "",
+                                "name": ""
+                            },
+                            "itemAmount": "5",
+                            "itemsPerRow": "3",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "custom",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "50",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    }
+                ]
+            }
         },
         "settings": {
             "styles": {
@@ -1121,9 +1207,9 @@
                     "general_badge_text_color": "#ffffff"
                 }
             },
-            "textScale": "0.875",
+            "textScale": "1",
             "bodyTextFont": "Inter",
-            "headingFont": "Inter",
+            "headingFont": "Ubuntu",
             "subheadingFont": "Inter",
             "buttonFont": "Inter",
             "accentFont": "Cormorant Garamond",
@@ -1138,7 +1224,7 @@
             "taxFreePrices": false,
             "policyAgreementMethod": "check",
             "buttonBorderRadius": "3px",
-            "klarnaPlacementsClientId": null,
+            "klarnaPlacementsClientId": "",
             "facebookPageUrl": "",
             "instagramPageUrl": "",
             "twitterPageUrl": "",
@@ -1165,17 +1251,27 @@
                 "id": "footer",
                 "name": "footer",
                 "settings": {
-                    "menu": "footer",
-                    "footerTopTextStatus": true,
-                    "footerBottomTextStatus": true,
-                    "footerTopNewsletterStatus": true,
-                    "footerMiddleSocialMediaButtonsStatus": false,
-                    "footerMiddlePaymentMethodsStatus": false,
-                    "footerTopTextTitle": "Cora - trendej\u00e4 vuodesta 2000",
-                    "footerTopTextContent": "<p>Olemme t&auml;m&auml;n vuosituhannen muotikaupan edell&auml;k&auml;vij&auml;. Parhaat merkit parhaaseen hintaan ja ymp&auml;rist&ouml;tietoisuus kaupan p&auml;&auml;lle. Kaikista tilauksista istutamme puun.<\/p>",
-                    "footerBottomTextContent": "<p>T&auml;m&auml; on Cora teema Finqu verkkokauppaan<\/p>",
-                    "footerTopNewsletterTitle": "Liity sis\u00e4piiriin",
-                    "footerTopNewsletterContent": "<p>Tilaa uutiskirjeemme ja tied\u00e4t ensimm\u00e4isen\u00e4 kaiken!<\/p>",
+                    "footerMenu1Title": "Tiedot",
+                    "footerMenu1": "footer",
+                    "footerMenu2Title": "",
+                    "footerMenu2": "footer",
+                    "footerMenu3Title": "",
+                    "footerMenu3": "footer",
+                    "footerTextArea1Title": "Verkkokauppojen koti",
+                    "footerTextArea1Content": "<p>Olemme Finqu ja t\u00e4m\u00e4n vuosituhannen verkkokaupan edell\u00e4k\u00e4vij\u00e4. Parhaat teemat parhaaseen hintaan. Poimi omasi ja perusta verkkokauppa 5 minuutissa.<\/p>",
+                    "footerTextArea2Title": "",
+                    "footerTextArea2Content": "<p>T\u00e4m\u00e4 on Cora-teeman demokauppa<\/p>",
+                    "footerNewsletterTitle": "Liity sis\u00e4piiriin",
+                    "footerNewsletterContent": "<p>Tilaa uutiskirjeemme ja tied\u00e4t ensimm\u00e4isen\u00e4 kaiken!<\/p>",
+                    "footerSocialMediaTitle": "",
+                    "footerSocialMediaContent": "",
+                    "footerLayout": "1",
+                    "footerPaymentMethodsImgSrc": "",
+                    "footerTextArea1Status": true,
+                    "footerTextArea2Status": true,
+                    "footerNewsletterStatus": true,
+                    "footerSocialMediaButtonsStatus": false,
+                    "footerPaymentMethodsStatus": false,
                     "sectionHeight": "",
                     "sectionInnerSpacing": "",
                     "sectionContentSpacing": "",
@@ -1193,7 +1289,418 @@
                     "showPricing": true
                 }
             }
-        ]
+        ],
+        "pages": {
+            "131989": [],
+            "131744": {
+                "sections": [
+                    {
+                        "id": "b2c14e0c8e50cc3db0234e4907e8bd53",
+                        "name": "image-carousel",
+                        "settings": {
+                            "loop": true,
+                            "autoplay": true,
+                            "autoplaySpeed": "3",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "sectionHeight": "",
+                            "slideImgOverlay": "30",
+                            "sectionStyle": "darkest",
+                            "setting_blocks": {
+                                "items": {
+                                    "F4c98887-2f85-4be6-a1b8-607600aa691c": {
+                                        "type": "item",
+                                        "settings": {
+                                            "imgPlaceholder": true,
+                                            "imgSrc": "https:\/\/images.unsplash.com\/photo-1509631179647-0177331693ae?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw5fHxmYXNoaW9ufGVufDB8fHx8MTYzMjczMzM0Mg&ixlib=rb-1.2.1&q=85",
+                                            "imgAlt": "",
+                                            "title": "Paljon tuotteita jopa -75%",
+                                            "description": "",
+                                            "btnLabel": "",
+                                            "btnResource": {
+                                                "type": "url",
+                                                "record_id": "",
+                                                "url": ""
+                                            },
+                                            "btnResourceOpenInNewWindowStatus": true
+                                        }
+                                    },
+                                    "81e92083-2c17-4507-89d8-5e5487784360": {
+                                        "type": "item",
+                                        "settings": {
+                                            "imgPlaceholder": true,
+                                            "imgSrc": "https:\/\/images.unsplash.com\/photo-1549298916-f52d724204b4?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwxMnx8c25lYWtlcnN8ZW58MHx8fHwxNjMyNzMzMzg4&ixlib=rb-1.2.1&q=85",
+                                            "imgAlt": "",
+                                            "title": "Varaston tyhjennys k\u00e4ynniss\u00e4! Nyt keng\u00e4t jopa -25%",
+                                            "description": "",
+                                            "btnLabel": "",
+                                            "btnResource": {
+                                                "type": "url",
+                                                "record_id": "",
+                                                "url": ""
+                                            },
+                                            "btnResourceOpenInNewWindowStatus": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "blocks": []
+                    },
+                    {
+                        "id": "dc6b537860429fb5dab0a1bc612ada49",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "custom",
+                            "sectionHeightCustomTop": "50",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "c274f33260358d8f85b644a6274f8afb",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Outlet",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h1"
+                                }
+                            },
+                            {
+                                "id": "e7acee9d28f30bb100c8236f3edb24e9",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p>Paljon merkkituotteita alennetuin hinnoin!<\/p>"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "755510ba5d2431c249ffaff6d4c24119",
+                        "name": "product-list",
+                        "settings": {
+                            "sectionTitle": "",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "listType": "discounted",
+                            "tagId": "",
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "",
+                                "name": ""
+                            },
+                            "itemAmount": "8",
+                            "itemsPerRow": "3",
+                            "showBadges": true,
+                            "showManufacturer": true,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "custom",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "50",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    }
+                ]
+            },
+            "132029": {
+                "sections": [
+                    {
+                        "id": "c14443879d50c834f3910684f42e09b9",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": null,
+                            "sectionBgImgPos": "",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "b560a991c6980516fb746cca3c078234",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Br\u00e4ndit",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "83d34529c19e6aefd8e4f9a24f507486",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "xl",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "9",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "30",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "darkest"
+                        },
+                        "blocks": [
+                            {
+                                "id": "f89741102e10df32231073650f5d7684",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Superdry",
+                                    "subtitle": "",
+                                    "textAlign": "center",
+                                    "titleTag": "h2"
+                                }
+                            },
+                            {
+                                "id": "afcae8d871c202cc41512bf100332eb1",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p style=\"text-align: center;\">TUTUSTU MALLISTOIHIMME L&ouml;yd&auml; ainutlaatuinen ja itsen&auml;inen tyylisi tuotemerkkiemme avulla: Original &amp; Vintage, autenttinen, ikoninen, vapaamielinen; Studios, hienostunut ja minimalistinen; CODE, klassista urheilu- ja katumuotia; X, huomiota her&auml;tt&auml;vi&auml; sek&auml; miehille ett&auml; naisille sopivia vaatteita.<\/p>"
+                                }
+                            },
+                            {
+                                "id": "cfa3c67d9f28dcc3ded0bbc1d301ef90",
+                                "name": "button",
+                                "settings": {
+                                    "btnLabel": "Katso tuotteet",
+                                    "btnResource": {
+                                        "type": "url",
+                                        "record_id": "7109504",
+                                        "url": "Superdry"
+                                    },
+                                    "openInNewWindowStatus": false,
+                                    "contentAlign": "center"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2991402e80cc1c97bcedac7fa04c05d0",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "custom",
+                            "sectionHeightCustomTop": "50",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "5524b7f59756a23b2263223b8b18c30b",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Suosittelemme",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h2"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ad0e0310ff10d9512f0a55d2218e6758",
+                        "name": "product-carousel",
+                        "settings": {
+                            "sectionTitle": "",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "carouselStyle": "1",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "listType": "manufacturer",
+                            "tagId": "",
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "91706",
+                                "name": "Superdry"
+                            },
+                            "itemAmount": "12",
+                            "itemsPerView": "6",
+                            "showBadges": true,
+                            "showManufacturer": false,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "sm",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    },
+                    {
+                        "id": "60d796d8dc160ee31e75d08d9639a539",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "xl",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "9",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "30",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "darkest"
+                        },
+                        "blocks": [
+                            {
+                                "id": "a7a0fa2cdf617a58285423b98166c47c",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "ECCO",
+                                    "subtitle": "",
+                                    "textAlign": "center",
+                                    "titleTag": "h2"
+                                }
+                            },
+                            {
+                                "id": "2e0b5df29b65c037aedf691567d6762e",
+                                "name": "text",
+                                "settings": {
+                                    "richtextHtml": "<p style=\"text-align: center;\">Uusi Mallisto &ndash; Hitaita tyylej&auml;. Nyt saatavilla! Parhaimmat tyylit kest&auml;v&auml;t pidemp&auml;&auml;n kuin yhden sesongin. Tutustu tyylikk&auml;isiin ja rentoihin kenkiin, joita haluat k&auml;ytt&auml;&auml; yh&auml; uudelleen.<\/p><p><br><\/p>"
+                                }
+                            },
+                            {
+                                "id": "7e79c4cc854b3ca88a4d8d5708dbe1cd",
+                                "name": "button",
+                                "settings": {
+                                    "btnLabel": "Katso tuotteet",
+                                    "btnResource": {
+                                        "type": "url",
+                                        "record_id": "7109509",
+                                        "url": "ECCO"
+                                    },
+                                    "openInNewWindowStatus": false,
+                                    "contentAlign": "center"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "abd717679968241c652ddef45d5947ef",
+                        "name": "custom",
+                        "settings": {
+                            "sectionHeight": "custom",
+                            "sectionHeightCustomTop": "50",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionContentWidth": "12",
+                            "sectionContentAlign": "center",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": [
+                            {
+                                "id": "2c383be9f7d4f329f1644c6fae6add89",
+                                "name": "heading",
+                                "settings": {
+                                    "title": "Suosittelemme",
+                                    "subtitle": "",
+                                    "textAlign": "left",
+                                    "titleTag": "h2"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "52f2cd1c89f6d1128d1ceb864aaaf15e",
+                        "name": "product-carousel",
+                        "settings": {
+                            "sectionTitle": "",
+                            "sectionSubtitle": "",
+                            "sectionHeaderTextAlign": "left",
+                            "carouselStyle": "1",
+                            "navigation": "hover",
+                            "pagination": "hover",
+                            "listType": "manufacturer",
+                            "tagId": "",
+                            "category": {
+                                "type": "category",
+                                "id": "",
+                                "name": ""
+                            },
+                            "manufacturer": {
+                                "type": "manufacturer",
+                                "id": "91711",
+                                "name": "ECCO"
+                            },
+                            "itemAmount": "9",
+                            "itemsPerView": "6",
+                            "showBadges": true,
+                            "showManufacturer": false,
+                            "showProductName": true,
+                            "showPricing": true,
+                            "sectionHeight": "sm",
+                            "sectionHeightCustomTop": "0",
+                            "sectionHeightCustomBottom": "0",
+                            "sectionInnerSpacing": "",
+                            "sectionBgImgSrc": "",
+                            "sectionBgImgPos": "left-top",
+                            "sectionBgImgOverlay": "0",
+                            "sectionContentBgColorStatus": false,
+                            "sectionContentBgColor": "#ffffff",
+                            "sectionStyle": "general"
+                        },
+                        "blocks": []
+                    }
+                ]
+            }
+        }
     },
     "presets": [
         {
@@ -1924,13 +2431,12 @@
                         "general_badge_text_color": "#ffffff"
                     }
                 },
-                "textScale": "0.875",
+                "textScale": "1",
                 "bodyTextFont": "Inter",
-                "headingFont": "Inter",
+                "headingFont": "Ubuntu",
                 "subheadingFont": "Inter",
                 "buttonFont": "Inter",
                 "accentFont": "Cormorant Garamond",
-                "buttonBorderRadius": "3px",
                 "sectionHeight": "md",
                 "sectionInnerSpacing": "off",
                 "sectionContentSpacing": "md",
@@ -1941,6 +2447,8 @@
                 "addToCartNotification": true,
                 "taxFreePrices": false,
                 "policyAgreementMethod": "check",
+                "buttonBorderRadius": "3px",
+                "klarnaPlacementsClientId": "",
                 "facebookPageUrl": "",
                 "instagramPageUrl": "",
                 "twitterPageUrl": "",
@@ -1967,17 +2475,27 @@
                     "id": "footer",
                     "name": "footer",
                     "settings": {
-                        "menu": "footer",
-                        "footerTopTextStatus": true,
-                        "footerBottomTextStatus": true,
-                        "footerTopNewsletterStatus": true,
-                        "footerMiddleSocialMediaButtonsStatus": false,
-                        "footerMiddlePaymentMethodsStatus": false,
-                        "footerTopTextTitle": "Lorem ipsum dolor sit amet",
-                        "footerTopTextContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien.<\/p>",
-                        "footerBottomTextContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
-                        "footerTopNewsletterTitle": "Lorem ipsum dolor sit amet",
-                        "footerTopNewsletterContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                        "footerMenu1Title": "Lorem ipsum dolor sit amet",
+                        "footerMenu1": "footer",
+                        "footerMenu2Title": "",
+                        "footerMenu2": "footer",
+                        "footerMenu3Title": "",
+                        "footerMenu3": "footer",
+                        "footerTextArea1Title": "Lorem ipsum dolor sit amet",
+                        "footerTextArea1Content": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien.<\/p>",
+                        "footerTextArea2Title": "",
+                        "footerTextArea2Content": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                        "footerNewsletterTitle": "Lorem ipsum dolor sit amet",
+                        "footerNewsletterContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                        "footerSocialMediaTitle": "",
+                        "footerSocialMediaContent": "",
+                        "footerLayout": "1",
+                        "footerPaymentMethodsImgSrc": "",
+                        "footerTextArea1Status": true,
+                        "footerTextArea2Status": true,
+                        "footerNewsletterStatus": true,
+                        "footerSocialMediaButtonsStatus": false,
+                        "footerPaymentMethodsStatus": false,
                         "sectionHeight": "",
                         "sectionInnerSpacing": "",
                         "sectionContentSpacing": "",
@@ -1999,6 +2517,6 @@
         }
     ],
     "asset_cache": {
-        "main.css": "main.a642b5896a50a2df785edb05183df1e9.css"
+        "main.css": "main.8d37a5c2d655cf475f944ae8403728f8.css"
     }
 }
