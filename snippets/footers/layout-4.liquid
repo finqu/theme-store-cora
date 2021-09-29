@@ -61,25 +61,25 @@
 
                                     {% for item in footerMenu1.links %}
 
+                                        <li class="site-footer-menu-item">
+
+                                            {%- if item.url -%}
+
+                                                <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                    {{ item.title }}
+                                                </a>
+
+                                            {%- else -%}
+
+                                                <span class="site-footer-menu-item-text">
+                                                    {{ item.title }}
+                                                </span>
+
+                                            {%- endif -%}
+
+                                        </li>
+
                                         {% if item.links %}
-
-                                            <li class="site-footer-menu-item">
-
-                                                {%- if item.url -%}
-
-                                                    <a href="{{ item.url }}" class="site-footer-menu-item-text">
-                                                        {{ item.title }}
-                                                    </a>
-
-                                                {%- else -%}
-
-                                                    <span class="site-footer-menu-item-text">
-                                                        {{ item.title }}
-                                                    </span>
-
-                                                {%- endif -%}
-
-                                            </li>
 
                                             {% for item in item.links %}
 
@@ -133,25 +133,25 @@
 
                                     {% for item in footerMenu2.links %}
 
+                                        <li class="site-footer-menu-item">
+
+                                            {%- if item.url -%}
+
+                                                <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                    {{ item.title }}
+                                                </a>
+
+                                            {%- else -%}
+
+                                                <span class="site-footer-menu-item-text">
+                                                    {{ item.title }}
+                                                </span>
+
+                                            {%- endif -%}
+
+                                        </li>
+
                                         {% if item.links %}
-
-                                            <li class="site-footer-menu-item">
-
-                                                {%- if item.url -%}
-
-                                                    <a href="{{ item.url }}" class="site-footer-menu-item-text">
-                                                        {{ item.title }}
-                                                    </a>
-
-                                                {%- else -%}
-
-                                                    <span class="site-footer-menu-item-text">
-                                                        {{ item.title }}
-                                                    </span>
-
-                                                {%- endif -%}
-
-                                            </li>
 
                                             {% for item in item.links %}
 
