@@ -1,0 +1,17 @@
+// Relative font size
+// -----------------------------------------------------------------------------------------
+
+@mixin relative-font-size($size) {
+
+    $ratio: to-number(#{$size}) - 1;
+
+    font-size: $size;
+
+    @media screen and (max-width: 1600px) and (orientation: portrait) {
+        font-size: calc(#{$ratio} * 1.2vh + #{$font-size-base});
+    }
+
+    @media screen and (max-width: 1600px) and (orientation: landscape) {
+        font-size: calc(#{$ratio} * 1.2vw + #{$font-size-base});
+    }
+}

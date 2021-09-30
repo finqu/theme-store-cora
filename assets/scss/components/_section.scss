@@ -140,7 +140,7 @@
 				.item {
 					display: flex;
 					align-items: center;
-					font-size: 1rem;
+					@include relative-font-size(1rem);
 					font-weight: $font-weight-bold;
 					@include media-breakpoint-down(md) {
 						display: none;
@@ -174,27 +174,26 @@
 			}
 
 			.title {
-				font-size: $h1-font-size * 1.15;
+				@include relative-font-size($h1-font-size * 1.15);
 				font-weight: $font-weight-bold;
 				font-family: $headings-font-family;
 				line-height: $headings-line-height;
 				margin-bottom: 0;
+				overflow-wrap: break-word;
+			    word-wrap: break-word;
+			    hyphens: auto;
 			}
 		}
 
 		.subtitle-container {
 
 			.subtitle {
-				font-size: $h4-font-size;
+				@include relative-font-size($h4-font-size);
 				font-family: $subheadings-font-family;
 				line-height: $headings-line-height;
-			}
-		}
-
-		.description-container {
-
-			.description {
-
+				overflow-wrap: break-word;
+			    word-wrap: break-word;
+			    hyphens: auto;
 			}
 		}
 	}

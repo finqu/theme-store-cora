@@ -1372,16 +1372,12 @@
 
             {%- assign carouselTitle = 'product.similar_products' | t -%}
 
-            <div class="row mt-4">
+            <div class="mt-4">
 
-                <div class="col">
+                {% render 'section-header', sectionTitle: carouselTitle, sectionContentContainer: 'none' %}
 
-                    {% render 'section-header', sectionTitle: carouselTitle, sectionContentContainer: 'none' %}
-
-                    <div class="product-carousel mt-4">
-                        {% render 'product-carousel', items: product.similar, navigation: 'hover', pagination: 'hover' %}
-                    </div>
-
+                <div class="product-carousel mt-4">
+                    {% render 'product-carousel', items: product.similar, navigation: 'hover', pagination: 'hover' %}
                 </div>
 
             </div>
@@ -1392,16 +1388,12 @@
 
             {%- assign carouselTitle = 'product.compatible_products' | t -%}
 
-            <div class="row mt-4">
+            <div class="mt-4">
 
-                <div class="col">
+                {% render 'section-header', sectionTitle: carouselTitle, sectionContentContainer: 'none' %}
 
-                    {% render 'section-header', sectionTitle: carouselTitle, sectionContentContainer: 'none' %}
-
-                    <div class="product-carousel mt-4">
-                        {% render 'product-carousel', items: product.compatible, navigation: 'hover', pagination: 'hover' %}
-                    </div>
-
+                <div class="product-carousel mt-4">
+                    {% render 'product-carousel', items: product.compatible, navigation: 'hover', pagination: 'hover' %}
                 </div>
 
             </div>

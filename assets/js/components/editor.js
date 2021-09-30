@@ -1,5 +1,6 @@
-import ImageCarousel from './sections/image-carousel';
+import ImageCarousel from './image-carousel';
 import ProductCarousel from './product-carousel';
+import Carousel from './carousel';
 
 export default {
     init: function() {
@@ -24,6 +25,10 @@ export default {
 
             for (const el of e.target.querySelectorAll('.product-carousel')) {
                 new ProductCarousel(el);
+            }
+
+            if (e.target.classList.contains('section-carousel')) {
+                new Carousel(e.target);
             }
         });
 

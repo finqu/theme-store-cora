@@ -59,7 +59,7 @@
     {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
 {%- endif -%}
 
-{%- capture carouselSlideContent -%}
+{%- capture carouselContent -%}
 
     {% if carouselItems.size > 0 %}
 
@@ -93,7 +93,7 @@
 
     <div class="swiper-wrapper">
 
-        {{- carouselSlideContent -}}
+        {{- carouselContent -}}
 
     </div>
 

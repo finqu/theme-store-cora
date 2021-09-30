@@ -44,25 +44,57 @@
     {% for item in section.settings.setting_blocks.items %}
 
         {%- assign imgSrc = item.settings.imgSrc -%}
-        {%- assign imgSizeSm = '768,400' -%}
 
         {%- case sectionHeight -%}
+
             {%- when 'sm' -%}
-                {%- assign imgSizeMd = '768,400' -%}
-                {%- assign imgSizeLg = '1100,400' -%}
-                {%- assign imgSizeXl = '1905,400' -%}
+                {%- assign imgSize10 = '3840,400' -%}
+                {%- assign imgSize9 = '2560,400' -%}
+                {%- assign imgSize8 = '2048,400' -%}
+                {%- assign imgSize7 = '1920,400' -%}
+                {%- assign imgSize6 = '1680,400' -%}
+                {%- assign imgSize5 = '1440,400' -%}
+                {%- assign imgSize4 = '1280,400' -%}
+                {%- assign imgSize3 = '992,400' -%}
+                {%- assign imgSize2 = '768,400' -%}
+                {%- assign imgSize1 = '414,350' -%}
+
             {%- when 'md' -%}
-                {%- assign imgSizeMd = '768,600' -%}
-                {%- assign imgSizeLg = '1100,600' -%}
-                {%- assign imgSizeXl = '1905,600' -%}
+                {%- assign imgSize10 = '3840,600' -%}
+                {%- assign imgSize9 = '2560,600' -%}
+                {%- assign imgSize8 = '2048,600' -%}
+                {%- assign imgSize7 = '1920,600' -%}
+                {%- assign imgSize6 = '1680,600' -%}
+                {%- assign imgSize5 = '1440,600' -%}
+                {%- assign imgSize4 = '1280,600' -%}
+                {%- assign imgSize3 = '992,600' -%}
+                {%- assign imgSize2 = '768,600' -%}
+                {%- assign imgSize1 = '414,350' -%}
+
             {%- when 'lg' -%}
-                {%- assign imgSizeMd = '768,800' -%}
-                {%- assign imgSizeLg = '1100,800' -%}
-                {%- assign imgSizeXl = '1905,800' -%}
+                {%- assign imgSize10 = '3840,800' -%}
+                {%- assign imgSize9 = '2560,800' -%}
+                {%- assign imgSize8 = '2048,800' -%}
+                {%- assign imgSize7 = '1920,800' -%}
+                {%- assign imgSize6 = '1680,800' -%}
+                {%- assign imgSize5 = '1440,800' -%}
+                {%- assign imgSize4 = '1280,800' -%}
+                {%- assign imgSize3 = '992,800' -%}
+                {%- assign imgSize2 = '768,800' -%}
+                {%- assign imgSize1 = '414,350' -%}
+
             {%- when 'xl' -%}
-                {%- assign imgSizeMd = '768,945' -%}
-                {%- assign imgSizeLg = '1100,945' -%}
-                {%- assign imgSizeXl = '1905,945' -%}
+                {%- assign imgSize10 = '3840,945' -%}
+                {%- assign imgSize9 = '2560,945' -%}
+                {%- assign imgSize8 = '2048,945' -%}
+                {%- assign imgSize7 = '1920,945' -%}
+                {%- assign imgSize6 = '1600,945' -%}
+                {%- assign imgSize5 = '1440,945' -%}
+                {%- assign imgSize4 = '1280,945' -%}
+                {%- assign imgSize3 = '992,945' -%}
+                {%- assign imgSize2 = '768,945' -%}
+                {%- assign imgSize1 = '414,350' -%}
+
         {%- endcase -%}
 
         <div class="swiper-slide">
@@ -81,22 +113,50 @@
 
                     <picture>
 
-                        <source media="(min-width: 768px)" data-srcset="
-                            {{ imgSrc | thumb: imgSizeMd }} 1x,
-                            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+                        <source media="(min-width: 3840px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize10 }} 1x,
+                            {{ imgSrc | thumb: imgSize10 | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 2560px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize9 }} 1x,
+                            {{ imgSrc | thumb: imgSize9 | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 2048px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize8 }} 1x,
+                            {{ imgSrc | thumb: imgSize8 | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 1920px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize7 }} 1x,
+                            {{ imgSrc | thumb: imgSize7 | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 1600px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize6 }} 1x,
+                            {{ imgSrc | thumb: imgSize6 | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 1440px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize5 }} 1x,
+                            {{ imgSrc | thumb: imgSize5 | thumb:'@2x' }} 2x">
+
+                        <source media="(min-width: 1280px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize4 }} 1x,
+                            {{ imgSrc | thumb: imgSize4 | thumb:'@2x' }} 2x">
 
                         <source media="(min-width: 992px)" data-srcset="
-                            {{ imgSrc | thumb: imgSizeLg }} 1x,
-                            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                            {{ imgSrc | thumb: imgSize3 }} 1x,
+                            {{ imgSrc | thumb: imgSize3 | thumb:'@2x' }} 2x">
 
-                        <source media="(min-width: 1200px)" data-srcset="
-                            {{ imgSrc | thumb: imgSizeXl }} 1x,
-                            {{ imgSrc | thumb: imgSizeXl | thumb:'@2x' }} 2x">
+                        <source media="(min-width: 768px)" data-srcset="
+                            {{ imgSrc | thumb: imgSize2 }} 1x,
+                            {{ imgSrc | thumb: imgSize2 | thumb:'@2x' }} 2x">
+
+                        <source data-srcset="
+                            {{ imgSrc | thumb: imgSize1 }} 1x,
+                            {{ imgSrc | thumb: imgSize1 | thumb:'@2x' }} 2x">
 
                         <img
                             alt="{{ item.settings.imgAlt }}"
-                            data-src="{{ imgSrc | thumb: imgSizeMobile }}"
-                            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                            data-src="{{ imgSrc | thumb: imgSize1 }}"
+                            data-srcset="{{ imgSrc | thumb: imgSize1 }} 1x,{{ imgSrc | thumb: imgSize1 | thumb:'@2x' }} 2x"
                             class="lazy slide-lazy-img">
 
                     </picture>
@@ -210,7 +270,6 @@
                     "fi": "Sisältö"
                 },
                 "id": "items",
-                "max_blocks": 4,
                 "call_to_action": {
                     "en": "Add a item",
                     "fi": "Lisää kohde"

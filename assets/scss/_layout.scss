@@ -310,7 +310,7 @@ body > #search-overlay {
                         align-items: center;
 
                         .site-header-top-logo-text {
-                            font-size: $font-size-base * 2.3;
+                            @include relative-font-size($font-size-base * 2.3);
                         }
                     }
 

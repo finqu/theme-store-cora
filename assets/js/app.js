@@ -10,8 +10,9 @@ import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
 import Handlebars from 'handlebars';
-import ImageCarousel from './components/sections/image-carousel';
+import ImageCarousel from './components/image-carousel';
 import ProductCarousel from './components/product-carousel';
+import Carousel from './components/carousel';
 
 export default class App {
 
@@ -341,12 +342,12 @@ export default class App {
 	    		new ImageCarousel(el);
 	    	}
 
-	    	for (const el of document.querySelectorAll('.section-product-carousel')) {
+	    	for (const el of document.querySelectorAll('.section-product-carousel, .product-carousel')) {
 	    		new ProductCarousel(el);
 	    	}
 
-	    	for (const el of document.querySelectorAll('.product-carousel')) {
-	    		new ProductCarousel(el);
+	    	for (const el of document.querySelectorAll('.section-carousel')) {
+	    		new Carousel(el);
 	    	}
 	    }
 	}

@@ -2,7 +2,7 @@ import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Parallax } from '
 import 'swiper/swiper.min.css';
 import 'swiper/components/controller/controller.min.css';
 import 'swiper/components/effect-fade/effect-fade.min.css';
-import { debounce } from '../utils';
+import { debounce } from './utils';
 
 Swiper.use([
     Navigation,

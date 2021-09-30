@@ -3,22 +3,131 @@
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 
-{%- case section.settings.listType -%}
-    {% when 'discounted' %}
-        {%- assign items = products.discounted -%}
-    {% when 'new' %}
-        {%- assign items = products.new_products -%}
-    {% when 'tag' %}
-        {%- assign items = products.tags[section.settings.tagId] -%}
-    {% when 'category' %}
-        {%- assign items = categories[section.settings.category.id].products -%}
-    {% when 'manufacturer' %}
-        {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
+{%- assign carouselClasses = '' -%}
+
+{%- capture carouselSettings -%}
+    data-carousel-pagination="{{- carouselPagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}"
+{%- endcapture -%}
+
+{%- if section.settings.pagination == 'hover' -%}
+    {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: paginationHoverClass -%}
+{%- endif -%}
+
+{%- if section.settings.navigation == 'hover' -%}
+    {% capture navigationHoverClass %} swiper-navigation-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
+{%- endif -%}
+
+{%- case section.settings.itemsPerView -%}
+
+    {%- when '2' -%}
+        {%- assign imgSize = '560,560' -%}
+
+    {%- when '3' -%}
+        {%- assign imgSize = '360,360' -%}
+
+    {%- when '4' -%}
+        {%- assign imgSize = '260,260' -%}
+
+    {%- when '5' -%}
+        {%- assign imgSize = '200,200' -%}
+
+    {%- when '6' -%}
+        {%- assign imgSize = '160,160' -%}
+
 {%- endcase -%}
+
+{%- capture content -%}
+
+    {% for item in section.settings.setting_blocks.items %}
+
+        {%- assign imgSrc = item.settings.imgSrc -%}
+
+        {%- capture slideContent -%}
+
+            <span class="slide-text">
+                {{ item.settings.text }}
+            </span>
+
+            <div class="aspect-ratio-1-1">
+
+                <div class="aspect-ratio-container">
+
+                    {% if imgSrc %}
+
+                        <picture>
+                            <img
+                                alt="{{ item.settings.imgAlt }}"
+                                data-src="{{ imgSrc | thumb: imgSize }}"
+                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                class="lazy aspect-ratio-item {% if item.settings.imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}">
+
+                        </picture>
+
+                    {% else %}
+
+                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endcapture %}
+
+        <div class="swiper-slide">
+
+            {% if item.settings.resource.url %}
+
+                <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+
+                    {{ slideContent }}
+
+                </a>
+
+            {% else %}
+
+                {{ slideContent }}
+
+            {% endif%}
+
+        </div>
+
+    {% endfor %}
+
+{%- endcapture -%}
 
 {%- capture sectionContent -%}
 
-    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: section.settings.itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing %}
+    <div class="swiper-container carousel-style-{{ section.settings.carouselStyle }}{{ carouselClasses }}" {{ carouselSettings }}>
+
+        <div class="swiper-wrapper">
+
+            {{- content -}}
+
+        </div>
+
+        {%- if section.settings.navigation -%}
+
+            <div class="swiper-button-prev">
+                {%- render 'icon', icon: 'arrow-left-1-itskPx' -%}
+            </div>
+
+            <div class="swiper-button-next">
+                {%- render 'icon', icon: 'arrow-right-1-Ei8Dl0' -%}
+            </div>
+
+        {%- endif -%}
+
+        {%- if section.settings.pagination -%}
+
+            <div class="swiper-pagination"></div>
+
+        {%- endif -%}
+
+    </div>
 
 {%- endcapture -%}
 
@@ -27,14 +136,87 @@
 {% schema %}
 {
     "name": {
-        "en": "Product carousel",
-        "fi": "Tuotekaruselli"
+        "en": "Carousel",
+        "fi": "Karuselli"
     },
     "tag": "section",
-    "class": "section section-product-carousel has-lazy",
+    "class": "section section-carousel has-lazy",
     "settings": {
         "list_type": "tabs",
         "groups": [
+            {
+                "title": {
+                    "en": "Content",
+                    "fi": "Sisältö"
+                },
+                "id": "items",
+                "call_to_action": {
+                    "en": "Add a item",
+                    "fi": "Lisää kohde"
+                },
+                "is_sortable": true,
+                "setting_blocks": [
+                    {
+                        "type": "item",
+                        "title": {
+                            "en": "Item",
+                            "fi": "Kohde"
+                        },
+                        "settings": [
+                            {
+                                "id": "imgSrc",
+                                "type": "image-picker",
+                                "label": {
+                                    "en": "Image",
+                                    "fi": "Kuva"
+                                }
+                            },
+                            {
+                                "id": "imgAlt",
+                                "type": "text",
+                                "label": {
+                                    "en": "Image alt",
+                                    "fi": "Kuvan alt-teksti"
+                                }
+                            },
+                            {
+                                "id": "imgFit",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Image area fill",
+                                    "fi": "Kuva-alueen täyttö"
+                                },
+                                "default": false
+                            },
+                            {
+                                "id": "text",
+                                "type": "text",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            },
+                            {
+                                "id": "resource",
+                                "type": "url",
+                                "label": {
+                                    "en": "Link",
+                                    "fi": "Lnkki"
+                                }
+                            },
+                            {
+                                "id": "resourceOpenInNewWindowStatus",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Open link in a new window",
+                                    "fi": "Avaa linkki uudessa ikkunassa"
+                                },
+                                "default": true
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 "title": {
                     "en": "General",
@@ -170,139 +352,17 @@
                         ]
                     },
                     {
-                        "id": "listType",
-                        "type": "select",
-                        "label": {
-                            "en": "List type",
-                            "fi": "Listan tyyppi"
-                        },
-                        "default": "new",
-                        "options": [
-                            {
-                                "value": "discounted",
-                                "label": {
-                                    "en": "Discounted products",
-                                    "fi": "Alennetut tuotteet"
-                                }
-                            },
-                            {
-                                "value": "new",
-                                "label": {
-                                    "en": "New products",
-                                    "fi": "Uudet tuotteet"
-                                }
-                            },
-                            {
-                                "value": "tag",
-                                "label": {
-                                    "en": "Tag products",
-                                    "fi": "Tagi tuotteet"
-                                }
-                            },
-                            {
-                                "value": "category",
-                                "label": {
-                                    "en": "Product category products",
-                                    "fi": "Tuoteryhmän tuotteet"
-                                }
-                            },
-                            {
-                                "value": "manufacturer",
-                                "label": {
-                                    "en": "Manufaturer products",
-                                    "fi": "Valmistajan tuotteet"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "id": "tagId",
-                        "type": "text",
-                        "label": {
-                            "en": "Tag",
-                            "fi": "Tag"
-                        },
-                        "conditions": ["listType eq tag"]
-                    },
-                    {
-                        "id": "category",
-                        "type": "category",
-                        "label": {
-                            "en": "Category",
-                            "fi": "Tuoteryhmä"
-                        },
-                        "conditions": ["listType eq category"]
-                    },
-                    {
-                        "id": "manufacturer",
-                        "type": "manufacturer",
-                        "label": {
-                            "en": "manufacturer",
-                            "fi": "Valmistaja"
-                        },
-                        "conditions": ["listType eq manufacturer"]
-                    },
-                    {
-                        "id": "itemAmount",
-                        "label": {
-                            "en": "Product amount",
-                            "fi": "Tuotemäärä"
-                        },
-                        "type": "range",
-                        "min": 3,
-                        "max": 50,
-                        "step": 1,
-                        "default": 20,
-                        "unit": " "
-                    },
-                    {
                         "id": "itemsPerView",
                         "label": {
-                            "en": "Products per view",
-                            "fi": "Tuotteita per näkymä"
+                            "en": "Items per view",
+                            "fi": "Kohteita per näkymä"
                         },
                         "type": "range",
-                        "min": 3,
+                        "min": 2,
                         "max": 6,
                         "step": 1,
                         "default": 4,
                         "unit": " "
-                    },
-                    {
-                        "id": "showBadges",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show badges",
-                            "fi": "Näytä merkit"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "showManufacturer",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show manufacturer",
-                            "fi": "Näytä valmistaja"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "showProductName",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show product name",
-                            "fi": "Näytä tuotteen nimi"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "showPricing",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show price information",
-                            "fi": "Näytä hintatiedot"
-                        },
-                        "default": true
                     }
                 ]
             },
@@ -559,7 +619,7 @@
     },
     "presets": [
         {
-            "category": "theme-product",
+            "category": "theme-basic",
             "settings": {
                 "sectionTitle": "",
                 "sectionSubtitle": "",
@@ -567,19 +627,7 @@
                 "carouselStyle": "1",
                 "navigation": "hover",
                 "pagination": "hover",
-                "listType": "new",
-                "tagId": "",
-                "resource": {
-                    "type": "url",
-                    "record_id": "",
-                    "url": ""
-                },
-                "itemAmount": "20",
                 "itemsPerView": "4",
-                "showBadges": true,
-                "showManufacturer": true,
-                "showProductName": true,
-                "showPricing": true,
                 "sectionHeight": "",
                 "sectionInnerSpacing": "",
                 "sectionBgImgSrc": "",
@@ -587,7 +635,109 @@
                 "sectionBgImgOverlay": "0",
                 "sectionContentBgColorStatus": false,
                 "sectionContentBgColor": "#ffffff",
-                "sectionStyle": "general"
+                "sectionStyle": "general",
+                "setting_blocks": {
+                    "items": {
+                        "A4c98887-2f85-4be6-a1b8-607600aa691c": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "asd",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "1343",
+                                    "url": "Testi"
+                                },
+                                "resourceOpenInNewWindowStatus": true
+                            }
+                        },
+                        "81e92083-2c17-4507-89d8-5e5487784360": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "81e92083-2c17-4507-89d8-5e5487714360": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "81e92083-2c17-3507-89d8-5e5487784360": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "81e92083-2c17-4507-89d8-5e5487784361": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "51e92083-2c17-4507-89d8-5e5487784360": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "81e42083-2c17-4507-89d8-5e5487784360": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgAlt": "",
+                                "text": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        }
+                    }
+                }
             }
         }
     ]

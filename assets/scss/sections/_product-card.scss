@@ -189,9 +189,9 @@ body {
 			margin-bottom: spacer(1);
 
 			.product-manufacturer-text {
+				@include relative-font-size($font-size-base * 2);
 				font-weight: $font-weight-normal;
 				font-family: $accent-font-family;
-	            font-size: $font-size-base * 2;
 	            line-height: $line-height-computed * 1.6;
 			}
 		}
@@ -199,7 +199,7 @@ body {
 		.product-name {
 
 			.product-name-text {
-				font-size: $font-size-base * 2;
+				@include relative-font-size($font-size-base * 2);
 	            line-height: $line-height-computed * 2.4;
 			}
 		}
@@ -483,6 +483,6 @@ body {
 	}
 
 	.section-header .title-container .title {
-		font-size: $font-size-base * 2;
+		@include relative-font-size($font-size-base * 2);
 	}
 }
