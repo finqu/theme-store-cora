@@ -112,6 +112,16 @@ body {
 				align-self: flex-start;
 				padding: 0;
 
+				@include media-breakpoint-up(md) {
+					.swiper-slide {
+						visibility: hidden;
+
+						&.swiper-slide-active {
+							visibility: visible;
+						}
+					}
+				}
+
 				.product-media-video-container {
 					position: relative;
 

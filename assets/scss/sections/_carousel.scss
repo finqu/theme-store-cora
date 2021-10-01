@@ -22,6 +22,37 @@
 		&[data-carousel-pagination="hover"],
 		&[data-carousel-pagination="on"] {
 			padding-bottom: spacer(6);
+
+			.swiper-button-prev,
+			.swiper-button-next {
+				top: calc(50% - #{spacer(6) / 2});
+			}
+		}
+
+		.slide-text-container {
+			display: flex;
+		    align-items: center;
+		    justify-content: center;
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    height: 100%;
+		    width: 100%;
+		    z-index: 2;
+		    overflow: hidden;
+		    padding: spacer(4);
+
+		    .slide-text {
+			    @include relative-font-size($font-size-base * 2);
+			    font-weight: $font-weight-bold;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 3;
+			    -webkit-box-orient: vertical;
+			}
 		}
 	}
 

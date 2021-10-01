@@ -23,6 +23,11 @@
 		&[data-carousel-pagination="hover"],
 		&[data-carousel-pagination="on"] {
 			padding-bottom: spacer(6);
+
+			.swiper-button-prev,
+			.swiper-button-next {
+				top: calc(50% - #{spacer(6) / 2});
+			}
 		}
 	}
 

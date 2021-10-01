@@ -6,7 +6,7 @@
 {%- assign carouselClasses = '' -%}
 
 {%- capture carouselSettings -%}
-    data-carousel-pagination="{{- carouselPagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}"
+    data-carousel-pagination="{{- section.settings.pagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}"
 {%- endcapture -%}
 
 {%- if section.settings.pagination == 'hover' -%}
@@ -38,6 +38,12 @@
 
 {%- endcase -%}
 
+<style>
+    #finqu-section-{{ section.id }} .slide-text {
+        color: {{ section.settings.slideTextColor }};
+    }
+</style>
+
 {%- capture content -%}
 
     {% for item in section.settings.setting_blocks.items %}
@@ -46,9 +52,28 @@
 
         {%- capture slideContent -%}
 
-            <span class="slide-text">
-                {{ item.settings.text }}
-            </span>
+            {%- if section.settings.slideImgOverlay and item.settings.imgSrc and item.settings.imgFit -%}
+                <style>
+                    #finqu-section-{{ section.id }} .swiper-slide-{{ forloop.index }}::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: 1;
+                        background: linear-gradient(0deg, rgb(0,0,0, {{ section.settings.slideImgOverlay }}%), rgb(0,0,0, {{ section.settings.slideImgOverlay }}%))
+                    }
+                </style>
+            {%- endif -%}
+
+            <div class="slide-text-container">
+
+                <span class="slide-text">
+                    {{ item.settings.text }}
+                </span>
+
+            </div>
 
             <div class="aspect-ratio-1-1">
 
@@ -77,7 +102,7 @@
 
         {% endcapture %}
 
-        <div class="swiper-slide">
+        <div class="swiper-slide swiper-slide-{{ forloop.index }}">
 
             {% if item.settings.resource.url %}
 
@@ -201,7 +226,7 @@
                                 "type": "url",
                                 "label": {
                                     "en": "Link",
-                                    "fi": "Lnkki"
+                                    "fi": "Linkki"
                                 }
                             },
                             {
@@ -261,6 +286,41 @@
                                 "label": "{# icon.alignRightLight #}"
                             }
                         ]
+                    },
+                    {
+                        "id": "itemsPerView",
+                        "label": {
+                            "en": "Items per view",
+                            "fi": "Kohteita per näkymä"
+                        },
+                        "type": "range",
+                        "min": 2,
+                        "max": 6,
+                        "step": 1,
+                        "default": 4,
+                        "unit": " "
+                    },
+                    {
+                        "id": "slideTextColor",
+                        "type": "color",
+                        "label": {
+                            "en": "Items text color",
+                            "fi": "Kohteiden tekstin väri"
+                        },
+                        "default": "#ffffff"
+                    },
+                    {
+                        "id": "slideImgOverlay",
+                        "label": {
+                            "en": "Overlay",
+                            "fi": "Taustan tummuus"
+                        },
+                        "type": "range",
+                        "min": 0,
+                        "max": 90,
+                        "step": 10,
+                        "default": "0",
+                        "unit": "%"
                     },
                     {
                         "id": "carouselStyle",
@@ -350,19 +410,6 @@
                                 }
                             }
                         ]
-                    },
-                    {
-                        "id": "itemsPerView",
-                        "label": {
-                            "en": "Items per view",
-                            "fi": "Kohteita per näkymä"
-                        },
-                        "type": "range",
-                        "min": 2,
-                        "max": 6,
-                        "step": 1,
-                        "default": 4,
-                        "unit": " "
                     }
                 ]
             },
@@ -621,14 +668,18 @@
         {
             "category": "theme-basic",
             "settings": {
-                "sectionTitle": "",
-                "sectionSubtitle": "",
-                "sectionHeaderTextAlign": "left",
+                "sectionTitle": "Lorem ipsum dolor sit amet",
+                "sectionSubtitle": "Lorem ipsum dolor sit amet",
+                "sectionHeaderTextAlign": "center",
+                "itemsPerView": "4",
+                "slideTextColor": "#ffffff",
+                "slideImgOverlay": "0",
                 "carouselStyle": "1",
                 "navigation": "hover",
-                "pagination": "hover",
-                "itemsPerView": "4",
+                "pagination": "on",
                 "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
                 "sectionInnerSpacing": "",
                 "sectionBgImgSrc": "",
                 "sectionBgImgPos": "left-top",
@@ -641,27 +692,29 @@
                         "A4c98887-2f85-4be6-a1b8-607600aa691c": {
                             "type": "item",
                             "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgSrc": "",
                                 "imgAlt": "",
-                                "text": "asd",
+                                "imgAlt": false,
+                                "text": "",
                                 "resource": {
                                     "type": "url",
                                     "record_id": "1343",
                                     "url": "Testi"
                                 },
-                                "resourceOpenInNewWindowStatus": true
+                                "resourceOpenInNewWindowStatus": false
                             }
                         },
                         "81e92083-2c17-4507-89d8-5e5487784360": {
                             "type": "item",
                             "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgSrc": "",
                                 "imgAlt": "",
+                                "imgAlt": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
-                                    "record_id": "",
-                                    "url": ""
+                                    "record_id": "1343",
+                                    "url": "Testi"
                                 },
                                 "resourceOpenInNewWindowStatus": false
                             }
@@ -669,13 +722,14 @@
                         "81e92083-2c17-4507-89d8-5e5487714360": {
                             "type": "item",
                             "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgSrc": "",
                                 "imgAlt": "",
+                                "imgAlt": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
-                                    "record_id": "",
-                                    "url": ""
+                                    "record_id": "1343",
+                                    "url": "Testi"
                                 },
                                 "resourceOpenInNewWindowStatus": false
                             }
@@ -683,55 +737,14 @@
                         "81e92083-2c17-3507-89d8-5e5487784360": {
                             "type": "item",
                             "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
+                                "imgSrc": "",
                                 "imgAlt": "",
+                                "imgAlt": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
-                                    "record_id": "",
-                                    "url": ""
-                                },
-                                "resourceOpenInNewWindowStatus": false
-                            }
-                        },
-                        "81e92083-2c17-4507-89d8-5e5487784361": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
-                                "imgAlt": "",
-                                "text": "",
-                                "resource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
-                                },
-                                "resourceOpenInNewWindowStatus": false
-                            }
-                        },
-                        "51e92083-2c17-4507-89d8-5e5487784360": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
-                                "imgAlt": "",
-                                "text": "",
-                                "resource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
-                                },
-                                "resourceOpenInNewWindowStatus": false
-                            }
-                        },
-                        "81e42083-2c17-4507-89d8-5e5487784360": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1586227740560-8cf2732c1531?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MXwxfGFsbHwxfHx8fHx8MXx8MTYzMzAxMjIzNg&ixlib=rb-1.2.1&q=85",
-                                "imgAlt": "",
-                                "text": "",
-                                "resource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
+                                    "record_id": "1343",
+                                    "url": "Testi"
                                 },
                                 "resourceOpenInNewWindowStatus": false
                             }

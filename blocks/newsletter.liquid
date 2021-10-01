@@ -1,0 +1,89 @@
+{%- case block.settings.contentAlign -%}
+    {% when 'left' %}
+        {%- assign contentAlign = 'justify-content-start' -%}
+    {% when 'center' %}
+        {%- assign contentAlign = 'justify-content-center' -%}
+    {% when 'right' %}
+        {%- assign contentAlign = 'justify-content-end' -%}
+{%- endcase -%}
+
+<div class="d-flex {{ contentAlign }}">
+
+    {% form 'customer', customer %}
+
+        {% if customer and customer.accepts_marketing %}
+
+            <span class="d-block font-weight-bold">
+                {{ 'general.newsletter_subscribed' | t }}
+            </span>
+
+        {% elsif form.posted_successfully? %}
+
+            <span class="d-block font-weight-bold">
+                {{ 'general.newsletter_subscribed' | t }}
+            </span>
+
+        {% else %}
+
+            <div class="d-inline-flex">
+
+                <div class="form-floating">
+
+                    <input id="{{ block.id }}-newsletter" class="form-control" type="email" name="email" value="" placeholder="{{ 'general.email' | t }}" required>
+
+                    <label for="{{ block.id }}-newsletter">
+                        {{ 'general.email' | t }}
+                    </label>
+
+                </div>
+
+                <button type="submit" class="btn btn-section ml-2">
+                    {{ 'general.subscribe' | t }}
+                </button>
+
+            </div>
+
+            {% render 'form-error', error: form.error, class: 'form-group mt-4' %}
+
+        {% endif %}
+
+    {% endform %}
+
+</div>
+
+{% schema %}
+{
+    "name": {
+        "en": "Newsletter fom",
+        "fi": "Uutiskirje -lomake"
+    },
+    "tag": "div",
+    "class": "block block-newsletter",
+    "category": "basic",
+    "settings": [
+        {
+            "id": "contentAlign",
+            "type": "radio-pill",
+            "label": {
+                "en": "Content alignment",
+                "fi": "Sisällön ryhmittyminen"
+            },
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "{# icon.alignLeftLight #}"
+                },
+                {
+                    "value": "center",
+                    "label": "{# icon.alignCenterLight #}"
+                },
+                {
+                    "value": "right",
+                    "label": "{# icon.alignRightLight #}"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
