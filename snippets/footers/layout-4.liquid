@@ -295,7 +295,7 @@
 
                                         {% if settings.twitterPageUrl %}
 
-                                            <div class="site-mobile-navigation-social-media-btn">
+                                            <div class="site-footer-social-media-btn">
 
                                                 {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
 
@@ -305,7 +305,7 @@
 
                                         {% if settings.pinterestPageUrl %}
 
-                                            <div class="site-mobile-navigation-social-media-btn">
+                                            <div class="site-footer-social-media-btn">
 
                                                 {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
 
@@ -315,7 +315,7 @@
 
                                         {% if settings.youtubePageUrl %}
 
-                                            <div class="site-mobile-navigation-social-media-btn">
+                                            <div class="site-footer-social-media-btn">
 
                                                 {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
 
@@ -426,4 +426,4 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'none'  %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'none', sectionClasses: sectionClasses %}

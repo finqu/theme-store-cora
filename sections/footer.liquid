@@ -1,22 +1,22 @@
 {%- if section.settings.footerLayout == '1' -%}
 
-    {%- render 'footers/layout-1', section: section -%}
+    {%- render 'footers/layout-1', section: section, sectionClasses: 'site-footer-layout-1' -%}
 
 {%- elsif section.settings.footerLayout == '2' -%}
 
-    {%- render 'footers/layout-2', section: section -%}
+    {%- render 'footers/layout-2', section: section, sectionClasses: 'site-footer-layout-2' -%}
 
 {%- elsif section.settings.footerLayout == '3' -%}
 
-    {%- render 'footers/layout-3', section: section -%}
+    {%- render 'footers/layout-3', section: section, sectionClasses: 'site-footer-layout-3' -%}
 
 {%- elsif section.settings.footerLayout == '4' -%}
 
-    {%- render 'footers/layout-4', section: section -%}
+    {%- render 'footers/layout-4', section: section, sectionClasses: 'site-footer-layout-4' -%}
 
 {%- elsif section.settings.footerLayout == '5' -%}
 
-    {%- render 'footers/layout-5', section: section -%}
+    {%- render 'footers/layout-5', section: section, sectionClasses: 'site-footer-layout-5' -%}
 
 {%- endif -%}
 

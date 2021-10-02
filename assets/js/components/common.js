@@ -125,6 +125,50 @@ export default {
                 siteMobileNavigationContainerEl.classList.remove('site-mobile-navigation-visible');
             }
         });
+
+        const stickyHeaderEl = containerEl.querySelector('.site-mobile-header-sticky');
+        const initStickyHeader = () => {
+
+            if (window.innerWidth >= 992) {
+                return;
+            }
+
+            const el = stickyHeaderEl;
+            const elOffsetTop = el.offsetTop;
+            const elOffsetHeight = el.offsetHeight;
+            const eHandler = () => {
+
+                if (window.scrollY >= elOffsetTop) {
+
+                    if (!el.classList.contains('is-sticky')) {
+
+                        el.classList.add('is-sticky');
+
+                        document.body.style.paddingTop = elOffsetHeight+'px';
+                    }
+
+                } else {
+
+                    el.classList.remove('is-sticky');
+                     document.body.removeAttribute('style');
+                }
+            };
+
+            window.removeEventListener('scroll', eHandler);
+            window.addEventListener('scroll', eHandler);
+        };
+
+        window.addEventListener('resize', debounce(() => {
+
+            if (stickyHeaderEl) {
+                initStickyHeader();
+            }
+
+        }, 150, false));
+
+        if (stickyHeaderEl) {
+            initStickyHeader();
+        }
     },
     initSiteHeader: function() {
 
@@ -135,7 +179,7 @@ export default {
             const siteHeaderItemCartEl = containerEl.querySelector('.site-header-item-cart');
             const siteHeaderCartContainerEl = containerEl.querySelector('.site-header-cart-container');
             const siteHeaderCartEl = containerEl.querySelector('.site-header-cart');
-            const siteHeaderLogoImgEl = containerEl.querySelector('.site-header-top-logo img');
+            const siteHeaderLogoImgEl = containerEl.querySelector('.site-header-logo');
 
             if (siteHeaderLogoImgEl) {
 
@@ -212,11 +256,10 @@ export default {
 
         const initSearch = () => {
 
-            const siteHeaderItemSearchEl = containerEl.querySelector('.site-header-item-search');
-            const siteHeaderSearchToggleEl = containerEl.querySelector('#site-header-search-toggle');
-            const siteHeaderSearchContainerEl = containerEl.querySelector('.site-header-search-container');
+            const siteHeaderSearchToggleEls = containerEl.querySelectorAll('.site-search-toggle');
+            const siteHeaderSearchContainerEl = containerEl.querySelector('.site-search-container');
 
-            siteHeaderSearchToggleEl.addEventListener('click', e => {
+            siteHeaderSearchToggleEls.forEach(el => { el.addEventListener('click', e => {
 
                 siteHeaderSearchContainerEl.classList.add('search-active');
 
@@ -244,7 +287,7 @@ export default {
                         });
                     }
                 });
-            });
+            })});
         };
 
         const initMenu = () => {
@@ -302,6 +345,50 @@ export default {
                 }
             });
         };
+
+        const stickyHeaderEl = containerEl.querySelector('.site-header-sticky');
+        const initStickyHeader = () => {
+
+            if (window.innerWidth < 992) {
+                return;
+            }
+
+            const el = stickyHeaderEl;
+            const elOffsetTop = el.offsetTop;
+            const elOffsetHeight = el.offsetHeight;
+            const eHandler = () => {
+
+                if (window.scrollY >= elOffsetTop) {
+
+                    if (!el.classList.contains('is-sticky')) {
+
+                        el.classList.add('is-sticky');
+
+                        document.body.style.paddingTop = elOffsetHeight+'px';
+                    }
+
+                } else {
+
+                    el.classList.remove('is-sticky');
+                     document.body.removeAttribute('style');
+                }
+            };
+
+            window.removeEventListener('scroll', eHandler);
+            window.addEventListener('scroll', eHandler);
+        };
+
+        window.addEventListener('resize', debounce(() => {
+
+            if (stickyHeaderEl) {
+                initStickyHeader();
+            }
+
+        }, 150, false));
+
+        if (stickyHeaderEl) {
+            initStickyHeader();
+        }
 
         if (window.innerWidth >= 992) {
             initCart();

@@ -56,6 +56,7 @@
 {%- assign sectionInnerSpacing = sectionInnerSpacing | default: section.settings.sectionInnerSpacing | default: 'off' -%}
 {%- assign sectionHeightCustomTop = sectionHeightCustomTop | default: section.settings.sectionHeightCustomTop -%}
 {%- assign sectionHeightCustomBottom = sectionHeightCustomBottom | default: section.settings.sectionHeightCustomBottom -%}
+{%- assign sectionClasses = sectionClasses -%}
 
 {%- if sectionHeight != 'off' -%}
     {% capture sectionHeightClass %} section-height-{{ sectionHeight }}{% endcapture %}
