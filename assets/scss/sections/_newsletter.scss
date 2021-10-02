@@ -1,0 +1,17 @@
+// Newsletter
+// -----------------------------------------------------------------------------------------
+
+.section-newsletter {
+
+	.form-control,
+	.btn {
+		height: 50px;
+	}
+
+	.input-container {
+		width: 60%;
+		@include media-breakpoint-down(md) {
+			width: 100%;
+		}
+	}
+}

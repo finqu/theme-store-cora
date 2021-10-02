@@ -2,7 +2,6 @@
 {%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
 {%- assign sectionTitle = section.settings.title | default: contactTitle -%}
 {%- assign sectionSubtitle = section.settings.subtitle -%}
-{%- assign sectionDescription = section.settings.text -%}
 
 {%- capture hasSocialMediaIcons -%}
     {{ settings.facebookPageUrl | yepnope: 'true', 'false' }},
@@ -375,7 +374,7 @@
         "fi": "Yhteydenotto"
     },
     "tag": "section",
-    "class": "section section-contact",
+    "class": "section section-contact has-lazy",
     "category": "theme-form",
     "settings": {
         "list_type": "tabs",

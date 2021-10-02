@@ -1,0 +1,538 @@
+{%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
+{%- assign sectionTitle = section.settings.title | default: contactTitle -%}
+{%- assign sectionSubtitle = section.settings.subtitle -%}
+
+{%- case section.settings.textAlign -%}
+    {% when 'left' %}
+        {%- assign contentAlign = 'justify-content-start' -%}
+    {% when 'center' %}
+        {%- assign contentAlign = 'justify-content-center' -%}
+    {% when 'right' %}
+        {%- assign contentAlign = 'justify-content-end' -%}
+{%- endcase -%}
+
+{%- capture hasSocialMediaIcons -%}
+    {{ settings.facebookPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.instagramPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.twitterPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.pinterestPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.youtubePageUrl | yepnope: 'true', 'false' }}
+{%- endcapture -%}
+
+{%- capture sectionContent -%}
+
+    {% if section.settings.text %}
+
+        <div class="text-{{ section.settings.textAlign }}">
+
+            {{ section.settings.text }}
+
+        </div>
+
+    {% endif %}
+
+    <div class="text-{{ section.settings.textAlign }} mt-8">
+
+        {% form 'customer', customer %}
+
+            {% if customer and customer.accepts_marketing %}
+
+                <span class="d-block font-weight-bold">
+                    {{ 'general.newsletter_subscribed' | t }}
+                </span>
+
+            {% elsif form.posted_successfully? %}
+
+                <span class="d-block font-weight-bold">
+                    {{ 'general.newsletter_subscribed' | t }}
+                </span>
+
+            {% else %}
+
+                <div class="input-container d-inline-flex {{ contentAlign }}">
+
+                    <div class="form-floating flex-grow-1">
+
+                        <input id="{{ section.id }}-newsletter" class="form-control" type="email" name="email" value="" placeholder="{{ 'general.email' | t }}" required>
+
+                        <label for="{{ section.id }}-newsletter">
+                            {{ 'general.email' | t }}
+                        </label>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-section ml-2">
+                        {{ 'general.subscribe' | t }}
+                    </button>
+
+                </div>
+
+                {% render 'form-error', error: form.error, class: 'form-group mt-4' %}
+
+            {% endif %}
+
+        {% endform %}
+
+    </div>
+
+    {% if section.settings.showSocialMediaIcons and hasSocialMediaIcons contains 'true' %}
+
+        <div class="social-media-buttons-container mt-6 text-{{ section.settings.textAlign }}">
+
+            {% if settings.facebookPageUrl %}
+
+                <div class="social-media-btn">
+
+                    {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
+
+                </div>
+
+            {% endif %}
+
+            {% if settings.instagramPageUrl %}
+
+                <div class="social-media-btn">
+
+                    {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
+
+                </div>
+
+            {% endif %}
+
+            {% if settings.twitterPageUrl %}
+
+                <div class="social-media-btn">
+
+                    {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
+
+                </div>
+
+            {% endif %}
+
+            {% if settings.pinterestPageUrl %}
+
+                <div class="social-media-btn">
+
+                    {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
+
+                </div>
+
+            {% endif %}
+
+            {% if settings.youtubePageUrl %}
+
+                <div class="social-media-btn">
+
+                    {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    {% endif %}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Newsletter",
+        "fi": "Uutiskirje"
+    },
+    "tag": "section",
+    "class": "section section-newsletter has-lazy",
+    "category": "theme-form",
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": {
+                    "en": "Content",
+                    "fi": "Sisältö"
+                },
+                "settings": [
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": {
+                            "en": "Title",
+                            "fi": "Otsikko"
+                        }
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": {
+                            "en": "Subtitle",
+                            "fi": "Alaotsikko"
+                        }
+                    },
+                    {
+                        "id": "textAlign",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Text align",
+                            "fi": "Tekstin tasaus"
+                        },
+                        "default": "center",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "{# icon.alignLeftLight #}"
+                            },
+                            {
+                                "value": "center",
+                                "label": "{# icon.alignCenterLight #}"
+                            },
+                            {
+                                "value": "right",
+                                "label": "{# icon.alignRightLight #}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "text",
+                        "type": "richtext",
+                        "label": {
+                            "en": "Text",
+                            "fi": "Teksti"
+                        }
+                    },
+                    {
+                        "id": "showSocialMediaIcons",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show social media icons",
+                            "fi": "Sosiaalisen median kuvakkeet"
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Layout",
+                                "fi": "Näkymä"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        },
+                                        {
+                                            "value": "custom",
+                                            "label": "{# icon.pencilRegular #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionHeightCustomTop",
+                                    "label": {
+                                        "en": "Top height",
+                                        "fi": "Yläosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionHeightCustomBottom",
+                                    "label": {
+                                        "en": "Bottom height",
+                                        "fi": "Alaosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 5,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Inner spacing",
+                                        "fi": "Sisäinen tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content width",
+                                        "fi": "Sisällön leveys"
+                                    },
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content alignment",
+                                        "fi": "Sisällön ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Background",
+                                "fi": "Tausta"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": {
+                                        "en": "Image",
+                                        "fi": "Kuva"
+                                    }
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Image position",
+                                        "fi": "Kuvan sijainti"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "left-top",
+                                            "label": {
+                                                "en": "Left Top",
+                                                "fi": "Vasemmalla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": {
+                                                "en": "Left Center",
+                                                "fi": "Vasemmalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": {
+                                                "en": "Left Bottom",
+                                                "fi": "Vasemmalla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": {
+                                                "en": "Right Top",
+                                                "fi": "Oikealla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": {
+                                                "en": "Right Center",
+                                                "fi": "Oikealla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": {
+                                                "en": "Right Bottom",
+                                                "fi": "Oikealla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": {
+                                                "en": "Center Top",
+                                                "fi": "Keskellä ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": {
+                                                "en": "Center Center",
+                                                "fi": "Keskellä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": {
+                                                "en": "Center Bottom",
+                                                "fi": "Keskellä alhaalla"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": {
+                                        "en": "Overlay",
+                                        "fi": "Taustan tummuus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "%"
+                                },
+                                {
+                                    "id": "sectionContentBgColorStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Enable content background",
+                                        "fi": "Näytä sisällön tausta"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "sectionContentBgColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Content background color",
+                                        "fi": "Sisällön taustaväri"
+                                    },
+                                    "default": "#ffffff",
+                                    "conditions": ["sectionContentBgColorStatus:truthy eq true"]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Colors",
+                                "fi": "Värit"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "general"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "presets": [
+        {
+            "category": "theme-form",
+            "settings": {
+                "title": "Lorem ipsum dolor sit",
+                "subtitle": "Lorem ipsum dolor sit",
+                "textAlign": "center",
+                "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.<\/p>",
+                "showSocialMediaIcons": true,
+                "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
+                "sectionInnerSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
+                "sectionBgImgOverlay": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general"
+            }
+        }
+    ]
+}
+{% endschema %}
