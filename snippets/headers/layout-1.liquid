@@ -8,11 +8,11 @@
 
         <div class="site-header">
 
-            <div class="site-header-top">
+            <div class="py-2">
 
-                <div class="container">
+                <div class="container d-flex">
 
-                    <div class="site-header-top-left">
+                    <div class="d-inline-flex align-items-center">
 
                         <div class="site-header-item-container">
 
@@ -30,7 +30,7 @@
 
                     </div>
 
-                    <div class="site-header-top-center">
+                    <div class="d-inline-flex align-items-center justify-content-center flex-grow-1 site-header-logo-container">
 
                         <a href="/">
 
@@ -44,7 +44,7 @@
 	                                    alt="{{ store.name }}"
 	                                    data-src="{{ imgSrc | thumb: imgSize }}"
 	                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-	                                    class="lazy d-block mx-auto img-fluid site-header-logo">
+	                                    class="lazy d-block img-fluid site-header-logo">
 	                            </picture>
 
                             {% else %}
@@ -59,7 +59,7 @@
 
                     </div>
 
-                    <div class="site-header-top-right">
+                    <div class="d-inline-flex align-items-center position-relative">
 
                         {% if store.customer_accounts_enabled %}
 
@@ -163,7 +163,7 @@
 
             </div>
 
-            <nav class="site-header-bottom">
+            <nav class="py-2 positive-relative">
 
                 <div class="site-header-menu-container">
 

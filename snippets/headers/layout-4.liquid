@@ -2,17 +2,17 @@
 
 {%- capture sectionContent -%}
 
-	{{ sectionContent }}
+    {{ sectionContent }}
 
-	<div class="site-header-container{% if section.settings.stickyHeader %} site-header-sticky{% endif %}">
+    <div class="site-header-container{% if section.settings.stickyHeader %} site-header-sticky{% endif %}">
 
         <div class="site-header">
 
-            <div class="site-header-top">
+            <div class="site-header-inner py-2">
 
-                <div class="container">
+                <div class="container d-flex">
 
-                    <div class="site-header-top-left">
+                    <div class="d-inline-flex align-items-center site-header-logo-container">
 
                         <a href="/">
 
@@ -41,7 +41,7 @@
 
                     </div>
 
-                    <div class="site-header-top-right">
+                    <nav class="d-inline-flex align-items-center justify-content-end flex-grow-1 position-relative">
 
                         <div class="site-header-menu-container">
 
@@ -77,85 +77,9 @@
 
                         </div>
 
-                        <div class="site-header-submenus-container">
+                    </nav>
 
-                            {% for item in mainMenu.links %}
-
-                                {%- if item.links -%}
-
-                                    <div class="site-header-submenu" data-header-submenu-id="{{ forloop.index }}">
-
-                                        <div class="container">
-
-                                            <div class="row">
-
-                                                {% for item in item.links %}
-
-                                                    <div class="site-header-submenu-column col">
-
-                                                        <div class="site-header-submenu-column-title text-muted">
-
-                                                            {%- if item.url -%}
-
-                                                                <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
-                                                                    {{ item.title }}
-                                                                </a>
-
-                                                            {%- else -%}
-
-                                                                <span class="site-header-submenu-column-title-text">
-                                                                    {{ item.title }}
-                                                                </span>
-
-                                                            {%- endif -%}
-
-                                                        </div>
-
-                                                        <ul class="site-header-submenu-column-menu">
-
-                                                            {% for item in item.links %}
-
-                                                                <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
-
-                                                                    {%- if item.url -%}
-
-                                                                        <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
-                                                                            {{ item.title }}
-                                                                        </a>
-
-                                                                    {%- else -%}
-
-                                                                        <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
-                                                                            {{ item.title }}
-                                                                        </span>
-
-                                                                    {%- endif -%}
-
-                                                                </li>
-
-                                                            {% endfor %}
-
-                                                        </ul>
-
-                                                    </div>
-
-                                                {% endfor %}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                {% endif %}
-
-                            {% endfor %}
-
-                        </div>
-
-                    </div>
-
-                    <div class="site-header-top-right">
+                    <div class="d-inline-flex align-items-center justify-content-end position-relative">
 
                         <div class="site-header-item-container">
 
@@ -272,6 +196,86 @@
                 </div>
 
             </div>
+
+            <nav>
+
+                <div class="site-header-submenus-container">
+
+                    {% for item in mainMenu.links %}
+
+                        {%- if item.links -%}
+
+                            <div class="site-header-submenu" data-header-submenu-id="{{ forloop.index }}">
+
+                                <div class="container">
+
+                                    <div class="row">
+
+                                        {% for item in item.links %}
+
+                                            <div class="site-header-submenu-column col">
+
+                                                <div class="site-header-submenu-column-title text-muted">
+
+                                                    {%- if item.url -%}
+
+                                                        <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
+                                                            {{ item.title }}
+                                                        </a>
+
+                                                    {%- else -%}
+
+                                                        <span class="site-header-submenu-column-title-text">
+                                                            {{ item.title }}
+                                                        </span>
+
+                                                    {%- endif -%}
+
+                                                </div>
+
+                                                <ul class="site-header-submenu-column-menu">
+
+                                                    {% for item in item.links %}
+
+                                                        <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
+
+                                                            {%- if item.url -%}
+
+                                                                <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ item.title }}
+                                                                </a>
+
+                                                            {%- else -%}
+
+                                                                <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ item.title }}
+                                                                </span>
+
+                                                            {%- endif -%}
+
+                                                        </li>
+
+                                                    {% endfor %}
+
+                                                </ul>
+
+                                            </div>
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            </nav>
 
         </div>
 
