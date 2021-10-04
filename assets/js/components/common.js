@@ -293,9 +293,13 @@ export default {
         const initMenu = () => {
 
             const siteHeaderMenuItemEls = containerEl.querySelectorAll('.site-header-menu-item');
+            const submenuCloseDelay = 600;
+            const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
             siteHeaderMenuItemEls.forEach(el => {
 
+                const menuItemEl = el;
+                const menuItemTextEl = el.querySelector('.site-header-menu-item-text');
                 const submenuId = el.dataset.headerMenuChildId;
 
                 if (submenuId) {
@@ -305,38 +309,98 @@ export default {
                     if (submenuEl) {
 
                         const submenuHeight = submenuEl.scrollHeight;
-                        let inTransition = false;
+                        let closeHandleTimer = null;
+
+                        const closeSubmenu = (el) => {
+
+                            el.classList.add('site-header-submenu-recently-active');
+
+                            setTimeout(() => {
+                                el.classList.remove('site-header-submenu-recently-active');
+                            }, 100);
+
+                            el.style.height = 0+'px';
+
+                            closeHandleTimer = null;
+
+                            if (isTouchDevice) {
+                                menuItemEl.classList.remove('site-header-menu-item-clicked');
+                            }
+                        };
 
                         const transitionEndEventHandler = (e) => {
 
-                            submenuEl.classList.remove('site-header-submenu-transition');
-                        };
-
-                        const transitionStartEventHandler = (e) => {
-
-                            inTransition = true;
+                            if (e.target.style.height === '0px') {
+                                submenuEl.classList.remove('site-header-submenu-transition');
+                                submenuEl.classList.remove('site-header-submenu-active');
+                            }
                         };
 
                         const openEventHandler = (e) => {
 
-                            submenuEl.classList.add('site-header-submenu-transition');
+                            if ((e.target.isEqualNode(submenuEl) || e.target.isEqualNode(menuItemEl)) && closeHandleTimer !== null) {
+                                clearTimeout(closeHandleTimer);
+                            }
+
+                            const activeSubmenus = containerEl.querySelectorAll('.site-header-submenu-active');
+
+                            if (activeSubmenus.length > 0) {
+
+                                activeSubmenus.forEach(el => {
+
+                                    if (!el.isEqualNode(submenuEl)) {
+
+                                        el.classList.remove('site-header-submenu-transition');
+                                        el.classList.remove('site-header-submenu-active');
+
+                                        closeSubmenu(el);
+                                    }
+                                });
+
+                                setTimeout(() => {
+                                    submenuEl.classList.add('site-header-submenu-transition');
+                                }, 100);
+
+                            } else {
+
+                                submenuEl.classList.add('site-header-submenu-transition');
+                            }
+
                             submenuEl.classList.add('site-header-submenu-active');
-                            submenuEl.style.height = submenuHeight+'px'
+                            submenuEl.style.height = submenuHeight+'px';
                         };
 
                         const closeEventHandler = (e) => {
 
-                            submenuEl.classList.remove('site-header-submenu-active');
+                            closeHandleTimer = setTimeout(() => {
 
-                            submenuEl.style.height = 0+'px';
+                               if (submenuEl.classList.contains('site-header-submenu-active')) {
+                                   closeSubmenu(submenuEl);
+                               }
 
-                            if (!inTransition) {
-                                submenuEl.classList.remove('site-header-submenu-transition');
+                            }, submenuCloseDelay);
+                        };
+
+                        const touchClickEventHandler = (e) => {
+
+                            if (!menuItemEl.classList.contains('site-header-menu-item-clicked')) {
+
+                                e.preventDefault();
+
+                                menuItemEl.classList.add('site-header-menu-item-clicked');
+
+                            } else {
+
+                                menuItemEl.classList.remove('site-header-menu-item-clicked');
                             }
                         };
 
-                        el.addEventListener('mouseenter', openEventHandler);
-                        el.addEventListener('mouseleave', closeEventHandler);
+                        menuItemEl.addEventListener('mouseenter', openEventHandler);
+                        menuItemEl.addEventListener('mouseleave', closeEventHandler);
+
+                        if (isTouchDevice) {
+                            menuItemEl.querySelector('.site-header-menu-item-text').addEventListener('click', touchClickEventHandler);
+                        }
 
                         submenuEl.addEventListener('mouseenter', openEventHandler);
                         submenuEl.addEventListener('mouseleave', closeEventHandler);

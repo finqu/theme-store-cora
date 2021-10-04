@@ -131,30 +131,78 @@
     .cart-mini {
     	max-height: 0;
 	    transition: max-height .5s ease-in-out;
-	    background-color: section-var(background_color);
+	    background-color: section-var(background_color, section-vars());
+	    color: section-var(text_color, section-vars());
     	overflow: hidden;
     	width: 335px;
     	visibility: hidden;
     	opacity: 0;
     	z-index: 2;
 
+    	h1, h2, h3, h4, h5, h6,
+		.h1, .h2, .h3, .h4, .h5, .h6 {
+			color: section-var(heading_color, section-vars());
+		}
+
+		a {
+            color: section-var(link_color, section-vars());
+
+            @include hover() {
+                color: section-var(link_color, section-vars());
+            }
+        }
+
+        .btn {
+
+	        &.btn-section {
+	            @include section-button-variant(section-var(button_bg_color, section-vars()), section-var(button_text_color, section-vars()));
+	        }
+
+	        &.btn-outline-section {
+	            @include section-button-outline-variant(section-var(button_bg_color, section-vars()), section-var(button_text_color, section-vars()));
+	        }
+	    }
+
+	    .btn-icon {
+	        color:section-var(icon_color, section-vars());
+
+	        &:hover {
+	            color: section-var(indicator_color, section-vars());
+	        }
+
+	        &.disabled,
+	        &[disabled] {
+	            &:hover {
+	                color: section-var(icon_color, section-vars());
+	            }
+	        }
+	    }
+
+	    .btn-link {
+	        color: section-var(link_color, section-vars());
+
+	        @include hover() {
+	            color: section-var(link_color, section-vars());
+	        }
+	    }
+
     	&.cart-mini-items-hint-top {
 
     		.cart-header {
-    			box-shadow: 0px 0px 10px 0px section-var(border_color);
+    			box-shadow: 0px 0px 10px 0px section-var(border_color, section-vars());
     		}
     	}
 
     	&.cart-mini-items-hint-bottom {
 
     		.cart-footer {
-    			box-shadow: 0px 0px 10px 0px section-var(border_color);
+    			box-shadow: 0px 0px 10px 0px section-var(border_color, section-vars());
     		}
     	}
 
     	&.cart-mini-expanded {
     		max-height: 650px;
-    		border: 1px solid section-var(border_color);
+    		border: 1px solid section-var(border_color, section-vars());
     		visibility: visible;
     		opacity: 1;
     	}
@@ -187,7 +235,7 @@
 		    margin: 0 -15px;
 
     		.cart-item {
-    			border-bottom: 1px solid section-var(border_color);
+    			border-bottom: 1px solid section-var(border_color, section-vars());
     			margin-bottom: spacer(3);
     			padding-bottom: spacer(3);
 
@@ -222,7 +270,7 @@
     					display: block;
     					margin-bottom: spacer(1);
     					font-size: 90%;
-    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
+    					color: color-yiq(section-var(text_color, section-vars()), darken(section-var(text_color, section-vars()), 30%), lighten(section-var(text_color, section-vars()), 30%));
     				}
     			}
 
@@ -233,8 +281,8 @@
     				.cart-item-quantity-increase {
     					width: 28px;
     					height: 28px;
-    					border: 1px solid section-var(border_color);
-    					color: section-var(border_color);
+    					border: 1px solid section-var(border_color, section-vars());
+    					color: section-var(border_color, section-vars());
     					text-align: center;
     				}
 
@@ -248,13 +296,13 @@
 
 					    &:hover,
 					    &:focus {
-					    	border-color: section-var(border_color);
+					    	border-color: section-var(border_color, section-vars());
 					    }
     				}
 
     				.cart-item-quantity-text {
     					font-size: 90%;
-    					color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%));
+    					color: color-yiq(section-var(text_color, section-vars()), darken(section-var(text_color, section-vars()), 30%), lighten(section-var(text_color, section-vars()), 30%));
     				}
     			}
 
