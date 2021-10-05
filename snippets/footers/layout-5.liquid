@@ -217,59 +217,7 @@
 
                                 {% endif %}
 
-                                <div class="site-footer-social-media-buttons-container">
-
-                                    {% if settings.facebookPageUrl %}
-
-                                        <div class="site-footer-social-media-btn">
-
-                                            {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                    {% if settings.instagramPageUrl %}
-
-                                        <div class="site-footer-social-media-btn">
-
-                                            {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                    {% if settings.twitterPageUrl %}
-
-                                        <div class="site-footer-social-media-btn">
-
-                                            {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                    {% if settings.pinterestPageUrl %}
-
-                                        <div class="site-footer-social-media-btn">
-
-                                            {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                    {% if settings.youtubePageUrl %}
-
-                                        <div class="site-footer-social-media-btn">
-
-                                            {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
-
-                                        </div>
-
-                                    {% endif %}
-
-                                </div>
+                                {% render 'social-media-buttons' class: 'site-footer-social-media-buttons-container' %}
 
                             </div>
 

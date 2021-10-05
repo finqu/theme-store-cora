@@ -78,6 +78,13 @@ body > #search-overlay {
                     border-bottom: 0;
                 }
 
+                .site-header-item-container {
+
+                    .site-header-item {
+                        font-size: 1.4rem;
+                    }
+                }
+
                 .site-header-inner {
                     border-bottom: 1px solid section-var(border_color);
                 }
@@ -211,9 +218,8 @@ body > #search-overlay {
                     &.site-header-item-cart {
 
                         &.cart-mini-expanded {
-                            border-left-color: section-var(border_color, section-vars());
-                            border-top-color: section-var(border_color, section-vars());
-                            border-right-color: section-var(border_color, section-vars());
+                            border-bottom: 0;
+                            border-color: section-var(border_color, section-vars());
                             background-color: section-var(background_color, section-vars());
                             color: section-var(text_color, section-vars());
                             z-index: 5;
@@ -251,6 +257,10 @@ body > #search-overlay {
                         }
                     }
                 }
+            }
+
+            .site-header-actions-container {
+                z-index: 6;
             }
 
             .site-header-cart-container {
@@ -569,10 +579,11 @@ body > #search-overlay {
 
             .site-mobile-navigation-social-media-buttons-container {
                 display: flex;
+                flex-wrap: wrap;
                 padding: spacer(4);
                 box-shadow: 0px -6px 10px rgba(0, 0, 0, .05);
 
-                .site-mobile-navigation-social-media-btn {
+                .social-media-btn {
                     flex-grow: 1;
                     text-align: center;
                 }
@@ -595,6 +606,8 @@ body > #search-overlay {
     .container-compact {
         padding-top: 0;
         padding-bottom: 0;
+        padding-left: spacer(2);
+        padding-right: spacer(2);
     }
 }
 
@@ -647,7 +660,7 @@ body > #search-overlay {
             .site-footer-social-media-buttons-container {
                 display: flex;
 
-                .site-footer-social-media-btn {
+                .social-media-btn {
                     display: inline-flex;
                 }
             }

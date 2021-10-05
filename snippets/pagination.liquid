@@ -11,7 +11,7 @@
 <ul class="pagination">
 
 	<li class="pagination-item-container">
-		{% if paginate.previous.url %}
+		{% if paginate.previous.url and paginate.current_page > 1 %}
 
 			<a href="{{ paginate.previous.url }}" class="paginate-item-previous">
 				{%- render 'icon', icon: 'arrow-left-1-dzpa9L' -%}
@@ -30,14 +30,14 @@
 	<li class="pagination-item-container">
 
 		<span clas="paginate-item-text">
-			{{ 'general.page' | t }} {{ paginate.current_page }} / {{ paginate.pages | default: 1 }}
+			{{ 'general.page' | t }} {{ paginate.current_page | default: 1 }} / {{ paginate.pages | default: 1 }}
 		</span>
 
 	</li>
 
 	<li class="pagination-item-container">
 
-		{% if paginate.next.url %}
+		{% if paginate.next.url and paginate.current_page < paginate.pages | default: 1 %}
 
 			<a href="{{ paginate.next.url }}" class="paginate-item-next">
 				{%- render 'icon', icon: 'arrow-right-1-Nc3Zm6' -%}

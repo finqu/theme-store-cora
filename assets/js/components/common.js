@@ -180,27 +180,30 @@ export default {
             const siteHeaderCartContainerEl = containerEl.querySelector('.site-header-cart-container');
             const siteHeaderCartEl = containerEl.querySelector('.site-header-cart');
             const siteHeaderLogoImgEl = containerEl.querySelector('.site-header-logo');
+            const siteHeaderActionsContainerEl = containerEl.querySelector('.site-header-actions-container');
+            const iconsToLoad = siteHeaderActionsContainerEl.querySelectorAll('.svg-inline').length;
+            let iconsLoaded = 0;
 
             if (siteHeaderLogoImgEl) {
 
-                const observer = new MutationObserver((mutations) => {
+                const logoObserver = new MutationObserver((mutations) => {
 
                     for (const { target } of mutations) {
 
                         if (target.classList.contains('loaded')) {
 
-                            const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.offsetHeight - 1;
+                            const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
                             siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
 
-                            observer.disconnect();
+                            logoObserver.disconnect();
 
                             break;
                         }
                     }
                 });
 
-                observer.observe(siteHeaderLogoImgEl, {
+                logoObserver.observe(siteHeaderLogoImgEl, {
                     attributes: true,
                     attributeFilter: ['class'],
                     childList: false,
@@ -209,10 +212,43 @@ export default {
 
             } else {
 
-                const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.offsetHeight - 1;
+                const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
                 siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
             }
+
+            const iconObserver = new MutationObserver((mutations) => {
+
+                for (const { addedNodes } of mutations) {
+
+                    for (const node of addedNodes) {
+
+                        if (node.tagName && node.nodeType === 1) {
+
+                            if (node.hasAttribute('data-inject-url')) {
+
+                                iconsLoaded++;
+
+                                if (iconsLoaded == iconsToLoad) {
+
+                                    const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
+
+                                    siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
+
+                                    iconObserver.disconnect();
+
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            iconObserver.observe(siteHeaderActionsContainerEl, {
+                childList: true,
+                subtree: true
+            });
 
             const delay = 500;
             let delayTimer = null;
@@ -1138,7 +1174,7 @@ export default {
 
                             const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                        	$(self).append('('+price+')');
+                        	$(self).append('('+themeApp.formatCurrency(price)+')');
                         });
                     });
 
@@ -1151,7 +1187,7 @@ export default {
 
                         const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                    	$(self).siblings('label').append('('+price+')');
+                    	$(self).siblings('label').append('('+themeApp.formatCurrency(price)+')');
                     });
 
                 } else if ($(this).is('textarea')) {
@@ -1163,7 +1199,7 @@ export default {
 
                         const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                    	$(self).siblings('label').append('('+price+')');
+                    	$(self).siblings('label').append('('+themeApp.formatCurrency(price)+')');
                     });
                 }
             });

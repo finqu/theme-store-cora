@@ -13,7 +13,7 @@
             <label for="product-attribute-{{ option.id }}">
 
                 {{ option.name }}
-                {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == blank %}(+{{ itemPrice | in_currency }}) {% endif %}
+                {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == false %}(+{{ itemPrice | in_currency }}) {% endif %}
 
             </label>
 
@@ -21,19 +21,19 @@
 
         {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
 
-            {% assign textArgument1 = true %}
+            {% assign arg1 = true %}
 
         {% endif %}
 
-        {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
+        {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and inventoryPolicy == 'continue' %}
 
-            {% assign textArgument2 = true %}
+            {% assign arg2 = true %}
 
         {% endif %}
 
         <textarea
 
-            class="product-attribute form-control{% if textArgument1 or textArgument2 %} has-price{% endif %}"
+            class="product-attribute form-control{% if arg1 or arg2 %} has-price{% endif %}"
             id="product-option-{{ option.id }}"
             name="{{ option.id }}"
             data-is-usable

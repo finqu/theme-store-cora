@@ -400,69 +400,9 @@
 
             </ul>
 
-            {%- capture hasSocialMediaIcons -%}
-                {{ settings.facebookPageUrl | yepnope: 'true', 'false' }},
-                {{ settings.instagramPageUrl | yepnope: 'true', 'false' }},
-                {{ settings.twitterPageUrl | yepnope: 'true', 'false' }},
-                {{ settings.pinterestPageUrl | yepnope: 'true', 'false' }},
-                {{ settings.youtubePageUrl | yepnope: 'true', 'false' }}
-            {%- endcapture -%}
+            {% if section.settings.socialMediaIconsStatus %}
 
-            {% if section.settings.socialMediaIconsStatus and hasSocialMediaIcons contains 'true' %}
-
-                <div class="site-mobile-navigation-social-media-buttons-container">
-
-                    {% if settings.facebookPageUrl %}
-
-                        <div class="site-mobile-navigation-social-media-btn">
-
-                            {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
-
-                        </div>
-
-                    {% endif %}
-
-                    {% if settings.instagramPageUrl %}
-
-                        <div class="site-mobile-navigation-social-media-btn">
-
-                            {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
-
-                        </div>
-
-                    {% endif %}
-
-                    {% if settings.twitterPageUrl %}
-
-                        <div class="site-mobile-navigation-social-media-btn">
-
-                            {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
-
-                        </div>
-
-                    {% endif %}
-
-                    {% if settings.pinterestPageUrl %}
-
-                        <div class="site-mobile-navigation-social-media-btn">
-
-                            {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
-
-                        </div>
-
-                    {% endif %}
-
-                    {% if settings.youtubePageUrl %}
-
-                        <div class="site-mobile-navigation-social-media-btn">
-
-                            {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
-
-                        </div>
-
-                    {% endif %}
-
-                </div>
+                {% render 'social-media-buttons' class: 'site-mobile-navigation-social-media-buttons-container' %}
 
             {% endif %}
 

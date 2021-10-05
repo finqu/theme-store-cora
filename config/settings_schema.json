@@ -1571,6 +1571,22 @@
 						"en": "Youtube page URL",
 						"fi": "Youtube-sivun URL-osoite"
 					}
+				},
+				{
+					"id": "tiktokPageUrl",
+					"type": "text",
+					"label": {
+						"en": "TikTok page URL",
+						"fi": "TikTok-sivun URL-osoite"
+					}
+				},
+				{
+					"id": "ravelryPageUrl",
+					"type": "text",
+					"label": {
+						"en": "Ravelry page URL",
+						"fi": "Ravelry-sivun URL-osoite"
+					}
 				}
 			]
 		}

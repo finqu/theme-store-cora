@@ -300,6 +300,48 @@
 		}
 	}
 
+	&.social-media-btn-tiktok {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-tiktok-text, $social-tiktok-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-tiktok-text, $social-tiktok-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-tiktok-text, $social-tiktok-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-tiktok-text, $social-tiktok-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
+	&.social-media-btn-ravelry {
+		&.social-media-btn-style-default {
+		   @include social-media-btn-style-default($social-ravelry-text, $social-ravelry-bg);
+		}
+		&.social-media-btn-style-text {
+		   @include social-media-btn-style-text($social-ravelry-text, $social-ravelry-bg);
+		}
+		&.social-media-btn-style-border-circle {
+		   @include social-media-btn-style-border-circle($social-ravelry-text, $social-ravelry-bg);
+		}
+		&.social-media-btn-style-box {
+		   @include social-media-btn-style-box($social-ravelry-text, $social-ravelry-bg);
+		}
+		&.social-media-btn-style-bw {
+		   @include social-media-btn-style-bw;
+		}
+		&.social-media-btn-style-minimal {
+		   @include social-media-btn-style-minimal;
+		}
+	}
+
 	// Social btn sizes
 	&.social-media-btn-size-xs {
 		width: 28px;

@@ -40,6 +40,10 @@
 	animation: svg-spin 1s infinite steps(8);
 }
 
+.svg-inline {
+	visibility: hidden;
+}
+
 .svg-icon {
 	display: inline-block;
 	font-size: inherit;

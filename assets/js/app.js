@@ -60,19 +60,13 @@ export default class App {
 			useCache: true,
 			copyAttributes: true,
 			makeIdsUnique: false,
-			afterLoad: function(svg, svgString) {
-				// Load
-			},
 			afterInject: function(img, svg) {
 
 				svg.removeAttribute('width');
 				svg.removeAttribute('height');
+
 				svg.classList.remove('svg-inline');
 				svg.classList.add('svg-icon');
-
-				if (svg.classList.length === 0) {
-					svg.removeAttribute('class');
-				}
 			}
 	    });
 
@@ -516,5 +510,13 @@ export default class App {
         if (window.dataLayer) {
             dataLayer.push(item);
         }
+    }
+
+    generateUuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            let r = (Math.random() * 16) | 0,
+                v = c == 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
     }
 }

@@ -851,7 +851,7 @@
 
                         {% if store.customer_accounts_require_approval == false or customer.has_access %}
 
-                            {% if product.ignore_storage or product.in_stock and product.only_preview == false %}
+                            {% if product.inventory_policy == 'continue' or product.in_stock and product.only_preview == false %}
 
                                 <div class="product-form">
 
@@ -866,25 +866,27 @@
 
                                                 {% assign showAttributePrice = true %}
                                                 {% assign showAttributeTotalPrice = true %}
-                                                {% assign showAttributeStock = false %}
+                                                {% assign showAttributeStock = true %}
+                                                {% assign inventoryPolicy = product.inventory_policy %}
+                                                {% assign isPreviewProduct = product.onlyPreview %}
 
                                                 {% for attribute in product.attributes %}
 
                                                     {%- if attribute.input_type == 'select' -%}
 
-                                                        {% render 'product-attributes/select', attribute: attribute %}
+                                                        {% render 'product-attributes/select', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
 
                                                     {%- elsif attribute.input_type == 'radio' -%}
 
-                                                        {% render 'product-attributes/radio', attribute: attribute %}
+                                                        {% render 'product-attributes/radio', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
 
                                                     {%- elsif attribute.input_type == 'checkbox' -%}
 
-                                                        {% render 'product-attributes/checkbox', attribute: attribute %}
+                                                        {% render 'product-attributes/checkbox', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
 
                                                     {%- elsif attribute.input_type == 'text' -%}
 
-                                                        {% render 'product-attributes/text', attribute: attribute %}
+                                                        {% render 'product-attributes/text', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
 
                                                     {%- endif -%}
 
@@ -960,23 +962,19 @@
 
                                 </div>
 
-                            {% elsif product.ignore_storage == false and product.in_stock == false and product.only_preview == false %}
+                            {% elsif product.inventory_policy == 'deny' and product.in_stock == false and product.only_preview == false %}
 
-                                {% if product.in_stock == false %}
+                                <div class="product-form">
 
-                                    <div class="product-form">
+                                    <div class="product-info-out-of-stock">
 
-                                        <div class="product-info-out-of-stock">
-
-                                            <span class="product-info-out-of-stock-text btn btn-section btn-block disabled">
-                                                {{ 'product.out_of_stock' | t }}
-                                            </span>
-
-                                        </div>
+                                        <span class="product-info-out-of-stock-text btn btn-section btn-block disabled">
+                                            {{ 'product.out_of_stock' | t }}
+                                        </span>
 
                                     </div>
 
-                                {% endif %}
+                                </div>
 
                             {% endif %}
 

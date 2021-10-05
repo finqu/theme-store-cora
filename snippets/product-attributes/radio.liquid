@@ -14,40 +14,40 @@
 
             {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
 
-                {% assign radioArgument1 = true %}
+                {% assign arg1 = true %}
 
             {% endif %}
 
-            {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and product.ignore_storage == true %}
+            {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and inventoryPolicy == 'continue' %}
 
-                {% assign radioArgument2 = true %}
+                {% assign arg2 = true %}
 
             {% endif %}
 
-            <input class="product-attribute form-check-input{% if radioArgument1 or radioArgument2 %} has-price{% endif %}"
+            <input class="product-attribute form-check-input{% if arg1 or arg2 %} has-price{% endif %}"
                type="radio"
                data-attribute="{{ attribute.id }}"
                id="product-option-{{ option.id }}"
                name="{{ attribute.id }}"
                value="{{ option.id }}"
                {% if option.image %} data-attribute-image="product-option-image-{{ option.id }}"{% endif %}
-               {% if option.in_stock == false and product.ignore_storage == false %} disabled{% else %} data-is-usable{% endif %}>
+               {% if option.in_stock == false and inventoryPolicy == 'deny' %} disabled{% else %} data-is-usable{% endif %}>
 
             <label for="product-option-{{ option.id }}" class="form-check-label">
 
                 {{ option.name }}
 
-                {% if showAttributeStock and product.ignore_storage == false and product.only_preview != true and option.in_stock == true and option.subattribute == false %}
+                {% if showAttributeStock and inventoryPolicy == 'deny' and isPreviewProduct == false and option.in_stock == true and option.subattribute == false %}
 
                     ({{ option.stock }} {{ product.unit }})
 
                 {% endif %}
 
-                {% if option.in_stock == false and product.ignore_storage == false %}
+                {% if option.in_stock == false and inventoryPolicy == 'deny' %}
 
                     ({{ 'product.out_of_stock' | t }})
 
-                {% elsif itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == blank %}
+                {% elsif itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == false %}
 
                     (+{{ itemPrice | in_currency }})
 
@@ -65,7 +65,7 @@
 
     {% if option.subattribute %}
 
-        {% render 'product-attributes/subattribute', option: option %}
+        {% render 'product-attributes/subattribute', option: option, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
 
     {% endif %}
 
