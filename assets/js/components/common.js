@@ -854,8 +854,8 @@ export default {
     	if (categoryTagsEl) {
 
     		new Swiper(categoryTagsEl.querySelector('.swiper-container'), {
-                slidesPerView: 3,
                 spaceBetween: 8,
+                slidesPerView: 'auto',
                 freeMode: true,
                 watchOverflow: true,
                 watchSlidesVisibility: true,
@@ -863,17 +863,6 @@ export default {
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev'
-                },
-                breakpoints: {
-                    500: {
-                        slidesPerView: 4
-                    },
-                    768: {
-                        slidesPerView: 5
-                    },
-                    992: {
-                        slidesPerView: 8
-                    }
                 }
 			});
     	}
@@ -1061,6 +1050,8 @@ export default {
     initProduct: function() {
 
         const containerEl = document.querySelector('.section-product-card');
+        let productThumbMediaSwiper = null;
+        let productMainMediaSwiper = null;
 
     	const initProductMedia = () => {
 
@@ -1086,7 +1077,7 @@ export default {
 
             productThumbMediaSwiperEl.style.height = productMainMediaSwiperEl.getBoundingClientRect().height+'px';
 
-            const productThumbMediaSwiper = new Swiper(productThumbMediaSwiperEl, productThumbMediaSwiperCfg);
+            productThumbMediaSwiper = new Swiper(productThumbMediaSwiperEl, productThumbMediaSwiperCfg);
 
             const productMainMediaSwiperCfg = {
                 allowTouchMove: true,
@@ -1105,7 +1096,7 @@ export default {
                 }
             };
 
-			const productMainMediaSwiper = new Swiper(productMainMediaSwiperEl, productMainMediaSwiperCfg);
+			productMainMediaSwiper = new Swiper(productMainMediaSwiperEl, productMainMediaSwiperCfg);
             const productImageEls = productMainMediaSwiperEl.querySelectorAll('.lazy');
 
             // Preload product images so those are available when customer clicks thumb
@@ -1208,6 +1199,7 @@ export default {
 
                 const attributeId = $(this).data('attribute');
                 const optionId = $(this).val();
+                const hasImage = this.hasAttribute('data-has-image');
                 let sibling = $(this).parentsUntil('.product-attribute-container').parent().siblings('.product-subattribute-container[data-attribute="'+attributeId+'"]');
                 let productAttributes = [];
 
@@ -1242,6 +1234,15 @@ export default {
                         }
                     });
                 });
+
+                // Change image on radio select
+                if (hasImage && productMainMediaSwiper) {
+
+                    const el = document.querySelector('#product-main-media-swiper .swiper-slide[data-product-option-image="'+optionId+'"]');
+                    const index = [...el.parentElement.children].indexOf(el);
+
+                    productMainMediaSwiper.slideTo(index, 0, true);
+                }
 
                 // Show attributes if active
                 if (($(this).is('select') && $(this).val()) || ($(this).is(':checkbox, :radio') && $(this).is(':checked')) || ($(this).is('textarea') && $(this).val())) {
@@ -1328,6 +1329,37 @@ export default {
 	    	}
     	};
 
+        const initProductQuantity = () => {
+
+            const productQuantityInputEl = containerEl.querySelector('.product-quantity-input');
+            const productQuantityDecreaseEl = containerEl.querySelector('.product-quantity-decrease');
+            const productQuantityIncreaseEl = containerEl.querySelector('.product-quantity-increase');
+            const minQuantity = productQuantityInputEl.getAttribute('min');
+            const maxQuantity = productQuantityInputEl.getAttribute('max');
+
+            productQuantityDecreaseEl.addEventListener('click', (e) => {
+
+                const currentValue = parseInt(productQuantityInputEl.value, 10);
+
+                if (currentValue !== parseInt(minQuantity, 10)) {
+                    productQuantityInputEl.value = currentValue - 1;
+                }
+            });
+
+            productQuantityIncreaseEl.addEventListener('click', (e) => {
+
+                const currentValue = parseInt(productQuantityInputEl.value, 10);
+
+                if (maxQuantity === null || (maxQuantity && currentValue !== parseInt(maxQuantity, 10))) {
+                    productQuantityInputEl.value = currentValue + 1;
+                }
+            });
+
+            themeApp.filterInput(productQuantityInputEl, function(value) {
+                return value != 0 && /^\d+$/.test(value);
+            });
+        };
+
         if (containerEl.querySelector('.product-media-container')) {
             initProductMedia();
         }
@@ -1338,6 +1370,10 @@ export default {
 
         if (containerEl.querySelector('.product-attributes')) {
             initProductAttributes();
+        }
+
+        if (containerEl.querySelector('.product-quantity')) {
+            initProductQuantity();
         }
     }
 }

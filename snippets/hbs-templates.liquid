@@ -142,7 +142,7 @@
                                                 {{> icon icon='subtract-gWaFt8' }}
                                             </button>
 
-                                            <input type="tel" class="cart-item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}" pattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
+                                            <input type="tel" class="cart-item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}"{{#if item.max_amount}} max="{{ item.max_amount }}"{{/if}} maxpattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
 
                                             <button type="button" class="btn btn-text cart-item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
                                                 {{> icon icon='add-eLjfck' }}

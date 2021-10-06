@@ -13,19 +13,19 @@
             <label for="product-attribute-{{ option.id }}">
 
                 {{ option.name }}
-                {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == false %}(+{{ itemPrice | in_currency }}) {% endif %}
+                {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice == false %}(+{{ itemPrice | in_currency }}) {% endif %}
 
             </label>
 
         {% endif %}
 
-        {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
+        {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice and option.in_stock == true %}
 
             {% assign arg1 = true %}
 
         {% endif %}
 
-        {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and inventoryPolicy == 'continue' %}
+        {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice and inventoryPolicy == 'continue' %}
 
             {% assign arg2 = true %}
 

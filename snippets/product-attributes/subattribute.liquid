@@ -5,19 +5,19 @@
 
     {%- if attribute.input_type == 'select' -%}
 
-        {% render 'product-attributes/select', attribute: attribute, subOption, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+        {% render 'product-attributes/select', attribute: attribute, subOption, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
     {%- elsif attribute.input_type == 'radio' -%}
 
-        {% render 'product-attributes/radio', attribute: attribute, subOption, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+        {% render 'product-attributes/radio', attribute: attribute, subOption, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
     {%- elsif attribute.input_type == 'checkbox' -%}
 
-        {% render 'product-attributes/checkbox', attribute: attribute, subOption, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+        {% render 'product-attributes/checkbox', attribute: attribute, subOption, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
     {%- elsif attribute.input_type == 'text' -%}
 
-        {% render 'product-attributes/text', attribute: attribute, subOption, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+        {% render 'product-attributes/text', attribute: attribute, subOption, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
     {%- endif -%}
 

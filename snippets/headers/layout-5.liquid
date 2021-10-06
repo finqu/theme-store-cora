@@ -1,0 +1,286 @@
+{%- assign mainMenu = linklists[section.settings.menu] -%}
+
+{%- capture sectionContent -%}
+
+	{{ sectionContent }}
+
+	<div class="site-header-container{% if section.settings.stickyHeader %} site-header-sticky{% endif %}">
+
+        <div class="site-header">
+
+            <div class="py-3">
+
+                <div class="container d-flex">
+
+                    <div class="d-inline-flex align-items-center">
+
+                        <div class="site-header-item-container">
+
+                            <div class="site-header-item site-header-item-search">
+
+                                <button type="button" class="site-search-toggle btn btn-text">
+
+                                    {%- render 'icon', icon: 'search-jUAwYE', class: 'svg-icon-fw' -%}
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-inline-flex align-items-center justify-content-center flex-grow-1 site-header-logo-container">
+
+                        <a href="/">
+
+                            {%- assign imgSrc = section.settings.logoImgSrc -%}
+                            {%- assign imgSize = '160,100' -%}
+
+                            {% if imgSrc %}
+
+                                <picture>
+	                                <img
+	                                    alt="{{ store.name }}"
+	                                    data-src="{{ imgSrc | thumb: imgSize }}"
+	                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+	                                    class="lazy d-block img-fluid site-header-logo">
+	                            </picture>
+
+                            {% else %}
+
+                                <span class="site-header-logo-text">
+                                    {{ store.name }}
+                                </span>
+
+                            {% endif %}
+
+                        </a>
+
+                    </div>
+
+                    <div class="d-inline-flex align-items-center position-relative site-header-actions-container">
+
+                        {% if store.customer_accounts_enabled %}
+
+                            {% if session.logged_in %}
+
+                                <div class="site-header-item-container site-header-item-account-container">
+
+                                    <div class="site-header-item site-header-item-account">
+
+                                        <a href="{{ routes.account_url }}" class="btn btn-text">
+
+                                            {%- render 'icon', icon: 'single-neutral-3ziDl0', class: 'svg-icon-fw' -%}
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="site-header-item-container">
+
+                                    <div class="site-header-item site-header-item-wishlist">
+
+                                        <a href="{{ routes.account_wishlist_url }}" class="btn btn-text">
+
+                                            <span class="site-header-item-counter{% if wishlist.products.size > 0 %} has-items{% endif %}">
+
+                                                <span class="site-header-item-counter-text" data-wislist-item-count>
+                                                    {{ wishlist.products.size }}
+                                                </span>
+
+                                            </span>
+
+                                            {%- render 'icon', icon: 'love-it-08UZOs', class: 'svg-icon-fw' -%}
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            {% else %}
+
+                                <div class="site-header-item-container site-header-item-account-container">
+
+                                    <div class="site-header-item site-header-item-account">
+
+                                        <a href="{{ routes.account_login_url }}" class="btn btn-text">
+
+                                            {%- render 'icon', icon: 'single-neutral-3ziDl0', class: 'svg-icon-fw' -%}
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endif %}
+
+                        <div class="site-header-item-container site-header-item-cart-container">
+
+                            <div class="site-header-item site-header-item-cart">
+
+                                <a href="{{ routes.cart_url }}" class="btn btn-text">
+
+                                    <span class="site-header-item-counter{% if cart.items.size > 0 %} has-items{% endif %}">
+
+                                        <span class="site-header-item-counter-text" data-cart-item-count>
+                                            {{ cart.item_count }}
+                                        </span>
+
+                                    </span>
+
+                                    {%- render 'icon', icon: 'shopping-bag-tag-1-7QUX0n', class: 'svg-icon-fw' -%}
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="site-header-cart-container">
+
+                            <div class="site-header-cart cart-mini" data-cart-mini-container>
+
+                                <div class="cart-header">
+
+                                    {%- render 'icon', icon: 'loading-half-7QUSw4' class: 'svg-spin svg-icon-fill svg-icon-4x' -%}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <nav class="positive-relative">
+
+                <div class="site-header-menu-container py-2">
+
+                    <div class="container">
+
+                        <ul class="site-header-menu">
+
+                            {% for item in mainMenu.links %}
+
+                                <li class="site-header-menu-item{% if item.current %} site-header-menu-item-active{% endif %}"{% if item.links %} data-header-menu-child-id="{{ forloop.index }}"{% endif %}>
+
+                                    {%- if item.url -%}
+
+                                        <a href="{{ item.url }}" class="site-header-menu-item-text text-underline-indicator">
+                                            {{ item.title }}
+                                        </a>
+
+                                    {%- else -%}
+
+                                        <span class="site-header-menu-item-text text-underline-indicator">
+                                            {{ item.title }}
+                                        </span>
+
+                                    {%- endif -%}
+
+                                </li>
+
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="site-header-submenus-container">
+
+                    {% for item in mainMenu.links %}
+
+                        {%- if item.links -%}
+
+                            <div class="site-header-submenu" data-header-submenu-id="{{ forloop.index }}">
+
+                                <div class="container">
+
+                                    <div class="row">
+
+                                        {% for item in item.links %}
+
+                                            <div class="site-header-submenu-column col">
+
+                                                <div class="site-header-submenu-column-title">
+
+                                                    {%- if item.url -%}
+
+                                                        <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
+                                                            {{ item.title }}
+                                                        </a>
+
+                                                    {%- else -%}
+
+                                                        <span class="site-header-submenu-column-title-text">
+                                                            {{ item.title }}
+                                                        </span>
+
+                                                    {%- endif -%}
+
+                                                </div>
+
+                                                <ul class="site-header-submenu-column-menu">
+
+                                                    {% for item in item.links %}
+
+                                                        <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
+
+                                                            {%- if item.url -%}
+
+                                                                <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ item.title }}
+                                                                </a>
+
+                                                            {%- else -%}
+
+                                                                <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    {{ item.title }}
+                                                                </span>
+
+                                                            {%- endif -%}
+
+                                                        </li>
+
+                                                    {% endfor %}
+
+                                                </ul>
+
+                                            </div>
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionHeight: 'off' sectionContentContainer: 'none', sectionClasses: sectionClasses  %}

@@ -12,13 +12,13 @@
 
         <div class="form-group form-check">
 
-            {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and option.in_stock == true %}
+            {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice and option.in_stock == true %}
 
                 {% assign arg1 = true %}
 
             {% endif %}
 
-            {% if itemPrice > 0 and showAttributePrice and showAttributeTotalPrice and inventoryPolicy == 'continue' %}
+            {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice and inventoryPolicy == 'continue' %}
 
                 {% assign arg2 = true %}
 
@@ -30,16 +30,16 @@
                id="product-option-{{ option.id }}"
                name="{{ attribute.id }}"
                value="{{ option.id }}"
-               {% if option.image %} data-attribute-image="product-option-image-{{ option.id }}"{% endif %}
+               {% if option.image %} data-has-image{% endif %}
                {% if option.in_stock == false and inventoryPolicy == 'deny' %} disabled{% else %} data-is-usable{% endif %}>
 
             <label for="product-option-{{ option.id }}" class="form-check-label">
 
                 {{ option.name }}
 
-                {% if showAttributeStock and inventoryPolicy == 'deny' and isPreviewProduct == false and option.in_stock == true and option.subattribute == false %}
+                {% if showOptionStockBalance and inventoryPolicy == 'deny' and isPreviewProduct == false and option.in_stock == true and option.subattribute == false %}
 
-                    ({{ option.stock }} {{ product.unit }})
+                    ({{ option.stock }} {{ unit }})
 
                 {% endif %}
 
@@ -47,7 +47,7 @@
 
                     ({{ 'product.out_of_stock' | t }})
 
-                {% elsif itemPrice > 0 and showAttributePrice and showAttributeTotalPrice == false %}
+                {% elsif itemPrice > 0 and showOptionPrice and showOptionTotalPrice == false %}
 
                     (+{{ itemPrice | in_currency }})
 
@@ -65,7 +65,7 @@
 
     {% if option.subattribute %}
 
-        {% render 'product-attributes/subattribute', option: option, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+        {% render 'product-attributes/subattribute', option: option, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
     {% endif %}
 

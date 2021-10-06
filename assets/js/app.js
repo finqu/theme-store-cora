@@ -319,7 +319,7 @@ export default class App {
 
 		if (this.data.klarnaPlacementsClientId) {
 
-			this.loadScript('https://eu-library.playground.klarnaservices.com/lib.js', {
+			this.loadScript('https://eu-library.klarnaservices.com/lib.js', {
 				'clientId': this.data.klarnaPlacementsClientId
 			});
 		}
@@ -519,4 +519,54 @@ export default class App {
             return v.toString(16);
         });
     }
+
+    filterInput = (el, filter, defaultVal, cb = null) => {
+
+    	if (!el || !filter) {
+    		return false;
+    	}
+
+        const events = [
+        	'change',
+            'blur'
+        ];
+
+        let oldValue = defaultVal ? defaultVal : el.value;
+        let oldSelectionStart = el.selectionStart;
+        let oldSelectionEnd = el.selectionEnd;
+
+        events.forEach(function(e) {
+
+            el.addEventListener(e, function() {
+
+                if (filter(this.value)) {
+
+                    oldValue = this.value;
+                    oldSelectionStart = this.selectionStart;
+                    oldSelectionEnd = this.selectionEnd;
+
+                    if (typeof cb === 'function') {
+	                	cb(true);
+	                }
+
+                } else if (oldValue) {
+
+                    this.value = oldValue;
+                    this.setSelectionRange(oldSelectionStart, oldSelectionEnd);
+
+                    if (typeof cb === 'function') {
+	                	cb(false);
+	                }
+
+                } else {
+
+                    this.value = '';
+
+                    if (typeof cb === 'function') {
+	                	cb(false);
+	                }
+                }
+            });
+        });
+    };
 }

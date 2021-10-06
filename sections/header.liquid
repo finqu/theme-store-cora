@@ -428,6 +428,10 @@
 
     {%- render 'headers/layout-4', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-4' -%}
 
+{%- elsif section.settings.headerLayout == '5' -%}
+
+    {%- render 'headers/layout-5', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-5' -%}
+
 {% endif %}
 
 {% schema %}
@@ -484,6 +488,13 @@
                                 "label": {
                                     "en": "Layout 4",
                                     "fi": "Asettelu 4"
+                                }
+                            },
+                            {
+                                "value": "5",
+                                "label": {
+                                    "en": "Layout 5",
+                                    "fi": "Asettelu 5"
                                 }
                             }
                         ]

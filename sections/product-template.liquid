@@ -83,9 +83,9 @@
 
     {% else %}
 
-        <div class="row">
+        <div class="row justify-content-space-between">
 
-            <div class="col-12 col-md-6 col-lg-7 pr-lg-8">
+            <div class="col-12 col-md-6 col-lg-6 pr-lg-8">
 
                 <div class="product-media-container">
 
@@ -166,7 +166,7 @@
                                                     {%- assign hasMediaImg = true -%}
                                                 {%- endunless -%}
 
-                                                <div class="swiper-slide aspect-ratio-product">
+                                                <div class="swiper-slide aspect-ratio-product" data-product-option-image="{{ option.id }}">
 
                                                     <div class="aspect-ratio-container">
 
@@ -210,6 +210,67 @@
                                                     </div>
 
                                                 </div>
+
+                                            {% endif %}
+
+                                            {% if option.subattribute %}
+
+                                                {% for option in option.subattribute.options %}
+
+                                                    {% if option.image %}
+
+                                                        {%- unless hasMediaImg -%}
+                                                            {%- assign hasMediaImg = true -%}
+                                                        {%- endunless -%}
+
+                                                        <div class="swiper-slide aspect-ratio-product" data-product-option-image="{{ option.id }}">
+
+                                                            <div class="aspect-ratio-container">
+
+                                                                {% if option.image %}
+
+                                                                    {%- assign imgSrc = option.image | asset_url -%}
+
+                                                                    {% if settings.aspectRatioProductImage == '9:13' %}
+
+                                                                        {%- assign imgSize = '99,143' -%}
+
+                                                                    {% elsif settings.aspectRatioProductImage == '4:3' %}
+
+                                                                        {%- assign imgSize = '99,75' -%}
+
+                                                                    {% elsif settings.aspectRatioProductImage == '1:1' %}
+
+                                                                        {%- assign imgSize = '99,99' -%}
+
+                                                                    {% endif %}
+
+                                                                    <img
+                                                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer"
+                                                                        alt="{{ product.name }}"
+                                                                        data-src="{{ imgSrc | thumb: imgSize }}"
+                                                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb: '@2x' }} 2x">
+
+                                                                {% else %}
+
+                                                                    {%- capture imgSrc -%}
+                                                                        {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                                    {%- endcapture -%}
+
+                                                                    <img
+                                                                        class="lazy d-block mx-auto img-fluid aspect-ratio-item c-pointer svg-placeholder"
+                                                                        alt="{{ product.name }}"
+                                                                        data-src="{{ imgSrc }}">
+
+                                                                {% endif %}
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    {% endif %}
+
+                                                {% endfor %}
 
                                             {% endif %}
 
@@ -403,7 +464,7 @@
                                                     {%- assign hasMediaImg = true -%}
                                                 {%- endunless -%}
 
-                                                <div class="swiper-slide gallery-item aspect-ratio-product">
+                                                <div class="swiper-slide gallery-item aspect-ratio-product" data-product-option-image="{{ option.id }}">
 
                                                     <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
 
@@ -468,6 +529,88 @@
                                                     </div>
 
                                                 </div>
+
+                                            {% endif %}
+
+                                            {% if option.subattribute %}
+
+                                                {% for option in option.subattribute.options %}
+
+                                                    {% if option.image %}
+
+                                                        {%- unless hasMediaImg -%}
+                                                            {%- assign hasMediaImg = true -%}
+                                                        {%- endunless -%}
+
+                                                        <div class="swiper-slide gallery-item aspect-ratio-product" data-product-option-image="{{ option.id }}">
+
+                                                            <div class="product-media-img-container aspect-ratio-container" data-gallery-item-init>
+
+                                                                {% if option.image %}
+
+                                                                    {%- assign imgSrc = option.image | asset_url -%}
+
+                                                                    {% if settings.aspectRatioProductImage == '9:13' %}
+
+                                                                        {%- assign imgSizeSm = '374,540' -%}
+                                                                        {%- assign imgSizeMd = '696,1005' -%}
+                                                                        {%- assign imgSizeLg = '486,702' -%}
+
+                                                                    {% elsif settings.aspectRatioProductImage == '4:3' %}
+
+                                                                        {%- assign imgSizeSm = '374,280' -%}
+                                                                        {%- assign imgSizeMd = '696,522' -%}
+                                                                        {%- assign imgSizeLg = '486,365' -%}
+
+                                                                    {% elsif settings.aspectRatioProductImage == '1:1' %}
+
+                                                                        {%- assign imgSizeSm = '374,374' -%}
+                                                                        {%- assign imgSizeMd = '696,696' -%}
+                                                                        {%- assign imgSizeLg = '486,486' -%}
+
+                                                                    {% endif %}
+
+                                                                    <picture>
+                                                                        <source media="(min-width: 992px)" data-srcset="
+                                                                            {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                                                            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                                                        <source media="(min-width: 576px)" data-srcset="
+                                                                            {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                                                            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+                                                                        <source data-srcset="
+                                                                            {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                                                            {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                                                                        <img
+                                                                            class="lazy lazy-disable-transition d-block mx-auto img-fluid aspect-ratio-item c-zoom-in{% if settings.aspectRatioProductImage == '9:13' %} aspect-ratio-item-position-top{% endif %}"
+                                                                            alt="{{ product.name }}"
+                                                                            data-gallery-img-src="{{ media.original }}"
+                                                                            src="{{ imgSrc | thumb: imgSizeSm }}">
+                                                                    </picture>
+
+                                                                {% else %}
+
+                                                                    {%- capture imgSrc -%}
+                                                                        {% render 'placeholder-svg', type: 'image', base64: true %}
+                                                                    {%- endcapture -%}
+
+                                                                    <img
+                                                                        class="lazy lazy-disable-transition d-block mx-auto img-fluid aspect-ratio-item c-zoom-in svg-placeholder"
+                                                                        alt="{{ product.name }}"
+                                                                        data-gallery-img-src="{{ imgSrc }}"
+                                                                        data-src="{{ imgSrc }}">
+
+                                                                {% endif %}
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    {% endif %}
+
+                                                {% endfor %}
 
                                             {% endif %}
 
@@ -600,13 +743,17 @@
 
                 <div class="product-info">
 
-                    <div class="product-manufacturer">
+                    {% if product.manufacturer %}
 
-                        <a href="{{ product.manufacturer | link }}" class="product-manufacturer-text h3">
-                            {{ product.manufacturer.name }}
-                        </a>
+                        <div class="product-manufacturer">
 
-                    </div>
+                            <a href="{{ product.manufacturer | link }}" class="product-manufacturer-text h3">
+                                {{ product.manufacturer.name }}
+                            </a>
+
+                        </div>
+
+                    {% endif %}
 
                     <div class="product-name">
 
@@ -858,39 +1005,69 @@
                                     {% form 'product', product %}
 
                                         <input type="hidden" name="product_id" value="{{ product.id }}">
-                                        <input type="hidden" name="quantity" value="{{ product.min_amount }}">
+
+                                        {% unless section.settings.showQuantityInput %}
+                                            <input type="hidden" name="quantity" value="{{ product.min_amount }}">
+                                        {% endunless %}
 
                                         {% if product.attributes.size > 0 %}
 
                                             <div class="product-attributes">
 
-                                                {% assign showAttributePrice = true %}
-                                                {% assign showAttributeTotalPrice = true %}
-                                                {% assign showAttributeStock = true %}
+                                                {% assign showOptionPrice = section.settings.showProductOptionPrice %}
+                                                {% assign showOptionTotalPrice = section.settings.showProductOptionTotalPrice %}
+                                                {% assign showOptionStockBalance = section.settings.showProductOptionStockBalance %}
                                                 {% assign inventoryPolicy = product.inventory_policy %}
-                                                {% assign isPreviewProduct = product.onlyPreview %}
+                                                {% assign isPreviewProduct = product.only_preview %}
+                                                {% assign unit = product.unit %}
 
                                                 {% for attribute in product.attributes %}
 
                                                     {%- if attribute.input_type == 'select' -%}
 
-                                                        {% render 'product-attributes/select', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+                                                        {% render 'product-attributes/select', attribute: attribute, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
                                                     {%- elsif attribute.input_type == 'radio' -%}
 
-                                                        {% render 'product-attributes/radio', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+                                                        {% render 'product-attributes/radio', attribute: attribute, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
                                                     {%- elsif attribute.input_type == 'checkbox' -%}
 
-                                                        {% render 'product-attributes/checkbox', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+                                                        {% render 'product-attributes/checkbox', attribute: attribute, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
                                                     {%- elsif attribute.input_type == 'text' -%}
 
-                                                        {% render 'product-attributes/text', attribute: attribute, showAttributePrice: showAttributePrice, showAttributeTotalPrice: showAttributeTotalPrice, showAttributeStock: showAttributeStock, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct %}
+                                                        {% render 'product-attributes/text', attribute: attribute, showOptionPrice: showOptionPrice, showOptionTotalPrice: showOptionTotalPrice, showOptionStockBalance: showOptionStockBalance, inventoryPolicy: inventoryPolicy, isPreviewProduct: isPreviewProduct, unit: unit %}
 
                                                     {%- endif -%}
 
                                                 {% endfor %}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                        {% if section.settings.showQuantitySelect %}
+
+                                            <div class="product-quantity-container form-group">
+
+                                                <label for="product-quantity-input">
+                                                    {{ 'general.quantity' | t }}
+                                                </label>
+
+                                                <div class="product-quantity">
+
+                                                    <button type="button" class="btn btn-text product-quantity-decrease">
+                                                        {%- render 'icon', icon: 'subtract-gWaFt8' -%}
+                                                    </button>
+
+                                                    <input type="tel" id="product-quantity-input" name="quantity" class="product-quantity-input" value="{{ product.min_amount }}" min="{% if product.min_amount %}{{ product.min_amount }}{% else %}1{% endif %}"{% if product.max_amount %} max="{{ product.max_amount }}"{% endif %} pattern="[0-9]{1,3}">
+
+                                                    <button type="button" class="btn btn-text product-quantity-increase">
+                                                        {%- render 'icon', icon: 'add-eLjfck' -%}
+                                                    </button>
+
+                                                </div>
 
                                             </div>
 
@@ -1411,7 +1588,11 @@
 
 {% else %}
 
-    {% render 'section', section: section, sectionContent: sectionContent %}
+    {% if section.settings.showBreadcrumbs %}
+        {%- assign sectionBreadcrumbs = product.breadcrumbs -%}
+    {% endif %}
+
+    {% render 'section', section: section, sectionContent: sectionContent, sectionBreadcrumbs: sectionBreadcrumbs %}
 
 {% endif %}
 
@@ -1423,6 +1604,64 @@
     },
     "tag": "div",
     "class": "section section-product-card has-lazy",
-    "is_creatable": false
+    "is_creatable": false,
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": {
+                    "en": "General",
+                    "fi": "Yleinen"
+                },
+                "settings": [
+                    {
+                        "id": "showBreadcrumbs",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show breadcrumbs",
+                            "fi": "Näytä leivänmuru"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "showQuantitySelect",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show quantity select",
+                            "fi": "Näytä määrävalinta"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "showProductOptionPrice",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show product option price",
+                            "fi": "Näytä tuotevalinnan hinta"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "showProductOptionTotalPrice",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show total price of the product and product option in the product option",
+                            "fi": "Näytä tuotevalinnassa tuotteen ja tuotevalinnan yhteishinta"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "showProductOptionStockBalance",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show product option stock balance",
+                            "fi": "Näytä tuotevalinnan varastosaldo"
+                        },
+                        "default": false
+                    }
+                ]
+            }
+        ]
+    }
 }
 {% endschema %}

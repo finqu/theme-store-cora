@@ -306,9 +306,16 @@ export default class Cart {
                     aspectRatioProductImage: self.aspectRatioProductImage
                 });
 
-                cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {
-                    quantityDynamic(e);
-                })});
+                cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => {
+
+                    themeApp.filterInput(el, function(value) {
+                        return value != 0 && /^\d+$/.test(value);
+                    });
+
+                    el.addEventListener('change', e => {
+                        quantityDynamic(e);
+                    })
+                });
             }
 
             if (cartMiniContainerEl) {
@@ -322,10 +329,6 @@ export default class Cart {
                     taxFreePrices: self.taxFreePrices,
                     aspectRatioProductImage: self.aspectRatioProductImage
                 });
-
-                cartMiniContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => { el.addEventListener('change', e => {
-                    quantityDynamic(e);
-                })});
             }
 
             document.dispatchEvent(new CustomEvent('cartRendered'));
