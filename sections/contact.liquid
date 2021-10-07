@@ -1,6 +1,5 @@
-{%- assign contactTitle = 'contact.title' | t -%}
 {%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
-{%- assign sectionTitle = section.settings.title | default: contactTitle -%}
+{%- assign sectionTitle = section.settings.title -%}
 {%- assign sectionTitleTag = section.settings.titleTag -%}
 {%- assign sectionSubtitle = section.settings.subtitle -%}
 {%- assign sectionSubtitleTag = section.settings.subtitleTag -%}
@@ -13,7 +12,7 @@
 
         {% if section.settings.text %}
 
-            <div class="text-{{ section.settings.textAlign }} mt-4">
+            <div class="text-{{ section.settings.textAlign }}{% if sectionTitle or sectionSubtitle %} mt-4{% endif %}">
 
                 {{ section.settings.text }}
 
@@ -143,7 +142,7 @@
 
                 {% if section.settings.text %}
 
-                    <div class="text-{{ section.settings.textAlign }} mt-4">
+                    <div class="text-{{ section.settings.textAlign }}{% if sectionTitle or sectionSubtitle %} mt-4{% endif %}">
 
                         {{ section.settings.text }}
 
@@ -344,7 +343,8 @@
                                     "fi": "Teksti"
                                 }
                             }
-                        ]
+                        ],
+                        "conditions": ["title:length gt 0"]
                     },
                     {
                         "id": "subtitle",
@@ -374,7 +374,8 @@
                                     "fi": "Teksti"
                                 }
                             }
-                        ]
+                        ],
+                        "conditions": ["subtitle:length gt 0"]
                     },
                     {
                         "id": "textAlign",

@@ -1,7 +1,7 @@
 {%- assign defaultTitle = 'system.placeholder_text' | t -%}
 {%- assign title = block.settings.title | default: defaultTitle -%}
 
-{%- render 'section-header', sectionTitle: title, sectionTitleTag: block.settings.titleTag, sectionHeaderTextAlign: block.settings.textAlign, sectionSubtitle: block.settings.subtitle, sectionContentContainer: 'none' -%}
+{%- render 'section-header', sectionTitle: title, sectionTitleTag: block.settings.titleTag, sectionHeaderTextAlign: block.settings.textAlign, sectionSubtitle: block.settings.subtitle, sectionSubtitleTag: block.settings.subtitleTag, sectionContentContainer: 'none' -%}
 
 {% schema %}
 {
@@ -22,12 +22,66 @@
             }
         },
         {
+            "id": "titleTag",
+            "type": "radio-pill",
+            "label": {
+                "en": "Heading SEO priority",
+                "fi": "Otsikon SEO-prioriteetti"
+            },
+            "default": "h2",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "H1"
+                },
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "span",
+                    "label": {
+                        "en": "Text",
+                        "fi": "Teksti"
+                    }
+                }
+            ],
+            "conditions": ["title:length gt 0"]
+        },
+        {
             "id": "subtitle",
             "type": "text",
             "label": {
                 "en": "Subtitle",
                 "fi": "Väliotsikko"
             }
+        },
+        {
+            "id": "subtitleTag",
+            "type": "radio-pill",
+            "label": {
+                "en": "Subtitle SEO priority",
+                "fi": "Alaotsikon SEO-prioriteetti"
+            },
+            "default": "h3",
+            "options": [
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "span",
+                    "label": {
+                        "en": "Text",
+                        "fi": "Teksti"
+                    }
+                }
+            ],
+            "conditions": ["subtitle:length gt 0"]
         },
         {
             "id": "textAlign",
@@ -49,41 +103,6 @@
                 {
                     "value": "right",
                     "label": "{# icon.alignRightLight #}"
-                }
-            ]
-        },
-        {
-            "id": "titleTag",
-            "type": "select",
-            "label": {
-                "en": "Heading SEO priority",
-                "fi": "Otsikon SEO-prioriteetti"
-            },
-            "default": "h2",
-            "options": [
-                {
-                    "value": "h1",
-                    "label": "H1"
-                },
-                {
-                    "value": "h2",
-                    "label": "H2"
-                },
-                {
-                    "value": "h3",
-                    "label": "H3"
-                },
-                {
-                    "value": "h4",
-                    "label": "H4"
-                },
-                {
-                    "value": "h5",
-                    "label": "H5"
-                },
-                {
-                    "value": "h6",
-                    "label": "H6"
                 }
             ]
         }
