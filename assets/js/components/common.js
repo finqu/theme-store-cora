@@ -7,6 +7,7 @@ import { debounce } from './utils';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
+import Cookies from 'js-cookie';
 
 Swiper.use([
     Navigation,
@@ -20,10 +21,15 @@ export default {
         const bodyEl = document.querySelector('body');
 
         if (!bodyEl.classList.contains('template-password')) {
+
             this.initMobileNavigation();
             this.initSiteHeader();
             this.initWishlist();
             this.initCartMini();
+
+            if (themeApp.data.cookieNotification && !themeApp.data.designMode) {
+                this.initCookieNotification();
+            }
         }
 
         if (!bodyEl.classList.contains('template-category') && !bodyEl.classList.contains('template-password')) {
@@ -1374,6 +1380,41 @@ export default {
 
         if (containerEl.querySelector('.product-quantity')) {
             initProductQuantity();
+        }
+    },
+    initCookieNotification: function() {
+
+        if (!Cookies.get('allowCookies')) {
+
+            const cookieNotificationTemplateEl = document.querySelector('#hbs-cookie-notification-template');
+            let cookieNotificationTemplate = null;
+
+            if (cookieNotificationTemplateEl) {
+                cookieNotificationTemplate = themeApp.hbs.compile(cookieNotificationTemplateEl.innerHTML);
+            }
+
+            if (!cookieNotificationTemplateEl || !cookieNotificationTemplate) {
+                return;
+            }
+
+            document.body.insertAdjacentHTML('beforeend', cookieNotificationTemplate({
+                hasPrivacyPolicy: themeApp.data.hasPrivacyPolicy,
+                privacyPolicyUrl: themeApp.data.routes.privacyPolicyUrl
+            }));
+
+            const cookieNotificationEl = document.querySelector('.cookie-notification');
+
+            themeApp.animate(cookieNotificationEl, 'slideInUp');
+
+            cookieNotificationEl.querySelector('#cookie-notification-cta').addEventListener('click', (e) => {
+
+                themeApp.animate(cookieNotificationEl, 'slideOutDown').then(() => {
+
+                    cookieNotificationEl.remove();
+
+                    Cookies.set('allowCookies', 'true', { expires: 365 });
+                });
+            });
         }
     }
 }

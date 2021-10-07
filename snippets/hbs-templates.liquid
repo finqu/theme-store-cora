@@ -8,6 +8,43 @@
     {% render 'hbs-templates' %}
 {% endcomment %}
 
+<script id="hbs-cookie-notification-template" type="text/template">
+{% raw %}
+
+    <div class="cookie-notification">
+
+        <div class="cookie-notification-inner">
+
+            <div class="cookie-notification-content">
+
+                <span class="cookie-notification-text">
+                    {{ t 'cookie_notification.content' }}
+                </span>
+
+                {{#if hasPrivacyPolicy}}
+                    <a href="{{ privacyPolicyUrl }}" target="_blank" class="cookie-notification-privacy-policy-link">
+                        {{ t 'cookie_notification.read_privacy_policy' }}.
+                    </a>
+
+                {{/if}}
+
+            </div>
+
+            <div class="cookie-notification-action">
+
+                <button type="button" class="btn btn-sm" id="cookie-notification-cta">
+                    {{ t 'cookie_notification.cta' }}
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endraw %}
+</script>
+
 <script id="hbs-cart-template" type="text/template">
 {% raw %}
 

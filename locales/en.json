@@ -371,5 +371,10 @@
         "message": "Message",
         "cta": "Send",
         "success": "Message sent successfully."
+    },
+    "cookie_notification": {
+        "content": "We use cookies to support your experience on our site. By continuing to use our site you agree to the use of cookies.",
+        "cta": "Close",
+        "read_privacy_policy": "Read privacy policy"
     }
 }

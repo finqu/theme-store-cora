@@ -13,18 +13,21 @@
 
 <script>
 	window.store = {
-		designMode: {{ request.design_mode | yepnope: 'true','false' }},
+		designMode: {{ request.design_mode | yepnope: 'true', 'false' }},
 		locale: {{ locale | json }},
 		cartAddNotify: {{ settings.addToCartNotification | json }},
 		customerAccountsEnabled: {{ store.customer_accounts_enabled | json }},
 		customerAccountsOptional: {{ store.customer_accounts_optional | json }},
 		customerAccountsRequireApproval: {{ store.customer_accounts_require_approval | json }},
-		customerLoggedIn: {{ customer | yepnope: 'true','false' }},
+		customerLoggedIn: {{ customer | yepnope: 'true', 'false' }},
 		customerHasAccess: {{ customer.has_access | json }},
 		cataloBrowsingRequiresAccount: {{ store.catalog_browsing_requires_account | json }},
 		taxFreePrices: {{ settings.taxFreePrices | json }},
 		klarnaPlacementsClientId: {{ settings.klarnaPlacementsClientId | json }},
 		aspectRatioProductImage: {{ settings.aspectRatioProductImage | json }},
+		hasTermsAndConditions: {{ store.terms_and_conditions | yepnope: 'true', 'false' }},
+		hasPrivacyPolicy: {{ store.privacy_policy | yepnope: 'true', 'false' }},
+		cookieNotification: {{ settings.cookieNotification | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
 			decimalPlaces: {{ store.currency.decimal_places | json }}
@@ -42,7 +45,9 @@
 			searchUrl: {{ routes.search_url | json }},
 			cartUrl: {{ routes.cart_url | json }},
 			checkoutUrl: {{ routes.checkout_url | json }},
-			assetUrl: {{ request.asset_url | json }}
+			assetUrl: {{ request.asset_url | json }},
+			termsAndConditionsUrl: {{ store.terms_and_conditions | yepnope: store.terms_and_conditions.url, 'null' | json }},
+			privacyPolicyUrl: {{ store.privacy_policy | yepnope: store.privacy_policy.url, 'null' | json }}
 		},
 		translations: {
 			general: {
@@ -67,6 +72,11 @@
 				product_added_to_cart: {{ 'cart.product_added_to_cart' | t | json }},
 				proceed_to_checkout: {{ 'cart.proceed_to_checkout' | t | json }},
 				empty: {{ 'cart.empty' | t | json }}
+			},
+			cookie_notification: {
+				content: {{ 'cookie_notification.content' | t | json }},
+				cta: {{ 'cookie_notification.cta' | t | json }},
+				read_privacy_policy: {{ 'cookie_notification.read_privacy_policy' | t | json }}
 			},
 			error: {
 				general: "Tapahtui virhe",
@@ -96,7 +106,7 @@
 		        terms_of_use: "Sinun on hyväksyttävä käyttöehdot.",
 		        min_length: "merkkiä vähintään.",
 		        privacy_policy: "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias."
-			}
+			},
 		},
 		placeholders: {
 			'category-1': {{ 'category-1' | placeholder_svg_tag | base64_encode | json }},

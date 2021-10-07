@@ -1511,6 +1511,22 @@
 						"fi": "Asiakastunnus"
 					},
 					"placeholder": "11111111-2222-3333-4444-555555555555"
+				},
+				{
+					"type": "spacer"
+				},
+				{
+					"type": "title",
+					"label": "GDPR"
+				},
+				{
+					"id": "cookieNotification",
+					"type": "checkbox",
+					"label": {
+						"en": "Cookie notification",
+						"fi": "Evästeilmoitus"
+					},
+					"default": true
 				}
 			]
 		},

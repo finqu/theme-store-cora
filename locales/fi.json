@@ -370,5 +370,10 @@
         "message": "Viesti",
         "cta": "Lähetä",
         "success": "Viesti lähetettiin onnistuneesti."
+    },
+    "cookie_notification": {
+        "content": "Käytämme evästeitä tukeaksemme käyttökokemustasi sivuillamme. Jatkamalla sivustomme käyttöä hyväksyt evästeiden käytön.",
+        "cta": "Sulje",
+        "read_privacy_policy": "Lue tietosuojaseloste"
     }
 }
