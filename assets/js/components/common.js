@@ -1362,7 +1362,7 @@ export default {
             });
 
             themeApp.filterInput(productQuantityInputEl, function(value) {
-                return value != 0 && /^\d+$/.test(value);
+                return value != 0 && value <= maxQuantity && value >= minQuantity && /^\d+$/.test(value);
             });
         };
 

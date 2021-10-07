@@ -136,7 +136,8 @@
         "delivery_time_dynamic": "Toimitus {{ min_days }}-{{ max_days }} arkipäivää",
         "return_time_dynamic": "{{ days }} päivän palautusoikeus",
         "similar_products": "Samankaltaisia tuotteita",
-        "compatible_products": "Yhteensopivia tuotteita"
+        "compatible_products": "Yhteensopivia tuotteita",
+        "stock_balance_available": "Saatavuus"
     },
     "cart": {
         "title": "Ostoskori",

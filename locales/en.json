@@ -136,7 +136,8 @@
         "delivery_time_dynamic": "Delivery {{ min_days }}-{{ max_days }} business days",
         "return_time_dynamic": "{{ days }} day return policy",
         "similar_products": "Similar products",
-        "compatible_products": "Compatible products"
+        "compatible_products": "Compatible products",
+        "stock_balance_available": "Availability"
     },
     "cart": {
         "title": "Cart",

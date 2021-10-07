@@ -1006,7 +1006,7 @@
 
                                         <input type="hidden" name="product_id" value="{{ product.id }}">
 
-                                        {% unless section.settings.showQuantityInput %}
+                                        {% unless section.settings.showQuantitySelect %}
                                             <input type="hidden" name="quantity" value="{{ product.min_amount }}">
                                         {% endunless %}
 
@@ -1471,7 +1471,11 @@
 
                         {% endif %}
 
-                        {% if product.model or product.gtin %}
+                        {%- if section.settings.showStockBalance and product.inventory_policy == 'deny' and product.only_preview == false -%}
+                            {%- assign showStockBalance = true -%}
+                        {%- endif -%}
+
+                        {% if product.model or product.gtin or showStockBalance %}
 
                             <div class="card">
 
@@ -1494,6 +1498,22 @@
                                 <div id="accordion-product-additional-information" class="collapse">
 
                                     <div class="product-additional-information card-body">
+
+                                        {% if showStockBalance %}
+
+                                            <div class="d-flex{% if product.model or product.gtin %} mb-2{% endif %}">
+
+                                                <span class="font-weight-bold">
+                                                    {{ 'product.stock_balance_available' | t }}:
+                                                </span>
+
+                                                <span class="ml-2">
+                                                    {{ product.stock | default: '0' }} {{ product.unit }}
+                                                </span>
+
+                                            </div>
+
+                                        {% endif %}
 
                                         {% if product.model %}
 
@@ -1629,6 +1649,15 @@
                         "label": {
                             "en": "Show quantity select",
                             "fi": "Näytä määrävalinta"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "showStockBalance",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show stock balance",
+                            "fi": "Näytä varastosaldo"
                         },
                         "default": false
                     },
