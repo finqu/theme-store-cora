@@ -1,5 +1,6 @@
 {%- assign dateFormat = 'general.date_format' | t  -%}
 {%- assign sectionTitle = blogpost.title | t -%}
+{%- assign sectionTitleTag = 'h1' -%}
 {%- assign article = blogpost -%}
 {%- assign comments = blogpost.comments -%}
 
@@ -139,7 +140,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle sectionSubtitle: sectionSubtitle %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle %}
 
 {% schema %}
 {

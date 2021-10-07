@@ -1,4 +1,5 @@
 {%- assign sectionTitle = manufacturer.name -%}
+{%- assign sectionTitleTag = 'h1' -%}
 {%- assign sectionDescription = manufacturer.description -%}
 {%- assign itemCount = manufacturer.products.size -%}
 {%- assign activeSortOption = manufacturer.sort_by | default: manufacturer.default_sort_by -%}
@@ -90,7 +91,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent %}
+{% render 'section', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent %}
 
 {% schema %}
 {

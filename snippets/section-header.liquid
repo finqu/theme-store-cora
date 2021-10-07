@@ -5,6 +5,7 @@
 	- sectionTitle: {String}
 	- sectionTitleTag: {String}
 	- sectionSubtitle: {String}
+	- sectionSubtitleTag: {String}
 	- sectionDescription: {String}
 	- sectionBreadcrumbs: {Object} Breadcrumbs Liquid object
 	- sectionHeaderAction: {String}
@@ -14,10 +15,11 @@
 	Usage:
 	Render this snippet inside of element with a "section" class.
 
-	{% render 'section-header', sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContentContainer: 'fixed' %}
+	{% render 'section-header', sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionSubtitleTag: sectionSubtitleTag, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContentContainer: 'fixed' %}
 {% endcomment %}
 
-{% assign sectionTitleTag = sectionTitleTag | default: 'span'  %}
+{% assign sectionTitleTag = sectionTitleTag | default: 'span' %}
+{% assign sectionSubtitleTag = sectionSubtitleTag | default: 'span' %}
 
 {% capture content %}
 
@@ -91,9 +93,9 @@
 
 				<div class="subtitle-container">
 
-					<span class="subtitle">
+					<{{ sectionSubtitleTag }} class="subtitle">
 						{{- sectionSubtitle -}}
-					</span>
+					</{{ sectionSubtitleTag }}>
 
 				</div>
 

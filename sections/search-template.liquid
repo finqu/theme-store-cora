@@ -98,6 +98,7 @@
 		{%- endcapture -%}
 
 		{% assign sectionTitle = sectionTitle %}
+        {% assign sectionTitleTag = 'h1' %}
 		{% assign sectionSubtitle = '' %}
 
 	{% else %}
@@ -113,12 +114,13 @@
 	{%- endcapture -%}
 
 	{% assign sectionTitle = sectionTitle %}
+    {% assign sectionTitleTag = 'h1' %}
 	{% assign sectionSubtitle = 'general.search_no_results' | t %}
 	{% assign sectionContent = false %}
 
 {%- endif -%}
 
-{% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent %}
+{% render 'section', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent %}
 
 {% schema %}
 {

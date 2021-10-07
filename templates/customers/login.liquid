@@ -1,4 +1,5 @@
 {%- assign sectionTitle = 'login.title' | t -%}
+{%- assign sectionTitleTag = 'h2' -%}
 
 {%- capture sectionContent -%}
 
@@ -49,5 +50,5 @@
 {%- endcapture -%}
 
 <section class="section section-login">
-    {% render 'section', sectionTitle: sectionTitle, sectionContent: sectionContent, sectionContentContainer: 'tiny', sectionOverlay: true %}
+    {% render 'section', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionContent: sectionContent, sectionContentContainer: 'tiny', sectionOverlay: true %}
 </section>

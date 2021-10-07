@@ -6,6 +6,7 @@
 	- sectionTitle: {String}
 	- sectionTitleTag {String}
 	- sectionSubtitle: {String}
+	- sectionSubtitleTag {String}
 	- sectionHeight {String}
 	- sectionViewHeight {Number} (1-100 as vh)
 	- sectionInnerSpacing {String}
@@ -26,7 +27,7 @@
 	- sectionHeightCustomBottom : {String}
 
 	Usage:
-	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionContentContainer: 'fixed' %}
+	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionSubtitletag: tag, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionContentContainer: 'fixed' %}
 {% endcomment %}
 
 {%- assign section = section -%}
@@ -47,6 +48,7 @@
 {%- assign sectionTitle = sectionTitle | default: null -%}
 {%- assign sectionTitleTag = sectionTitleTag | default: null -%}
 {%- assign sectionSubtitle = sectionSubtitle | default: null -%}
+{%- assign sectionSubtitleTag = sectionSubtitleTag | default: null -%}
 {%- assign sectionDescription = sectionDescription | default: null -%}
 {%- assign sectionBreadcrumbs = sectionBreadcrumbs | default: null -%}
 {%- assign sectionHeaderAction = sectionHeaderAction | default: null -%}
@@ -117,7 +119,7 @@
 
 	{%- if sectionTitle or sectionSubtitle or sectionDescription or sectionBreadcrumbs -%}
 
-		{%- render 'section-header',  section: section, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionHeaderAction: sectionHeaderAction, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs, sectionContentContainer: sectionContentContainer -%}
+		{%- render 'section-header',  section: section, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionHeaderAction: sectionHeaderAction, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs, sectionContentContainer: sectionContentContainer -%}
 
 	{%- endif -%}
 

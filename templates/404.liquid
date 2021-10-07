@@ -1,4 +1,5 @@
 {%- assign sectionTitle =  'general.page_not_found_title' | t -%}
+{%- assign sectionTitleTag =  'h1' -%}
 {%- assign sectionSubtitle = 'general.page_not_found_subtitle' | t -%}
 
 {%- capture sectionContent -%}
@@ -14,7 +15,7 @@
 {%- endcapture -%}
 
 <section class="section section-404">
-	{% render 'section', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent, sectionTextAlign: 'center' %}
+	{% render 'section', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionContent: sectionContent, sectionTextAlign: 'center' %}
 </section>
 
 {% schema %}

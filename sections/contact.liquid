@@ -1,13 +1,15 @@
 {%- assign contactTitle = 'contact.title' | t -%}
 {%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
 {%- assign sectionTitle = section.settings.title | default: contactTitle -%}
+{%- assign sectionTitleTag = section.settings.titleTag -%}
 {%- assign sectionSubtitle = section.settings.subtitle -%}
+{%- assign sectionSubtitleTag = section.settings.subtitleTag -%}
 
 {%- capture sectionContent -%}
 
     {% if section.settings.contactLayout == 1 %}
 
-        {% render 'section-header', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
+        {% render 'section-header', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
 
         {% if section.settings.text %}
 
@@ -315,12 +317,64 @@
                         }
                     },
                     {
+                        "id": "titleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Heading SEO priority",
+                            "fi": "Otsikon SEO-prioriteetti"
+                        },
+                        "default": "h2",
+                        "options": [
+                            {
+                                "value": "h1",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "h2",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ]
+                    },
+                    {
                         "id": "subtitle",
                         "type": "text",
                         "label": {
                             "en": "Subtitle",
                             "fi": "Alaotsikko"
                         }
+                    },
+                    {
+                        "id": "subtitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Subtitle SEO priority",
+                            "fi": "Alaotsikon SEO-prioriteetti"
+                        },
+                        "default": "h3",
+                        "options": [
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ]
                     },
                     {
                         "id": "textAlign",
@@ -685,7 +739,9 @@
             "settings": {
                 "contactLayout": "2",
                 "title": "Lorem ipsum dolor sit",
+                "titleTag": "h2",
                 "subtitle": "Lorem ipsum dolor sit",
+                "subtitleTag": "h3",
                 "textAlign": "left",
                 "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.<\/p>",
                 "showPhonenumber": false,

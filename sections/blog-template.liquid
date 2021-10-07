@@ -1,4 +1,5 @@
 {%- assign sectionTitle = 'blog.title' | t -%}
+{%- assign sectionTitleTag = 'h1' -%}
 
 {%- capture sectionContent -%}
 
@@ -65,7 +66,7 @@
 
 									<a href="{{ article | page_url }}">
 
-										<h2 class="article-title-text">{{ article.title }}</h2>
+										<h3 class="article-title-text">{{ article.title }}</h3>
 
 									</a>
 
@@ -132,7 +133,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag %}
 
 {% schema %}
 {

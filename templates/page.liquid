@@ -1,6 +1,7 @@
 {% if page.content %}
 
 	{%- assign sectionTitle = page.title -%}
+	{%- assign sectionTitleTag = 'h1' -%}
 	{%- assign sectionBreadcrumbs = page.breadcrumbs -%}
 
 	{%- capture sectionContent -%}
@@ -10,7 +11,7 @@
 	{%- endcapture -%}
 
 	<section class="section section-page">
-		{% render 'section', sectionTitle: sectionTitle, sectionContent: sectionContent, sectionBreadcrumbs: sectionBreadcrumbs %}
+		{% render 'section', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionContent: sectionContent, sectionBreadcrumbs: sectionBreadcrumbs %}
 	</section>
 
 {% else %}

@@ -1,4 +1,5 @@
 {%- assign sectionTitle = category.title -%}
+{%- assign sectionTitleTag = 'h1' -%}
 {%- assign sectionDescription = category.description -%}
 {%- assign sectionBreadcrumbs = category.breadcrumbs -%}
 {%- assign itemCount = category.product_count -%}
@@ -474,7 +475,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs %}
 
 {% schema %}
 {
