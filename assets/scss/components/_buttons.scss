@@ -31,6 +31,8 @@
 
     .btn-link {
         color: section-var(link_color);
+        padding: 0;
+        border: 0;
 
         @include hover() {
             color: section-var(link_color);

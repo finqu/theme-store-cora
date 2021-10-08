@@ -40,9 +40,24 @@
 
     {% if section.settings.contentBtnLabel %}
 
-        <a href="{{- section.settings.contentBtnResource.url -}}" class="btn btn-section mt-3">
-            {{- section.settings.contentBtnLabel -}}
-        </a>
+        {% if section.settings.contentBtnStyle == 'btn' %}
+
+            <a href="{{- section.settings.contentBtnResource.url -}}" class="btn btn-section mt-3">
+                {{- section.settings.contentBtnLabel -}}
+            </a>
+
+        {% else %}
+
+            <a href="{{- section.settings.contentBtnResource.url -}}" class="btn btn-link text-underline-indicator font-weight-bold mt-3">
+
+                <span class="mr-2">
+                    {{- section.settings.contentBtnLabel -}}
+                </span>
+
+                {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+            </a>
+
+        {% endif %}
 
     {% endif %}
 
@@ -271,6 +286,31 @@
                             "en": "Button link",
                             "fi": "Napin linkki"
                         }
+                    },
+                    {
+                        "id": "contentBtnStyle",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Button style",
+                            "fi": "Napin tyyli"
+                        },
+                        "default": "btn",
+                        "options": [
+                            {
+                                "value": "btn",
+                                "label": {
+                                    "en": "Button",
+                                    "fi": "Nappi"
+                                }
+                            },
+                            {
+                                "value": "link",
+                                "label": {
+                                    "en": "Link",
+                                    "fi": "Linkki"
+                                }
+                            }
+                        ]
                     },
                     {
                         "id": "contentImgSrc",
@@ -624,6 +664,7 @@
                 "contentRichtextAlign": "middle",
                 "contentBtnLabel": null,
                 "contentBtnResource": null,
+                "contentBtnStyle": "btn",
                 "contentImgSrc": "",
                 "contentImgPlaceholder": true,
                 "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",

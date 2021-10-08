@@ -199,9 +199,25 @@
 
                             <div class="slide-action">
 
-                                <a href="{{- item.settings.btnResource.url -}}" class="btn btn-section"{% if item.settings.btnResourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
-                                    {{ item.settings.btnLabel }}
-                                </a>
+                                {% if item.settings.btnStyle == 'btn' %}
+
+                                    <a href="{{- item.settings.btnResource.url -}}" class="btn btn-section"{% if item.settings.btnResourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+                                        {{ item.settings.btnLabel }}
+                                    </a>
+
+                                {% else %}
+
+                                    <a href="{{- item.settings.btnResource.url -}}" class="btn btn-link text-underline-indicator font-weight-bold"{% if item.settings.btnResourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+
+                                        <span class="mr-2">
+                                            {{ item.settings.btnLabel }}
+                                        </span>
+
+                                        {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+                                    </a>
+
+                                {% endif %}
 
                             </div>
 
@@ -334,6 +350,31 @@
                                     "en": "Button link",
                                     "fi": "Napin linkki"
                                 }
+                            },
+                            {
+                                "id": "btnStyle",
+                                "type": "radio-pill",
+                                "label": {
+                                    "en": "Button style",
+                                    "fi": "Napin tyyli"
+                                },
+                                "default": "btn",
+                                "options": [
+                                    {
+                                        "value": "btn",
+                                        "label": {
+                                            "en": "Button",
+                                            "fi": "Nappi"
+                                        }
+                                    },
+                                    {
+                                        "value": "link",
+                                        "label": {
+                                            "en": "Link",
+                                            "fi": "Linkki"
+                                        }
+                                    }
+                                ]
                             },
                             {
                                 "id": "btnResourceOpenInNewWindowStatus",
@@ -571,6 +612,7 @@
                                     "record_id": "",
                                     "url": ""
                                 },
+                                "btnStyle": "btn",
                                 "btnResourceOpenInNewWindowStatus": true
                             }
                         },
@@ -588,6 +630,7 @@
                                     "record_id": "",
                                     "url": ""
                                 },
+                                "btnStyle": "btn",
                                 "btnResourceOpenInNewWindowStatus": true
                             }
                         }

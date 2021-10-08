@@ -7,8 +7,6 @@
 @import "../vendor/animate/animate";
 @import "../vendor/bootstrap/scss/bootstrap";
 @import "mixins";
-@import "utilities";
-@import "layout";
 
 // Components
 @import "components/awesome-notifications";
@@ -40,3 +38,7 @@
 @import "blocks/spacer";
 @import "blocks/newsletter";
 @import "blocks/klarna";
+
+// Layout
+@import "utilities";
+@import "layout";

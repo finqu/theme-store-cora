@@ -14,9 +14,25 @@
 
 <div class="d-flex {{ contentAlign }}">
 
-    <a href="{{- block.settings.btnResource.url -}}" class="btn btn-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
+    {% if block.settings.btnStyle == 'btn' %}
+
+        <a href="{{- block.settings.btnResource.url -}}" class="btn btn-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
         {{ btnLabel }}
     </a>
+
+    {% else %}
+
+        <a href="{{- block.settings.btnResource.url -}}" class="btn btn-link text-underline-indicator font-weight-bold"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
+
+            <span class="mr-2">
+                {{ btnLabel }}
+            </span>
+
+            {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+        </a>
+
+    {% endif %}
 
 </div>
 
@@ -45,6 +61,31 @@
                 "en": "Button link",
                 "fi": "Napin linkki"
             }
+        },
+        {
+            "id": "btnStyle",
+            "type": "radio-pill",
+            "label": {
+                "en": "Button style",
+                "fi": "Napin tyyli"
+            },
+            "default": "btn",
+            "options": [
+                {
+                    "value": "btn",
+                    "label": {
+                        "en": "Button",
+                        "fi": "Nappi"
+                    }
+                },
+                {
+                    "value": "link",
+                    "label": {
+                        "en": "Link",
+                        "fi": "Linkki"
+                    }
+                }
+            ]
         },
         {
             "id": "openInNewWindowStatus",
