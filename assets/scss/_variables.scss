@@ -48,9 +48,12 @@ $line-height-computed: floor(($font-size-base * $line-height-base)); // 21 px
 
 $headings-font-weight: 700;
 $headings-line-height: 1.2;
+$headings-margin-bottom: 1rem;
 
 $link-decoration: none;
 $link-hover-decoration: none;
+
+$hr-margin-y: 1rem;
 
 
 // Button + Form

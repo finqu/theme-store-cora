@@ -1,3 +1,9 @@
+{%- assign sectionTitle = section.settings.sectionTitle -%}
+{%- assign sectionTitleTag = section.settings.sectionTitleTag -%}
+{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
+{%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
+{%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
+
 {%- capture sectionContent -%}
 
     {%- case section.settings.listType -%}
@@ -48,11 +54,7 @@
 
 {%- endcapture -%}
 
-{%- assign sectionTitle = section.settings.sectionTitle -%}
-{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
-{%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
-
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
 
 {% schema %}
 {
@@ -503,7 +505,9 @@
             "category": "theme-product",
             "settings": {
                 "sectionTitle": "Lorem ipsum dolor sit amet",
+                "sectionTitleTag": "h2",
                 "sectionSubtitle": "Lorem ipsum dolor sit amet",
+                "sectionSubtitleTag": "h3",
                 "sectionHeaderTextAlign": "left",
                 "listType": "new",
                 "tagId": null,

@@ -27,7 +27,8 @@
 		aspectRatioProductImage: {{ settings.aspectRatioProductImage | json }},
 		hasTermsAndConditions: {{ store.terms_and_conditions | yepnope: 'true', 'false' }},
 		hasPrivacyPolicy: {{ store.privacy_policy | yepnope: 'true', 'false' }},
-		cookieNotification: {{ settings.cookieNotification | json }},
+		cookiePolicy: {{ session.cookie_policy | json }},
+		backToTopButton: {{ settings.backToTopButton | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
 			decimalPlaces: {{ store.currency.decimal_places | json }}

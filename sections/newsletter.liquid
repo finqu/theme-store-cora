@@ -1,6 +1,8 @@
+{%- assign sectionTitle = section.settings.sectionTitle -%}
+{%- assign sectionTitleTag = section.settings.sectionTitleTag -%}
+{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
+{%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
-{%- assign sectionTitle = section.settings.title | default: contactTitle -%}
-{%- assign sectionSubtitle = section.settings.subtitle -%}
 
 {%- case section.settings.textAlign -%}
     {% when 'left' %}
@@ -135,7 +137,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
 
 {% schema %}
 {
@@ -156,7 +158,7 @@
                 },
                 "settings": [
                     {
-                        "id": "title",
+                        "id": "sectionTitle",
                         "type": "text",
                         "label": {
                             "en": "Title",
@@ -164,12 +166,66 @@
                         }
                     },
                     {
-                        "id": "subtitle",
+                        "id": "sectionTitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Heading SEO priority",
+                            "fi": "Otsikon SEO-prioriteetti"
+                        },
+                        "default": "h2",
+                        "options": [
+                            {
+                                "value": "h1",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "h2",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ],
+                        "conditions": ["title:length gt 0"]
+                    },
+                    {
+                        "id": "sectionSubtitle",
                         "type": "text",
                         "label": {
                             "en": "Subtitle",
                             "fi": "Alaotsikko"
                         }
+                    },
+                    {
+                        "id": "sectionSubtitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Subtitle SEO priority",
+                            "fi": "Alaotsikon SEO-prioriteetti"
+                        },
+                        "default": "h3",
+                        "options": [
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ],
+                        "conditions": ["sectionSubtitle:length gt 0"]
                     },
                     {
                         "id": "textAlign",
@@ -514,8 +570,10 @@
         {
             "category": "theme-form",
             "settings": {
-                "title": "Lorem ipsum dolor sit",
-                "subtitle": "Lorem ipsum dolor sit",
+                "sectionTitle": "Lorem ipsum dolor sit",
+                "sectionTitleTag": "h2",
+                "sectionSubtitle": "Lorem ipsum dolor sit",
+                "sectionSubtitleTag": "h3",
                 "textAlign": "center",
                 "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.<\/p>",
                 "showSocialMediaIcons": true,

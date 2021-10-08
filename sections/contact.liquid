@@ -1,8 +1,8 @@
+{%- assign sectionTitle = section.settings.sectionTitle -%}
+{%- assign sectionTitleTag = section.settings.sectionTitleTag -%}
+{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
+{%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
-{%- assign sectionTitle = section.settings.title -%}
-{%- assign sectionTitleTag = section.settings.titleTag -%}
-{%- assign sectionSubtitle = section.settings.subtitle -%}
-{%- assign sectionSubtitleTag = section.settings.subtitleTag -%}
 
 {%- capture sectionContent -%}
 
@@ -308,7 +308,7 @@
                         ]
                     },
                     {
-                        "id": "title",
+                        "id": "sectionTitle",
                         "type": "text",
                         "label": {
                             "en": "Title",
@@ -316,7 +316,7 @@
                         }
                     },
                     {
-                        "id": "titleTag",
+                        "id": "sectionTitleTag",
                         "type": "radio-pill",
                         "label": {
                             "en": "Heading SEO priority",
@@ -344,10 +344,10 @@
                                 }
                             }
                         ],
-                        "conditions": ["title:length gt 0"]
+                        "conditions": ["sectionTitle:length gt 0"]
                     },
                     {
-                        "id": "subtitle",
+                        "id": "sectionSubtitle",
                         "type": "text",
                         "label": {
                             "en": "Subtitle",
@@ -355,7 +355,7 @@
                         }
                     },
                     {
-                        "id": "subtitleTag",
+                        "id": "sectionSubtitleTag",
                         "type": "radio-pill",
                         "label": {
                             "en": "Subtitle SEO priority",
@@ -375,7 +375,7 @@
                                 }
                             }
                         ],
-                        "conditions": ["subtitle:length gt 0"]
+                        "conditions": ["sectionSubtitle:length gt 0"]
                     },
                     {
                         "id": "textAlign",
@@ -739,10 +739,10 @@
             "category": "theme-form",
             "settings": {
                 "contactLayout": "2",
-                "title": "Lorem ipsum dolor sit",
-                "titleTag": "h2",
-                "subtitle": "Lorem ipsum dolor sit",
-                "subtitleTag": "h3",
+                "sectionTitle": "Lorem ipsum dolor sit",
+                "sectionTitleTag": "h2",
+                "sectionSubtitle": "Lorem ipsum dolor sit",
+                "sectionSubtitleTag": "h3",
                 "textAlign": "left",
                 "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.<\/p>",
                 "showPhonenumber": false,

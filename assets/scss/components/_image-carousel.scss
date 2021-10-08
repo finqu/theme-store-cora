@@ -49,6 +49,13 @@
 			position: relative;
 			overflow: hidden;
 
+			.swiper-slide-title {
+
+				.title {
+					margin-bottom: 1rem;
+				}
+			}
+
 			.slide-bg-img img {
 				width: 100%;
 		        height: 100%;

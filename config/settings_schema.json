@@ -1517,14 +1517,17 @@
 				},
 				{
 					"type": "title",
-					"label": "GDPR"
+					"label": {
+						"en": "Usability",
+						"fi": "Käytettävyys"
+					}
 				},
 				{
-					"id": "cookieNotification",
+					"id": "backToTopButton",
 					"type": "checkbox",
 					"label": {
-						"en": "Cookie notification",
-						"fi": "Evästeilmoitus"
+						"en": "Back to top button",
+						"fi": "Takaisin alkuun -painike"
 					},
 					"default": true
 				}

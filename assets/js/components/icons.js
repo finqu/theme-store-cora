@@ -32,6 +32,7 @@ import * as ShipmentUploadRegular from '@streamlinehq/streamlinehq/img/streamlin
 import * as PencilRegular from '@streamlinehq/streamlinehq/img/streamline-regular/pencil-2-PopQWO.svg';
 import * as KeyboardReturnRegular from '@streamlinehq/streamlinehq/img/streamline-regular/keyboard-arrow-return-9UL3W1.svg';
 import * as DeliveryTruckClockRegular from '@streamlinehq/streamlinehq/img/streamline-regular/delivery-truck-clock-YBGQdb.svg';
+import * as ArrowUpRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-up-1-4pQx70.svg';
 
 export default {
 	alignLeftLight: MoveLeft1Light,
@@ -67,5 +68,6 @@ export default {
 	shipmentUploadRegular: ShipmentUploadRegular,
 	pencilRegular: PencilRegular,
 	keyboardReturnRegular: KeyboardReturnRegular,
-	deliveryTruckClockRegular: DeliveryTruckClockRegular
+	deliveryTruckClockRegular: DeliveryTruckClockRegular,
+	arrowUpRegular: ArrowUpRegular
 }

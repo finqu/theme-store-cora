@@ -7,14 +7,9 @@ export default {
 
         document.addEventListener('finqu:section:load', (e) => {
 
+            // Force load all remaining images because vanilla-lazyload's observer doesn't work in iframe for some reason
             if (e.target.classList.contains('has-lazy')) {
-
-                themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
-
-                // Force load all remaining images on Safari because observer doesn't work for some reason in iframe
-                if (navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-                    themeApp.lazyLoad.loadAll();
-                }
+                themeApp.lazyLoad.loadAll();
             }
 
             if (window.KlarnaOnsiteService) {
@@ -53,14 +48,9 @@ export default {
 
         document.addEventListener('finqu:block:load', (e) => {
 
+            // Force load all remaining images because vanilla-lazyload's observer doesn't work in iframe for some reason
             if (e.target.classList.contains('has-lazy')) {
-
-                themeApp.lazyLoad.update(e.target.querySelectorAll('.lazy'));
-
-                // Force load all remaining images on Safari because observer doesn't work for some reason in iframe
-                if (navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-                    themeApp.lazyLoad.loadAll();
-                }
+                themeApp.lazyLoad.loadAll();
             }
         });
 

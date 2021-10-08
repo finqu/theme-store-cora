@@ -1,5 +1,7 @@
 {%- assign sectionTitle = section.settings.sectionTitle -%}
+{%- assign sectionTitleTag = section.settings.sectionTitleTag -%}
 {%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
+{%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 
@@ -22,7 +24,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'fixed', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'fixed', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
 
 {% schema %}
 {
@@ -50,12 +52,66 @@
                         }
                     },
                     {
+                        "id": "sectionTitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Heading SEO priority",
+                            "fi": "Otsikon SEO-prioriteetti"
+                        },
+                        "default": "h2",
+                        "options": [
+                            {
+                                "value": "h1",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "h2",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ],
+                        "conditions": ["title:length gt 0"]
+                    },
+                    {
                         "id": "sectionSubtitle",
                         "type": "text",
                         "label": {
                             "en": "Subtitle",
                             "fi": "Alaotsikko"
                         }
+                    },
+                    {
+                        "id": "sectionSubtitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Subtitle SEO priority",
+                            "fi": "Alaotsikon SEO-prioriteetti"
+                        },
+                        "default": "h3",
+                        "options": [
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ],
+                        "conditions": ["sectionSubtitle:length gt 0"]
                     },
                     {
                         "id": "sectionHeaderTextAlign",
@@ -562,7 +618,9 @@
             "category": "theme-product",
             "settings": {
                 "sectionTitle": "Lorem ipsum dolor sit amet",
+                "sectionTitleTag": "h2",
                 "sectionSubtitle": "Lorem ipsum dolor sit amet",
+                "sectionSubtitleTag": "h3",
                 "sectionHeaderTextAlign": "left",
                 "carouselStyle": "1",
                 "navigation": "hover",

@@ -372,9 +372,11 @@
         "cta": "Lähetä",
         "success": "Viesti lähetettiin onnistuneesti."
     },
-    "cookie_notification": {
-        "content": "Käytämme evästeitä tukeaksemme käyttökokemustasi sivuillamme. Jatkamalla sivustomme käyttöä hyväksyt evästeiden käytön.",
-        "cta": "Sulje",
-        "read_privacy_policy": "Lue tietosuojaseloste"
+    "cookie_policy": {
+        "content": "Käytämme evästeitä tukeaksemme käyttökokemustasi sivuillamme.",
+        "required_cta": "Vain välttämättömät",
+        "all_cta": "Hyväksy kaikki",
+        "read_privacy_policy": "Lue tietosuojaseloste",
+        "cookie_settings": "Evästeasetukset"
     }
 }

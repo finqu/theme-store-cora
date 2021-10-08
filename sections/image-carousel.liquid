@@ -175,9 +175,9 @@
 
                             <div class="slide-title">
 
-                                <h3>
+                                <{{ section.settings.slideTitleTag }} class="title">
                                     {{ item.settings.title }}
-                                </h3>
+                                </{{ section.settings.slideTitleTag }}>
 
                             </div>
 
@@ -487,6 +487,28 @@
                                     ]
                                 },
                                 {
+                                    "id": "slideTitleTag",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Items text SEO priority",
+                                        "fi": "Kohteiden tekstin SEO-prioriteetti"
+                                    },
+                                    "default": "h3",
+                                    "options": [
+                                        {
+                                            "value": "h3",
+                                            "label": "H3"
+                                        },
+                                        {
+                                            "value": "span",
+                                            "label": {
+                                                "en": "Text",
+                                                "fi": "Teksti"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
                                     "id": "slideImgOverlay",
                                     "label": {
                                         "en": "Overlay",
@@ -530,6 +552,7 @@
                 "navigation": "hover",
                 "pagination": "hover",
                 "sectionHeight": "",
+                "slideTitleTag": "text",
                 "slideImgOverlay": "0",
                 "sectionStyle": "general",
                 "setting_blocks": {

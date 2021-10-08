@@ -20,16 +20,16 @@ export default {
 
         const bodyEl = document.querySelector('body');
 
-        if (!bodyEl.classList.contains('template-password')) {
+        if (!themeApp.data.designMode) {
+            this.initCookiePolicy();
+            this.initBackToTopButton();
+        }
 
+        if (!bodyEl.classList.contains('template-password')) {
             this.initMobileNavigation();
             this.initSiteHeader();
             this.initWishlist();
             this.initCartMini();
-
-            if (themeApp.data.cookieNotification && !themeApp.data.designMode) {
-                this.initCookieNotification();
-            }
         }
 
         if (!bodyEl.classList.contains('template-category') && !bodyEl.classList.contains('template-password')) {
@@ -1362,7 +1362,15 @@ export default {
             });
 
             themeApp.filterInput(productQuantityInputEl, function(value) {
-                return value != 0 && value <= maxQuantity && value >= minQuantity && /^\d+$/.test(value);
+
+                if (maxQuantity) {
+
+                    return value != 0 && value <= maxQuantity && value >= minQuantity && /^\d+$/.test(value);
+
+                } else {
+
+                    return value != 0 && value >= minQuantity && /^\d+$/.test(value);
+                }
             });
         };
 
@@ -1382,39 +1390,110 @@ export default {
             initProductQuantity();
         }
     },
-    initCookieNotification: function() {
+    initCookiePolicy: function() {
 
-        if (!Cookies.get('allowCookies')) {
+        const cookiePolicyEl = document.querySelector('.cookie-policy');
 
-            const cookieNotificationTemplateEl = document.querySelector('#hbs-cookie-notification-template');
-            let cookieNotificationTemplate = null;
+        if (!cookiePolicyEl) {
+            return;
+        }
 
-            if (cookieNotificationTemplateEl) {
-                cookieNotificationTemplate = themeApp.hbs.compile(cookieNotificationTemplateEl.innerHTML);
-            }
+        if (themeApp.data.cookiePolicy === null) {
 
-            if (!cookieNotificationTemplateEl || !cookieNotificationTemplate) {
-                return;
-            }
+            document.body.classList.add('cookie-policy-visible');
+            cookiePolicyEl.classList.remove('d-none');
 
-            document.body.insertAdjacentHTML('beforeend', cookieNotificationTemplate({
-                hasPrivacyPolicy: themeApp.data.hasPrivacyPolicy,
-                privacyPolicyUrl: themeApp.data.routes.privacyPolicyUrl
-            }));
+            themeApp.animate(cookiePolicyEl, 'slideInUp');
+        }
 
-            const cookieNotificationEl = document.querySelector('.cookie-notification');
+        const cookiePolicyCloseEl = cookiePolicyEl.querySelector('[data-cookie-policy-close]');
+        const cookiePolicyOpenEls = document.querySelectorAll('[data-cookie-policy-open]');
+        const cookiePolicySubmitEls = cookiePolicyEl.querySelectorAll('[data-cookie-policy-submit]');
+        const cookiePolicyFormEl = cookiePolicyEl.querySelector('#cookie-policy-form');
+        const cookiePolicyInputEl = cookiePolicyFormEl.querySelector('[name="cookie_policy"]');
 
-            themeApp.animate(cookieNotificationEl, 'slideInUp');
+        if (cookiePolicyCloseEl) {
 
-            cookieNotificationEl.querySelector('#cookie-notification-cta').addEventListener('click', (e) => {
+            cookiePolicyCloseEl.addEventListener('click', (e) => {
 
-                themeApp.animate(cookieNotificationEl, 'slideOutDown').then(() => {
+                themeApp.animate(cookiePolicyEl, 'slideOutDown').then(() => {
 
-                    cookieNotificationEl.remove();
-
-                    Cookies.set('allowCookies', 'true', { expires: 365 });
+                    document.body.classList.remove('cookie-policy-visible');
+                    cookiePolicyEl.classList.add('d-none');
                 });
             });
         }
+
+        if (cookiePolicyOpenEls.length > 0) {
+
+            cookiePolicyOpenEls.forEach(el => { el.addEventListener('click', e => {
+
+                if (document.body.classList.contains('cookie-policy-visible')) {
+                    return;
+                }
+
+                cookiePolicyEl.classList.remove('d-none');
+
+                document.body.classList.add('cookie-policy-visible');
+                themeApp.animate(cookiePolicyEl, 'slideInUp');
+            })});
+        }
+
+        if (cookiePolicySubmitEls.length > 0) {
+
+            cookiePolicySubmitEls.forEach(el => { el.addEventListener('click', e => {
+
+               cookiePolicyInputEl.setAttribute('value', el.value);
+
+               cookiePolicyFormEl.submit();
+            })});
+        }
+    },
+    initBackToTopButton: function() {
+
+        const containerEl = document.body;
+        const scrollingEl = document.scrollingElement;
+        const $scrollingEl = $(scrollingEl);
+        let windowHeight = window.innerHeight;
+
+        containerEl.insertAdjacentHTML('beforeend',`
+            <button type="button" id="back-to-top-btn" class="d-none">
+                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.arrowUpRegular}" class="svg-inline" alt="">
+            </button>
+        `);
+
+        const backToTopBtnEL = containerEl.querySelector('#back-to-top-btn');
+
+        document.addEventListener('scroll', () => {
+
+            if (document.activeElement !== containerEl && window.innerHeight === windowHeight) {
+
+                document.activeElement.blur();
+
+            } else {
+
+                windowHeight = window.innerHeight;
+            }
+
+            if (scrollingEl.scrollTop >= 250 && backToTopBtnEL.classList.contains('d-none')) {
+
+                backToTopBtnEL.classList.remove('d-none');
+
+                themeApp.animate(backToTopBtnEL, 'fadeIn');
+
+            } else if (scrollingEl.scrollTop < 250 && !backToTopBtnEL.classList.contains('d-none')) {
+
+                themeApp.animate(backToTopBtnEL, 'fadeOut').then(() => {
+                    backToTopBtnEL.classList.add('d-none');
+                });
+            }
+        });
+
+        backToTopBtnEL.addEventListener('click', () => {
+
+            $scrollingEl.animate({
+                scrollTop: 0
+            }, 800);
+        });
     }
 }
