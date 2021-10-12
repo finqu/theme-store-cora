@@ -49,6 +49,20 @@ body.template-frontpage {
                 top: 48px;
                 right: 0;
 
+                &.site-header-sticky {
+
+                    &.is-sticky {
+                        position: fixed;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+
+                        .site-header {
+                            background-color: section-var(background_color);
+                        }
+                    }
+                }
+
                 .site-header {
                     background-color: transparent;
 
@@ -74,6 +88,20 @@ body.template-frontpage {
                 left: 0;
                 top: 48px;
                 right: 0;
+
+                &.site-header-sticky {
+
+                    &.is-sticky {
+                        position: fixed;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+
+                        .site-header {
+                            background-color: section-var(background_color);
+                        }
+                    }
+                }
 
                 .site-header {
                     background-color: transparent;

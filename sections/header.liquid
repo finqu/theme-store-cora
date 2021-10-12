@@ -434,23 +434,11 @@
 
 {%- elsif section.settings.headerLayout == '6' -%}
 
-    {%- if request.page_type == 'frontpage' -%}
-        {%- assign sectionStyle = section.settings.sectionStyleFrontpage -%}
-    {%- else %}
-        {%- assign sectionStyle = section.settings.sectionStyle -%}
-    {%- endif -%}
-
-    {%- render 'headers/layout-6', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-6', sectionStyle: sectionStyle -%}
+    {%- render 'headers/layout-6', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-6' -%}
 
 {%- elsif section.settings.headerLayout == '7' -%}
 
-    {%- if request.page_type == 'frontpage' -%}
-        {%- assign sectionStyle = section.settings.sectionStyleFrontpage -%}
-    {%- else %}
-        {%- assign sectionStyle = section.settings.sectionStyle -%}
-    {%- endif -%}
-
-    {%- render 'headers/layout-7', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-7', sectionStyle: sectionStyle -%}
+    {%- render 'headers/layout-7', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-7' -%}
 
 {% endif %}
 
@@ -531,6 +519,45 @@
                                     "fi": "Asettelu 7"
                                 }
                             }
+                        ]
+                    },
+                    {
+                        "id": "headerMenuItemColor",
+                        "type": "color",
+                        "label": {
+                            "en": "Link color",
+                            "fi": "Linkin väri"
+                        },
+                        "default": "#000000",
+                        "conditions": [
+                            "headerLayout gte 6",
+                            "headerLayout lte 7"
+                        ]
+                    },
+                    {
+                        "id": "headerIndicatorColor",
+                        "type": "color",
+                        "label": {
+                            "en": "Indicator color",
+                            "fi": "Osoitin väri"
+                        },
+                        "default": "#000000",
+                        "conditions": [
+                            "headerLayout gte 6",
+                            "headerLayout lte 7"
+                        ]
+                    },
+                    {
+                        "id": "headerIconColor",
+                        "type": "color",
+                        "label": {
+                            "en": "Icon color",
+                            "fi": "Kuvakkeen väri"
+                        },
+                        "default": "#000000",
+                        "conditions": [
+                            "headerLayout gte 6",
+                            "headerLayout lte 7"
                         ]
                     },
                     {
@@ -712,21 +739,6 @@
                     "fi": "Osio"
                 },
                 "settings": [
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Frontpage colors",
-                            "fi": "Etusivun värit"
-                        },
-                        "conditions": ["headerLayout eq 6"]
-                    },
-                    {
-                        "id": "sectionStyleFrontpage",
-                        "styles_id": "styles",
-                        "type": "style-picker",
-                        "default": "general",
-                        "conditions": ["headerLayout eq 6"]
-                    },
                     {
                         "type": "title",
                         "label": {

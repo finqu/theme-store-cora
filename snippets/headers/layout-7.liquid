@@ -3,6 +3,18 @@
 {% if request.page_type == 'frontpage' %}
     <style>
         @media (min-width: 977px) {
+            .section.section-site-header .site-header-container:not(.is-sticky) .site-header-menu-item-text {
+                color: {{ section.settings.headerMenuItemColor }} !important;
+            }
+
+            .section.section-site-header .site-header-container:not(.is-sticky) .text-underline-indicator:hover {
+                border-color: {{ section.settings.headerIndicatorColor }} !important;
+            }
+
+            .section.section-site-header .site-header-container:not(.is-sticky) .svg-icon {
+                color: {{ section.settings.headerIconColor }} !important;
+            }
+
             .section-site-header + .section,
             .section-site-header + .finqu-sections-container > .section:first-child {
                 height: 100vh;
@@ -63,7 +75,7 @@
 
         <div class="site-header">
 
-            <div class="site-header-inner {% if request.page_type == 'frontpage' %}pt-4{% else %}py-3{% endif %}">
+            <div class="site-header-inner py-3">
 
                 <div class="container d-flex">
 
