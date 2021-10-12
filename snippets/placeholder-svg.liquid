@@ -8,7 +8,7 @@
 	- height: {String} Height
 	- fill: {String} Fill
 	- stroke: {String} Stroke
-	- base64: {Booean} As base64
+	- base64: {Booean} As base64,
 
 	Usage:
 	{% render 'placeholder-svg', type: 'image', class: class %}
@@ -20,6 +20,14 @@
 {%- assign height = height | default: '' -%}
 {%- assign fill = fill | fill: '' -%}
 {%- assign stroke = stroke | stroke: '' -%}
+
+{%- if width -%}
+	{%- assign classes = classes | append: ' has-width' | rstrip -%}
+{%- endif -%}
+
+{%- if height -%}
+	{%- assign classes = classes | append: ' has-height' | rstrip -%}
+{%- endif -%}
 
 {%- case type -%}
 

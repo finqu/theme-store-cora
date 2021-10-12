@@ -1,0 +1,88 @@
+// Link list
+// -----------------------------------------------------------------------------------------
+
+@include section-style() {
+
+	.link-list {
+		display: flex;
+		flex-wrap: wrap;
+		@include list-unstyled();
+
+		&.link-list-cols-per-row-1 {
+
+			.link-list-item {
+				flex-basis: 100%;
+				max-width: 100%;
+			}
+		}
+
+		&.link-list-cols-per-row-2 {
+
+			.link-list-item {
+				flex-basis: 50%;
+				max-width: 50%;
+			}
+		}
+
+		&.link-list-cols-per-row-3 {
+
+			.link-list-item {
+				flex-basis: 33.3333333333%;
+				max-width: 33.3333333333%;
+
+				@include media-breakpoint-down(sm) {
+					flex-basis: 50%;
+					max-width: 50%;
+				}
+			}
+		}
+
+		&.link-list-cols-per-row-4 {
+
+			.link-list-item {
+				flex-basis: 25%;
+				max-width: 25%;
+
+				@include media-breakpoint-down(md) {
+					flex-basis: 33.3333333333%;
+					max-width: 33.3333333333%;
+				}
+
+				@include media-breakpoint-down(sm) {
+					flex-basis: 50%;
+					max-width: 50%;
+				}
+			}
+		}
+
+		&.link-list-cols-per-row-5 {
+
+			.link-list-item {
+				flex-basis: 20%;
+				max-width: 20%;
+
+				@include media-breakpoint-down(lg) {
+					flex-basis: 25%;
+					max-width: 25%;
+				}
+
+				@include media-breakpoint-down(md) {
+					flex-basis: 33.3333333333%;
+					max-width: 33.3333333333%;
+				}
+
+				@include media-breakpoint-down(sm) {
+					flex-basis: 50%;
+					max-width: 50%;
+				}
+			}
+
+		}
+
+		.link-list-item {
+			padding-left: spacer(2);
+			padding-right: spacer(2);
+			margin-bottom: spacer(3);
+		}
+	}
+}

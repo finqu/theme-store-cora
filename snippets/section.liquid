@@ -20,6 +20,7 @@
 	- sectionBgImgSrc: {String}
 	- sectionBgImgPos: {String}
 	- sectionBgImgOverlay: {String}
+	- sectionStyle: {String}
 	- sectionOverlay: {Boolean}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact', 'tiny'
 	- sectionTextAlign: {String} 'left', 'center', 'right'
@@ -44,7 +45,7 @@
 {%- assign sectionBgImgPos = section.settings.sectionBgImgPos | default: settings.sectionBgImgPos -%}
 {%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | default: '0' -%}
 {%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
-{%- assign sectionStyle = section.settings.sectionStyle | default: 'general' -%}
+{%- assign sectionStyle = sectionStyle | default: section.settings.sectionStyle | default: 'general' -%}
 {%- assign sectionTitle = sectionTitle | default: null -%}
 {%- assign sectionTitleTag = sectionTitleTag | default: null -%}
 {%- assign sectionSubtitle = sectionSubtitle | default: null -%}

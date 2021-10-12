@@ -22,6 +22,13 @@
 			}
 		},
 		{
+			"id": "theme-blog",
+			"name": {
+				"en": "Blog",
+				"fi": "Blogi"
+			}
+		},
+		{
 			"id": "theme-product",
 			"name": {
 				"en": "Product",
@@ -941,23 +948,19 @@
 						"en": "Text size",
 						"fi": "Tekstin koko"
 					},
-					"default": "0.875",
+					"default": "0.9375",
 					"options": [
 						{
-							"value": "0.750",
+							"value": "0.875",
 							"label": "S"
 						},
 						{
-							"value": "0.875",
+							"value": "0.9375",
 							"label": "M"
 						},
 						{
 							"value": "1",
 							"label": "L"
-						},
-						{
-							"value": "1.125",
-							"label": "XL"
 						}
 					]
 				},

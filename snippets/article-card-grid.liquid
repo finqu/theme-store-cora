@@ -1,0 +1,142 @@
+{% comment %}
+	Renders a article card as grid item
+
+	Accepts:
+	- article: {Object} article Liquid object (required)
+	- itemsPerRow {Number} Number of product card grid siblings
+
+	Usage:
+	{% render 'article-card-grid', article: article %}
+{% endcomment %}
+
+{%- unless itemsPerRow -%}
+	{%- assign itemsPerRow = 3 -%}
+{%- endunless -%}
+
+{%- assign articleImage = article.header_image | default: '' -%}
+{%- assign articleTitle = article.title | default: 'Example article' -%}
+{%- assign articleUrl = article | page_url | default: false -%}
+{%- assign articleContent = article.content | strip_html | truncate: 140 | default: '' -%}
+{%- assign articleSummary = article.summary | default: '' -%}
+{%- assign articlePublishDate = article.published_at | default: 'now' -%}
+
+{%- unless articleSummary and articleContent -%}
+	{%- assign articleSummary = 'Example summary' -%}
+{%- endunless -%}
+
+<div class="article-card-grid-item">
+
+	<div class="article-media">
+
+		<div class="article-img-container aspect-ratio-container">
+
+			<a href="{{ article | page_url }}">
+
+				{% if articleImage %}
+
+	                {%- assign imgSrc = articleImage | asset_url -%}
+	  				{%- assign imgSizeSm = '248,172' -%}
+	  				{%- assign imgSizeMd = '320,222' -%}
+
+	  				{%- case itemsPerRow -%}
+
+					    {% when '2' %}
+					        {%- assign imgSizeLg = '640,444' -%}
+					    {% when '3' %}
+					        {%- assign imgSizeLg = '414,287' -%}
+					    {% when '4' %}
+					        {%- assign imgSizeLg = '300,248' -%}
+
+					{%- endcase -%}
+
+	                <picture>
+	                	<source media="(min-width: 992px)" data-srcset="
+				            {{ imgSrc | thumb: imgSizeLg }} 1x,
+				            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+				        <source media="(min-width: 576px)" data-srcset="
+				            {{ imgSrc | thumb: imgSizeMd }} 1x,
+				            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+				        <source data-srcset="
+                            {{ imgSrc | thumb: imgSizeSm }} 1x,
+                            {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+				        <img
+				            alt="{{ articleTitle }}"
+				            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+				            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+				            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+				    </picture>
+
+	            {% else %}
+
+	                {%- capture imgSrc -%}
+	                    {% render 'placeholder-svg', type: 'image', base64: true %}
+	                {%- endcapture -%}
+
+	                <img
+	                    class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
+	                    alt="{{ article.title }}"
+	                    data-src="{{ imgSrc }}">
+
+	            {% endif %}
+
+		    </a>
+
+	    </div>
+
+	</div>
+
+	<div class="article-body">
+
+		<div class="article-title">
+
+			{%- if articleUrl -%}
+
+				<a href="{{ articleUrl }}">
+
+					<h3 class="article-title-text">{{ articleTitle }}</h3>
+
+				</a>
+
+			{%- else -%}
+
+				<h3 class="article-title-text">{{ articleTitle }}</h3>
+
+			{%- endif -%}
+
+		</div>
+
+		<div class="article-info">
+
+			 <span class="article-date">
+
+                {% assign format = 'general.date_format' | t  %}
+                <i><time datetime="{{ articlePublishDate | date: "%F" }}">{{ articlePublishDate | date:format }}</time></i>
+
+            </span>
+
+		</div>
+
+		<div class="article-content">
+
+			{%- if articleSummary.size > 0 -%}
+
+                <p class="article-content-text mb-0">
+                	{{ articleSummary }}
+                </p>
+
+            {%- else -%}
+
+            	<p class="article-content-text mb-0">
+            		{{ articleContent }}
+            	</p>
+
+            {%- endif -%}
+
+		</div>
+
+	</div>
+
+</div>

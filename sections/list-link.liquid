@@ -1,83 +1,93 @@
 {%- assign sectionTitle = section.settings.sectionTitle -%}
 {%- assign sectionTitleTag = section.settings.sectionTitleTag -%}
-{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
-{%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
+{%- assign menu = linklists[section.settings.menu] -%}
 
 {%- capture sectionContent -%}
 
-    {%- case section.settings.listType -%}
-        {% when 'discounted' %}
-            {%- assign items = products.discounted -%}
-        {% when 'new' %}
-            {%- assign items = products.new_products -%}
-        {% when 'tag' %}
-            {%- assign items = products.tags[section.settings.tagId] -%}
-        {% when 'category' %}
-            {%- assign items = categories[section.settings.category.id].products -%}
-        {% when 'manufacturer' %}
-            {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
-    {%- endcase -%}
+    <{{ sectionTitleTag }} class="d-block h3 mb-6 text-{{ sectionHeaderTextAlign }}">
+        {{- sectionTitle -}}
+    </{{ sectionTitleTag }}>
 
-    {%- assign items = items | slice: 0, section.settings.itemAmount -%}
+    <ul class="link-list link-list-cols-per-row-{{ section.settings.colsPerRow }}">
 
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
+        {% for item in menu.links %}
 
-        {% if items.size > 0 %}
+            <li class="link-list-item">
 
-            {% for product in items %}
+                {%- if item.url -%}
 
-                <div class="col pt-3 pb-4">
+                    <a href="{{ item.url }}" class="link-list-item-text">
+                        {{ item.title }}
+                    </a>
 
-                    {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+                {%- else -%}
 
-                </div>
+                    <span class="link-list-item-text">
+                        {{ item.title }}
+                    </span>
 
-            {% endfor %}
+                {%- endif -%}
 
-        {% elsif request.design_mode %}
+            </li>
 
-            {% for num in (1..section.settings.itemAmount) %}
+            {% if item.links %}
 
-                <div class="col pt-3 pb-4">
+                {% for item in item.links %}
 
-                    {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+                    <li class="link-list-item">
 
-                </div>
+                        {%- if item.url -%}
 
-            {% endfor %}
+                            <a href="{{ item.url }}" class="link-list-item-text">
+                                {{ item.title }}
+                            </a>
 
+                        {%- else -%}
 
-        {% endif %}
+                            <span class="link-list-item-text">
+                                {{ item.title }}
+                            </span>
 
-    </div>
+                        {%- endif -%}
+
+                    </li>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endfor %}
+
+    </ul>
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{% render 'section', section: section, sectionContent: sectionContent %}
 
 {% schema %}
 {
     "name": {
-        "en": "Product list",
-        "fi": "Tuotelista"
+        "en": "Link list",
+        "fi": "Linkkilista"
     },
     "tag": "section",
-    "class": "section section-product-list has-lazy",
+    "class": "section section-link-list",
+    "category": "theme-basic",
     "settings": {
         "list_type": "tabs",
         "groups": [
             {
                 "title": {
-                    "en": "General",
-                    "fi": "Yleinen"
+                    "en": "Content",
+                    "fi": "Sisältö"
                 },
                 "settings": [
                     {
                         "id": "sectionTitle",
                         "type": "text",
                         "label": {
-                            "en": "Heading",
+                            "en": "Title",
                             "fi": "Otsikko"
                         }
                     },
@@ -87,45 +97,6 @@
                         "label": {
                             "en": "Heading SEO priority",
                             "fi": "Otsikon SEO-prioriteetti"
-                        },
-                        "default": "h2",
-                        "options": [
-                            {
-                                "value": "h1",
-                                "label": "H1"
-                            },
-                            {
-                                "value": "h2",
-                                "label": "H2"
-                            },
-                            {
-                                "value": "h3",
-                                "label": "H3"
-                            },
-                            {
-                                "value": "span",
-                                "label": {
-                                    "en": "Text",
-                                    "fi": "Teksti"
-                                }
-                            }
-                        ],
-                        "conditions": ["title:length gt 0"]
-                    },
-                    {
-                        "id": "sectionSubtitle",
-                        "type": "text",
-                        "label": {
-                            "en": "Subtitle",
-                            "fi": "Alaotsikko"
-                        }
-                    },
-                    {
-                        "id": "sectionSubtitleTag",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Subtitle SEO priority",
-                            "fi": "Alaotsikon SEO-prioriteetti"
                         },
                         "default": "h3",
                         "options": [
@@ -141,7 +112,7 @@
                                 }
                             }
                         ],
-                        "conditions": ["sectionSubtitle:length gt 0"]
+                        "conditions": ["title:length gt 0"]
                     },
                     {
                         "id": "sectionHeaderTextAlign",
@@ -167,139 +138,25 @@
                         ]
                     },
                     {
-                        "id": "listType",
-                        "type": "select",
+                        "id": "menu",
+                        "type": "menu",
                         "label": {
-                            "en": "List type",
-                            "fi": "Listan tyyppi"
-                        },
-                        "default": "new",
-                        "options": [
-                            {
-                                "value": "discounted",
-                                "label": {
-                                    "en": "Discounted products",
-                                    "fi": "Alennetut tuotteet"
-                                }
-                            },
-                            {
-                                "value": "new",
-                                "label": {
-                                    "en": "New products",
-                                    "fi": "Uudet tuotteet"
-                                }
-                            },
-                            {
-                                "value": "tag",
-                                "label": {
-                                    "en": "Tag products",
-                                    "fi": "Tagi tuotteet"
-                                }
-                            },
-                            {
-                                "value": "category",
-                                "label": {
-                                    "en": "Product category products",
-                                    "fi": "Tuoteryhmän tuotteet"
-                                }
-                            },
-                            {
-                                "value": "manufacturer",
-                                "label": {
-                                    "en": "Manufaturer products",
-                                    "fi": "Valmistajan tuotteet"
-                                }
-                            }
-                        ]
+                            "en": "Menu",
+                            "fi": "Navigaatio"
+                        }
                     },
                     {
-                        "id": "tagId",
-                        "type": "text",
+                        "id": "colsPerRow",
                         "label": {
-                            "en": "Tag",
-                            "fi": "Tag"
-                        },
-                        "conditions": ["listType eq tag"]
-                    },
-                    {
-                        "id": "category",
-                        "type": "category",
-                        "label": {
-                            "en": "Category",
-                            "fi": "Tuoteryhmä"
-                        },
-                        "conditions": ["listType eq category"]
-                    },
-                    {
-                        "id": "manufacturer",
-                        "type": "manufacturer",
-                        "label": {
-                            "en": "manufacturer",
-                            "fi": "Valmistaja"
-                        },
-                        "conditions": ["listType eq manufacturer"]
-                    },
-                    {
-                        "id": "itemAmount",
-                        "label": {
-                            "en": "Product amount",
-                            "fi": "Tuotemäärä"
+                            "en": "Columns per row",
+                            "fi": "Sarakkeita per rivi"
                         },
                         "type": "range",
                         "min": 1,
-                        "max": 20,
+                        "max": 5,
                         "step": 1,
-                        "default": 8,
+                        "default": 2,
                         "unit": " "
-                    },
-                    {
-                        "id": "itemsPerRow",
-                        "label": {
-                            "en": "Products per row",
-                            "fi": "Tuotteita per rivi"
-                        },
-                        "type": "range",
-                        "min": 2,
-                        "max": 6,
-                        "step": 1,
-                        "default": 4,
-                        "unit": " "
-                    },
-                    {
-                        "id": "showBadges",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show badges",
-                            "fi": "Näytä merkit"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "showManufacturer",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show manufacturer",
-                            "fi": "Näytä valmistaja"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "showProductName",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show product name",
-                            "fi": "Näytä tuotteen nimi"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "showPricing",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show price information",
-                            "fi": "Näytä hintatiedot"
-                        },
-                        "default": true
                     }
                 ]
             },
@@ -408,6 +265,52 @@
                                         {
                                             "value": "lg",
                                             "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content width",
+                                        "fi": "Sisällön leveys"
+                                    },
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content alignment",
+                                        "fi": "Sisällön ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
                                         }
                                     ]
                                 }
@@ -556,26 +459,21 @@
     },
     "presets": [
         {
-            "category": "theme-product",
+            "category": "theme-basic",
             "settings": {
-                "sectionTitle": "Lorem ipsum dolor sit amet",
-                "sectionTitleTag": "h2",
-                "sectionSubtitle": "Lorem ipsum dolor sit amet",
-                "sectionSubtitleTag": "h3",
+                "sectionTitle": "Lorem ipsum dolor sit",
+                "sectionTitleTag": "h3",
                 "sectionHeaderTextAlign": "left",
-                "listType": "new",
-                "tagId": null,
-                "resource": null,
-                "itemAmount": 8,
-                "itemsPerRow": 4,
-                "showBadges": true,
-                "showManufacturer": true,
-                "showProductName": true,
-                "showPricing": true,
+                "menu": "footer",
+                "colsPerRow": "4",
                 "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
                 "sectionInnerSpacing": "",
-                "sectionBgImgSrc": null,
-                "sectionBgImgPos": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
                 "sectionBgImgOverlay": "0",
                 "sectionContentBgColorStatus": false,
                 "sectionContentBgColor": "#ffffff",

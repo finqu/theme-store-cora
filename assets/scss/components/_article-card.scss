@@ -1,15 +1,24 @@
-// Blog
+// Article card
 // -----------------------------------------------------------------------------------------
 
-.section-blog {
-
-	.blog-item {
+@include section-style() {
+	.article-card-grid-item {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		color: section-var(text_color, section-vars());
+		background-color: section-var(background_color, section-vars());
 
 		.article-media {
 			@include aspect-ratio(13, 9, 'cover');
+
+			.article-img-container {
+
+				.svg-placeholder {
+					color: section-var(text_color, section-vars());
+					background-color: color-yiq(section-var(background_color, section-vars()), darken(section-var(background_color, section-vars()), 5%), lighten(section-var(background_color, section-vars()), 5%));
+				}
+			}
 		}
 
 		.article-body {
@@ -27,6 +36,7 @@
 				    -webkit-box-orient: vertical;
 				    overflow: hidden;
 				    text-overflow: ellipsis;
+				    color: section-var(heading_color, section-vars());
 				}
 
 				& + .article-info,

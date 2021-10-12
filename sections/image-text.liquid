@@ -11,7 +11,7 @@
 
         <div data-finqu-inline-editor="contentImgSrc">
 
-            {% render 'placeholder-svg', type: 'image' %}
+            {% render 'placeholder-svg', type: 'image', height: section.settings.contentImgPlaceholderHeight %}
 
         </div>
 
@@ -132,6 +132,10 @@
                 "settings": [
                     {
                         "id": "contentImgPlaceholder",
+                        "type": "hidden"
+                    },
+                    {
+                        "id": "contentImgPlaceholderHeight",
                         "type": "hidden"
                     },
                     {
@@ -667,6 +671,7 @@
                 "contentBtnStyle": "btn",
                 "contentImgSrc": "",
                 "contentImgPlaceholder": true,
+                "contentImgPlaceholderHeight": "600px",
                 "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
                 "sectionHeight": "",
                 "sectionInnerSpacing": "",
@@ -675,6 +680,41 @@
                 "sectionContentAlign": "center",
                 "sectionBgImgSrc": null,
                 "sectionBgImgPos": "",
+                "sectionBgImgOverlay": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general"
+            }
+        },
+        {
+            "category": "theme-basic",
+            "settings": {
+                "contentColumnArrangement": "4,8",
+                "contentImgSide": "right",
+                "contentImgAlign": "middle",
+                "contentImgAlt": "",
+                "contentImgEffect": "none",
+                "contentRichtextAlign": "top",
+                "contentBtnLabel": "Lorem ipsum dolor sit amet",
+                "contentBtnResource": {
+                    "type": "url",
+                    "record_id": "",
+                    "url": ""
+                },
+                "contentBtnStyle": "link",
+                "contentImgSrc": "",
+                "contentImgPlaceholder": true,
+                "contentImgPlaceholderHeight": "300px",
+                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti.<\/p>",
+                "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
+                "sectionInnerSpacing": "",
+                "sectionContentSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
                 "sectionBgImgOverlay": "0",
                 "sectionContentBgColorStatus": false,
                 "sectionContentBgColor": "#ffffff",

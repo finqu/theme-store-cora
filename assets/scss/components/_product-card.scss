@@ -1,0 +1,186 @@
+// Product card
+// -----------------------------------------------------------------------------------------
+
+@include section-style() {
+
+    .product-card-grid-item {
+
+        .product-media-container {
+            position: relative;
+
+            & + .product-caption {
+                padding-top: spacer(2);
+            }
+
+            .product-wishlist-action-container {
+                display: flex;
+                position: absolute;
+                top: 8px;
+                right: 0;
+                z-index: 1;
+                @include media-breakpoint-down(md) {
+                    font-size: $font-size-base * .7;
+                }
+            }
+        }
+
+        .product-caption {
+
+            .product-manufacturer {
+                min-height: 21px;
+
+                .product-manufacturer-name {
+                    display: block;
+                    font-family: $accent-font-family;
+                    font-size: $font-size-base * 1.15;
+                    line-height: $line-height-base;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+
+            .product-name {
+
+                & + .product-price {
+                    margin-top: spacer(2);
+                }
+
+                .product-name-text {
+                    display: block;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: $font-size-base;
+                    font-weight: $font-weight-normal;
+                    line-height: $line-height-base;
+                    margin: 0;
+                }
+            }
+        }
+
+        .product-wishlist-action {
+            background-color: section-var(background_color);
+        }
+    }
+
+    .product-wishlist-action {
+
+        &[aria-pressed="true"] {
+            .svg-icon {
+                path {
+                    fill: section-var(indicator_color);
+                    stroke: section-var(indicator_color);
+                }
+            }
+        }
+
+        .svg-icon {
+            path {
+                transition: fill .4s ease;
+                fill: transparent;
+            }
+        }
+    }
+
+    .product-quantity-container {
+
+        .product-quantity {
+            display: flex;
+
+            .product-quantity-decrease,
+            .product-quantity-increase {
+                width: 34px;
+                height: 34px;
+                border: 1px solid section-var(border_color);
+                color: section-var(border_color);
+                text-align: center;
+            }
+
+            .product-quantity-input {
+                margin-left: spacer(2);
+                margin-right: spacer(2);
+                width: 38px;
+                height: 34px;
+                border: 1px solid transparent;
+                outline: 0;
+                padding: 0;
+                text-align: center;
+
+                &:hover,
+                &:focus {
+                    border-color: section-var(border_color);
+                }
+            }
+        }
+    }
+
+    .product-badges {
+        display: flex;
+        align-items: flex-start;
+        position: absolute;
+        z-index: 2;
+
+        .product-badge {
+            flex: 0 0 auto;
+            margin-right: spacer(2);
+            margin-bottom: spacer(2);
+            white-space: nowrap;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &.product-badge-new {
+
+                .product-badge-content {
+                    background-color: section-var(new_badge_bg_color);
+                    color: section-var(new_badge_text_color);
+                }
+            }
+
+            &.product-badge-discount {
+
+                .product-badge-content {
+                    background-color: section-var(discount_badge_bg_color);
+                    color: section-var(discount_badge_text_color);
+                }
+            }
+
+            &.product-badge-general {
+
+                .product-badge-content {
+                    background-color: section-var(general_badge_bg_color);
+                    color: section-var(general_badge_text_color);
+                }
+            }
+
+            .product-badge-content {
+                font-size: 0.8rem;
+                padding: spacer(1);
+                line-height: 1rem;
+                font-weight: $font-weight-bold;
+            }
+        }
+
+        &.product-badge-position-top-left {
+            top: 8px;
+            left: 0;
+        }
+
+        &.product-badge-position-top-right {
+            top: 8px;
+            right: 0;
+        }
+
+        &.product-badge-position-bottom-left {
+            left: 0;
+            bottom: 8px;
+        }
+
+        &.product-badge-position-bottom-right {
+            right: 0;
+            bottom: 8px;
+        }
+    }
+}

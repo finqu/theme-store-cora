@@ -432,6 +432,26 @@
 
     {%- render 'headers/layout-5', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-5' -%}
 
+{%- elsif section.settings.headerLayout == '6' -%}
+
+    {%- if request.page_type == 'frontpage' -%}
+        {%- assign sectionStyle = section.settings.sectionStyleFrontpage -%}
+    {%- else %}
+        {%- assign sectionStyle = section.settings.sectionStyle -%}
+    {%- endif -%}
+
+    {%- render 'headers/layout-6', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-6', sectionStyle: sectionStyle -%}
+
+{%- elsif section.settings.headerLayout == '7' -%}
+
+    {%- if request.page_type == 'frontpage' -%}
+        {%- assign sectionStyle = section.settings.sectionStyleFrontpage -%}
+    {%- else %}
+        {%- assign sectionStyle = section.settings.sectionStyle -%}
+    {%- endif -%}
+
+    {%- render 'headers/layout-7', section: section, sectionContent: sectionContent, sectionClasses: 'site-header-layout-7', sectionStyle: sectionStyle -%}
+
 {% endif %}
 
 {% schema %}
@@ -495,6 +515,20 @@
                                 "label": {
                                     "en": "Layout 5",
                                     "fi": "Asettelu 5"
+                                }
+                            },
+                            {
+                                "value": "6",
+                                "label": {
+                                    "en": "Layout 6",
+                                    "fi": "Asettelu 6"
+                                }
+                            },
+                            {
+                                "value": "7",
+                                "label": {
+                                    "en": "Layout 7",
+                                    "fi": "Asettelu 7"
                                 }
                             }
                         ]
@@ -678,6 +712,21 @@
                     "fi": "Osio"
                 },
                 "settings": [
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Frontpage colors",
+                            "fi": "Etusivun värit"
+                        },
+                        "conditions": ["headerLayout eq 6"]
+                    },
+                    {
+                        "id": "sectionStyleFrontpage",
+                        "styles_id": "styles",
+                        "type": "style-picker",
+                        "default": "general",
+                        "conditions": ["headerLayout eq 6"]
+                    },
                     {
                         "type": "title",
                         "label": {
