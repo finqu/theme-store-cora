@@ -1,0 +1,110 @@
+<div class="row row-cols-1 row-cols-sm-2">
+
+    {% for item in section.settings.setting_blocks.items %}
+
+        {%- assign imgSrc = item.settings.imgSrc -%}
+
+        {%- capture itemContent %}
+
+            <div class="aspect-ratio-16-9 mb-4">
+
+                <div class="aspect-ratio-container">
+
+                    {% if imgSrc %}
+
+                        {%- assign imgSizeSm = '535,301' -%}
+                        {%- assign imgSizeMd = '320,180' -%}
+                        {%- assign imgSizeLg = '630,355' -%}
+
+                        <picture>
+
+                            <source media="(min-width: 992px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                            <source media="(min-width: 576px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+                            <source data-srcset="
+                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                            <img
+                                alt="{{ item.settings.imgAlt }}"
+                                data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                                data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                class="lazy aspect-ratio-item aspect-ratio-item-cover d-block mx-auto img-fluid">
+                        </picture>
+
+                    {% else %}
+
+                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% if item.settings.title %}
+
+                <h3>
+                    {{ item.settings.title }}
+                </h3>
+
+            {% endif %}
+
+            {% if item.settings.description %}
+
+                <p>
+                    {{ item.settings.description }}
+                </p>
+
+            {% endif %}
+
+            {% if item.settings.btnLabel %}
+
+                {% if item.settings.btnStyle == 'btn' %}
+
+                    <span class="btn btn-outline-section">
+                        {{ item.settings.btnLabel }}
+                    </span>
+
+                {% else %}
+
+                    <span class="text-underline-indicator font-weight-bold">
+
+                        <span class="mr-2">
+                            {{ item.settings.btnLabel }}
+                        </span>
+
+                        {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+                    </span>
+
+                {% endif %}
+
+            {% endif %}
+
+        {%- endcapture -%}
+
+        <div class="col py-3">
+
+            {% if item.settings.resource %}
+
+                <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+                    {{ itemContent }}
+                </a>
+
+            {% else %}
+
+                {{ itemContent }}
+
+            {% endif %}
+
+        </div>
+
+    {% endfor %}
+
+</div>

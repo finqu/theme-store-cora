@@ -1,0 +1,42 @@
+{%- capture class -%}
+    social-media-buttons-container text-{{ block.settings.textAlign }}
+{%- endcapture -%}
+
+{% render 'social-media-buttons' class: class %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Social media",
+        "fi": "Sosiaalinen media"
+    },
+    "tag": "div",
+    "class": "block block-social-media",
+    "category": "basic",
+    "settings": [
+        {
+            "id": "textAlign",
+            "type": "radio-pill",
+            "label": {
+                "en": "Text align",
+                "fi": "Tekstin tasaus"
+            },
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "{# icon.alignLeftLight #}"
+                },
+                {
+                    "value": "center",
+                    "label": "{# icon.alignCenterLight #}"
+                },
+                {
+                    "value": "right",
+                    "label": "{# icon.alignRightLight #}"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

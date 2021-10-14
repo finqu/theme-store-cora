@@ -8,7 +8,7 @@
                 color: {{ section.settings.headerMenuItemColor }} !important;
             }
 
-            .section.section-site-header .site-header-container:not(.is-sticky) .text-underline-indicator:hover {
+            .section.section-site-header .site-header-container:not(.is-sticky) .site-header-inner .text-underline-indicator:hover {
                 border-color: {{ section.settings.headerIndicatorColor }} !important;
             }
 
@@ -27,19 +27,25 @@
 
             .section-site-header + .section .section-inner,
             .section-site-header + .finqu-sections-container > .section:first-child .section-inner {
-                height: 100%;
-                padding-top: 0;
-                padding-bottom: 0;
-            }
-
-            .section-site-header + .section .section-content,
-            .section-site-header + .finqu-sections-container > .section:first-child .section-content {
                 display: flex;
                 justify-content: center;
                 height: 100%;
+            }
+
+            .section-site-header + .section > .section-header,
+            .section-site-header + .finqu-sections-container > .section:first-child > .section-header {
                 margin-top: 130px;
-                margin-bottom: 50px;
-                overflow: hidden;
+            }
+
+            .section-site-header + .section .section-header + .section-content,
+            .section-site-header + .finqu-sections-container > .section:first-child .section-header + .section-content {
+                margin-top: 0;
+            }
+
+            .section-site-header + .section > .section-content,
+            .section-site-header + .finqu-sections-container > .section:first-child > .section-content {
+                margin-top: 130px;
+                margin-bottom: 50px
             }
 
             .section-site-header.finqu-section {
@@ -47,7 +53,7 @@
                 left: 0;
                 top: 0;
                 right: 0;
-                height:  200px;
+                height: 200px;
             }
 
             .section-site-header.finqu-section + .finqu-sections-container > .section:first-child .finqu-editor-ui {
@@ -65,7 +71,9 @@
             }
 
             .section-site-header + .section.section-image-carousel .section-content .swiper-container,
-            .section-site-header + .finqu-sections-container > .section.section-image-carousel:first-child .section-content .swiper-container {
+            .section-site-header + .section.section-image-carousel .section-content .swiper-container .svg-placeholder,
+            .section-site-header + .finqu-sections-container > .section.section-image-carousel:first-child .section-content .swiper-container,
+            .section-site-header + .finqu-sections-container > .section.section-image-carousel:first-child .section-content .swiper-container .svg-placeholder {
                 height: 100vh;
             }
         }
@@ -289,27 +297,73 @@
 
                                     <div class="row">
 
-                                        {% for item in item.links %}
+                                        {%- assign hasMultipleLevels = false -%}
 
-                                            <div class="site-header-submenu-column col">
+                                        {%- for item in item.links -%}
 
-                                                <div class="site-header-submenu-column-title">
+                                            {%- if item.links -%}
+                                                {%- assign hasMultipleLevels = true -%}
+                                            {%- endif -%}
 
-                                                    {%- if item.url -%}
+                                        {%- endfor -%}
 
-                                                        <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
-                                                            {{ item.title }}
-                                                        </a>
+                                        {% if hasMultipleLevels %}
 
-                                                    {%- else -%}
+                                            {% for item in item.links %}
 
-                                                        <span class="site-header-submenu-column-title-text">
-                                                            {{ item.title }}
-                                                        </span>
+                                                <div class="site-header-submenu-column col">
 
-                                                    {%- endif -%}
+                                                    <div class="site-header-submenu-column-title">
+
+                                                        {%- if item.url -%}
+
+                                                            <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
+                                                                {{ item.title }}
+                                                            </a>
+
+                                                        {%- else -%}
+
+                                                            <span class="site-header-submenu-column-title-text">
+                                                                {{ item.title }}
+                                                            </span>
+
+                                                        {%- endif -%}
+
+                                                    </div>
+
+                                                    <ul class="site-header-submenu-column-menu">
+
+                                                        {% for item in item.links %}
+
+                                                            <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
+
+                                                                {%- if item.url -%}
+
+                                                                    <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                        {{ item.title }}
+                                                                    </a>
+
+                                                                {%- else -%}
+
+                                                                    <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                        {{ item.title }}
+                                                                    </span>
+
+                                                                {%- endif -%}
+
+                                                            </li>
+
+                                                        {% endfor %}
+
+                                                    </ul>
 
                                                 </div>
+
+                                            {% endfor %}
+
+                                        {% else %}
+
+                                            <div class="site-header-submenu-column col">
 
                                                 <ul class="site-header-submenu-column-menu">
 
@@ -339,7 +393,7 @@
 
                                             </div>
 
-                                        {% endfor %}
+                                        {% endif %}
 
                                     </div>
 

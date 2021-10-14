@@ -35,6 +35,13 @@ body.template-frontpage {
 
         &.site-header-layout-6 {
 
+            &.has-announcement {
+
+                .site-header-container {
+                    top: 48px;
+                }
+            }
+
             .site-announcement-container {
                 position: absolute;
                 left: 0;
@@ -46,7 +53,7 @@ body.template-frontpage {
             .site-header-container {
                 position: absolute;
                 left: 0;
-                top: 48px;
+                top: 0;
                 right: 0;
 
                 &.site-header-sticky {
@@ -72,10 +79,6 @@ body.template-frontpage {
 
                     .site-header-inner {
                         border-bottom: 0;
-
-                         .site-header-logo-container {
-                            line-height: 0;
-                        }
                     }
                 }
             }
@@ -83,6 +86,13 @@ body.template-frontpage {
 
         &.site-header-layout-7 {
 
+            &.has-announcement {
+
+                .site-header-container {
+                    top: 48px;
+                }
+            }
+
             .site-announcement-container {
                 position: absolute;
                 left: 0;
@@ -94,7 +104,7 @@ body.template-frontpage {
             .site-header-container {
                 position: absolute;
                 left: 0;
-                top: 48px;
+                top: 0;
                 right: 0;
 
                 &.site-header-sticky {
@@ -120,10 +130,6 @@ body.template-frontpage {
 
                     .site-header-inner {
                         border-bottom: 0;
-
-                        .site-header-logo-container {
-                            line-height: 0;
-                        }
                     }
                 }
             }
@@ -244,6 +250,10 @@ body > #search-overlay {
 
                 .site-header-inner {
                     border-bottom: 1px solid section-var(border_color);
+
+                    .site-header-logo-container {
+                        line-height: 0;
+                    }
                 }
             }
         }
@@ -272,6 +282,10 @@ body > #search-overlay {
 
                 .site-header-inner {
                     border-bottom: 1px solid section-var(border_color);
+
+                    .site-header-logo-container {
+                        line-height: 0;
+                    }
                 }
             }
         }
@@ -573,6 +587,7 @@ body > #search-overlay {
                     opacity: 0;
                     overflow: hidden;
                     z-index: 5;
+                    min-width: 200px;
 
                     &.site-header-submenu-active {
                         position: absolute;
