@@ -14,14 +14,16 @@
 {%- endunless -%}
 
 {%- assign articleImage = article.header_image | default: '' -%}
-{%- assign articleTitle = article.title | default: 'Example article' -%}
-{%- assign articleUrl = article | page_url | default: false -%}
+{%- assign articleTitle = article.title | default: '' -%}
+{%- assign articleUrl = article | page_url | default: '' -%}
 {%- assign articleContent = article.content | strip_html | truncate: 140 | default: '' -%}
 {%- assign articleSummary = article.summary | default: '' -%}
-{%- assign articlePublishDate = article.published_at | default: 'now' -%}
+{%- assign articlePublishDate = article.published_at | default: '' -%}
 
-{%- unless articleSummary and articleContent -%}
+{%- unless article -%}
+	{%- assign articleTitle = 'Example article' -%}
 	{%- assign articleSummary = 'Example summary' -%}
+	{%- assign articlePublishDate = 'now' -%}
 {%- endunless -%}
 
 <div class="article-card-grid-item">

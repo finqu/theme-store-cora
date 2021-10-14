@@ -49,14 +49,24 @@
 
 {%- assign productInWishlist = product.in_customers_wishlist | default: false -%}
 {%- assign productImage = product.image | default: '' -%}
-{%- assign productName = product.name | default: 'Example product' -%}
-{%- assign productManufacturerName = product.manufacturer.name | default: 'Example manufacturer' -%}
-{%- assign productPrice = product.price | default: '29.90' -%}
-{%- assign productNetPrice = product.net_price | default: '24.90' -%}
-{%- assign productOriginalNetPrice = product.original_net_price | default: '24.90' -%}
-{%- assign productOriginalPrice = product.original_price | default: '29.90' -%}
+{%- assign productName = product.name | default: '' -%}
+{%- assign productManufacturerName = product.manufacturer.name | default: '' -%}
+{%- assign productPrice = product.price | default: '' -%}
+{%- assign productNetPrice = product.net_price | default: '' -%}
+{%- assign productOriginalNetPrice = product.original_net_price | default: '' -%}
+{%- assign productOriginalPrice = product.original_price | default: '' -%}
 {%- assign productHasDiscount = product.has_discount | default: false -%}
-{%- assign productUrl = product | page_url | default: false -%}
+{%- assign productUrl = product | page_url | default: '' -%}
+
+{%- unless product -%}
+	{%- assign productName = 'Example product' -%}
+	{%- assign productManufacturerName = 'Example manufacturer' -%}
+	{%- assign productPrice = '29.90' -%}
+	{%- assign productNetPrice = '24.90' -%}
+	{%- assign productOriginalNetPrice = '24.90' -%}
+	{%- assign productOriginalPrice = '29.90' -%}
+	{%- assign productHasDiscount = true -%}
+{%- endunless -%}
 
 <div class="product-card-grid-item{% if productHasDiscount %} product-has-discount{% endif %}">
 
@@ -90,105 +100,97 @@
 
 				<div class="product-media-img-container aspect-ratio-container">
 
-					{% if product %}
+					{% if productImage %}
 
-						{% if productImage %}
+						{%- assign imgSrc = productImage | asset_url -%}
 
-							{%- assign imgSrc = productImage | asset_url -%}
+						{% if settings.aspectRatioProductImage == '9:13' %}
 
-							{% if settings.aspectRatioProductImage == '9:13' %}
+							{%- assign imgSizeSm = '348,348' -%}
+			  				{%- assign imgSizeMd = '290,290' -%}
 
-								{%- assign imgSizeSm = '348,348' -%}
-				  				{%- assign imgSizeMd = '290,290' -%}
+			  				{%- case itemsPerRow -%}
 
-				  				{%- case itemsPerRow -%}
+							    {% when '2' %}
+							        {%- assign imgSizeLg = '810,810' -%}
+							    {% when '3' %}
+							        {%- assign imgSizeLg = '520,520' -%}
+							    {% when '4' %}
+							        {%- assign imgSizeLg = '376,376' -%}
+							    {% when '5' %}
+							        {%- assign imgSizeLg = '290,290' -%}
+							    {% when '6' %}
+							    	{%- assign imgSizeLg = '232,232' -%}
 
-								    {% when '2' %}
-								        {%- assign imgSizeLg = '810,810' -%}
-								    {% when '3' %}
-								        {%- assign imgSizeLg = '520,520' -%}
-								    {% when '4' %}
-								        {%- assign imgSizeLg = '376,376' -%}
-								    {% when '5' %}
-								        {%- assign imgSizeLg = '290,290' -%}
-								    {% when '6' %}
-								    	{%- assign imgSizeLg = '232,232' -%}
+							{%- endcase -%}
 
-								{%- endcase -%}
+						{% elsif settings.aspectRatioProductImage == '4:3' %}
 
-							{% elsif settings.aspectRatioProductImage == '4:3' %}
+							{%- assign imgSizeSm = '240,180' -%}
+			  				{%- assign imgSizeMd = '200,150' -%}
 
-								{%- assign imgSizeSm = '240,180' -%}
-				  				{%- assign imgSizeMd = '200,150' -%}
+			  				{%- case itemsPerRow -%}
 
-				  				{%- case itemsPerRow -%}
+							    {% when '2' %}
+							        {%- assign imgSizeLg = '560,420' -%}
+							    {% when '3' %}
+							        {%- assign imgSizeLg = '360,270' -%}
+							    {% when '4' %}
+							        {%- assign imgSizeLg = '260,195' -%}
+							    {% when '5' %}
+							        {%- assign imgSizeLg = '200,150' -%}
+							    {% when '6' %}
+							    	{%- assign imgSizeLg = '160,120' -%}
 
-								    {% when '2' %}
-								        {%- assign imgSizeLg = '560,420' -%}
-								    {% when '3' %}
-								        {%- assign imgSizeLg = '360,270' -%}
-								    {% when '4' %}
-								        {%- assign imgSizeLg = '260,195' -%}
-								    {% when '5' %}
-								        {%- assign imgSizeLg = '200,150' -%}
-								    {% when '6' %}
-								    	{%- assign imgSizeLg = '160,120' -%}
+							{%- endcase -%}
 
-								{%- endcase -%}
+						{% elsif settings.aspectRatioProductImage == '1:1' %}
 
-							{% elsif settings.aspectRatioProductImage == '1:1' %}
+							{%- assign imgSizeSm = '240,240' -%}
+			  				{%- assign imgSizeMd = '200,200' -%}
 
-								{%- assign imgSizeSm = '240,240' -%}
-				  				{%- assign imgSizeMd = '200,200' -%}
+			  				{%- case itemsPerRow -%}
 
-				  				{%- case itemsPerRow -%}
+							    {% when '2' %}
+							        {%- assign imgSizeLg = '560,560' -%}
+							    {% when '3' %}
+							        {%- assign imgSizeLg = '360,360' -%}
+							    {% when '4' %}
+							        {%- assign imgSizeLg = '260,260' -%}
+							    {% when '5' %}
+							        {%- assign imgSizeLg = '200,200' -%}
+							    {% when '6' %}
+							    	{%- assign imgSizeLg = '160,160' -%}
 
-								    {% when '2' %}
-								        {%- assign imgSizeLg = '560,560' -%}
-								    {% when '3' %}
-								        {%- assign imgSizeLg = '360,360' -%}
-								    {% when '4' %}
-								        {%- assign imgSizeLg = '260,260' -%}
-								    {% when '5' %}
-								        {%- assign imgSizeLg = '200,200' -%}
-								    {% when '6' %}
-								    	{%- assign imgSizeLg = '160,160' -%}
-
-								{%- endcase -%}
-
-							{% endif %}
-
-				  			<picture>
-						        <source media="(min-width: 992px)" data-srcset="
-						            {{ imgSrc | thumb: imgSizeLg }} 1x,
-						            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
-
-						        <source media="(min-width: 576px)" data-srcset="
-						            {{ imgSrc | thumb: imgSizeMd }} 1x,
-						            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
-
-						        <source data-srcset="
-	                                {{ imgSrc | thumb: imgSizeSm }} 1x,
-	                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
-
-						        <img
-						            alt="{{ productName }}"
-						            data-src="{{ imgSrc | thumb: imgSizeSm }}"
-						            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-						            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-						    </picture>
-
-						{% else %}
-
-							{% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+							{%- endcase -%}
 
 						{% endif %}
 
-				    {% else %}
+			  			<picture>
+					        <source media="(min-width: 992px)" data-srcset="
+					            {{ imgSrc | thumb: imgSizeLg }} 1x,
+					            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
-				    	{% render 'placeholder-svg', type: 'product', class: 'aspect-ratio-item' %}
+					        <source media="(min-width: 576px)" data-srcset="
+					            {{ imgSrc | thumb: imgSizeMd }} 1x,
+					            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
 
-				    {% endif %}
+					        <source data-srcset="
+                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+					        <img
+					            alt="{{ productName }}"
+					            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+					            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x, {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+					            class="lazy d-block mx-auto img-fluid aspect-ratio-item">
+					    </picture>
+
+					{% else %}
+
+						{% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+					{% endif %}
 
 				</div>
 

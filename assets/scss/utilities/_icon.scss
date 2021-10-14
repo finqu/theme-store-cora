@@ -8,27 +8,8 @@
 	}
 
 	.svg-placeholder {
-		display: inline-block;
-		font-size: inherit;
-		pointer-events: none;
 		color: section-var(text_color);
 		background-color: color-yiq(section-var(background_color), darken(section-var(background_color), 5%), lighten(section-var(background_color), 5%));
-
-		&:not(.has-width) {
-			width: 100%;
-		}
-
-		&:not(.has-height) {
-			height: auto;
-		}
-
-		@include media-breakpoint-down(md) {
-			width: 100%;
-		}
-
-		path {
-			stroke: currentcolor;
-		}
 	}
 }
 
@@ -52,6 +33,30 @@
 
 .svg-inline {
 	visibility: hidden;
+}
+
+.svg-placeholder {
+	display: inline-block;
+	font-size: inherit;
+	pointer-events: none;
+
+	&:not(.has-width) {
+		width: 100%;
+	}
+
+	&:not(.has-height) {
+		height: 100;
+	}
+
+	@include media-breakpoint-down(md) {
+		.has-width {
+			width: 100%;
+		}
+	}
+
+	path {
+		stroke: currentcolor;
+	}
 }
 
 .svg-icon {

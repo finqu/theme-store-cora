@@ -13,14 +13,6 @@
         {%- assign contentAlign = 'justify-content-end' -%}
 {%- endcase -%}
 
-{%- capture hasSocialMediaIcons -%}
-    {{ settings.facebookPageUrl | yepnope: 'true', 'false' }},
-    {{ settings.instagramPageUrl | yepnope: 'true', 'false' }},
-    {{ settings.twitterPageUrl | yepnope: 'true', 'false' }},
-    {{ settings.pinterestPageUrl | yepnope: 'true', 'false' }},
-    {{ settings.youtubePageUrl | yepnope: 'true', 'false' }}
-{%- endcapture -%}
-
 {%- capture sectionContent -%}
 
     {% if section.settings.text %}
@@ -77,61 +69,13 @@
 
     </div>
 
-    {% if section.settings.showSocialMediaIcons and hasSocialMediaIcons contains 'true' %}
+    {% if section.settings.showSocialMediaIcons %}
 
-        <div class="social-media-buttons-container mt-6 text-{{ section.settings.textAlign }}">
+        {%- capture class -%}
+            social-media-buttons-container mt-6 text-{{ section.settings.textAlign }}
+        {%- endcapture -%}
 
-            {% if settings.facebookPageUrl %}
-
-                <div class="social-media-btn">
-
-                    {% render 'social-media-button', type: 'facebook', url: settings.facebookPageUrl, style: 'minimal' %}
-
-                </div>
-
-            {% endif %}
-
-            {% if settings.instagramPageUrl %}
-
-                <div class="social-media-btn">
-
-                    {% render 'social-media-button', type: 'instagram', url: settings.instagramPageUrl, style: 'minimal' %}
-
-                </div>
-
-            {% endif %}
-
-            {% if settings.twitterPageUrl %}
-
-                <div class="social-media-btn">
-
-                    {% render 'social-media-button', type: 'twitter', url: settings.twitterPageUrl, style: 'minimal' %}
-
-                </div>
-
-            {% endif %}
-
-            {% if settings.pinterestPageUrl %}
-
-                <div class="social-media-btn">
-
-                    {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: 'minimal' %}
-
-                </div>
-
-            {% endif %}
-
-            {% if settings.youtubePageUrl %}
-
-                <div class="social-media-btn">
-
-                    {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: 'minimal' %}
-
-                </div>
-
-            {% endif %}
-
-        </div>
+        {% render 'social-media-buttons' class: class %}
 
     {% endif %}
 

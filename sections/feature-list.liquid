@@ -1,6 +1,15 @@
+{%- case section.settings.contentAlign -%}
+    {% when 'left' %}
+        {%- assign contentAlign = 'justify-content-start' -%}
+    {% when 'center' %}
+        {%- assign contentAlign = 'justify-content-center' -%}
+    {% when 'right' %}
+        {%- assign contentAlign = 'justify-content-end' -%}
+{%- endcase -%}
+
 {%- capture sectionContent -%}
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }} text-{{ section.settings.textAlign }}">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }} text-{{ section.settings.textAlign }} {{ contentAlign }}">
 
         {% for item in section.settings.setting_blocks.items %}
 
@@ -12,7 +21,7 @@
 
                     <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
 
-                        {% render 'placeholder-svg', type: 'image' %}
+                        {% render 'placeholder-svg', type: 'image', width: '80px', height: '80px' %}
 
                     </div>
 
@@ -250,6 +259,29 @@
                                     ]
                                 },
                                 {
+                                    "id": "contentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content alignment",
+                                        "fi": "Sisällön ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                },
+                                {
                                     "id": "itemsPerRow",
                                     "label": {
                                         "en": "Kohteita per row",
@@ -259,7 +291,7 @@
                                     "min": 2,
                                     "max": 6,
                                     "step": 1,
-                                    "default": 4,
+                                    "default": 6,
                                     "unit": " "
                                 },
                                 {
@@ -504,7 +536,8 @@
             "category": "theme-basic",
             "settings": {
                 "textAlign": "center",
-                "itemsPerRow": "4",
+                "contentAlign": "center",
+                "itemsPerRow": "6",
                 "sectionHeight": "custom",
                 "sectionHeightCustomTop": "0",
                 "sectionHeightCustomBottom": "0",

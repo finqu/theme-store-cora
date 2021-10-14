@@ -1762,7 +1762,7 @@
                                 "sectionTitle": "Lorem ipsum dolor sit amet",
                                 "sectionSubtitle": "Lorem ipsum dolor sit amet",
                                 "sectionHeaderTextAlign": "center",
-                                "listType": "popular",
+                                "listType": "new",
                                 "tagId": "",
                                 "resource": {
                                     "type": "url",
