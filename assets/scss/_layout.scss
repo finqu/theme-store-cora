@@ -72,6 +72,10 @@ body.template-frontpage {
 
                     .site-header-inner {
                         border-bottom: 0;
+
+                         .site-header-logo-container {
+                            line-height: 0;
+                        }
                     }
                 }
             }
@@ -116,6 +120,10 @@ body.template-frontpage {
 
                     .site-header-inner {
                         border-bottom: 0;
+
+                        .site-header-logo-container {
+                            line-height: 0;
+                        }
                     }
                 }
             }
@@ -544,6 +552,12 @@ body > #search-overlay {
 
                         .site-header-menu-item-text {
                             color: section-var(link_color);
+
+                            & + .site-header-submenu-indicator {
+                                padding-bottom: 4px;
+                                margin-left: spacer(2);
+                                align-self: center;
+                            }
                         }
                     }
                 }
@@ -610,6 +624,7 @@ body > #search-overlay {
 
                                 .site-header-submenu-column-menu-item-text {
                                     color: section-var(link_color, section-vars());
+                                    font-size: $font-size-base * 0.95;
                                 }
                             }
                         }

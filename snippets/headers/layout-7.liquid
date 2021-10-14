@@ -3,7 +3,8 @@
 {% if request.page_type == 'frontpage' %}
     <style>
         @media (min-width: 977px) {
-            .section.section-site-header .site-header-container:not(.is-sticky) .site-header-menu-item-text {
+            .section.section-site-header .site-header-container:not(.is-sticky) .site-header-menu-item-text,
+            .section.section-site-header .site-header-container:not(.is-sticky) .site-header-logo-text {
                 color: {{ section.settings.headerMenuItemColor }} !important;
             }
 
@@ -137,6 +138,12 @@
                                                 </span>
 
                                             {%- endif -%}
+
+                                            {% if item.links and section.settings.headerSubmenuIndicator %}
+
+                                                {%- render 'icon', icon: 'arrow-down-1-dzphtd', class: 'site-header-submenu-indicator' -%}
+
+                                            {% endif %}
 
                                         </li>
 

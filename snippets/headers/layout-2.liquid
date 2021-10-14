@@ -185,6 +185,12 @@
 
                                     {%- endif -%}
 
+                                    {% if item.links and section.settings.headerSubmenuIndicator %}
+
+                                        {%- render 'icon', icon: 'arrow-down-1-dzphtd', class: 'site-header-submenu-indicator' -%}
+
+                                    {% endif %}
+
                                 </li>
 
                             {% endfor %}
