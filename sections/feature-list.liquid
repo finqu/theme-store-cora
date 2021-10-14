@@ -1,62 +1,97 @@
 {%- capture sectionContent -%}
 
-    <div class="row">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }} text-{{ section.settings.textAlign }}">
 
         {% for item in section.settings.setting_blocks.items %}
 
-            <div class="col-12 col-lg{% if section.settings.setting_blocks.items.size > 1 %} col-md-6{% endif %} py-4">
+            {%- capture itemContent %}
 
-                {% if item.settings.imgPlaceholder and item.settings.imgSrc == '' %}
+                {%- assign imgSrc = item.settings.imgSrc -%}
 
-                    <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+                {% if item.settings.imgPlaceholder and imgSrc == '' %}
 
-                        {% render 'placeholder-svg', type: 'image', class: 'mb-4' %}
+                    <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
+
+                        {% render 'placeholder-svg', type: 'image' %}
 
                     </div>
 
-                {% elsif item.settings.imgSrc %}
+                {% elsif imgSrc %}
 
-                    {%- assign imgSizeSm = '375' -%}
-                    {%- assign imgSizeMd = '680' -%}
+                    <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
 
-                    {%- case section.settings.setting_blocks.items.size -%}
-                        {% when 1 %}
-                            {%- assign imgSizeLg = '1100' -%}
-                        {% when 2 %}
-                            {%- assign imgSizeLg = '530' -%}
-                        {% when 3 %}
-                            {%- assign imgSizeLg = '340' -%}
-                        {% when 4 %}
-                            {%- assign imgSizeLg = '245' -%}
-                    {%- endcase -%}
+                        {%- assign imgSizeSm = '375' -%}
+                        {%- assign imgSizeMd = '200' -%}
 
-                    <picture>
+                        {%- case section.settings.itemsPerRow -%}
+                            {% when 2 %}
+                                {%- assign imgSizeLg = '640,640' -%}
+                            {% when 3 %}
+                                {%- assign imgSizeLg = '414,414' -%}
+                            {% when 4 %}
+                                {%- assign imgSizeLg = '280,280' -%}
+                            {% when 5 %}
+                                {%- assign imgSizeLg = '232,232' -%}
+                            {% when 6 %}
+                                {%- assign imgSizeLg = '187,187' -%}
+                        {%- endcase -%}
 
-                        <source media="(min-width: 992px)" data-srcset="
-                            {{ item.settings.imgSrc | thumb: imgSizeLg }} 1x,
-                            {{ item.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                        <picture>
 
-                        {%- if section.settings.setting_blocks.items.size == 1 -%}
+                            <source media="(min-width: 992px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
                             <source media="(min-width: 576px)" data-srcset="
-                                {{ item.settings.imgSrc | thumb: imgSizeMd }} 1x,
-                                {{ item.settings.imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
-                        {%- endif -%}
+                                {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
 
-                        <source data-srcset="
-                            {{ imgSrc | thumb: imgSizeSm }} 1x,
-                            {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+                            <source data-srcset="
+                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
 
-                        <img
-                            alt="{{ item.settings.imgAlt }}"
-                            data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
-                            data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                            class="lazy mb-4 d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
-                            data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
-                    </picture>
+                            <img
+                                alt="{{ item.settings.imgAlt }}"
+                                data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                                data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                class="lazy d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}">
+                        </picture>
+
+                    </div>
 
                 {% endif %}
 
-                <div data-finqu-inline-editor="items.{{ item.id }}.richtextHtml">{{ item.settings.richtextHtml }}</div>
+                {% if item.settings.title %}
+
+                    <span class="d-block font-weight-bold{% if item.settings.description %} mb-2{% endif %}">
+                        {{ item.settings.title }}
+                    </span>
+
+                {% endif %}
+
+                {% if item.settings.description %}
+
+                    <span class="d-block">
+                        {{ item.settings.description }}
+                    </span>
+
+                {% endif %}
+
+            {%- endcapture -%}
+
+            <div class="col py-3">
+
+                {% if item.settings.resource %}
+
+                    <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+                        {{ itemContent }}
+                    </a>
+
+                {% else %}
+
+                    {{ itemContent }}
+
+                {% endif %}
 
             </div>
 
@@ -71,11 +106,12 @@
 {% schema %}
 {
     "name": {
-        "en": "Text columns",
-        "fi": "Tekstisarakkeet"
+        "en": "Feature list",
+        "fi": "Ominaisuuslista"
     },
     "tag": "section",
-    "class": "section section-text-columns has-lazy",
+    "class": "section section-feature-list",
+    "category": "theme-basic",
     "settings": {
         "list_type": "tabs",
         "groups": [
@@ -85,7 +121,6 @@
                     "fi": "Sisältö"
                 },
                 "id": "items",
-                "max_blocks": 4,
                 "call_to_action": {
                     "en": "Add a item",
                     "fi": "Lisää kohde"
@@ -99,10 +134,6 @@
                             "fi": "Kohde"
                         },
                         "settings": [
-                            {
-                                "id": "imgPlaceholder",
-                                "type": "hidden"
-                            },
                             {
                                 "id": "imgSrc",
                                 "type": "image-picker",
@@ -145,13 +176,37 @@
                                 ]
                             },
                             {
-                                "id": "richtextHtml",
-                                "type": "richtext",
+                                "id": "title",
+                                "type": "text",
                                 "label": {
-                                    "en": "Text",
-                                    "fi": "Teksti"
+                                    "en": "Title",
+                                    "fi": "Otsikko"
+                                }
+                            },
+                            {
+                                "id": "description",
+                                "type": "textarea",
+                                "label": {
+                                    "en": "Description",
+                                    "fi": "Kuvaus"
+                                }
+                            },
+                            {
+                                "id": "resource",
+                                "type": "url",
+                                "label": {
+                                    "en": "Link",
+                                    "fi": "Link"
+                                }
+                            },
+                            {
+                                "id": "resourceOpenInNewWindowStatus",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Open link in a new window",
+                                    "fi": "Avaa linkki uudessa ikkunassa"
                                 },
-                                "inline": "true"
+                                "default": true
                             }
                         ]
                     }
@@ -171,6 +226,42 @@
                                 "fi": "Näkymä"
                             },
                             "settings": [
+                                {
+                                    "id": "textAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Text align",
+                                        "fi": "Tekstin tasaus"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "itemsPerRow",
+                                    "label": {
+                                        "en": "Kohteita per row",
+                                        "fi": "Kohteita per rivi"
+                                    },
+                                    "type": "range",
+                                    "min": 2,
+                                    "max": 6,
+                                    "step": 1,
+                                    "default": 4,
+                                    "unit": " "
+                                },
                                 {
                                     "id": "sectionHeight",
                                     "type": "radio-pill",
@@ -262,83 +353,6 @@
                                         {
                                             "value": "lg",
                                             "label": "L"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentSpacing",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content spacing",
-                                        "fi": "Sisällön tilavuus"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        },
-                                        {
-                                            "value": "xl",
-                                            "label": "XL"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentWidth",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content width",
-                                        "fi": "Sisällön leveys"
-                                    },
-                                    "default": "12",
-                                    "options": [
-                                        {
-                                            "value": "6",
-                                            "label": "50 %"
-                                        },
-                                        {
-                                            "value": "9",
-                                            "label": "75 %"
-                                        },
-                                        {
-                                            "value": "12",
-                                            "label": "100 %"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentAlign",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content alignment",
-                                        "fi": "Sisällön ryhmittyminen"
-                                    },
-                                    "default": "center",
-                                    "options": [
-                                        {
-                                            "value": "left",
-                                            "label": "{# icon.alignLeftLight #}"
-                                        },
-                                        {
-                                            "value": "center",
-                                            "label": "{# icon.alignCenterLight #}"
-                                        },
-                                        {
-                                            "value": "right",
-                                            "label": "{# icon.alignRightLight #}"
                                         }
                                     ]
                                 }
@@ -434,7 +448,6 @@
                                 },
                                 {
                                     "id": "sectionBgImgOverlay",
-                                    "label": "Overlay",
                                     "label": {
                                         "en": "Overlay",
                                         "fi": "Taustan tummuus"
@@ -449,7 +462,6 @@
                                 {
                                     "id": "sectionContentBgColorStatus",
                                     "type": "checkbox",
-                                    "label": "Enable content background",
                                     "label": {
                                         "en": "Enable content background",
                                         "fi": "Näytä sisällön tausta"
@@ -491,11 +503,12 @@
         {
             "category": "theme-basic",
             "settings": {
-                "sectionHeight": "",
+                "textAlign": "center",
+                "itemsPerRow": "4",
+                "sectionHeight": "custom",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
                 "sectionInnerSpacing": "",
-                "sectionContentSpacing": "",
-                "sectionContentWidth": "12",
-                "sectionContentAlign": "center",
                 "sectionBgImgSrc": "",
                 "sectionBgImgPos": "left-top",
                 "sectionBgImgOverlay": "0",
@@ -504,119 +517,72 @@
                 "sectionStyle": "general",
                 "setting_blocks": {
                     "items": {
-                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
+                        "8b7955ef-d6b4-4a3e-ae8f-79303852f19f": {
                             "type": "item",
                             "settings": {
-                                "imgSrc": "",
-                                "imgAlt": "",
-                                "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                            }
-                        },
-                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "",
-                                "imgAlt": "",
-                                "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                            }
-                        },
-                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "",
-                                "imgAlt": "",
-                                "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        {
-            "category": "theme-basic",
-            "settings": {
-                "sectionHeight": "",
-                "sectionInnerSpacing": "",
-                "sectionContentSpacing": "",
-                "sectionContentWidth": "12",
-                "sectionContentAlign": "center",
-                "sectionBgImgSrc": "",
-                "sectionBgImgPos": "left-top",
-                "sectionBgImgOverlay": "0",
-                "sectionContentBgColorStatus": false,
-                "sectionContentBgColor": "#ffffff",
-                "sectionStyle": "general",
-                "setting_blocks": {
-                    "items": {
-                        "B82d6f21-fe88-48f7-9a65-b3b74befa415": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "",
-                                "imgAlt": "",
-                                "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                            }
-                        },
-                        "B024a4fb-7d95-49d0-9016-73820b1d3902": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "",
-                                "imgAlt": "",
-                                "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        {
-            "category": "theme-basic",
-            "settings": {
-                "sectionHeight": "",
-                "sectionInnerSpacing": "",
-                "sectionContentSpacing": "",
-                "sectionContentWidth": "12",
-                "sectionContentAlign": "center",
-                "sectionBgImgSrc": "",
-                "sectionBgImgPos": "left-top",
-                "sectionBgImgOverlay": "0",
-                "sectionContentBgColorStatus": false,
-                "sectionContentBgColor": "#ffffff",
-                "sectionStyle": "general",
-                "setting_blocks": {
-                    "items": {
-                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
-                            "type": "item",
-                            "settings": {
-                                "imgSrc": "",
-                                "imgAlt": "",
                                 "imgPlaceholder": true,
-                                "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                            }
-                        },
-                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
-                            "type": "item",
-                            "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "title": "Lorem ipsum dolor sit",
+                                "description": "Lorem ipsum dolor sit",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
                             }
                         },
-                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
+                        "9fce1965-4956-449e-accc-1a4e8fe46949": {
                             "type": "item",
                             "settings": {
+                                "imgPlaceholder": true,
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "imgEffect": "none",
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "title": "Lorem ipsum dolor sit",
+                                "description": "Lorem ipsum dolor sit",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "8102c4d5-e865-4e19-b1e1-58bd9f04e672": {
+                            "type": "item",
+                            "settings": {
+                                "imgPlaceholder": true,
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "title": "Lorem ipsum dolor sit",
+                                "description": "Lorem ipsum dolor sit",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "efa98db3-adb2-4347-a317-4145ea052ba4": {
+                            "type": "item",
+                            "settings": {
+                                "imgPlaceholder": true,
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "imgEffect": "none",
+                                "title": "Lorem ipsum dolor sit",
+                                "description": "Lorem ipsum dolor sit",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
                             }
                         }
                     }

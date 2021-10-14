@@ -4,7 +4,7 @@
 
     {{ sectionContent }}
 
-    <div class="site-header-container{% if section.settings.stickyHeader %} site-header-sticky{% endif %}">
+    <div class="site-header-container{% if section.settings.stickyHeader %} site-header-sticky{% endif %}{% if section.settings.headerMegamenu %} site-header-megamenu{% endif %}">
 
         <div class="site-header">
 

@@ -298,8 +298,67 @@ export default {
 
         const initSearch = () => {
 
+            const siteSearchEls = containerEl.querySelectorAll('.site-search');
             const siteHeaderSearchToggleEls = containerEl.querySelectorAll('.site-search-toggle');
             const siteHeaderSearchContainerEl = containerEl.querySelector('.site-search-container');
+
+            const search = (siteSearchEl, siteSearchResultsEl, q) => {
+
+                if (!q) {
+
+                    siteSearchEl.classList.remove('active');
+
+                    siteSearchResultsEl.innerHTML = '';
+
+                    return;
+                }
+
+                $.get('/api/search/suggest', {
+                    q: q
+                }, (res) => {
+
+                    siteSearchEl.classList.add('active');
+
+                    if (res.length > 0) {
+
+                        siteSearchResultsEl.innerHTML = res.map(item => `
+                            <a href="${item.url}" class="site-search-result-item">
+                                <span class="site-search-result-item-text">
+                                    ${item.title}
+                                </span>
+                            </a>
+                        `).join('');
+
+                    } else {
+
+                        siteSearchResultsEl.innerHTML = `
+                            <div class="site-search-no-results">
+                                <span class="site-search-no-results-text">
+                                    ${window.themeApp.t('general.search_no_results')}
+                                </span>
+                            </div>
+                        `;
+                    }
+                });
+            }
+
+            siteSearchEls.forEach(el => {
+
+                const siteSearchFormContainerEl = el.querySelector('.site-search-form-container');
+                const siteSearchQueryEl = el.querySelector('input[name="q"]');
+                const siteSearchResultsEl = el.querySelector('.site-search-results');
+
+                siteSearchQueryEl.addEventListener('input', debounce((e) => {
+                    search(el, siteSearchResultsEl, e.target.value);
+                }, 300, false));
+
+                document.addEventListener('click', (e) => {
+
+                    if (!siteSearchFormContainerEl.contains(e.target) && el.classList.contains('active')) {
+                        el.classList.remove('active');
+                    }
+                });
+            });
 
             siteHeaderSearchToggleEls.forEach(el => { el.addEventListener('click', e => {
 
@@ -334,9 +393,11 @@ export default {
 
         const initMenu = () => {
 
+            const siteHeaderContainerEl = containerEl.querySelector('.site-header-container');
             const siteHeaderMenuItemEls = containerEl.querySelectorAll('.site-header-menu-item');
             const submenuCloseDelay = 600;
             const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+            const isMegamenu = siteHeaderContainerEl.classList.contains('site-header-megamenu');
 
             siteHeaderMenuItemEls.forEach(el => {
 
@@ -408,6 +469,21 @@ export default {
                                 submenuEl.classList.add('site-header-submenu-transition');
                             }
 
+                            if (!isMegamenu) {
+
+                                const submenuWidth = submenuEl.querySelector('.container').getBoundingClientRect().width;
+                                const bodyPosRight = document.body.getBoundingClientRect().right;
+                                let submenuPosLeft = menuItemEl.getBoundingClientRect().left;
+                                const submenuPosRight = submenuPosLeft + submenuWidth;
+
+                                if (submenuPosRight > bodyPosRight) {
+                                    submenuPosLeft = submenuPosLeft - (submenuPosRight - bodyPosRight);
+                                }
+
+                                submenuEl.style.left = submenuPosLeft+'px';
+                                submenuEl.style.right = 'auto';
+                            }
+
                             submenuEl.classList.add('site-header-submenu-active');
                             submenuEl.style.height = submenuHeight+'px';
                         };
@@ -459,24 +535,28 @@ export default {
                 return;
             }
 
+            const announcementContainerEl = containerEl.querySelector('.site-announcement-container');
             const el = stickyHeaderEl;
             const elOffsetTop = el.offsetTop;
-            const elOffsetHeight = el.offsetHeight;
             const eHandler = () => {
+
+                const elOffsetHeight = el.offsetHeight;
 
                 if (window.scrollY >= elOffsetTop) {
 
                     if (!el.classList.contains('is-sticky')) {
 
+                        let paddingAmount = elOffsetHeight;
+
                         el.classList.add('is-sticky');
 
-                        document.body.style.paddingTop = elOffsetHeight+'px';
+                        document.body.style.paddingTop = paddingAmount+'px';
                     }
 
                 } else {
 
                     el.classList.remove('is-sticky');
-                     document.body.removeAttribute('style');
+                    document.body.removeAttribute('style');
                 }
             };
 

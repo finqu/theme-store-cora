@@ -59,6 +59,10 @@ body.template-frontpage {
 
                         .site-header {
                             background-color: section-var(background_color);
+
+                            .site-header-inner {
+                                border-bottom: 1px solid section-var(border_color);
+                            }
                         }
                     }
                 }
@@ -99,6 +103,10 @@ body.template-frontpage {
 
                         .site-header {
                             background-color: section-var(background_color);
+
+                            .site-header-inner {
+                                border-bottom: 1px solid section-var(border_color);
+                            }
                         }
                     }
                 }
@@ -157,6 +165,16 @@ body > #search-overlay {
                     .site-header-menu {
                         justify-content: left;
                     }
+                }
+            }
+        }
+
+        .site-search-container {
+
+            .site-search {
+
+                .site-search-results-container {
+                    border: 1px solid section-var(form_border_color);
                 }
             }
         }
@@ -294,21 +312,32 @@ body > #search-overlay {
                 padding: spacer(2) spacer(4);
                 box-shadow: 0px 6px 10px rgba(0, 0, 0, .05);
                 border: 0;
+                @include media-breakpoint-down(md) {
+                    padding: spacer(3) spacer(4);
+                }
             }
         }
 
         .site-search {
             width: 100%;
-            padding: 0 spacer(4);
             background-color: section-var(form_bg_color);
             color: section-var(form_text_color);
             border: 1px solid section-var(form_border_color);
             border-radius: 0;
+            position: relative;
             @include media-breakpoint-up(md) {
                 @include border-radius($input-border-radius);
             }
 
+            &.active {
+
+                .site-search-results-container {
+                    visibility: visible;
+                }
+            }
+
             .site-search-form-container {
+                padding: 0 spacer(4);
 
                 .site-search-form {
                     display: flex;
@@ -335,11 +364,37 @@ body > #search-overlay {
             }
 
             .site-search-results-container {
+                position: absolute;
+                left: 0;
+                right: 0;
+                background-color: section-var(form_bg_color);
+                border-top: 1px solid section-var(form_border_color);
+                color: section-var(form_text_color);
+                margin-top: spacer(1);
+                visibility: hidden;
 
                 .site-search-results {
+                    max-height: 300px;
+                    overflow: auto;
 
-                    .site-search-result {
+                    .site-search-result-item {
+                        display: block;
+                        padding: spacer(3) spacer(4);
 
+                        &:hover {
+                            background-color: color-yiq(section-var(form_bg_color), darken(section-var(form_bg_color), 4%), lighten(section-var(form_bg_color), 4%));
+                        }
+
+                        .site-search-result-item-text {
+                            color: section-var(form_text_color);
+                            @include hover() {
+                                color: section-var(form_text_color);
+                            }
+                        }
+                    }
+
+                    .site-search-no-results {
+                        padding: spacer(3) spacer(4);
                     }
                 }
             }
@@ -359,6 +414,36 @@ body > #search-overlay {
                 left: 0;
                 top: 0;
                 right: 0;
+            }
+        }
+
+        &:not(.site-header-megamenu) {
+
+            .site-header {
+
+                .site-header-submenus-container {
+
+                    .site-header-submenu {
+                        box-shadow: 0 10px 25px rgb(0 0 0 / 15%);
+
+                        &.site-header-submenu-active {
+                            border-bottom: 0;
+                        }
+
+                        .container {
+                            display: inline-flex;
+                            width: auto;
+
+                            .row {
+                                flex-wrap: nowrap;
+
+                                .site-header-submenu-column {
+                                    flex-grow: 0;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
