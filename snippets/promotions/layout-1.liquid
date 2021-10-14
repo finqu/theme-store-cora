@@ -65,9 +65,15 @@
 
             {% if item.settings.btnLabel %}
 
-                {% if item.settings.btnStyle == 'btn' %}
+                {% if item.settings.btnStyle == 'btn1' %}
 
                     <span class="btn btn-outline-section">
+                        {{ item.settings.btnLabel }}
+                    </span>
+
+                {% elsif item.settings.btnStyle == 'btn2' %}
+
+                    <span class="btn btn-section">
                         {{ item.settings.btnLabel }}
                     </span>
 

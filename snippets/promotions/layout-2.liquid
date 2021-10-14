@@ -69,7 +69,13 @@
 
             {% if item.settings.btnLabel %}
 
-                {% if item.settings.btnStyle == 'btn' %}
+                {% if item.settings.btnStyle == 'btn1' %}
+
+                    <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-outline-section mt-3">
+                            {{ item.settings.btnLabel }}
+                        </a>
+
+                {% elsif item.settings.btnStyle == 'btn2' %}
 
                     <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-section mt-3">
                         {{ item.settings.btnLabel }}
