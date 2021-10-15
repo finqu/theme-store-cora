@@ -35,17 +35,25 @@
 {%- assign productIsNew = product.is_new | default: false -%}
 {%- assign productDiscountPercent = product.discount_percent | default: 0 -%}
 
+{%- if store.customer_accounts_require_approval == true and customer.has_access -%}
+    {%- assign accountHasApproval = true -%}
+{%- endif -%}
+
 <div class="product-badges {{ positionClass }}">
 
-    {% if productHasDiscount and productOutOfStock == false %}
+    {% if store.customer_accounts_require_approval == false or accountHasApproval %}
 
-        <div class="product-badge product-badge-discount">
+        {% if productHasDiscount and productOutOfStock == false %}
 
-            <span class="product-badge-content">
-                -{{ productDiscountPercent }}%
-            </span>
+            <div class="product-badge product-badge-discount">
 
-        </div>
+                <span class="product-badge-content">
+                    -{{ productDiscountPercent }}%
+                </span>
+
+            </div>
+
+        {% endif %}
 
     {% endif %}
 

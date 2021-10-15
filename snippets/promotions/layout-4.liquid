@@ -1,0 +1,128 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+
+    {% for item in section.settings.setting_blocks.items %}
+
+        {%- capture itemContent %}
+
+            {%- assign imgSrc = item.settings.imgSrc -%}
+
+            <div class="aspect-ratio-9-12 {% if item.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
+
+                <div class="aspect-ratio-container">
+
+                    {% if imgSrc %}
+
+                        {%- assign imgSizeSm = '374,374' -%}
+                        {%- assign imgSizeMd = '280,280' -%}
+                        {%- assign imgSizeLg = '407,407' -%}
+
+                        <picture>
+
+                            <source media="(min-width: 992px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                            <source media="(min-width: 576px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+                            <source data-srcset="
+                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                            <img
+                                alt="{{ item.settings.imgAlt }}"
+                                data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                                data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                class="lazy aspect-ratio-item aspect-ratio-item-cover d-block mx-auto img-fluid">
+                        </picture>
+
+                    {% else %}
+
+                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                    {% endif %}
+
+                </div>
+
+                <div class="aspect-ratio-container">
+
+                    <div class="d-flex justify-content-center align-items-center flex-column h-100 p-3">
+
+                        <div class="mt-auto">
+
+                            {% if item.settings.title %}
+
+                                <h3 class="font-weight-normal h1 mb-4">
+                                    {{ item.settings.title }}
+                                </h3>
+
+                            {% endif %}
+
+                            {% if item.settings.description %}
+
+                                <p class="lead mb-0">
+                                    {{ item.settings.description }}
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                        {% if item.settings.btnLabel %}
+
+                            {% if item.settings.btnStyle == 'btn1' %}
+
+                                <span class="btn btn-section align-self-center mt-auto mb-2">
+                                    {{ item.settings.btnLabel }}
+                                </span>
+
+                            {% elsif item.settings.btnStyle == 'btn2' %}
+
+                                <span class="btn btn-outline-section align-self-center mt-auto mb2">
+                                    {{ item.settings.btnLabel }}
+                                </span>
+
+                            {% else %}
+
+                                <span class="text-underline-indicator font-weight-bold align-self-center mt-auto mb-2">
+
+                                    <span class="mr-2">
+                                        {{ item.settings.btnLabel }}
+                                    </span>
+
+                                    {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+                                </span>
+
+                            {% endif %}
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {%- endcapture -%}
+
+        <div class="col text-center">
+
+            {% if item.settings.resource %}
+
+                <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+                    {{ itemContent }}
+                </a>
+
+            {% else %}
+
+                {{ itemContent }}
+
+            {% endif %}
+
+        </div>
+
+    {% endfor %}
+
+</div>

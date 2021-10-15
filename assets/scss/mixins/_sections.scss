@@ -57,3 +57,60 @@
 		}
 	}
 }
+
+@mixin style($section: null, $wrapped: true) {
+	@each $name, $map in $section-styles {
+
+		$section-style-name: $name !global;
+		$section-style-map: $map !global;
+
+		@if $wrapped {
+
+			@if $section {
+
+				.section {
+
+					&.section-#{$section} {
+
+						.section-inner {
+
+							.style-#{str-replace(#{$section-style-name}, ' ', '-')} {
+								@content;
+							}
+						}
+					}
+				}
+
+			} @else {
+
+				.section {
+
+					.section-inner {
+
+						.style-#{str-replace(#{$section-style-name}, ' ', '-')} {
+							@content;
+						}
+					}
+				}
+			}
+
+		} @else {
+
+			@if $section {
+
+				.section-#{$section} {
+
+					.style-#{str-replace(#{$section-style-name}, ' ', '-')} {
+						@content;
+					}
+				}
+
+			} @else {
+
+				.style-#{str-replace(#{$section-style-name}, ' ', '-')} {
+					@content;
+				}
+			}
+		}
+	}
+}

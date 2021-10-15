@@ -40,9 +40,15 @@
 
     {% if section.settings.contentBtnLabel %}
 
-        {% if section.settings.contentBtnStyle == 'btn' %}
+        {% if section.settings.contentBtnStyle == 'btn1' %}
 
             <a href="{{- section.settings.contentBtnResource.url -}}" class="btn btn-section mt-3">
+                {{- section.settings.contentBtnLabel -}}
+            </a>
+
+        {% elsif section.settings.contentBtnStyle == 'btn2' %}
+
+            <a href="{{- section.settings.contentBtnResource.url -}}" class="btn btn-outline-section mt-3">
                 {{- section.settings.contentBtnLabel -}}
             </a>
 
@@ -298,13 +304,20 @@
                             "en": "Button style",
                             "fi": "Napin tyyli"
                         },
-                        "default": "btn",
+                        "default": "btn1",
                         "options": [
                             {
-                                "value": "btn",
+                                "value": "btn1",
                                 "label": {
-                                    "en": "Button",
-                                    "fi": "Nappi"
+                                    "en": "Button 1",
+                                    "fi": "Nappi 1"
+                                }
+                            },
+                            {
+                                "value": "btn2",
+                                "label": {
+                                    "en": "Button 2",
+                                    "fi": "Nappi 2"
                                 }
                             },
                             {
@@ -668,7 +681,7 @@
                 "contentRichtextAlign": "middle",
                 "contentBtnLabel": null,
                 "contentBtnResource": null,
-                "contentBtnStyle": "btn",
+                "contentBtnStyle": "btn1",
                 "contentImgSrc": "",
                 "contentImgPlaceholder": true,
                 "contentImgPlaceholderHeight": "600px",

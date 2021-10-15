@@ -8,21 +8,31 @@
 
     {%- if section.settings.promotionLayout == '1' -%}
 
+        {%- assign sectionClasses = 'promotion-layout-1' -%}
+
         {%- render 'promotions/layout-1', section: section -%}
 
     {%- elsif section.settings.promotionLayout == '2' -%}
+
+        {%- assign sectionClasses = 'promotion-layout-2' -%}
 
         {%- render 'promotions/layout-2', section: section -%}
 
     {%- elsif section.settings.promotionLayout == '3' -%}
 
+        {%- assign sectionClasses = 'promotion-layout-3' -%}
+
         {%- render 'promotions/layout-3', section: section -%}
 
     {%- elsif section.settings.promotionLayout == '4' -%}
 
+        {%- assign sectionClasses = 'promotion-layout-4' -%}
+
         {%- render 'promotions/layout-4', section: section -%}
 
     {%- elsif section.settings.promotionLayout == '5' -%}
+
+        {%- assign sectionClasses = 'promotion-layout-5' -%}
 
         {%- render 'promotions/layout-5', section: section -%}
 
@@ -30,7 +40,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionClasses: sectionClasses %}
 
 {% schema %}
 {
@@ -80,6 +90,31 @@
                                 }
                             },
                             {
+                                "id": "style",
+                                "type": "radio-pill",
+                                "label": {
+                                    "en": "Image content style",
+                                    "fi": "Kuvan sisällön tyyli"
+                                },
+                                "default": "style1",
+                                "options": [
+                                    {
+                                        "value": "style1",
+                                        "label": {
+                                            "en": "Dark",
+                                            "fi": "Tumma"
+                                        }
+                                    },
+                                    {
+                                        "value": "style2",
+                                        "label": {
+                                            "en": "Light",
+                                            "fi": "Vaalea"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
                                 "id": "title",
                                 "type": "text",
                                 "label": {
@@ -110,7 +145,7 @@
                                     "en": "Button style",
                                     "fi": "Napin tyyli"
                                 },
-                                "default": "btn1",
+                                "default": "btn2",
                                 "options": [
                                     {
                                         "value": "btn1",
@@ -140,7 +175,7 @@
                                 "type": "url",
                                 "label": {
                                     "en": "Link",
-                                    "fi": "Link"
+                                    "fi": "Linkki"
                                 }
                             },
                             {
@@ -306,6 +341,33 @@
                                         {
                                             "value": "right",
                                             "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionColSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Column spacing",
+                                        "fi": "Sarakkeen tilavuus"
+                                    },
+                                    "default": "sm",
+                                    "options": [
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
                                         }
                                     ]
                                 },
@@ -525,6 +587,7 @@
                 "sectionSubtitle": "",
                 "sectionSubtitleTag": "h3",
                 "sectionHeaderTextAlign": "center",
+                "sectionColSpacing": "sm",
                 "sectionHeight": "",
                 "sectionHeightCustomTop": "0",
                 "sectionHeightCustomBottom": "0",
@@ -541,10 +604,11 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
+                                "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
                                 "description": "",
                                 "btnLabel": "Lorem ipsum",
-                                "btnStyle": "btn1",
+                                "btnStyle": "btn2",
                                 "resource": {
                                     "type": "url",
                                     "record_id": "",
@@ -558,10 +622,11 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
+                                "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
                                 "description": "",
                                 "btnLabel": "Lorem ipsum",
-                                "btnStyle": "btn1",
+                                "btnStyle": "btn2",
                                 "resource": {
                                     "type": "url",
                                     "record_id": "",
@@ -575,10 +640,11 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
+                                "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
                                 "description": "",
                                 "btnLabel": "Lorem ipsum",
-                                "btnStyle": "btn1",
+                                "btnStyle": "btn2",
                                 "resource": {
                                     "type": "url",
                                     "record_id": "",
@@ -592,10 +658,11 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
+                                "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
                                 "description": "",
                                 "btnLabel": "Lorem ipsum",
-                                "btnStyle": "btn1",
+                                "btnStyle": "btn2",
                                 "resource": {
                                     "type": "url",
                                     "record_id": "",

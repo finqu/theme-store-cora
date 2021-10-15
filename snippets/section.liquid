@@ -24,8 +24,9 @@
 	- sectionOverlay: {Boolean}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact', 'tiny'
 	- sectionTextAlign: {String} 'left', 'center', 'right'
-	- sectionHeightCustomTop : {String}
-	- sectionHeightCustomBottom : {String}
+	- sectionHeightCustomTop: {String}
+	- sectionHeightCustomBottom: {String}
+	- sectionColSpacing {String}
 
 	Usage:
 	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionSubtitletag: tag, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionContentContainer: 'fixed' %}
@@ -56,10 +57,10 @@
 {%- assign sectionHeaderTextAlign = sectionHeaderTextAlign | default: null -%}
 {%- assign sectionOverlay = sectionOverlay | default: false -%}
 {%- assign sectionTextAlign = sectionTextAlign | default: null -%}
-{%- assign sectionInnerSpacing = sectionInnerSpacing | default: section.settings.sectionInnerSpacing | default: 'off' -%}
 {%- assign sectionHeightCustomTop = sectionHeightCustomTop | default: section.settings.sectionHeightCustomTop -%}
 {%- assign sectionHeightCustomBottom = sectionHeightCustomBottom | default: section.settings.sectionHeightCustomBottom -%}
 {%- assign sectionClasses = sectionClasses -%}
+{%- assign sectionColSpacing = sectionColSpacing | default: section.settings.sectionColSpacing | default: 'off' -%}
 
 {%- if sectionHeight != 'off' -%}
     {% capture sectionHeightClass %} section-height-{{ sectionHeight }}{% endcapture %}
@@ -94,6 +95,11 @@
 {%- if sectionTextAlign -%}
     {% capture sectionTextAlignClass %} text-{{ sectionTextAlign }}{% endcapture %}
     {%- assign sectionClasses = sectionClasses | append: sectionTextAlignClass -%}
+{%- endif -%}
+
+{%- if sectionColSpacing != 'off' -%}
+    {% capture sectionColSpacingClass %} section-spacing-col-{{ sectionColSpacing }}{% endcapture %}
+    {%- assign sectionClasses = sectionClasses | append: sectionColSpacingClass -%}
 {%- endif -%}
 
 {%- if section.settings.sectionContentBgColorStatus -%}

@@ -763,61 +763,69 @@
 
                     </div>
 
-                    <div class="product-pricing">
+                    {%- if store.customer_accounts_require_approval == true and customer.has_access -%}
+                        {%- assign accountHasApproval = true -%}
+                    {%- endif -%}
 
-                        {% if product.has_discount %}
+                    {% if store.customer_accounts_require_approval == false or accountHasApproval %}
 
-                            <div class="product-discount">
+                        <div class="product-pricing">
 
-                                <span class="product-discount-text text-sale-price">
-                                    {{ 'product.discount_dynamic' | t, amount: product.discount_percent }}
+                            {% if product.has_discount %}
+
+                                <div class="product-discount">
+
+                                    <span class="product-discount-text text-sale-price">
+                                        {{ 'product.discount_dynamic' | t, amount: product.discount_percent }}
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+                            <div class="product-price-container">
+
+                                {%- if settings.taxFreePrices -%}
+                                    {% assign itemPrice = product.net_price %}
+                                    {% assign itemOriginalPrice = product.original_net_price %}
+                                    {% assign itemTaxPercent = 0 %}
+                                {%- else -%}
+                                    {% assign itemPrice = product.price %}
+                                    {% assign itemOriginalPrice = product.original_price %}
+                                    {% assign itemTaxPercent = product.taxpercent | round %}
+                                {%- endif -%}
+
+                                {% if product.has_discount %}
+
+                                    <span class="product-sale-price-text text-sale-price font-weight-bold mr-1" data-product-price-dynamic>
+                                        {{ itemPrice | in_currency }}
+                                    </span>
+
+                                    <span class="product-price text-decoration-line-through text-muted">
+                                        {{ itemOriginalPrice | in_currency }}
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="product-price text-price" data-product-price-dynamic>
+                                        {{ itemPrice | in_currency }}
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+                            <div class="product-vat">
+
+                                <span class="product-vat-text text-muted">
+                                    {{ 'product.vat_included_dynamic' | t, amount: itemTaxPercent }}
                                 </span>
 
                             </div>
 
-                        {% endif %}
-
-                        <div class="product-price-container">
-
-                            {%- if settings.taxFreePrices -%}
-                                {% assign itemPrice = product.net_price %}
-                                {% assign itemOriginalPrice = product.original_net_price %}
-                                {% assign itemTaxPercent = 0 %}
-                            {%- else -%}
-                                {% assign itemPrice = product.price %}
-                                {% assign itemOriginalPrice = product.original_price %}
-                                {% assign itemTaxPercent = product.taxpercent | round %}
-                            {%- endif -%}
-
-                            {% if product.has_discount %}
-
-                                <span class="product-sale-price-text text-sale-price font-weight-bold mr-1" data-product-price-dynamic>
-                                    {{ itemPrice | in_currency }}
-                                </span>
-
-                                <span class="product-price text-decoration-line-through text-muted">
-                                    {{ itemOriginalPrice | in_currency }}
-                                </span>
-
-                            {% else %}
-
-                                <span class="product-price text-price" data-product-price-dynamic>
-                                    {{ itemPrice | in_currency }}
-                                </span>
-
-                            {% endif %}
-
                         </div>
 
-                        <div class="product-vat">
-
-                            <span class="product-vat-text text-muted">
-                                {{ 'product.vat_included_dynamic' | t, amount: itemTaxPercent }}
-                            </span>
-
-                        </div>
-
-                    </div>
+                    {% endif %}
 
                     {% if product.review_count > 0 and product.reviews_are_enabled %}
 

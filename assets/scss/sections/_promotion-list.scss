@@ -1,0 +1,144 @@
+// Promotion list
+// -----------------------------------------------------------------------------------------
+
+@include style('promotion-list') {
+
+	color: section-var(text_color);
+
+	a {
+        color: section-var(link_color);
+
+        @include hover() {
+            color: section-var(link_color);
+        }
+    }
+
+    .svg-icon, {
+		color: section-var(icon_color);
+	}
+
+	.svg-placeholder {
+		color: section-var(text_color);
+	}
+
+	h1, h2, h3, h4, h5, h6,
+	.h1, .h2, .h3, .h4, .h5, .h6 {
+		color: section-var(heading_color);
+		overflow-wrap: break-word;
+	    word-wrap: break-word;
+	    hyphens: auto;
+	}
+
+	h1,
+	.h1 {
+		@include relative-font-size($h1-font-size);
+	}
+
+	h2,
+	.h2 {
+		@include relative-font-size($h2-font-size);
+	}
+
+	h3,
+	.h3 {
+		@include relative-font-size($h3-font-size);
+	}
+
+	h4,
+	.h4 {
+		@include relative-font-size($h4-font-size);
+	}
+
+	h5,
+	.h5 {
+		@include relative-font-size($h5-font-size);
+	}
+
+	h6,
+	.h6 {
+		@include relative-font-size($h6-font-size);
+	}
+
+	hr {
+		border-top: $hr-border-width solid section-var(border_color);
+	}
+
+	.text-icon {
+		color: section-var(icon_color);
+	}
+
+	.text-title {
+		color: section-var(heading_color);
+	}
+
+	.text-subtitle {
+		color: section-var(subheading_color);
+	}
+
+	.text-product-title {
+		color: section-var(product_title_color);
+	}
+
+	.text-price {
+		color: section-var(price_color);
+	}
+
+	.text-sale-price {
+		color: section-var(sale_price_color);
+	}
+
+	.text-muted {
+		color: color-yiq(section-var(text_color), darken(section-var(text_color), 30%), lighten(section-var(text_color), 30%)) !important;
+	}
+
+	.text-section {
+		color: section-var(text_color);
+	}
+
+	.text-underline-indicator {
+		transition: border .15s ease-in-out;
+		border-bottom: 2px solid transparent;
+		padding-bottom: 2px;
+
+		@include hover() {
+			border-bottom-color: section-var(indicator_color);
+		}
+	}
+
+	.btn {
+
+        &.btn-section {
+            @include section-button-variant(section-var(button_bg_color), section-var(button_text_color));
+        }
+
+        &.btn-outline-section {
+            @include section-button-outline-variant(section-var(button_bg_color), section-var(button_text_color));
+        }
+    }
+
+    .btn-icon {
+        color:section-var(icon_color);
+
+        &:hover {
+            color: section-var(indicator_color);
+        }
+
+        &.disabled,
+        &[disabled] {
+            &:hover {
+                color: section-var(icon_color);
+            }
+        }
+    }
+
+    .btn-link {
+        color: section-var(link_color);
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+
+        @include hover() {
+            color: section-var(link_color);
+        }
+    }
+}

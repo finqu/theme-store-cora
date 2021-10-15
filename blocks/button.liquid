@@ -14,11 +14,17 @@
 
 <div class="d-flex {{ contentAlign }}">
 
-    {% if block.settings.btnStyle == 'btn' %}
+    {% if block.settings.btnStyle == 'btn1' %}
 
         <a href="{{- block.settings.btnResource.url -}}" class="btn btn-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
-        {{ btnLabel }}
-    </a>
+            {{ btnLabel }}
+        </a>
+
+    {% elsif block.settings.btnStyle == 'btn2' %}
+
+        <a href="{{- block.settings.btnResource.url -}}" class="btn btn-outline-section"{% if block.settings.openInNewWindowStatus %} target="_blank"{% endif %}>
+            {{ btnLabel }}
+        </a>
 
     {% else %}
 
@@ -69,13 +75,20 @@
                 "en": "Button style",
                 "fi": "Napin tyyli"
             },
-            "default": "btn",
+            "default": "btn1",
             "options": [
                 {
-                    "value": "btn",
+                    "value": "btn1",
                     "label": {
-                        "en": "Button",
-                        "fi": "Nappi"
+                        "en": "Button 1",
+                        "fi": "Nappi 1"
+                    }
+                },
+                {
+                    "value": "btn2",
+                    "label": {
+                        "en": "Button 2",
+                        "fi": "Nappi 2"
                     }
                 },
                 {

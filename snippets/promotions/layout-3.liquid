@@ -1,0 +1,134 @@
+<div class="row row-cols-1 row-cols-sm-3">
+
+    {% for item in section.settings.setting_blocks.items %}
+
+        <div class="col py-3 text-center">
+
+            {%- assign imgSrc = item.settings.imgSrc -%}
+
+            {%- capture imgContent %}
+
+                <div class="aspect-ratio-1-1 mb-4">
+
+                    <div class="aspect-ratio-container">
+
+                        {% if imgSrc %}
+
+                            {%- assign imgSizeSm = '374,374' -%}
+                            {%- assign imgSizeMd = '280,280' -%}
+                            {%- assign imgSizeLg = '407,407' -%}
+
+                            <picture>
+
+                                <source media="(min-width: 992px)" data-srcset="
+                                    {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                    {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                <source media="(min-width: 576px)" data-srcset="
+                                    {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                    {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+                                <source data-srcset="
+                                    {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                    {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                                <img
+                                    alt="{{ item.settings.imgAlt }}"
+                                    data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                                    data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                    class="lazy aspect-ratio-item aspect-ratio-item-cover d-block mx-auto img-fluid">
+                            </picture>
+
+                        {% else %}
+
+                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            {%- endcapture -%}
+
+            {% if item.settings.resource %}
+
+                <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+                    {{ imgContent }}
+                </a>
+
+            {% else %}
+
+                {{ imgContent }}
+
+            {% endif %}
+
+            {% if item.settings.title %}
+
+                {% if item.settings.resource %}
+
+                    <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+
+                        <h3 class="font-weight-normal h5">
+
+                            <span class="text-underline-indicator">
+                                {{ item.settings.title }}
+                            </span>
+
+                        </h3>
+
+                    </a>
+
+                {% else %}
+
+                    <h3 class="font-weight-normal h5">
+                        {{ item.settings.title }}
+                    </h3>
+
+                {% endif %}
+
+            {% endif %}
+
+            {% if item.settings.description %}
+
+                <p>
+                    {{ item.settings.description }}
+                </p>
+
+            {% endif %}
+
+            {% if item.settings.btnLabel %}
+
+                {% if item.settings.btnStyle == 'btn1' %}
+
+                    <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-section">
+                        {{ item.settings.btnLabel }}
+                    </a>
+
+                {% elsif item.settings.btnStyle == 'btn2' %}
+
+                     <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-outline-section">
+                        {{ item.settings.btnLabel }}
+                    </a>
+
+                {% else %}
+
+                     <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="text-underline-indicator font-weight-bold">
+
+                        <span class="mr-2">
+                            {{ item.settings.btnLabel }}
+                        </span>
+
+                        {%- render 'icon', icon: 'arrow-right-Nc34uf', class: 'svg-icon-fw' -%}
+
+                    </a>
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+    {% endfor %}
+
+</div>

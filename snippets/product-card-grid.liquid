@@ -47,6 +47,14 @@
 	{%- assign showPricing = true -%}
 {%- endif -%}
 
+{%- if store.customer_accounts_require_approval == true and customer.has_access -%}
+    {%- assign accountHasApproval = true -%}
+{%- endif -%}
+
+{% unless store.customer_accounts_require_approval == false or accountHasApproval %}
+	{%- assign showPricing = false -%}
+{% endunless %}
+
 {%- assign productInWishlist = product.in_customers_wishlist | default: false -%}
 {%- assign productImage = product.image | default: '' -%}
 {%- assign productName = product.name | default: '' -%}

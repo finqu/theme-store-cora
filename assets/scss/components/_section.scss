@@ -249,6 +249,39 @@
 		}
 	}
 
+	$container-gutter-width: $grid-gutter-width / 2;
+
+	@each $key, $val in $section-spacers-col {
+		.section-spacing-col-#{$key} {
+
+			.container,
+			.container-fluid,
+			.container-tiny,
+			.container-compact {
+
+				.row {
+					margin-left: 0;
+					margin-right: 0;
+					@include media-breakpoint-up(sm) {
+						margin-left: -#{$val};
+						margin-right: -#{$val};
+					}
+
+					> .col,
+					> [class*="col-"] {
+						padding-top: $container-gutter-width / 2;
+						padding-bottom: $container-gutter-width / 2;
+						padding-left: 0;
+						padding-right: 0;
+						@include media-breakpoint-up(sm) {
+							padding: $val;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	@each $key, $val in $section-spacers-height {
 		@include media-breakpoint-up(md) {
 			.section-height-#{$key} {

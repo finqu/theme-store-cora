@@ -1,7 +1,7 @@
 // Link list
 // -----------------------------------------------------------------------------------------
 
-@include section-style() {
+@include section-style('link-list') {
 
 	.link-list {
 		display: flex;
