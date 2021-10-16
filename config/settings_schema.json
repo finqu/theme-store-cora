@@ -8,10 +8,31 @@
 	},
 	"section_categories": [
 		{
+			"id": "theme-text",
+			"name": {
+				"en": "Text",
+				"fi": "Teksti"
+			}
+		},
+		{
+			"id": "theme-promotion",
+			"name": {
+				"en": "Promotion",
+				"fi": "Mainos"
+			}
+		},
+		{
 			"id": "theme-basic",
 			"name": {
 				"en": "Basic",
 				"fi": "Yleinen"
+			}
+		},
+		{
+			"id": "theme-product",
+			"name": {
+				"en": "Product",
+				"fi": "Tuote"
 			}
 		},
 		{
@@ -26,13 +47,6 @@
 			"name": {
 				"en": "Blog",
 				"fi": "Blogi"
-			}
-		},
-		{
-			"id": "theme-product",
-			"name": {
-				"en": "Product",
-				"fi": "Tuote"
 			}
 		},
 		{

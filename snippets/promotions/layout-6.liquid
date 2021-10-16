@@ -1,12 +1,12 @@
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-{% if section.settings.itemsPerRow > 4 %}{{ section.settings.itemsPerRow | minus: 1 }}{% else %}{{ section.settings.itemsPerRow }}{% endif %} row-cols-xl-{{ section.settings.itemsPerRow }}">
+{% for item in section.settings.setting_blocks.items %}
 
-    {% for item in section.settings.setting_blocks.items %}
+    <div class="row">
 
         {%- capture itemContent %}
 
             {%- assign imgSrc = item.settings.imgSrc -%}
 
-            <div class="aspect-ratio-9-12 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
+            <div class="aspect-ratio-21-9 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
 
                 <div class="aspect-ratio-container">
 
@@ -135,6 +135,6 @@
 
         </div>
 
-    {% endfor %}
+    </div>
 
-</div>
+{% endfor %}

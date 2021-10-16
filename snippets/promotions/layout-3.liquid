@@ -1,4 +1,4 @@
-<div class="row row-cols-1 row-cols-sm-3">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-{% if section.settings.itemsPerRow > 4 %}{{ section.settings.itemsPerRow | minus: 1 }}{% else %}{{ section.settings.itemsPerRow }}{% endif %} row-cols-xl-{{ section.settings.itemsPerRow }}">
 
     {% for item in section.settings.setting_blocks.items %}
 
@@ -16,7 +16,19 @@
 
                             {%- assign imgSizeSm = '374,374' -%}
                             {%- assign imgSizeMd = '280,280' -%}
-                            {%- assign imgSizeLg = '407,407' -%}
+
+                            {%- case section.settings.itemsPerRow -%}
+
+                                {% when '2' %}
+                                    {%- assign imgSizeLg = '640,640' -%}
+                                {% when '3' %}
+                                    {%- assign imgSizeLg = '407,407' -%}
+                                {% when '4' %}
+                                    {%- assign imgSizeLg = '310,310' -%}
+                                {% when '5' %}
+                                    {%- assign imgSizeLg = '244,244' -%}
+
+                            {%- endcase -%}
 
                             <picture>
 

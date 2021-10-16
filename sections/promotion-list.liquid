@@ -20,13 +20,21 @@
 
     {%- elsif section.settings.promotionLayout == '3' -%}
 
-        {%- assign sectionClasses = 'promotion-layout-3' -%}
+        {%- capture sectionClasses -%}
+            promotion-layout-3 items-per-row-{{ section.settings.itemsPerRow }}
+        {%- endcapture -%}
+
+        {%- assign sectionClasses = sectionClasses -%}
 
         {%- render 'promotions/layout-3', section: section -%}
 
     {%- elsif section.settings.promotionLayout == '4' -%}
 
-        {%- assign sectionClasses = 'promotion-layout-4' -%}
+        {%- capture sectionClasses -%}
+            promotion-layout-4 items-per-row-{{ section.settings.itemsPerRow }}
+        {%- endcapture -%}
+
+        {%- assign sectionClasses = sectionClasses -%}
 
         {%- render 'promotions/layout-4', section: section -%}
 
@@ -35,6 +43,18 @@
         {%- assign sectionClasses = 'promotion-layout-5' -%}
 
         {%- render 'promotions/layout-5', section: section -%}
+
+    {%- elsif section.settings.promotionLayout == '6' -%}
+
+        {%- assign sectionClasses = 'promotion-layout-6' -%}
+
+        {%- render 'promotions/layout-6', section: section -%}
+
+    {%- elsif section.settings.promotionLayout == '7' -%}
+
+        {%- assign sectionClasses = 'promotion-layout-7' -%}
+
+        {%- render 'promotions/layout-7', section: section -%}
 
     {% endif %}
 
@@ -248,7 +268,38 @@
                                                 "en": "Layout 5",
                                                 "fi": "Asettelu 5"
                                             }
+                                        },
+                                        {
+                                            "value": "6",
+                                            "label": {
+                                                "en": "Layout 6",
+                                                "fi": "Asettelu 6"
+                                            }
+                                        },
+                                        {
+                                            "value": "7",
+                                            "label": {
+                                                "en": "Layout 7",
+                                                "fi": "Asettelu 7"
+                                            }
                                         }
+                                    ]
+                                },
+                                {
+                                    "id": "itemsPerRow",
+                                    "label": {
+                                        "en": "Kohteita per row",
+                                        "fi": "Kohteita per rivi"
+                                    },
+                                    "type": "range",
+                                    "min": 2,
+                                    "max": 5,
+                                    "step": 1,
+                                    "default": 3,
+                                    "unit": " ",
+                                    "conditions": [
+                                        "promotionLayout gte 3",
+                                        "promotionLayout lte 5"
                                     ]
                                 },
                                 {
@@ -579,9 +630,10 @@
     },
     "presets": [
         {
-            "category": "theme-basic",
+            "category": "theme-promotion",
             "settings": {
                 "promotionLayout": "1",
+                "itemsPerRow": "3",
                 "sectionTitle": "",
                 "sectionTitleTag": "h2",
                 "sectionSubtitle": "",
@@ -606,7 +658,7 @@
                                 "imgAlt": "",
                                 "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
-                                "description": "",
+                                "description": "Lorem ipsum dolor sit",
                                 "btnLabel": "Lorem ipsum",
                                 "btnStyle": "btn2",
                                 "resource": {
@@ -624,7 +676,7 @@
                                 "imgAlt": "",
                                 "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
-                                "description": "",
+                                "description": "Lorem ipsum dolor sit",
                                 "btnLabel": "Lorem ipsum",
                                 "btnStyle": "btn2",
                                 "resource": {
@@ -642,7 +694,7 @@
                                 "imgAlt": "",
                                 "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
-                                "description": "",
+                                "description": "Lorem ipsum dolor sit",
                                 "btnLabel": "Lorem ipsum",
                                 "btnStyle": "btn2",
                                 "resource": {
@@ -660,7 +712,7 @@
                                 "imgAlt": "",
                                 "style": "style2",
                                 "title": "Lorem ipsum dolor sit",
-                                "description": "",
+                                "description": "Lorem ipsum dolor sit",
                                 "btnLabel": "Lorem ipsum",
                                 "btnStyle": "btn2",
                                 "resource": {

@@ -142,3 +142,36 @@
         }
     }
 }
+
+.section-promotion-list {
+
+	.section-inner {
+
+		&.promotion-layout-4 {
+
+			&.items-per-row-4 {
+				@include media-breakpoint-up(lg) {
+					.item-title {
+						@include relative-font-size($h1-font-size * 0.70);
+					}
+
+					.item-description {
+						font-size: $font-size-base;
+					}
+				}
+			}
+
+			&.items-per-row-5 {
+				@include media-breakpoint-up(lg) {
+					.item-title {
+						@include relative-font-size($h1-font-size * 0.70);
+					}
+
+					.item-description {
+						font-size: $font-size-base;
+					}
+				}
+			}
+		}
+	}
+}

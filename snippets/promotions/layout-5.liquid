@@ -1,0 +1,101 @@
+<div class="row row-cols-2 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 row-cols-xl-7 justify-content-sm-center">
+
+    {% for item in section.settings.setting_blocks.items %}
+
+        {%- capture imgContent %}
+
+            {%- assign imgSrc = item.settings.imgSrc -%}
+
+            <div class="aspect-ratio-1-1">
+
+                <div class="aspect-ratio-container">
+
+                    {% if imgSrc %}
+
+                        {%- assign imgSizeSm = '374,374' -%}
+                        {%- assign imgSizeMd = '280,280' -%}
+
+                        {%- case section.settings.itemsPerRow -%}
+
+                            {% when '2' %}
+                                {%- assign imgSizeLg = '640,854' -%}
+                            {% when '3' %}
+                                {%- assign imgSizeLg = '420,560' -%}
+                            {% when '4' %}
+                                {%- assign imgSizeLg = '310,414' -%}
+                            {% when '5' %}
+                                {%- assign imgSizeLg = '244,326' -%}
+
+                        {%- endcase -%}
+
+                        <picture>
+
+                            <source media="(min-width: 992px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                            <source media="(min-width: 576px)" data-srcset="
+                                {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+
+                            <source data-srcset="
+                                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                            <img
+                                alt="{{ item.settings.imgAlt }}"
+                                data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
+                                data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                class="lazy aspect-ratio-item aspect-ratio-item-cover d-block mx-auto img-fluid rounded-circle">
+                        </picture>
+
+                    {% else %}
+
+                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item rounded-circle' %}
+
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+
+        {%- endcapture -%}
+
+        <div class="col text-center">
+
+            {% if item.settings.resource %}
+
+                <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
+
+                    {{ imgContent }}
+
+                    {% if item.settings.title %}
+
+                        <h3 class="font-weight-normal h5 mt-4 mb-0">
+                            {{ item.settings.title }}
+                        </h3>
+
+                    {% endif %}
+
+                </a>
+
+            {% else %}
+
+                {{ imgContent }}
+
+                {% if item.settings.title %}
+
+                    <h3 class="font-weight-normal h5 mt-4 mb-0">
+                        {{ item.settings.title }}
+                    </h3>
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+    {% endfor %}
+
+</div>

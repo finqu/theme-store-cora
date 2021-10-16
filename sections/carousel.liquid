@@ -88,13 +88,17 @@
                                 alt="{{ item.settings.imgAlt }}"
                                 data-src="{{ imgSrc | thumb: imgSize }}"
                                 data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                class="lazy aspect-ratio-item {% if item.settings.imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}">
+                                class="lazy aspect-ratio-item {% if item.settings.imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}">
 
                         </picture>
 
                     {% else %}
 
-                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+                        {%- capture class -%}
+                            aspect-ratio-item{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}
+                        {%- endcapture -%}
+
+                        {% render 'placeholder-svg', type: 'image', class: class %}
 
                     {% endif %}
 
@@ -205,6 +209,38 @@
                                     "en": "Image alt",
                                     "fi": "Kuvan alt-teksti"
                                 }
+                            },
+                            {
+                                "id": "imgEffect",
+                                "type": "select",
+                                "label": {
+                                    "en": "Image effect",
+                                    "fi": "Kuvan effekti"
+                                },
+                                "default": "none",
+                                "options": [
+                                    {
+                                        "value": "none",
+                                        "label": {
+                                            "en": "None",
+                                            "fi": "Ei mitään"
+                                        }
+                                    },
+                                    {
+                                        "value": "rounded",
+                                        "label": {
+                                            "en": "Rounded",
+                                            "fi": "Pyöristetty"
+                                        }
+                                    },
+                                    {
+                                        "value": "rounded-circle",
+                                        "label": {
+                                            "en": "Circle",
+                                            "fi": "Ympyrä"
+                                        }
+                                    }
+                                ]
                             },
                             {
                                 "id": "imgFit",
@@ -775,7 +811,8 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgAlt": false,
+                                "imgEffect": "none",
+                                "imgFit": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
@@ -790,7 +827,8 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgAlt": false,
+                                "imgEffect": "none",
+                                "imgFit": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
@@ -805,7 +843,8 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgAlt": false,
+                                "imgEffect": "none",
+                                "imgFit": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
@@ -820,7 +859,8 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgAlt": false,
+                                "imgEffect": "none",
+                                "imgFit": false,
                                 "text": "",
                                 "resource": {
                                     "type": "url",
