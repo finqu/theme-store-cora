@@ -10,7 +10,7 @@
 
                 <div class="aspect-ratio-1-1 mb-4">
 
-                    <div class="aspect-ratio-container">
+                    <div class="aspect-ratio-container item-img-container{% if item.settings.resource %} has-img-effect{% endif %}">
 
                         {% if imgSrc %}
 
@@ -113,13 +113,13 @@
 
                 {% if item.settings.btnStyle == 'btn1' %}
 
-                    <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-section">
+                    <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-section btn-sm">
                         {{ item.settings.btnLabel }}
                     </a>
 
                 {% elsif item.settings.btnStyle == 'btn2' %}
 
-                     <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-outline-section">
+                     <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %} class="btn btn-outline-section btn-sm">
                         {{ item.settings.btnLabel }}
                     </a>
 
