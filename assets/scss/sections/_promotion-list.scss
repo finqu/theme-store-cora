@@ -147,6 +147,35 @@
 
 	.section-inner {
 
+		&.promotion-layout-4,
+		&.promotion-layout-6
+		&.promotion-layout-7,
+		&.promotion-layout-8,
+		&.promotion-layout-9 {
+
+			.collage-item {
+
+				.collage-item-inner {
+
+					&.style-darkest {
+
+						.collage-item-img-container {
+
+							&:before {
+								position: absolute;
+								left: 0;
+								top: 0;
+								right: 0;
+								bottom: 0;
+								content: '';
+								background-color: rgba(0,0,0,0.1);
+							}
+						}
+					}
+				}
+			}
+		}
+
 		&.promotion-layout-4 {
 
 			&.items-per-row-4 {
@@ -169,6 +198,168 @@
 
 					.item-description {
 						font-size: $font-size-base;
+					}
+				}
+			}
+		}
+
+		&.promotion-layout-7 {
+
+			.collage {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				@include media-breakpoint-down(md) {
+					gap: 1rem;
+				}
+				@include media-breakpoint-up(md) {
+					grid-template-columns: repeat(3, 1fr);
+
+					&.collage-gap-sm {
+						gap: 1rem;
+					}
+
+					&.collage-gap-md {
+						gap: 1.25rem;
+					}
+
+					&.collage-gap-lg {
+						gap: 1.5rem;
+					}
+
+					&.collage-gap-xl {
+						gap: 2rem;
+					}
+				}
+
+				.collage-item {
+
+					&:nth-child(1) {
+						grid-row: 1/3;
+						grid-column-start: 1;
+    					grid-column-end: 3;
+
+						.collage-item-inner {
+							height: 100%;
+						}
+					}
+
+					&:nth-child(n+1) {
+						.item-title {
+							@include relative-font-size($h1-font-size * 0.70);
+						}
+
+						.item-description {
+							font-size: $font-size-base;
+						}
+						@include media-breakpoint-down(md) {
+							.item-title {
+								@include relative-font-size($h1-font-size * 0.60);
+							}
+
+							.item-description {
+								font-size: $font-size-base * 0.90;
+							}
+							.item-btn {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.promotion-layout-8 {
+
+			.collage {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				@include media-breakpoint-down(md) {
+					gap: 1rem;
+				}
+				@include media-breakpoint-up(md) {
+					grid-template-columns: repeat(3, 1fr);
+
+					&.collage-gap-sm {
+						gap: 1rem;
+					}
+
+					&.collage-gap-md {
+						gap: 1.25rem;
+					}
+
+					&.collage-gap-lg {
+						gap: 1.5rem;
+					}
+
+					&.collage-gap-xl {
+						gap: 2rem;
+					}
+				}
+
+				.collage-item {
+
+					.collage-item-inner {
+
+						.item-title {
+							@include relative-font-size($h1-font-size * 0.70);
+						}
+
+						.item-description {
+							font-size: $font-size-base;
+						}
+						@include media-breakpoint-down(md) {
+							.item-title {
+								@include relative-font-size($h1-font-size * 0.60);
+							}
+
+							.item-description {
+								font-size: $font-size-base * 0.90;
+							}
+							.item-btn {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.promotion-layout-9 {
+
+			.collage {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				@include media-breakpoint-down(md) {
+					gap: 1rem;
+				}
+				@include media-breakpoint-up(md) {
+					grid-template-columns: repeat(4, 1fr);
+
+					&.collage-gap-sm {
+						gap: 1rem;
+					}
+
+					&.collage-gap-md {
+						gap: 1.25rem;
+					}
+
+					&.collage-gap-lg {
+						gap: 1.5rem;
+					}
+
+					&.collage-gap-xl {
+						gap: 2rem;
+					}
+				}
+
+				.collage-item {
+					grid-column: span 2;
+					@include media-breakpoint-down(sm) {
+						grid-column: span 4;
+					}
+
+					&:nth-child(3n+3) {
+						grid-column: span 4;
 					}
 				}
 			}

@@ -1,30 +1,33 @@
 <div class="collage collage-gap-{{ section.settings.sectionColSpacing }}">
 
-	{% for item in section.settings.setting_blocks.items %}
+    {% for item in section.settings.setting_blocks.items %}
 
-		{%- capture itemContent %}
+        {%- capture itemContent %}
 
             {%- assign imgSrc = item.settings.imgSrc -%}
+            {%- assign modulo = forloop.index | modulo: 3 -%}
 
-            <div class="collage-item-inner aspect-ratio-1-1 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
+            {%- if modulo == 0 -%}
+
+                {%- assign aspectRatio = 'aspect-ratio-16-9' -%}
+                {%- assign imgSizeSm = '374,211' -%}
+                {%- assign imgSizeMd = '920,518' -%}
+                {%- assign imgSizeLg = '1300,732' -%}
+
+            {%- else -%}
+
+                {%- assign aspectRatio = 'aspect-ratio-1-1' -%}
+                {%- assign imgSizeSm = '374,374' -%}
+                {%- assign imgSizeMd = '452,452' -%}
+                {%- assign imgSizeLg = '642,642' -%}
+
+            {%- endif -%}
+
+            <div class="collage-item-inner {{ aspectRatio }} {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
 
                 <div class="aspect-ratio-container collage-item-img-container">
 
                     {% if imgSrc %}
-
-                    	{%- if forloop.first == true -%}
-
-                    		{%- assign imgSizeSm = '374,374' -%}
-	                        {%- assign imgSizeMd = '608,608' -%}
-	                        {%- assign imgSizeLg = '862,862' -%}
-
-                    	{%- else -%}
-
-                    		{%- assign imgSizeSm = '179,179' -%}
-	                        {%- assign imgSizeMd = '296,296' -%}
-	                        {%- assign imgSizeLg = '423,423' -%}
-
-                    	{%- endif -%}
 
                         <picture>
 
@@ -117,9 +120,9 @@
 
         {%- endcapture -%}
 
-		<div class="collage-item text-center">
+        <div class="collage-item text-center">
 
-			{% if item.settings.resource %}
+            {% if item.settings.resource %}
 
                 <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
                     {{ itemContent }}
@@ -131,8 +134,8 @@
 
             {% endif %}
 
-		</div>
+        </div>
 
-	{% endfor %}
+    {% endfor %}
 
 </div>

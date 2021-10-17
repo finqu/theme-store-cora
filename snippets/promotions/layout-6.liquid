@@ -6,27 +6,15 @@
 
             {%- assign imgSrc = item.settings.imgSrc -%}
 
-            <div class="aspect-ratio-21-9 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
+            <div class="aspect-ratio-4-5 aspect-ratio-md-21-9 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
 
-                <div class="aspect-ratio-container">
+                <div class="aspect-ratio-container collage-item-img-container">
 
                     {% if imgSrc %}
 
-                        {%- assign imgSizeSm = '374,374' -%}
-                        {%- assign imgSizeMd = '280,280' -%}
-
-                        {%- case section.settings.itemsPerRow -%}
-
-                            {% when '2' %}
-                                {%- assign imgSizeLg = '640,854' -%}
-                            {% when '3' %}
-                                {%- assign imgSizeLg = '420,560' -%}
-                            {% when '4' %}
-                                {%- assign imgSizeLg = '310,414' -%}
-                            {% when '5' %}
-                                {%- assign imgSizeLg = '244,326' -%}
-
-                        {%- endcase -%}
+                        {%- assign imgSizeSm = '374,468' -%}
+                        {%- assign imgSizeMd = '920,395' -%}
+                        {%- assign imgSizeLg = '1300,558' -%}
 
                         <picture>
 
@@ -61,7 +49,7 @@
 
                     <div class="d-flex justify-content-center align-items-center flex-column h-100 p-3">
 
-                        <div class="mt-auto">
+                        <div class="my-auto">
 
                             {% if item.settings.title %}
 
@@ -85,19 +73,19 @@
 
                             {% if item.settings.btnStyle == 'btn1' %}
 
-                                <span class="btn btn-section align-self-center mt-auto mb-2">
+                                <span class="btn btn-section align-self-center mb-2">
                                     {{ item.settings.btnLabel }}
                                 </span>
 
                             {% elsif item.settings.btnStyle == 'btn2' %}
 
-                                <span class="btn btn-outline-section align-self-center mt-auto mb2">
+                                <span class="btn btn-outline-section align-self-center mb-2">
                                     {{ item.settings.btnLabel }}
                                 </span>
 
                             {% else %}
 
-                                <span class="text-underline-indicator font-weight-bold align-self-center mt-auto mb-2">
+                                <span class="text-underline-indicator font-weight-bold align-self-center mb-2">
 
                                     <span class="mr-2">
                                         {{ item.settings.btnLabel }}

@@ -1,16 +1,24 @@
 // Aspect ratio
 // -----------------------------------------------------------------------------------------
 
-@each $key, $val in $aspect-ratios {
+@each $breakpoint in map-keys($grid-breakpoints) {
 
-	$ratioArr: str-split(#{$val}, ':');
-	$fit: contain;
+	@include media-breakpoint-up($breakpoint) {
 
-	@if $key == product {
-        $fit: $aspect-ratio-product-image-fit;
-    }
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-	.aspect-ratio-#{$key} {
-		@include aspect-ratio(to-number(nth($ratioArr, 1)), to-number(nth($ratioArr, 2)), $fit);
+		@each $key, $val in $aspect-ratios {
+
+			$ratioArr: str-split(#{$val}, ':');
+			$fit: contain;
+
+			@if $key == product {
+		        $fit: $aspect-ratio-product-image-fit;
+		    }
+
+		    .aspect-ratio#{$infix}-#{$key} {
+				@include aspect-ratio(to-number(nth($ratioArr, 1)), to-number(nth($ratioArr, 2)), $fit);
+			}
+		}
 	}
 }

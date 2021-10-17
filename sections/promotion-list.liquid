@@ -56,8 +56,19 @@
 
         {%- render 'promotions/layout-7', section: section -%}
 
-    {% endif %}
+    {%- elsif section.settings.promotionLayout == '8' -%}
 
+        {%- assign sectionClasses = 'promotion-layout-8' -%}
+
+        {%- render 'promotions/layout-8', section: section -%}
+
+    {%- elsif section.settings.promotionLayout == '9' -%}
+
+        {%- assign sectionClasses = 'promotion-layout-9' -%}
+
+        {%- render 'promotions/layout-9', section: section -%}
+
+    {% endif %}
 {%- endcapture -%}
 
 {% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionClasses: sectionClasses %}
@@ -281,6 +292,20 @@
                                             "label": {
                                                 "en": "Layout 7",
                                                 "fi": "Asettelu 7"
+                                            }
+                                        },
+                                        {
+                                            "value": "8",
+                                            "label": {
+                                                "en": "Layout 8",
+                                                "fi": "Asettelu 8"
+                                            }
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": {
+                                                "en": "Layout 9",
+                                                "fi": "Asettelu 9"
                                             }
                                         }
                                     ]

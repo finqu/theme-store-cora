@@ -1,8 +1,8 @@
 <div class="collage collage-gap-{{ section.settings.sectionColSpacing }}">
 
-	{% for item in section.settings.setting_blocks.items %}
+    {% for item in section.settings.setting_blocks.items %}
 
-		{%- capture itemContent %}
+        {%- capture itemContent %}
 
             {%- assign imgSrc = item.settings.imgSrc -%}
 
@@ -12,19 +12,9 @@
 
                     {% if imgSrc %}
 
-                    	{%- if forloop.first == true -%}
-
-                    		{%- assign imgSizeSm = '374,374' -%}
-	                        {%- assign imgSizeMd = '608,608' -%}
-	                        {%- assign imgSizeLg = '862,862' -%}
-
-                    	{%- else -%}
-
-                    		{%- assign imgSizeSm = '179,179' -%}
-	                        {%- assign imgSizeMd = '296,296' -%}
-	                        {%- assign imgSizeLg = '423,423' -%}
-
-                    	{%- endif -%}
+                        {%- assign imgSizeSm = '179,179' -%}
+                        {%- assign imgSizeMd = '296,296' -%}
+                        {%- assign imgSizeLg = '423,423' -%}
 
                         <picture>
 
@@ -117,9 +107,9 @@
 
         {%- endcapture -%}
 
-		<div class="collage-item text-center">
+        <div class="collage-item text-center">
 
-			{% if item.settings.resource %}
+            {% if item.settings.resource %}
 
                 <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
                     {{ itemContent }}
@@ -131,8 +121,8 @@
 
             {% endif %}
 
-		</div>
+        </div>
 
-	{% endfor %}
+    {% endfor %}
 
 </div>
