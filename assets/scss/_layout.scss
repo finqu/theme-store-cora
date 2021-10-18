@@ -1241,6 +1241,85 @@ body > #search-overlay {
             }
         }
     }
+
+    .category-list {
+        line-height: 20px;
+        @include list-unstyled();
+
+        &.no-active-subcategories {
+
+            > .category-list-item {
+
+                > .category-list-item-link,
+                > .category-list-item-text {
+                    font-weight: $font-weight-bold;
+                }
+            }
+        }
+
+        > .category-list-item {
+
+            &:last-child {
+
+                .category-list-item-link,
+                .category-list-item-text {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .category-list-item {
+
+            &.has-active-item {
+                font-weight: $font-weight-bold;
+
+                .category-list-item-text {
+                    border-bottom-width: 2px;
+                }
+            }
+
+            &.active-item {
+
+                > .category-list-item-link,
+                > .category-list-item-text {
+                    color: section-var(indicator_color);
+                }
+            }
+
+            .category-list-item-link {
+                display: block;
+                margin-bottom: .75rem;
+                color: section-var(link_color);
+
+                @include hover() {
+                    color: section-var(link_color);
+
+                    .category-list-item-text {
+                        border-bottom-color: section-var(link_color);
+                    }
+                }
+
+                .category-list-item-text {
+                    display: inline-block;
+                    padding-bottom: 2px;
+                }
+            }
+
+            .category-list-item-text {
+                display: block;
+                padding-bottom: .75rem;
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-color: transparent;
+                transition: border .15s ease-in-out;
+            }
+        }
+
+        .caterogy-list-subcategory-container {
+            padding-left: spacer(3);
+            list-style: none;
+        }
+    }
 }
 
 // Global

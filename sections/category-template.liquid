@@ -8,6 +8,7 @@
 {%- assign sortOptions = category.sort_options -%}
 {%- assign categoryFilters = category.filters -%}
 {%- assign categoryActiveFilters = category.active_filters -%}
+{%- assign currentCategory = category -%}
 
 {% if category.products.size == 0 and request.design_mode %}
     {%- assign itemCount = section.settings.itemsPerRow | times: 3 -%}
@@ -15,13 +16,13 @@
     {%- assign itemCount = category.product_count -%}
 {% endif %}
 
-{%- capture sectionContent -%}
+{%- capture categoryContent -%}
 
-    {%- paginate category.products by 5 -%}
+    {%- paginate category.products by 100 -%}
 
         {% if subCategories %}
 
-            <div class="category-tags pb-4">
+            <div class="category-tags pb-4{% if section.settings.showCategoryList %} d-lg-none{% endif %}">
 
                 <div class="swiper-container py-1">
 
@@ -475,6 +476,42 @@
 
 {%- endcapture -%}
 
+{%- capture sectionContent -%}
+
+    {% if section.settings.showCategoryList %}
+
+        <div class="row">
+
+            <div class="col-lg-3 d-none d-lg-block">
+
+                <ul class="category-list">
+
+                    {% for item in categories.root %}
+
+                        {% render 'category-list-item', category: item, currentCategory: currentCategory %}
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+            <div class="col col-lg-9">
+
+                {{ categoryContent }}
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        {{ categoryContent }}
+
+    {% endif %}
+
+{%- endcapture -%}
+
 {% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs %}
 
 {% schema %}
@@ -543,6 +580,15 @@
                             "fi": "Näytä hintatiedot"
                         },
                         "default": true
+                    },
+                    {
+                        "id": "showCategoryList",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show category list",
+                            "fi": "Näytä tuoteryhmälistä"
+                        },
+                        "default": false
                     }
                 ]
             }
