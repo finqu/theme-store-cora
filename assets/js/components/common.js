@@ -677,7 +677,6 @@ export default {
 
         const containerEl = document.querySelector('.section-category');
     	const categoryTagsEl = containerEl.querySelector('.category-tags');
-        const categoryListEl = containerEl.querySelector('.category-list');
         let categoryFiltersFormEl = null;
 
         if (window.innerWidth < 992) {
@@ -953,13 +952,6 @@ export default {
                 }
 			});
     	}
-
-        if (categoryListEl) {
-
-            if (categoryListEl.querySelectorAll('.caterogy-list-subcategory-container').length === 0) {
-                categoryListEl.classList.add('no-active-subcategories');
-            }
-        }
 
         bindEvents();
 	},
