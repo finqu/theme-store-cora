@@ -1,73 +1,37 @@
-import * as MoveLeft1Light from '@streamlinehq/streamlinehq/img/streamline-light/move-left-1-fSZYq5.svg';
-import * as MoveRight1Light from '@streamlinehq/streamlinehq/img/streamline-light/move-right-1-fSZYYL.svg';
-import * as MoveDown1Light from '@streamlinehq/streamlinehq/img/streamline-light/move-down-1-fSZQ4o.svg';
-import * as MoveUp1Light from '@streamlinehq/streamlinehq/img/streamline-light/move-up-1-hNEO9b.svg';
-import * as ShrinkHorizontalLight from '@streamlinehq/streamlinehq/img/streamline-light/shrink-horizontal-y7qSce.svg';
-import * as ShrinkVerticalLight from '@streamlinehq/streamlinehq/img/streamline-light/shrink-vertical-y7qZWz.svg';
-import * as AngleLeftLight from '@streamlinehq/streamlinehq/img/streamline-light/arrow-left-1-itskPx.svg';
-import * as AngleRightLight from '@streamlinehq/streamlinehq/img/streamline-light/arrow-right-1-Ei8Dl0.svg';
-import * as CommonFileQuestionRegular from '@streamlinehq/streamlinehq/img/streamline-light/common-file-question-ZOslf3.svg';
-import * as LoadingHalfLight from '@streamlinehq/streamlinehq/img/streamline-light/loading-half-7QUSw4.svg';
-import * as CloseLight from '@streamlinehq/streamlinehq/img/streamline-light/close-232XyC.svg';
-import * as AddLight from '@streamlinehq/streamlinehq/img/streamline-light/add-eLjfck.svg';
-import * as SubtractLight from '@streamlinehq/streamlinehq/img/streamline-light/subtract-gWaFt8.svg';
-import * as RatingStarBold from '@streamlinehq/streamlinehq/img/streamline-bold/rating-star-gWaXzP.svg';
-import * as RatingStarRegular from '@streamlinehq/streamlinehq/img/streamline-regular/rating-star-J4vaWN.svg'
-import * as LoveItRegular from '@streamlinehq/streamlinehq/img/streamline-regular/love-it-08UZOs.svg';
-import * as DownloadBottomRegular from '@streamlinehq/streamlinehq/img/streamline-regular/download-bottom-M5p7BQ.svg';
-import * as AngleDownRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-down-1-dzphtd.svg';
-import * as AngleLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-1-dzpa9L.svg';
-import * as AngleRightRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-1-Nc3Zm6.svg';
-import * as ArrowLeftRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-left-dzpnnb.svg';
-import * as ArrowRightRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-right-Nc34uf.svg';
-import * as ControlsPlayRegular from '@streamlinehq/streamlinehq/img/streamline-regular/controls-play-af7Jis.svg';
-import * as SingleNeutralRegular from '@streamlinehq/streamlinehq/img/streamline-regular/single-neutral-3ziDl0.svg';
-import * as Lock1Regular from '@streamlinehq/streamlinehq/img/streamline-regular/lock-1-g0YpCK.svg';
-import * as CommonFileTextRegular from '@streamlinehq/streamlinehq/img/streamline-regular/common-file-text-jHWHye.svg';
-import * as ShoppingBagTagRegular from '@streamlinehq/streamlinehq/img/streamline-regular/shopping-bag-tag-1-7QUX0n.svg';
-import * as SearchRegular from '@streamlinehq/streamlinehq/img/streamline-regular/search-jUAwYE.svg';
-import * as NavigationMenuRegular from '@streamlinehq/streamlinehq/img/streamline-regular/navigation-menu-gWaHY4.svg';
-import * as LoginRegular from '@streamlinehq/streamlinehq/img/streamline-regular/login-P2Woe5.svg';
-import * as ShipmentUploadRegular from '@streamlinehq/streamlinehq/img/streamline-regular/shipment-upload-PvJIK9.svg';
-import * as PencilRegular from '@streamlinehq/streamlinehq/img/streamline-regular/pencil-2-PopQWO.svg';
-import * as KeyboardReturnRegular from '@streamlinehq/streamlinehq/img/streamline-regular/keyboard-arrow-return-9UL3W1.svg';
-import * as DeliveryTruckClockRegular from '@streamlinehq/streamlinehq/img/streamline-regular/delivery-truck-clock-YBGQdb.svg';
-import * as ArrowUpRegular from '@streamlinehq/streamlinehq/img/streamline-regular/arrow-up-1-4pQx70.svg';
-
 export default {
-	alignLeftLight: MoveLeft1Light,
-	alignCenterLight: ShrinkHorizontalLight,
-	alignRightLight: MoveRight1Light,
-	alignTopLight: MoveUp1Light,
-	alignMiddleLight: ShrinkVerticalLight,
-	alignBottomLight: MoveDown1Light,
-	angleLeftLight: AngleLeftLight,
-	angleRightLight: AngleRightLight,
-	fileQuestionRegular: CommonFileQuestionRegular,
-	LoadingHalfLight: LoadingHalfLight,
-	closeLight: CloseLight,
-	addLight: AddLight,
-	subtractLight: SubtractLight,
-	ratingStarBold: RatingStarBold,
-	ratingStarRegular: RatingStarRegular,
-	heartRegular: LoveItRegular,
-	downloadRegular: DownloadBottomRegular,
-	angleDown: AngleDownRegular,
-	angleLeftRegular: AngleLeftRegular,
-	angleRightRegular: AngleRightRegular,
-	arrowLeftRegular: ArrowLeftRegular,
-	arrowRightRegular: ArrowRightRegular,
-	controlsPlayRegular: ControlsPlayRegular,
-	singleNeutralRegular: SingleNeutralRegular,
-	lock1Regular: Lock1Regular,
-	commonFileTextRegular: CommonFileTextRegular,
-	shoppingBagTagRegular: ShoppingBagTagRegular,
-	searchRegular: SearchRegular,
-	navigationMenuRegular: NavigationMenuRegular,
-	loginRegular: LoginRegular,
-	shipmentUploadRegular: ShipmentUploadRegular,
-	pencilRegular: PencilRegular,
-	keyboardReturnRegular: KeyboardReturnRegular,
-	deliveryTruckClockRegular: DeliveryTruckClockRegular,
-	arrowUpRegular: ArrowUpRegular
+	alignLeftLight: 'assets/icon/light/move-left-1.svg',
+	alignCenterLight: 'assets/icon/light/shrink-horizontal.svg',
+	alignRightLight: 'assets/icon/light/move-right-1.svg',
+	alignTopLight: 'assets/icon/light/move-up-1.svg',
+	alignMiddleLight: 'assets/icon/light/shrink-vertical.svg',
+	alignBottomLight: 'assets/icon/light/move-down-1.svg',
+	angleLeftLight: 'assets/icon/light/arrow-left-1.svg',
+	angleRightLight: 'assets/icon/light/arrow-left-1.svg',
+	CommonFileQuestionLight: 'assets/icon/light/common-file-question.svg',
+	LoadingHalfLight: 'assets/icon/light/loading-half.svg',
+	closeLight: 'assets/icon/light/close.svg',
+	addLight: 'assets/icon/light/add.svg',
+	subtractLight: 'assets/icon/light/subtract.svg',
+	ratingStarBold: 'assets/icon/bold/rating-star.svg',
+	ratingStarRegular: 'assets/icon/regular/rating-star.svg',
+	heartRegular: 'assets/icon/regular/love-it.svg',
+	downloadRegular: 'assets/icon/regular/download-bottom.svg',
+	angleDown: 'assets/icon/regular/arrow-down-1.svg',
+	angleLeftRegular: 'assets/icon/regular/arrow-left-1.svg',
+	angleRightRegular: 'assets/icon/regular/arrow-right-1.svg',
+	arrowLeftRegular: 'assets/icon/regular/arrow-left.svg',
+	arrowRightRegular: 'assets/icon/regular/arrow-right.svg',
+	controlsPlayRegular: 'assets/icon/regular/controls-play.svg',
+	singleNeutralRegular: 'assets/icon/regular/single-neutral.svg',
+	lock1Regular: 'assets/icon/regular/lock-1.svg',
+	commonFileTextRegular: 'assets/icon/regular/common-file-text.svg',
+	shoppingBagTagRegular: 'assets/icon/regular/shopping-bag-tag-1.svg',
+	searchRegular: 'assets/icon/regular/search.svg',
+	navigationMenuRegular: 'assets/icon/regular/navigation-menu.svg',
+	loginRegular: 'assets/icon/regular/login.svg',
+	shipmentUploadRegular: 'assets/icon/regular/shipment-upload.svg',
+	pencilRegular: 'assets/icon/regular/pencil-2.svg',
+	keyboardReturnRegular: 'assets/icon/regular/keyboard-arrow-return.svg',
+	deliveryTruckClockRegular: 'assets/icon/regular/delivery-truck-clock.svg',
+	arrowUpRegular: 'assets/icon/regular/arrow-up-1.svg'
 }

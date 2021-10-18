@@ -123,7 +123,7 @@
                                         <div class="cart-item-remove">
 
                                             <button type="button" class="btn btn-text" data-cart-remove="{{ item.id }}">
-                                                {{> icon icon='close-232XyC' }}
+                                                {{> icon icon='light/close' }}
                                             </button>
 
                                         </div>
@@ -139,13 +139,13 @@
                                         <div class="cart-item-quantity">
 
                                             <button type="button" class="btn btn-text cart-item-quantity-decrease" data-cart-quantity-decrease="{{ item.id }}">
-                                                {{> icon icon='subtract-gWaFt8' }}
+                                                {{> icon icon='light/subtract' }}
                                             </button>
 
                                             <input type="tel" class="cart-item-quantity-input" value="{{ item.quantity }}" min="{{#if item.min_amount}}{{ item.min_amount }}{{else}}1{{/if}}"{{#if item.max_amount}} max="{{ item.max_amount }}"{{/if}} maxpattern="[0-9]{1,3}" data-cart-quantity-dynamic="{{ item.id }}">
 
                                             <button type="button" class="btn btn-text cart-item-quantity-increase" data-cart-quantity-increase="{{ item.id }}">
-                                                {{> icon icon='add-eLjfck' }}
+                                                {{> icon icon='light/add' }}
                                             </button>
 
                                         </div>
@@ -516,7 +516,7 @@
                                         <div class="cart-item-remove">
 
                                             <button type="button" class="btn btn-text" data-cart-remove="{{ item.id }}">
-                                                {{> icon icon='close-232XyC' }}
+                                                {{> icon icon='light/close' }}
                                             </button>
 
                                         </div>

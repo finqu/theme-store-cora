@@ -3,17 +3,18 @@
 	"version": "0.1.0",
 	"scripts": {
 		"build": "webpack --config webpack.prod.js --progress=true",
-		"start": "webpack --progress --watch --config webpack.dev.js"
+		"start": "webpack --progress --watch --config webpack.dev.js",
+		"analyze": "webpack --config webpack.analyze.js --progress=true"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.8",
-		"@babel/plugin-proposal-class-properties": "^7.14.5",
-		"@babel/plugin-proposal-decorators": "^7.15.8",
 		"@babel/plugin-transform-runtime": "^7.15.8",
 		"@babel/preset-env": "^7.15.8",
 		"@babel/runtime": "^7.15.4",
+		"@babel/runtime-corejs3": "^7.15.4",
 		"@iconfu/svg-inject": "^1.2.3",
-		"@streamlinehq/streamlinehq": "^2.1.0",
+		"@streamlinehq/streamlinehq": "^3.0.4",
+		"animate.css": "^4.1.1",
 		"autoprefixer": "^9.8.8",
 		"awesome-notifications": "^3.1.2",
 		"babel-loader": "^8.2.2",
@@ -25,11 +26,11 @@
 		"dotize": "^0.3.0",
 		"file-loader": "^2.0.0",
 		"handlebars": "^4.7.7",
-		"html-srcsets-loader": "^0.5.1",
 		"html-webpack-plugin": "^3.2.0",
 		"intersection-observer": "^0.12.0",
 		"jquery": "^3.6.0",
 		"jquery-serializejson": "^3.2.1",
+		"js-cookie": "^3.0.1",
 		"mini-css-extract-plugin": "^0.4.5",
 		"node-glob": "^1.2.0",
 		"node-sass": "^4.14.1",
@@ -44,18 +45,13 @@
 		"style-loader": "^0.23.1",
 		"swiper": "^6.8.4",
 		"terser-webpack-plugin": "^1.4.3",
-		"unsplash": "^4.2.0",
 		"vanilla-lazyload": "^17.5.0",
 		"webpack": "^4.43.0",
+		"webpack-bundle-analyzer": "^4.5.0",
 		"webpack-cli": "^3.3.11",
 		"webpack-dev-server": "^3.11.0",
 		"webpack-livereload-plugin": "^2.3.0",
 		"webpack-manifest-plugin": "^2.2.0",
 		"webpack-merge": "^4.2.2"
-	},
-	"dependencies": {
-		"animate.css": "^4.1.1",
-		"core-js": "^3.18.2",
-		"js-cookie": "^3.0.1"
 	}
 }

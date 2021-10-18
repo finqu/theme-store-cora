@@ -14,13 +14,13 @@
 		{% if paginate.previous.url and paginate.current_page > 1 %}
 
 			<a href="{{ paginate.previous.url }}" class="paginate-item-previous">
-				{%- render 'icon', icon: 'arrow-left-1-dzpa9L' -%}
+				{%- render 'icon', icon: 'regular/arrow-left-1' -%}
 			</a>
 
 		{% else %}
 
 			<span class="paginate-item-previous disabled">
-				{%- render 'icon', icon: 'arrow-left-1-dzpa9L' -%}
+				{%- render 'icon', icon: 'regular/arrow-left-1' -%}
 			</span>
 
 		{% endif %}
@@ -40,13 +40,13 @@
 		{% if paginate.next.url and paginate.current_page < paginate.pages | default: 1 %}
 
 			<a href="{{ paginate.next.url }}" class="paginate-item-next">
-				{%- render 'icon', icon: 'arrow-right-1-Nc3Zm6' -%}
+				{%- render 'icon', icon: 'regular/arrow-right-1' -%}
 			</a>
 
 		{% else %}
 
 			<span class="paginate-item-next disabled">
-				{%- render 'icon', icon: 'arrow-right-1-Nc3Zm6' -%}
+				{%- render 'icon', icon: 'regular/arrow-right-1' -%}
 			</span>
 
 		{% endif %}

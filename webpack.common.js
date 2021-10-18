@@ -12,7 +12,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
 	entry: {
-		main: ['core-js/stable', './assets/main.js']
+		main: './assets/main.js'
 	},
 	node: {
 		fs: 'empty'
