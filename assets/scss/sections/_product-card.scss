@@ -470,6 +470,19 @@ body {
 			}
 		}
 
+		.product-stock-balance {
+			display: flex;
+			align-items: center;
+			border: 1px solid section-var(border_color);
+			padding: 1rem;
+			margin-top: spacer(6);
+
+			& + .product-delivery-time {
+				margin-top: 0;
+				border-top: 0;
+			}
+		}
+
 		.product-delivery-time {
 			display: flex;
 			align-items: center;

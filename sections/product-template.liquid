@@ -1115,6 +1115,24 @@
 
                                         {% endif %}
 
+                                        {%- if section.settings.showStockBalance and product.inventory_policy == 'deny' and product.only_preview == false -%}
+                                            {%- assign showStockBalance = true -%}
+                                        {%- endif -%}
+
+                                        {% if showStockBalance %}
+
+                                            <div class="product-stock-balance">
+
+                                                {%- render 'icon', icon: 'regular/warehouse-storage-2', class: 'svg-icon-fw svg-icon-lg' -%}
+
+                                                <span class="font-weight-bold ml-3">
+                                                    {{ 'product.stock_balance_available' | t }}: {{ product.stock | default: '0' }} {{ product.unit }}
+                                                </span>
+
+                                            </div>
+
+                                        {% endif %}
+
                                         {% if product.deliverytime and product.deliverytime.max.days > 0 %}
 
                                             <div class="product-delivery-time">
@@ -1479,11 +1497,7 @@
 
                         {% endif %}
 
-                        {%- if section.settings.showStockBalance and product.inventory_policy == 'deny' and product.only_preview == false -%}
-                            {%- assign showStockBalance = true -%}
-                        {%- endif -%}
-
-                        {% if product.model or product.gtin or showStockBalance %}
+                        {% if product.model or product.gtin %}
 
                             <div class="card">
 
@@ -1506,22 +1520,6 @@
                                 <div id="accordion-product-additional-information" class="collapse">
 
                                     <div class="product-additional-information card-body">
-
-                                        {% if showStockBalance %}
-
-                                            <div class="d-flex{% if product.model or product.gtin %} mb-2{% endif %}">
-
-                                                <span class="font-weight-bold">
-                                                    {{ 'product.stock_balance_available' | t }}:
-                                                </span>
-
-                                                <span class="ml-2">
-                                                    {{ product.stock | default: '0' }} {{ product.unit }}
-                                                </span>
-
-                                            </div>
-
-                                        {% endif %}
 
                                         {% if product.model %}
 

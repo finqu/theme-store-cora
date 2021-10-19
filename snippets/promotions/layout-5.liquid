@@ -12,21 +12,9 @@
 
                     {% if imgSrc %}
 
-                        {%- assign imgSizeSm = '374,374' -%}
-                        {%- assign imgSizeMd = '280,280' -%}
-
-                        {%- case section.settings.itemsPerRow -%}
-
-                            {% when '2' %}
-                                {%- assign imgSizeLg = '640,854' -%}
-                            {% when '3' %}
-                                {%- assign imgSizeLg = '420,560' -%}
-                            {% when '4' %}
-                                {%- assign imgSizeLg = '310,414' -%}
-                            {% when '5' %}
-                                {%- assign imgSizeLg = '244,326' -%}
-
-                        {%- endcase -%}
+                        {%- assign imgSizeSm = '167,167' -%}
+                        {%- assign imgSizeMd = '145,145' -%}
+                        {%- assign imgSizeLg = '152,152' -%}
 
                         <picture>
 

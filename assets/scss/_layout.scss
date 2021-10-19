@@ -455,6 +455,7 @@ body > #search-overlay {
                         .container {
                             display: inline-flex;
                             width: auto;
+                            min-width: 200px;
 
                             .row {
                                 flex-wrap: nowrap;
@@ -1250,9 +1251,10 @@ body > #search-overlay {
 
             > .category-list-item {
 
-                > .category-list-item-link,
+                > .category-list-item-link > .category-list-item-text,
                 > .category-list-item-text {
                     font-weight: $font-weight-bold;
+                    border-bottom-width: 2px;
                 }
             }
         }

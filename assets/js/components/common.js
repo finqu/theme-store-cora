@@ -322,7 +322,7 @@ export default {
                     if (res.length > 0) {
 
                         siteSearchResultsEl.innerHTML = res.map(item => `
-                            <a href="${item.url}" class="site-search-result-item">
+                            <a href="${item.url}" class="site-search-result-item" tabindex="0">
                                 <span class="site-search-result-item-text">
                                     ${item.title}
                                 </span>

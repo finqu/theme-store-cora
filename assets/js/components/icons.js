@@ -33,5 +33,6 @@ export default {
 	pencilRegular: 'assets/icon/regular/pencil-2.svg',
 	keyboardReturnRegular: 'assets/icon/regular/keyboard-arrow-return.svg',
 	deliveryTruckClockRegular: 'assets/icon/regular/delivery-truck-clock.svg',
-	arrowUpRegular: 'assets/icon/regular/arrow-up-1.svg'
+	arrowUpRegular: 'assets/icon/regular/arrow-up-1.svg',
+	warehouseStorage: 'assets/icon/regular/warehouse-storage-2.svg',
 }

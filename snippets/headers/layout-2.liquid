@@ -213,27 +213,73 @@
 
                                     <div class="row">
 
-                                        {% for item in item.links %}
+                                        {%- assign hasMultipleLevels = false -%}
 
-                                            <div class="site-header-submenu-column col">
+                                        {%- for item in item.links -%}
 
-                                                <div class="site-header-submenu-column-title">
+                                            {%- if item.links -%}
+                                                {%- assign hasMultipleLevels = true -%}
+                                            {%- endif -%}
 
-                                                    {%- if item.url -%}
+                                        {%- endfor -%}
 
-                                                        <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
-                                                            {{ item.title }}
-                                                        </a>
+                                        {% if hasMultipleLevels %}
 
-                                                    {%- else -%}
+                                            {% for item in item.links %}
 
-                                                        <span class="site-header-submenu-column-title-text">
-                                                            {{ item.title }}
-                                                        </span>
+                                                <div class="site-header-submenu-column col">
 
-                                                    {%- endif -%}
+                                                    <div class="site-header-submenu-column-title">
+
+                                                        {%- if item.url -%}
+
+                                                            <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
+                                                                {{ item.title }}
+                                                            </a>
+
+                                                        {%- else -%}
+
+                                                            <span class="site-header-submenu-column-title-text">
+                                                                {{ item.title }}
+                                                            </span>
+
+                                                        {%- endif -%}
+
+                                                    </div>
+
+                                                    <ul class="site-header-submenu-column-menu">
+
+                                                        {% for item in item.links %}
+
+                                                            <li class="site-header-submenu-column-menu-item{% if item.active %} site-header-submenu-column-menu-item-active{% endif %}">
+
+                                                                {%- if item.url -%}
+
+                                                                    <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                        {{ item.title }}
+                                                                    </a>
+
+                                                                {%- else -%}
+
+                                                                    <span class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                        {{ item.title }}
+                                                                    </span>
+
+                                                                {%- endif -%}
+
+                                                            </li>
+
+                                                        {% endfor %}
+
+                                                    </ul>
 
                                                 </div>
+
+                                            {% endfor %}
+
+                                        {% else %}
+
+                                            <div class="site-header-submenu-column col">
 
                                                 <ul class="site-header-submenu-column-menu">
 
@@ -263,7 +309,7 @@
 
                                             </div>
 
-                                        {% endfor %}
+                                        {% endif %}
 
                                     </div>
 
