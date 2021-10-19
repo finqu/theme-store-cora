@@ -252,19 +252,19 @@ export default class Cart {
                     themeApp.animate(el.parentNode, 'bounce');
                 }
 
-                el.innerHTML = self.cart.item_count;
+                el.innerHTML = self.cart.item_count || 0;
             });
 
             subtotalEls.forEach(el => {
-                el.innerHTML = self.cart.subtotal;
+                el.innerHTML = self.cart.subtotal || 0;
             });
 
             paymentFeeEls.forEach(el => {
-                el.innerHTML = self.cart.payment_fee;
+                el.innerHTML = self.cart.payment_fee || 0;
             });
 
             shippingPriceEls.forEach(el => {
-                el.innerHTML = self.cart.shipping_price;
+                el.innerHTML = self.cart.shipping_price || 0;
             });
 
             if (discountsEls && self.cart.discounts) {
@@ -283,15 +283,15 @@ export default class Cart {
             }
 
             taxFreeEls.forEach(el => {
-                el.innerHTML = self.cart.tax_free;
+                el.innerHTML = self.cart.tax_free || 0;
             });
 
             taxEls.forEach(el => {
-                el.innerHTML = self.cart.tax;
+                el.innerHTML = self.cart.tax || 0;
             });
 
             totalEls.forEach(el => {
-                el.innerHTML = self.cart.total;
+                el.innerHTML = self.cart.total || 0;
             });
 
             if (cartContainerEl) {
@@ -434,7 +434,9 @@ export default class Cart {
     _getCart(options = {}) {
 
         // Customer account required to purchase
-        if (themeApp.data.customerAccountsOptional == false &&
+        if (themeApp.data.customerAccountsEnabled == true &&
+            themeApp.data.customerAccountsRequireApproval == false &&
+            themeApp.data.customerAccountsOptional == false &&
             themeApp.data.customerLoggedIn == false) {
 
                 document.dispatchEvent(new CustomEvent('cartUpdated'));
@@ -443,7 +445,8 @@ export default class Cart {
         }
 
         // Customer account requires approval in order to purchase
-        if (themeApp.data.customerAccountsRequireApproval == true &&
+        if (themeApp.data.customerAccountsEnabled == true &&
+            themeApp.data.customerAccountsRequireApproval == true &&
             themeApp.data.customerHasAccess == false) {
 
                 document.dispatchEvent(new CustomEvent('cartUpdated'));
@@ -487,13 +490,16 @@ export default class Cart {
         }
 
         // Customer account required to purchase
-        if (themeApp.data.customerAccountsOptional == false &&
+        if (themeApp.data.customerAccountsEnabled == true &&
+            themeApp.data.customerAccountsRequireApproval == false &&
+            themeApp.data.customerAccountsOptional == false &&
             themeApp.data.customerLoggedIn == false) {
                 return;
         }
 
         // Customer account requires approval in order to purchase
-        if (themeApp.data.customerAccountsRequireApproval == true &&
+        if (themeApp.data.customerAccountsEnabled == true &&
+            themeApp.data.customerAccountsRequireApproval == true &&
             themeApp.data.customerHasAccess == false) {
                 return;
         }
