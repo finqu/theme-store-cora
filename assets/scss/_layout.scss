@@ -459,9 +459,10 @@ body > #search-overlay {
 
                             .row {
                                 flex-wrap: nowrap;
+                                min-width: 200px;
 
                                 .site-header-submenu-column {
-                                    flex-grow: 0;
+                                    flex-grow: 1;
                                 }
                             }
                         }
