@@ -110,9 +110,6 @@ module.exports = {
 			new OptimizeCSSAssetsPlugin({})
 		]
 	},
-	resolve: {
-		alias: {}
-	},
 	output: {
 		filename: 'js/[name].[contenthash].js',
 		chunkFilename: 'js/[name].[contenthash].bundle.js',

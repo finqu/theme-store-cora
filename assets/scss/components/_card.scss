@@ -8,29 +8,43 @@
 
 		.card-header {
 			border-color: section-var(border_color);
-			font-size: $font-size-base * 1.1;
-	        font-weight: $font-weight-bold;
 		}
 	}
 
 	.accordion {
-		overflow-anchor: none;
 
 		> .card {
-			overflow: hidden;
-			border-left: 0;
-			border-right: 0;
-			@include border-radius(0);
 
 			> .card-header {
-				@include border-radius(0);
-				border-bottom: 0;
-				margin-bottom: -$card-border-width;
-
 				&:hover {
 					background-color: color-yiq(section-var(background_color), darken(section-var(background_color), 4%), lighten(section-var(background_color), 4%))
 				}
 			}
+		}
+	}
+}
+
+.card {
+
+	.card-header {
+		font-size: $font-size-base * 1.1;
+        font-weight: $font-weight-bold;
+	}
+}
+
+.accordion {
+	overflow-anchor: none;
+
+	> .card {
+		overflow: hidden;
+		border-left: 0;
+		border-right: 0;
+		@include border-radius(0);
+
+		> .card-header {
+			@include border-radius(0);
+			border-bottom: 0;
+			margin-bottom: -$card-border-width;
 		}
 	}
 }

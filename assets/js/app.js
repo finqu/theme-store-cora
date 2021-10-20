@@ -1,5 +1,9 @@
 import 'intersection-observer';
-import 'bootstrap';
+import 'bootstrap/js/dist/util';
+import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/popover';
+import 'bootstrap/js/dist/tooltip';
 import icons from './components/icons';
 import editor from './components/editor';
 import common from './components/common';

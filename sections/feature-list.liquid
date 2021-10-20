@@ -29,8 +29,8 @@
 
                     <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
 
-                        {%- assign imgSizeSm = '375' -%}
-                        {%- assign imgSizeMd = '200' -%}
+                        {%- assign imgSizeSm = '375,375' -%}
+                        {%- assign imgSizeMd = '200,200' -%}
 
                         {%- case section.settings.itemsPerRow -%}
                             {% when 2 %}

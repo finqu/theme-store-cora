@@ -4,9 +4,11 @@
 
         {% for item in section.settings.setting_blocks.items %}
 
+            {%- assign imgSrc = item.settings.imgSrc -%}
+
             <div class="col-12 col-lg{% if section.settings.setting_blocks.items.size > 1 %} col-md-6{% endif %} py-4">
 
-                {% if item.settings.imgPlaceholder and item.settings.imgSrc == '' %}
+                {% if item.settings.imgPlaceholder and imgSrc == '' %}
 
                     <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
 
@@ -14,32 +16,32 @@
 
                     </div>
 
-                {% elsif item.settings.imgSrc %}
+                {% elsif imgSrc %}
 
-                    {%- assign imgSizeSm = '375' -%}
-                    {%- assign imgSizeMd = '680' -%}
+                    {%- assign imgSizeSm = '375,375' -%}
+                    {%- assign imgSizeMd = '680,680' -%}
 
                     {%- case section.settings.setting_blocks.items.size -%}
                         {% when 1 %}
-                            {%- assign imgSizeLg = '1100' -%}
+                            {%- assign imgSizeLg = '1100,1100' -%}
                         {% when 2 %}
-                            {%- assign imgSizeLg = '530' -%}
+                            {%- assign imgSizeLg = '530,530' -%}
                         {% when 3 %}
-                            {%- assign imgSizeLg = '340' -%}
+                            {%- assign imgSizeLg = '340,340' -%}
                         {% when 4 %}
-                            {%- assign imgSizeLg = '245' -%}
+                            {%- assign imgSizeLg = '245,245' -%}
                     {%- endcase -%}
 
                     <picture>
 
                         <source media="(min-width: 992px)" data-srcset="
-                            {{ item.settings.imgSrc | thumb: imgSizeLg }} 1x,
-                            {{ item.settings.imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                            {{ imgSrc | thumb: imgSizeLg }} 1x,
+                            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
                         {%- if section.settings.setting_blocks.items.size == 1 -%}
                             <source media="(min-width: 576px)" data-srcset="
-                                {{ item.settings.imgSrc | thumb: imgSizeMd }} 1x,
-                                {{ item.settings.imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+                                {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
                         {%- endif -%}
 
                         <source data-srcset="
@@ -48,8 +50,8 @@
 
                         <img
                             alt="{{ item.settings.imgAlt }}"
-                            data-src="{{ item.settings.imgSrc | thumb: imgSizeSm }}"
-                            data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                            data-src="{{ imgSrc | thumb: imgSizeSm }}"
+                            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
                             class="lazy mb-4 d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
                             data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
                     </picture>

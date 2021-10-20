@@ -24,39 +24,6 @@
 	h1, h2, h3, h4, h5, h6,
 	.h1, .h2, .h3, .h4, .h5, .h6 {
 		color: section-var(heading_color);
-		overflow-wrap: break-word;
-	    word-wrap: break-word;
-	    hyphens: auto;
-	}
-
-	h1,
-	.h1 {
-		@include relative-font-size($h1-font-size);
-	}
-
-	h2,
-	.h2 {
-		@include relative-font-size($h2-font-size);
-	}
-
-	h3,
-	.h3 {
-		@include relative-font-size($h3-font-size);
-	}
-
-	h4,
-	.h4 {
-		@include relative-font-size($h4-font-size);
-	}
-
-	h5,
-	.h5 {
-		@include relative-font-size($h5-font-size);
-	}
-
-	h6,
-	.h6 {
-		@include relative-font-size($h6-font-size);
 	}
 
 	hr {
@@ -96,10 +63,6 @@
 	}
 
 	.text-underline-indicator {
-		transition: border .15s ease-in-out;
-		border-bottom: 2px solid transparent;
-		padding-bottom: 2px;
-
 		@include hover() {
 			border-bottom-color: section-var(indicator_color);
 		}
@@ -133,9 +96,6 @@
 
     .btn-link {
         color: section-var(link_color);
-        padding: 0;
-        border: 0;
-        border-radius: 0;
 
         @include hover() {
             color: section-var(link_color);
@@ -144,6 +104,56 @@
 }
 
 .section-promotion-list {
+
+	h1, h2, h3, h4, h5, h6,
+	.h1, .h2, .h3, .h4, .h5, .h6 {
+		overflow-wrap: break-word;
+	    word-wrap: break-word;
+	    hyphens: auto;
+	}
+
+	h1,
+	.h1 {
+		@include relative-font-size($h1-font-size);
+	}
+
+	h2,
+	.h2 {
+		@include relative-font-size($h2-font-size);
+	}
+
+	h3,
+	.h3 {
+		@include relative-font-size($h3-font-size);
+	}
+
+	h4,
+	.h4 {
+		@include relative-font-size($h4-font-size);
+	}
+
+	h5,
+	.h5 {
+		@include relative-font-size($h5-font-size);
+	}
+
+	h6,
+	.h6 {
+		@include relative-font-size($h6-font-size);
+	}
+
+	.text-underline-indicator {
+		transition: border .15s ease-in-out;
+		border-bottom: 2px solid transparent;
+		padding-bottom: 2px;
+		margin-bottom: -4px;
+	}
+
+	.btn-link {
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+    }
 
 	.section-inner {
 

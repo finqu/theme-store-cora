@@ -15,7 +15,7 @@
     }
 
     .btn-icon {
-        color:section-var(icon_color);
+        color: section-var(icon_color);
 
         &:hover {
             color: section-var(indicator_color);
@@ -31,9 +31,6 @@
 
     .btn-link {
         color: section-var(link_color);
-        padding: 0;
-        border: 0;
-        border-radius: 0;
 
         @include hover() {
             color: section-var(link_color);
@@ -127,4 +124,10 @@
     border: 0;
     border-radius: 0;
     cursor: pointer;
+}
+
+.btn-link {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
 }

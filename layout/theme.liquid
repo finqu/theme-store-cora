@@ -8,11 +8,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
-		<meta name="theme-color" content="{{ settings.color_button }}">
 
-		<link rel="preconnect" href="https://cdn.finqu.com" crossorigin>
-		<link rel="preconnect" href="https://analytics.finqu.com" crossorigin>
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://cdn.finqu.com" crossorigin="anonymous">
+		<link rel="preconnect" href="https://analytics.finqu.com" crossorigin="anonymous">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 
 		<link rel="preload" href="{{ 'main.css' | asset_url }}" as="style">
 		<link rel="preload" href="{{ 'main.js' | asset_url }}" as="script">
@@ -34,7 +33,7 @@
 		{%- render 'store-settings' -%}
 		{%- render 'hbs-templates' -%}
 
-		<script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+		<script defer="defer" src="{{ 'main.js' | asset_url }}"></script>
 
 		{%- if canonical_url != blank -%}
     		<link rel="canonical" href="{{ canonical_url }}">

@@ -4,10 +4,11 @@
 
 {%- capture imgColContent -%}
 
-    {%- assign imgSizeSm = '420' -%}
-    {%- assign imgSizeLg = '755' -%}
+    {%- assign imgSrc = section.settings.contentImgSrc -%}
+    {%- assign imgSizeSm = '420,420' -%}
+    {%- assign imgSizeLg = '755,755' -%}
 
-    {% if section.settings.contentImgPlaceholder and section.settings.contentImgSrc == '' %}
+    {% if section.settings.contentImgPlaceholder and imgSrc == '' %}
 
         <div data-finqu-inline-editor="contentImgSrc">
 
@@ -15,17 +16,21 @@
 
         </div>
 
-    {% elsif section.settings.contentImgSrc %}
+    {% elsif imgSrc %}
 
         <picture>
             <source media="(min-width: 768px)" data-srcset="
-                {{ section.settings.contentImgSrc | thumb: imgSizeLg }} 1x,
-                {{ section.settings.contentImgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+            <source data-srcset="
+                {{ imgSrc | thumb: imgSizeSm }} 1x,
+                {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
 
             <img
                 alt="{{ section.settings.contentImgAlt }}"
-                data-src="{{ section.settings.contentImgSrc | thumb: imgSizeSm }}"
-                data-srcset="{{ section.settings.contentImgSrc | thumb: imgSizeSm }} 1x,{{ section.settings.contentImgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                data-src="{{ imgSrc | thumb: imgSizeSm }}"
+                data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
                 class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
                 data-finqu-inline-editor="contentImgSrc">
         </picture>
