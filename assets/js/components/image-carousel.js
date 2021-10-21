@@ -41,7 +41,7 @@ export default class ImageCarousel {
 
                         for (let i = 0; i < swiper.slides.length; i++) {
 
-                            const slideEl = document.querySelector(swiper.slides[i]);
+                            const slideEl = swiper.slides[i];
                             const titleEl = slideEl.querySelector('.slide-title');
                             const descriptionEl = slideEl.querySelector('.slide-description');
                             const actionEl = slideEl.querySelector('.slide-action');

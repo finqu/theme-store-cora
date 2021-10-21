@@ -62,7 +62,43 @@ module.exports = {
 	],
 	optimization: {
 		splitChunks: {
-			chunks: 'all'
+			cacheGroups: {
+				jquery: {
+					test: /[\\/]node_modules[\\/]((jquery).*)[\\/]/,
+					name: 'jquery',
+					chunks: 'all'
+				},
+				handlebars: {
+					test: /[\\/]node_modules[\\/]((handlebars).*)[\\/]/,
+					name: 'handlebars',
+					chunks: 'all'
+				},
+				swiper: {
+					test: /[\\/]node_modules[\\/]((swiper).*)[\\/]/,
+					name: 'swiper',
+					chunks: 'all'
+				},
+				vendors: {
+					test(module) {
+
+						const exclude = [
+							'jquery',
+							'handlebars',
+							'swiper'
+						];
+
+						if (!module.context ||
+							!module.context.includes('node_modules') ||
+							exclude.some(str => module.context.includes(str))) {
+							return false;
+						}
+
+						return true;
+					},
+					name: 'vendors',
+					chunks: 'all'
+				}
+			}
 		},
 		minimize: true,
 		minimizer: [

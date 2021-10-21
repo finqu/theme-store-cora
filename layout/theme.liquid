@@ -17,7 +17,7 @@
 
 		{% for item in cache_manifest %}
 			{% if item.name contains '.js' %}
-				<link rel="preload" href="{{ item.file | asset_url }}" as="script">
+				<link rel="preload" href="{{ item.resource | asset_url }}" as="script">
 			{% endif %}
 		{% endfor %}
 
@@ -39,8 +39,10 @@
 		{%- render 'hbs-templates' -%}
 
 		{% for item in cache_manifest %}
-			{% if item.name contains '.js' %}
-				<script defer="defer" src="{{ item.file | asset_url }}"></script>
+			{% if item.name == 'main.js' %}
+				<script defer="defer" src="{{ item.resource | asset_url }}"></script>
+			{% elsif item.name contains '.js' %}
+				<script async="async" src="{{ item.resource | asset_url }}"></script>
 			{% endif %}
 		{% endfor %}
 
