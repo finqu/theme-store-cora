@@ -1,12 +1,53 @@
 {%- assign colsArr = section.settings.contentColumnArrangement | split: ',' -%}
 {%- assign leftColSize = colsArr[0] -%}
 {%- assign rightColSize = colsArr[1] -%}
+{%- assign contentImgSide = section.settings.contentImgSide -%}
 
 {%- capture imgColContent -%}
 
     {%- assign imgSrc = section.settings.contentImgSrc -%}
-    {%- assign imgSizeSm = '420,420' -%}
-    {%- assign imgSizeLg = '755,755' -%}
+    {%- assign imgSizeSm = '374,374' -%}
+    {%- assign imgSizeMd = '320,320' -%}
+
+    {% if contentImgSide == 'left' %}
+
+        {%- case leftColSize -%}
+            {% when 6 %}
+                {%- assign imgSizeLg = '630,630' -%}
+            {% when 4 %}
+                {%- assign imgSizeLg = '407,407' -%}
+            {% when 8 %}
+                {%- assign imgSizeLg = '854,854' -%}
+            {% when 5 %}
+                {%- assign imgSizeLg = '519,519' -%}
+            {% when 7 %}
+                {%- assign imgSizeLg = '742,742' -%}
+            {% when 3 %}
+                {%- assign imgSizeLg = '295,295' -%}
+            {% when 9 %}
+                {%- assign imgSizeLg = '965,965' -%}
+        {%- endcase -%}
+
+    {% else %}
+
+        {%- case rightColSize -%}
+            {% when 6 %}
+                {%- assign imgSizeLg = '630,630' -%}
+            {% when 4 %}
+                {%- assign imgSizeLg = '407,407' -%}
+            {% when 8 %}
+                {%- assign imgSizeLg = '854,854' -%}
+            {% when 5 %}
+                {%- assign imgSizeLg = '519,519' -%}
+            {% when 7 %}
+                {%- assign imgSizeLg = '742,742' -%}
+            {% when 3 %}
+                {%- assign imgSizeLg = '295,295' -%}
+            {% when 9 %}
+                {%- assign imgSizeLg = '965,965' -%}
+        {%- endcase -%}
+
+    {% endif %}
 
     {% if section.settings.contentImgPlaceholder and imgSrc == '' %}
 
@@ -19,7 +60,11 @@
     {% elsif imgSrc %}
 
         <picture>
-            <source media="(min-width: 768px)" data-srcset="
+            <source media="(min-width: 992px)" data-srcset="
+                {{ imgSrc | thumb: imgSizeLg }} 1x,
+                {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+            <source media="(min-width: 753px)" data-srcset="
                 {{ imgSrc | thumb: imgSizeLg }} 1x,
                 {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
 
@@ -98,21 +143,21 @@
 
         {%- if section.settings.contentImgSide == 'left' -%}
 
-            <div class="col-12 col-md-{{ leftColSize }} {{ imgAlign }}">
+            <div class="col-12 col-md-6 col-lg-{{ leftColSize }} {{ imgAlign }}">
                 {{- imgColContent -}}
             </div>
 
-            <div class="col-12 pt-5 pt-md-0 col-md-{{ rightColSize }} {{ textAlign }}">
+            <div class="col-12 pt-5 pt-md-0 col-md-6 col-lg-{{ rightColSize }} {{ textAlign }}">
                 {{- textColContent -}}
             </div>
 
         {%- else -%}
 
-            <div class="col-12 pt-5 pt-md-0 col-md-{{ leftColSize }} {{ textAlign }} order-2 order-md-1">
+            <div class="col-12 pt-5 pt-md-0 col-md-6 col-lg-{{ leftColSize }} {{ textAlign }} order-2 order-md-1">
                 {{- textColContent -}}
             </div>
 
-            <div class="col-12 col-md-{{ rightColSize }} {{ imgAlign }} order-1 order-md-2">
+            <div class="col-12 col-md-6 col-lg-{{ rightColSize }} {{ imgAlign }} order-1 order-md-2">
                 {{- imgColContent -}}
             </div>
 
