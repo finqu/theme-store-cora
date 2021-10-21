@@ -1,6 +1,6 @@
 import Swiper, { Navigation, Pagination } from 'swiper';
-import 'swiper/swiper.min.css';
-import 'swiper/components/controller/controller.min.css';
+import 'swiper/css';
+import 'swiper/css/controller';
 import { debounce } from './utils';
 
 Swiper.use([

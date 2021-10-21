@@ -1,4 +1,4 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
@@ -31,5 +31,7 @@ module.exports = merge(common, {
 			}
 		]
 	},
-	plugins: [new webpack.HashedModuleIdsPlugin()]
+	optimization: {
+		moduleIds: 'deterministic'
+	}
 });

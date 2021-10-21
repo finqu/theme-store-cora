@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import 'intersection-observer';
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/collapse';

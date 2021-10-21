@@ -1,8 +1,9 @@
+import $ from 'jquery';
 import Gallery from './gallery';
 import Swiper, { Navigation, Thumbs, Mousewheel } from 'swiper';
-import 'swiper/swiper.min.css';
-import 'swiper/components/thumbs/thumbs.min.css';
-import 'swiper/components/controller/controller.min.css';
+import 'swiper/css';
+import 'swiper/css/thumbs';
+import 'swiper/css/controller';
 import { debounce } from './utils';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';

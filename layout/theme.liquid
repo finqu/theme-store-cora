@@ -14,7 +14,12 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 
 		<link rel="preload" href="{{ 'main.css' | asset_url }}" as="style">
-		<link rel="preload" href="{{ 'main.js' | asset_url }}" as="script">
+
+		{% for item in cache_manifest %}
+			{% if item.name contains '.js' %}
+				<link rel="preload" href="{{ item.file | asset_url }}" as="script">
+			{% endif %}
+		{% endfor %}
 
 		{%- render 'store-fonts' -%}
 
@@ -33,7 +38,11 @@
 		{%- render 'store-settings' -%}
 		{%- render 'hbs-templates' -%}
 
-		<script defer="defer" src="{{ 'main.js' | asset_url }}"></script>
+		{% for item in cache_manifest %}
+			{% if item.name contains '.js' %}
+				<script defer="defer" src="{{ item.file | asset_url }}"></script>
+			{% endif %}
+		{% endfor %}
 
 		{%- if canonical_url != blank -%}
     		<link rel="canonical" href="{{ canonical_url }}">

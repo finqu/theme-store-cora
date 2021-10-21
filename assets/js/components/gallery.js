@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import PhotoSwipe from 'photoswipe';
 import 'photoswipe/dist/photoswipe.css';
 

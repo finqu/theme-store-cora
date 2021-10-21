@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import AWN from 'awesome-notifications';
 
 export default class Notify {

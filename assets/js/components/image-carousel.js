@@ -1,7 +1,7 @@
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Parallax } from 'swiper';
-import 'swiper/swiper.min.css';
-import 'swiper/components/controller/controller.min.css';
-import 'swiper/components/effect-fade/effect-fade.min.css';
+import 'swiper/css';
+import 'swiper/css/controller';
+import 'swiper/css/effect-fade';
 import { debounce } from './utils';
 
 Swiper.use([
@@ -41,17 +41,22 @@ export default class ImageCarousel {
 
                         for (let i = 0; i < swiper.slides.length; i++) {
 
-                            $(swiper.slides[i])
-                                .find('.slide-title')
-                                .attr('data-swiper-parallax', 0.75 * swiper.width);
+                            const slideEl = document.querySelector(swiper.slides[i]);
+                            const titleEl = slideEl.querySelector('.slide-title');
+                            const descriptionEl = slideEl.querySelector('.slide-description');
+                            const actionEl = slideEl.querySelector('.slide-action');
 
-                            $(swiper.slides[i])
-                                .find('.slide-description')
-                                .attr('data-swiper-parallax', 0.65 * swiper.width);
+                            if (titleEl) {
+                                titleEl.setAttribute('data-swiper-parallax', 0.75 * swiper.width);
+                            }
 
-                            $(swiper.slides[i])
-                                .find('.slide-action')
-                                .attr('data-swiper-parallax', 0.5 * swiper.width);
+                            if (descriptionEl) {
+                                descriptionEl.setAttribute('data-swiper-parallax', 0.65 * swiper.width);
+                            }
+
+                            if (actionEl) {
+                                actionEl.setAttribute('data-swiper-parallax', 0.6 * swiper.width);
+                            }
                         }
                     }
                 }
