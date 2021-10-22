@@ -1454,6 +1454,16 @@
 				},
 				{
 					"type": "radio",
+					"id": "registerCompanyInformation",
+					"type": "checkbox",
+					"label": {
+						"en": "Show company information",
+						"fi": "Näytä yritystiedot"
+					},
+					"default": false
+				},
+				{
+					"type": "radio",
 					"id": "policyAgreementMethod",
 					"label": {
 						"en": "Policy agreement",
@@ -1463,11 +1473,17 @@
 					"options": [
 						{
 							"value": "check",
-							"label": "Check"
+							"label": {
+								"en": "Checkbox",
+								"fi": "Valintaruutu"
+							}
 						},
 						{
 							"value": "inline",
-							"label": "Inline"
+							"label": {
+								"en": "Text",
+								"fi": "Teksti"
+							}
 						}
 					]
 				},
