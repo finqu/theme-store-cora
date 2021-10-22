@@ -35,6 +35,11 @@
     list-style: none;
     padding: 0;
     z-index: 1;
+    visibility: hidden;
+
+    &.swiper-initialized {
+    	visibility: visible;
+    }
 
 	&.col,
     &[class*="col-"] {

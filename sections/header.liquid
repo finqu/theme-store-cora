@@ -12,12 +12,26 @@
     </style>
 {%- endif -%}
 
+{%- unless customer -%}
+    <style>
+        #finqu-section-{{ section.id }} .site-mobile-header-logo,
+        #finqu-section-{{ section.id }} .site-mobile-header-logo-text {
+            margin-right: 48px;
+        }
+    </style>
+{%- endunless -%}
+
 {%- capture sectionContent -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
 
-        {% assign theme = section.settings.announcementKlarnaDark | yepnope: 'dark', 'light' %}
-        {% render 'klarna-placement', type:section.settings.announcementKlarnaType theme:theme %}
+        {%- assign theme = section.settings.announcementKlarnaDark | yepnope: 'dark', 'light' -%}
+
+        <div class="site-klarna-banner klarna-theme-{{ theme }}">
+
+            {% render 'klarna-placement', type: section.settings.announcementKlarnaType theme: theme %}
+
+        </div>
 
     {%- endif -%}
 
@@ -153,6 +167,32 @@
                 </div>
 
                 <div class="d-inline-flex align-items-center position-relative">
+
+                    {% if customer %}
+
+                        <div class="site-mobile-header-item-container">
+
+                            <div class="site-mobile-header-item site-mobile-header-item-wishlist">
+
+                                <a href="{{ routes.account_wishlist_url }}" class="btn btn-text">
+
+                                    <span class="site-mobile-header-item-counter{% if wishlist.products.size > 0 %} has-items{% endif %}">
+
+                                        <span class="site-mobile-header-item-counter-text" data-wislist-item-count>
+                                            {{ wishlist.products.size }}
+                                        </span>
+
+                                    </span>
+
+                                    {%- render 'icon', icon: 'regular/love-it', class: 'svg-icon-fw' -%}
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
 
                     <div class="site-mobile-header-item-container">
 

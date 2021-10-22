@@ -536,7 +536,6 @@ export default {
                 return;
             }
 
-            const announcementContainerEl = containerEl.querySelector('.site-announcement-container');
             const el = stickyHeaderEl;
             const elOffsetTop = el.offsetTop;
             const eHandler = () => {

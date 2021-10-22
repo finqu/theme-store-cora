@@ -1,5 +1,19 @@
 {%- assign mainMenu = linklists[section.settings.menu] -%}
 
+<style>
+    {%- if customer -%}
+        #finqu-section-{{ section.id }} .site-header-logo,
+        #finqu-section-{{ section.id }} .site-header-logo-text {
+            margin-left: 96px;
+        }
+    {%- else -%}
+        #finqu-section-{{ section.id }} .site-header-logo,
+        #finqu-section-{{ section.id }} .site-header-logo-text {
+            margin-left: 48px;
+        }
+    {%- endif -%}
+</style>
+
 {%- capture sectionContent -%}
 
 	{{ sectionContent }}

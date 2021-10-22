@@ -31,8 +31,7 @@ export default class App {
 			this.data.translations = dotize.convert(this.data.translations);
 		}
 
-		let loadedImgs = [];
-
+		this.loadedImgs = [];
 		this.cart = new Cart();
 		this.icons = icons;
 		this.lazyLoad = new LazyLoad({
@@ -45,7 +44,7 @@ export default class App {
 
                 objectFitImages(el);
 
-                loadedImgs.push(el);
+                self.loadedImgs.push(el);
             },
             callback_error: function (el) {
 
@@ -296,7 +295,7 @@ export default class App {
 
 				        			this.lazyLoad.update();
 
-				        		} else if (!loadedImgs.includes(el)) {
+				        		} else if (!this.loadedImgs.includes(el)) {
 
 						        	objectFitImages(el);
 				        		}
@@ -320,7 +319,7 @@ export default class App {
 
         	} else {
 
-	        	if (!loadedImgs.includes(el)) {
+	        	if (!this.loadedImgs.includes(el)) {
 	        		objectFitImages(el);
 	        	}
 	        }
