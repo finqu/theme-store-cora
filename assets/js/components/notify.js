@@ -1,5 +1,5 @@
-import $ from 'jquery';
 import AWN from 'awesome-notifications';
+import { extend } from './utils';
 
 export default class Notify {
 
@@ -29,7 +29,7 @@ export default class Notify {
 
         let settings = {};
 
-        $.extend(true, settings, {
+        extend(true, settings, {
             labels: {
                 tip: ''
             }
@@ -61,7 +61,7 @@ export default class Notify {
 
         let settings = {};
 
-        $.extend(true, settings, {
+        extend(true, settings, {
             labels: {
                 info: ''
             }
@@ -93,7 +93,7 @@ export default class Notify {
 
         let settings = {};
 
-        $.extend(true, settings, {
+        extend(true, settings, {
             labels: {
                 warning: ''
             }
@@ -125,7 +125,7 @@ export default class Notify {
 
         let settings = {};
 
-        $.extend(true, settings, {
+        extend(true, settings, {
             labels: {
                 success: ''
             }
@@ -157,7 +157,7 @@ export default class Notify {
 
         let settings = {};
 
-        $.extend(true, settings, {
+        extend(true, settings, {
             labels: {
                 alert: ''
             }
@@ -197,7 +197,7 @@ export default class Notify {
 
         let settings = {};
 
-        $.extend(true, settings, {
+        extend(true, settings, {
             labels: {
                 confirm: title
             }

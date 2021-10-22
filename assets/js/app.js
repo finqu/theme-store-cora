@@ -75,41 +75,39 @@ export default class App {
 			}
 	    });
 
-		const observer = new MutationObserver((mutations) => {
+		$.put = function(url, data, callback, type) {
 
-			for (const { addedNodes } of mutations) {
-
-				for (const node of addedNodes) {
-
-					if (node.tagName && node.nodeType === 1) {
-
-						for (const el of node.querySelectorAll('img')) {
-
-				        	if (el.classList.contains('svg-inline')) {
-
-				        		this.SVGInject(el);
-
-				        	} else {
-
-				        		if (el.classList.contains('lazy')) {
-
-				        			this.lazyLoad.update();
-
-				        		} else if (!loadedImgs.includes(el)) {
-
-						        	objectFitImages(el);
-				        		}
-					        }
-				        }
-					}
-			    }
+			if ($.isFunction(data)) {
+				type = type || callback;
+				callback = data;
+				data = {};
 			}
-		});
 
-		observer.observe(document.querySelector('body'), {
-			childList: true,
-			subtree: true
-		});
+			return $.ajax({
+				url: url,
+				type: 'PUT',
+				success: callback,
+				data: data,
+				contentType: type
+			});
+		};
+
+		$.delete = function(url, data, callback, type) {
+
+			if ($.isFunction(data)) {
+				type = type || callback;
+				callback = data;
+				data = {};
+			}
+
+			return $.ajax({
+				url: url,
+				type: 'DELETE',
+				success: callback,
+				data: data,
+				contentType: type
+			});
+		};
 
 	    Handlebars.registerHelper('t', function(key, options) {
 		    return new Handlebars.SafeString(self.t(key, options.hash));
@@ -264,8 +262,57 @@ export default class App {
 		this.hbs = Handlebars;
 
 	    window.themeApp = this;
+	    window.jQuery = $;
+	    window.$ = $;
 
-        for (const el of document.querySelectorAll('img')) {
+	    document.dispatchEvent(new CustomEvent('themeAppReady'));
+
+        this.init();
+	}
+
+	init() {
+
+		if (this.data.designMode) {
+        	editor.init();
+        }
+
+		const mediaObserver = new MutationObserver((mutations) => {
+
+			for (const { addedNodes } of mutations) {
+
+				for (const node of addedNodes) {
+
+					if (node.tagName && node.nodeType === 1) {
+
+						for (const el of node.querySelectorAll('img')) {
+
+				        	if (el.classList.contains('svg-inline')) {
+
+				        		this.SVGInject(el);
+
+				        	} else {
+
+				        		if (el.classList.contains('lazy')) {
+
+				        			this.lazyLoad.update();
+
+				        		} else if (!loadedImgs.includes(el)) {
+
+						        	objectFitImages(el);
+				        		}
+					        }
+				        }
+					}
+			    }
+			}
+		});
+
+		mediaObserver.observe(document.querySelector('body'), {
+			childList: true,
+			subtree: true
+		});
+
+		for (const el of document.querySelectorAll('img')) {
 
         	if (el.classList.contains('svg-inline')) {
 
@@ -278,49 +325,6 @@ export default class App {
 	        	}
 	        }
         }
-
-        $.put = function(url, data, callback, type) {
-
-			if ($.isFunction(data)) {
-				type = type || callback;
-				callback = data;
-				data = {};
-			}
-
-			return $.ajax({
-				url: url,
-				type: 'PUT',
-				success: callback,
-				data: data,
-				contentType: type
-			});
-		}
-
-		$.delete = function(url, data, callback, type) {
-
-			if ($.isFunction(data)) {
-				type = type || callback;
-				callback = data;
-				data = {};
-			}
-
-			return $.ajax({
-				url: url,
-				type: 'DELETE',
-				success: callback,
-				data: data,
-				contentType: type
-			});
-		}
-
-        if (this.data.designMode) {
-        	editor.init();
-        }
-
-        this.init();
-	}
-
-	init() {
 
 		if (this.data.klarnaPlacementsClientId) {
 
@@ -487,7 +491,11 @@ export default class App {
 		node.addEventListener('animationend', handleAnimationEnd, {once: true});
 	});
 
-	loadScript = (src, data = {}) => new Promise((resolve, reject) => {
+	loadScript = (src, data = {}, onLoad, onError) => new Promise((resolve, reject) => {
+
+		if (!src) {
+			return;
+		}
 
 		let script = document.querySelector('script[src="'+src+'"]') || null;
 
@@ -498,8 +506,14 @@ export default class App {
 	    script = document.createElement('script');
 
 	    script.src = src;
-	    script.onload = resolve;
-	    script.onerror = reject;
+
+	    if (typeof onLoad === 'function') {
+	    	script.onload = onLoad;
+		}
+
+		if (typeof onError === 'function') {
+	    	script.onerror = onError;
+		}
 
 	    if (Object.entries(data).length > 0) {
 
