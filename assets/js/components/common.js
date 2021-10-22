@@ -112,11 +112,15 @@ export default {
 
             siteMobileNavigationContainerEl.classList.add('site-mobile-navigation-visible');
             siteMobileNavigationContainerEl.classList.add('site-mobile-navigation-active');
+
+            document.body.classList.add('disable-scroll');
         });
 
         siteMobileNavigationOverlayEl.addEventListener('click', (e) => {
 
             siteMobileNavigationContainerEl.classList.remove('site-mobile-navigation-active');
+
+            document.body.classList.remove('disable-scroll');
         });
 
         siteMobileNavigationContainerEl.addEventListener('transitionend', e => {
@@ -129,7 +133,7 @@ export default {
         });
 
         const stickyHeaderEl = containerEl.querySelector('.site-mobile-header-sticky');
-        const initStickyHeader = () => {
+        const initStickyHeader = (reset = false) => {
 
             if (window.innerWidth >= 992) {
                 return;
@@ -138,6 +142,12 @@ export default {
             const el = stickyHeaderEl;
             const elOffsetTop = el.offsetTop;
             const elOffsetHeight = el.offsetHeight;
+
+            if (reset) {
+                el.classList.remove('is-sticky');
+                document.body.style.paddingTop = null;
+            }
+
             const eHandler = () => {
 
                 if (window.scrollY >= elOffsetTop) {
@@ -152,7 +162,7 @@ export default {
                 } else {
 
                     el.classList.remove('is-sticky');
-                     document.body.removeAttribute('style');
+                    document.body.style.paddingTop = null;
                 }
             };
 
@@ -163,7 +173,7 @@ export default {
         window.addEventListener('resize', debounce(() => {
 
             if (stickyHeaderEl) {
-                initStickyHeader();
+                initStickyHeader(true);
             }
 
         }, 150, false));
@@ -196,7 +206,7 @@ export default {
 
                             const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
-                            siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
+                            siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
 
                             logoObserver.disconnect();
 
@@ -216,7 +226,7 @@ export default {
 
                 const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
-                siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
+                siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
             }
 
             const iconObserver = new MutationObserver((mutations) => {
@@ -235,7 +245,7 @@ export default {
 
                                     const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
-                                    siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset+'px';
+                                    siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
 
                                     iconObserver.disconnect();
 
@@ -525,7 +535,7 @@ export default {
         };
 
         const stickyHeaderEl = containerEl.querySelector('.site-header-sticky');
-        const initStickyHeader = () => {
+        const initStickyHeader = (reset = false) => {
 
             if (window.innerWidth < 992) {
                 return;
@@ -533,6 +543,13 @@ export default {
 
             const el = stickyHeaderEl;
             const elOffsetTop = el.offsetTop;
+            const elOffsetHeight = el.offsetHeight;
+
+            if (reset) {
+                el.classList.remove('is-sticky');
+                document.body.style.paddingTop = null;
+            }
+
             const eHandler = () => {
 
                 const elOffsetHeight = el.offsetHeight;
@@ -551,7 +568,7 @@ export default {
                 } else {
 
                     el.classList.remove('is-sticky');
-                    document.body.removeAttribute('style');
+                    document.body.style.paddingTop = null;
                 }
             };
 
@@ -562,7 +579,7 @@ export default {
         window.addEventListener('resize', debounce(() => {
 
             if (stickyHeaderEl) {
-                initStickyHeader();
+                initStickyHeader(true);
             }
 
         }, 150, false));

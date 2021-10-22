@@ -309,6 +309,8 @@ body > #search-overlay {
             .site-header-item-container {
 
                 .site-header-item {
+                    min-width: 32px;
+                    box-sizing: content-box;
 
                     &.site-header-item-cart {
 
@@ -757,6 +759,7 @@ body > #search-overlay {
                     .site-header-item {
                         display: flex;
                         align-items: center;
+                        justify-content: center;
                         position: relative;
                         padding: spacer(2);
                         font-size: $font-size-base * 1.6;
@@ -766,6 +769,7 @@ body > #search-overlay {
 
                             &.cart-mini-expanded {
                                 border-bottom: 0;
+                                padding-bottom: add(1px, spacer(2));
                                 z-index: 5;
                             }
                         }
@@ -940,10 +944,13 @@ body > #search-overlay {
                     .site-mobile-header-item {
                         display: flex;
                         align-items: center;
+                        justify-content: center;
                         position: relative;
                         padding: spacer(2);
                         font-size: $font-size-base * 1.6;
                         border: 1px solid transparent;
+                        min-width: 32px;
+                        box-sizing: content-box;
 
                         .site-mobile-header-item-counter {
                             position: absolute;

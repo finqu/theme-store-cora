@@ -84,6 +84,239 @@
 
 {%- endcapture -%}
 
+{%- capture imgColContentWithAspectRatio -%}
+
+    {%- assign imgSrc = section.settings.contentImgSrc -%}
+
+    {% if section.settings.contentImgAspectRatio == '16:9' %}
+
+        {%- assign imgSizeSm = '374,211' -%}
+        {%- assign imgSizeMd = '320,180' -%}
+
+        {% if contentImgSide == 'left' %}
+
+            {%- case leftColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,355' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,229' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,480' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,292' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,418' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,166' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,543' -%}
+            {%- endcase -%}
+
+        {% else %}
+
+            {%- case rightColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,910' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,588' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,1233' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,749' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,1072' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,427' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,1394' -%}
+            {%- endcase -%}
+
+        {% endif %}
+
+    {% elsif section.settings.contentImgAspectRatio == '9:13' %}
+
+        {%- assign imgSizeSm = '374,541' -%}
+        {%- assign imgSizeMd = '320,463' -%}
+
+        {% if contentImgSide == 'left' %}
+
+            {%- case leftColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,910' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,588' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,1233' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,749' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,1072' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,427' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,1394' -%}
+            {%- endcase -%}
+
+        {% else %}
+
+            {%- case rightColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,910' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,588' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,1233' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,749' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,1072' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,427' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,1394' -%}
+            {%- endcase -%}
+
+        {% endif %}
+
+    {% elsif section.settings.contentImgAspectRatio == '4:3' %}
+
+        {%- assign imgSizeSm = '374,281' -%}
+        {%- assign imgSizeMd = '320,240' -%}
+
+        {% if contentImgSide == 'left' %}
+
+            {%- case leftColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,473' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,305' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,640' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,389' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,557' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,222' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,724' -%}
+            {%- endcase -%}
+
+        {% else %}
+
+            {%- case rightColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,473' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,305' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,640' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,389' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,557' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,222' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,724' -%}
+            {%- endcase -%}
+
+        {% endif %}
+
+    {% elsif section.settings.contentImgAspectRatio == '1:1' %}
+
+        {%- assign imgSizeSm = '374,374' -%}
+        {%- assign imgSizeMd = '320,320' -%}
+
+        {% if contentImgSide == 'left' %}
+
+            {%- case leftColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,630' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,407' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,854' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,519' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,742' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,295' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,965' -%}
+            {%- endcase -%}
+
+        {% else %}
+
+            {%- case rightColSize -%}
+                {% when 6 %}
+                    {%- assign imgSizeLg = '630,630' -%}
+                {% when 4 %}
+                    {%- assign imgSizeLg = '407,407' -%}
+                {% when 8 %}
+                    {%- assign imgSizeLg = '854,854' -%}
+                {% when 5 %}
+                    {%- assign imgSizeLg = '519,519' -%}
+                {% when 7 %}
+                    {%- assign imgSizeLg = '742,742' -%}
+                {% when 3 %}
+                    {%- assign imgSizeLg = '295,295' -%}
+                {% when 9 %}
+                    {%- assign imgSizeLg = '965,965' -%}
+            {%- endcase -%}
+
+        {% endif %}
+
+    {% endif %}
+
+    <div class="aspect-ratio-{{ section.settings.contentImgAspectRatio | replace: ':', '-' }}">
+
+        {% if section.settings.contentImgPlaceholder and imgSrc == '' %}
+
+            <div class="aspect-ratio-container" data-finqu-inline-editor="contentImgSrc">
+
+                {%- capture class -%}
+                    aspect-ratio-item{% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}
+                {%- endcapture -%}
+
+                {% render 'placeholder-svg', type: 'image', class: class %}
+
+            </div>
+
+        {% elsif imgSrc %}
+
+            <div class="aspect-ratio-container">
+
+                <picture>
+                    <source media="(min-width: 992px)" data-srcset="
+                        {{ imgSrc | thumb: imgSizeLg }} 1x,
+                        {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                    <source media="(min-width: 753px)" data-srcset="
+                        {{ imgSrc | thumb: imgSizeLg }} 1x,
+                        {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                    <source data-srcset="
+                        {{ imgSrc | thumb: imgSizeSm }} 1x,
+                        {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                    <img
+                        alt="{{ section.settings.contentImgAlt }}"
+                        data-src="{{ imgSrc | thumb: imgSizeSm }}"
+                        data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                        class="lazy aspect-ratio-item {% if section.settings.contentImgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
+                        data-finqu-inline-editor="contentImgSrc">
+                </picture>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+{%- endcapture -%}
+
 {%- capture textColContent -%}
 
     <div data-finqu-inline-editor="contentRichtextHtml">{{ section.settings.contentRichtextHtml }}</div>
@@ -144,7 +377,13 @@
         {%- if section.settings.contentImgSide == 'left' -%}
 
             <div class="col-12 col-md-6 col-lg-{{ leftColSize }} {{ imgAlign }}">
-                {{- imgColContent -}}
+
+                {% if section.settings.contentImgAspectRatio != 'off' %}
+                    {{ imgColContentWithAspectRatio }}
+                {% else %}
+                    {{- imgColContent -}}
+                {% endif %}
+
             </div>
 
             <div class="col-12 pt-5 pt-md-0 col-md-6 col-lg-{{ rightColSize }} {{ textAlign }}">
@@ -158,7 +397,13 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-{{ rightColSize }} {{ imgAlign }} order-1 order-md-2">
-                {{- imgColContent -}}
+
+                {% if section.settings.contentImgAspectRatio != 'off' %}
+                    {{ imgColContentWithAspectRatio }}
+                {% else %}
+                    {{- imgColContent -}}
+                {% endif %}
+
             </div>
 
         {%- endif -%}
@@ -305,8 +550,59 @@
                                     "en": "Rounded",
                                     "fi": "Pyöristetty"
                                 }
+                            },
+                            {
+                                "value": "rounded-circle",
+                                "label": {
+                                    "en": "Circle",
+                                    "fi": "Ympyrä"
+                                }
                             }
                         ]
+                    },
+                    {
+                        "id": "contentImgAspectRatio",
+                        "type": "select",
+                        "label": {
+                            "en": "Aspect ratio",
+                            "fi": "Kuvasuhde"
+                        },
+                        "default": "1:1",
+                        "options": [
+                            {
+                                "value": "off",
+                                "label": {
+                                    "en": "Original",
+                                    "fi": "Alkuperäinen"
+                                }
+                            },
+                            {
+                                "value": "16:9",
+                                "label": "16:9"
+                            },
+                            {
+                                "value": "9:13",
+                                "label": "9:13"
+                            },
+                            {
+                                "value": "4:3",
+                                "label": "4:3"
+                            },
+                            {
+                                "value": "1:1",
+                                "label": "1:1"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contentImgFit",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Image area fill",
+                            "fi": "Kuva-alueen täyttö"
+                        },
+                        "default": false,
+                        "conditions": ["contentImgAspectRatio contains :"]
                     },
                     {
                         "id": "contentRichtextAlign",
@@ -728,6 +1024,8 @@
                 "contentImgAlign": "middle",
                 "contentImgAlt": null,
                 "contentImgEffect": "none",
+                "contentImgAspectRatio": "1:1",
+                "contentImgFit": false,
                 "contentRichtextAlign": "middle",
                 "contentBtnLabel": null,
                 "contentBtnResource": null,
@@ -757,6 +1055,8 @@
                 "contentImgAlign": "middle",
                 "contentImgAlt": "",
                 "contentImgEffect": "none",
+                "contentImgAspectRatio": "16:9",
+                "contentImgFit": false,
                 "contentRichtextAlign": "top",
                 "contentBtnLabel": "Lorem ipsum dolor sit amet",
                 "contentBtnResource": {

@@ -8,53 +8,176 @@
 
             <div class="col-12 col-lg{% if section.settings.setting_blocks.items.size > 1 %} col-md-6{% endif %} py-4">
 
-                {% if item.settings.imgPlaceholder and imgSrc == '' %}
+                {% if item.settings.imgAspectRatio != 'off' %}
 
-                    <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+                    <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
 
-                        {% render 'placeholder-svg', type: 'image', class: 'mb-4' %}
+                        {% if item.settings.imgPlaceholder and imgSrc == '' %}
+
+                            <div class="aspect-ratio-container" data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+
+                                {%- capture class -%}
+                                    aspect-ratio-item{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}
+                                {%- endcapture -%}
+
+                                {% render 'placeholder-svg', type: 'image', class: class %}
+
+                            </div>
+
+                        {% elsif imgSrc %}
+
+                            {% if item.settings.imgAspectRatio == '16:9' %}
+
+                                {%- assign imgSizeSm = '374,211' -%}
+                                {%- assign imgSizeMd = '320,180' -%}
+
+                                {%- case section.settings.setting_blocks.items.size -%}
+                                    {% when 1 %}
+                                        {%- assign imgSizeLg = '1300,732' -%}
+                                    {% when 2 %}
+                                        {%- assign imgSizeLg = '630,355' -%}
+                                    {% when 3 %}
+                                        {%- assign imgSizeLg = '407,229' -%}
+                                    {% when 4 %}
+                                        {%- assign imgSizeLg = '295,166' -%}
+                                {%- endcase -%}
+
+                            {% elsif item.settings.imgAspectRatio == '9:13' %}
+
+                                {%- assign imgSizeSm = '374,541' -%}
+                                {%- assign imgSizeMd = '320,463' -%}
+
+                                {%- case section.settings.setting_blocks.items.size -%}
+                                    {% when 1 %}
+                                        {%- assign imgSizeLg = '1300,1878' -%}
+                                    {% when 2 %}
+                                        {%- assign imgSizeLg = '630,910' -%}
+                                    {% when 3 %}
+                                        {%- assign imgSizeLg = '407,588' -%}
+                                    {% when 4 %}
+                                        {%- assign imgSizeLg = '295,427' -%}
+                                {%- endcase -%}
+
+                            {% elsif item.settings.imgAspectRatio == '4:3' %}
+
+                                {%- assign imgSizeSm = '374,281' -%}
+                                {%- assign imgSizeMd = '320,240' -%}
+
+                                {%- case section.settings.setting_blocks.items.size -%}
+                                    {% when 1 %}
+                                        {%- assign imgSizeLg = '1300,975' -%}
+                                    {% when 2 %}
+                                        {%- assign imgSizeLg = '630,473' -%}
+                                    {% when 3 %}
+                                        {%- assign imgSizeLg = '407,305' -%}
+                                    {% when 4 %}
+                                        {%- assign imgSizeLg = '295,222' -%}
+                                {%- endcase -%}
+
+                            {% elsif item.settings.imgAspectRatio == '1:1' %}
+
+                                {%- assign imgSizeSm = '374,374' -%}
+                                {%- assign imgSizeMd = '320,320' -%}
+
+                                {%- case section.settings.setting_blocks.items.size -%}
+                                    {% when 1 %}
+                                        {%- assign imgSizeLg = '1300,1300' -%}
+                                    {% when 2 %}
+                                        {%- assign imgSizeLg = '630,630' -%}
+                                    {% when 3 %}
+                                        {%- assign imgSizeLg = '407,407' -%}
+                                    {% when 4 %}
+                                        {%- assign imgSizeLg = '295,295' -%}
+                                {%- endcase -%}
+
+                            {% endif %}
+
+                            <div class="aspect-ratio-container">
+
+                                <picture>
+                                    <source media="(min-width: 992px)" data-srcset="
+                                        {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                        {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                    {%- if section.settings.setting_blocks.items.size == 1 -%}
+                                        <source media="(min-width: 576px)" data-srcset="
+                                            {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                            {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+                                    {%- endif -%}
+
+                                    <source data-srcset="
+                                        {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                        {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                                    <img
+                                        alt="{{ item.settings.imgAlt }}"
+                                        data-src="{{ imgSrc | thumb: imgSizeSm }}"
+                                        data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                        class="lazy aspect-ratio-item {% if item.settings.imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
+                                        data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+                                </picture>
+
+                            </div>
+
+                        {% endif %}
 
                     </div>
 
-                {% elsif imgSrc %}
+                {% else %}
 
-                    {%- assign imgSizeSm = '375,375' -%}
-                    {%- assign imgSizeMd = '680,680' -%}
+                    <div class="mb-4">
 
-                    {%- case section.settings.setting_blocks.items.size -%}
-                        {% when 1 %}
-                            {%- assign imgSizeLg = '1100,1100' -%}
-                        {% when 2 %}
-                            {%- assign imgSizeLg = '530,530' -%}
-                        {% when 3 %}
-                            {%- assign imgSizeLg = '340,340' -%}
-                        {% when 4 %}
-                            {%- assign imgSizeLg = '245,245' -%}
-                    {%- endcase -%}
+                        {% if item.settings.imgPlaceholder and imgSrc == '' %}
 
-                    <picture>
+                            <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
 
-                        <source media="(min-width: 992px)" data-srcset="
-                            {{ imgSrc | thumb: imgSizeLg }} 1x,
-                            {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+                                {% render 'placeholder-svg', type: 'image' %}
 
-                        {%- if section.settings.setting_blocks.items.size == 1 -%}
-                            <source media="(min-width: 576px)" data-srcset="
-                                {{ imgSrc | thumb: imgSizeMd }} 1x,
-                                {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
-                        {%- endif -%}
+                            </div>
 
-                        <source data-srcset="
-                            {{ imgSrc | thumb: imgSizeSm }} 1x,
-                            {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+                        {% elsif imgSrc %}
 
-                        <img
-                            alt="{{ item.settings.imgAlt }}"
-                            data-src="{{ imgSrc | thumb: imgSizeSm }}"
-                            data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                            class="lazy mb-4 d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
-                            data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
-                    </picture>
+                            {%- assign imgSizeSm = '375,375' -%}
+                            {%- assign imgSizeMd = '680,680' -%}
+
+                            {%- case section.settings.setting_blocks.items.size -%}
+                                {% when 1 %}
+                                    {%- assign imgSizeLg = '1100,1100' -%}
+                                {% when 2 %}
+                                    {%- assign imgSizeLg = '530,530' -%}
+                                {% when 3 %}
+                                    {%- assign imgSizeLg = '340,340' -%}
+                                {% when 4 %}
+                                    {%- assign imgSizeLg = '245,245' -%}
+                            {%- endcase -%}
+
+                            <picture>
+
+                                <source media="(min-width: 992px)" data-srcset="
+                                    {{ imgSrc | thumb: imgSizeLg }} 1x,
+                                    {{ imgSrc | thumb: imgSizeLg | thumb:'@2x' }} 2x">
+
+                                {%- if section.settings.setting_blocks.items.size == 1 -%}
+                                    <source media="(min-width: 576px)" data-srcset="
+                                        {{ imgSrc | thumb: imgSizeMd }} 1x,
+                                        {{ imgSrc | thumb: imgSizeMd | thumb:'@2x' }} 2x">
+                                {%- endif -%}
+
+                                <source data-srcset="
+                                    {{ imgSrc | thumb: imgSizeSm }} 1x,
+                                    {{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x">
+
+                                <img
+                                    alt="{{ item.settings.imgAlt }}"
+                                    data-src="{{ imgSrc | thumb: imgSizeSm }}"
+                                    data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
+                                    class="lazy d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
+                                    data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+                            </picture>
+
+                        {% endif %}
+
+                    </div>
 
                 {% endif %}
 
@@ -143,8 +266,59 @@
                                             "en": "Rounded",
                                             "fi": "Pyöristetty"
                                         }
+                                    },
+                                    {
+                                        "value": "rounded-circle",
+                                        "label": {
+                                            "en": "Circle",
+                                            "fi": "Ympyrä"
+                                        }
                                     }
                                 ]
+                            },
+                            {
+                                "id": "imgAspectRatio",
+                                "type": "select",
+                                "label": {
+                                    "en": "Aspect ratio",
+                                    "fi": "Kuvasuhde"
+                                },
+                                "default": "1:1",
+                                "options": [
+                                    {
+                                        "value": "off",
+                                        "label": {
+                                            "en": "Original",
+                                            "fi": "Alkuperäinen"
+                                        }
+                                    },
+                                    {
+                                        "value": "16:9",
+                                        "label": "16:9"
+                                    },
+                                    {
+                                        "value": "9:13",
+                                        "label": "9:13"
+                                    },
+                                    {
+                                        "value": "4:3",
+                                        "label": "4:3"
+                                    },
+                                    {
+                                        "value": "1:1",
+                                        "label": "1:1"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "imgFit",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Image area fill",
+                                    "fi": "Kuva-alueen täyttö"
+                                },
+                                "default": false,
+                                "conditions": ["imgAspectRatio contains :"]
                             },
                             {
                                 "id": "richtextHtml",
@@ -512,6 +686,8 @@
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         },
@@ -521,6 +697,8 @@
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         },
@@ -530,6 +708,8 @@
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         }
@@ -559,6 +739,8 @@
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         },
@@ -568,6 +750,8 @@
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         }
@@ -598,6 +782,8 @@
                                 "imgAlt": "",
                                 "imgPlaceholder": true,
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         },
@@ -608,6 +794,8 @@
                                 "imgAlt": "",
                                 "imgPlaceholder": true,
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         },
@@ -618,6 +806,8 @@
                                 "imgAlt": "",
                                 "imgPlaceholder": true,
                                 "imgEffect": "none",
+                                "imgAspectRatio": "1:1",
+                                "imgFit": false,
                                 "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
                             }
                         }
