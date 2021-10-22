@@ -1,20 +1,15 @@
 import $ from 'jquery';
 import Gallery from './gallery';
-import Swiper, { Navigation, Thumbs, Mousewheel } from 'swiper';
+import Swiper, { Navigation, Thumbs, Mousewheel, FreeMode } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/thumbs';
-import 'swiper/css/controller';
+import 'swiper/css/mousewheel';
+import 'swiper/css/free-mode';
 import { debounce } from './utils';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
 import Cookies from 'js-cookie';
-
-Swiper.use([
-    Navigation,
-    Thumbs,
-    Mousewheel
-]);
 
 export default {
 	init: function() {
@@ -939,12 +934,18 @@ export default {
 
     	if (categoryTagsEl) {
 
-    		new Swiper(categoryTagsEl.querySelector('.swiper-container'), {
+    		new Swiper(categoryTagsEl.querySelector('.swiper'), {
+                modules: [
+                    Navigation,
+                    FreeMode
+                ],
                 spaceBetween: 8,
                 slidesPerView: 'auto',
-                freeMode: true,
-                watchOverflow: true,
-                watchSlidesVisibility: true,
+                freeMode: {
+                    enabled: true,
+                    minimumVelocity: 0.2,
+                    momentum: false
+                },
                 watchSlidesProgress: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
@@ -1145,12 +1146,20 @@ export default {
             let productMainMediaSwiperEl = containerEl.querySelector('#product-main-media-swiper');
 
     		const productThumbMediaSwiperCfg = {
+                modules: [
+                    Navigation,
+                    FreeMode,
+                    Thumbs,
+                    Mousewheel
+                ],
     			direction: 'vertical',
 				spaceBetween: 16,
 				slidesPerView: 'auto',
-				freeMode: true,
-				watchOverflow: true,
-				watchSlidesVisibility: true,
+                freeMode: {
+                    enabled: true,
+                    minimumVelocity: 0.2,
+                    momentum: false
+                },
 				watchSlidesProgress: true,
                 mousewheel: {
                     releaseOnEdges: true,
@@ -1166,6 +1175,10 @@ export default {
             productThumbMediaSwiper = new Swiper(productThumbMediaSwiperEl, productThumbMediaSwiperCfg);
 
             const productMainMediaSwiperCfg = {
+                modules: [
+                    Navigation,
+                    Thumbs
+                ],
                 allowTouchMove: true,
                 speed: 0,
                 navigation: {

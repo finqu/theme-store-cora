@@ -37,7 +37,7 @@ export default {
 
             for (const el of e.target.querySelectorAll('.product-carousel')) {
 
-                const swiperEl = el.querySelector('.swiper-container');
+                const swiperEl = el.querySelector('.swiper');
                 const swiper = swiperEl.swiper;
 
                 if (swiperEl && swiper) {

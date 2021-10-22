@@ -27,7 +27,7 @@
 	}
 }
 
-.swiper-container {
+.swiper {
 	margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -79,14 +79,14 @@
 	}
 
 	.swiper-button-prev,
-	.swiper-container-rtl .swiper-button-next {
+	.swiper-rtl .swiper-button-next {
 		font-size: $swiper-navigation-size;
 		top: 0;
 		transform: rotate(90deg);
 	}
 
 	.swiper-button-next,
-	.swiper-container-rtl .swiper-button-prev {
+	.swiper-rtl .swiper-button-prev {
 		font-size: $swiper-navigation-size;
 		bottom: 0;
 		transform: rotate(90deg);
@@ -119,14 +119,14 @@
 	}
 
 	.swiper-button-prev,
-	.swiper-container-rtl .swiper-button-next {
+	.swiper-rtl .swiper-button-next {
 		font-size: $swiper-navigation-size;
 		left: 5px;
 		right: auto;
 	}
 
 	.swiper-button-next,
-	.swiper-container-rtl .swiper-button-prev {
+	.swiper-rtl .swiper-button-prev {
 		font-size: $swiper-navigation-size;
 		right: 5px;
 		left: auto;
@@ -306,7 +306,7 @@
 			}
 		}
 
-		&.swiper-container-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+		&.swiper-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
 			transition: 200ms transform, 200ms right;
 		}
 	}
@@ -326,7 +326,7 @@
 		transform-origin: left top;
 	}
 
-	.swiper-container-rtl & .swiper-pagination-progressbar-fill {
+	.swiper-rtl & .swiper-pagination-progressbar-fill {
 		transform-origin: right top;
 	}
 

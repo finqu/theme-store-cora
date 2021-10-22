@@ -11,6 +11,9 @@
 {% capture loopAttr %} data-carousel-loop="{{ section.settings.loop | json }}"{% endcapture %}
 {%- assign carouselSettings = carouselSettings | append: loopAttr -%}
 
+{% capture effectAttr %} data-carousel-effect="{{- section.settings.effect -}}"{% endcapture %}
+{%- assign carouselSettings = carouselSettings | append: effectAttr -%}
+
 {%- assign carouselClasses = '' -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 
@@ -169,7 +172,7 @@
 
                 <div class="row h-100">
 
-                    <div class="col align-self-center justify-content-center flex-column">
+                    <div class="slide-content col align-self-center justify-content-center flex-column">
 
                         {% if item.settings.title %}
 
@@ -243,7 +246,7 @@
 
 {%- capture sectionContent -%}
 
-    <div class="swiper-container{{ carouselClasses }}" {{ carouselSettings }}>
+    <div class="swiper{{ carouselClasses }}" {{ carouselSettings }}>
 
         <div class="swiper-wrapper">
 
@@ -403,7 +406,10 @@
                 ]
             },
             {
-                "title": "Section",
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
                 "settings": {
                     "list_type": "tabs",
                     "groups": [
@@ -505,6 +511,31 @@
                                             "label": {
                                                 "en": "Always",
                                                 "fi": "Aina"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "effect",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Effect",
+                                        "fi": "Effekti"
+                                    },
+                                    "default": "slide",
+                                    "options": [
+                                        {
+                                            "value": "slide",
+                                            "label": {
+                                                "en": "Slide",
+                                                "fi": "Liuku"
+                                            }
+                                        },
+                                        {
+                                            "value": "fade",
+                                            "label": {
+                                                "en": "Fade",
+                                                "fi": "Häivytä"
                                             }
                                         }
                                     ]

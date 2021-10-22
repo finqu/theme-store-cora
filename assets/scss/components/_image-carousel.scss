@@ -9,7 +9,7 @@
 			padding-top: 0;
 			padding-bottom: 0;
 
-			.swiper-container {
+			.swiper {
 				@include media-breakpoint-down(md) {
 					height: 350px;
 
@@ -36,9 +36,24 @@
 		}
 	}
 
-	.swiper-container {
+	.swiper {
 		width: 100%;
 		height: 100%;
+
+		&.swiper-ready {
+
+			.slide-title,
+			.slide-description,
+			.slide-action {
+				visibility: visible;
+			}
+		}
+
+		.slide-title,
+		.slide-description,
+		.slide-action {
+			visibility: hidden;
+		}
 
 		.swiper-slide {
 			display: flex;

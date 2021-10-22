@@ -1,24 +1,22 @@
 import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/controller';
 import { debounce } from './utils';
-
-Swiper.use([
-    Navigation,
-    Pagination
-]);
 
 export default class Carousel {
 
     constructor(el) {
 
         this.el = el;
-        this.containerEl = el.querySelector('.swiper-container');
+        this.containerEl = el.querySelector('.swiper');
         this.opts = this.containerEl.dataset;
 
         const itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
 
         this.swiperCfg = {
+            modules: [
+                Navigation,
+                Pagination
+            ],
             spaceBetween: 20,
             slidesPerView: 2,
             slidesPerGroup: 2,

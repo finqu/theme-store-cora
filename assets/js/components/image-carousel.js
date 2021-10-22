@@ -1,28 +1,28 @@
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Parallax } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/controller';
+import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
+import 'swiper/css/parallax';
 import { debounce } from './utils';
-
-Swiper.use([
-    Navigation,
-    Pagination,
-    Autoplay,
-    EffectFade,
-    Parallax
-]);
 
 export default class ImageCarousel {
 
     constructor(el) {
 
         this.el = el;
-        this.containerEl = el.querySelector('.swiper-container');
+        this.containerEl = el.querySelector('.swiper');
         this.opts = this.containerEl.dataset;
         this.swiperCfg = {
+            modules: [
+                Navigation,
+                Pagination,
+                Autoplay,
+                EffectFade,
+                Parallax
+            ],
             loop: JSON.parse(this.opts.carouselLoop),
             speed: 1000,
-            effect: 'slide',
+            effect: this.opts.carouselEffect,
             watchSlidesProgress: true,
             grabCursor: true,
             pagination: {
@@ -36,6 +36,16 @@ export default class ImageCarousel {
                 init: function() {
 
                     const swiper = this;
+                    let delay = 200;
+
+                    if (swiper.params.effect === 'fade') {
+                        delay = 700;
+                    }
+
+                    setTimeout(() => {
+                        swiper.el.classList.add('swiper-ready');
+                        themeApp.animate(swiper.el.querySelector('.swiper-slide-active .slide-content'), 'fadeIn');
+                    }, delay);
 
                     if (swiper.params.parallax) {
 

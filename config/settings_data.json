@@ -1207,7 +1207,7 @@
                     "general_badge_text_color": "#ffffff"
                 }
             },
-            "textScale": "1",
+            "textScale": "0.9375",
             "bodyTextFont": "Inter",
             "headingFont": "Ubuntu",
             "subheadingFont": "Inter",
@@ -2432,7 +2432,7 @@
                         "general_badge_text_color": "#ffffff"
                     }
                 },
-                "textScale": "1",
+                "textScale": "0.9375",
                 "bodyTextFont": "Inter",
                 "headingFont": "Ubuntu",
                 "subheadingFont": "Inter",
