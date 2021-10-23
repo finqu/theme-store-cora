@@ -12,6 +12,7 @@
 	- productShowManufacturer: {Boolean} Show product manufacturer
 	- productShowName: {Boolean} Show product name
 	- productShowPricing: {Boolean} Show product pricing
+    - productShowAddToCart: {Boolean} Show add to cart
 
 	Usage:
 	{% render 'product-carousel', items: items, pagination: 'hover, navigation: 'hover', itemAmount: 20, itemsPerView: 4, style: 1 %}
@@ -28,6 +29,7 @@
 {%- assign carouselProductShowManufacturer = productShowManufacturer %}
 {%- assign carouselProductShowName = productShowName %}
 {%- assign carouselProductShowPricing = productShowPricing %}
+{%- assign carouselProductShowAddToCart = productShowAddToCart %}
 
 {%- if carouselProductShowBadges != false -%}
 	{%- assign carouselProductShowBadges = true -%}
@@ -43,6 +45,10 @@
 
 {%- if carouselProductShowPricing != false -%}
 	{%- assign carouselProductShowPricing = true -%}
+{%- endif -%}
+
+{%- if carouselProductShowAddToCart != false -%}
+    {%- assign carouselProductShowAddToCart = true -%}
 {%- endif -%}
 
 {%- capture carouselSettings -%}
@@ -67,7 +73,7 @@
 
             <div class="swiper-slide">
 
-                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing -%}
+                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
 
             </div>
 
@@ -79,7 +85,7 @@
 
             <div class="swiper-slide">
 
-                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing -%}
+                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
 
             </div>
 

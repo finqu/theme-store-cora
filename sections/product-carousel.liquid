@@ -20,7 +20,7 @@
 
 {%- capture sectionContent -%}
 
-    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: section.settings.itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing %}
+    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: section.settings.itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing, productShowAddToCart: section.settings.showAddToCart %}
 
 {%- endcapture -%}
 
@@ -359,6 +359,15 @@
                             "fi": "Näytä hintatiedot"
                         },
                         "default": true
+                    },
+                    {
+                        "id": "showAddToCart",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show add to cart button",
+                            "fi": "Näytä lisää ostoskoriin -panike"
+                        },
+                        "default": false
                     }
                 ]
             },

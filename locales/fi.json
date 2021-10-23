@@ -37,6 +37,7 @@
         "product_count": "{{ amount }} tuote",
         "product_plural": "Tuotetta",
         "product_plural_count": "{{ amount }} tuotetta",
+        "product_view": "Katso",
         "page": "Sivu",
         "sort_by": "Lajittele",
         "date_format": "%-d.%-m.%Y",

@@ -216,6 +216,9 @@
 	&.awn-top-right {
 		top: $awn-container-offset-y;
 		bottom: auto;
+		@include media-breakpoint-down(md) {
+			top: 0;
+		}
 
 		.awn-toast:first-child {
 			margin-top: $awn-toast-margin;

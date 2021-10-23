@@ -96,8 +96,12 @@
 
     .product-caption {
 
+        & + .product-action {
+            padding-top: spacer(4);
+        }
+
         .product-manufacturer {
-            min-height: 21px;
+            min-height: 27px;
 
             .product-manufacturer-name {
                 display: block;
@@ -125,6 +129,23 @@
                 font-weight: $font-weight-normal;
                 line-height: $line-height-base;
                 margin: 0;
+            }
+        }
+    }
+
+    .product-action {
+        @include media-breakpoint-down(md) {
+
+            .btn {
+                @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size * 0.90, $btn-line-height, $btn-border-radius);
+
+                &.btn-lg {
+                  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg * 0.90, $btn-line-height-lg, $btn-border-radius-lg);
+                }
+
+                &.btn-sm {
+                  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm * 0.90, $btn-line-height-sm, $btn-border-radius-sm);
+                }
             }
         }
     }

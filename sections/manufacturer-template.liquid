@@ -69,7 +69,7 @@
 
 	            <div class="col pt-3 pb-4">
 
-                    {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing -%}
+                    {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
 
 	            </div>
 
@@ -159,6 +159,15 @@
                             "fi": "Näytä hintatiedot"
                         },
                         "default": true
+                    },
+                    {
+                        "id": "showAddToCart",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show add to cart button",
+                            "fi": "Näytä lisää ostoskoriin -panike"
+                        },
+                        "default": false
                     }
                 ]
             }

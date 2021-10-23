@@ -1578,7 +1578,7 @@
                 {% render 'section-header', sectionTitle: carouselTitle, sectionContentContainer: 'none' %}
 
                 <div class="product-carousel mt-4">
-                    {% render 'product-carousel', items: product.similar, navigation: 'hover', pagination: 'hover' %}
+                    {% render 'product-carousel', items: product.similar, navigation: 'hover', pagination: 'hover', productShowAddToCart: false %}
                 </div>
 
             </div>
@@ -1594,7 +1594,7 @@
                 {% render 'section-header', sectionTitle: carouselTitle, sectionContentContainer: 'none' %}
 
                 <div class="product-carousel mt-4">
-                    {% render 'product-carousel', items: product.compatible, navigation: 'hover', pagination: 'hover' %}
+                    {% render 'product-carousel', items: product.compatible, navigation: 'hover', pagination: 'hover', productShowAddToCart: false %}
                 </div>
 
             </div>

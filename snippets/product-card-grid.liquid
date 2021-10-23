@@ -9,6 +9,7 @@
 	- showManufacturer: {Boolean} true | false
 	- showProductName: {Boolean} true | false
 	- showPricing: {Boolean} true | false
+	- showAddToCart: {Boolean} true | false
 
 	Usage:
 	{% render 'product-card-grid', product: product %}
@@ -45,6 +46,10 @@
 
 {%- if showPricing != false -%}
 	{%- assign showPricing = true -%}
+{%- endif -%}
+
+{%- if showAddToCart != false -%}
+	{%- assign showAddToCart = true -%}
 {%- endif -%}
 
 {%- if store.customer_accounts_require_approval == true and customer.has_access -%}
@@ -301,5 +306,47 @@
 		{%- endif -%}
 
 	</div>
+
+	{% if showAddToCart %}
+
+		{% if store.customer_accounts_enabled == false or store.customer_accounts_optional == true or customer %}
+
+        	{% if store.customer_accounts_require_approval == false or customer.has_access %}
+
+				<div class="product-action">
+
+					{%- if product -%}
+
+						{%- assign isBuyable = product.inventory_policy == 'continue' or product.in_stock and product.only_preview == false -%}
+
+						{%- if isBuyable and product.buy_directly -%}
+
+							<button type="button" class="btn btn-section btn-block" data-cart-add="{{ product.id }}" data-cart-quantity="{{ product.min_amount }}">
+				                {{ 'cart.add' | t }}
+				            </button>
+
+			            {%- else -%}
+
+			            	<a href="{{ productUrl }}" class="btn btn-section btn-block">
+								{{ 'general.product_view' | t }}
+							</a>
+
+			            {%- endif -%}
+
+		            {%- else -%}
+
+		            	<span class="btn btn-section btn-block">
+			                {{ 'cart.add' | t }}
+			            </span>
+
+		            {%- endif -%}
+
+				</div>
+
+			{% endif %}
+
+		{% endif %}
+
+	{% endif %}
 
 </div>
