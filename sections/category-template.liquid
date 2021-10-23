@@ -22,44 +22,121 @@
 
         {% if subCategories %}
 
-            <div class="category-tags pb-4{% if section.settings.showCategoryList %} d-lg-none{% endif %}">
+            {% if section.settings.showSubcategoryImg %}
 
-                <div class="swiper py-1">
+                <div class="category-subcategories category-images pb-4{% if section.settings.showCategoryList %} d-lg-none{% endif %}">
 
-                    <div class="swiper-wrapper">
+                    <div class="swiper py-1">
 
-                        {% for subCategory in subCategories %}
+                        <div class="swiper-wrapper">
 
-                            <div class="swiper-slide">
+                            {% for subCategory in subCategories %}
 
-                                <div class="category-tag">
+                                {% if subCategory.is_visible %}
 
-                                    <a href="{{ subCategory | page_url }}">
+                                    <div class="swiper-slide">
 
-                                        <span class="category-tag-content">
-                                            {{ subCategory.title }}
-                                        </span>
-                                    </a>
+                                        {%- assign imgSrc = subCategory.image -%}
+                                        {%- assign imgSize = '160,160' -%}
 
-                                </div>
+                                        <a href="{{ subCategory | page_url }}">
 
-                            </div>
+                                            <div class="aspect-ratio-1-1">
 
-                        {% endfor %}
+                                                <div class="aspect-ratio-container">
 
-                    </div>
+                                                    {% if imgSrc %}
 
-                    <div class="swiper-button-prev">
-                        {%- render 'icon', icon: 'light/arrow-left-1' -%}
-                    </div>
+                                                        <picture>
+                                                            <img
+                                                                alt="{{ item.settings.imgAlt }}"
+                                                                data-src="{{ imgSrc | thumb: imgSize }}"
+                                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                                                class="lazy aspect-ratio-item {% if section.settings.subcategoryImgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}">
+                                                        </picture>
 
-                    <div class="swiper-button-next">
-                        {%- render 'icon', icon: 'light/arrow-right-1' -%}
+                                                    {% else %}
+
+                                                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                                                    {% endif %}
+
+                                                </div>
+
+                                            </div>
+
+                                            <span class="d-block mt-3 text-center">
+                                                {{ subCategory.title }}
+                                            </span>
+
+                                        </a>
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="swiper-button-prev">
+                            {%- render 'icon', icon: 'light/arrow-left-1' -%}
+                        </div>
+
+                        <div class="swiper-button-next">
+                            {%- render 'icon', icon: 'light/arrow-right-1' -%}
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+            {% else %}
+
+                <div class="category-subcategories category-tags pb-4{% if section.settings.showCategoryList %} d-lg-none{% endif %}">
+
+                    <div class="swiper py-1">
+
+                        <div class="swiper-wrapper">
+
+                            {% for subCategory in subCategories %}
+
+                                {% if subCategory.is_visible %}
+
+                                    <div class="swiper-slide">
+
+                                        <div class="category-tag">
+
+                                            <a href="{{ subCategory | page_url }}">
+
+                                                <span class="category-tag-content">
+                                                    {{ subCategory.title }}
+                                                </span>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="swiper-button-prev">
+                            {%- render 'icon', icon: 'light/arrow-left-1' -%}
+                        </div>
+
+                        <div class="swiper-button-next">
+                            {%- render 'icon', icon: 'light/arrow-right-1' -%}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
 
         {% endif %}
 
@@ -599,6 +676,25 @@
                             "fi": "Näytä tuoteryhmälistä"
                         },
                         "default": false
+                    },
+                    {
+                        "id": "showSubcategoryImg",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show subcategory image",
+                            "fi": "Näytä alatuoteryhmän kuva"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "subcategoryImgFit",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Subcategory image area fill",
+                            "fi": "Alatuoteryhmän kuva-alueen täyttö"
+                        },
+                        "default": false,
+                        "conditions": ["showSubcategoryImg eq true"]
                     }
                 ]
             }

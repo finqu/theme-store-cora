@@ -690,7 +690,7 @@ export default {
 	initCategory: function() {
 
         const containerEl = document.querySelector('.section-category');
-    	const categoryTagsEl = containerEl.querySelector('.category-tags');
+        const categorySubcategoriesEl = containerEl.querySelector('.category-subcategories');
         let categoryFiltersFormEl = null;
 
         if (window.innerWidth < 992) {
@@ -951,9 +951,9 @@ export default {
             });
         }
 
-    	if (categoryTagsEl) {
+    	if (categorySubcategoriesEl && categorySubcategoriesEl.classList.contains('category-tags')) {
 
-    		new Swiper(categoryTagsEl.querySelector('.swiper'), {
+    		new Swiper(categorySubcategoriesEl.querySelector('.swiper'), {
                 modules: [
                     Navigation,
                     FreeMode
@@ -971,7 +971,41 @@ export default {
                     prevEl: '.swiper-button-prev'
                 }
 			});
-    	}
+
+    	} else if (categorySubcategoriesEl && categorySubcategoriesEl.classList.contains('category-images')) {
+
+            new Swiper(categorySubcategoriesEl.querySelector('.swiper'), {
+                modules: [
+                    Navigation
+                ],
+                spaceBetween: 20,
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+                grabCursor: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                breakpoints: {
+                    500: {
+                        slidesPerView: 4,
+                        slidesPerGroup: 4
+                    },
+                    700: {
+                        slidesPerView: 5,
+                        slidesPerGroup: 5
+                    },
+                    992: {
+                        slidesPerView: 7,
+                        slidesPerGroup: 7
+                    },
+                    1200: {
+                        slidesPerView: 10,
+                        slidesPerGroup: 10
+                    }
+                }
+            });
+        }
 
         bindEvents();
 	},
