@@ -14,6 +14,7 @@
                             "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1575561723050-3a69691d9700?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=85",
                             "sectionBgImgPos": "center-center",
                             "sectionBgImgOverlay": "30",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "darkest"
@@ -87,6 +88,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "teal"
@@ -128,6 +130,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "green"
@@ -157,6 +160,7 @@
                             "sectionBgImgSrc": null,
                             "sectionBgImgPos": "",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -190,6 +194,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -319,6 +324,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -391,6 +397,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -445,6 +452,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -469,6 +477,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -497,6 +506,7 @@
                             "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
                             "sectionBgImgPos": "center-top",
                             "sectionBgImgOverlay": "40",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "darkest"
@@ -563,6 +573,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -580,6 +591,7 @@
                             "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
                             "sectionBgImgPos": "center-top",
                             "sectionBgImgOverlay": "40",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "darkest"
@@ -646,6 +658,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -670,6 +683,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -719,6 +733,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1360,6 +1375,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1416,6 +1432,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1437,6 +1454,7 @@
                             "sectionBgImgSrc": null,
                             "sectionBgImgPos": "",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1467,6 +1485,7 @@
                             "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "30",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "darkest"
@@ -1518,6 +1537,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1570,6 +1590,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1589,6 +1610,7 @@
                             "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "30",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "darkest"
@@ -1640,6 +1662,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1692,6 +1715,7 @@
                             "sectionBgImgSrc": "",
                             "sectionBgImgPos": "left-top",
                             "sectionBgImgOverlay": "0",
+                            "sectionBgImgBlur": "0",
                             "sectionContentBgColorStatus": false,
                             "sectionContentBgColor": "#ffffff",
                             "sectionStyle": "general"
@@ -1721,6 +1745,7 @@
                                 "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1575561723050-3a69691d9700?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=85",
                                 "sectionBgImgPos": "center-center",
                                 "sectionBgImgOverlay": "30",
+                                "sectionBgImgBlur": "0",
                                 "sectionContentBgColorStatus": false,
                                 "sectionContentBgColor": "#ffffff",
                                 "sectionStyle": "darkest"
@@ -1780,6 +1805,7 @@
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "left-top",
                                 "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
                                 "sectionContentBgColorStatus": false,
                                 "sectionContentBgColor": "#ffffff",
                                 "sectionStyle": "general"
@@ -1809,6 +1835,7 @@
                                 "sectionBgImgSrc": null,
                                 "sectionBgImgPos": "",
                                 "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
                                 "sectionContentBgColorStatus": false,
                                 "sectionContentBgColor": "#ffffff",
                                 "sectionStyle": "general"
@@ -1842,6 +1869,7 @@
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "left-top",
                                 "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
                                 "sectionContentBgColorStatus": false,
                                 "sectionContentBgColor": "#ffffff",
                                 "sectionStyle": "general"
@@ -1860,6 +1888,7 @@
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "left-top",
                                 "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
                                 "sectionContentBgColorStatus": false,
                                 "sectionContentBgColor": "#ffffff",
                                 "sectionStyle": "general",

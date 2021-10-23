@@ -226,21 +226,131 @@
 
     <nav class="site-mobile-navigation-container">
 
-        <div class="site-mobile-navigation-overlay"></div>
+        {%- assign layerIndex = 0 -%}
+
+        {% if section.settings.addProductCategoriesToMobileNavigation %}
+
+            {% for category in categories.root %}
+
+                {% if category.is_visible and category.sub_categories.size > 0 %}
+
+                    {%- assign layerIndex = layerIndex | plus: 1 -%}
+
+                    <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ layerIndex }}">
+
+                        <div class="site-mobile-navigation-header">
+
+                            <div class="site-mobile-navigation-header-inner">
+
+                                <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ layerIndex }}">
+                                    {%- render 'icon', icon: 'regular/arrow-left', class: 'svg-icon-fw' -%}
+                                </button>
+
+                                <span class="site-mobile-navigation-header-text">
+                                    {{ category.name }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="site-mobile-navigation-menu">
+
+                            {% for category in category.sub_categories %}
+
+                                {% if category.is_visible %}
+
+                                    <li class="site-mobile-navigation-menu-item{% if category.sub_categories.size > 0 %} site-mobile-navigation-menu-item-parent{% endif %}{% if category.current %} site-mobile-navigation-menu-item-active{% endif %}">
+
+                                        <a href="{{ category | page_url }}" class="site-mobile-navigation-menu-item-text">
+                                            {{ category.name }}
+                                        </a>
+
+                                        {% if category.sub_categories.size > 0 %}
+
+                                            <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ layerIndex }}-{{ forloop.index }}">
+                                                {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
+                                            </button>
+
+                                        {% endif %}
+
+                                    </li>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+
+                    {% for category in category.sub_categories %}
+
+                        {% if category.is_visible and category.sub_categories.size > 0 %}
+
+                            <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ layerIndex }}-{{ forloop.index }}">
+
+                                <div class="site-mobile-navigation-header">
+
+                                    <div class="site-mobile-navigation-header-inner">
+
+                                        <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ layerIndex }}-{{ forloop.index }}">
+                                            {%- render 'icon', icon: 'regular/arrow-left', class: 'svg-icon-fw' -%}
+                                        </button>
+
+                                        <span class="site-mobile-navigation-header-text">
+                                            {{ category.name }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <ul class="site-mobile-navigation-menu">
+
+                                    {% for category in category.sub_categories %}
+
+                                        {% if category.is_visible %}
+
+                                            <li class="site-mobile-navigation-menu-item{% if category.sub_categories.size > 0 %} site-mobile-navigation-menu-item-parent{% endif %}{% if item.current %} site-mobile-navigation-menu-item-active{% endif %}">
+
+                                                <a href="{{ category | page_url }}" class="site-mobile-navigation-menu-item-text">
+                                                    {{ category.name }}
+                                                </a>
+
+                                            </li>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </ul>
+
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endfor %}
+
+        {% endif %}
 
         {% for item in mainMenu.links %}
 
-            {%- assign parentIndex = forloop.index -%}
-
             {% if item.links %}
 
-                <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ forloop.index }}">
+                {%- assign layerIndex = layerIndex | plus: 1 -%}
+
+                <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ layerIndex }}">
 
                     <div class="site-mobile-navigation-header">
 
                         <div class="site-mobile-navigation-header-inner">
 
-                            <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ forloop.index }}">
+                            <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ layerIndex }}">
                                 {%- render 'icon', icon: 'regular/arrow-left', class: 'svg-icon-fw' -%}
                             </button>
 
@@ -266,7 +376,7 @@
 
                                     {%- if item.links -%}
 
-                                        <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ parentIndex }}-{{ forloop.index }}">
+                                        <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ layerIndex }}-{{ forloop.index }}">
                                             {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
                                         </button>
 
@@ -280,7 +390,7 @@
 
                                     {%- if item.links -%}
 
-                                        <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ parentIndex }}-{{ forloop.index }}">
+                                        <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ layerIndex }}-{{ forloop.index }}">
                                             {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
                                         </button>
 
@@ -300,13 +410,13 @@
 
                     {% if item.links %}
 
-                        <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ parentIndex }}-{{ forloop.index }}">
+                        <div class="site-mobile-navigation-layer site-mobile-navigation-layer-child" data-mobile-navigation-layer-id="{{ layerIndex }}-{{ forloop.index }}">
 
                             <div class="site-mobile-navigation-header">
 
                                 <div class="site-mobile-navigation-header-inner">
 
-                                    <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ parentIndex }}-{{ forloop.index }}">
+                                    <button type="button" name="site-mobile-navigation-hide-layer" class="btn btn-text" value="{{ layerIndex }}-{{ forloop.index }}">
                                         {%- render 'icon', icon: 'regular/arrow-left', class: 'svg-icon-fw' -%}
                                     </button>
 
@@ -400,6 +510,38 @@
 
             <ul class="site-mobile-navigation-menu">
 
+                {%- assign layerIndex = 0 -%}
+
+                {% if section.settings.addProductCategoriesToMobileNavigation %}
+
+                    {% for category in categories.root %}
+
+                        {% if category.is_visible %}
+
+                            <li class="site-mobile-navigation-menu-item{% if item.current %} site-mobile-navigation-menu-item-active{% endif %}">
+
+                                <a href="{{ category | page_url }}" class="site-mobile-navigation-menu-item-text">
+                                    {{ category.name }}
+                                </a>
+
+                                {% if category.sub_categories.size > 0 %}
+
+                                    {%- assign layerIndex = layerIndex | plus: 1 -%}
+
+                                    <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ layerIndex }}">
+                                        {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
+                                    </button>
+
+                                {% endif %}
+
+                            </li>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
+
                 {% for item in mainMenu.links %}
 
                     <li class="site-mobile-navigation-menu-item{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}">
@@ -412,7 +554,9 @@
 
                             {%- if item.links -%}
 
-                                <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ forloop.index }}">
+                                {%- assign layerIndex = layerIndex | plus: 1 -%}
+
+                                <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ layerIndex }}">
                                     {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
                                 </button>
 
@@ -426,7 +570,9 @@
 
                             {%- if item.links -%}
 
-                                <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ forloop.index }}">
+                                {%- assign layerIndex = layerIndex | plus: 1 -%}
+
+                                <button type="button" name="site-mobile-navigation-show-layer" class="btn btn-text" value="{{ layerIndex }}">
                                     {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
                                 </button>
 
@@ -449,6 +595,8 @@
         </div>
 
     </nav>
+
+    <div class="site-mobile-navigation-overlay"></div>
 
 {%- endcapture -%}
 
@@ -695,6 +843,15 @@
                             "en": "Mobile navigation",
                             "fi": "Mobiilinavigointi"
                         }
+                    },
+                    {
+                        "id": "addProductCategoriesToMobileNavigation",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Add product categories to navigation",
+                            "fi": "Lisää tuoteryhmät navigaatioon"
+                        },
+                        "default": false
                     },
                     {
                         "id": "socialMediaIconsStatus",

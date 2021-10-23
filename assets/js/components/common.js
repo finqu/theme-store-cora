@@ -112,6 +112,7 @@ export default {
 
             siteMobileNavigationContainerEl.classList.add('site-mobile-navigation-visible');
             siteMobileNavigationContainerEl.classList.add('site-mobile-navigation-active');
+            siteMobileNavigationOverlayEl.classList.add('site-mobile-navigation-overlay-active');
 
             document.body.classList.add('disable-scroll');
         });
@@ -119,6 +120,7 @@ export default {
         siteMobileNavigationOverlayEl.addEventListener('click', (e) => {
 
             siteMobileNavigationContainerEl.classList.remove('site-mobile-navigation-active');
+            siteMobileNavigationOverlayEl.classList.remove('site-mobile-navigation-overlay-active');
 
             document.body.classList.remove('disable-scroll');
         });

@@ -20,6 +20,7 @@
 	- sectionBgImgSrc: {String}
 	- sectionBgImgPos: {String}
 	- sectionBgImgOverlay: {String}
+	- sectionBgImgBlur: {String}
 	- sectionStyle: {String}
 	- sectionOverlay: {Boolean}
 	- sectionContentContainer: {String} 'none', 'fixed', 'fluid', 'compact', 'tiny'
@@ -29,7 +30,7 @@
 	- sectionColSpacing {String}
 
 	Usage:
-	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionSubtitletag: tag, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionContentContainer: 'fixed' %}
+	{% render 'section', section: section, sectionTitle: title, sectionTitleTag: tag, sectionSubtitle: subtitle, sectionSubtitletag: tag, sectionDescription: description, sectionBreadcrumbs: breadcrumbs, sectionContent: content, sectionBgImgSrc: src, sectionBgImgPos: pos, sectionBgImgOverlay: overlay, sectionBgImgBlur: blur, sectionContentContainer: 'fixed' %}
 {% endcomment %}
 
 {%- assign section = section -%}
@@ -45,6 +46,7 @@
 {%- assign sectionContentTextAlign = sectionContentTextAlign | default: null -%}
 {%- assign sectionBgImgPos = section.settings.sectionBgImgPos | default: settings.sectionBgImgPos -%}
 {%- assign sectionBgImgOverlay = section.settings.sectionBgImgOverlay | default: '0' -%}
+{%- assign sectionBgImgBlur = section.settings.sectionBgImgBlur | default: '0' -%}
 {%- assign sectionBgImgSrc = section.settings.sectionBgImgSrc -%}
 {%- assign sectionStyle = sectionStyle | default: section.settings.sectionStyle | default: 'general' -%}
 {%- assign sectionTitle = sectionTitle | default: null -%}
@@ -122,6 +124,19 @@
 	</style>
 {%- endif -%}
 
+{%- if sectionBgImgBlur != '0' -%}
+	<style>
+        #finqu-section-{{ section.id }} .section-bg {
+        	transform: scale(1.0{{ sectionBgImgBlur | divided_by: 2 | plus: 2 }});
+        	filter: blur({{ sectionBgImgBlur }}px);
+		    -webkit-filter: blur({{ sectionBgImgBlur }}px);
+		    -moz-filter: blur({{ sectionBgImgBlur }}px);
+		    -o-filter: blur({{ sectionBgImgBlur }}px);
+		    -ms-filter: blur({{ sectionBgImgBlur }}px);
+	    }
+	</style>
+{%- endif -%}
+
 <div class="section-inner {{ sectionClasses | strip }}">
 
 	{%- if sectionTitle or sectionSubtitle or sectionDescription or sectionBreadcrumbs -%}
@@ -136,7 +151,7 @@
 
 	{%- endif -%}
 
-	{%- render 'section-bg' section: section, sectionBgImgSrc: sectionBgImgSrc, sectionBgImgPos: sectionBgImgPos, sectionBgImgOverlay: sectionBgImgOverlay, sectionContentBgColorStatus: sectionContentBgColorStatus -%}
+	{%- render 'section-bg' section: section, sectionBgImgSrc: sectionBgImgSrc, sectionBgImgPos: sectionBgImgPos, sectionBgImgOverlay: sectionBgImgOverlay, sectionBgImgBlur: sectionBgImgBlur, sectionContentBgColorStatus: sectionContentBgColorStatus -%}
 
 	{%- if sectionCustomContent -%}
 

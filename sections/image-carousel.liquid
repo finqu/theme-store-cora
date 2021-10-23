@@ -42,6 +42,20 @@
     </style>
 {%- endif -%}
 
+{%- if section.settings.slideImgBlur != '0' -%}
+    <style>
+        #finqu-section-{{ section.id }} .slide-bg-img .slide-lazy-img,
+        #finqu-section-{{ section.id }} .slide-bg-img .svg-placeholder {
+            transform: scale(1.0{{ section.settings.slideImgBlur | divided_by: 2 | plus: 2 }});
+            filter: blur({{ section.settings.slideImgBlur }}px);
+            -webkit-filter: blur({{ section.settings.slideImgBlur }}px);
+            -moz-filter: blur({{ section.settings.slideImgBlur }}px);
+            -o-filter: blur({{ section.settings.slideImgBlur }}px);
+            -ms-filter: blur({{ section.settings.slideImgBlur }}px);
+        }
+    </style>
+{%- endif -%}
+
 {%- capture content -%}
 
     {% for item in section.settings.setting_blocks.items %}
@@ -605,6 +619,19 @@
                                     "step": 10,
                                     "default": "0",
                                     "unit": "%"
+                                },
+                                {
+                                    "id": "slideImgBlur",
+                                    "label": {
+                                        "en": "Blur",
+                                        "fi": "Taustan sumeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 10,
+                                    "step": 1,
+                                    "default": "0",
+                                    "unit": " "
                                 }
                             ]
                         },
@@ -639,6 +666,7 @@
                 "sectionHeight": "",
                 "slideTitleTag": "text",
                 "slideImgOverlay": "0",
+                "slideImgBlur": "0",
                 "sectionStyle": "general",
                 "setting_blocks": {
                     "items": {

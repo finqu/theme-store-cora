@@ -1002,13 +1002,10 @@ body > #search-overlay {
             &.site-mobile-navigation-visible {
                 visibility: visible;
                 opacity: 1;
+                transform: translate3d(0,0,0);
             }
 
             &.site-mobile-navigation-active {
-
-                .site-mobile-navigation-overlay {
-                    background-color: rgba(0,0,0,.15);
-                }
 
                 .site-mobile-navigation-layer-root {
                     z-index: 10;
@@ -1079,14 +1076,14 @@ body > #search-overlay {
                         justify-content: space-between;
 
                         button[name="site-mobile-navigation-hide-layer"] {
-                            margin-right: spacer(2);
+                            margin-right: spacer(3);
                         }
 
                         .site-mobile-navigation-header-text {
                             font-family: $accent-font-family;
                             font-size: $font-size-base * 2;
                             flex-grow: 1;
-                            text-align: center;
+                            text-align: left;
                             margin-left: auto;
                             margin-right: auto;
                         }
@@ -1118,7 +1115,7 @@ body > #search-overlay {
                 .site-mobile-navigation-social-media-buttons-container {
                     display: flex;
                     flex-wrap: wrap;
-                    padding: spacer(4);
+                    padding: spacer(2) spacer(4);
                     box-shadow: 0px -6px 10px rgba(0, 0, 0, .05);
 
                     .social-media-btn {
@@ -1127,14 +1124,19 @@ body > #search-overlay {
                     }
                 }
             }
+        }
 
-            .site-mobile-navigation-overlay {
-                position: fixed;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                transition: background-color 195ms cubic-bezier(.4,0,1,1)
+        .site-mobile-navigation-overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: background-color 195ms cubic-bezier(.4,0,1,1);
+
+            &.site-mobile-navigation-overlay-active {
+                background-color: rgba(0,0,0,.15);
+                z-index: 5;
             }
         }
     }
