@@ -1,0 +1,38 @@
+{% comment %}
+    Renders a BreadcrumbList schema
+
+    Accepts:
+	- breadcrumbs: {Object} Breadcrumbs Liquid object (required)
+
+    Usage:
+    Render this snippet on category and product pages
+
+    {% render 'schemas/breadcrumb-list' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement":[
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"item":
+			{
+				"@id": "https://example.com/shoes",
+				"name": "Shoes"
+			}
+		},
+		{
+			"@type": "ListItem",
+			"position": 2,
+			"item":
+			{
+				"@id": "https://example.com/shoes/boots",
+				"name": "Boots"
+			}
+		}
+	]
+}
+</script>

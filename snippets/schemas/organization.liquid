@@ -1,0 +1,38 @@
+{% comment %}
+    Renders a Organization schema
+
+    Usage:
+    Render this snippet on every page
+
+    {% render 'schemas/organization' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Organization",
+	"url": "https://www.example.com",
+	"name": "Example Store",
+	"logo": "https://www.example.com/example.svg",
+	"sameAs": [
+		"https://www.facebook.com/brand/",
+		"https://twitter.com/brand",
+		"https://www.instagram.com/brand/",
+		"https://www.pinterest.co.uk/brand/",
+		"https://www.youtube.com/user/brand"
+	],
+	"contactPoint": [
+		{
+			"@type": "ContactPoint",
+			"telephone": "+X-XXX-XXX-XXX",
+			"contactType": "customer service"
+		}
+	],
+	"address": {
+		"addressCountry": "Country",
+		"postalCode": "XXXXX",
+		"addressRegion": "Region",
+		"addressLocality": "Locality"
+	}
+}
+</script>

@@ -1622,6 +1622,9 @@
 
 {% endif %}
 
+{% render 'schemas/product', product: product %}
+{% render 'schemas/breadcrumb-list', breadcrumb: product.breadcrumbs %}
+
 {% schema %}
 {
     "name": {

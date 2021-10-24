@@ -87,6 +87,8 @@
 
 	    </div>
 
+        {% render 'schemas/item-list', items: manufacturer.products, paginate: paginate %}
+
 	{%- endpaginate -%}
 
 {%- endcapture -%}

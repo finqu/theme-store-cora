@@ -1,0 +1,60 @@
+{% comment %}
+    Renders a Product schema
+
+    Accepts:
+	- product: {Object} Product Liquid object (required)
+
+    Usage:
+    Render this snippet on product page
+
+    {% render 'schemas/product' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org/",
+	"@type": "Product",
+	"name": "Ankle Boots Ana",
+	"image": [
+		"https://example.com/photos/4x2/photo.jpg",
+		"https://example.com/photos/16x9/photo.jpg"
+	],
+	"description": "The most comfortable ankle boots you've ever seen.",
+	"sku": "8888888888",
+	"mpn": "777777",
+	"brand": {
+		"@type": "Brand",
+		"name": "Ana"
+	},
+	"review": {
+		"@type": "Review",
+		"reviewRating": {
+			"@type": "Rating",
+			"ratingValue": "4",
+			"bestRating": "5"
+		},
+		"author": {
+			"@type": "Person",
+			"name": "Jane Doe"
+		}
+	},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.8",
+		"reviewCount": "64"
+	},
+	"offers": {
+		"@type": "Offer",
+		"url": "https://www.example.com/ankle-boots-ana.html",
+		"priceCurrency": "USD",
+		"price": "212.99",
+		"priceValidUntil": "2020-12-31",
+		"itemCondition": "https://schema.org/NewCondition,
+		"availability": "https://schema.org/InStock",
+		"seller": {
+			"@type": "Organization",
+			"name": "Example"
+		}
+	}
+}
+</script>

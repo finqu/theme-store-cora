@@ -1,0 +1,22 @@
+{% comment %}
+    Renders a Website schema
+
+    Usage:
+    Render this snippet on every page
+
+    {% render 'schemas/website' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"url":"https://www.example.com",
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": " https://www.example.com/catalogsearch/result/?q={search_term_string}",
+		"query": "required",
+		"query-input":"required name=search_term_string"
+	}
+}
+</script>

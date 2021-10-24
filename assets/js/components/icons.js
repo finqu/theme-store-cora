@@ -6,7 +6,7 @@ export default {
 	alignMiddleLight: 'assets/icon/light/shrink-vertical.svg',
 	alignBottomLight: 'assets/icon/light/move-down-1.svg',
 	angleLeftLight: 'assets/icon/light/arrow-left-1.svg',
-	angleRightLight: 'assets/icon/light/arrow-left-1.svg',
+	angleRightLight: 'assets/icon/light/arrow-right-1.svg',
 	CommonFileQuestionLight: 'assets/icon/light/common-file-question.svg',
 	LoadingHalfLight: 'assets/icon/light/loading-half.svg',
 	closeLight: 'assets/icon/light/close.svg',

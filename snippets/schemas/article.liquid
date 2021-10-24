@@ -1,0 +1,24 @@
+{% comment %}
+    Renders a Article schema
+
+    Accepts:
+	- article: {Object} Artticle Liquid object (required)
+
+    Usage:
+    Render this snippet on article page
+
+    {% render 'schemas/article' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Article",
+	"headline": "Headline",
+	"alternativeHeadline": "Subheading",
+	"image": "https://example.com/photos/4x2/photo.jpg",
+	"author": "Author",
+	"datePublished": "2014-03-16", // Iso format
+	"description": "Description"
+}
+</script>
