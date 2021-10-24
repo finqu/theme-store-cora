@@ -1,0 +1,960 @@
+{%- assign sectionTitle = section.settings.sectionTitle -%}
+{%- assign sectionTitleTag = section.settings.sectionTitleTag -%}
+{%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
+{%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
+{%- assign sectionHeaderTextAlign = section.settings.textAlign -%}
+{%- assign sectionContentContainer = 'fixed' -%}
+{%- assign sectionHeight = '' -%}
+{%- assign sectionHeightCustomTop = '' -%}
+{%- assign sectionHeightCustomBottom = '' -%}
+{%- assign videoSrc = '' -%}
+{%- assign videoType = 'video' -%}
+
+{%- if section.settings.videoSrc -%}
+
+    {%- if section.settings.videoSrc contains 'youtube.com' -%}
+
+        {%- assign videoType = 'iframe' -%}
+        {%- assign queryParams = section.settings.videoSrc | query_params -%}
+
+        {%- for item in queryParams -%}
+
+            {%- if item[0] == 'v' -%}
+                {%- assign videoId = item[1] -%}
+                {%- break -%}
+            {%- endif -%}
+
+        {%- endfor -%}
+
+        {%- if videoId -%}
+
+            {%- assign videoSrc = 'https://www.youtube-nocookie.com/embed/' | append: videoId -%}
+
+            {%- capture params -%}
+                autoplay={{ section.settings.videoAutoplay | yepnope: 1, 0 }}&rel=0&modestbranding=1&playsinline=1&controls={{ section.settings.videoControls | yepnope: 1, 0 }}
+            {%- endcapture -%}
+
+            {%- assign params = params | strip -%}
+            {%- assign videoSrc = videoSrc | build_query: params-%}
+
+        {%- endif -%}
+
+    {%- elsif section.settings.videoSrc contains 'vimeo.com' -%}
+
+        {%- assign videoType = 'iframe' -%}
+        {%- assign queryParams = section.settings.videoSrc | query_params -%}
+        {%- assign videoId = section.settings.videoSrc | regex: '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/' | last -%}
+
+        {%- if videoId -%}
+
+            {%- assign videoSrc = 'https://player.vimeo.com/video/' | append: videoId -%}
+
+            {%- capture params -%}
+                autoplay={{ section.settings.videoAutoplay | yepnope: 1, 0 }}&playsinline=0&controls={{ section.settings.videoControls | yepnope: 1, 0 }}
+            {%- endcapture -%}
+
+            {%- assign params = params | strip -%}
+            {%- assign videoSrc = videoSrc | build_query: params-%}
+
+        {%- endif -%}
+
+    {%- endif -%}
+
+{%- endif -%}
+
+{%- capture sectionContent -%}
+
+    {% if section.settings.videoLayout == 1 %}
+
+        <div class="row align-items-center">
+
+            <div class="col-12 col-md mb-4 mb-md-0">
+
+                {% render 'section-header', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
+
+                {% if section.settings.text %}
+
+                    <div class="text-{{ section.settings.textAlign }}{% if sectionTitle or sectionSubtitle %} mt-4{% endif %}">
+
+                        {{ section.settings.text }}
+
+                    </div>
+
+                {% endif %}
+
+                {% if section.settings.btnLabel %}
+
+                    <div class="text-{{ section.settings.textAlign }}">
+
+                        {% if section.settings.btnStyle == 'btn1' %}
+
+                            <a href="{{- section.settings.btnResource.url -}}" class="btn btn-section mt-3">
+                                {{- section.settings.btnLabel -}}
+                            </a>
+
+                        {% elsif section.settings.btnStyle == 'btn2' %}
+
+                            <a href="{{- section.settings.btnResource.url -}}" class="btn btn-outline-section mt-3">
+                                {{- section.settings.btnLabel -}}
+                            </a>
+
+                        {% else %}
+
+                            <a href="{{- section.settings.btnResource.url -}}" class="btn btn-link text-underline-indicator font-weight-bold mt-3">
+
+                                <span class="mr-2">
+                                    {{- section.settings.btnLabel -}}
+                                </span>
+
+                                {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="col-12 col-md">
+
+                {% if videoSrc %}
+
+                    {% if videoType == 'iframe' %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                          <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                            <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+
+                        </div>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <div class="aspect-ratio-16-9">
+
+                        <div class="aspect-ratio-container">
+
+                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    {% elsif section.settings.videoLayout == 2 %}
+
+        <div class="row align-items-center">
+
+            <div class="col-12 col-md mb-4 mb-md-0">
+
+                {% if videoSrc %}
+
+                    {% if videoType == 'iframe' %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                          <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                            <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+
+                        </div>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <div class="aspect-ratio-16-9">
+
+                        <div class="aspect-ratio-container">
+
+                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="col-12 col-md">
+
+                {% render 'section-header', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
+
+                {% if section.settings.text %}
+
+                    <div class="text-{{ section.settings.textAlign }}{% if sectionTitle or sectionSubtitle %} mt-4{% endif %}">
+
+                        {{ section.settings.text }}
+
+                    </div>
+
+                {% endif %}
+
+                {% if section.settings.btnLabel %}
+
+                    <div class="text-{{ section.settings.textAlign }}">
+
+                        {% if section.settings.btnStyle == 'btn1' %}
+
+                            <a href="{{- section.settings.btnResource.url -}}" class="btn btn-section mt-3">
+                                {{- section.settings.btnLabel -}}
+                            </a>
+
+                        {% elsif section.settings.btnStyle == 'btn2' %}
+
+                            <a href="{{- section.settings.btnResource.url -}}" class="btn btn-outline-section mt-3">
+                                {{- section.settings.btnLabel -}}
+                            </a>
+
+                        {% else %}
+
+                            <a href="{{- section.settings.btnResource.url -}}" class="btn btn-link text-underline-indicator font-weight-bold mt-3">
+
+                                <span class="mr-2">
+                                    {{- section.settings.btnLabel -}}
+                                </span>
+
+                                {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    {% elsif section.settings.videoLayout == 3 %}
+
+        {% render 'section-header', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
+
+        {% if section.settings.text %}
+
+            <div class="text-{{ section.settings.textAlign }}{% if sectionTitle or sectionSubtitle %} mt-4{% endif %}">
+
+                {{ section.settings.text }}
+
+            </div>
+
+        {% endif %}
+
+        {% if section.settings.btnLabel %}
+
+            <div class="text-{{ section.settings.textAlign }}">
+
+                {% if section.settings.btnStyle == 'btn1' %}
+
+                    <a href="{{- section.settings.btnResource.url -}}" class="btn btn-section mt-3">
+                        {{- section.settings.btnLabel -}}
+                    </a>
+
+                {% elsif section.settings.btnStyle == 'btn2' %}
+
+                    <a href="{{- section.settings.btnResource.url -}}" class="btn btn-outline-section mt-3">
+                        {{- section.settings.btnLabel -}}
+                    </a>
+
+                {% else %}
+
+                    <a href="{{- section.settings.btnResource.url -}}" class="btn btn-link text-underline-indicator font-weight-bold mt-3">
+
+                        <span class="mr-2">
+                            {{- section.settings.btnLabel -}}
+                        </span>
+
+                        {%- render 'icon', icon: 'regular/arrow-right', class: 'svg-icon-fw' -%}
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+        {% if videoSrc %}
+
+            {% if videoType == 'iframe' %}
+
+                <div class="mt-6 embed-responsive embed-responsive-16by9">
+
+                  <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+
+                </div>
+
+            {% else %}
+
+                <div class="mt-6 embed-responsive embed-responsive-16by9">
+
+                    <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+
+                </div>
+
+            {% endif %}
+
+        {% else %}
+
+            <div class="mt-6 aspect-ratio-16-9">
+
+                <div class="aspect-ratio-container">
+
+                    {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    {% elsif section.settings.videoLayout == 4 %}
+
+        {%- assign sectionContentContainer = 'none' -%}
+        {%- assign sectionHeight = 'custom' -%}
+        {%- assign sectionHeightCustomTop = '0' -%}
+        {%- assign sectionHeightCustomBottom = '0' -%}
+
+        {% if videoSrc %}
+
+            {% if videoType == 'iframe' %}
+
+                <div class="embed-responsive embed-responsive-16by9">
+
+                    <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+
+                </div>
+
+            {% else %}
+
+                <div class="embed-responsive embed-responsive-16by9">
+
+                    <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+
+                </div>
+
+            {% endif %}
+
+        {% else %}
+
+            <div class="aspect-ratio-16-9">
+
+                <div class="aspect-ratio-container">
+
+                    {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+
+{%- endcapture -%}
+
+{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: sectionContentContainer, sectionHeight: sectionHeight, sectionHeightCustomTop: sectionHeightCustomTop, sectionHeightCustomBottom: sectionHeightCustomBottom %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Video",
+        "fi": "Video"
+    },
+    "tag": "section",
+    "class": "section section-video",
+    "category": "theme-basic",
+    "settings": {
+        "list_type": "tabs",
+        "groups": [
+            {
+                "title": {
+                    "en": "Content",
+                    "fi": "Sisältö"
+                },
+                "settings": [
+                    {
+                        "id": "videoLayout",
+                        "type": "select",
+                        "label": {
+                            "en": "Layout",
+                            "fi": "Asettelu"
+                        },
+                        "default": "1",
+                        "options": [
+                            {
+                                "value": "1",
+                                "label": {
+                                    "en": "Layout 1",
+                                    "fi": "Asettelu 1"
+                                }
+                            },
+                            {
+                                "value": "2",
+                                "label": {
+                                    "en": "Layout 2",
+                                    "fi": "Asettelu 2"
+                                }
+                            },
+                            {
+                                "value": "3",
+                                "label": {
+                                    "en": "Layout 3",
+                                    "fi": "Asettelu 3"
+                                }
+                            },
+                            {
+                                "value": "4",
+                                "label": {
+                                    "en": "Layout 4",
+                                    "fi": "Asettelu 4"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "videoSrc",
+                        "type": "text",
+                        "label": {
+                            "en": "Video URL",
+                            "fi": "Videon URL-osoite"
+                        }
+                    },
+                    {
+                        "id": "videoControls",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show controls",
+                            "fi": "Näytä säätimet"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "videoAutoplay",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Autoplay",
+                            "fi": "Automaattinen toisto"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "sectionTitle",
+                        "type": "text",
+                        "label": {
+                            "en": "Title",
+                            "fi": "Otsikko"
+                        }
+                    },
+                    {
+                        "id": "sectionTitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Heading SEO priority",
+                            "fi": "Otsikon SEO-prioriteetti"
+                        },
+                        "default": "h2",
+                        "options": [
+                            {
+                                "value": "h1",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "h2",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ],
+                        "conditions": ["sectionTitle:length gt 0"]
+                    },
+                    {
+                        "id": "sectionSubtitle",
+                        "type": "text",
+                        "label": {
+                            "en": "Subtitle",
+                            "fi": "Alaotsikko"
+                        }
+                    },
+                    {
+                        "id": "sectionSubtitleTag",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Subtitle SEO priority",
+                            "fi": "Alaotsikon SEO-prioriteetti"
+                        },
+                        "default": "h3",
+                        "options": [
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ],
+                        "conditions": ["sectionSubtitle:length gt 0"]
+                    },
+                    {
+                        "id": "textAlign",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Text align",
+                            "fi": "Tekstin tasaus"
+                        },
+                        "default": "center",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "{# icon.alignLeftLight #}"
+                            },
+                            {
+                                "value": "center",
+                                "label": "{# icon.alignCenterLight #}"
+                            },
+                            {
+                                "value": "right",
+                                "label": "{# icon.alignRightLight #}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "text",
+                        "type": "richtext",
+                        "label": {
+                            "en": "Text",
+                            "fi": "Teksti"
+                        }
+                    },
+                    {
+                        "id": "btnLabel",
+                        "type": "text",
+                        "label": {
+                            "en": "Button label",
+                            "fi": "Napin teksti"
+                        }
+                    },
+                    {
+                        "id": "btnResource",
+                        "type": "url",
+                        "label": {
+                            "en": "Button link",
+                            "fi": "Napin linkki"
+                        }
+                    },
+                    {
+                        "id": "btnStyle",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Button style",
+                            "fi": "Napin tyyli"
+                        },
+                        "default": "btn1",
+                        "options": [
+                            {
+                                "value": "btn1",
+                                "label": {
+                                    "en": "Button 1",
+                                    "fi": "Nappi 1"
+                                }
+                            },
+                            {
+                                "value": "btn2",
+                                "label": {
+                                    "en": "Button 2",
+                                    "fi": "Nappi 2"
+                                }
+                            },
+                            {
+                                "value": "link",
+                                "label": {
+                                    "en": "Link",
+                                    "fi": "Linkki"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": {
+                    "en": "Section",
+                    "fi": "Osio"
+                },
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Layout",
+                                "fi": "Näkymä"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        },
+                                        {
+                                            "value": "custom",
+                                            "label": "{# icon.pencilRegular #}"
+                                        }
+                                    ],
+                                    "conditions": ["!videoLayout eq 4"]
+                                },
+                                {
+                                    "id": "sectionHeightCustomTop",
+                                    "label": {
+                                        "en": "Top height",
+                                        "fi": "Yläosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionHeightCustomBottom",
+                                    "label": {
+                                        "en": "Bottom height",
+                                        "fi": "Alaosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 5,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Inner spacing",
+                                        "fi": "Sisäinen tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content width",
+                                        "fi": "Sisällön leveys"
+                                    },
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content alignment",
+                                        "fi": "Sisällön ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Background",
+                                "fi": "Tausta"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": {
+                                        "en": "Image",
+                                        "fi": "Kuva"
+                                    }
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Image position",
+                                        "fi": "Kuvan sijainti"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "left-top",
+                                            "label": {
+                                                "en": "Left Top",
+                                                "fi": "Vasemmalla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": {
+                                                "en": "Left Center",
+                                                "fi": "Vasemmalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": {
+                                                "en": "Left Bottom",
+                                                "fi": "Vasemmalla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": {
+                                                "en": "Right Top",
+                                                "fi": "Oikealla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": {
+                                                "en": "Right Center",
+                                                "fi": "Oikealla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": {
+                                                "en": "Right Bottom",
+                                                "fi": "Oikealla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": {
+                                                "en": "Center Top",
+                                                "fi": "Keskellä ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": {
+                                                "en": "Center Center",
+                                                "fi": "Keskellä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": {
+                                                "en": "Center Bottom",
+                                                "fi": "Keskellä alhaalla"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": {
+                                        "en": "Overlay",
+                                        "fi": "Taustan tummuus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "%"
+                                },
+                                {
+                                    "id": "sectionBgImgBlur",
+                                    "label": {
+                                        "en": "Blur",
+                                        "fi": "Taustan sumeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 10,
+                                    "step": 1,
+                                    "default": "0",
+                                    "unit": " "
+                                },
+                                {
+                                    "id": "sectionContentBgColorStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Enable content background",
+                                        "fi": "Näytä sisällön tausta"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "sectionContentBgColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Content background color",
+                                        "fi": "Sisällön taustaväri"
+                                    },
+                                    "default": "#ffffff",
+                                    "conditions": ["sectionContentBgColorStatus:truthy eq true"]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Colors",
+                                "fi": "Värit"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "general"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "presets": [
+        {
+            "category": "theme-basic",
+            "settings": {
+                "videoLayout": "2",
+                "videoSrc": "",
+                "videoControls": false,
+                "videoAutoplay": false,
+                "sectionTitle": "Lorem ipsum dolor sit",
+                "sectionTitleTag": "h2",
+                "sectionSubtitle": "Lorem ipsum dolor sit",
+                "sectionSubtitleTag": "h3",
+                "textAlign": "left",
+                "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.<\/p>",
+                "btnLabel": null,
+                "btnResource": null,
+                "btnStyle": "btn1",
+                "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
+                "sectionInnerSpacing": "",
+                "sectionContentWidth": "12",
+                "sectionContentAlign": "center",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
+                "sectionBgImgOverlay": "0",
+                "sectionBgImgBlur": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general"
+            }
+        }
+    ]
+}
+{% endschema %}
