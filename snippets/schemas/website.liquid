@@ -11,12 +11,12 @@
 {
 	"@context": "http://schema.org",
 	"@type": "WebSite",
-	"url":"https://www.example.com",
+	"url":"{{ request.protocol }}{{ request.host }}",
 	"potentialAction": {
 		"@type": "SearchAction",
-		"target": " https://www.example.com/catalogsearch/result/?q={search_term_string}",
+		"target": "{{ request.protocol }}{{ request.host }}{{ routes.search_url }}?q={q}",
 		"query": "required",
-		"query-input":"required name=search_term_string"
+		"query-input": "required name=q"
 	}
 }
 </script>

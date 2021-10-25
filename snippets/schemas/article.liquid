@@ -14,11 +14,10 @@
 {
 	"@context": "http://schema.org",
 	"@type": "Article",
-	"headline": "Headline",
-	"alternativeHeadline": "Subheading",
-	"image": "https://example.com/photos/4x2/photo.jpg",
-	"author": "Author",
-	"datePublished": "2014-03-16", // Iso format
-	"description": "Description"
+	"headline": "{{ article.title }}",
+	"image": "{{ article.header_image | asset_url }}",
+	"datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+	"dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}",
+	"description": "{{ article.summary | default: article.content | strip_html | truncate: 140 | default: '' }}"
 }
 </script>

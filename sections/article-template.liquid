@@ -67,7 +67,7 @@
             {% if session.logged_in == false and article.comments_require_account %}
 
                 <p>
-                    <a href="{{ 'login' | link }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
+                    <a href="{{ 'login' | page_url }}">{{ 'blog.comment_login' | t }}</a> {{ 'blog.comment_login_subtext' | t }}
                 </p>
 
             {% else %}

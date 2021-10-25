@@ -51,13 +51,13 @@
 
 						            {%- if forloop.last == true -%}
 
-						            	<a href="{{ breadcrumb | link }}" class="item-link">
+						            	<a href="{{ breadcrumb | page_url }}" class="item-link">
 						            		{{ breadcrumb.name }}
 						            	</a>
 
 						            {%- else -%}
 
-						                <a href="{{ breadcrumb | link }}" class="item-link">
+						                <a href="{{ breadcrumb | page_url }}" class="item-link">
 						                	{{ breadcrumb.name }}
 						                </a>
 

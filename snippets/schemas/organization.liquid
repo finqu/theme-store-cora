@@ -11,9 +11,9 @@
 {
 	"@context": "http://schema.org",
 	"@type": "Organization",
-	"url": "https://www.example.com",
-	"name": "Example Store",
-	"logo": "https://www.example.com/example.svg",
+	"url": "{{ request.protocol }}{{ request.host }}",
+	"name": "{{ store.name }}",
+	"logo": "{{ store.logo | asset_url }}",
 	"sameAs": [
 		"https://www.facebook.com/brand/",
 		"https://twitter.com/brand",

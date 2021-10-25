@@ -3,36 +3,40 @@
 
     Accepts:
 	- breadcrumbs: {Object} Breadcrumbs Liquid object (required)
+	- currentItem: {Object} Product Liquid object (required on product page)
 
     Usage:
     Render this snippet on category and product pages
 
     {% render 'schemas/breadcrumb-list' %}
 {% endcomment %}
-
 <script type="application/ld+json">
 {
 	"@context": "http://schema.org",
 	"@type": "BreadcrumbList",
-	"itemListElement":[
+	"itemListElement": [
+		{%- for breadcrumb in breadcrumbs -%}
 		{
 			"@type": "ListItem",
-			"position": 1,
+			"position": {{ forloop.index }},
 			"item":
 			{
-				"@id": "https://example.com/shoes",
-				"name": "Shoes"
+				"@id": "{{ request.protocol }}{{ request.host }}{{ breadcrumb | page_url }}",
+				"name": "{{ breadcrumb.name }}"
 			}
-		},
+		}{% if forloop.last != true %},{% elsif currentItem and forloop.last %},{% endif %}
+		{%- if currentItem and forloop.last -%}
 		{
 			"@type": "ListItem",
-			"position": 2,
+			"position": {{ forloop.index | plus: 1 }},
 			"item":
 			{
-				"@id": "https://example.com/shoes/boots",
-				"name": "Boots"
+				"@id": "{{ request.protocol }}{{ request.host }}{{ currentItem | page_url }}",
+				"name": "{{ currentItem.name }}"
 			}
 		}
+		{%- endif -%}
+		{%- endfor -%}
 	]
 }
 </script>

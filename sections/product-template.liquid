@@ -747,7 +747,7 @@
 
                         <div class="product-manufacturer">
 
-                            <a href="{{ product.manufacturer | link }}" class="product-manufacturer-text h3">
+                            <a href="{{ product.manufacturer | page_url }}" class="product-manufacturer-text h3">
                                 {{ product.manufacturer.name }}
                             </a>
 
@@ -941,7 +941,7 @@
 
                                     <div class="product-related-item">
 
-                                        <a href="{{ relatedItem | link }}">
+                                        <a href="{{ relatedItem | page_url }}">
 
                                             <div class="product-related-item-media aspect-ratio-product">
 
@@ -1623,7 +1623,7 @@
 {% endif %}
 
 {% render 'schemas/product', product: product %}
-{% render 'schemas/breadcrumb-list', breadcrumb: product.breadcrumbs %}
+{% render 'schemas/breadcrumb-list', breadcrumbs: product.breadcrumbs, currentItem: product %}
 
 {% schema %}
 {
