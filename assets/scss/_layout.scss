@@ -56,45 +56,48 @@ body.template-frontpage {
 
             &.site-header-layout-6 {
 
-                &.has-announcement {
+                @include media-breakpoint-up(lg) {
 
-                    .site-header-container {
-                        top: 49px;
+                    &.has-announcement {
+
+                        .site-header-container {
+                            top: 48px;
+                        }
                     }
-                }
 
-                &.has-klarna-banner {
+                    &.has-klarna-banner {
 
-                    .site-header-container {
-                        top: 43px;
+                        .site-header-container {
+                            top: 41px;
+                        }
                     }
-                }
 
-                &.has-announcement.has-klarna-banner {
+                    &.has-announcement.has-klarna-banner {
+
+                        .site-announcement-container {
+                            top: 41px;
+                        }
+
+                        .site-header-container {
+                            top: 89px;
+                        }
+                    }
 
                     .site-announcement-container {
-                        top: 42px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        height: 48px;
                     }
 
-                    .site-header-container {
-                        top: 89px;
+                    .site-klarna-banner {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        height: 41px;
                     }
-                }
-
-                .site-announcement-container {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    height: 48px;
-                }
-
-                .site-klarna-banner {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    height: 41px;
                 }
 
                 .site-header-container {
@@ -133,45 +136,48 @@ body.template-frontpage {
 
             &.site-header-layout-7 {
 
-                &.has-announcement {
+                @include media-breakpoint-up(lg) {
 
-                    .site-header-container {
-                        top: 49px;
+                    &.has-announcement {
+
+                        .site-header-container {
+                            top: 48px;
+                        }
                     }
-                }
 
-                &.has-klarna-banner {
+                    &.has-klarna-banner {
 
-                    .site-header-container {
-                        top: 43px;
+                        .site-header-container {
+                            top: 41px;
+                        }
                     }
-                }
 
-                &.has-announcement.has-klarna-banner {
+                    &.has-announcement.has-klarna-banner {
+
+                        .site-announcement-container {
+                            top: 41px;
+                        }
+
+                        .site-header-container {
+                            top: 89px;
+                        }
+                    }
 
                     .site-announcement-container {
-                        top: 42px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        height: 48px;
                     }
 
-                    .site-header-container {
-                        top: 89px;
+                    .site-klarna-banner {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        height: 41px;
                     }
-                }
-
-                .site-announcement-container {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    height: 48px;
-                }
-
-                .site-klarna-banner {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    height: 41px;
                 }
 
                 .site-header-container {
