@@ -102,13 +102,11 @@
 
                             {% if imgSrc %}
 
-                                <picture>
-                                    <img
-                                        alt="{{ store.name }}"
-                                        data-src="{{ imgSrc | thumb: imgSize }}"
-                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                        class="lazy d-block mx-auto img-fluid site-header-logo">
-                                </picture>
+                                <img
+                                    alt="{{ store.name }}"
+                                    src="{{ imgSrc | thumb: imgSize }}"
+                                    srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                    class="d-block img-fluid site-header-logo">
 
                             {% else %}
 

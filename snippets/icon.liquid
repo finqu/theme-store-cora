@@ -4,9 +4,21 @@
 	Accepts:
 	- icon: {String} Name of icon (required)
 	- class: {String} Classes
+	- lazy: {Boolean} Lazyload icon with javascript
 
 	Usage:
 	{% render 'icon', icon: icon, class: class %}
 {% endcomment %}
 
-<img src="{{ request.asset_url }}/assets/icon/{{ icon }}.svg" class="svg-inline{% if class %} {{ class }}{% endif %}" alt="">
+{%- if lazy -%}
+
+	<img src="{{ request.asset_url }}/assets/icon/{{ icon }}.svg" class="svg-inline{% if class %} {{ class }}{% endif %}" alt="">
+
+{%- else -%}
+
+	{%- capture path -%}assets/icon/{{- icon -}}{%- endcapture -%}
+	{%- capture class -%}svg-icon{% if class %} {{ class }}{% endif %}{%- endcapture -%}
+
+	{{- path | svg_tag: class -}}
+
+{%- endif -%}

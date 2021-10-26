@@ -31,20 +31,23 @@ export default class App {
 			this.data.translations = dotize.convert(this.data.translations);
 		}
 
-		this.loadedImgs = [];
+		this.lazyLoadedItems = [];
 		this.cart = new Cart();
 		this.icons = icons;
 		this.lazyLoad = new LazyLoad({
             show_while_loading: true,
             callback_loading: function (el) {
 
-                picturefill({
-                    elements: [el]
-                });
+            	if (el.tagName === 'IMG') {
 
-                objectFitImages(el);
+	                picturefill({
+	                    elements: [el]
+	                });
 
-                self.loadedImgs.push(el);
+	                objectFitImages(el);
+	            }
+
+                self.lazyLoadedItems.push(el);
             },
             callback_error: function (el) {
 
@@ -295,7 +298,7 @@ export default class App {
 
 				        			this.lazyLoad.update();
 
-				        		} else if (!this.loadedImgs.includes(el)) {
+				        		} else if (!this.lazyLoadedItems.includes(el)) {
 
 						        	objectFitImages(el);
 				        		}
@@ -319,7 +322,7 @@ export default class App {
 
         	} else {
 
-	        	if (!this.loadedImgs.includes(el)) {
+	        	if (!this.lazyLoadedItems.includes(el)) {
 	        		objectFitImages(el);
 	        	}
 	        }

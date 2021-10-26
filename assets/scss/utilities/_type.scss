@@ -114,6 +114,7 @@ hr {
 
 .list-separator {
 	display: inline-flex;
+	margin-bottom: 0;
 	@include list-unstyled();
 
 	.list-inline-item {

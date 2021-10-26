@@ -62,6 +62,44 @@
 
             <div class="col-12 col-md mb-4 mb-md-0">
 
+                {% if videoSrc %}
+
+                    {% if videoType == 'iframe' %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                          <iframe class="lazy embed-responsive-item" data-src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                            <video class="lazy embed-responsive-item" data-src="{{ videoSrc }}"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+
+                        </div>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <div class="aspect-ratio-16-9">
+
+                        <div class="aspect-ratio-container">
+
+                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="col-12 col-md">
+
                 {% render 'section-header', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
 
                 {% if section.settings.text %}
@@ -102,44 +140,6 @@
                             </a>
 
                         {% endif %}
-
-                    </div>
-
-                {% endif %}
-
-            </div>
-
-            <div class="col-12 col-md">
-
-                {% if videoSrc %}
-
-                    {% if videoType == 'iframe' %}
-
-                        <div class="embed-responsive embed-responsive-16by9">
-
-                          <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
-
-                        </div>
-
-                    {% else %}
-
-                        <div class="embed-responsive embed-responsive-16by9">
-
-                            <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
-
-                        </div>
-
-                    {% endif %}
-
-                {% else %}
-
-                    <div class="aspect-ratio-16-9">
-
-                        <div class="aspect-ratio-container">
-
-                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
-
-                        </div>
 
                     </div>
 
@@ -155,44 +155,6 @@
 
             <div class="col-12 col-md mb-4 mb-md-0">
 
-                {% if videoSrc %}
-
-                    {% if videoType == 'iframe' %}
-
-                        <div class="embed-responsive embed-responsive-16by9">
-
-                          <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
-
-                        </div>
-
-                    {% else %}
-
-                        <div class="embed-responsive embed-responsive-16by9">
-
-                            <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
-
-                        </div>
-
-                    {% endif %}
-
-                {% else %}
-
-                    <div class="aspect-ratio-16-9">
-
-                        <div class="aspect-ratio-container">
-
-                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
-
-                        </div>
-
-                    </div>
-
-                {% endif %}
-
-            </div>
-
-            <div class="col-12 col-md">
-
                 {% render 'section-header', sectionTitle: sectionTitle, sectionSubtitle: sectionSubtitle, sectionHeaderTextAlign: sectionHeaderTextAlign, sectionContentContainer: 'none' %}
 
                 {% if section.settings.text %}
@@ -233,6 +195,44 @@
                             </a>
 
                         {% endif %}
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="col-12 col-md">
+
+                {% if videoSrc %}
+
+                    {% if videoType == 'iframe' %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                          <iframe class="lazy embed-responsive-item" data-src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="embed-responsive embed-responsive-16by9">
+
+                            <video class="lazy embed-responsive-item" data-src="{{ videoSrc }}"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+
+                        </div>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <div class="aspect-ratio-16-9">
+
+                        <div class="aspect-ratio-container">
+
+                            {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
+
+                        </div>
 
                     </div>
 
@@ -295,7 +295,7 @@
 
                 <div class="mt-6 embed-responsive embed-responsive-16by9">
 
-                  <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+                  <iframe class="lazy embed-responsive-item" data-src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
 
                 </div>
 
@@ -303,7 +303,7 @@
 
                 <div class="mt-6 embed-responsive embed-responsive-16by9">
 
-                    <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+                    <video class="lazy embed-responsive-item" data-src="{{ videoSrc }}"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
 
                 </div>
 
@@ -336,7 +336,7 @@
 
                 <div class="embed-responsive embed-responsive-16by9">
 
-                    <iframe class="embed-responsive-item" src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="lazy embed-responsive-item" data-src="{{ videoSrc }}" frameborder="0" allowfullscreen></iframe>
 
                 </div>
 
@@ -344,7 +344,7 @@
 
                 <div class="embed-responsive embed-responsive-16by9">
 
-                    <video src="{{ videoSrc }}" class="embed-responsive-item"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
+                    <video class="lazy embed-responsive-item" data-src="{{ videoSrc }}"{% if section.settings.videoControls %} controls{% endif %}{% if section.settings.videoAutoplay %} autoplay{% endif %}></video>
 
                 </div>
 
@@ -919,7 +919,7 @@
         {
             "category": "theme-basic",
             "settings": {
-                "videoLayout": "2",
+                "videoLayout": "1",
                 "videoSrc": "",
                 "videoControls": false,
                 "videoAutoplay": false,
