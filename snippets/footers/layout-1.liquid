@@ -283,19 +283,79 @@
 
                     {% endif %}
 
-                    <div class="site-footer-bottom-cookie-settings mt-3">
+                    <div class="site-footer-bottom-items mt-4">
 
-                        <button type="button" class="btn btn-link text-section" data-cookie-policy-open>
-                            {{ 'cookie_policy.cookie_settings' | t }}
-                        </button>
+                        <div class="row">
 
-                    </div>
+                            <div class="col-12 col-md">
 
-                    <div class="site-footer-bottom-power-by-text">
+                                <ul class="list-separator">
 
-                        <a target="_blank" rel="nofollow noopener" class="text-section" href="https://www.finqu.fi?utm_campaign=poweredby&utm_medium=finqu&utm_source=onlinestore">
-                            Powered by Finqu
-                        </a>
+                                    <li class="list-inline-item">
+
+                                        <button type="button" class="btn btn-link text-section" data-cookie-policy-open>
+                                            {{ 'cookie_policy.cookie_settings' | t }}
+                                        </button>
+
+                                    </li>
+
+                                    <li class="list-inline-item">
+
+                                        <a target="_blank" rel="nofollow noopener" class="text-section" href="https://www.finqu.fi?utm_campaign=poweredby&utm_medium=finqu&utm_source=onlinestore">
+                                            Powered by Finqu
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                            {% if store.published_locales.size > 1 or store.enabled_currencies.size > 1 %}
+
+                                <div class="col-12 col-md site-footer-localization text-md-right mt-3 mt-md-0">
+
+                                    {% form 'localization', customer id: 'site-localization-form' %}
+
+                                        {% if store.published_locales.size > 1 %}
+
+                                            <select name="locale_code" class="site-localization-locale-select">
+
+                                                {% for locale in store.published_locales %}
+                                                    <option value="{{ locale.iso_code }}"{% if locale.iso_code == request.locale.iso_code %} selected{% endif %}>
+                                                        {{ locale.name }}
+                                                    </option>
+                                                {% endfor %}
+
+                                            </select>
+
+                                            {%- render 'icon', icon: 'regular/arrow-down-1', class: 'ml-2' -%}
+
+                                        {% endif %}
+
+                                        {% if store.enabled_currencies.size > 1 %}
+
+                                            <select name="currency_code" class="site-localization-currency-select ml-4">
+
+                                                {% for currency in store.enabled_currencies %}
+                                                    <option value="{{ currency.iso_code }}"{% if currency.iso_code == store.currency.iso_code %} selected{% endif %}>
+                                                        {{ currency.name }}
+                                                    </option>
+                                                {% endfor %}
+
+                                            </select>
+
+                                            {%- render 'icon', icon: 'regular/arrow-down-1', class: 'ml-2' -%}
+
+                                        {% endif %}
+
+                                    {% endform %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
 
                     </div>
 

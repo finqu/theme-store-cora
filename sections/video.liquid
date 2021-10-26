@@ -16,15 +16,7 @@
 
         {%- assign videoType = 'iframe' -%}
         {%- assign queryParams = section.settings.videoSrc | query_params -%}
-
-        {%- for item in queryParams -%}
-
-            {%- if item[0] == 'v' -%}
-                {%- assign videoId = item[1] -%}
-                {%- break -%}
-            {%- endif -%}
-
-        {%- endfor -%}
+        {%- assign videoId = queryParams.v -%}
 
         {%- if videoId -%}
 

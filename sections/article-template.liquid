@@ -10,12 +10,26 @@
 
 {%- capture sectionSubtitle -%}
 
-	<i class="small"><time datetime="{{ article.published_at | date: "%F" }}">{{ article.published_at | date: dateFormat }}</time></i>
+    <ul class="list-separator small">
 
-    {% if settings.blogShowAuthor and article.author %}
-        <span class="small ml-1">|</span>
-        <span class="small ml-1">{{ article.author }}</span>
-    {% endif %}
+        <li class="article-date list-inline-item">
+
+            {% assign format = 'general.date_format' | t  %}
+            <i><time datetime="{{ article.published_at | date: "%F" }}">{{ article.published_at | date: dateFormat }}</time></i>
+
+        </li>
+
+        {% if settings.blogShowAuthor and article.author %}
+
+            <li class="article-author list-inline-item">
+
+                {{ article.author }}
+
+            </li>
+
+        {% endif %}
+
+    </ul>
 
 {%- endcapture -%}
 

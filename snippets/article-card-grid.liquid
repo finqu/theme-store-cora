@@ -112,22 +112,26 @@
 
 		<div class="article-info">
 
-			<span class="article-date">
+			<ul class="list-separator">
 
-                {% assign format = 'general.date_format' | t  %}
-                <i><time datetime="{{ articlePublishDate | date: "%F" }}">{{ articlePublishDate | date:format }}</time></i>
+                <li class="article-date list-inline-item">
 
-            </span>
+                    {% assign format = 'general.date_format' | t  %}
+            		<i><time datetime="{{ articlePublishDate | date: "%F" }}">{{ articlePublishDate | date:format }}</time></i>
 
-            {% if settings.blogShowAuthor and article.author %}
+                </li>
 
-            	<span class="ml-1">|</span>
+                {% if settings.blogShowAuthor and article.author %}
 
-	            <span class="article-author">
-	            	{{ article.author }}
-	            </span>
+	                <li class="article-author list-inline-item">
 
-		    {% endif %}
+	                    {{ article.author }}
+
+	                </li>
+
+                {% endif %}
+
+            </ul>
 
 		</div>
 

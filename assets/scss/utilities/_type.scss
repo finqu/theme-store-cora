@@ -1,4 +1,4 @@
-// Text
+// Type
 // -----------------------------------------------------------------------------------------
 
 @include section-style() {
@@ -110,4 +110,29 @@ hr {
 
 .text-shadow {
 	text-shadow: 1px 1px 0px rgb(0 0 0 / 10%);
+}
+
+.list-separator {
+	display: inline-flex;
+	@include list-unstyled();
+
+	.list-inline-item {
+		display: inline-flex;
+		align-items: center;
+
+		& + .list-inline-item::before {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			font-size: .80em;
+			content: '|';
+			margin-left: spacer(3);
+			margin-right: spacer(3);
+		}
+
+		&:not(:last-child) {
+			margin-right: 0;
+		}
+	}
 }

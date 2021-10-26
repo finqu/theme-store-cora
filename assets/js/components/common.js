@@ -21,6 +21,10 @@ export default {
             this.initBackToTopButton();
         }
 
+        if (bodyEl.querySelector('#site-localization-form')) {
+            this.initLocalization();
+        }
+
         if (!bodyEl.classList.contains('template-password')) {
             this.initMobileNavigation();
             this.initSiteHeader();
@@ -1661,5 +1665,25 @@ export default {
                 scrollTop: 0
             }, 800);
         });
+    },
+    initLocalization: function() {
+
+        const localizationFormEl = document.querySelector('#site-localization-form');
+        const localeSelectEl = localizationFormEl.querySelector('.site-localization-locale-select');
+        const currencySelectEl = localizationFormEl.querySelector('.site-localization-currency-select');
+
+        if (localeSelectEl) {
+
+            localeSelectEl.addEventListener('change', e => {
+                localizationFormEl.submit();
+            });
+        }
+
+        if (currencySelectEl) {
+
+            currencySelectEl.addEventListener('change', e => {
+                localizationFormEl.submit();
+            });
+        }
     }
 }
