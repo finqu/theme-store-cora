@@ -11,10 +11,13 @@
 {
 	"@context": "http://schema.org",
 	"@type": "WebSite",
-	"url":"{{ request.protocol }}{{ request.host }}",
+	{%- if store.name -%}
+	"name": "{{ store.name }}",
+	{%- endif -%}
+	"url": "{{ routes.root_url | full_url }}",
 	"potentialAction": {
 		"@type": "SearchAction",
-		"target": "{{ request.protocol }}{{ request.host }}{{ routes.search_url }}?q={q}",
+		"target": "{{ routes.search_url | full_url }}?q={q}",
 		"query": "required",
 		"query-input": "required name=q"
 	}

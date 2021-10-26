@@ -395,7 +395,7 @@
             </div>
 
             {% render 'pagination', paginate: paginate %}
-            {% render 'schemas/item-list', items: category.products, paginate: paginate %}
+            {% render 'schemas/itemlist', items: category.products, paginate: paginate %}
 
         </div>
 
@@ -601,7 +601,7 @@
 
 {% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs %}
 
-{% render 'schemas/breadcrumb-list', breadcrumbs: sectionBreadcrumbs, currentItem: currentCategory %}
+{% render 'schemas/breadcrumblist', breadcrumbs: sectionBreadcrumbs, currentItem: currentCategory %}
 
 {% schema %}
 {

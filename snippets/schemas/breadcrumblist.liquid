@@ -8,8 +8,9 @@
     Usage:
     Render this snippet on category and product pages
 
-    {% render 'schemas/breadcrumb-list' %}
+    {% render 'schemas/breadcrumblist' %}
 {% endcomment %}
+
 <script type="application/ld+json">
 {
 	"@context": "http://schema.org",
@@ -19,9 +20,8 @@
 		{
 			"@type": "ListItem",
 			"position": {{ forloop.index }},
-			"item":
-			{
-				"@id": "{{ request.protocol }}{{ request.host }}{{ breadcrumb | page_url }}",
+			"item": {
+				"@id": "{{ breadcrumb | page_url | full_url }}",
 				"name": "{{ breadcrumb.name }}"
 			}
 		}{% if forloop.last != true %},{% elsif currentItem and forloop.last %},{% endif %}
@@ -29,9 +29,8 @@
 		{
 			"@type": "ListItem",
 			"position": {{ forloop.index | plus: 1 }},
-			"item":
-			{
-				"@id": "{{ request.protocol }}{{ request.host }}{{ currentItem | page_url }}",
+			"item": {
+				"@id": "{{ currentItem | page_url | full_url }}",
 				"name": "{{ currentItem.name }}"
 			}
 		}

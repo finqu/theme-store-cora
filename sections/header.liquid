@@ -1,4 +1,4 @@
-{%- assign mainMenu = linklists[section.settings.menu] -%}
+{%- assign mobileMenu = linklists[section.settings.mobileMenu] -%}
 
 {%- if section.settings.announcementStatus and section.settings.announcementText -%}
     <style>
@@ -99,7 +99,7 @@
 
     </div>
 
-    <div class="site-mobile-header-container{% if section.settings.stickyHeader %} site-mobile-header-sticky{% endif %}">
+    <div class="site-mobile-header-container{% if section.settings.stickyMobileHeader %} site-mobile-header-sticky{% endif %}">
 
         <div class="site-mobile-header">
 
@@ -151,7 +151,7 @@
                                     alt="{{ store.name }}"
                                     data-src="{{ imgSrc | thumb: imgSize }}"
                                     data-srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                    class="lazy d-block mx-auto img-fluid site-mobile-header-logo">
+                                    class="lazy d-block img-fluid site-mobile-header-logo">
                             </picture>
 
                         {% else %}
@@ -338,7 +338,7 @@
 
         {% endif %}
 
-        {% for item in mainMenu.links %}
+        {% for item in mobileMenu.links %}
 
             {% if item.links %}
 
@@ -542,7 +542,7 @@
 
                 {% endif %}
 
-                {% for item in mainMenu.links %}
+                {% for item in mobileMenu.links %}
 
                     <li class="site-mobile-navigation-menu-item{% if item.active %} site-mobile-navigation-menu-item-active{% endif %}">
 
@@ -608,6 +608,10 @@
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
     {%- endif -%}
 
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+    {%- endif -%}
+
     {%- render 'headers/layout-1', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
 
 {%- elsif section.settings.headerLayout == '2' -%}
@@ -616,6 +620,10 @@
 
     {%- if section.settings.announcementStatus and section.settings.announcementText -%}
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
+    {%- endif -%}
+
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
     {%- endif -%}
 
     {%- render 'headers/layout-2', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -628,6 +636,10 @@
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
     {%- endif -%}
 
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+    {%- endif -%}
+
     {%- render 'headers/layout-3', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses, search: search -%}
 
 {%- elsif section.settings.headerLayout == '4' -%}
@@ -636,6 +648,10 @@
 
     {%- if section.settings.announcementStatus and section.settings.announcementText -%}
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
+    {%- endif -%}
+
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
     {%- endif -%}
 
     {%- render 'headers/layout-4', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -648,6 +664,10 @@
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
     {%- endif -%}
 
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+    {%- endif -%}
+
     {%- render 'headers/layout-5', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
 
 {%- elsif section.settings.headerLayout == '6' -%}
@@ -658,6 +678,10 @@
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
     {%- endif -%}
 
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+    {%- endif -%}
+
     {%- render 'headers/layout-6', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
 
 {%- elsif section.settings.headerLayout == '7' -%}
@@ -666,6 +690,10 @@
 
     {%- if section.settings.announcementStatus and section.settings.announcementText -%}
         {%- assign sectionClasses = sectionClasses | append: ' has-announcement' -%}
+    {%- endif -%}
+
+    {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
+        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
     {%- endif -%}
 
     {%- render 'headers/layout-7', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -791,6 +819,30 @@
                         ]
                     },
                     {
+                        "id": "logoImgSrc",
+                        "type": "image-picker",
+                        "label": {
+                            "en": "Logo",
+                            "fi": "Logo"
+                        }
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Navigation",
+                            "fi": "Navigointi"
+                        }
+                    },
+                    {
+                        "id": "menu",
+                        "type": "menu",
+                        "label": {
+                            "en": "Menu",
+                            "fi": "Navigaatio"
+                        },
+                        "default": "main"
+                    },
+                    {
                         "id": "stickyHeader",
                         "type": "checkbox",
                         "label": {
@@ -818,23 +870,6 @@
                         "default": false
                     },
                     {
-                        "id": "menu",
-                        "type": "menu",
-                        "label": {
-                            "en": "Menu",
-                            "fi": "Navigaatio"
-                        },
-                        "default": "main"
-                    },
-                    {
-                        "id": "logoImgSrc",
-                        "type": "image-picker",
-                        "label": {
-                            "en": "Logo",
-                            "fi": "Logo"
-                        }
-                    },
-                    {
                         "type": "spacer"
                     },
                     {
@@ -843,6 +878,24 @@
                             "en": "Mobile navigation",
                             "fi": "Mobiilinavigointi"
                         }
+                    },
+                    {
+                        "id": "mobileMenu",
+                        "type": "menu",
+                        "label": {
+                            "en": "Menu",
+                            "fi": "Navigaatio"
+                        },
+                        "default": "main"
+                    },
+                    {
+                        "id": "stickyMobileHeader",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Sticky header",
+                            "fi": "Leijuva ylätunniste"
+                        },
+                        "default": false
                     },
                     {
                         "id": "addProductCategoriesToMobileNavigation",

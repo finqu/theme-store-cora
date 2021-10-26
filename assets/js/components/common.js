@@ -144,13 +144,20 @@ export default {
             const el = stickyHeaderEl;
             const elOffsetTop = el.offsetTop;
             const elOffsetHeight = el.offsetHeight;
+            const requiresAdjust = window.getComputedStyle(stickyHeaderEl).position !== 'absolute' ? true : false;
 
             if (reset) {
+
                 el.classList.remove('is-sticky');
-                document.body.style.paddingTop = null;
+
+                if (document.body.style.paddingTop) {
+                    document.body.style.paddingTop = null;
+                }
             }
 
             const eHandler = () => {
+
+                const elOffsetHeight = el.offsetHeight;
 
                 if (window.scrollY >= elOffsetTop) {
 
@@ -158,13 +165,18 @@ export default {
 
                         el.classList.add('is-sticky');
 
-                        document.body.style.paddingTop = elOffsetHeight+'px';
+                        if (requiresAdjust) {
+                            document.body.style.paddingTop = elOffsetHeight+'px';
+                        }
                     }
 
                 } else {
 
                     el.classList.remove('is-sticky');
-                    document.body.style.paddingTop = null;
+
+                    if (document.body.style.paddingTop) {
+                        document.body.style.paddingTop = null;
+                    }
                 }
             };
 
@@ -546,10 +558,15 @@ export default {
             const el = stickyHeaderEl;
             const elOffsetTop = el.offsetTop;
             const elOffsetHeight = el.offsetHeight;
+            const requiresAdjust = window.getComputedStyle(stickyHeaderEl).position !== 'absolute' ? true : false;
 
             if (reset) {
+
                 el.classList.remove('is-sticky');
-                document.body.style.paddingTop = null;
+
+                if (document.body.style.paddingTop) {
+                    document.body.style.paddingTop = null;
+                }
             }
 
             const eHandler = () => {
@@ -560,17 +577,20 @@ export default {
 
                     if (!el.classList.contains('is-sticky')) {
 
-                        let paddingAmount = elOffsetHeight;
-
                         el.classList.add('is-sticky');
 
-                        document.body.style.paddingTop = paddingAmount+'px';
+                        if (requiresAdjust) {
+                            document.body.style.paddingTop = elOffsetHeight+'px';
+                        }
                     }
 
                 } else {
 
                     el.classList.remove('is-sticky');
-                    document.body.style.paddingTop = null;
+
+                    if (document.body.style.paddingTop) {
+                        document.body.style.paddingTop = null;
+                    }
                 }
             };
 

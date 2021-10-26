@@ -1,0 +1,39 @@
+{% comment %}
+    Renders a BlogPosting schema
+
+    Accepts:
+	- article: {Object} Article Liquid object (required)
+
+    Usage:
+    Render this snippet on article page
+
+    {% render 'schemas/blogposting' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "BlogPosting",
+	{%- if article.title -%}
+	"headline": "{{ article.title }}",
+	{%- endif -%}
+	{%- if article.header_image -%}
+	"image": "{{ article.header_image | asset_url }}",
+	{%- endif -%}
+	{%- if store.name -%}
+	"author": {
+		"@type": "Organization",
+		"name": "{{ store.name | truncate: 100 }}",
+		"url": "{{ routes.root_url | full_url }}"
+	},
+	{%- endif -%}
+	"datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+	"dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}"{%- if article.summary or article.content -%},{%- endif -%}
+	{%- if article.summary or article.content -%}
+	"description": "{{ article.summary | default: article.content | strip_html | truncate: 140 }}"{%- if article.content -%},{%- endif -%}
+	{%- endif -%}
+	{%- if article.content -%}
+	"articleBody": "{{ article.content | strip_html }}"
+	{%- endif -%}
+}
+</script>

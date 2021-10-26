@@ -10,51 +10,100 @@
     {% render 'schemas/product' %}
 {% endcomment %}
 
+{%- capture imageArr -%}
+    {%- for image in product.images -%}
+	{{- image.original | asset_url -}},
+	{%- endfor -%}
+	{%- if product.attributes -%}
+	{%- for attribute in product.attributes -%}
+	{%- for option in attribute.options -%}
+	{%- if option.image -%}
+	{{- option.image | asset_url -}},
+	{%- endif -%}
+	{%- if option.subattribute -%}
+	{%- for option in option.subattribute.options -%}
+	{%- if option.image -%}
+	{{- option.image | asset_url -}},
+	{%- endif -%}
+	{%- endfor -%}
+	{%- endif -%}
+	{%- endfor -%}
+	{%- endfor -%}
+	{%- endif -%}
+{%- endcapture -%}
+
+{%- assign imageArr = imageArr | strip | split: ',' | compact -%}
+
 <script type="application/ld+json">
 {
 	"@context": "https://schema.org/",
 	"@type": "Product",
-	"name": "Ankle Boots Ana",
+	{%- if product.name -%}
+	"name": "{{ product.name }}",
+	{%- endif -%}
+	{%- if imageArr -%}
 	"image": [
-		"https://example.com/photos/4x2/photo.jpg",
-		"https://example.com/photos/16x9/photo.jpg"
+	{%- for item in imageArr -%}
+		"{{- item | strip -}}"{% unless forloop.last %},{% endunless %}
+	{%- endfor -%}
 	],
-	"description": "The most comfortable ankle boots you've ever seen.",
-	"sku": "8888888888",
-	"mpn": "777777",
+	{%- endif -%}
+	{%- if product.short_description or product.description -%}
+	"description": "{{ product.short_description | default: product.description | strip_html | truncate: 140 | default: '' }}",
+	{%- endif -%}
+	{%- if product.gtin -%}
+	"gtin": "{{ product.gtin }}",
+	{%- endif -%}
+	{%- if product.model -%}
+	"sku": "{{ product.model }}",
+	{%- endif -%}
+	{%- if product.manufacturer -%}
 	"brand": {
 		"@type": "Brand",
-		"name": "Ana"
+		"name": "{{ product.manufacturer.name }}"
 	},
-	"review": {
-		"@type": "Review",
-		"reviewRating": {
-			"@type": "Rating",
-			"ratingValue": "4",
-			"bestRating": "5"
-		},
-		"author": {
-			"@type": "Person",
-			"name": "Jane Doe"
-		}
-	},
+	{%- endif -%}
+	{%- if product.review_count > 0 -%}
+	"review": [
+		{%- for review in product.reviews -%}
+		{
+			"@type": "Review",
+			"reviewRating": {
+				"@type": "Rating",
+				"ratingValue": "{{ review.rating }}",
+				"worstRating": "1",
+				"bestRating": "{{ product.max_rating }}"
+			}{%- if review.name or review.title -%},
+			"reviewBody": "{{ review.review }}",
+			"datePublished": "{{ review.created_at | date: '%Y-%m-%d' }}",
+			"author": {
+				"@type": "Person",
+				"name": "{{ review.name | truncate: 100, '' | default: review.title | truncate: 100, '' }}"
+			}
+			{%- endif -%}
+		}{% unless forloop.last %},{% endunless %}
+		{%- endfor -%}
+	],
 	"aggregateRating": {
 		"@type": "AggregateRating",
-		"ratingValue": "4.8",
-		"reviewCount": "64"
+		"ratingValue": "{{ product.rating }}",
+		"reviewCount": "{{ product.review_count }}"
 	},
+	{%- endif -%}
 	"offers": {
 		"@type": "Offer",
-		"url": "https://www.example.com/ankle-boots-ana.html",
-		"priceCurrency": "USD",
-		"price": "212.99",
-		"priceValidUntil": "2020-12-31",
-		"itemCondition": "https://schema.org/NewCondition,
-		"availability": "https://schema.org/InStock",
+		"url": "{{ product | page_url | full_url }}",
+		"priceCurrency": "{{ store.currency.iso_code }}",
+		"price": "{{ product.price }}",
+		{%- if product.has_discount and product.discount_information and product.discount_information.ends | date: '%s' > 'now' | date: '%s' -%}
+		"priceValidUntil": "{{ product.discount_information.ends | date: '%Y-%m-%d' }}",
+		{%- endif -%}
+		"availability": "https://schema.org/{% if product.in_stock %}InStock{% else %}OutOfStock{% endif %}"{%- if store.name -%},
 		"seller": {
 			"@type": "Organization",
-			"name": "Example"
+			"name": "{{ store.name }}"
 		}
+		{%- endif -%}
 	}
 }
 </script>

@@ -8,8 +8,9 @@
     Usage:
     Render this snippet on category and blog pages
 
-    {% render 'schemas/item-list' %}
+    {% render 'schemas/itemlist' %}
 {% endcomment %}
+
 {%- if paginate -%}
 	{%- assign index = paginate.current_offset -%}
 {%- endif -%}
@@ -26,7 +27,7 @@
 		{
 			"@type": "ListItem",
 			"position": {% if paginate %}{{ index }}{% else %}{{ forloop.index }}{% endif %},
-			"url": "{{ request.protocol }}{{ request.host }}{{ item | page_url }}"
+			"url": "{{ item | page_url | full_url }}"
 		}{% unless forloop.last %},{% endunless %}
 		{%- endfor -%}
 	]

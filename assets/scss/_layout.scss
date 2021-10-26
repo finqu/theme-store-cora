@@ -59,7 +59,25 @@ body.template-frontpage {
                 &.has-announcement {
 
                     .site-header-container {
-                        top: 48px;
+                        top: 49px;
+                    }
+                }
+
+                &.has-klarna-banner {
+
+                    .site-header-container {
+                        top: 43px;
+                    }
+                }
+
+                &.has-announcement.has-klarna-banner {
+
+                    .site-announcement-container {
+                        top: 42px;
+                    }
+
+                    .site-header-container {
+                        top: 89px;
                     }
                 }
 
@@ -69,6 +87,14 @@ body.template-frontpage {
                     top: 0;
                     right: 0;
                     height: 48px;
+                }
+
+                .site-klarna-banner {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    height: 41px;
                 }
 
                 .site-header-container {
@@ -110,7 +136,25 @@ body.template-frontpage {
                 &.has-announcement {
 
                     .site-header-container {
-                        top: 48px;
+                        top: 49px;
+                    }
+                }
+
+                &.has-klarna-banner {
+
+                    .site-header-container {
+                        top: 43px;
+                    }
+                }
+
+                &.has-announcement.has-klarna-banner {
+
+                    .site-announcement-container {
+                        top: 42px;
+                    }
+
+                    .site-header-container {
+                        top: 89px;
                     }
                 }
 
@@ -120,6 +164,14 @@ body.template-frontpage {
                     top: 0;
                     right: 0;
                     height: 48px;
+                }
+
+                .site-klarna-banner {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    height: 41px;
                 }
 
                 .site-header-container {
@@ -582,7 +634,7 @@ body > #search-overlay {
 
         .site-klarna-banner {
             z-index: 5;
-            min-height: 41px;
+            height: 41px;
 
             &.klarna-theme-light {
                 background-color: #eae7e4;
@@ -1237,6 +1289,7 @@ body > #search-overlay {
 
                 .site-footer-payment-method {
                     display: inline-flex;
+                    margin: spacer(2);
 
                     img {
                         max-width: 100%;
