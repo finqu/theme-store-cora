@@ -45,20 +45,18 @@
                                                 {{ assign 'imgSize' '70,70' }}
                                             {{/ifCond}}
 
-                                            <picture>
-                                                <img
-                                                    alt="{{ item.name }}"
-                                                    data-src="{{> image src=@root.imgSrc size=@root.imgSize }}"
-                                                    data-srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
-                                                    class="lazy d-block mx-auto img-fluid aspect-ratio-item">
-                                            </picture>
+                                            <img
+                                                alt="{{ item.name }}"
+                                                src="{{> image src=@root.imgSrc size=@root.imgSize }}"
+                                                srcset="{{> image src=@root.imgSrc size=@root.imgSize }} 1x, {{> image src=@root.imgSrc size=@root.imgSize scale='2x' }} 2x"
+                                                class="d-block mx-auto img-fluid aspect-ratio-item">
 
                                         {{else}}
 
                                             <img
-                                                class="lazy d-block mx-auto img-fluid aspect-ratio-item svg-placeholder"
                                                 alt="{{ item.name }}"
-                                                data-src="{{> placeholder_svg type='image' base64=true }}">
+                                                src="{{> placeholder_svg type='image' base64=true }}"
+                                                class="d-block mx-auto img-fluid aspect-ratio-item svg-placeholder">
 
                                         {{/if}}
 
