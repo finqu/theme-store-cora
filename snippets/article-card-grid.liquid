@@ -112,12 +112,22 @@
 
 		<div class="article-info">
 
-			 <span class="article-date">
+			<span class="article-date">
 
                 {% assign format = 'general.date_format' | t  %}
                 <i><time datetime="{{ articlePublishDate | date: "%F" }}">{{ articlePublishDate | date:format }}</time></i>
 
             </span>
+
+            {% if settings.blogShowAuthor and article.author %}
+
+            	<span class="ml-1">|</span>
+
+	            <span class="article-author">
+	            	{{ article.author }}
+	            </span>
+
+		    {% endif %}
 
 		</div>
 

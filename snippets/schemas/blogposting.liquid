@@ -20,7 +20,13 @@
 	{%- if article.header_image -%}
 	"image": "{{ article.header_image | asset_url }}",
 	{%- endif -%}
-	{%- if store.name -%}
+	{%- if settings.blogShowAuthor and article.author -%}
+	"author": {
+		"@type": "Person",
+		"name": "{{ article.author | truncate: 100 }}",
+		"url": "{{ article.user.homepage | default: routes.root_url | full_url }}"
+	},
+	{%- elsif store.name -%}
 	"author": {
 		"@type": "Organization",
 		"name": "{{ store.name | truncate: 100 }}",

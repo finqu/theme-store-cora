@@ -9,10 +9,18 @@
 {%- endif -%}
 
 {%- capture sectionSubtitle -%}
-	<i><time datetime="{{ article.published_at | date: "%F" }}">{{ article.published_at | date: dateFormat }}</time></i>
+
+	<i class="small"><time datetime="{{ article.published_at | date: "%F" }}">{{ article.published_at | date: dateFormat }}</time></i>
+
+    {% if settings.blogShowAuthor and article.author %}
+        <span class="small ml-1">|</span>
+        <span class="small ml-1">{{ article.author }}</span>
+    {% endif %}
+
 {%- endcapture -%}
 
 {%- assign sectionSubtitle = sectionSubtitle -%}
+{%- assign sectionSubtitleTag = 'div' -%}
 
 {%- capture sectionContent -%}
 
@@ -140,7 +148,7 @@
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag %}
 
 {% render 'schemas/blogposting', article: article %}
 

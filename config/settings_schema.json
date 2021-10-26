@@ -1563,6 +1563,25 @@
 						"fi": "Takaisin alkuun -painike"
 					},
 					"default": true
+				},
+				{
+					"type": "spacer"
+				},
+				{
+					"type": "title",
+					"label": {
+						"en": "Blog",
+						"fi": "Blogi"
+					}
+				},
+				{
+					"id": "blogShowAuthor",
+					"type": "checkbox",
+					"label": {
+						"en": "Show author",
+						"fi": "Näytä kirjoittaja"
+					},
+					"default": false
 				}
 			]
 		},
