@@ -211,10 +211,10 @@ export default {
             const siteHeaderCartEl = containerEl.querySelector('.site-header-cart');
             const siteHeaderLogoImgEl = containerEl.querySelector('.site-header-logo');
             const siteHeaderActionsContainerEl = containerEl.querySelector('.site-header-actions-container');
-            const iconsToLoad = siteHeaderActionsContainerEl.querySelectorAll('.svg-inline').length;
+            const iconsToLoad = siteHeaderActionsContainerEl.querySelectorAll('.svg-lazy').length;
             let iconsLoaded = 0;
 
-            if (siteHeaderLogoImgEl) {
+            if (siteHeaderLogoImgEl && siteHeaderLogoImgEl.contains('svg-lazy')) {
 
                 const logoObserver = new MutationObserver((mutations) => {
 
@@ -247,38 +247,48 @@ export default {
                 siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
             }
 
-            const iconObserver = new MutationObserver((mutations) => {
+            if (iconsToLoad > 0) {
 
-                for (const { addedNodes } of mutations) {
+                const iconObserver = new MutationObserver((mutations) => {
 
-                    for (const node of addedNodes) {
+                    for (const { addedNodes } of mutations) {
 
-                        if (node.tagName && node.nodeType === 1) {
+                        for (const node of addedNodes) {
 
-                            if (node.hasAttribute('data-inject-url')) {
+                            if (node.tagName && node.nodeType === 1) {
 
-                                iconsLoaded++;
+                                if (node.hasAttribute('data-inject-url')) {
 
-                                if (iconsLoaded == iconsToLoad) {
+                                    iconsLoaded++;
 
-                                    const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
+                                    if (iconsLoaded == iconsToLoad) {
 
-                                    siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
+                                        const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
-                                    iconObserver.disconnect();
+                                        siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
 
-                                    break;
+                                        iconObserver.disconnect();
+
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
+                });
 
-            iconObserver.observe(siteHeaderActionsContainerEl, {
-                childList: true,
-                subtree: true
-            });
+                iconObserver.observe(siteHeaderActionsContainerEl, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+
+            if ((!siteHeaderLogoImgEl || !siteHeaderLogoImgEl.contains('svg-lazy')) || iconsToLoad == 0) {
+
+                const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
+
+                siteHeaderCartContainerEl.style.top = siteHeaderCartContainerOffset + 1 + 'px';
+            }
 
             const delay = 500;
             let delayTimer = null;
@@ -1628,7 +1638,7 @@ export default {
 
         containerEl.insertAdjacentHTML('beforeend',`
             <button type="button" id="back-to-top-btn" class="d-none">
-                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.arrowUpRegular}" class="svg-inline" alt="">
+                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.arrowUpRegular}" class="svg-inline svg-lazy" alt="">
             </button>
         `);
 

@@ -48,15 +48,15 @@ export default class Gallery {
 			        <div class="pswp__ui pswp__ui--hidden">
 
 			            <button type="button" class="btn" name="gallery-close">
-			            	<img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.closeLight}" class="svg-inline" alt="">
+			            	<img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.closeLight}" class="svg-inline svg-lazy" alt="">
 			            </button>
 
 			            <button type="button" class="btn" name="gallery-prev">
-			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleLeftLight}" class="svg-inline" alt="">
+			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleLeftLight}" class="svg-inline svg-lazy" alt="">
 			            </button>
 
 			            <button type="button" class="btn" name="gallery-next">
-			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleRightLight}" class="svg-inline" alt="">
+			                <img src="${themeApp.data.routes.assetUrl+'/'+themeApp.icons.angleRightLight}" class="svg-inline svg-lazy" alt="">
 			            </button>
 
 			        </div>

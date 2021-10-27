@@ -12,7 +12,7 @@
 
 {%- if lazy -%}
 
-	<img src="{{ request.asset_url }}/assets/icon/{{ icon }}.svg" class="svg-inline{% if class %} {{ class }}{% endif %}" alt="">
+	<img src="{{ request.asset_url }}/assets/icon/{{ icon }}.svg" class="svg-inline svg-lazy{% if class %} {{ class }}{% endif %}" alt="">
 
 {%- else -%}
 
