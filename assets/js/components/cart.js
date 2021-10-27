@@ -190,13 +190,22 @@ export default class Cart {
                 let obj = {};
 
                 obj.item_id = item.id;
-                obj.item_name = item.name;
-                obj.item_brand = item.manufacturer;
-                obj.item_variant = item.attribute_label;
                 obj.price = item.price;
                 obj.quantity = item.quantity;
 
-                if (item.category_path.length > 0) {
+                if (item.name) {
+                    obj.item_name = item.name;
+                }
+
+                if (item.manufacturer) {
+                    obj.item_brand = item.manufacturer;
+                }
+
+                if (item.attribute_label) {
+                    obj.item_variant = item.attribute_label;
+                }
+
+                if (item.category_path) {
 
                     item.category_path.forEach((categoryName, i) => {
 
@@ -535,13 +544,22 @@ export default class Cart {
                 let obj = {};
 
                 obj.item_id = lastItem.id;
-                obj.item_name = lastItem.name;
-                obj.item_brand = lastItem.manufacturer;
-                obj.item_variant = lastItem.attribute_label;
                 obj.price = lastItem.price;
                 obj.quantity = lastItem.quantity;
 
-                if (lastItem.category_path.length > 0) {
+                if (lastItem.name) {
+                    obj.item_name = lastItem.name;
+                }
+
+                if (lastItem.manufacturer) {
+                    obj.item_brand = lastItem.manufacturer;
+                }
+
+                if (lastItem.attribute_label) {
+                    obj.item_variant = lastItem.attribute_label;
+                }
+
+                if (lastItem.category_path) {
 
                     lastItem.category_path.forEach((categoryName, i) => {
 
@@ -629,13 +647,22 @@ export default class Cart {
                 let obj = {};
 
                 obj.item_id = itemToBeRemoved.id;
-                obj.item_name = itemToBeRemoved.name;
-                obj.item_brand = itemToBeRemoved.manufacturer;
-                obj.item_variant = itemToBeRemoved.attribute_label;
                 obj.price = itemToBeRemoved.price;
                 obj.quantity = itemToBeRemoved.quantity;
 
-                if (itemToBeRemoved.category_path.length > 0) {
+                if (itemToBeRemoved.name) {
+                    obj.item_name = itemToBeRemoved.name;
+                }
+
+                if (itemToBeRemoved.manufacturer) {
+                    obj.item_brand = itemToBeRemoved.manufacturer;
+                }
+
+                if (itemToBeRemoved.attribute_label) {
+                    obj.item_variant = itemToBeRemoved.attribute_label;
+                }
+
+                if (itemToBeRemoved.category_path) {
 
                     itemToBeRemoved.category_path.forEach((categoryName, i) => {
 
