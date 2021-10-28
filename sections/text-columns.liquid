@@ -10,9 +10,9 @@
 
                 {% if item.settings.imgAspectRatio != 'off' %}
 
-                    <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
+                    {% if item.settings.imgPlaceholder and imgSrc == '' %}
 
-                        {% if item.settings.imgPlaceholder and imgSrc == '' %}
+                        <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
 
                             <div class="aspect-ratio-container" data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
 
@@ -24,7 +24,11 @@
 
                             </div>
 
-                        {% elsif imgSrc %}
+                        </div>
+
+                    {% elsif imgSrc %}
+
+                        <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
 
                             {% if item.settings.imgAspectRatio == '16:9' %}
 
@@ -119,9 +123,9 @@
 
                             </div>
 
-                        {% endif %}
+                        </div>
 
-                    </div>
+                    {% endif %}
 
                 {% else %}
 
@@ -702,7 +706,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         },
                         "A024a4fb-7d95-49d0-9016-73820b1d3902": {
@@ -713,7 +717,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         },
                         "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
@@ -724,7 +728,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         }
                     }
@@ -756,7 +760,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         },
                         "B024a4fb-7d95-49d0-9016-73820b1d3902": {
@@ -767,7 +771,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         }
                     }
@@ -800,7 +804,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         },
                         "A024a4fb-7d95-49d0-9016-73820b1d3902": {
@@ -812,7 +816,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         },
                         "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
@@ -824,7 +828,7 @@
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
-                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>"
                             }
                         }
                     }

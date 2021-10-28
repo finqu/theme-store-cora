@@ -1,5 +1,5 @@
 {%- assign defaultBtnLabel = 'system.placeholder_text' | t -%}
-{%- assign btnLabel = block.settings.btnLabel | default: defaultBtnLabel -%}
+{%- assign btnLabel = block.settings.btnLabel | default: 'Button label' -%}
 
 {%- case block.settings.contentAlign -%}
     {% when 'left' %}

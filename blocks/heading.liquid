@@ -1,5 +1,4 @@
-{%- assign defaultTitle = 'system.placeholder_text' | t -%}
-{%- assign title = block.settings.title | default: defaultTitle -%}
+{%- assign title = block.settings.title | default: 'Heading' -%}
 
 {%- render 'section-header', sectionTitle: title, sectionTitleTag: block.settings.titleTag, sectionHeaderTextAlign: block.settings.textAlign, sectionSubtitle: block.settings.subtitle, sectionSubtitleTag: block.settings.subtitleTag, sectionContentContainer: 'none' -%}
 

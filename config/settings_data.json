@@ -1727,261 +1727,10 @@
         }
     },
     "presets": [
-        {
-            "id": "1",
+        "default": {
+            "id": "default",
             "name": "Default",
             "default": true,
-            "templates": {
-                "frontpage": {
-                    "sections": [
-                        {
-                            "id": "92c800c0da1d0aee57d41ba5afa3792c",
-                            "name": "custom",
-                            "settings": {
-                                "sectionHeight": "xl",
-                                "sectionInnerSpacing": "",
-                                "sectionContentWidth": "12",
-                                "sectionContentAlign": "center",
-                                "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1575561723050-3a69691d9700?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=85",
-                                "sectionBgImgPos": "center-center",
-                                "sectionBgImgOverlay": "30",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "darkest"
-                            },
-                            "blocks": [
-                                {
-                                    "id": "275e33d0219b2b6bc6dcc110a1f827ce",
-                                    "name": "heading",
-                                    "settings": {
-                                        "titleTag": "h2",
-                                        "title": "Lorem ipsum dolor",
-                                        "subtitle": null,
-                                        "textAlign": "center"
-                                    }
-                                },
-                                {
-                                    "id": "c22fb5460c8e079f9a17bc698b87b3e0",
-                                    "name": "text",
-                                    "settings": {
-                                        "richtextHtml": "<p style=\"text-align: center;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.<\/p>"
-                                    }
-                                },
-                                {
-                                    "id": "7b34528f310283312dc270da387dcabb",
-                                    "name": "button",
-                                    "settings": {
-                                        "btnLabel": "Lorem ipsum dolor",
-                                        "btnResource": null,
-                                        "openInNewWindowStatus": true,
-                                        "contentAlign": "center"
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "id": "5ccd31d19390585f8bf5b38b5165ca9a",
-                            "name": "product-list",
-                            "settings": {
-                                "sectionTitle": "Lorem ipsum dolor sit amet",
-                                "sectionSubtitle": "Lorem ipsum dolor sit amet",
-                                "sectionHeaderTextAlign": "center",
-                                "listType": "new",
-                                "tagId": "",
-                                "resource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
-                                },
-                                "itemAmount": "8",
-                                "itemsPerRow": "4",
-                                "showBadges": true,
-                                "showManufacturer": true,
-                                "showProductName": true,
-                                "showPricing": true,
-                                "sectionHeight": "",
-                                "sectionInnerSpacing": "",
-                                "sectionBgImgSrc": "",
-                                "sectionBgImgPos": "left-top",
-                                "sectionBgImgOverlay": "0",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "general"
-                            },
-                            "blocks": []
-                        },
-                        {
-                            "id": "8fe1266f5c41014a155c4438d6292e09",
-                            "name": "image-text",
-                            "settings": {
-                                "contentColumnArrangement": "6,6",
-                                "contentImgSide": "left",
-                                "contentImgAlign": "middle",
-                                "contentImgAlt": null,
-                                "contentImgEffect": "none",
-                                "contentRichtextAlign": "middle",
-                                "contentBtnLabel": null,
-                                "contentBtnResource": null,
-                                "contentImgSrc": "",
-                                "contentImgPlaceholder": true,
-                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
-                                "sectionHeight": "",
-                                "sectionInnerSpacing": "",
-                                "sectionContentSpacing": "",
-                                "sectionContentWidth": "12",
-                                "sectionContentAlign": "center",
-                                "sectionBgImgSrc": null,
-                                "sectionBgImgPos": "",
-                                "sectionBgImgOverlay": "0",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "general"
-                            },
-                            "blocks": []
-                        },
-                        {
-                            "id": "34ac58d39213280f40aaa76fcff57ced",
-                            "name": "image-text",
-                            "settings": {
-                                "contentImgPlaceholder": true,
-                                "contentColumnArrangement": "6,6",
-                                "contentImgSide": "right",
-                                "contentImgAlign": "middle",
-                                "contentImgAlt": "",
-                                "contentImgEffect": "none",
-                                "contentRichtextAlign": "middle",
-                                "contentBtnLabel": "",
-                                "contentBtnResource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
-                                },
-                                "contentImgSrc": "",
-                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
-                                "sectionHeight": "",
-                                "sectionInnerSpacing": "",
-                                "sectionContentSpacing": "",
-                                "sectionContentWidth": "12",
-                                "sectionContentAlign": "center",
-                                "sectionBgImgSrc": "",
-                                "sectionBgImgPos": "left-top",
-                                "sectionBgImgOverlay": "0",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "general"
-                            },
-                            "blocks": []
-                        },
-                        {
-                            "id": "bf9427edc15060b617ca582ee14b94b4",
-                            "name": "text-columns",
-                            "settings": {
-                                "sectionHeight": "",
-                                "sectionInnerSpacing": "",
-                                "sectionContentSpacing": "",
-                                "sectionContentWidth": "12",
-                                "sectionContentAlign": "center",
-                                "sectionBgImgSrc": "",
-                                "sectionBgImgPos": "left-top",
-                                "sectionBgImgOverlay": "0",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "general",
-                                "setting_blocks": {
-                                    "items": {
-                                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgSrc": "",
-                                                "imgAlt": "",
-                                                "imgPlaceholder": true,
-                                                "imgEffect": "none",
-                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                                            }
-                                        },
-                                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgSrc": "",
-                                                "imgAlt": "",
-                                                "imgPlaceholder": true,
-                                                "imgEffect": "none",
-                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                                            }
-                                        },
-                                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgSrc": "",
-                                                "imgAlt": "",
-                                                "imgPlaceholder": true,
-                                                "imgEffect": "none",
-                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "blocks": []
-                        }
-                    ]
-                },
-                "cart": {
-                    "sections": [
-                        {
-                            "name": "cart-template",
-                            "id": "cart-template",
-                            "blocks": [],
-                            "settings": [],
-                            "sticky": true
-                        }
-                    ]
-                },
-                "search": {
-                    "sections": [
-                        {
-                            "name": "search-template",
-                            "id": "search-template",
-                            "blocks": [],
-                            "settings": [],
-                            "sticky": true
-                        }
-                    ]
-                },
-                "password": {
-                    "sections": [
-                        {
-                            "name": "password-template",
-                            "id": "password-template",
-                            "blocks": [],
-                            "settings": [],
-                            "sticky": true
-                        }
-                    ]
-                },
-                "manufacturer": {
-                    "sections": [
-                        {
-                            "name": "manufacturer-template",
-                            "id": "manufacturer-template",
-                            "blocks": [],
-                            "settings": {
-                                "itemsPerRow": "4",
-                                "showBadges": true,
-                                "showManufacturer": true,
-                                "showProductName": true,
-                                "showPricing": true
-                            },
-                            "sticky": true
-                        }
-                    ]
-                }
-            },
             "settings": {
                 "styles": {
                     "general": {
@@ -2486,6 +2235,257 @@
                 "youtubePageUrl": "",
                 "sectionBgImgPosition": "center-center"
             },
+            "templates": {
+                "frontpage": {
+                    "sections": [
+                        {
+                            "id": "92c800c0da1d0aee57d41ba5afa3792c",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "xl",
+                                "sectionInnerSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1575561723050-3a69691d9700?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=85",
+                                "sectionBgImgPos": "center-center",
+                                "sectionBgImgOverlay": "30",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "darkest"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "275e33d0219b2b6bc6dcc110a1f827ce",
+                                    "name": "heading",
+                                    "settings": {
+                                        "titleTag": "h2",
+                                        "title": "Lorem ipsum dolor",
+                                        "subtitle": null,
+                                        "textAlign": "center"
+                                    }
+                                },
+                                {
+                                    "id": "c22fb5460c8e079f9a17bc698b87b3e0",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p style=\"text-align: center;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.<\/p>"
+                                    }
+                                },
+                                {
+                                    "id": "7b34528f310283312dc270da387dcabb",
+                                    "name": "button",
+                                    "settings": {
+                                        "btnLabel": "Lorem ipsum dolor",
+                                        "btnResource": null,
+                                        "openInNewWindowStatus": true,
+                                        "contentAlign": "center"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "5ccd31d19390585f8bf5b38b5165ca9a",
+                            "name": "product-list",
+                            "settings": {
+                                "sectionTitle": "Lorem ipsum dolor sit amet",
+                                "sectionSubtitle": "Lorem ipsum dolor sit amet",
+                                "sectionHeaderTextAlign": "center",
+                                "listType": "new",
+                                "tagId": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "itemAmount": "8",
+                                "itemsPerRow": "4",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "8fe1266f5c41014a155c4438d6292e09",
+                            "name": "image-text",
+                            "settings": {
+                                "contentColumnArrangement": "6,6",
+                                "contentImgSide": "left",
+                                "contentImgAlign": "middle",
+                                "contentImgAlt": null,
+                                "contentImgEffect": "none",
+                                "contentRichtextAlign": "middle",
+                                "contentBtnLabel": null,
+                                "contentBtnResource": null,
+                                "contentImgSrc": "",
+                                "contentImgPlaceholder": true,
+                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionContentSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": null,
+                                "sectionBgImgPos": "",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "34ac58d39213280f40aaa76fcff57ced",
+                            "name": "image-text",
+                            "settings": {
+                                "contentImgPlaceholder": true,
+                                "contentColumnArrangement": "6,6",
+                                "contentImgSide": "right",
+                                "contentImgAlign": "middle",
+                                "contentImgAlt": "",
+                                "contentImgEffect": "none",
+                                "contentRichtextAlign": "middle",
+                                "contentBtnLabel": "",
+                                "contentBtnResource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "contentImgSrc": "",
+                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionContentSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "bf9427edc15060b617ca582ee14b94b4",
+                            "name": "text-columns",
+                            "settings": {
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionContentSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general",
+                                "setting_blocks": {
+                                    "items": {
+                                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "imgPlaceholder": true,
+                                                "imgEffect": "none",
+                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                            }
+                                        },
+                                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "imgPlaceholder": true,
+                                                "imgEffect": "none",
+                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                            }
+                                        },
+                                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "imgPlaceholder": true,
+                                                "imgEffect": "none",
+                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "blocks": []
+                        }
+                    ]
+                },
+                "cart": {
+                    "sections": [
+                        {
+                            "name": "cart-template",
+                            "id": "cart-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "search": {
+                    "sections": [
+                        {
+                            "name": "search-template",
+                            "id": "search-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "password": {
+                    "sections": [
+                        {
+                            "name": "password-template",
+                            "id": "password-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "manufacturer": {
+                    "sections": [
+                        {
+                            "name": "manufacturer-template",
+                            "id": "manufacturer-template",
+                            "blocks": [],
+                            "settings": {
+                                "itemsPerRow": "4",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true
+                            },
+                            "sticky": true
+                        }
+                    ]
+                }
+            },
             "sections": [
                 {
                     "id": "header",
@@ -2526,6 +2526,1371 @@
                         "footerNewsletterStatus": true,
                         "footerSocialMediaButtonsStatus": false,
                         "footerPaymentMethodsStatus": false,
+                        "sectionHeight": "",
+                        "sectionInnerSpacing": "",
+                        "sectionContentSpacing": "",
+                        "sectionStyle": "dark"
+                    }
+                },
+                {
+                    "id": "category-template",
+                    "name": "category-template",
+                    "settings": {
+                        "itemsPerRow": "3",
+                        "showBadges": true,
+                        "showManufacturer": true,
+                        "showProductName": true,
+                        "showPricing": true
+                    }
+                }
+            ]
+        },
+        "ennel": {
+            "id": "ennel",
+            "name": "Ennel",
+            "settings": {
+                "styles": {
+                    "general": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#1a1a1a",
+                        "link_color": "#1a1a1a",
+                        "border_color": "#d0d1d3",
+                        "indicator_color": "#ff6900",
+                        "icon_color": "#1a1a1a",
+                        "heading_color": "#1a1a1a",
+                        "subheading_color": "#1a1a1a",
+                        "button_bg_color": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#cccccc",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#cccccc",
+                        "product_title_color": "#1a1a1a",
+                        "price_color": "#1a1a1a",
+                        "sale_price_color": "#eb0037",
+                        "new_badge_bg_color": "#1a1a1a",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#eb0037",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#1a1a1a",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "lightest": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#000000",
+                        "link_color": "#000000",
+                        "border_color": "#000000",
+                        "indicator_color": "#000000",
+                        "icon_color": "#000000",
+                        "heading_color": "#000000",
+                        "subheading_color": "#000000",
+                        "button_bg_color": "#000000",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#000000",
+                        "product_title_color": "#000000",
+                        "price_color": "#000000",
+                        "sale_price_color": "#000000",
+                        "new_badge_bg_color": "#000000",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#000000",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#000000",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "light": {
+                        "background_color": "#ebebeb",
+                        "overlay_background_color": "#e4e4e4",
+                        "text_color": "#000000",
+                        "link_color": "#000000",
+                        "border_color": "#cacaca",
+                        "indicator_color": "#000000",
+                        "icon_color": "#000000",
+                        "heading_color": "#000000",
+                        "subheading_color": "#000000",
+                        "button_bg_color": "#000000",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#cacaca",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#cacaca",
+                        "product_title_color": "#000000",
+                        "price_color": "#000000",
+                        "sale_price_color": "#000000",
+                        "new_badge_bg_color": "#a8a6a1",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#a8a6a1",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#a8a6a1",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "dark": {
+                        "background_color": "#333333",
+                        "overlay_background_color": "#2b2b2b",
+                        "text_color": "#999999",
+                        "link_color": "#ffffff",
+                        "border_color": "#292929",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#333333",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#292929",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#292929",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#333333",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#333333",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#333333"
+                    },
+                    "darkest": {
+                        "background_color": "#000000",
+                        "overlay_background_color": "#1d1d1d",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#000000",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#ffffff",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "yellow": {
+                        "background_color": "#ffdf7c",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#2b2b2b",
+                        "link_color": "#2b2b2b",
+                        "border_color": "#2b2b2b",
+                        "indicator_color": "#2b2b2b",
+                        "icon_color": "#2b2b2b",
+                        "heading_color": "#2b2b2b",
+                        "subheading_color": "#2b2b2b",
+                        "button_bg_color": "#2b2b2b",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#2b2b2b",
+                        "price_color": "#2b2b2b",
+                        "sale_price_color": "#2b2b2b",
+                        "new_badge_bg_color": "#2b2b2b",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#2b2b2b",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#2b2b2b",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "turquoise": {
+                        "background_color": "#86dbd4",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "light-blue": {
+                        "background_color": "#95c9e1",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "green": {
+                        "background_color": "#abbe7c",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "orange": {
+                        "background_color": "#e89561",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "blue": {
+                        "background_color": "#247dbf",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "pink": {
+                        "background_color": "#ffd2d7",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#2b2b2b",
+                        "link_color": "#2b2b2b",
+                        "border_color": "#2b2b2b",
+                        "indicator_color": "#2b2b2b",
+                        "icon_color": "#2b2b2b",
+                        "heading_color": "#2b2b2b",
+                        "subheading_color": "#2b2b2b",
+                        "button_bg_color": "#2b2b2b",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#2b2b2b",
+                        "price_color": "#2b2b2b",
+                        "sale_price_color": "#2b2b2b",
+                        "new_badge_bg_color": "#2b2b2b",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#2b2b2b",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#2b2b2b",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "red": {
+                        "background_color": "#ee778d",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "teal": {
+                        "background_color": "#749ba0",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#ffffff",
+                        "link_color": "#ffffff",
+                        "border_color": "#ffffff",
+                        "indicator_color": "#ffffff",
+                        "icon_color": "#ffffff",
+                        "heading_color": "#ffffff",
+                        "subheading_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_text_color": "#424242",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#ffffff",
+                        "price_color": "#ffffff",
+                        "sale_price_color": "#ffffff",
+                        "new_badge_bg_color": "#ffffff",
+                        "new_badge_text_color": "#000000",
+                        "discount_badge_bg_color": "#ffffff",
+                        "discount_badge_text_color": "#000000",
+                        "general_badge_bg_color": "#ffffff",
+                        "general_badge_text_color": "#000000"
+                    },
+                    "grey": {
+                        "background_color": "#e7ecf0",
+                        "overlay_background_color": "#ffffff",
+                        "text_color": "#333333",
+                        "link_color": "#333333",
+                        "border_color": "#333333",
+                        "indicator_color": "#333333",
+                        "icon_color": "#333333",
+                        "heading_color": "#333333",
+                        "subheading_color": "#333333",
+                        "button_bg_color": "#333333",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#000000",
+                        "table_border_color": "#000000",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#000000",
+                        "form_border_color": "#ffffff",
+                        "product_title_color": "#333333",
+                        "price_color": "#333333",
+                        "sale_price_color": "#333333",
+                        "new_badge_bg_color": "#333333",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#333333",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#333333",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "custom1": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#1a1a1a",
+                        "link_color": "#1a1a1a",
+                        "border_color": "#d0d1d3",
+                        "indicator_color": "#ff6900",
+                        "icon_color": "#1a1a1a",
+                        "heading_color": "#1a1a1a",
+                        "subheading_color": "#1a1a1a",
+                        "button_bg_color": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#cccccc",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#cccccc",
+                        "product_title_color": "#1a1a1a",
+                        "price_color": "#1a1a1a",
+                        "sale_price_color": "#eb0037",
+                        "new_badge_bg_color": "#1a1a1a",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#eb0037",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#1a1a1a",
+                        "general_badge_text_color": "#ffffff"
+                    },
+                    "custom2": {
+                        "background_color": "#ffffff",
+                        "overlay_background_color": "#f1f1f1",
+                        "text_color": "#1a1a1a",
+                        "link_color": "#1a1a1a",
+                        "border_color": "#d0d1d3",
+                        "indicator_color": "#ff6900",
+                        "icon_color": "#1a1a1a",
+                        "heading_color": "#1a1a1a",
+                        "subheading_color": "#1a1a1a",
+                        "button_bg_color": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "table_bg_color": "#ffffff",
+                        "table_text_color": "#333333",
+                        "table_border_color": "#cccccc",
+                        "form_bg_color": "#ffffff",
+                        "form_text_color": "#333333",
+                        "form_border_color": "#cccccc",
+                        "product_title_color": "#1a1a1a",
+                        "price_color": "#1a1a1a",
+                        "sale_price_color": "#eb0037",
+                        "new_badge_bg_color": "#1a1a1a",
+                        "new_badge_text_color": "#ffffff",
+                        "discount_badge_bg_color": "#eb0037",
+                        "discount_badge_text_color": "#ffffff",
+                        "general_badge_bg_color": "#1a1a1a",
+                        "general_badge_text_color": "#ffffff"
+                    }
+                },
+                "textScale": "1",
+                "bodyTextFont": "Inter",
+                "headingFont": "Ubuntu",
+                "subheadingFont": "Inter",
+                "buttonFont": "Inter",
+                "accentFont": "Cormorant Garamond",
+                "sectionHeight": "md",
+                "sectionInnerSpacing": "off",
+                "sectionContentSpacing": "md",
+                "sectionBgImgPos": "center-center",
+                "faviconImgSrc": "",
+                "aspectRatioProductImage": "9:13",
+                "aspectRatioProductImageFit": "contain",
+                "addToCartNotification": true,
+                "taxFreePrices": false,
+                "registerCompanyInformation": false,
+                "policyAgreementMethod": "check",
+                "buttonBorderRadius": "3px",
+                "klarnaPlacementsClientId": "",
+                "backToTopButton": true,
+                "blogShowAuthor": false,
+                "facebookPageUrl": "",
+                "instagramPageUrl": "",
+                "twitterPageUrl": "",
+                "pinterestPageUrl": "",
+                "youtubePageUrl": "",
+                "tiktokPageUrl": "",
+                "ravelryPageUrl": "",
+                "sectionBgImgPosition": "center-center"
+            },
+            "templates": {
+                "frontpage": {
+                    "sections": [
+                        {
+                            "id": "91c7ae79f799a5a02a21041081530e2a",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "xl",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionInnerSpacing": "",
+                                "sectionContentWidth": "6",
+                                "sectionContentAlign": "right",
+                                "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1471086569966-db3eebc25a59?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw3NHx8ZGVjb3J8ZW58MHx8fHwxNjM1NDE3ODc1&ixlib=rb-1.2.1&q=85",
+                                "sectionBgImgPos": "center-center",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "3",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "86c494f798fb185c848025dbf4381744",
+                                    "name": "heading",
+                                    "settings": {
+                                        "titleTag": "h2",
+                                        "title": "Lorem ipsum dolor sit",
+                                        "subtitle": "",
+                                        "textAlign": "left"
+                                    }
+                                },
+                                {
+                                    "id": "4dbb85a79c7e8469e78c962e2eddb1bb",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p style=\"text-align: left;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu.<\/p>"
+                                    }
+                                },
+                                {
+                                    "id": "a5524ab7a757ac8ceb71a1415903adb3",
+                                    "name": "button",
+                                    "settings": {
+                                        "btnLabel": "Lorem ipsum",
+                                        "btnResource": {
+                                            "type": "url",
+                                            "record_id": "",
+                                            "url": ""
+                                        },
+                                        "openInNewWindowStatus": false,
+                                        "contentAlign": "left"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ccd83539fd7ef340e0bb8072c6c4dc97",
+                            "name": "image-text",
+                            "settings": {
+                                "contentColumnArrangement": "6,6",
+                                "contentImgSide": "left",
+                                "contentImgAlign": "middle",
+                                "contentImgAlt": null,
+                                "contentImgEffect": "none",
+                                "contentImgAspectRatio": "1:1",
+                                "contentImgFit": false,
+                                "contentRichtextAlign": "middle",
+                                "contentBtnLabel": null,
+                                "contentBtnResource": null,
+                                "contentBtnStyle": "btn1",
+                                "contentImgSrc": "",
+                                "contentImgPlaceholder": true,
+                                "contentImgPlaceholderHeight": "600px",
+                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionContentSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": null,
+                                "sectionBgImgPos": "",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "bccb0b1a99f66a8a5f982d88002c1228",
+                            "name": "promotion-list",
+                            "settings": {
+                                "promotionLayout": "7",
+                                "itemsPerRow": "5",
+                                "sectionTitle": "",
+                                "sectionTitleTag": "h2",
+                                "sectionSubtitle": "",
+                                "sectionSubtitleTag": "h3",
+                                "sectionHeaderTextAlign": "center",
+                                "sectionColSpacing": "sm",
+                                "sectionHeight": "",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "center-center",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general",
+                                "setting_blocks": {
+                                    "items": {
+                                        "00424735-0eb2-4285-a529-468c3108482c": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "style": "style2",
+                                                "title": "Lorem ipsum dolor sit",
+                                                "description": "Lorem ipsum dolor sit",
+                                                "btnLabel": "Lorem ipsum",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": true
+                                            }
+                                        },
+                                        "78a86814-ebe1-48ca-98bc-310c04fe9416": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "style": "style2",
+                                                "title": "Lorem ipsum dolor sit",
+                                                "description": "Lorem ipsum dolor sit",
+                                                "btnLabel": "Lorem ipsum",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": true
+                                            }
+                                        },
+                                        "59090436-a541-4421-9bfb-69c47b5846eb": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "style": "style2",
+                                                "title": "Lorem ipsum dolor sit",
+                                                "description": "Lorem ipsum dolor sit",
+                                                "btnLabel": "Lorem ipsum",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": true
+                                            }
+                                        },
+                                        "59090436-a541-4421-9bfb-69c47b5896eb": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "style": "style2",
+                                                "title": "Lorem ipsum dolor sit",
+                                                "description": "Lorem ipsum dolor sit",
+                                                "btnLabel": "Lorem ipsum",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": true
+                                            }
+                                        },
+                                        "59090436-a541-4481-9bfb-69c47b5846eb": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgSrc": "",
+                                                "imgAlt": "",
+                                                "style": "style2",
+                                                "title": "Lorem ipsum dolor sit",
+                                                "description": "Lorem ipsum dolor sit",
+                                                "btnLabel": "Lorem ipsum",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": true
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "5299694e288fa54cc1c8f70cab093985",
+                            "name": "article-list",
+                            "settings": {
+                                "sectionTitle": "Lorem ipsum dolor sit amet",
+                                "sectionTitleTag": "h2",
+                                "sectionSubtitle": "Lorem ipsum dolor sit amet",
+                                "sectionSubtitleTag": "h3",
+                                "sectionHeaderTextAlign": "left",
+                                "listType": "recent",
+                                "itemAmount": "3",
+                                "itemsPerRow": "3",
+                                "sectionHeight": "",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        }
+                    ]
+                },
+                "cart": {
+                    "sections": [
+                        {
+                            "name": "cart-template",
+                            "id": "cart-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "search": {
+                    "sections": [
+                        {
+                            "name": "search-template",
+                            "id": "search-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "password": {
+                    "sections": [
+                        {
+                            "name": "password-template",
+                            "id": "password-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "manufacturer": {
+                    "sections": [
+                        {
+                            "name": "manufacturer-template",
+                            "id": "manufacturer-template",
+                            "blocks": [],
+                            "settings": {
+                                "itemsPerRow": "4",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true
+                            },
+                            "sticky": true
+                        }
+                    ]
+                },
+                "blog": {
+                    "sections": [
+                        {
+                            "name": "blog-template",
+                            "id": "blog-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "category": {
+                    "sections": [
+                        {
+                            "name": "category-template",
+                            "id": "category-template",
+                            "blocks": [],
+                            "settings": {
+                                "itemsPerRow": "3",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "showAddToCart": false,
+                                "showCategoryList": false,
+                                "showSubcategoryImg": false,
+                                "subcategoryImgFit": false
+                            },
+                            "sticky": true
+                        }
+                    ]
+                },
+                "product": {
+                    "sections": [
+                        {
+                            "name": "product-template",
+                            "id": "product-template",
+                            "blocks": [],
+                            "settings": [],
+                            "sticky": true
+                        }
+                    ]
+                },
+                "page:131739": {
+                    "sections": [
+                        {
+                            "id": "1acdf0d7b21dd587796669f4f20c06a3",
+                            "name": "product-list",
+                            "settings": {
+                                "sectionTitle": "Viimeksi saapuneet",
+                                "sectionSubtitle": "",
+                                "sectionHeaderTextAlign": "left",
+                                "listType": "tag",
+                                "tagId": "uutuus",
+                                "category": {
+                                    "type": "category",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "manufacturer": {
+                                    "type": "manufacturer",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "itemAmount": "7",
+                                "itemsPerRow": "3",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        }
+                    ]
+                },
+                "page:131744": {
+                    "sections": [
+                        {
+                            "id": "b00458da3fbce1071f943842af6e9816",
+                            "name": "image-carousel",
+                            "settings": {
+                                "loop": true,
+                                "autoplay": true,
+                                "autoplaySpeed": "3",
+                                "navigation": "hover",
+                                "pagination": "hover",
+                                "sectionHeight": "",
+                                "slideImgOverlay": "0",
+                                "sectionStyle": "general",
+                                "setting_blocks": {
+                                    "items": {
+                                        "F4c98887-2f85-4be6-a1b8-607600aa691c": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgPlaceholder": true,
+                                                "imgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
+                                                "imgAlt": "",
+                                                "title": "",
+                                                "description": "",
+                                                "btnLabel": "",
+                                                "btnResource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                }
+                                            }
+                                        },
+                                        "81e92083-2c17-4507-89d8-5e5487784360": {
+                                            "type": "item",
+                                            "settings": {
+                                                "imgPlaceholder": true,
+                                                "imgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
+                                                "imgAlt": "",
+                                                "title": "",
+                                                "description": "",
+                                                "btnLabel": "",
+                                                "btnResource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "ea7f282d83f7ae5af423f47a3af37231",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "sm",
+                                "sectionInnerSpacing": "off",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "e8135d32a15704738e7218c88eab2d1d",
+                                    "name": "heading",
+                                    "settings": {
+                                        "title": "Outlet",
+                                        "subtitle": "",
+                                        "textAlign": "left",
+                                        "titleTag": "h1"
+                                    }
+                                },
+                                {
+                                    "id": "3d908a6cc0cb87a8d74e823cb8583a1e",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p>Tuotteita alennettuun hintaan parhailta merkeilt&auml;.<\/p>"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3482600b43541809a55d8a08ceb36c79",
+                            "name": "product-list",
+                            "settings": {
+                                "sectionTitle": "",
+                                "sectionSubtitle": "",
+                                "sectionHeaderTextAlign": "left",
+                                "listType": "discounted",
+                                "tagId": "",
+                                "category": {
+                                    "type": "category",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "manufacturer": {
+                                    "type": "manufacturer",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "itemAmount": "5",
+                                "itemsPerRow": "3",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "sm",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        }
+                    ]
+                },
+                "page:131749": [],
+                "page:131754": [],
+                "page:131759": [],
+                "page:131764": {
+                    "sections": [
+                        {
+                            "id": "c01b97982fad2f08463cc9dbb2935ba7",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "sm",
+                                "sectionInnerSpacing": "sm",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "a9f08a2ebbf197b2da7353836994a47e",
+                                    "name": "heading",
+                                    "settings": {
+                                        "title": "Br\u00e4ndit",
+                                        "subtitle": "",
+                                        "textAlign": "left",
+                                        "titleTag": "h1"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3f4ab41a7aabf9da4c614a342c655992",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "xl",
+                                "sectionInnerSpacing": "lg",
+                                "sectionContentWidth": "9",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/hp1-jackets-d-5.jpeg",
+                                "sectionBgImgPos": "center-top",
+                                "sectionBgImgOverlay": "40",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "darkest"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "16ed338f500036f031efe07a2cc8f276",
+                                    "name": "heading",
+                                    "settings": {
+                                        "title": "Superdry",
+                                        "subtitle": "",
+                                        "textAlign": "center",
+                                        "titleTag": "h2"
+                                    }
+                                },
+                                {
+                                    "id": "9d559d3ec895684d7f508659fbff5a23",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p style=\"text-align: center;\">L&ouml;yd&auml; ainutlaatuinen ja itsen&auml;inen tyylisi tuotemerkkiemme avulla: Original &amp; Vintage, autenttinen, ikoninen, vapaamielinen; Studios, hienostunut ja minimalistinen; CODE, klassista urheilu- ja katumuotia; X, huomiota her&auml;tt&auml;vi&auml; sek&auml; miehille ett&auml; naisille sopivia vaatteita.<\/p>"
+                                    }
+                                },
+                                {
+                                    "id": "482e2b38c028ae2e0e9edfd2117acb4a",
+                                    "name": "button",
+                                    "settings": {
+                                        "btnLabel": "Katso kaikki tuotteet",
+                                        "btnResource": {
+                                            "type": "url",
+                                            "record_id": "6751164",
+                                            "url": "Superdry"
+                                        },
+                                        "openInNewWindowStatus": false,
+                                        "contentAlign": "center"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "333758e78041b38d8184ddbf2bd90a60",
+                            "name": "product-carousel",
+                            "settings": {
+                                "sectionTitle": "Suosittelemme",
+                                "sectionSubtitle": "",
+                                "sectionHeaderTextAlign": "left",
+                                "carouselStyle": "1",
+                                "navigation": "hover",
+                                "pagination": "hover",
+                                "listType": "resource",
+                                "tagId": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "6751164",
+                                    "url": "Superdry"
+                                },
+                                "itemAmount": "8",
+                                "itemsPerView": "5",
+                                "showBadges": false,
+                                "showManufacturer": false,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "e13f3832b4a8dd78c079cc958778d4ef",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "xl",
+                                "sectionInnerSpacing": "lg",
+                                "sectionContentWidth": "9",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "https:\/\/cdn.finqu.com\/users\/14990\/images\/uploads\/standard-resolution.jpeg",
+                                "sectionBgImgPos": "center-top",
+                                "sectionBgImgOverlay": "40",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "darkest"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "16ed338f500036f031efe07a2cc8f276",
+                                    "name": "heading",
+                                    "settings": {
+                                        "title": "ECCO",
+                                        "subtitle": "",
+                                        "textAlign": "center",
+                                        "titleTag": "h2"
+                                    }
+                                },
+                                {
+                                    "id": "9d559d3ec895684d7f508659fbff5a23",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p style=\"text-align: center;\">Parhaimmat tyylit kest&auml;v&auml;t pidemp&auml;&auml;n kuin yhden sesongin. Tutustu tyylikk&auml;isiin ja rentoihin kenkiin, joita haluat k&auml;ytt&auml;&auml; yh&auml; uudelleen.<\/p>"
+                                    }
+                                },
+                                {
+                                    "id": "482e2b38c028ae2e0e9edfd2117acb4a",
+                                    "name": "button",
+                                    "settings": {
+                                        "btnLabel": "Katso kaikki tuotteet",
+                                        "btnResource": {
+                                            "type": "url",
+                                            "record_id": "6792894",
+                                            "url": "ECCO"
+                                        },
+                                        "openInNewWindowStatus": false,
+                                        "contentAlign": "center"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "5eaae6b958836f22fef89c52ad0a8377",
+                            "name": "product-carousel",
+                            "settings": {
+                                "sectionTitle": "Suosittelemme",
+                                "sectionSubtitle": "",
+                                "sectionHeaderTextAlign": "left",
+                                "carouselStyle": "1",
+                                "navigation": "hover",
+                                "pagination": "hover",
+                                "listType": "resource",
+                                "tagId": "",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "6792894",
+                                    "url": "ECCO"
+                                },
+                                "itemAmount": "8",
+                                "itemsPerView": "5",
+                                "showBadges": false,
+                                "showManufacturer": false,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        }
+                    ]
+                },
+                "page:131769": [],
+                "page": {
+                    "sections": [
+                        {
+                            "id": "55a5ea78761df6041767d2bc257686f7",
+                            "name": "custom",
+                            "settings": {
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "50",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionInnerSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "1a51c129fbaeaa96f5eac77e609decb3",
+                                    "name": "heading",
+                                    "settings": {
+                                        "title": "Viimeksi saapuneet",
+                                        "subtitle": "",
+                                        "textAlign": "left",
+                                        "titleTag": "h1"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "a487256f15c14d85c36b2af4ee6c07bd",
+                            "name": "product-list",
+                            "settings": {
+                                "sectionTitle": "",
+                                "sectionSubtitle": "",
+                                "sectionHeaderTextAlign": "left",
+                                "listType": "tag",
+                                "tagId": "uutuus",
+                                "category": {
+                                    "type": "category",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "manufacturer": {
+                                    "type": "manufacturer",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "itemAmount": "5",
+                                "itemsPerRow": "3",
+                                "showBadges": true,
+                                "showManufacturer": true,
+                                "showProductName": true,
+                                "showPricing": true,
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "50",
+                                "sectionInnerSpacing": "",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": []
+                        }
+                    ]
+                }
+            },
+            "sections": [
+                {
+                    "id": "header",
+                    "name": "header",
+                    "settings": {
+                        "headerLayout": "7",
+                        "headerMenuItemColor": "#222222",
+                        "headerIndicatorColor": "#222222",
+                        "headerIconColor": "#222222",
+                        "logoImgSrc": "",
+                        "menu": "main-menu",
+                        "stickyHeader": false,
+                        "headerMegamenu": false,
+                        "headerSubmenuIndicator": false,
+                        "mobileMenu": "main-menu",
+                        "stickyMobileHeader": false,
+                        "addProductCategoriesToMobileNavigation": false,
+                        "socialMediaIconsStatus": true,
+                        "announcementStatus": true,
+                        "announcementBgColor": "#000000",
+                        "announcementTextColor": "#ffffff",
+                        "announcementText": "",
+                        "announcementLink": {
+                            "type": "url",
+                            "record_id": "",
+                            "url": ""
+                        },
+                        "announcementLinkOpenInNewWindowStatus": true,
+                        "announcementKlarna": false,
+                        "announcementKlarnaType": "top-strip-promotion-standard",
+                        "announcementKlarnaDark": false,
+                        "sectionStyle": "darkest"
+                    }
+                },
+                {
+                    "id": "footer",
+                    "name": "footer",
+                    "settings": {
+                        "footerMenu1Title": "Tiedot",
+                        "footerMenu1": "main-menu",
+                        "footerMenu2Title": "",
+                        "footerMenu2": "test",
+                        "footerMenu3Title": "",
+                        "footerMenu3": "test",
+                        "footerTextArea1Title": "Verkkokauppojen koti",
+                        "footerTextArea1Content": "<p>Olemme Finqu ja t\u00e4m\u00e4n vuosituhannen verkkokaupan edell\u00e4k\u00e4vij\u00e4. Parhaat teemat parhaaseen hintaan. Poimi omasi ja perusta verkkokauppa 5 minuutissa.<\/p>",
+                        "footerTextArea2Title": "",
+                        "footerTextArea2Content": "<p>T\u00e4m\u00e4 on Cora-teeman demokauppa<\/p>",
+                        "footerNewsletterTitle": "Liity sis\u00e4piiriin",
+                        "footerNewsletterContent": "<p>Tilaa uutiskirjeemme ja tied\u00e4t ensimm\u00e4isen\u00e4 kaiken!<\/p>",
+                        "footerSocialMediaTitle": "",
+                        "footerSocialMediaContent": "",
+                        "footerLayout": "1",
+                        "footerPaymentMethodsImgSrc": "",
+                        "footerTextArea1Status": false,
+                        "footerTextArea2Status": false,
+                        "footerNewsletterStatus": true,
+                        "footerSocialMediaButtonsStatus": true,
+                        "footerPaymentMethodsStatus": true,
                         "sectionHeight": "",
                         "sectionInnerSpacing": "",
                         "sectionContentSpacing": "",
