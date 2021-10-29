@@ -1,6 +1,6 @@
 {% for item in section.settings.setting_blocks.items %}
 
-    <div class="row">
+    <div class="row{% if section.settings.sectionColSpacing == 'off' %} no-gutters{% endif %}">
 
         {%- capture itemContent %}
 

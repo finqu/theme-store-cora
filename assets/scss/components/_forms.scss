@@ -329,6 +329,12 @@
 .form-floating {
 	position: relative;
 
+	& + .btn {
+		height: $form-floating-height;
+		display: inline-flex;
+    	align-items: center;
+	}
+
 	> .form-control,
 	> .form-select {
 		height: $form-floating-height;

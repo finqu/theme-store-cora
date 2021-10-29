@@ -1,4 +1,4 @@
-<div class="row row-cols-2 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 row-cols-xl-7 justify-content-sm-center">
+<div class="row row-cols-2 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 row-cols-xl-7 justify-content-sm-center{% if section.settings.sectionColSpacing == 'off' %} no-gutters{% endif %}">
 
     {% for item in section.settings.setting_blocks.items %}
 

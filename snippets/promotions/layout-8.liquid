@@ -54,7 +54,7 @@
                             {% if item.settings.title %}
 
                                 <h3 class="font-weight-normal h1 mb-0 item-title">
-                                    {{ item.settings.title }}
+                                    {{ item.settings.title | truncate: 50 }}
                                 </h3>
 
                             {% endif %}
@@ -62,7 +62,7 @@
                             {% if item.settings.description %}
 
                                 <p class="lead mt-2 mt-md-4 mb-0 item-description">
-                                    {{ item.settings.description }}
+                                    {{ item.settings.description | truncate: 120 }}
                                 </p>
 
                             {% endif %}

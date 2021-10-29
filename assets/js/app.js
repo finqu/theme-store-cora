@@ -480,17 +480,24 @@ export default class App {
 		const animationName = `${prefix}${animation}`;
 		const node = el && el.nodeType ? el : document.querySelector(el);
 
-		node.classList.add(`${prefix}animated`, animationName);
+		if (node) {
 
-		function handleAnimationEnd(e) {
+			node.classList.add(`${prefix}animated`, animationName);
 
-			e.stopPropagation();
-			node.classList.remove(`${prefix}animated`, animationName);
+			function handleAnimationEnd(e) {
 
-			resolve('Animation ended');
+				e.stopPropagation();
+				node.classList.remove(`${prefix}animated`, animationName);
+
+				resolve('Animation ended');
+			}
+
+			node.addEventListener('animationend', handleAnimationEnd, {once: true});
+
+		} else {
+
+			resolve('Element not found');
 		}
-
-		node.addEventListener('animationend', handleAnimationEnd, {once: true});
 	});
 
 	loadScript = (src, data = {}, onLoad, onError) => new Promise((resolve, reject) => {

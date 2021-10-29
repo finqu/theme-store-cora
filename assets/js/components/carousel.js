@@ -11,13 +11,37 @@ export default class Carousel {
         this.opts = this.containerEl.dataset;
 
         const itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
+        let spaceBetween = 20;
+
+        switch(this.opts.carouselItemsGap) {
+
+            case 'off':
+                spaceBetween = 0;
+                break;
+
+            case 'sm':
+                spaceBetween = 16;
+                break;
+
+            case 'md':
+                spaceBetween = 20;
+                break;
+
+            case 'lg':
+                spaceBetween = 24;
+                break;
+
+            case 'xl':
+                spaceBetween = 32;
+                break;
+        }
 
         this.swiperCfg = {
             modules: [
                 Navigation,
                 Pagination
             ],
-            spaceBetween: 20,
+            spaceBetween: spaceBetween,
             slidesPerView: 2,
             slidesPerGroup: 2,
             grabCursor: true,

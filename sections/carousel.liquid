@@ -4,11 +4,12 @@
 {%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
+{%- assign sectionColSpacing = section.settings.sectionColSpacing -%}
 
 {%- assign carouselClasses = '' -%}
 
 {%- capture carouselSettings -%}
-    data-carousel-pagination="{{- section.settings.pagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}"
+    data-carousel-pagination="{{- section.settings.pagination -}}" data-carousel-items-per-view="{{- section.settings.itemsPerView -}}" data-carousel-items-gap="{{ sectionColSpacing }}"
 {%- endcapture -%}
 
 {%- if section.settings.pagination == 'hover' -%}
@@ -380,6 +381,37 @@
                         ]
                     },
                     {
+                        "id": "sectionColSpacing",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Column spacing",
+                            "fi": "Sarakkeen väli"
+                        },
+                        "default": "sm",
+                        "options": [
+                            {
+                                "value": "off",
+                                "label": "OFF"
+                            },
+                            {
+                                "value": "sm",
+                                "label": "S"
+                            },
+                            {
+                                "value": "md",
+                                "label": "M"
+                            },
+                            {
+                                "value": "lg",
+                                "label": "L"
+                            },
+                            {
+                                "value": "xl",
+                                "label": "XL"
+                            }
+                        ]
+                    },
+                    {
                         "id": "itemsPerView",
                         "label": {
                             "en": "Items per view",
@@ -427,7 +459,7 @@
                         "id": "slideImgOverlay",
                         "label": {
                             "en": "Overlay",
-                            "fi": "Taustan tummuus"
+                            "fi": "Kohteiden taustan tummuus"
                         },
                         "type": "range",
                         "min": 0,
@@ -800,6 +832,7 @@
                 "sectionSubtitle": "",
                 "sectionSubtitleTag": "h3",
                 "sectionHeaderTextAlign": "center",
+                "sectionColSpacing": "sm",
                 "itemsPerView": "4",
                 "slideTitleTag": "h3",
                 "slideTextColor": "#ffffff",

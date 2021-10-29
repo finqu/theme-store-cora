@@ -34,8 +34,7 @@
     {%- elsif section.settings.videoSrc contains 'vimeo.com' -%}
 
         {%- assign videoType = 'iframe' -%}
-        {%- assign queryParams = section.settings.videoSrc | query_params -%}
-        {%- assign videoId = section.settings.videoSrc | regex: '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/' | last -%}
+        {%- assign videoId =  section.settings.videoSrc | split: '/' | last -%}
 
         {%- if videoId -%}
 
@@ -377,7 +376,7 @@
         "fi": "Video"
     },
     "tag": "section",
-    "class": "section section-video",
+    "class": "section section-video has-lazy",
     "category": "theme-basic",
     "settings": {
         "list_type": "tabs",
@@ -442,7 +441,7 @@
                             "en": "Show controls",
                             "fi": "Näytä säätimet"
                         },
-                        "default": false
+                        "default": true
                     },
                     {
                         "id": "videoAutoplay",
@@ -921,7 +920,7 @@
             "settings": {
                 "videoLayout": "1",
                 "videoSrc": "",
-                "videoControls": false,
+                "videoControls": true,
                 "videoAutoplay": false,
                 "sectionTitle": "Heading",
                 "sectionTitleTag": "h2",

@@ -3,6 +3,7 @@
 
 	Accepts:
 	- sectionTitle: {String}
+	- sectionTitleSize: {String}
 	- sectionTitleTag: {String}
 	- sectionSubtitle: {String}
 	- sectionSubtitleTag: {String}
@@ -20,6 +21,19 @@
 
 {% assign sectionTitleTag = sectionTitleTag | default: 'span' %}
 {% assign sectionSubtitleTag = sectionSubtitleTag | default: 'span' %}
+
+{%- case sectionTitleSize -%}
+    {% when '1' %}
+        {%- assign sectionTitleSize = 'display-1' -%}
+    {% when '2' %}
+        {%- assign sectionTitleSize = 'display-2' -%}
+    {% when '3' %}
+        {%- assign sectionTitleSize = 'display-3' -%}
+    {% when '4' %}
+        {%- assign sectionTitleSize = 'display-4' -%}
+    {% else %}
+    	{%- assign sectionTitleSize = '' -%}
+{%- endcase -%}
 
 {% capture content %}
 
@@ -81,7 +95,7 @@
 
 				<div class="title-container">
 
-					<{{ sectionTitleTag }} class="title">
+					<{{ sectionTitleTag }} class="title{% if sectionTitleSize %} {{ sectionTitleSize }}{% endif %}">
 						{{- sectionTitle -}}
 					</{{ sectionTitleTag }}>
 

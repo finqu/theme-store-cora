@@ -3,6 +3,33 @@
 {%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
 {%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
+{%- assign sectionHeight = section.settings.sectionHeight -%}
+{%- assign sectionHeightCustomTop = section.settings.sectionHeightCustomTop -%}
+{%- assign sectionHeightCustomBottom = section.settings.sectionHeightCustomBottom -%}
+
+{%- if sectionHeight == 'custom' -%}
+
+    {%- if sectionHeightCustomTop == '0' -%}
+
+        <style>
+            #finqu-section-{{ section.id }} .section-height-custom .section-content > .container {
+                padding-top: 0;
+            }
+        </style>
+
+    {%- endif -%}
+
+    {%- if sectionHeightCustomBottom == '0' -%}
+
+        <style>
+            #finqu-section-{{ section.id }} .section-height-custom .section-content > .container {
+                padding-bottom: 0;
+            }
+        </style>
+
+    {%- endif -%}
+
+{%- endif -%}
 
 {%- capture sectionContent -%}
 
@@ -67,6 +94,12 @@
         {%- assign sectionClasses = 'promotion-layout-9' -%}
 
         {%- render 'promotions/layout-9', section: section -%}
+
+    {%- elsif section.settings.promotionLayout == '10' -%}
+
+        {%- assign sectionClasses = 'promotion-layout-10' -%}
+
+        {%- render 'promotions/layout-10', section: section -%}
 
     {% endif %}
 {%- endcapture -%}
@@ -307,6 +340,13 @@
                                                 "en": "Layout 9",
                                                 "fi": "Asettelu 9"
                                             }
+                                        },
+                                        {
+                                            "value": "10",
+                                            "label": {
+                                                "en": "Layout 10",
+                                                "fi": "Asettelu 10"
+                                            }
                                         }
                                     ]
                                 },
@@ -429,6 +469,10 @@
                                     },
                                     "default": "sm",
                                     "options": [
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
                                         {
                                             "value": "sm",
                                             "label": "S"
@@ -1465,6 +1509,123 @@
                             }
                         },
                         "59090436-a541-4481-9bfb-69c47b5846eb": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "style": "style2",
+                                "title": "Promoted item",
+                                "description": "Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.",
+                                "btnLabel": "Button label",
+                                "btnStyle": "btn3",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "category": "theme-promotion",
+            "settings": {
+                "promotionLayout": "10",
+                "itemsPerRow": "6",
+                "sectionTitle": "",
+                "sectionTitleTag": "h2",
+                "sectionSubtitle": "",
+                "sectionSubtitleTag": "h3",
+                "sectionHeaderTextAlign": "center",
+                "sectionColSpacing": "sm",
+                "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "center-center",
+                "sectionBgImgOverlay": "0",
+                "sectionBgImgBlur": "0",
+                "sectionContentBgColorStatus": false,
+                "sectionContentBgColor": "#ffffff",
+                "sectionStyle": "general",
+                "setting_blocks": {
+                    "items": {
+                        "1dde8cf9-7311-45b2-9abe-705e6d069ec2": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "style": "style2",
+                                "title": "Promoted item",
+                                "description": "Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.",
+                                "btnLabel": "Button label",
+                                "btnStyle": "btn3",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "00424735-0eb2-4285-a529-468c3158482c": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "style": "style2",
+                                "title": "Promoted item",
+                                "description": "Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.",
+                                "btnLabel": "Button label",
+                                "btnStyle": "btn3",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "78a86814-ebe1-48ca-98bc-311c04fe9416": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "style": "style2",
+                                "title": "Promoted item",
+                                "description": "Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.",
+                                "btnLabel": "Button label",
+                                "btnStyle": "btn3",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "59090436-a541-4421-4bfb-69c47b5846eb": {
+                            "type": "item",
+                            "settings": {
+                                "imgSrc": "",
+                                "imgAlt": "",
+                                "style": "style2",
+                                "title": "Promoted item",
+                                "description": "Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.",
+                                "btnLabel": "Button label",
+                                "btnStyle": "btn3",
+                                "resource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "resourceOpenInNewWindowStatus": false
+                            }
+                        },
+                        "59090436-a541-4421-9gfb-69c47b5896eb": {
                             "type": "item",
                             "settings": {
                                 "imgSrc": "",

@@ -1,6 +1,6 @@
 {%- assign title = block.settings.title | default: 'Heading' -%}
 
-{%- render 'section-header', sectionTitle: title, sectionTitleTag: block.settings.titleTag, sectionHeaderTextAlign: block.settings.textAlign, sectionSubtitle: block.settings.subtitle, sectionSubtitleTag: block.settings.subtitleTag, sectionContentContainer: 'none' -%}
+{%- render 'section-header', sectionTitle: title, sectionTitleSize: block.settings.titleSize, sectionTitleTag: block.settings.titleTag, sectionHeaderTextAlign: block.settings.textAlign, sectionSubtitle: block.settings.subtitle, sectionSubtitleTag: block.settings.subtitleTag, sectionContentContainer: 'none' -%}
 
 {% schema %}
 {
@@ -19,6 +19,38 @@
                 "en": "Title",
                 "fi": "Otsikko"
             }
+        },
+        {
+            "id": "titleSize",
+            "type": "radio-pill",
+            "label": {
+                "en": "Heading size",
+                "fi": "Otsikon koko"
+            },
+            "default": "",
+            "options": [
+                {
+                    "value": "1",
+                    "label": "D1"
+                },
+                {
+                    "value": "2",
+                    "label": "D2"
+                },
+                {
+                    "value": "3",
+                    "label": "D3"
+                },
+                {
+                    "value": "4",
+                    "label": "D4"
+                },
+                {
+                    "value": "",
+                    "label": "Auto"
+                }
+            ],
+            "conditions": ["title:length gt 0"]
         },
         {
             "id": "titleTag",

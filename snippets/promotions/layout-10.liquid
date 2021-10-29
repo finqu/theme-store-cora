@@ -1,32 +1,30 @@
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-{% if section.settings.itemsPerRow > 4 %}{{ section.settings.itemsPerRow | minus: 1 }}{% else %}{{ section.settings.itemsPerRow }}{% endif %} row-cols-xl-{{ section.settings.itemsPerRow }}{% if section.settings.sectionColSpacing == 'off' %} no-gutters{% endif %}">
+<div class="collage collage-gap-{{ section.settings.sectionColSpacing }}">
 
-    {% for item in section.settings.setting_blocks.items %}
+	{% for item in section.settings.setting_blocks.items %}
 
-        {%- capture itemContent %}
+		{%- capture itemContent %}
 
             {%- assign imgSrc = item.settings.imgSrc -%}
 
-            <div class="aspect-ratio-9-12 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}">
+            <div class="collage-item-inner aspect-ratio-1-1 {% if item.settings.style == 'style1' %}style-lightest{% else %}style-darkest{% endif %}{% if item.settings.resource %} has-img-effect{% endif %}">
 
-                <div class="aspect-ratio-container item-img-container{% if item.settings.resource %} has-img-effect{% endif %}">
+                <div class="aspect-ratio-container item-img-container">
 
                     {% if imgSrc %}
 
-                        {%- assign imgSizeSm = '374,374' -%}
-                        {%- assign imgSizeMd = '280,280' -%}
+                    	{%- if forloop.first == true -%}
 
-                        {%- case section.settings.itemsPerRow -%}
+                    		{%- assign imgSizeSm = '374,374' -%}
+	                        {%- assign imgSizeMd = '608,608' -%}
+	                        {%- assign imgSizeLg = '862,862' -%}
 
-                            {% when '2' %}
-                                {%- assign imgSizeLg = '640,854' -%}
-                            {% when '3' %}
-                                {%- assign imgSizeLg = '420,560' -%}
-                            {% when '4' %}
-                                {%- assign imgSizeLg = '310,414' -%}
-                            {% when '5' %}
-                                {%- assign imgSizeLg = '244,326' -%}
+                    	{%- else -%}
 
-                        {%- endcase -%}
+                    		{%- assign imgSizeSm = '179,179' -%}
+	                        {%- assign imgSizeMd = '296,296' -%}
+	                        {%- assign imgSizeLg = '423,423' -%}
+
+                    	{%- endif -%}
 
                         <picture>
 
@@ -65,16 +63,16 @@
 
                             {% if item.settings.title %}
 
-                                <h3 class="font-weight-normal h1 mt-6 mb-0 item-title">
-                                    {{ item.settings.title }}
+                                <h3 class="font-weight-normal h1 mb-0 item-title">
+                                    {{ item.settings.title | truncate: 50 }}
                                 </h3>
 
                             {% endif %}
 
                             {% if item.settings.description %}
 
-                                <p class="lead mt-4 mb-0 item-description">
-                                    {{ item.settings.description }}
+                                <p class="lead mt-2 mb-2 item-description">
+                                    {{ item.settings.description | truncate: 120 }}
                                 </p>
 
                             {% endif %}
@@ -83,19 +81,15 @@
 
                         {% if item.settings.btnLabel %}
 
-                            {% if section.settings.itemsPerRow > 3 %}
-                                {% assign btnSm = ' btn-sm' %}
-                            {% endif %}
-
                             {% if item.settings.btnStyle == 'btn1' %}
 
-                                <span class="btn btn-section align-self-center mb-2 item-btn{{ btnSm }}">
+                                <span class="btn btn-section align-self-center mb-2 item-btn{% if forloop.first == false %} btn-sm{% endif %}">
                                     {{ item.settings.btnLabel }}
                                 </span>
 
                             {% elsif item.settings.btnStyle == 'btn2' %}
 
-                                <span class="btn btn-outline-section align-self-center mb-2 item-btn{{ btnSm }}">
+                                <span class="btn btn-outline-section align-self-center mb-2 item-btn{% if forloop.first == false %} btn-sm{% endif %}">
                                     {{ item.settings.btnLabel }}
                                 </span>
 
@@ -123,9 +117,9 @@
 
         {%- endcapture -%}
 
-        <div class="col text-center">
+		<div class="collage-item text-center">
 
-            {% if item.settings.resource %}
+			{% if item.settings.resource %}
 
                 <a href="{{- item.settings.resource.url -}}"{% if item.settings.resourceOpenInNewWindowStatus %} target="_blank"{% endif %}>
                     {{ itemContent }}
@@ -137,8 +131,8 @@
 
             {% endif %}
 
-        </div>
+		</div>
 
-    {% endfor %}
+	{% endfor %}
 
 </div>

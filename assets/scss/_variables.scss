@@ -25,6 +25,8 @@ $carousel-heights: (
 	xl: 945px
 );
 
+$border-width: 1px;
+$border-color: section-var(border_color, section-vars());
 $border-radius: .25rem;
 $border-radius-sm: .2rem;
 $border-radius-lg: .3rem;
@@ -50,10 +52,34 @@ $headings-font-weight: 700;
 $headings-line-height: 1.2;
 $headings-margin-bottom: 1rem;
 
+$display1-size: 8rem;
+$display2-size: 6.5rem;
+$display3-size: 4.5rem;
+$display4-size: 3.5rem;
+
+$display1-weight: $font-weight-bold;
+$display2-weight: $font-weight-bold;
+$display3-weight: $font-weight-bold;
+$display4-weight: $font-weight-bold;
+$display-line-height: $headings-line-height;
+
+$lead-font-size: $font-size-base * 1.25;
+$lead-font-weight: $font-weight-light;
+
+$small-font-size: 80%;
+
 $link-decoration: none;
 $link-hover-decoration: none;
 
-$hr-margin-y: 1rem;
+$hr-border-width: 1px;
+$hr-margin-y: $border-width;
+
+$mark-padding: .2em;
+
+$list-inline-padding: .5rem;
+
+$blockquote-small-font-size: $small-font-size;
+$blockquote-font-size: $font-size-base * 1.25;
 
 
 // Button + Form

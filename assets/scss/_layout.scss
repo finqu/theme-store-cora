@@ -255,19 +255,6 @@ body > #search-overlay {
         }
     }
 
-    &.site-header-layout-4 {
-
-        .site-header-container {
-
-            .site-header {
-
-                .site-header-inner {
-                    border-bottom-color: section-var(border_color);
-                }
-            }
-        }
-    }
-
     &.site-header-layout-5 {
 
         .site-header-container {
@@ -538,11 +525,6 @@ body > #search-overlay {
             .site-header-container {
 
                 .site-header {
-
-                    .site-header-inner {
-                        border-bottom-width: 1px;
-                        border-bottom-style: solid;
-                    }
 
                     .site-header-menu-container {
                         border-bottom: 0;
@@ -1277,6 +1259,22 @@ body > #search-overlay {
                     flex-direction: column;
                     margin-bottom: 0;
                     @include list-unstyled();
+
+                    &.site-footer-menu-inline {
+                        flex-direction: row;
+                        @include media-breakpoint-down(md) {
+                            flex-direction: column;
+
+                            .site-footer-menu-item {
+                                justify-content: center;
+                            }
+                        }
+
+                        .site-footer-menu-item {
+                            padding: spacer(1) spacer(2);
+                            margin-bottom: 0;
+                        }
+                    }
 
                     .site-footer-menu-item {
                         display: flex;

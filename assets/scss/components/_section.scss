@@ -182,6 +182,39 @@
 				overflow-wrap: break-word;
 			    word-wrap: break-word;
 			    hyphens: auto;
+
+			    &.display-1 {
+					@include relative-font-size($display1-size);
+					font-weight: $display1-weight;
+					line-height: $display-line-height;
+					@include media-breakpoint-down(md) {
+						@include relative-font-size(subtract($display1-size, 3rem));
+					}
+				}
+
+				&.display-2 {
+					@include relative-font-size($display2-size);
+					font-weight: $display2-weight;
+					line-height: $display-line-height;
+					@include media-breakpoint-down(md) {
+						@include relative-font-size(subtract($display2-size, 2rem));
+					}
+				}
+
+				&.display-3 {
+					@include relative-font-size($display3-size);
+					font-weight: $display3-weight;
+					line-height: $display-line-height;
+					@include media-breakpoint-down(md) {
+						@include relative-font-size(subtract($display3-size, 0.5rem));
+					}
+				}
+
+				&.display-4 {
+					@include relative-font-size($display4-size);
+					font-weight: $display4-weight;
+					line-height: $display-line-height;
+				}
 			}
 		}
 
