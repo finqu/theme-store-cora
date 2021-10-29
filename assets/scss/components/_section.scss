@@ -44,6 +44,24 @@
 				}
 			}
 
+			&.section-has-col-bg {
+
+				.row > [class^="col-"],
+				.row > [class*=" col-"] {
+					padding: spacer(6);
+					@include media-breakpoint-down(md) {
+						padding: spacer(4);
+					}
+				}
+
+				.container,
+				.container-fluid,
+				.container-tiny,
+				.container-compact {
+					padding: 0;
+				}
+			}
+
 			.section-bg {
 				background-color: section-var(background_color);
 			}

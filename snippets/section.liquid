@@ -107,12 +107,32 @@
 {%- endif -%}
 
 {%- if section.settings.sectionContentBgColorStatus -%}
+
+	{% capture sectionHasContentBgClass %} section-has-content-bg{% endcapture %}
+    {%- assign sectionClasses = sectionClasses | append: sectionHasContentBgClass -%}
+
     <style>
         #finqu-section-{{ section.id }} .container,
         #finqu-section-{{ section.id }} .container-fluid {
             background-color: {{ section.settings.sectionContentBgColor }}
         }
     </style>
+{%- endif -%}
+
+{%- if section.settings.sectionColumnBgColorStatus -%}
+
+	{% capture sectionHasColBgClass %} section-has-col-bg{% endcapture %}
+    {%- assign sectionClasses = sectionClasses | append: sectionHasColBgClass -%}
+
+    <style>
+        #finqu-section-{{ section.id }} .container > .row > [class^="col-"],
+        #finqu-section-{{ section.id }} .container > .row > [class*=" col-"],
+        #finqu-section-{{ section.id }} .container-fluid > .row > [class^="col-"],
+        #finqu-section-{{ section.id }} .container-fluid > .row > [class*=" col-"] {
+            background-color: {{ section.settings.sectionColumnBgColor }}
+        }
+    </style>
+
 {%- endif -%}
 
 {%- if sectionHeight == 'custom' -%}
