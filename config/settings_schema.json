@@ -1102,9 +1102,9 @@
 					"type": "radio-pill",
 					"label": {
 						"en": "Font weight",
-						"fi": "Fontin paino"
+						"fi": "Fontin paksuus"
 					},
-					"default": "400",
+					"default": "700",
 					"options": [
 						{
 							"value": "400",
@@ -1154,7 +1154,7 @@
 						"en": "Font design",
 						"fi": "Fontin muotoilu"
 					},
-					"default": "normal",
+					"default": "none",
 					"options": [
 						{
 							"value": "none",
@@ -1222,9 +1222,9 @@
 					"type": "radio-pill",
 					"label": {
 						"en": "Font weight",
-						"fi": "Fontin paino"
+						"fi": "Fontin paksuus"
 					},
-					"default": "400",
+					"default": "700",
 					"options": [
 						{
 							"value": "400",
@@ -1274,10 +1274,10 @@
 						"en": "Font design",
 						"fi": "Fontin muotoilu"
 					},
-					"default": "normal",
+					"default": "none",
 					"options": [
 						{
-							"value": "normal",
+							"value": "none",
 							"label": {
 								"en": "Normal",
 								"fi": "Normaali"
@@ -1342,9 +1342,9 @@
 					"type": "radio-pill",
 					"label": {
 						"en": "Font weight",
-						"fi": "Fontin paino"
+						"fi": "Fontin paksuus"
 					},
-					"default": "400",
+					"default": "700",
 					"options": [
 						{
 							"value": "400",
@@ -1394,10 +1394,10 @@
 						"en": "Font design",
 						"fi": "Fontin muotoilu"
 					},
-					"default": "normal",
+					"default": "none",
 					"options": [
 						{
-							"value": "normal",
+							"value": "none",
 							"label": {
 								"en": "Normal",
 								"fi": "Normaali"
@@ -1462,7 +1462,7 @@
 					"type": "radio-pill",
 					"label": {
 						"en": "Font weight",
-						"fi": "Fontin paino"
+						"fi": "Fontin paksuus"
 					},
 					"default": "400",
 					"options": [
@@ -1514,10 +1514,10 @@
 						"en": "Font design",
 						"fi": "Fontin muotoilu"
 					},
-					"default": "normal",
+					"default": "none",
 					"options": [
 						{
-							"value": "normal",
+							"value": "none",
 							"label": {
 								"en": "Normal",
 								"fi": "Normaali"
@@ -1582,7 +1582,7 @@
 					"type": "radio-pill",
 					"label": {
 						"en": "Font weight",
-						"fi": "Fontin paino"
+						"fi": "Fontin paksuus"
 					},
 					"default": "400",
 					"options": [
@@ -1634,10 +1634,10 @@
 						"en": "Font design",
 						"fi": "Fontin muotoilu"
 					},
-					"default": "normal",
+					"default": "none",
 					"options": [
 						{
-							"value": "normal",
+							"value": "none",
 							"label": {
 								"en": "Normal",
 								"fi": "Normaali"
