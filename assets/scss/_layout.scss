@@ -655,8 +655,9 @@ body > #search-overlay {
                 left: 20%;
                 right: 20%;
                 top: 200px;
-                z-index: 10;
                 visibility: hidden;
+                z-index: -1;
+                opacity: 0;
                 @include media-breakpoint-down(md) {
                     position: fixed;
                     left: 0;
@@ -664,7 +665,9 @@ body > #search-overlay {
                     top: 0;
                 }
 
-                &.search-active {
+                &.site-search-active {
+                    z-index: 10;
+                    opacity: 1;
                     visibility: visible;
                 }
 
@@ -1035,12 +1038,13 @@ body > #search-overlay {
             height: 100%;
             visibility: hidden;
             opacity: 0;
-            z-index: 6;
+            z-index: -1;
             overflow: hidden;
 
             &.site-mobile-navigation-visible {
                 visibility: visible;
                 opacity: 1;
+                z-index: 6;
                 transform: translate3d(0,0,0);
             }
 
@@ -1172,10 +1176,13 @@ body > #search-overlay {
             width: 100%;
             height: 100%;
             transition: background-color 195ms cubic-bezier(.4,0,1,1);
+            z-index: -1;
+            opacity: 0;
 
             &.site-mobile-navigation-overlay-active {
                 background-color: rgba(0,0,0,.15);
                 z-index: 5;
+                opacity: 1;
             }
         }
     }

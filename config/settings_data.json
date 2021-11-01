@@ -2375,14 +2375,19 @@
                 "aspectRatioProductImageFit": "contain",
                 "addToCartNotification": true,
                 "taxFreePrices": false,
+                "registerCompanyInformation": false,
                 "policyAgreementMethod": "check",
                 "buttonBorderRadius": "3px",
                 "klarnaPlacementsClientId": "",
+                "backToTopButton": true,
+                "blogShowAuthor": false,
                 "facebookPageUrl": "",
                 "instagramPageUrl": "",
                 "twitterPageUrl": "",
                 "pinterestPageUrl": "",
                 "youtubePageUrl": "",
+                "tiktokPageUrl": null,
+                "ravelryPageUrl": null,
                 "sectionBgImgPosition": "center-center"
             },
             "templates": {
@@ -2393,8 +2398,10 @@
                             "name": "custom",
                             "settings": {
                                 "sectionHeight": "xl",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
                                 "sectionInnerSpacing": "",
-                                "sectionContentWidth": "12",
+                                "sectionContentWidth": "6",
                                 "sectionContentAlign": "center",
                                 "sectionBgImgSrc": "https:\/\/images.unsplash.com\/photo-1575561723050-3a69691d9700?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=85",
                                 "sectionBgImgPos": "center-center",
@@ -2409,9 +2416,11 @@
                                     "id": "275e33d0219b2b6bc6dcc110a1f827ce",
                                     "name": "heading",
                                     "settings": {
-                                        "titleTag": "h2",
-                                        "title": "Lorem ipsum dolor",
-                                        "subtitle": null,
+                                        "title": "Talk about your brand",
+                                        "titleSize": "",
+                                        "titleTag": "h1",
+                                        "subtitle": "",
+                                        "subtitleTag": "h3",
                                         "textAlign": "center"
                                     }
                                 },
@@ -2419,15 +2428,20 @@
                                     "id": "c22fb5460c8e079f9a17bc698b87b3e0",
                                     "name": "text",
                                     "settings": {
-                                        "richtextHtml": "<p style=\"text-align: center;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.<\/p>"
+                                        "richtextHtml": "<p style=\"text-align: center;\">Tell your customers about your brand. Promote a product, make announcements, or share information about your store.<\/p>"
                                     }
                                 },
                                 {
                                     "id": "7b34528f310283312dc270da387dcabb",
                                     "name": "button",
                                     "settings": {
-                                        "btnLabel": "Lorem ipsum dolor",
-                                        "btnResource": null,
+                                        "btnLabel": "Button label",
+                                        "btnResource": {
+                                            "type": "url",
+                                            "record_id": "",
+                                            "url": ""
+                                        },
+                                        "btnStyle": "btn1",
                                         "openInNewWindowStatus": true,
                                         "contentAlign": "center"
                                     }
@@ -2435,26 +2449,39 @@
                             ]
                         },
                         {
-                            "id": "5ccd31d19390585f8bf5b38b5165ca9a",
-                            "name": "product-list",
+                            "id": "33a3f5f7a5af7becadd43c3226187502",
+                            "name": "product-carousel",
                             "settings": {
-                                "sectionTitle": "Lorem ipsum dolor sit amet",
-                                "sectionSubtitle": "Lorem ipsum dolor sit amet",
-                                "sectionHeaderTextAlign": "center",
+                                "sectionTitle": "Featured products",
+                                "sectionTitleTag": "h2",
+                                "sectionSubtitle": "",
+                                "sectionSubtitleTag": "h3",
+                                "sectionHeaderTextAlign": "left",
+                                "carouselStyle": "2",
+                                "navigation": "hover",
+                                "pagination": "hover",
                                 "listType": "new",
                                 "tagId": "",
-                                "resource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
+                                "category": {
+                                    "type": "category",
+                                    "id": "",
+                                    "name": ""
                                 },
-                                "itemAmount": "8",
-                                "itemsPerRow": "4",
+                                "manufacturer": {
+                                    "type": "manufacturer",
+                                    "id": "",
+                                    "name": ""
+                                },
+                                "itemAmount": "10",
+                                "itemsPerView": "4",
                                 "showBadges": true,
                                 "showManufacturer": true,
                                 "showProductName": true,
                                 "showPricing": true,
+                                "showAddToCart": true,
                                 "sectionHeight": "",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
                                 "sectionInnerSpacing": "",
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "left-top",
@@ -2467,76 +2494,13 @@
                             "blocks": []
                         },
                         {
-                            "id": "8fe1266f5c41014a155c4438d6292e09",
-                            "name": "image-text",
+                            "id": "68e7338f7a56af33c08917609825dee3",
+                            "name": "custom",
                             "settings": {
-                                "contentColumnArrangement": "6,6",
-                                "contentImgSide": "left",
-                                "contentImgAlign": "middle",
-                                "contentImgAlt": null,
-                                "contentImgEffect": "none",
-                                "contentRichtextAlign": "middle",
-                                "contentBtnLabel": null,
-                                "contentBtnResource": null,
-                                "contentImgSrc": "",
-                                "contentImgPlaceholder": true,
-                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
-                                "sectionHeight": "",
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
                                 "sectionInnerSpacing": "",
-                                "sectionContentSpacing": "",
-                                "sectionContentWidth": "12",
-                                "sectionContentAlign": "center",
-                                "sectionBgImgSrc": null,
-                                "sectionBgImgPos": "",
-                                "sectionBgImgOverlay": "0",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "general"
-                            },
-                            "blocks": []
-                        },
-                        {
-                            "id": "34ac58d39213280f40aaa76fcff57ced",
-                            "name": "image-text",
-                            "settings": {
-                                "contentImgPlaceholder": true,
-                                "contentColumnArrangement": "6,6",
-                                "contentImgSide": "right",
-                                "contentImgAlign": "middle",
-                                "contentImgAlt": "",
-                                "contentImgEffect": "none",
-                                "contentRichtextAlign": "middle",
-                                "contentBtnLabel": "",
-                                "contentBtnResource": {
-                                    "type": "url",
-                                    "record_id": "",
-                                    "url": ""
-                                },
-                                "contentImgSrc": "",
-                                "contentRichtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>",
-                                "sectionHeight": "",
-                                "sectionInnerSpacing": "",
-                                "sectionContentSpacing": "",
-                                "sectionContentWidth": "12",
-                                "sectionContentAlign": "center",
-                                "sectionBgImgSrc": "",
-                                "sectionBgImgPos": "left-top",
-                                "sectionBgImgOverlay": "0",
-                                "sectionBgImgBlur": "0",
-                                "sectionContentBgColorStatus": false,
-                                "sectionContentBgColor": "#ffffff",
-                                "sectionStyle": "general"
-                            },
-                            "blocks": []
-                        },
-                        {
-                            "id": "bf9427edc15060b617ca582ee14b94b4",
-                            "name": "text-columns",
-                            "settings": {
-                                "sectionHeight": "",
-                                "sectionInnerSpacing": "",
-                                "sectionContentSpacing": "",
                                 "sectionContentWidth": "12",
                                 "sectionContentAlign": "center",
                                 "sectionBgImgSrc": "",
@@ -2545,41 +2509,148 @@
                                 "sectionBgImgBlur": "0",
                                 "sectionColumnBgColorStatus": false,
                                 "sectionColumnBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "e9568db15a2385bc8ece2711352f14ed",
+                                    "name": "heading",
+                                    "settings": {
+                                        "titleTag": "h2",
+                                        "title": "Talk about your brand",
+                                        "subtitle": "",
+                                        "textAlign": "left"
+                                    }
+                                },
+                                {
+                                    "id": "2f4b302d0a29162690f82b71b7fcbb2a",
+                                    "name": "text",
+                                    "settings": {
+                                        "richtextHtml": "<p style=\"text-align: left;\">Tell your customers about your brand. Promote a product, make announcements, or share information about your store.<\/p>"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "7aad4eef8f6a02d27f446ca56c7c8f01",
+                            "name": "promotion-list",
+                            "settings": {
+                                "promotionLayout": "3",
+                                "itemsPerRow": "3",
+                                "sectionTitle": "",
+                                "sectionTitleTag": "h2",
+                                "sectionSubtitle": "",
+                                "sectionSubtitleTag": "h3",
+                                "sectionHeaderTextAlign": "center",
+                                "sectionColSpacing": "sm",
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "center-center",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
                                 "sectionStyle": "general",
                                 "setting_blocks": {
                                     "items": {
-                                        "A82d6f21-fe88-48f7-9a65-b3b74befa415": {
+                                        "1dde8cf9-7311-45b2-9abe-705e6d061ec2": {
                                             "type": "item",
                                             "settings": {
                                                 "imgSrc": "",
                                                 "imgAlt": "",
-                                                "imgPlaceholder": true,
-                                                "imgEffect": "none",
-                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                                "style": "style2",
+                                                "title": "Promoted item",
+                                                "description": "",
+                                                "btnLabel": "",
+                                                "btnStyle": "btn2",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": false
                                             }
                                         },
-                                        "A024a4fb-7d95-49d0-9016-73820b1d3902": {
+                                        "00424735-0eb2-4285-a529-468c3108482c": {
                                             "type": "item",
                                             "settings": {
                                                 "imgSrc": "",
                                                 "imgAlt": "",
-                                                "imgPlaceholder": true,
-                                                "imgEffect": "none",
-                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                                "style": "style2",
+                                                "title": "Promoted item",
+                                                "description": "",
+                                                "btnLabel": "",
+                                                "btnStyle": "btn2",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": false
                                             }
                                         },
-                                        "A02ba9dc-5093-40b7-9210-f14f3d3df83a": {
+                                        "78a86814-ebe1-48ca-98bc-310c04fe9416": {
                                             "type": "item",
                                             "settings": {
                                                 "imgSrc": "",
                                                 "imgAlt": "",
-                                                "imgPlaceholder": true,
-                                                "imgEffect": "none",
-                                                "richtextHtml": "<h2>Lorem ipsum dolor sit amet, consectetuer<\/h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.<\/p>"
+                                                "style": "style2",
+                                                "title": "Promoted item",
+                                                "description": "",
+                                                "btnLabel": "",
+                                                "btnStyle": "btn2",
+                                                "resource": {
+                                                    "type": "url",
+                                                    "record_id": "",
+                                                    "url": ""
+                                                },
+                                                "resourceOpenInNewWindowStatus": false
                                             }
                                         }
                                     }
                                 }
+                            },
+                            "blocks": []
+                        },
+                        {
+                            "id": "9b99b532c372396b97a2b020a36c9519",
+                            "name": "image-text",
+                            "settings": {
+                                "contentImgPlaceholder": true,
+                                "contentImgPlaceholderHeight": "300px",
+                                "contentColumnArrangement": "7,5",
+                                "contentImgSide": "left",
+                                "contentImgAlign": "middle",
+                                "contentImgAlt": "",
+                                "contentImgEffect": "none",
+                                "contentImgAspectRatio": "16:9",
+                                "contentImgFit": false,
+                                "contentRichtextAlign": "middle",
+                                "contentBtnLabel": "Button label",
+                                "contentBtnResource": {
+                                    "type": "url",
+                                    "record_id": "",
+                                    "url": ""
+                                },
+                                "contentBtnStyle": "link",
+                                "contentImgSrc": "",
+                                "contentRichtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand. Share information about it with your customers.<\/p>",
+                                "sectionHeight": "",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionInnerSpacing": "",
+                                "sectionContentSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionContentBgColorStatus": false,
+                                "sectionContentBgColor": "#ffffff",
+                                "sectionStyle": "general"
                             },
                             "blocks": []
                         }
@@ -2641,13 +2712,32 @@
                     "id": "header",
                     "name": "header",
                     "settings": {
-                        "menu": "main",
+                        "headerLayout": "1",
+                        "headerMenuItemColor": "#000000",
+                        "headerIndicatorColor": "#000000",
+                        "headerIconColor": "#000000",
                         "logoImgSrc": "",
+                        "menu": "main-menu",
+                        "stickyHeader": true,
+                        "headerMegamenu": false,
+                        "headerSubmenuIndicator": false,
+                        "mobileMenu": "main-menu",
+                        "stickyMobileHeader": false,
+                        "addProductCategoriesToMobileNavigation": true,
                         "socialMediaIconsStatus": true,
                         "announcementStatus": true,
-                        "announcementBgColor": "#000000",
+                        "announcementBgColor": "#eeca86",
                         "announcementTextColor": "#ffffff",
-                        "announcementText": "",
+                        "announcementText": "Talk about your brand",
+                        "announcementLink": {
+                            "type": "url",
+                            "record_id": "",
+                            "url": ""
+                        },
+                        "announcementLinkOpenInNewWindowStatus": false,
+                        "announcementKlarna": false,
+                        "announcementKlarnaType": "top-strip-promotion-standard",
+                        "announcementKlarnaDark": false,
                         "sectionStyle": "general"
                     }
                 },
@@ -2655,21 +2745,21 @@
                     "id": "footer",
                     "name": "footer",
                     "settings": {
-                        "footerMenu1Title": "Lorem ipsum dolor sit amet",
-                        "footerMenu1": "footer",
+                        "footerMenu1Title": "",
+                        "footerMenu1": "main-menu",
                         "footerMenu2Title": "",
-                        "footerMenu2": "footer",
+                        "footerMenu2": "test",
                         "footerMenu3Title": "",
-                        "footerMenu3": "footer",
-                        "footerTextArea1Title": "Lorem ipsum dolor sit amet",
-                        "footerTextArea1Content": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien.<\/p>",
+                        "footerMenu3": "test",
+                        "footerTextArea1Title": "",
+                        "footerTextArea1Content": "",
                         "footerTextArea2Title": "",
-                        "footerTextArea2Content": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
-                        "footerNewsletterTitle": "Lorem ipsum dolor sit amet",
-                        "footerNewsletterContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<\/p>",
+                        "footerTextArea2Content": "",
+                        "footerNewsletterTitle": "Subscribe to our newsletter",
+                        "footerNewsletterContent": "<p>We announce in a newsletter about promotions, new products and sales.<\/p>",
                         "footerSocialMediaTitle": "",
                         "footerSocialMediaContent": "",
-                        "footerLayout": "1",
+                        "footerLayout": "6",
                         "footerPaymentMethodsImgSrc": "",
                         "footerTextArea1Status": true,
                         "footerTextArea2Status": true,
@@ -4114,7 +4204,7 @@
                         "headerSubmenuIndicator": true,
                         "mobileMenu": "main-menu",
                         "stickyMobileHeader": false,
-                        "addProductCategoriesToMobileNavigation": false,
+                        "addProductCategoriesToMobileNavigation": true,
                         "socialMediaIconsStatus": true,
                         "announcementStatus": true,
                         "announcementBgColor": "#000000",
@@ -4695,7 +4785,7 @@
                             "id": "a4a87951d55f877d33a3cbaff2bc83ff",
                             "name": "custom",
                             "settings": {
-                                "sectionHeight": "sm",
+                                "sectionHeight": "md",
                                 "sectionHeightCustomTop": "0",
                                 "sectionHeightCustomBottom": "0",
                                 "sectionInnerSpacing": "",
@@ -4730,99 +4820,36 @@
                             ]
                         },
                         {
-                            "id": "cb2b959780dd8db728bf26c26bd20b48",
-                            "name": "image-carousel",
+                            "id": "566fb2382041c080fdccafc964859eba",
+                            "name": "custom",
                             "settings": {
-                                "loop": true,
-                                "autoplay": true,
-                                "autoplaySpeed": "3",
-                                "navigation": "hover",
-                                "pagination": "hover",
-                                "effect": "fade",
-                                "sectionHeight": "",
-                                "slideTitleTag": "h3",
-                                "slideImgOverlay": "0",
-                                "slideImgBlur": "0",
-                                "sectionStyle": "general",
-                                "setting_blocks": {
-                                    "items": {
-                                        "F4c98887-2f85-4be6-a1b8-607600aa691c": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgPlaceholder": true,
-                                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1615876063860-d971f6dca5dc?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw2N3x8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8fHwxNjM1NTAwNDI3&ixlib=rb-1.2.1&q=85",
-                                                "imgAlt": "",
-                                                "title": "",
-                                                "description": "",
-                                                "btnLabel": "",
-                                                "btnResource": {
-                                                    "type": "url",
-                                                    "record_id": "",
-                                                    "url": ""
-                                                },
-                                                "btnStyle": "btn1",
-                                                "btnResourceOpenInNewWindowStatus": false
-                                            }
-                                        },
-                                        "81e92083-2c17-4507-89d8-5e5487784360": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgPlaceholder": true,
-                                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1615971677499-5467cbab01c0?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwzNXx8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8fHwxNjM1NTAwNDY0&ixlib=rb-1.2.1&q=85",
-                                                "imgAlt": "",
-                                                "title": "",
-                                                "description": "",
-                                                "btnLabel": "",
-                                                "btnResource": {
-                                                    "type": "url",
-                                                    "record_id": "",
-                                                    "url": ""
-                                                },
-                                                "btnStyle": "btn1",
-                                                "btnResourceOpenInNewWindowStatus": false
-                                            }
-                                        },
-                                        "56db1b4e-97e9-4362-a285-e6756e7fe1de": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgPlaceholder": "",
-                                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1615873968403-89e068629265?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwxMnx8aG9tZSUyMGRlc2lnbnxlbnwwfHx8fDE2MzU1MDA0ODk&ixlib=rb-1.2.1&q=85",
-                                                "imgAlt": "",
-                                                "title": "Item",
-                                                "description": "",
-                                                "btnLabel": "",
-                                                "btnResource": {
-                                                    "type": "url",
-                                                    "record_id": "",
-                                                    "url": ""
-                                                },
-                                                "btnStyle": "btn1",
-                                                "btnResourceOpenInNewWindowStatus": false
-                                            }
-                                        },
-                                        "0ec202e2-3b02-4f37-ade1-3b7e453d8f6b": {
-                                            "type": "item",
-                                            "settings": {
-                                                "imgPlaceholder": "",
-                                                "imgSrc": "https:\/\/images.unsplash.com\/photo-1618220179428-22790b461013?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw3fHxpbnRlcmlvciUyMGRlc2lnbnxlbnwwfHx8fDE2MzU1MDA1NTM&ixlib=rb-1.2.1&q=85",
-                                                "imgAlt": "",
-                                                "title": "Item",
-                                                "description": "",
-                                                "btnLabel": "",
-                                                "btnResource": {
-                                                    "type": "url",
-                                                    "record_id": "",
-                                                    "url": ""
-                                                },
-                                                "btnStyle": "btn1",
-                                                "type": "item",
-                                                "btnResourceOpenInNewWindowStatus": false
-                                            }
-                                        }
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomBottom": "0",
+                                "sectionInnerSpacing": "",
+                                "sectionContentWidth": "12",
+                                "sectionContentAlign": "center",
+                                "sectionBgImgSrc": "",
+                                "sectionBgImgPos": "left-top",
+                                "sectionBgImgOverlay": "0",
+                                "sectionBgImgBlur": "0",
+                                "sectionColumnBgColorStatus": false,
+                                "sectionColumnBgColor": "#ffffff",
+                                "sectionStyle": "general"
+                            },
+                            "blocks": [
+                                {
+                                    "id": "567322b76085e63225130a2d6f597131",
+                                    "name": "image",
+                                    "container": "",
+                                    "settings": {
+                                        "imgSrc": "https:\/\/images.unsplash.com\/photo-1615876063860-d971f6dca5dc?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw2OXx8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8fHwxNjM1NzU0NDky&ixlib=rb-1.2.1&q=85",
+                                        "imgAlt": "",
+                                        "imgEffect": "rounded",
+                                        "contentAlign": "center"
                                     }
                                 }
-                            },
-                            "blocks": []
+                            ]
                         },
                         {
                             "id": "3088a15aae3a4362c04b5c383a87beb4",
@@ -6227,7 +6254,7 @@
                 },
                 "textScale": "0.9375",
                 "bodyTextFont": "Inter",
-                "headingFont": "Ubuntu",
+                "headingFont": "Roboto Condensed",
                 "subheadingFont": "Inter",
                 "buttonFont": "Inter",
                 "accentFont": "Cormorant Garamond",
@@ -6325,8 +6352,8 @@
                                 "sectionSubtitleTag": "h3",
                                 "sectionHeaderTextAlign": "center",
                                 "sectionColSpacing": "sm",
-                                "sectionHeight": "",
-                                "sectionHeightCustomTop": "0",
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "40",
                                 "sectionHeightCustomBottom": "0",
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "center-center",
@@ -6426,8 +6453,8 @@
                                 "sectionSubtitleTag": "h3",
                                 "sectionHeaderTextAlign": "center",
                                 "sectionColSpacing": "sm",
-                                "sectionHeight": "",
-                                "sectionHeightCustomTop": "0",
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "40",
                                 "sectionHeightCustomBottom": "0",
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "center-center",
@@ -6546,8 +6573,8 @@
                                 "showProductName": true,
                                 "showPricing": true,
                                 "showAddToCart": false,
-                                "sectionHeight": "",
-                                "sectionHeightCustomTop": "0",
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "40",
                                 "sectionHeightCustomBottom": "0",
                                 "sectionInnerSpacing": "",
                                 "sectionBgImgSrc": "",
@@ -6572,8 +6599,8 @@
                                 "sectionSubtitleTag": "h3",
                                 "sectionHeaderTextAlign": "center",
                                 "sectionColSpacing": "sm",
-                                "sectionHeight": "",
-                                "sectionHeightCustomTop": "0",
+                                "sectionHeight": "custom",
+                                "sectionHeightCustomTop": "40",
                                 "sectionHeightCustomBottom": "0",
                                 "sectionBgImgSrc": "",
                                 "sectionBgImgPos": "center-center",
@@ -6655,7 +6682,7 @@
                                 "showPricing": true,
                                 "showAddToCart": false,
                                 "sectionHeight": "",
-                                "sectionHeightCustomTop": "0",
+                                "sectionHeightCustomTop": "40",
                                 "sectionHeightCustomBottom": "0",
                                 "sectionInnerSpacing": "",
                                 "sectionBgImgSrc": "",
@@ -7294,6 +7321,6 @@
         }
     },
     "asset_cache": {
-        "main.css": "main.817a3f790d6ccf9b07bce736409c68a4.css"
+        "main.css": "main.1cbd3afc6e5f536c91a1563a9b46a426.css"
     }
 }

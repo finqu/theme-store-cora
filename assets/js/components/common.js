@@ -396,7 +396,7 @@ export default {
 
             siteHeaderSearchToggleEls.forEach(el => { el.addEventListener('click', e => {
 
-                siteHeaderSearchContainerEl.classList.add('search-active');
+                siteHeaderSearchContainerEl.classList.add('site-search-active');
 
                 themeApp.animate(siteHeaderSearchContainerEl, 'fadeInDown');
 
@@ -414,7 +414,7 @@ export default {
                     if (!siteHeaderSearchContainerEl.contains(e.target) && siteHeaderSearchContainerEl !== e.target) {
 
                         themeApp.animate(siteHeaderSearchContainerEl, 'fadeOutUp').then(() => {
-                            siteHeaderSearchContainerEl.classList.remove('search-active');
+                            siteHeaderSearchContainerEl.classList.remove('site-search-active');
                         });
 
                         themeApp.animate(searchOverlayEl, 'fadeOut').then(() => {

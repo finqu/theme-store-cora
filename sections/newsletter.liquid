@@ -6,11 +6,11 @@
 
 {%- case section.settings.textAlign -%}
     {% when 'left' %}
-        {%- assign contentAlign = 'justify-content-start' -%}
+        {%- assign contentAlign = 'mr-auto' -%}
     {% when 'center' %}
-        {%- assign contentAlign = 'justify-content-center' -%}
+        {%- assign contentAlign = 'mx-auto' -%}
     {% when 'right' %}
-        {%- assign contentAlign = 'justify-content-end' -%}
+        {%- assign contentAlign = 'ml-auto' -%}
 {%- endcase -%}
 
 {%- capture sectionContent -%}
@@ -43,7 +43,7 @@
 
             {% else %}
 
-                <div class="input-container d-inline-flex {{ contentAlign }}">
+                <div class="input-group input-container {{ contentAlign }}">
 
                     <div class="form-floating flex-grow-1">
 

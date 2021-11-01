@@ -326,14 +326,14 @@
 
 
 // Form floating
+.input-group .form-floating + .btn {
+	height: $form-floating-height;
+	display: inline-flex;
+	align-items: center;
+}
+
 .form-floating {
 	position: relative;
-
-	& + .btn {
-		height: $form-floating-height;
-		display: inline-flex;
-    	align-items: center;
-	}
 
 	> .form-control,
 	> .form-select {
