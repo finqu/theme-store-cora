@@ -342,9 +342,13 @@ body {
 
 				.product-manufacturer-text {
 					@include relative-font-size($font-size-base * 2);
-					font-weight: $font-weight-normal;
 					font-family: $accent-font-family;
+					font-weight: $accent-font-weight;
+					font-style: $accent-font-style;
 		            line-height: $line-height-computed * 1.6;
+		            @if $accent-text-transform != 'none' {
+						text-transform: $accent-text-transform;
+					}
 				}
 			}
 

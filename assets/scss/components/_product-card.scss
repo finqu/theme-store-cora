@@ -106,11 +106,16 @@
             .product-manufacturer-name {
                 display: block;
                 font-family: $accent-font-family;
+                font-weight: $accent-font-weight;
+                font-style: $accent-font-style;
                 font-size: $font-size-base * 1.15;
                 line-height: $line-height-base;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
+                @if $accent-text-transform != 'none' {
+                    text-transform: $accent-text-transform;
+                }
             }
         }
 

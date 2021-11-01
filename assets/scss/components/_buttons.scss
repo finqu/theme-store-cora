@@ -38,6 +38,13 @@
     }
 }
 
+.btn:not(.btn-link):not(.btn-text):not(.btn-icon) {
+    font-style: $btn-font-style;
+    @if $btn-text-transform != 'none' {
+        text-transform: $btn-text-transform;
+    }
+}
+
 .btn,
 .btn-link,
 .btn-text {

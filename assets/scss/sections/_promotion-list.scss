@@ -107,9 +107,18 @@
 
 	h1, h2, h3, h4, h5, h6,
 	.h1, .h2, .h3, .h4, .h5, .h6 {
+		margin-bottom: $headings-margin-bottom;
+		font-family: $headings-font-family;
+		font-weight: $headings-font-weight;
+		font-style: $headings-font-style;
+		line-height: $headings-line-height;
+		color: $headings-color;
 		overflow-wrap: break-word;
-	    word-wrap: break-word;
-	    hyphens: auto;
+		word-wrap: break-word;
+		hyphens: auto;
+		@if $headings-text-transform != 'none' {
+			text-transform: $headings-text-transform;
+		}
 	}
 
 	h1,

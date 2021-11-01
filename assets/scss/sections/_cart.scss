@@ -178,9 +178,14 @@
 
     				.cart-item-manufacturer-text {
     					font-family: $accent-font-family;
+						font-weight: $accent-font-weight;
+						font-style: $accent-font-style;
 	                    font-size: $font-size-base * 1.15;
 	                    line-height: $line-height-base;
 	                    margin-bottom: 0;
+	                    @if $accent-text-transform != 'none' {
+							text-transform: $accent-text-transform;
+						}
     				}
     			}
 
@@ -333,9 +338,14 @@
 
     				.cart-item-manufacturer-text {
     					font-family: $accent-font-family;
+						font-weight: $accent-font-weight;
+						font-style: $accent-font-style;
 	                    font-size: $font-size-base * 1.15;
 	                    line-height: $line-height-base;
 	                    margin-bottom: 0;
+	                    @if $accent-text-transform != 'none' {
+							text-transform: $accent-text-transform;
+						}
     				}
     			}
 

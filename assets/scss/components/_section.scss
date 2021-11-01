@@ -193,45 +193,69 @@
 
 			.title {
 				@include relative-font-size($h1-font-size * 1.15);
-				font-weight: $font-weight-bold;
 				font-family: $headings-font-family;
+				font-weight: $headings-font-weight;
+				font-style: $headings-font-style;
 				line-height: $headings-line-height;
 				margin-bottom: 0;
 				overflow-wrap: break-word;
 			    word-wrap: break-word;
 			    hyphens: auto;
+			    @if $headings-text-transform != 'none' {
+					text-transform: $headings-text-transform;
+				}
 
 			    &.display-1 {
 					@include relative-font-size($display1-size);
-					font-weight: $display1-weight;
+					font-family: $headings-font-family;
+					font-weight: $headings-font-weight;
+					font-style: $headings-font-style;
 					line-height: $display-line-height;
 					@include media-breakpoint-down(md) {
 						@include relative-font-size(subtract($display1-size, 3rem));
+					}
+					@if $headings-text-transform != 'none' {
+						text-transform: $headings-text-transform;
 					}
 				}
 
 				&.display-2 {
 					@include relative-font-size($display2-size);
-					font-weight: $display2-weight;
+					font-family: $headings-font-family;
+					font-weight: $headings-font-weight;
+					font-style: $headings-font-style;
 					line-height: $display-line-height;
 					@include media-breakpoint-down(md) {
 						@include relative-font-size(subtract($display2-size, 2rem));
+					}
+					@if $headings-text-transform != 'none' {
+						text-transform: $headings-text-transform;
 					}
 				}
 
 				&.display-3 {
 					@include relative-font-size($display3-size);
-					font-weight: $display3-weight;
+					font-family: $headings-font-family;
+					font-weight: $headings-font-weight;
+					font-style: $headings-font-style;
 					line-height: $display-line-height;
 					@include media-breakpoint-down(md) {
 						@include relative-font-size(subtract($display3-size, 0.5rem));
+					}
+					@if $headings-text-transform != 'none' {
+						text-transform: $headings-text-transform;
 					}
 				}
 
 				&.display-4 {
 					@include relative-font-size($display4-size);
-					font-weight: $display4-weight;
+					font-family: $headings-font-family;
+					font-weight: $headings-font-weight;
+					font-style: $headings-font-style;
 					line-height: $display-line-height;
+					@if $headings-text-transform != 'none' {
+						text-transform: $headings-text-transform;
+					}
 				}
 			}
 		}
@@ -241,10 +265,15 @@
 			.subtitle {
 				@include relative-font-size($h4-font-size);
 				font-family: $subheadings-font-family;
+				font-weight: $subheadings-font-weight;
+				font-style: $subheadings-font-style;
 				line-height: $headings-line-height;
 				overflow-wrap: break-word;
 			    word-wrap: break-word;
 			    hyphens: auto;
+			    @if $subheadings-text-transform != 'none' {
+					text-transform: $subheadings-text-transform;
+				}
 			}
 		}
 	}
