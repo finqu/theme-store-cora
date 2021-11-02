@@ -27,7 +27,7 @@
 
         {%- assign theme = section.settings.announcementKlarnaDark | yepnope: 'dark', 'light' -%}
 
-        <div class="site-klarna-banner klarna-theme-{{ theme }}">
+        <div class="site-klarna-banner klarna-theme-{{ theme }} klarna-type-{{ section.settings.announcementKlarnaType }}">
 
             {% render 'klarna-placement', type: section.settings.announcementKlarnaType theme: theme %}
 
@@ -607,7 +607,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-1', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -621,7 +622,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-2', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -635,7 +637,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-3', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses, search: search -%}
@@ -649,7 +652,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-4', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -663,7 +667,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-5', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -677,7 +682,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-6', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -691,7 +697,8 @@
     {%- endif -%}
 
     {%- if section.settings.announcementKlarna and settings.klarnaPlacementsClientId -%}
-        {%- assign sectionClasses = sectionClasses | append: ' has-klarna-banner' -%}
+        {% capture klarnaBanner %} has-klarna-{{ section.settings.announcementKlarnaType }}-banner{% endcapture %}
+        {%- assign sectionClasses = sectionClasses | append: klarnaBanner -%}
     {%- endif -%}
 
     {%- render 'headers/layout-7', section: section, sectionContent: sectionContent, sectionClasses: sectionClasses -%}
@@ -1017,13 +1024,6 @@
                                 "label": {
                                     "en": "Banner 2",
                                     "fi": "Banneri 2"
-                                }
-                            },
-                            {
-                                "value": "top-strip-promotion-auto-size",
-                                "label": {
-                                    "en": "Banner 3",
-                                    "fi": "Banneri 3"
                                 }
                             }
                         ],

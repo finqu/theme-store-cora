@@ -61,25 +61,55 @@ body.template-frontpage {
                     &.has-announcement {
 
                         .site-header-container {
-                            top: 48px;
+                            top: $announcement-height;
                         }
-                    }
-
-                    &.has-klarna-banner {
-
-                        .site-header-container {
-                            top: 41px;
-                        }
-                    }
-
-                    &.has-announcement.has-klarna-banner {
 
                         .site-announcement-container {
-                            top: 41px;
+                            height: $announcement-height;
+                        }
+                    }
+
+                    &.has-klarna-top-strip-promotion-standard-banner {
+
+                        .site-header-container {
+                            top: $klarna-top-strip-promotion-standard-banner-height;
+                        }
+
+                        .site-klarna-banner {
+                            height: $klarna-top-strip-promotion-standard-banner-height;
+                        }
+                    }
+
+                    &.has-klarna-top-strip-promotion-badge-banner {
+
+                        .site-header-container {
+                            top: $klarna-top-strip-promotion-badge-banner-height;
+                        }
+
+                        .site-klarna-banner {
+                            height: $klarna-top-strip-promotion-badge-banner-height;
+                        }
+                    }
+
+                    &.has-announcement.has-klarna-top-strip-promotion-standard-banner {
+
+                        .site-announcement-container {
+                            top: $klarna-top-strip-promotion-standard-banner-height;
                         }
 
                         .site-header-container {
-                            top: 89px;
+                            top: add($klarna-top-strip-promotion-standard-banner-height, $announcement-height);
+                        }
+                    }
+
+                    &.has-announcement.has-klarna-top-strip-promotion-badge-banner {
+
+                        .site-announcement-container {
+                            top: $klarna-top-strip-promotion-badge-banner-height;
+                        }
+
+                        .site-header-container {
+                            top: add($klarna-top-strip-promotion-badge-banner-height, $announcement-height);
                         }
                     }
 
@@ -88,7 +118,6 @@ body.template-frontpage {
                         left: 0;
                         top: 0;
                         right: 0;
-                        height: 48px;
                     }
 
                     .site-klarna-banner {
@@ -96,7 +125,6 @@ body.template-frontpage {
                         left: 0;
                         top: 0;
                         right: 0;
-                        height: 41px;
                     }
                 }
 
@@ -141,25 +169,55 @@ body.template-frontpage {
                     &.has-announcement {
 
                         .site-header-container {
-                            top: 48px;
+                            top: $announcement-height;
                         }
-                    }
-
-                    &.has-klarna-banner {
-
-                        .site-header-container {
-                            top: 41px;
-                        }
-                    }
-
-                    &.has-announcement.has-klarna-banner {
 
                         .site-announcement-container {
-                            top: 41px;
+                            height: $announcement-height;
+                        }
+                    }
+
+                    &.has-klarna-top-strip-promotion-standard-banner {
+
+                        .site-header-container {
+                            top: $klarna-top-strip-promotion-standard-banner-height;
+                        }
+
+                        .site-klarna-banner {
+                            height: $klarna-top-strip-promotion-standard-banner-height;
+                        }
+                    }
+
+                    &.has-klarna-top-strip-promotion-badge-banner {
+
+                        .site-header-container {
+                            top: $klarna-top-strip-promotion-badge-banner-height;
+                        }
+
+                        .site-klarna-banner {
+                            height: $klarna-top-strip-promotion-badge-banner-height;
+                        }
+                    }
+
+                    &.has-announcement.has-klarna-top-strip-promotion-standard-banner {
+
+                        .site-announcement-container {
+                            top: $klarna-top-strip-promotion-standard-banner-height;
                         }
 
                         .site-header-container {
-                            top: 89px;
+                            top: add($klarna-top-strip-promotion-standard-banner-height, $announcement-height);
+                        }
+                    }
+
+                    &.has-announcement.has-klarna-top-strip-promotion-badge-banner {
+
+                        .site-announcement-container {
+                            top: $klarna-top-strip-promotion-badge-banner-height;
+                        }
+
+                        .site-header-container {
+                            top: add($klarna-top-strip-promotion-badge-banner-height, $announcement-height);
                         }
                     }
 
@@ -168,7 +226,6 @@ body.template-frontpage {
                         left: 0;
                         top: 0;
                         right: 0;
-                        height: 48px;
                     }
 
                     .site-klarna-banner {
@@ -176,7 +233,6 @@ body.template-frontpage {
                         left: 0;
                         top: 0;
                         right: 0;
-                        height: 41px;
                     }
                 }
 
@@ -626,19 +682,35 @@ body > #search-overlay {
 
         .site-klarna-banner {
             z-index: 5;
-            height: 41px;
 
-            &.klarna-theme-light {
-                background-color: #eae7e4;
+            &.klarna-type-top-strip-promotion-standard {
+                height: $klarna-top-strip-promotion-standard-banner-height;
+
+                &.klarna-theme-light {
+                    background-color: $klarna-top-strip-promotion-standard-banner-light-background-color;
+                }
+
+                &.klarna-theme-dark {
+                    background-color: $klarna-top-strip-promotion-standard-banner-dark-background-color;
+                }
             }
 
-            &.klarna-theme-dark {
-                background-color: #17120f;
+            &.klarna-type-top-strip-promotion-badge {
+                height: $klarna-top-strip-promotion-badge-banner-height;
+
+                &.klarna-theme-light {
+                    background-color: $klarna-top-strip-promotion-badge-banner-light-background-color;
+                }
+
+                &.klarna-theme-dark {
+                    background-color: $klarna-top-strip-promotion-badge-banner-dark-background-color;
+                }
             }
         }
 
         .site-announcement-container {
             z-index: 5;
+            height: $announcement-height;
 
             .site-announcement {
                 display: flex;
@@ -699,6 +771,7 @@ body > #search-overlay {
 
                     .site-search-results-container {
                         visibility: visible;
+                        z-index: 5;
                     }
                 }
 
@@ -729,6 +802,7 @@ body > #search-overlay {
                     visibility: hidden;
                     border-top-width: 1px;
                     border-top-style: solid;
+                    z-index: -1;
 
                     .site-search-results {
                         max-height: 300px;
