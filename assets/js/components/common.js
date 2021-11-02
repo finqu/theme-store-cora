@@ -730,7 +730,7 @@ export default {
         if (window.innerWidth < 992) {
             categoryFiltersFormEl = containerEl.querySelector('.filters-mobile-navigation-container .category-filters');
         } else {
-            categoryFiltersFormEl = containerEl.querySelector('.container > .category-filters');
+            categoryFiltersFormEl = containerEl.querySelector('.category-filters');
         }
 
         const $categoryFiltersFormEl = $(categoryFiltersFormEl);
