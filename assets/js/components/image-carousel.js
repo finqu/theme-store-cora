@@ -42,10 +42,12 @@ export default class ImageCarousel {
                         delay = 700;
                     }
 
-                    setTimeout(() => {
-                        swiper.el.classList.add('swiper-ready');
-                        themeApp.animate(swiper.el.querySelector('.swiper-slide-active .slide-content'), 'fadeIn');
-                    }, delay);
+                    if (swiper.el) {
+                        setTimeout(() => {
+                            swiper.el.classList.add('swiper-ready');
+                            themeApp.animate(swiper.el.querySelector('.swiper-slide-active .slide-content'), 'fadeIn');
+                        }, delay);
+                    }
 
                     if (swiper.params.parallax) {
 
