@@ -214,7 +214,7 @@ export default {
             const iconsToLoad = siteHeaderActionsContainerEl.querySelectorAll('.svg-lazy').length;
             let iconsLoaded = 0;
 
-            if (siteHeaderLogoImgEl && siteHeaderLogoImgEl.contains('svg-lazy')) {
+            if (siteHeaderLogoImgEl && siteHeaderLogoImgEl.classList.contains('svg-lazy')) {
 
                 const logoObserver = new MutationObserver((mutations) => {
 
@@ -283,7 +283,7 @@ export default {
                 });
             }
 
-            if ((!siteHeaderLogoImgEl || !siteHeaderLogoImgEl.contains('svg-lazy')) || iconsToLoad == 0) {
+            if ((!siteHeaderLogoImgEl || !siteHeaderLogoImgEl.classList.contains('svg-lazy')) || iconsToLoad == 0) {
 
                 const siteHeaderCartContainerOffset = siteHeaderItemCartEl.offsetTop + siteHeaderItemCartEl.clientHeight;
 
