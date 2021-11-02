@@ -38,6 +38,7 @@
 {
 	"@context": "https://schema.org/",
 	"@type": "Product",
+	"productID": "{{ product.id }}",
 	{%- if product.name -%}
 	"name": "{{ product.name }}",
 	{%- endif -%}
@@ -94,7 +95,7 @@
 		"@type": "Offer",
 		"url": "{{ product | page_url | full_url }}",
 		"priceCurrency": "{{ store.currency.iso_code }}",
-		"price": "{{ product.price }}",
+		"price": "{{ product.price | money }}",
 		{%- if product.has_discount and product.discount_information and product.discount_information.ends | date: '%s' > 'now' | date: '%s' -%}
 		"priceValidUntil": "{{ product.discount_information.ends | date: '%Y-%m-%d' }}",
 		{%- endif -%}
