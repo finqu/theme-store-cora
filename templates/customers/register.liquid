@@ -3,13 +3,13 @@
 
 {%- capture sectionContent -%}
 
-    {% form 'create_customer' %}
+    {% form 'create_customer', id: 'register-form' %}
 
         {% if settings.registerCompanyInformation %}
 
             <div class="form-group form-floating">
 
-                <input type="text" class="form-control" name="company" id="register-company" value="{{ form.company }}" placeholder="{{ 'account.information.company' | t }}">
+                <input type="text" class="form-control" name="company" id="register-company" value="{{ form.submitted.company }}" placeholder="{{ 'account.information.company' | t }}">
 
                 <label for="register-company">
                     {{ 'account.information.company' | t }}
@@ -19,7 +19,7 @@
 
             <div class="form-group form-floating">
 
-                <input type="text" class="form-control" name="company_id" id="register-company-id" value="{{ form.company_id }}" placeholder="{{ 'account.information.company_id' | t }}">
+                <input type="text" class="form-control" name="company_id" id="register-company-id" value="{{ form.submitted.company_id }}" placeholder="{{ 'account.information.company_id' | t }}">
 
                 <label for="register-company-id">
                     {{ 'account.information.company_id' | t }}
@@ -29,7 +29,7 @@
 
             <div class="form-group form-floating">
 
-                <input type="text" class="form-control" name="vat_number" id="register-vat-number" value="{{ form.vat_number }}" placeholder="{{ 'account.information.vat_number' | t }}">
+                <input type="text" class="form-control" name="vat_number" id="register-vat-number" value="{{ form.submitted.vat_number }}" placeholder="{{ 'account.information.vat_number' | t }}">
 
                 <label for="register-vat-number">
                     {{ 'account.information.vat_number' | t }}

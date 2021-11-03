@@ -51,6 +51,16 @@
 
 		{{ content_for_header }}
 
+		{% if submitted_form.id == 'register-form' and submitted_form.posted_successfully? %}
+
+            <script type="application/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.dispatchEvent(new CustomEvent('theme:customer:register'));
+                });
+            </script>
+
+        {% endif %}
+
 	</head>
 
 	<body class="{% if request.design_mode %}design-mode {% endif %}{% if store.customer_accounts_enabled %}customer-accounts-enabled {% endif %}{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }} layout-theme">

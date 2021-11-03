@@ -132,6 +132,20 @@
 
                                         {% form 'customer', customer %}
 
+                                            {% if form.posted_successfully? %}
+
+                                                <script type="application/javascript">
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        document.dispatchEvent(new CustomEvent('theme:newsletter:subscribe', {
+                                                            detail: {
+                                                                email: {{ form.email | json }}
+                                                            }
+                                                        }));
+                                                    });
+                                                </script>
+
+                                            {% endif %}
+
                                             {% if section.settings.footerNewsletterContent %}
 
                                                 {{ section.settings.footerNewsletterContent }}

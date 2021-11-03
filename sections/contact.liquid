@@ -32,6 +32,16 @@
 
         {% form 'contact', class: 'mt-6' %}
 
+            {% if form.posted_successfully? %}
+
+                <script type="application/javascript">
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.dispatchEvent(new CustomEvent('theme:contact:sendEmail'));
+                    });
+                </script>
+
+            {% endif %}
+
             <div class="row">
 
                 <div class="col-12 col-md form-group">
@@ -165,6 +175,16 @@
             <div class="col-12 col-md">
 
                 {% form 'contact' %}
+
+                    {% if form.posted_successfully? %}
+
+                        <script type="application/javascript">
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.dispatchEvent(new CustomEvent('theme:contact:sendEmail'));
+                            });
+                        </script>
+
+                    {% endif %}
 
                     <div class="form-group">
 

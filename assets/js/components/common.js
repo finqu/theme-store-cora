@@ -373,6 +373,12 @@ export default {
                             </div>
                         `;
                     }
+
+                    document.dispatchEvent(new CustomEvent('theme:search', {
+                        detail: {
+                            query: q
+                        }
+                    }));
                 });
             }
 
@@ -648,7 +654,7 @@ export default {
     },
     initCartMini: function() {
 
-        document.addEventListener('cartRendered', cartReadyEvent => {
+        document.addEventListener('theme:cart:render', cartRenderEvent => {
 
             const cartMiniEls = document.querySelectorAll('.cart-mini');
 
@@ -1096,6 +1102,12 @@ export default {
                 if (iconEl) {
                     themeApp.animate(iconEl, 'pulse');
                 }
+
+                document.dispatchEvent(new CustomEvent('theme:wishlist:addItem', {
+                    detail: {
+                        id: id
+                    }
+                }));
             });
     	})});
 
@@ -1141,6 +1153,12 @@ export default {
                         document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.t('general.wishlist_empty');
                     }
                 }
+
+                document.dispatchEvent(new CustomEvent('theme:wishlist:removeItem', {
+                    detail: {
+                        id: id
+                    }
+                }));
             });
     	})});
 
@@ -1193,6 +1211,12 @@ export default {
                     }
 
 	                el.setAttribute('aria-pressed', false);
+
+                    document.dispatchEvent(new CustomEvent('theme:wishlist:removeItem', {
+                        detail: {
+                            id: id
+                        }
+                    }));
 	            });
 
     		} else {
@@ -1217,6 +1241,12 @@ export default {
                     }
 
 	                el.setAttribute('aria-pressed', true);
+
+                    document.dispatchEvent(new CustomEvent('theme:wishlist:addItem', {
+                        detail: {
+                            id: id
+                        }
+                    }));
 	            });
     		}
     	})});

@@ -73,6 +73,20 @@
 
                 {% form 'search', class: 'site-search-form' %}
 
+                    {% if form.posted_successfully? %}
+
+                        <script type="application/javascript">
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.dispatchEvent(new CustomEvent('theme:search', {
+                                    detail: {
+                                        query: {{ submitted_form.q | json }}
+                                    }
+                                }));
+                            });
+                        </script>
+
+                    {% endif %}
+
                     <div class="site-search-form-icon">
 
                         {%- render 'icon', icon: 'regular/search', class: 'svg-icon-fw' -%}

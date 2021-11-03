@@ -232,6 +232,10 @@ export default class Cart {
                 'value': self.cart.total,
                 'items': items
             });
+
+            document.dispatchEvent(new CustomEvent('theme:cart:initiateCheckout', {
+                detail: self.cart
+            }));
         }
 
         const render = function(e) {
@@ -341,7 +345,7 @@ export default class Cart {
                 });
             }
 
-            document.dispatchEvent(new CustomEvent('cartRendered'));
+            document.dispatchEvent(new CustomEvent('theme:cart:render'));
         }
 
         document.addEventListener('click', (e) => {
@@ -375,7 +379,7 @@ export default class Cart {
             }
         });
 
-        document.addEventListener('cartUpdated', (e) => {
+        document.addEventListener('theme:cart:update', (e) => {
 
             render(e)
 
@@ -424,7 +428,9 @@ export default class Cart {
 
             this.processing = false;
 
-            document.dispatchEvent(new CustomEvent('cartUpdated'));
+            document.dispatchEvent(new CustomEvent('theme:cart:update', {
+                detail: self.cart
+            }));
 
             return;
         }
@@ -443,13 +449,17 @@ export default class Cart {
     // Get cart data from API
     _getCart(options = {}) {
 
+        const self = this;
+
         // Customer account required to purchase
         if (themeApp.data.customerAccountsEnabled == true &&
             themeApp.data.customerAccountsRequireApproval == false &&
             themeApp.data.customerAccountsOptional == false &&
             themeApp.data.customerLoggedIn == false) {
 
-                document.dispatchEvent(new CustomEvent('cartUpdated'));
+                document.dispatchEvent(new CustomEvent('theme:cart:update', {
+                    detail: self.cart
+                }));
 
                 return;
         }
@@ -459,12 +469,12 @@ export default class Cart {
             themeApp.data.customerAccountsRequireApproval == true &&
             themeApp.data.customerHasAccess == false) {
 
-                document.dispatchEvent(new CustomEvent('cartUpdated'));
+                document.dispatchEvent(new CustomEvent('theme:cart:update', {
+                    detail: self.cart
+                }));
 
                 return;
         }
-
-        const self = this;
 
         options.type = 'GET';
 
@@ -585,6 +595,14 @@ export default class Cart {
                     'value': lastItem.price,
                     'items': items
                 });
+
+                let eventDetail = lastItem;
+
+                eventDetail.currency = self.cart.currency;
+
+                document.dispatchEvent(new CustomEvent('theme:cart:addItem', {
+                    detail: eventDetail
+                }));
             }
         };
 
@@ -612,7 +630,16 @@ export default class Cart {
         options.type = 'PUT';
 
         options.success = function(response) {
+
             self._updateCart(response);
+
+            let eventDetail = self.items.filter(item => item.id === parseInt(id, 10))[0];
+
+            eventDetail.currency = self.cart.currency;
+
+            document.dispatchEvent(new CustomEvent('theme:cart:updateItem', {
+                detail: eventDetail
+            }));
         };
 
         options.error = function(response) {
@@ -688,6 +715,14 @@ export default class Cart {
                     'value': itemToBeRemoved.price,
                     'items': items
                 });
+
+                let eventDetail = itemToBeRemoved;
+
+                eventDetail.currency = self.cart.currency;
+
+                document.dispatchEvent(new CustomEvent('theme:cart:removeItem', {
+                    detail: eventDetail
+                }));
             }
         };
 
@@ -710,7 +745,12 @@ export default class Cart {
         options.type = 'DELETE';
 
         options.success = function(response) {
+
             self._updateCart(response);
+
+            document.dispatchEvent(new CustomEvent('theme:cart:clear', {
+                detail: self.cart
+            }));
         };
 
         options.error = function(response) {
