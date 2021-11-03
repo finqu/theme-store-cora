@@ -1622,8 +1622,13 @@
 
 {% endif %}
 
-{% render 'schemas/product', product: product %}
-{% render 'schemas/breadcrumblist', breadcrumbs: product.breadcrumbs, currentItem: product %}
+{%- if settings.schemaProduct -%}
+    {% render 'schemas/product', product: product %}
+{%- endif -%}
+
+{%- if settings.schemaBreadcrumbList -%}
+    {% render 'schemas/breadcrumblist', breadcrumbs: product.breadcrumbs, currentItem: product %}
+{%- endif -%}
 
 {% schema %}
 {

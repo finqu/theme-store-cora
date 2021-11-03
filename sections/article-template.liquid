@@ -164,7 +164,9 @@
 
 {% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag %}
 
-{% render 'schemas/blogposting', article: article %}
+{%- if settings.schemaBlogPosting -%}
+    {% render 'schemas/blogposting', article: article %}
+{%- endif -%}
 
 {% schema %}
 {

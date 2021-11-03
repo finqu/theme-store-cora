@@ -39,8 +39,8 @@
 	"@context": "https://schema.org/",
 	"@type": "Product",
 	"productID": "{{ product.id }}",
-	{%- if product.name -%}
-	"name": "{{ product.name }}",
+	{%- if product.meta_title or product.name -%}
+	"name": "{{ product.meta_title | default: product.name }}",
 	{%- endif -%}
 	{%- if imageArr -%}
 	"image": [
@@ -49,8 +49,8 @@
 	{%- endfor -%}
 	],
 	{%- endif -%}
-	{%- if product.short_description or product.description -%}
-	"description": "{{ product.short_description | default: product.description | strip_html | truncate: 140 | default: '' }}",
+	{%- if product.meta_description or product.short_description or product.description -%}
+	"description": "{{ product.meta_description | default: product.short_description | default: product.description | strip_html | truncate: 4997, '...' }}",
 	{%- endif -%}
 	{%- if product.gtin -%}
 	"gtin": "{{ product.gtin }}",

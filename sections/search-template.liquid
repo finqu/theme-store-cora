@@ -85,7 +85,9 @@
 
 	    </div>
 
-        {% render 'schemas/itemlist', items: search.results, paginate: paginate %}
+        {%- if settings.schemaItemList -%}
+            {% render 'schemas/itemlist', items: search.results, paginate: paginate %}
+        {%- endif -%}
 
 	{%- endpaginate -%}
 

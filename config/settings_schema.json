@@ -2156,6 +2156,69 @@
 					}
 				}
 			]
+		},
+		{
+			"type": "setting-page",
+			"label": {
+				"en": "Search engines",
+				"fi": "Hakukoneet"
+			},
+			"settings": [
+				{
+					"type": "heading",
+					"label": {
+						"en": "Search engines",
+						"fi": "Hakukoneet"
+					},
+					"subheading": {
+						"en": "These settings can help you increase the visibility of your online store on search engines.",
+						"fi": "Näiden asetusten avulla voit parantaa verkkokauppasi näkyvyyttä hakukoneissa."
+					}
+				},
+				{
+					"type": "title",
+					"label": {
+						"en": "Structured data",
+						"fi": "Jäsennetty tieto"
+					}
+				},
+				{
+					"id": "schemaWebsite",
+					"type": "checkbox",
+					"label": "Website",
+					"default": true
+				},
+				{
+					"id": "schemaOrganization",
+					"type": "checkbox",
+					"label": "Organization",
+					"default": true
+				},
+				{
+					"id": "schemaProduct",
+					"type": "checkbox",
+					"label": "Product",
+					"default": true
+				},
+				{
+					"id": "schemaBlogPosting",
+					"type": "checkbox",
+					"label": "BlogPosting",
+					"default": true
+				},
+				{
+					"id": "schemaBreadcrumbList",
+					"type": "checkbox",
+					"label": "BreadcrumbList",
+					"default": true
+				},
+				{
+					"id": "schemaItemList",
+					"type": "checkbox",
+					"label": "ItemList",
+					"default": true
+				}
+			]
 		}
 	]
 }

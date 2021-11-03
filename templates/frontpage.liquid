@@ -1,7 +1,12 @@
 {{ content_for_index }}
 
-{% render 'schemas/organization' %}
-{% render 'schemas/website' %}
+{%- if settings.schemaOrganization -%}
+	{% render 'schemas/organization' %}
+{%- endif -%}
+
+{%- if settings.schemaWebsite -%}
+	{% render 'schemas/website' %}
+{%- endif -%}
 
 {% schema %}
 {

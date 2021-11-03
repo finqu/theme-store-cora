@@ -395,7 +395,10 @@
             </div>
 
             {% render 'pagination', paginate: paginate %}
-            {% render 'schemas/itemlist', items: category.products, paginate: paginate %}
+
+            {%- if settings.schemaItemList -%}
+                {% render 'schemas/itemlist', items: category.products, paginate: paginate %}
+            {%- endif -%}
 
         </div>
 
@@ -601,7 +604,9 @@
 
 {% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionDescription: sectionDescription, sectionBreadcrumbs: sectionBreadcrumbs %}
 
-{% render 'schemas/breadcrumblist', breadcrumbs: sectionBreadcrumbs, currentItem: currentCategory %}
+{%- if settings.schemaBreadcrumbList -%}
+    {% render 'schemas/breadcrumblist', breadcrumbs: sectionBreadcrumbs, currentItem: currentCategory %}
+{%- endif -%}
 
 {% schema %}
 {

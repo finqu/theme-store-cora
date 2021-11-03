@@ -87,7 +87,9 @@
 
 	    </div>
 
-        {% render 'schemas/itemlist', items: manufacturer.products, paginate: paginate %}
+        {%- if settings.schemaItemList -%}
+            {% render 'schemas/itemlist', items: manufacturer.products, paginate: paginate %}
+        {%- endif -%}
 
 	{%- endpaginate -%}
 

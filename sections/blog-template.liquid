@@ -33,7 +33,9 @@
 
             </div>
 
-            {% render 'schemas/itemlist', items: articles, paginate: paginate %}
+            {%- if settings.schemaItemList -%}
+            	{% render 'schemas/itemlist', items: articles, paginate: paginate %}
+            {%- endif -%}
 
 		{%- endpaginate -%}
 
