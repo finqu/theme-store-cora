@@ -376,7 +376,8 @@ export default {
 
                     document.dispatchEvent(new CustomEvent('theme:search', {
                         detail: {
-                            query: q
+                            query: q,
+                            items: res
                         }
                     }));
                 });

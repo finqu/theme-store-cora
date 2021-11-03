@@ -267,7 +267,9 @@ export default class App {
 	    window.jQuery = $;
 	    window.$ = $;
 
-	    document.dispatchEvent(new CustomEvent('theme:ready'));
+	    document.dispatchEvent(new CustomEvent('theme:ready', {
+	    	detail: this
+	    }));
 
         this.init();
 	}
