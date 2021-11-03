@@ -534,12 +534,6 @@ export default class App {
 	    document.head.appendChild(script);
 	});
 
-	addDataLayerItem(item) {
-        if (window.dataLayer) {
-            dataLayer.push(item);
-        }
-    }
-
     generateUuid() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             let r = (Math.random() * 16) | 0,

@@ -183,56 +183,6 @@ export default class Cart {
 
         const checkout = function(e) {
 
-            let items = [];
-
-            self.items.forEach((item, i) => {
-
-                let obj = {};
-
-                obj.item_id = item.id;
-                obj.price = item.price;
-                obj.quantity = item.quantity;
-
-                if (item.name) {
-                    obj.item_name = item.name;
-                }
-
-                if (item.manufacturer) {
-                    obj.item_brand = item.manufacturer;
-                }
-
-                if (item.attribute_label) {
-                    obj.item_variant = item.attribute_label;
-                }
-
-                if (item.category_path) {
-
-                    item.category_path.forEach((categoryName, i) => {
-
-                        const index = i++;
-
-                        if (index == 1) {
-
-                            obj.item_category = categoryName;
-
-                        } else if (index <= 5) {
-
-                            obj['item_category'+index] = categoryName;
-                        }
-
-                        return;
-                    });
-                }
-
-                items.push(obj);
-            });
-
-            themeApp.addDataLayerItem('event', 'begin_checkout', {
-                'currency': self.cart.currency,
-                'value': self.cart.total,
-                'items': items
-            });
-
             document.dispatchEvent(new CustomEvent('theme:cart:initiateCheckout', {
                 detail: self.cart
             }));
@@ -550,52 +500,6 @@ export default class Cart {
                     });
                 }
 
-                let items = [];
-                let obj = {};
-
-                obj.item_id = lastItem.id;
-                obj.price = lastItem.price;
-                obj.quantity = lastItem.quantity;
-
-                if (lastItem.name) {
-                    obj.item_name = lastItem.name;
-                }
-
-                if (lastItem.manufacturer) {
-                    obj.item_brand = lastItem.manufacturer;
-                }
-
-                if (lastItem.attribute_label) {
-                    obj.item_variant = lastItem.attribute_label;
-                }
-
-                if (lastItem.category_path) {
-
-                    lastItem.category_path.forEach((categoryName, i) => {
-
-                        const index = i++;
-
-                        if (index == 1) {
-
-                            obj.item_category = categoryName;
-
-                        } else if (index <= 5) {
-
-                            obj['item_category'+index] = categoryName;
-                        }
-
-                        return;
-                    });
-                }
-
-                items.push(obj);
-
-                themeApp.addDataLayerItem('event', 'add_to_cart', {
-                    'currency': self.cart.currency,
-                    'value': lastItem.price,
-                    'items': items
-                });
-
                 let eventDetail = lastItem;
 
                 eventDetail.currency = self.cart.currency;
@@ -669,52 +573,6 @@ export default class Cart {
             self._updateCart(response);
 
             if (itemToBeRemoved) {
-
-                let items = [];
-                let obj = {};
-
-                obj.item_id = itemToBeRemoved.id;
-                obj.price = itemToBeRemoved.price;
-                obj.quantity = itemToBeRemoved.quantity;
-
-                if (itemToBeRemoved.name) {
-                    obj.item_name = itemToBeRemoved.name;
-                }
-
-                if (itemToBeRemoved.manufacturer) {
-                    obj.item_brand = itemToBeRemoved.manufacturer;
-                }
-
-                if (itemToBeRemoved.attribute_label) {
-                    obj.item_variant = itemToBeRemoved.attribute_label;
-                }
-
-                if (itemToBeRemoved.category_path) {
-
-                    itemToBeRemoved.category_path.forEach((categoryName, i) => {
-
-                        const index = i++;
-
-                        if (index == 1) {
-
-                            obj.item_category = categoryName;
-
-                        } else if (index <= 5) {
-
-                            obj['item_category'+index] = categoryName;
-                        }
-
-                        return;
-                    });
-                }
-
-                items.push(obj);
-
-                themeApp.addDataLayerItem('event', 'remove_from_cart', {
-                    'currency': self.cart.currency,
-                    'value': itemToBeRemoved.price,
-                    'items': items
-                });
 
                 let eventDetail = itemToBeRemoved;
 
