@@ -56,7 +56,7 @@
 	"gtin": "{{ product.gtin }}",
 	{%- endif -%}
 	{%- if product.model -%}
-	"sku": "{{ product.model }}",
+	"mpn": "{{ product.model }}",
 	{%- endif -%}
 	{%- if product.manufacturer -%}
 	"brand": {
@@ -99,6 +99,7 @@
 		{%- if product.has_discount and product.discount_information and product.discount_information.ends | date: '%s' > 'now' | date: '%s' -%}
 		"priceValidUntil": "{{ product.discount_information.ends | date: '%Y-%m-%d' }}",
 		{%- endif -%}
+		"itemCondition": "https://schema.org/NewCondition",
 		"availability": "https://schema.org/{% if product.in_stock %}InStock{% else %}OutOfStock{% endif %}"{%- if store.name -%},
 		"seller": {
 			"@type": "Organization",
