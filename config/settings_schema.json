@@ -2,6 +2,7 @@
 	"name": "cora",
 	"theme_name": "Cora",
 	"theme_author": "Finqu",
+	"theme_image": "assets/theme-preview.png",
 	"theme_documentation_url": {
 		"fi": "https://help.finqu.com/fi/articles/5550390-cora-teema",
 		"en": "https://help.finqu.com/en/articles/5550390-cora-theme"
