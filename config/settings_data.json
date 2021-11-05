@@ -1449,7 +1449,7 @@
         "default": {
             "id": "default",
             "name": "Default",
-            "image": "assets/theme-preset-default.png",
+            "image": "assets/theme-preset-default.jpg",
             "default": true,
             "settings": {
                 "styles": {
@@ -2375,7 +2375,7 @@
         "ennel": {
             "id": "ennel",
             "name": "Ennel",
-            "image": "assets/theme-preset-ennel.png",
+            "image": "assets/theme-preset-ennel.jpg",
             "settings": {
                 "styles": {
                     "general": {
@@ -3424,7 +3424,7 @@
         "adune": {
             "id": "adune",
             "name": "Adune",
-            "image": "assets/theme-preset-adune.png",
+            "image": "assets/theme-preset-adune.jpg",
             "settings": {
                 "styles": {
                     "general": {
@@ -4496,7 +4496,7 @@
         "ebba": {
             "id": "ebba",
             "name": "Ebba",
-            "image": "assets/theme-preset-ebba.png",
+            "image": "assets/theme-preset-ebba.jpg",
             "settings": {
                 "styles": {
                     "general": {
@@ -5613,7 +5613,7 @@
         "oron": {
             "id": "oron",
             "name": "Oron",
-            "image": "assets/theme-preset-oron.png",
+            "image": "assets/theme-preset-oron.jpg",
             "settings": {
                 "styles": {
                     "general": {
