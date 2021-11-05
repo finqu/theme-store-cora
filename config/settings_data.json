@@ -2375,6 +2375,7 @@
         "ennel": {
             "id": "ennel",
             "name": "Ennel",
+            "image": "assets/theme-preset-ennel.png",
             "settings": {
                 "styles": {
                     "general": {
@@ -3423,6 +3424,7 @@
         "adune": {
             "id": "adune",
             "name": "Adune",
+            "image": "assets/theme-preset-adune.png",
             "settings": {
                 "styles": {
                     "general": {
@@ -4494,6 +4496,7 @@
         "ebba": {
             "id": "ebba",
             "name": "Ebba",
+            "image": "assets/theme-preset-ebba.png",
             "settings": {
                 "styles": {
                     "general": {
@@ -5610,6 +5613,7 @@
         "oron": {
             "id": "oron",
             "name": "Oron",
+            "image": "assets/theme-preset-oron.png",
             "settings": {
                 "styles": {
                     "general": {
