@@ -20,8 +20,7 @@
 	"@context": "http://schema.org",
 	"@type": "ItemList",
 	"numberOfItems": {% if paginate %}{{ paginate.items }}{% else %}{{ items.size }}{% endif %},
-	"ItemListElement":
-	[
+	"itemListElement": [
 		{%- for item in items -%}
 		{%- assign index = index | plus: 1 -%}
 		{
