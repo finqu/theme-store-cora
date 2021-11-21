@@ -78,7 +78,7 @@
 			data-theme="{{ theme }}"
 			{%- endif -%}
 			{%- if amount -%}
-			data-purchase-amount="{{ amount }}"
+			data-purchase-amount="{{ amount | money_in_smallest }}"
 			{%- endif -%}
 		></klarna-placement>
 
