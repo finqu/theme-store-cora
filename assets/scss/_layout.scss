@@ -712,10 +712,32 @@ body > #search-overlay {
             z-index: 5;
             height: $announcement-height;
 
+            &.has-long-text {
+
+                .site-announcement {
+
+                    .site-announcement-text {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        @include media-breakpoint-down(lg) {
+                            font-size: 80%;
+                        }
+                        @include media-breakpoint-down(md) {
+                            font-size: 70%;
+                        }
+                    }
+                }
+            }
+
             .site-announcement {
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 padding: spacer(3);
+                height: 100%;
 
                 .site-announcement-text {
                     font-weight: $font-weight-bold;

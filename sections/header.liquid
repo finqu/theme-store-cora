@@ -37,7 +37,7 @@
 
     {% if section.settings.announcementStatus and section.settings.announcementText %}
 
-        <div class="site-announcement-container">
+        <div class="site-announcement-container{% if section.settings.announcementText | size > 50 %} has-long-text{% endif %}">
 
             <div class="site-announcement">
 

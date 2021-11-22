@@ -495,7 +495,7 @@
 
                                         {% if store.enabled_currencies.size > 1 %}
 
-                                            <select name="currency_code" class="site-localization-currency-select ml-4">
+                                            <select name="currency_code" class="site-localization-currency-select{% if store.published_locales.size > 1 %} ml-4{% endif %}">
 
                                                 {% for currency in store.enabled_currencies %}
                                                     <option value="{{ currency.iso_code }}"{% if currency.iso_code == store.currency.iso_code %} selected{% endif %}>
