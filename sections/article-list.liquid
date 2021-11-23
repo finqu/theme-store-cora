@@ -17,7 +17,7 @@
 
     {%- assign items = items | slice: 0, section.settings.itemAmount -%}
 
-    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-{{ section.settings.itemsPerRow }}">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-{{ section.settings.itemsPerRow }}">
 
         {% if items.size > 0 %}
 

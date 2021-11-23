@@ -37,12 +37,12 @@ export default class Notify {
 
         const template = `
             ${title ? `
-                <span class="d-block h5">
+                <span class="d-block h5 mb-0">
                     ${title}
                 </span>
             ` : '' }
             ${message ? `
-                <p class="mb-0">
+                <p class="mb-0${title ? ' mt-3' : '' }">
                     ${message}
                 </p>
             ` : '' }
@@ -69,12 +69,12 @@ export default class Notify {
 
         const template = `
             ${title ? `
-                <span class="d-block h5">
+                <span class="d-block h5 mb-0">
                     ${title}
                 </span>
             ` : '' }
             ${message ? `
-                <p class="mb-0">
+                <p class="mb-0${title ? ' mt-3' : '' }">
                     ${message}
                 </p>
             ` : '' }
@@ -101,12 +101,12 @@ export default class Notify {
 
         const template = `
             ${title ? `
-                <span class="d-block h5">
+                <span class="d-block h5 mb-0">
                     ${title}
                 </span>
             ` : '' }
             ${message ? `
-                <p class="mb-0">
+                <p class="mb-0${title ? ' mt-3' : '' }">
                     ${message}
                 </p>
             ` : '' }
@@ -133,12 +133,12 @@ export default class Notify {
 
         const template = `
             ${title ? `
-                <span class="d-block h5">
+                <span class="d-block h5 mb-0">
                     ${title}
                 </span>
             ` : '' }
             ${message ? `
-                <p class="mb-0">
+                <p class="mb-0${title ? ' mt-3' : '' }">
                     ${message}
                 </p>
             ` : '' }
@@ -165,12 +165,12 @@ export default class Notify {
 
         const template = `
             ${title ? `
-                <span class="d-block h5">
+                <span class="d-block h5 mb-0">
                     ${title}
                 </span>
             ` : '' }
             ${message ? `
-                <p class="mb-0">
+                <p class="mb-0${title ? ' mt-3' : '' }">
                     ${message}
                 </p>
             ` : '' }

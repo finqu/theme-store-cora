@@ -34,9 +34,9 @@
 	},
 	{%- endif -%}
 	"datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
-	"dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}"{%- if article.summary or article.content -%},{%- endif -%}
+	"dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}"{% if article.summary or article.content %},{% endif %}
 	{%- if article.summary or article.content -%}
-	"description": "{{ article.summary | default: article.content | strip_html | truncate: 140 }}"{%- if article.content -%},{%- endif -%}
+	"description": "{{ article.summary | default: article.content | strip_html | truncate: 140 }}"{% if article.content %},{% endif %}
 	{%- endif -%}
 	{%- if article.content -%}
 	"articleBody": "{{ article.content | strip_html }}"

@@ -23,12 +23,12 @@
 {
 	"@context": "http://schema.org",
 	"@type": "Organization",
-	"url": "{{ routes.root_url | full_url  }}"{%- if store.name or store.logo or sameAsArr -%},{%- endif -%}
+	"url": "{{ routes.root_url | full_url  }}"{% if store.name or store.logo or sameAsArr %},{% endif %}
 	{%- if store.name -%}
-	"name": "{{ store.name }}"{%- if store.logo or sameAsArr -%},{%- endif -%}
+	"name": "{{ store.name }}"{% if store.logo or sameAsArr %},{% endif %}
 	{%- endif -%}
 	{%- if store.logo -%}
-	"logo": "{{ store.logo | asset_url }}"{%- if sameAsArr -%},{%- endif -%}
+	"logo": "{{ store.logo | asset_url }}"{% if sameAsArr %},{% endif %}
 	{%- endif -%}
 	{%- if sameAsArr -%}
 	"sameAs": [
