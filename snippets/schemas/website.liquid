@@ -12,7 +12,7 @@
 	"@context": "http://schema.org",
 	"@type": "WebSite",
 	{%- if store.name -%}
-	"name": {{ store.name | json }},
+	"name": "{{ store.name }}",
 	{%- endif -%}
 	"url": "{{ routes.root_url | full_url }}",
 	"potentialAction": {

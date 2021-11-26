@@ -22,7 +22,7 @@
 			"position": {{ forloop.index }},
 			"item": {
 				"@id": "{{ breadcrumb | page_url | full_url }}",
-				"name": {{ breadcrumb.name | json }}
+				"name": "{{ breadcrumb.name }}"
 			}
 		}{% if forloop.last != true %},{% elsif currentItem and forloop.last %},{% endif %}
 		{%- if currentItem and forloop.last -%}
@@ -31,7 +31,7 @@
 			"position": {{ forloop.index | plus: 1 }},
 			"item": {
 				"@id": "{{ currentItem | page_url | full_url }}",
-				"name": {{ currentItem.name | json }}
+				"name": "{{ currentItem.name }}"
 			}
 		}
 		{%- endif -%}

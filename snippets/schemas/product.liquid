@@ -40,7 +40,7 @@
 	"@type": "Product",
 	"productID": "{{ product.id }}",
 	{%- if product.meta_title or product.name -%}
-	"name": {{ product.meta_title | default: product.name | json }},
+	"name": "{{ product.meta_title | default: product.name }}",
 	{%- endif -%}
 	{%- if imageArr -%}
 	"image": [
@@ -50,18 +50,18 @@
 	],
 	{%- endif -%}
 	{%- if product.meta_description or product.short_description or product.description -%}
-	"description": {{ product.meta_description | default: product.short_description | default: product.description | strip_html | truncate: 4997, '...' | json }},
+	"description": "{{ product.meta_description | default: product.short_description | default: product.description | strip_html | truncate: 4997, '...' }}",
 	{%- endif -%}
 	{%- if product.gtin -%}
-	"gtin": {{ product.gtin | json }},
+	"gtin": "{{ product.gtin }}",
 	{%- endif -%}
 	{%- if product.model -%}
-	"mpn": {{ product.model | json }},
+	"mpn": "{{ product.model }}",
 	{%- endif -%}
 	{%- if product.manufacturer -%}
 	"brand": {
 		"@type": "Brand",
-		"name": {{ product.manufacturer.name | json }}
+		"name": "{{ product.manufacturer.name }}"
 	},
 	{%- endif -%}
 	{%- if product.review_count > 0 -%}
@@ -75,11 +75,11 @@
 				"worstRating": "1",
 				"bestRating": "{{ product.max_rating }}"
 			}{%- if review.name or review.title -%},
-			"reviewBody": {{ review.review | json }},
+			"reviewBody": "{{ review.review }}",
 			"datePublished": "{{ review.created_at | date: '%Y-%m-%d' }}",
 			"author": {
 				"@type": "Person",
-				"name": {{ review.name | truncate: 100, '' | default: review.title | truncate: 100, '' | json }}
+				"name": "{{ review.name | truncate: 100, '' | default: review.title | truncate: 100, '' }}"
 			}
 			{%- endif -%}
 		}{% unless forloop.last %},{% endunless %}
@@ -103,7 +103,7 @@
 		"availability": "https://schema.org/{% if product.in_stock %}InStock{% else %}OutOfStock{% endif %}"{%- if store.name -%},
 		"seller": {
 			"@type": "Organization",
-			"name": {{ store.name | json }}
+			"name": "{{ store.name }}"
 		}
 		{%- endif -%}
 	}
