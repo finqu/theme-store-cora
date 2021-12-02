@@ -9,7 +9,6 @@ import { debounce } from './utils';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
-import Cookies from 'js-cookie';
 
 export default {
 	init: function() {
@@ -368,7 +367,7 @@ export default {
                         siteSearchResultsEl.innerHTML = `
                             <div class="site-search-no-results">
                                 <span class="site-search-no-results-text">
-                                    ${window.themeApp.t('general.search_no_results')}
+                                    ${window.themeApp.utils.t('general.search_no_results')}
                                 </span>
                             </div>
                         `;
@@ -405,7 +404,7 @@ export default {
 
                 siteHeaderSearchContainerEl.classList.add('site-search-active');
 
-                themeApp.animate(siteHeaderSearchContainerEl, 'fadeInDown');
+                themeApp.utils.animate(siteHeaderSearchContainerEl, 'fadeInDown');
 
                 const searchOverlayEl = document.createElement('div');
 
@@ -414,17 +413,17 @@ export default {
 
                 document.body.appendChild(searchOverlayEl);
 
-                themeApp.animate(searchOverlayEl, 'fadeIn');
+                themeApp.utils.animate(searchOverlayEl, 'fadeIn');
 
                 searchOverlayEl.addEventListener('click', e => {
 
                     if (!siteHeaderSearchContainerEl.contains(e.target) && siteHeaderSearchContainerEl !== e.target) {
 
-                        themeApp.animate(siteHeaderSearchContainerEl, 'fadeOutUp').then(() => {
+                        themeApp.utils.animate(siteHeaderSearchContainerEl, 'fadeOutUp').then(() => {
                             siteHeaderSearchContainerEl.classList.remove('site-search-active');
                         });
 
-                        themeApp.animate(searchOverlayEl, 'fadeOut').then(() => {
+                        themeApp.utils.animate(searchOverlayEl, 'fadeOut').then(() => {
                             searchOverlayEl.remove();
                         });
                     }
@@ -779,13 +778,13 @@ export default {
 
                     if (itemCount == 1) {
 
-                        filtersMobileNavigationCtaEl.innerText = window.themeApp.t('filters.show_result', {
+                        filtersMobileNavigationCtaEl.innerText = window.themeApp.utils.t('filters.show_result', {
                             amount: itemCount
                         });
 
                     } else {
 
-                        filtersMobileNavigationCtaEl.innerText = window.themeApp.t('filters.show_result_plural', {
+                        filtersMobileNavigationCtaEl.innerText = window.themeApp.utils.t('filters.show_result_plural', {
                             amount: itemCount
                         });
                     }
@@ -1095,13 +1094,13 @@ export default {
                         el.parentNode.classList.add('has-items');
                     }
 
-                    themeApp.animate(el.parentNode, 'bounce');
+                    themeApp.utils.animate(el.parentNode, 'bounce');
 
                     el.innerHTML = value;
                 });
 
                 if (iconEl) {
-                    themeApp.animate(iconEl, 'pulse');
+                    themeApp.utils.animate(iconEl, 'pulse');
                 }
 
                 document.dispatchEvent(new CustomEvent('theme:wishlist:addItem', {
@@ -1137,13 +1136,13 @@ export default {
                         el.parentNode.classList.remove('has-items');
                     }
 
-                    themeApp.animate(el.parentNode, 'bounce');
+                    themeApp.utils.animate(el.parentNode, 'bounce');
 
                     el.innerHTML = value;
                 });
 
                 if (iconEl) {
-                    themeApp.animate(iconEl, 'pulse');
+                    themeApp.utils.animate(iconEl, 'pulse');
                 }
 
                 if (itemEl) {
@@ -1151,7 +1150,7 @@ export default {
                 	itemEl.remove();
 
                     if (isWishlistTemplate && document.querySelectorAll('[data-wishlist-item]').length < 1) {
-                        document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.t('general.wishlist_empty');
+                        document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.utils.t('general.wishlist_empty');
                     }
                 }
 
@@ -1184,7 +1183,7 @@ export default {
 	                	itemEl.remove();
 
                         if (isWishlistTemplate && document.querySelectorAll('[data-wishlist-item]').length < 1) {
-                            document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.t('general.wishlist_empty');
+                            document.querySelector('.section-wishlist .section-content > .container').innerHTML = themeApp.utils.t('general.wishlist_empty');
                         }
 
                         return;
@@ -1202,13 +1201,13 @@ export default {
                             el.parentNode.classList.remove('has-items');
                         }
 
-                        themeApp.animate(el.parentNode, 'bounce');
+                        themeApp.utils.animate(el.parentNode, 'bounce');
 
                         el.innerHTML = value;
                     });
 
                     if (iconEl) {
-                        themeApp.animate(iconEl, 'pulse');
+                        themeApp.utils.animate(iconEl, 'pulse');
                     }
 
 	                el.setAttribute('aria-pressed', false);
@@ -1232,13 +1231,13 @@ export default {
                             el.parentNode.classList.add('has-items');
                         }
 
-                        themeApp.animate(el.parentNode, 'bounce');
+                        themeApp.utils.animate(el.parentNode, 'bounce');
 
                         el.innerHTML = value;
                     });
 
                     if (iconEl) {
-                        themeApp.animate(iconEl, 'pulse');
+                        themeApp.utils.animate(iconEl, 'pulse');
                     }
 
 	                el.setAttribute('aria-pressed', true);
@@ -1382,7 +1381,7 @@ export default {
 
                             const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                        	$(self).append('('+themeApp.formatCurrency(price)+')');
+                        	$(self).append('('+themeApp.utils.formatCurrency(price)+')');
                         });
                     });
 
@@ -1395,7 +1394,7 @@ export default {
 
                         const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                    	$(self).siblings('label').append('('+themeApp.formatCurrency(price)+')');
+                    	$(self).siblings('label').append('('+themeApp.utils.formatCurrency(price)+')');
                     });
 
                 } else if ($(this).is('textarea')) {
@@ -1407,7 +1406,7 @@ export default {
 
                         const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                    	$(self).siblings('label').append('('+themeApp.formatCurrency(price)+')');
+                    	$(self).siblings('label').append('('+themeApp.utils.formatCurrency(price)+')');
                     });
                 }
             });
@@ -1490,7 +1489,7 @@ export default {
 
                     const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
 
-                    $('[data-product-price-dynamic]').html(themeApp.formatCurrency(price));
+                    $('[data-product-price-dynamic]').html(themeApp.utils.formatCurrency(price));
 
                     if (window.themeApp.data.klarnaPlacementsClientId && window.KlarnaOnsiteService) {
 
@@ -1572,7 +1571,7 @@ export default {
                 }
             });
 
-            themeApp.filterInput(productQuantityInputEl, function(value) {
+            themeApp.utils.filterInput(productQuantityInputEl, function(value) {
 
                 if (maxQuantity) {
 
@@ -1614,7 +1613,7 @@ export default {
             document.body.classList.add('cookie-policy-visible');
             cookiePolicyEl.classList.remove('d-none');
 
-            themeApp.animate(cookiePolicyEl, 'slideInUp');
+            themeApp.utils.animate(cookiePolicyEl, 'slideInUp');
         }
 
         const cookiePolicyCloseEl = cookiePolicyEl.querySelector('[data-cookie-policy-close]');
@@ -1627,7 +1626,7 @@ export default {
 
             cookiePolicyCloseEl.addEventListener('click', (e) => {
 
-                themeApp.animate(cookiePolicyEl, 'slideOutDown').then(() => {
+                themeApp.utils.animate(cookiePolicyEl, 'slideOutDown').then(() => {
 
                     document.body.classList.remove('cookie-policy-visible');
                     cookiePolicyEl.classList.add('d-none');
@@ -1646,7 +1645,7 @@ export default {
                 cookiePolicyEl.classList.remove('d-none');
 
                 document.body.classList.add('cookie-policy-visible');
-                themeApp.animate(cookiePolicyEl, 'slideInUp');
+                themeApp.utils.animate(cookiePolicyEl, 'slideInUp');
             })});
         }
 
@@ -1690,11 +1689,11 @@ export default {
 
                 backToTopBtnEL.classList.remove('d-none');
 
-                themeApp.animate(backToTopBtnEL, 'fadeIn');
+                themeApp.utils.animate(backToTopBtnEL, 'fadeIn');
 
             } else if (scrollingEl.scrollTop < 250 && !backToTopBtnEL.classList.contains('d-none')) {
 
-                themeApp.animate(backToTopBtnEL, 'fadeOut').then(() => {
+                themeApp.utils.animate(backToTopBtnEL, 'fadeOut').then(() => {
                     backToTopBtnEL.classList.add('d-none');
                 });
             }

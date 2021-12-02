@@ -272,7 +272,7 @@ export default class Cart {
 
                 cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => {
 
-                    themeApp.filterInput(el, function(value) {
+                    themeApp.utils.filterInput(el, function(value) {
                         return value != 0 && /^\d+$/.test(value);
                     });
 
@@ -433,7 +433,7 @@ export default class Cart {
         };
 
         options.error = function(response) {
-            self.notify.warning(themeApp.t('error.general'));
+            self.notify.warning(themeApp.utils.t('error.general'));
         };
 
         return this._addToQueue('/api/cart', null, options);
@@ -495,7 +495,7 @@ export default class Cart {
             if (lastItem) {
 
                 if (self.cartAddNotify) {
-                    self.notify.success(themeApp.t('cart.product_added_to_cart'), lastItem.name, null, () => {
+                    self.notify.success(themeApp.utils.t('cart.product_added_to_cart'), lastItem.name, null, () => {
                         window.location.href = self.cartUrl;
                     });
                 }
@@ -514,7 +514,7 @@ export default class Cart {
 
             response = JSON.parse(response.responseText);
 
-            self.notify.warning(null, themeApp.t('error.'+response.error));
+            self.notify.warning(null, themeApp.utils.t('error.'+response.error));
         };
 
         return this._addToQueue('/api/cart/items', data, options);
@@ -550,7 +550,7 @@ export default class Cart {
 
             response = JSON.parse(response.responseText);
 
-            self.notify.warning(null, themeApp.t('error.'+response.error));
+            self.notify.warning(null, themeApp.utils.t('error.'+response.error));
         };
 
         return this._addToQueue('/api/cart/items/'+id, data, options);
@@ -588,7 +588,7 @@ export default class Cart {
 
             response = JSON.parse(response.responseText);
 
-            self.notify.warning(null, themeApp.t('error.'+response.error));
+            self.notify.warning(null, themeApp.utils.t('error.'+response.error));
         };
 
         return this._addToQueue('/api/cart/items/'+id, null, options);
@@ -615,7 +615,7 @@ export default class Cart {
 
             response = JSON.parse(response.responseText);
 
-            self.notify.warning(null, themeApp.t('error.'+response.error));
+            self.notify.warning(null, themeApp.utils.t('error.'+response.error));
         };
 
         return this._addToQueue('/api/cart', data, options);

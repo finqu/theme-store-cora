@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
@@ -109,7 +109,7 @@ module.exports = {
 				test: /\.jp(e?)g$|\.png$|.svg$|\.js$|\.css(\?.*)?$/i,
 				threshold: 860
 			}),
-			new OptimizeCSSAssetsPlugin({})
+			new CssMinimizerPlugin()
 		]
 	},
 	output: {

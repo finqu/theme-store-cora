@@ -44,8 +44,6 @@
  *  License: MIT
  */
 
-/*! js-cookie v3.0.1 | MIT */
-
 /*! npm.im/object-fit-images 3.2.4 */
 
 /*! picturefill - v3.0.2 - 2016-02-12
