@@ -6,6 +6,7 @@
 		"start": "webpack --progress --watch --config webpack.dev.js",
 		"analyze": "webpack --config webpack.analyze.js --progress"
 	},
+	"license": "ISC",
 	"devDependencies": {
 		"@babel/core": "^7.16.0",
 		"@babel/plugin-transform-runtime": "^7.16.4",

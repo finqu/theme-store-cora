@@ -27,14 +27,12 @@ export default class App {
 		const self = this;
 
 		this.data = store ? store : window.store || {};
-
-		if (this.data.translations) {
-			this.data.translations = dotize.convert(this.data.translations);
-		}
-
+		this.data.translations = this.data.translations ? dotize.convert(this.data.translations) : {};
+		this.utils = utils;
 		this.lazyLoadedItems = [];
 		this.cart = new Cart();
 		this.icons = icons;
+
 		this.lazyLoad = new LazyLoad({
             show_while_loading: true,
             callback_loading: function (el) {
