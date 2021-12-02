@@ -1514,6 +1514,10 @@ body > #search-overlay {
                     &::-ms-expand {
                         display: none;
                     }
+
+                    option {
+                        color: initial;
+                    }
                 }
             }
         }
