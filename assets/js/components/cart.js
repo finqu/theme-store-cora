@@ -213,7 +213,7 @@ export default class Cart {
                 }
 
                 if (self.initialized) {
-                    themeApp.animate(el.parentNode, 'bounce');
+                    themeApp.utils.animate(el.parentNode, 'bounce');
                 }
 
                 el.innerHTML = self.cart.item_count || 0;
