@@ -121,11 +121,11 @@ const formatCurrency = function (value, defaultValue, minimumFractionDigits, max
         number = parseFloat(number, 10);
     }
 
-    const formatter = Intl.NumberFormat(this.data.locale, {
+    const formatter = Intl.NumberFormat(themeApp.data.locale, {
     	style: 'currency',
-        currency: this.data.currency.code,
-        minimumFractionDigits: minimumFractionDigits || this.data.currency.decimalPlaces,
-        maximumFractionDigits: maximumFractionDigits || this.data.currency.decimalPlaces
+        currency: themeApp.data.currency.code,
+        minimumFractionDigits: minimumFractionDigits || themeApp.data.currency.decimalPlaces,
+        maximumFractionDigits: maximumFractionDigits || themeApp.data.currency.decimalPlaces
     });
 
     let currencySymbolLeft = null;
@@ -137,19 +137,19 @@ const formatCurrency = function (value, defaultValue, minimumFractionDigits, max
     const testDecimals1 = ['SEK', 'KRW', 'JPY', 'HUF'];
     const testDecimals2 = ['EUR', 'HRK', 'RUB', 'BRL'];
 
-    if (testGroup1.includes(this.data.currency.code)) {
+    if (testGroup1.includes(themeApp.data.currency.code)) {
     	currencyGroup = ' ';
-    } else if (testGroup2.includes(this.data.currency.code)) {
+    } else if (testGroup2.includes(themeApp.data.currency.code)) {
     	currencyGroup = ',';
     } else {
     	currencyGroup = '.';
     }
 
-    if (testDecimals1.includes(this.data.currency.code)) {
+    if (testDecimals1.includes(themeApp.data.currency.code)) {
     	currencyDecimal = ' ';
-    } else if (testDecimals2.includes(this.data.currency.code)) {
+    } else if (testDecimals2.includes(themeApp.data.currency.code)) {
     	currencyDecimal = ',';
-    } else if (this.data.currency.code === 'CHF') {
+    } else if (themeApp.data.currency.code === 'CHF') {
     	currencyDecimal = "'";
     } else {
     	currencyDecimal = '.';
@@ -171,7 +171,7 @@ const formatCurrency = function (value, defaultValue, minimumFractionDigits, max
 
     }).join('');
 
-    if (this.data.currency.code === 'USD' || this.data.currency.code === 'GBP') {
+    if (themeApp.data.currency.code === 'USD' || themeApp.data.currency.code === 'GBP') {
     	currencySymbolLeft = currencySymbol;
     } else {
     	currencySymbolRight = currencySymbol;
