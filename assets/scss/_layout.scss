@@ -685,6 +685,9 @@ body > #search-overlay {
 
             &.klarna-type-top-strip-promotion-standard {
                 height: $klarna-top-strip-promotion-standard-banner-height;
+                @include media-breakpoint-down(md) {
+                    height: $klarna-top-strip-promotion-standard-banner-mobile-height;
+                }
 
                 &.klarna-theme-light {
                     background-color: $klarna-top-strip-promotion-standard-banner-light-background-color;
@@ -697,6 +700,9 @@ body > #search-overlay {
 
             &.klarna-type-top-strip-promotion-badge {
                 height: $klarna-top-strip-promotion-badge-banner-height;
+                @include media-breakpoint-down(md) {
+                    height: $klarna-top-strip-promotion-badge-banner-mobile-height;
+                }
 
                 &.klarna-theme-light {
                     background-color: $klarna-top-strip-promotion-badge-banner-light-background-color;
