@@ -685,7 +685,7 @@ body > #search-overlay {
 
             &.klarna-type-top-strip-promotion-standard {
                 height: $klarna-top-strip-promotion-standard-banner-height;
-                @include media-breakpoint-down(md) {
+                @include media-breakpoint-down(sm) {
                     height: $klarna-top-strip-promotion-standard-banner-mobile-height;
                 }
 
@@ -700,7 +700,7 @@ body > #search-overlay {
 
             &.klarna-type-top-strip-promotion-badge {
                 height: $klarna-top-strip-promotion-badge-banner-height;
-                @include media-breakpoint-down(md) {
+                @include media-breakpoint-down(sm) {
                     height: $klarna-top-strip-promotion-badge-banner-mobile-height;
                 }
 
