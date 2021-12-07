@@ -5,11 +5,8 @@ import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/popover';
 import 'bootstrap/js/dist/tooltip';
-import Cart from './components/cart';
-import ImageCarousel from './components/image-carousel';
-import ProductCarousel from './components/product-carousel';
-import Carousel from './components/carousel';
 import * as utils from './components/utils';
+import Cart from './components/cart';
 import icons from './components/icons';
 import editor from './components/editor';
 import common from './components/common';
@@ -336,25 +333,6 @@ export default class App {
 			});
 		}
 
-		if (!document.querySelector('body').classList.contains('template-password')) {
-			this.cart.init();
-		}
-
 		common.init();
-
-		if (!this.data.designMode) {
-
-	    	for (const el of document.querySelectorAll('.section-image-carousel')) {
-	    		new ImageCarousel(el);
-	    	}
-
-	    	for (const el of document.querySelectorAll('.section-product-carousel, .product-carousel')) {
-	    		new ProductCarousel(el);
-	    	}
-
-	    	for (const el of document.querySelectorAll('.section-carousel')) {
-	    		new Carousel(el);
-	    	}
-	    }
 	}
 }

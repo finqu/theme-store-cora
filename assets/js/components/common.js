@@ -9,6 +9,9 @@ import { debounce } from './utils';
 import picturefill from 'picturefill';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'vanilla-lazyload';
+import ImageCarousel from './image-carousel';
+import ProductCarousel from './product-carousel';
+import Carousel from './carousel';
 
 export default {
 	init: function() {
@@ -16,6 +19,19 @@ export default {
         const bodyEl = document.querySelector('body');
 
         if (!themeApp.data.designMode) {
+
+            for (const el of document.querySelectorAll('.section-image-carousel')) {
+                new ImageCarousel(el);
+            }
+
+            for (const el of document.querySelectorAll('.section-product-carousel, .product-carousel')) {
+                new ProductCarousel(el);
+            }
+
+            for (const el of document.querySelectorAll('.section-carousel')) {
+                new Carousel(el);
+            }
+
             this.initCookiePolicy();
             this.initBackToTopButton();
         }
@@ -25,6 +41,7 @@ export default {
         }
 
         if (!bodyEl.classList.contains('template-password')) {
+            themeApp.cart.init();
             this.initMobileNavigation();
             this.initSiteHeader();
             this.initWishlist();
