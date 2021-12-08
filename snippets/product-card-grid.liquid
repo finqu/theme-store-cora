@@ -321,13 +321,13 @@
 
 						{%- if isBuyable and product.buy_directly -%}
 
-							<button type="button" class="btn btn-section btn-block" data-cart-add="{{ product.id }}" data-cart-quantity="{{ product.min_amount }}">
+							<button type="button" class="btn btn-section btn-block btn-sm" data-cart-add="{{ product.id }}" data-cart-quantity="{{ product.min_amount }}">
 				                {{ 'cart.add' | t }}
 				            </button>
 
 			            {%- else -%}
 
-			            	<a href="{{ productUrl }}" class="btn btn-section btn-block">
+			            	<a href="{{ productUrl }}" class="btn btn-section btn-block btn-sm">
 								{{ 'general.product_view' | t }}
 							</a>
 
@@ -335,7 +335,7 @@
 
 		            {%- else -%}
 
-		            	<span class="btn btn-section btn-block">
+		            	<span class="btn btn-section btn-block btn-sm">
 			                {{ 'cart.add' | t }}
 			            </span>
 

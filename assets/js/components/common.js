@@ -155,44 +155,51 @@ export default {
         });
 
         const stickyHeaderEl = containerEl.querySelector('.site-mobile-header-sticky');
-        const initStickyHeader = (reset = false) => {
+        let stickyHeaderOffsetHeight = null;
 
-            if (window.innerWidth >= 992) {
-                return;
+        const getStickyHeaderOffsetTop = () => {
+
+            let result = 0;
+            const klarnaBannerEl = document.querySelector('.site-klarna-banner');
+            const announcementEl = document.querySelector('.site-announcement-container');
+
+            if (klarnaBannerEl) {
+                result += klarnaBannerEl.offsetHeight;
             }
 
-            const el = stickyHeaderEl;
-            const elOffsetTop = el.offsetTop;
-            const elOffsetHeight = el.offsetHeight;
-            const requiresAdjust = window.getComputedStyle(stickyHeaderEl).position !== 'absolute' ? true : false;
-
-            if (reset) {
-
-                el.classList.remove('is-sticky');
-
-                if (document.body.style.paddingTop) {
-                    document.body.style.paddingTop = null;
-                }
+            if (announcementEl) {
+                result += announcementEl.offsetHeight;
             }
 
+            return result;
+        };
+
+        const initStickyHeader = () => {
+
+            stickyHeaderOffsetHeight = stickyHeaderEl.offsetHeight;
+
+            const position = window.getComputedStyle(stickyHeaderEl).position;
+            const requiresAdjust = position !== 'absolute' && position !== 'fixed' ? true : false;
             const eHandler = () => {
 
-                const elOffsetHeight = el.offsetHeight;
+                if (window.innerWidth >= 992) {
+                    return;
+                }
 
-                if (window.scrollY >= elOffsetTop) {
+                if (window.scrollY >= getStickyHeaderOffsetTop()) {
 
-                    if (!el.classList.contains('is-sticky')) {
+                    if (!stickyHeaderEl.classList.contains('is-sticky')) {
 
-                        el.classList.add('is-sticky');
+                        stickyHeaderEl.classList.add('is-sticky');
 
                         if (requiresAdjust) {
-                            document.body.style.paddingTop = elOffsetHeight+'px';
+                            document.body.style.paddingTop = stickyHeaderOffsetHeight+'px';
                         }
                     }
 
                 } else {
 
-                    el.classList.remove('is-sticky');
+                    stickyHeaderEl.classList.remove('is-sticky');
 
                     if (document.body.style.paddingTop) {
                         document.body.style.paddingTop = null;
@@ -200,17 +207,22 @@ export default {
                 }
             };
 
-            window.removeEventListener('scroll', eHandler);
             window.addEventListener('scroll', eHandler);
+            window.addEventListener('resize', debounce(() => {
+
+                if (window.innerWidth < 992) {
+
+                    const position = window.getComputedStyle(stickyHeaderEl).position;
+                    const requiresAdjust = position !== 'absolute' && position !== 'fixed' ? true : false;
+
+                    if (requiresAdjust) {
+                        stickyHeaderEl.classList.remove('is-sticky');
+                    }
+
+                    stickyHeaderOffsetHeight = stickyHeaderEl.offsetHeight;
+                }
+            }, 150, false));
         };
-
-        window.addEventListener('resize', debounce(() => {
-
-            if (stickyHeaderEl) {
-                initStickyHeader(true);
-            }
-
-        }, 150, false));
 
         if (stickyHeaderEl) {
             initStickyHeader();
@@ -586,44 +598,51 @@ export default {
         };
 
         const stickyHeaderEl = containerEl.querySelector('.site-header-sticky');
-        const initStickyHeader = (reset = false) => {
+        let stickyHeaderOffsetHeight = null;
 
-            if (window.innerWidth < 992) {
-                return;
+        const getStickyHeaderOffsetTop = () => {
+
+            let result = 0;
+            const klarnaBannerEl = document.querySelector('.site-klarna-banner');
+            const announcementEl = document.querySelector('.site-announcement-container');
+
+            if (klarnaBannerEl) {
+                result += klarnaBannerEl.offsetHeight;
             }
 
-            const el = stickyHeaderEl;
-            const elOffsetTop = el.offsetTop;
-            const elOffsetHeight = el.offsetHeight;
-            const requiresAdjust = window.getComputedStyle(stickyHeaderEl).position !== 'absolute' ? true : false;
-
-            if (reset) {
-
-                el.classList.remove('is-sticky');
-
-                if (document.body.style.paddingTop) {
-                    document.body.style.paddingTop = null;
-                }
+            if (announcementEl) {
+                result += announcementEl.offsetHeight;
             }
 
+            return result;
+        };
+
+        const initStickyHeader = () => {
+
+            stickyHeaderOffsetHeight = stickyHeaderEl.offsetHeight;
+
+            const position = window.getComputedStyle(stickyHeaderEl).position;
+            const requiresAdjust = position !== 'absolute' && position !== 'fixed' ? true : false;
             const eHandler = () => {
 
-                const elOffsetHeight = el.offsetHeight;
+                if (window.innerWidth < 992) {
+                    return;
+                }
 
-                if (window.scrollY >= elOffsetTop) {
+                if (window.scrollY >= getStickyHeaderOffsetTop()) {
 
-                    if (!el.classList.contains('is-sticky')) {
+                    if (!stickyHeaderEl.classList.contains('is-sticky')) {
 
-                        el.classList.add('is-sticky');
+                        stickyHeaderEl.classList.add('is-sticky');
 
                         if (requiresAdjust) {
-                            document.body.style.paddingTop = elOffsetHeight+'px';
+                            document.body.style.paddingTop = stickyHeaderOffsetHeight+'px';
                         }
                     }
 
                 } else {
 
-                    el.classList.remove('is-sticky');
+                    stickyHeaderEl.classList.remove('is-sticky');
 
                     if (document.body.style.paddingTop) {
                         document.body.style.paddingTop = null;
@@ -631,17 +650,26 @@ export default {
                 }
             };
 
-            window.removeEventListener('scroll', eHandler);
             window.addEventListener('scroll', eHandler);
+            window.addEventListener('resize', debounce(() => {
+
+                if (window.innerWidth >= 992) {
+
+                    if (document.body.style.paddingTop) {
+                        document.body.style.paddingTop = null;
+                    }
+
+                    const position = window.getComputedStyle(stickyHeaderEl).position;
+                    const requiresAdjust = position !== 'absolute' && position !== 'fixed' ? true : false;
+
+                    if (requiresAdjust) {
+                        stickyHeaderEl.classList.remove('is-sticky');
+                    }
+
+                    stickyHeaderOffsetHeight = stickyHeaderEl.offsetHeight;
+                }
+            }, 150, false));
         };
-
-        window.addEventListener('resize', debounce(() => {
-
-            if (stickyHeaderEl) {
-                initStickyHeader(true);
-            }
-
-        }, 150, false));
 
         if (stickyHeaderEl) {
             initStickyHeader();

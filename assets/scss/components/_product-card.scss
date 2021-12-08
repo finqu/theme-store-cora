@@ -142,14 +142,14 @@
         @include media-breakpoint-down(md) {
 
             .btn {
-                @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size * 0.90, $btn-line-height, $btn-border-radius);
+                @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size * 0.80, $btn-line-height, $btn-border-radius);
 
                 &.btn-lg {
-                  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg * 0.90, $btn-line-height-lg, $btn-border-radius-lg);
+                  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg * 0.80, $btn-line-height-lg, $btn-border-radius-lg);
                 }
 
                 &.btn-sm {
-                  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm * 0.90, $btn-line-height-sm, $btn-border-radius-sm);
+                  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm * 0.80, $btn-line-height-sm, $btn-border-radius-sm);
                 }
             }
         }

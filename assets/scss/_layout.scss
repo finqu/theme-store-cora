@@ -681,6 +681,9 @@ body > #search-overlay {
         }
 
         .site-klarna-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 5;
 
             &.klarna-type-top-strip-promotion-standard {
@@ -1571,10 +1574,6 @@ body > #search-overlay {
                 border-color: section-var(border_color);
                 background-color: section-var(background_color);
                 color: section-var(text_color);
-
-                &[aria-expanded="true"] {
-                    border-bottom-color: section-var(background_color);
-                }
             }
         }
     }
@@ -1824,6 +1823,8 @@ body > #search-overlay {
 
                 &[aria-expanded="true"] {
                     z-index: $zindex-dropdown + 2;
+                    border-bottom: 0;
+                    padding-bottom: add($btn-padding-y, 1px);
 
                     & + .category-filter-dropdown-menu {
                         z-index: $zindex-dropdown + 1;
@@ -1891,17 +1892,6 @@ body > #search-overlay {
                 > .category-list-item-text {
                     font-weight: $font-weight-bold;
                     border-bottom-width: 2px;
-                }
-            }
-        }
-
-        > .category-list-item {
-
-            &:last-child {
-
-                .category-list-item-link,
-                .category-list-item-text {
-                    margin-bottom: 0;
                 }
             }
         }
