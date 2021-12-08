@@ -212,6 +212,10 @@ export default {
 
                 if (window.innerWidth < 992) {
 
+                    if (document.body.style.paddingTop) {
+                        document.body.style.paddingTop = null;
+                    }
+
                     const position = window.getComputedStyle(stickyHeaderEl).position;
                     const requiresAdjust = position !== 'absolute' && position !== 'fixed' ? true : false;
 
