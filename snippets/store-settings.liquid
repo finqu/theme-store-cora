@@ -8,8 +8,10 @@
 {% endcomment %}
 
 {%- capture locale -%}
-	{{- request.locale.iso_code -}}-{{- request.country | upcase -}}
+	{%- assign localeParts = request.locale | split: '-' -%}
+	{%- if localeParts.size < 2 %}{{- request.locale.iso_code -}}-{{- request.country | upcase -}}{%else%}{{- request.locale.iso_code -}}{% endif %}
 {%- endcapture -%}
+{%- assign locale = locale | strip_newlines -%}
 
 <script>
 	window.store = {
