@@ -471,7 +471,7 @@
                                                     <label for="input-mobile-{{ value.param_name }}-{{ value.value }}" class="form-check-label">
 
                                                         {%- capture paramTranslationKey -%}
-                                                            filters.{{- value.param_name -}}.values.{{- value.label | times: 1 | yepnope: 'in_stock', 'out_of_stock' | handle | replace: '-', '_' -}}
+                                                            filters.{{- value.param_name -}}.values.{{- value.value | times: 1 | yepnope: 'in_stock', 'out_of_stock' | handle | replace: '-', '_' -}}
                                                         {%- endcapture -%}
 
                                                         <span>{{ paramTranslationKey | strip | t }}</span>
