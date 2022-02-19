@@ -4,15 +4,16 @@
 
 {{ content_for_index }}
 
-{% section 'article-template' %}
-
-{{ content_for_index }}
-
 {% schema %}
 {
 	"name": {
 		"en": "Article",
 		"fi": "Artikkeli"
-	}
+	},
+	"template_sections": [
+		{
+			"name": "article-template"
+		}
+	]
 }
 {% endschema %}
