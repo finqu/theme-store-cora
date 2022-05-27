@@ -152,8 +152,6 @@
                         "id": "8fe1266f5c41014a155c4438d6292e09",
                         "name": "image-text",
                         "settings": {
-                            "contentImgPlaceholder": true,
-                            "contentImgPlaceholderHeight": "300px",
                             "contentColumnArrangement": "6,6",
                             "contentImgSide": "left",
                             "contentImgAlign": "middle",
@@ -191,8 +189,6 @@
                         "id": "34ac58d39213280f40aaa76fcff57ced",
                         "name": "image-text",
                         "settings": {
-                            "contentImgPlaceholder": true,
-                            "contentImgPlaceholderHeight": "300px",
                             "contentColumnArrangement": "6,6",
                             "contentImgSide": "right",
                             "contentImgAlign": "middle",
@@ -1021,7 +1017,6 @@
                                     "F4c98887-2f85-4be6-a1b8-607600aa691c": {
                                         "type": "item",
                                         "settings": {
-                                            "imgPlaceholder": true,
                                             "imgSrc": "https:\/\/images.unsplash.com\/photo-1509631179647-0177331693ae?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw5fHxmYXNoaW9ufGVufDB8fHx8MTYzMjczMzM0Mg&ixlib=rb-1.2.1&q=85",
                                             "imgAlt": "",
                                             "title": "Paljon tuotteita jopa -75%",
@@ -1038,7 +1033,6 @@
                                     "81e92083-2c17-4507-89d8-5e5487784360": {
                                         "type": "item",
                                         "settings": {
-                                            "imgPlaceholder": true,
                                             "imgSrc": "https:\/\/images.unsplash.com\/photo-1549298916-f52d724204b4?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwxMnx8c25lYWtlcnN8ZW58MHx8fHwxNjMyNzMzMzg4&ixlib=rb-1.2.1&q=85",
                                             "imgAlt": "",
                                             "title": "Varaston tyhjennys k\u00e4ynniss\u00e4! Nyt keng\u00e4t jopa -25%",
@@ -2213,8 +2207,6 @@
                             "id": "9b99b532c372396b97a2b020a36c9519",
                             "name": "image-text",
                             "settings": {
-                                "contentImgPlaceholder": true,
-                                "contentImgPlaceholderHeight": "300px",
                                 "contentColumnArrangement": "7,5",
                                 "contentImgSide": "left",
                                 "contentImgAlign": "middle",
@@ -3189,8 +3181,6 @@
                             "id": "a2ea5840e8bffe0d28d1fb9c0aae8fdf",
                             "name": "image-text",
                             "settings": {
-                                "contentImgPlaceholder": true,
-                                "contentImgPlaceholderHeight": "300px",
                                 "contentColumnArrangement": "7,5",
                                 "contentImgSide": "left",
                                 "contentImgAlign": "middle",
@@ -3229,8 +3219,6 @@
                             "id": "752c7f2b4148565820e6484dc0a1f635",
                             "name": "image-text",
                             "settings": {
-                                "contentImgPlaceholder": true,
-                                "contentImgPlaceholderHeight": "300px",
                                 "contentColumnArrangement": "5,7",
                                 "contentImgSide": "right",
                                 "contentImgAlign": "middle",
@@ -4083,8 +4071,6 @@
                             "id": "3088a15aae3a4362c04b5c383a87beb4",
                             "name": "image-text",
                             "settings": {
-                                "contentImgPlaceholder": true,
-                                "contentImgPlaceholderHeight": "300px",
                                 "contentColumnArrangement": "6,6",
                                 "contentImgSide": "left",
                                 "contentImgAlign": "middle",
@@ -10459,7 +10445,6 @@
                                         "F4c98887-2f85-4be6-a1b8-607600aa691c": {
                                             "type": "item",
                                             "settings": {
-                                                "imgPlaceholder": true,
                                                 "imgSrc": "https:\/\/images.unsplash.com\/photo-1539571696357-5a69c17a67c6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw2fHxtb2RlbHxlbnwwfHx8fDE2MzcyMzA4MTQ&ixlib=rb-1.2.1&q=85",
                                                 "imgAlt": "",
                                                 "title": "",
@@ -10477,7 +10462,6 @@
                                         "81e92083-2c17-4507-89d8-5e5487784360": {
                                             "type": "item",
                                             "settings": {
-                                                "imgPlaceholder": true,
                                                 "imgSrc": "https:\/\/images.unsplash.com\/photo-1469334031218-e382a71b716b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwyNnx8bW9kZWx8ZW58MHx8fHwxNjM3MjMwODYw&ixlib=rb-1.2.1&q=85",
                                                 "imgAlt": "",
                                                 "title": "",
@@ -10495,7 +10479,6 @@
                                         "d0023a3f-5127-4074-9bce-296e48c50d70": {
                                             "type": "item",
                                             "settings": {
-                                                "imgPlaceholder": "",
                                                 "imgSrc": "https:\/\/images.unsplash.com\/photo-1501196354995-cbb51c65aaea?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHw5fHxtb2RlbHxlbnwwfHx8fDE2MzcyMzEwMTk&ixlib=rb-1.2.1&q=85",
                                                 "imgAlt": "",
                                                 "title": "",
@@ -11704,7 +11687,6 @@
                                         "81e92083-2c17-4507-89d8-5e5487784360": {
                                             "type": "item",
                                             "settings": {
-                                                "imgPlaceholder": true,
                                                 "imgSrc": "https:\/\/images.unsplash.com\/photo-1475180098004-ca77a66827be?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwyMHx8ZmFzaGlvbnxlbnwwfHx8fDE2MzcyMzgyMDA&ixlib=rb-1.2.1&q=85",
                                                 "imgAlt": "",
                                                 "title": "",
@@ -11722,7 +11704,6 @@
                                         "d0023a3f-5127-4074-9bce-296e48c50d70": {
                                             "type": "item",
                                             "settings": {
-                                                "imgPlaceholder": "",
                                                 "imgSrc": "https:\/\/images.unsplash.com\/photo-1509087859087-a384654eca4d?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwzN3x8ZmFzaGlvbnxlbnwwfHx8fDE2MzcyMzgyNzA&ixlib=rb-1.2.1&q=85",
                                                 "imgAlt": "",
                                                 "title": "",
@@ -11740,7 +11721,6 @@
                                         "F4c98887-2f85-4be6-a1b8-607600aa691c": {
                                             "type": "item",
                                             "settings": {
-                                                "imgPlaceholder": true,
                                                 "imgSrc": "https:\/\/images.unsplash.com\/photo-1496747611176-843222e1e57c?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMjMzODd8MHwxfHNlYXJjaHwxMXx8ZmFzaGlvbnxlbnwwfHx8fDE2MzcyMzgyNDE&ixlib=rb-1.2.1&q=85",
                                                 "imgAlt": "",
                                                 "title": "",

@@ -49,15 +49,7 @@
 
     {% endif %}
 
-    {% if section.settings.contentImgPlaceholder and imgSrc == '' %}
-
-        <div data-finqu-inline-editor="contentImgSrc">
-
-            {% render 'placeholder-svg', type: 'image', height: section.settings.contentImgPlaceholderHeight %}
-
-        </div>
-
-    {% elsif imgSrc %}
+    {% if imgSrc %}
 
         <picture>
             <source media="(min-width: 992px)" data-srcset="
@@ -79,6 +71,14 @@
                 class="lazy d-block mx-auto img-fluid {% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
                 data-finqu-inline-editor="contentImgSrc">
         </picture>
+
+    {% elsif request.design_mode %}
+
+        <div data-finqu-inline-editor="contentImgSrc">
+
+            {% render 'placeholder-svg', type: 'image', height: '400px' %}
+
+        </div>
 
     {% endif %}
 
@@ -272,19 +272,7 @@
 
     <div class="aspect-ratio-{{ section.settings.contentImgAspectRatio | replace: ':', '-' }}">
 
-        {% if section.settings.contentImgPlaceholder and imgSrc == '' %}
-
-            <div class="aspect-ratio-container" data-finqu-inline-editor="contentImgSrc">
-
-                {%- capture class -%}
-                    aspect-ratio-item{% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}
-                {%- endcapture -%}
-
-                {% render 'placeholder-svg', type: 'image', class: class %}
-
-            </div>
-
-        {% elsif imgSrc %}
+        {% if imgSrc %}
 
             <div class="aspect-ratio-container">
 
@@ -308,6 +296,18 @@
                         class="lazy aspect-ratio-item {% if section.settings.contentImgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}"
                         data-finqu-inline-editor="contentImgSrc">
                 </picture>
+
+            </div>
+
+        {% elsif request.design_mode %}
+
+            <div class="aspect-ratio-container" data-finqu-inline-editor="contentImgSrc">
+
+                {%- capture class -%}
+                    aspect-ratio-item{% if section.settings.contentImgEffect != 'none' %} {{ section.settings.contentImgEffect }}{% endif %}
+                {%- endcapture -%}
+
+                {% render 'placeholder-svg', type: 'image', class: class %}
 
             </div>
 
@@ -431,14 +431,6 @@
                     "fi": "Yleinen"
                 },
                 "settings": [
-                    {
-                        "id": "contentImgPlaceholder",
-                        "type": "hidden"
-                    },
-                    {
-                        "id": "contentImgPlaceholderHeight",
-                        "type": "hidden"
-                    },
                     {
                         "id": "contentColumnArrangement",
                         "type": "select",
@@ -1044,8 +1036,6 @@
                 "contentBtnResource": null,
                 "contentBtnStyle": "btn1",
                 "contentImgSrc": "",
-                "contentImgPlaceholder": true,
-                "contentImgPlaceholderHeight": "600px",
                 "contentRichtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>",
                 "sectionHeight": "",
                 "sectionInnerSpacing": "",
@@ -1080,8 +1070,6 @@
                 },
                 "contentBtnStyle": "link",
                 "contentImgSrc": "",
-                "contentImgPlaceholder": true,
-                "contentImgPlaceholderHeight": "300px",
                 "contentRichtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>",
                 "sectionHeight": "",
                 "sectionHeightCustomTop": "0",

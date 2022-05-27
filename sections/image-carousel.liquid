@@ -116,15 +116,7 @@
 
         <div class="swiper-slide">
 
-            {% if item.settings.imgPlaceholder and imgSrc == '' %}
-
-                <div class="slide-bg-img slide-bg-placeholder">
-
-                    {% render 'placeholder-svg', type: 'background' %}
-
-                </div>
-
-            {% elsif imgSrc %}
+            {% if imgSrc %}
 
                 <div class="slide-bg-img">
 
@@ -177,6 +169,14 @@
                             class="lazy slide-lazy-img">
 
                     </picture>
+
+                </div>
+
+            {% elsif request.design_mode %}
+
+                <div class="slide-bg-img slide-bg-placeholder">
+
+                    {% render 'placeholder-svg', type: 'background' %}
 
                 </div>
 
@@ -322,10 +322,6 @@
                             "fi": "Kohde"
                         },
                         "settings": [
-                            {
-                                "id": "imgPlaceholder",
-                                "type": "hidden"
-                            },
                             {
                                 "id": "imgSrc",
                                 "type": "image-picker",
@@ -675,7 +671,6 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "title": "",
                                 "description": "",
                                 "btnLabel": "",
@@ -693,7 +688,6 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "title": "",
                                 "description": "",
                                 "btnLabel": "",

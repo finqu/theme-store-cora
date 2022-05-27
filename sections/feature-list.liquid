@@ -17,15 +17,7 @@
 
                 {%- assign imgSrc = item.settings.imgSrc -%}
 
-                {% if item.settings.imgPlaceholder and imgSrc == '' %}
-
-                    <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
-
-                        {% render 'placeholder-svg', type: 'image', width: '80px', height: '80px' %}
-
-                    </div>
-
-                {% elsif imgSrc %}
+                {% if imgSrc %}
 
                     <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
 
@@ -65,6 +57,14 @@
                                 data-srcset="{{ item.settings.imgSrc | thumb: imgSizeSm }} 1x,{{ item.settings.imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
                                 class="lazy d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}">
                         </picture>
+
+                    </div>
+
+                {% elsif request.design_mode %}
+
+                    <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
+
+                        {% render 'placeholder-svg', type: 'image', width: '80px', height: '80px' %}
 
                     </div>
 
@@ -567,7 +567,6 @@
                         "8b7955ef-d6b4-4a3e-ae8f-79303852f19f": {
                             "type": "item",
                             "settings": {
-                                "imgPlaceholder": true,
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",
@@ -584,7 +583,6 @@
                         "9fce1965-4956-449e-accc-1a4e8fe46949": {
                             "type": "item",
                             "settings": {
-                                "imgPlaceholder": true,
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "",
@@ -601,7 +599,6 @@
                         "8102c4d5-e865-4e19-b1e1-58bd9f04e672": {
                             "type": "item",
                             "settings": {
-                                "imgPlaceholder": true,
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "",
@@ -618,7 +615,6 @@
                         "efa98db3-adb2-4347-a317-4145ea052ba4": {
                             "type": "item",
                             "settings": {
-                                "imgPlaceholder": true,
                                 "imgSrc": "",
                                 "imgAlt": "",
                                 "imgEffect": "none",

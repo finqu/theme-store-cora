@@ -10,23 +10,7 @@
 
                 {% if item.settings.imgAspectRatio != 'off' %}
 
-                    {% if item.settings.imgPlaceholder and imgSrc == '' %}
-
-                        <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
-
-                            <div class="aspect-ratio-container" data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
-
-                                {%- capture class -%}
-                                    aspect-ratio-item{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}
-                                {%- endcapture -%}
-
-                                {% render 'placeholder-svg', type: 'image', class: class %}
-
-                            </div>
-
-                        </div>
-
-                    {% elsif imgSrc %}
+                    {% if imgSrc %}
 
                         <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
 
@@ -125,21 +109,29 @@
 
                         </div>
 
+                    {% elsif request.design_mode %}
+
+                        <div class="aspect-ratio-{{ item.settings.imgAspectRatio | replace: ':', '-' }} mb-4">
+
+                            <div class="aspect-ratio-container" data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+
+                                {%- capture class -%}
+                                    aspect-ratio-item{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}
+                                {%- endcapture -%}
+
+                                {% render 'placeholder-svg', type: 'image', class: class %}
+
+                            </div>
+
+                        </div>
+
                     {% endif %}
 
                 {% else %}
 
                     <div class="mb-4">
 
-                        {% if item.settings.imgPlaceholder and imgSrc == '' %}
-
-                            <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
-
-                                {% render 'placeholder-svg', type: 'image' %}
-
-                            </div>
-
-                        {% elsif imgSrc %}
+                        {% if imgSrc %}
 
                             {%- assign imgSizeSm = '375,375' -%}
                             {%- assign imgSizeMd = '680,680' -%}
@@ -178,6 +170,14 @@
                                     class="lazy d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
                                     data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
                             </picture>
+
+                        {% elsif request.design_mode %}
+
+                            <div data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
+
+                                {% render 'placeholder-svg', type: 'image' %}
+
+                            </div>
 
                         {% endif %}
 
@@ -228,10 +228,6 @@
                             "fi": "Kohde"
                         },
                         "settings": [
-                            {
-                                "id": "imgPlaceholder",
-                                "type": "hidden"
-                            },
                             {
                                 "id": "imgSrc",
                                 "type": "image-picker",
@@ -799,7 +795,6 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
@@ -811,7 +806,6 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
@@ -823,7 +817,6 @@
                             "settings": {
                                 "imgSrc": "",
                                 "imgAlt": "",
-                                "imgPlaceholder": true,
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
                                 "imgFit": false,
