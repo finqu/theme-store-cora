@@ -12,6 +12,7 @@ export default class Carousel {
 
         const itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
         let spaceBetween = 20;
+        let windowWidth = window.innerWidth;
 
         switch(this.opts.carouselItemsGap) {
 
@@ -68,8 +69,15 @@ export default class Carousel {
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
         window.addEventListener('resize', debounce(() => {
-            this.swiper.destroy();
-            this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+
+            // IOS fix, browser topbar resize on scroll down triggers resize event.
+            if (window.innerWidth != windowWidth) {
+
+                this.swiper.destroy();
+                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+
+                windowWidth = window.innerWidth;
+            }
         }, 150, false));
 
         document.addEventListener('finqu:section:unload', debounce((e) => {

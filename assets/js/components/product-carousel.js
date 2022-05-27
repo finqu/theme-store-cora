@@ -11,6 +11,7 @@ export default class ProductCarousel {
         this.opts = this.containerEl.dataset;
 
         const itemsPerView = JSON.parse(this.opts.carouselItemsPerView);
+        let windowWidth = window.innerWidth;
 
         this.swiperCfg = {
             modules: [
@@ -44,8 +45,15 @@ export default class ProductCarousel {
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
         window.addEventListener('resize', debounce(() => {
-            this.swiper.destroy();
-            this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+
+            // IOS fix, browser topbar resize on scroll down triggers resize event.
+            if (window.innerWidth != windowWidth) {
+
+                this.swiper.destroy();
+                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+
+                windowWidth = window.innerWidth;
+            }
         }, 150, false));
 
         document.addEventListener('finqu:section:unload', debounce((e) => {

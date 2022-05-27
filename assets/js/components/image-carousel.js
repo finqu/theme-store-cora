@@ -99,9 +99,18 @@ export default class ImageCarousel {
 
         this.swiper = new Swiper(this.containerEl, this.swiperCfg);
 
+        let windowWidth = window.innerWidth;
+
         window.addEventListener('resize', debounce(() => {
-            this.swiper.destroy();
-            this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+
+            // IOS fix, browser topbar resize on scroll down triggers resize event.
+            if (window.innerWidth != windowWidth) {
+
+                this.swiper.destroy();
+                this.swiper = new Swiper(this.containerEl, this.swiperCfg);
+
+                windowWidth = window.innerWidth;
+            }
         }, 150, false));
 
         document.addEventListener('finqu:section:unload', debounce((e) => {
