@@ -131,7 +131,7 @@
         "review_account_required": "You must be logged in to review a product.",
         "review_publish_pending": "Thank you! Your product review has been received and is awaiting review.",
         "review_already_given": "Thank you! Your product review has been received.",
-        "additional_information": "Lisätiedot",
+        "additional_information": "Additional information",
         "model_number": "Model number",
         "product_identifier": "Product identifier",
         "delivery_time_dynamic": "Delivery {{ min_days }}-{{ max_days }} business days",
