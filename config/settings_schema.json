@@ -1865,8 +1865,8 @@
 				{
 					"type": "title",
 					"label": {
-						"en": "Product images",
-						"fi": "Tuotekuvat"
+						"en": "Product",
+						"fi": "Tuote"
 					}
 				},
 				{
@@ -1910,6 +1910,15 @@
 							"label": "ON"
 						}
 					]
+				},
+				{
+					"id": "productNameWrap",
+					"type": "checkbox",
+					"label": {
+						"en": "Wrap product name into multiple lines",
+						"fi": "Rivitä tuotenimi usealle riville"
+					},
+					"default": false
 				},
 				{
 					"type": "spacer"

@@ -66,5 +66,6 @@ $aspect-ratios: (
 );
 
 $aspect-ratio-product-image-fit: {{- settings.aspectRatioProductImageFit -}};
+$product-name-wrap: {{- settings.productNameWrap | yepnope: 'true', 'false' -}};
 
 @import "scss/theme";

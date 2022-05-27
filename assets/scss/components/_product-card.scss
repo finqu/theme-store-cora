@@ -127,13 +127,15 @@
 
             .product-name-text {
                 display: block;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
                 font-size: $font-size-base;
                 font-weight: $font-weight-normal;
                 line-height: $line-height-base;
                 margin: 0;
+                @if $product-name-wrap == false {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
             }
         }
     }
