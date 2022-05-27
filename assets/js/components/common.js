@@ -426,13 +426,6 @@ export default {
                 siteSearchQueryEl.addEventListener('input', debounce((e) => {
                     search(el, siteSearchResultsEl, e.target.value);
                 }, 300, false));
-
-                document.addEventListener('click', (e) => {
-
-                    if (!siteSearchFormContainerEl.contains(e.target) && el.classList.contains('active')) {
-                        el.classList.remove('active');
-                    }
-                });
             });
 
             siteHeaderSearchToggleEls.forEach(el => { el.addEventListener('click', e => {
