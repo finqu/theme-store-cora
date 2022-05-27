@@ -11,31 +11,33 @@
     {% render 'schemas/breadcrumblist' %}
 {% endcomment %}
 
-<script type="application/ld+json">
-{
-	"@context": "http://schema.org",
-	"@type": "BreadcrumbList",
-	"itemListElement": [
-		{%- for breadcrumb in breadcrumbs -%}
-		{
-			"@type": "ListItem",
-			"position": {{ forloop.index }},
-			"item": {
-				"@id": "{{ breadcrumb | page_url | full_url }}",
-				"name": {{ breadcrumb.name | json }}
+{% if breadcrumbs.size > 0 %}
+	<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{%- for breadcrumb in breadcrumbs -%}
+			{
+				"@type": "ListItem",
+				"position": {{ forloop.index }},
+				"item": {
+					"@id": "{{ breadcrumb | link | full_url }}",
+					"name": {{ breadcrumb.name | json }}
+				}
+			}{% if forloop.last != true %},{% elsif currentItem and forloop.last %},{% endif %}
+			{%- if currentItem and forloop.last -%}
+			{
+				"@type": "ListItem",
+				"position": {{ forloop.index | plus: 1 }},
+				"item": {
+					"@id": "{{ currentItem | link | full_url }}",
+					"name": {{ currentItem.name | json }}
+				}
 			}
-		}{% if forloop.last != true %},{% elsif currentItem and forloop.last %},{% endif %}
-		{%- if currentItem and forloop.last -%}
-		{
-			"@type": "ListItem",
-			"position": {{ forloop.index | plus: 1 }},
-			"item": {
-				"@id": "{{ currentItem | page_url | full_url }}",
-				"name": {{ currentItem.name | json }}
-			}
-		}
-		{%- endif -%}
-		{%- endfor -%}
-	]
-}
-</script>
+			{%- endif -%}
+			{%- endfor -%}
+		]
+	}
+	</script>
+{% endif %}
