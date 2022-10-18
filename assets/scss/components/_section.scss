@@ -337,6 +337,14 @@
 					}
 				}
 			}
+			.section-spacer-y-#{$key} {
+				padding-top: $val;
+				padding-bottom: $val;
+			}
+			.section-spacer-x-#{$key} {
+				padding-left: $val;
+				padding-right: $val;
+			}
 		}
 	}
 

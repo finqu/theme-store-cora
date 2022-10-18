@@ -1,0 +1,286 @@
+{% comment %}
+	Renders a category carousel
+
+	Accepts:
+	- items: {Array} Items to show (Required)
+	- sectionId: {String} Section Id (Required)
+	- pagination: {String} Show pagination '' | hover | on
+	- navigation: {String} Show navigation '' | hover | on
+	- colSpacing: {String} Spacing between columns
+	- itemsPerView: {Int} Items per one slide
+	- slideTitlePosition: {String} Slide title position
+	- slideTextColor: {String} Slide text color
+	- slideTitleTag: {String} Slide title tag
+	- slideImgOverlay: {Int} Slide image overlay percentage
+
+	Usage:
+	{% render 'category-carousel', items: items, sectionId: id %}
+{% endcomment %}
+
+{%- assign carouselClasses = '' -%}
+{%- assign carouselItems = items -%}
+{%- assign carouselSectionId = sectionId -%}
+{%- assign carouselPagination = pagination | default: 'hover' -%}
+{%- assign carouselNavigation = navigation | default: 'hover' -%}
+{%- assign carouselColSpacing = colSpacing | default: 'sm' -%}
+{%- assign carouselItemsPerView = itemsPerView | default: 4 -%}
+{%- assign carouselSlideTitlePosition = slideTitlePosition | default: 'below' -%}
+{%- assign carouselSlideTextColor = slideTextColor | default: 'ffffff' -%}
+{%- assign carouselSlideTitleTag = slideTitleTag | default: 'h3' -%}
+{%- assign carouselSlideImgOverlay = slideImgOverlay | default: 0 -%}
+
+{%- capture carouselSettings -%}
+    data-carousel-pagination="{{- carouselPagination -}}" data-carousel-items-per-view="{{- carouselItemsPerView -}}" data-carousel-items-gap="{{ carouselColSpacing }}"
+{%- endcapture -%}
+
+{%- if carouselPagination == 'hover' -%}
+    {% capture paginationHoverClass %} swiper-pagination-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: paginationHoverClass -%}
+{%- endif -%}
+
+{%- if carouselNavigation == 'hover' -%}
+    {% capture navigationHoverClass %} swiper-navigation-hover{% endcapture %}
+    {%- assign carouselClasses = carouselClasses | append: navigationHoverClass -%}
+{%- endif -%}
+
+{%- case carouselItemsPerView -%}
+
+    {%- when '2' -%}
+        {%- assign imgSize = '560,560' -%}
+
+    {%- when '3' -%}
+        {%- assign imgSize = '360,360' -%}
+
+    {%- when '4' -%}
+        {%- assign imgSize = '260,260' -%}
+
+    {%- when '5' -%}
+        {%- assign imgSize = '200,200' -%}
+
+    {%- when '6' -%}
+        {%- assign imgSize = '160,160' -%}
+
+{%- endcase -%}
+
+{%- unless carouselItems -%}
+    {%- assign carouselItems = categories.root -%}
+{%- endunless -%}
+
+{% if carouselSlideTitlePosition == 'over' %}
+
+    <style>
+        #finqu-section-{{ carouselSectionId }} .slide-text {
+            color: {{ carouselSlideTextColor }};
+        }
+    </style>
+
+{% endif %}
+
+{%- capture carouselContent -%}
+
+    {% if carouselItems.size == 0 and request.design_mode %}
+
+        {%- assign itemsPerView = carouselItemsPerView | times: 2 -%}
+
+        {% for num in (1..itemsPerView) %}
+
+            <div class="swiper-slide swiper-slide-{{ forloop.index }}">
+
+                {% if carouselSlideTitlePosition == 'over' %}
+
+                    <div class="slide-text-container">
+
+                        <{{ carouselSlideTitleTag }} class="slide-text">
+                            Example product group
+                        </{{ carouselSlideTitleTag }}>
+
+                    </div>
+
+                {% endif %}
+
+                <div class="aspect-ratio-1-1">
+
+                    <div class="aspect-ratio-container">
+
+                        {% render 'placeholder-svg', type: 'category', class: 'aspect-ratio-item' %}
+
+                    </div>
+
+                </div>
+
+                {% if carouselSlideTitlePosition == 'below' %}
+
+                    <div class="mt-4">
+
+                        <{{ carouselSlideTitleTag }} class="slide-text">
+                            Example product group
+                        </{{ carouselSlideTitleTag }}>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        {% for item in carouselItems %}
+
+            {%- if carouselItems.size > 0 -%}
+                {%- assign itemCategory = item.settings.category -%}
+            {%- else -%}
+                {%- assign itemCategory = item -%}
+            {%- endif -%}
+
+            {%- if itemCategory -%}
+
+                {%- if item.settings.imgSrc -%}
+                    {%- assign imgSrc = item.settings.imgSrc-%}
+                {%- else -%}
+                    {%- assign imgSrc = itemCategory.image -%}
+                {%- endif -%}
+
+                {%- assign imgAlt = item.settings.imgAlt | default: itemCategory.title -%}
+                {%- assign imgFit = item.settings.imgFit | default: true -%}
+                {%- assign imgEffect = item.settings.imgEffect | default: 'none' -%}
+                {%- assign resourceUrl = item.settings.resource.url | default: itemCategory | link -%}
+                {%- assign openResourceInNewWindow = item.settings.resourceOpenInNewWindowStatus | default: false -%}
+                {%- assign text = item.settings.text | default: itemCategory.title -%}
+
+            {%- else -%}
+
+                {%- assign imgSrc = item.settings.imgSrc -%}
+                {%- assign imgAlt = item.settings.imgAlt -%}
+                {%- assign imgFit = item.settings.imgFit -%}
+                {%- assign imgEffect = item.settings.imgEffect -%}
+                {%- assign resourceUrl = item.settings.resource.url -%}
+                {%- assign openResourceInNewWindow = item.settings.resourceOpenInNewWindowStatus -%}
+                {%- assign text = item.settings.text -%}
+
+            {%- endif -%}
+
+            {%- capture slideContent -%}
+
+                {%- if carouselSlideImgOverlay and imgSrc and imgFit -%}
+                    <style>
+                        #finqu-section-{{ carouselSectionId }} .swiper-slide-{{ forloop.index }}::after {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            z-index: 1;
+                            background: linear-gradient(0deg, rgb(0,0,0, {{ carouselSlideImgOverlay }}%), rgb(0,0,0, {{ carouselSlideImgOverlay }}%))
+                        }
+                    </style>
+                {%- endif -%}
+
+                {% if carouselSlideTitlePosition == 'over' %}
+
+                    <div class="slide-text-container">
+
+                        <{{ carouselSlideTitleTag }} class="slide-text">
+                            {{ text }}
+                        </{{ carouselSlideTitleTag }}>
+
+                    </div>
+
+                {% endif %}
+
+                <div class="aspect-ratio-1-1">
+
+                    <div class="aspect-ratio-container">
+
+                        {% if imgSrc %}
+
+                            <picture>
+                                <img
+                                    alt="{{ imgAlt }}"
+                                    data-src="{{ imgSrc | thumb: imgSize }}"
+                                    data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                    class="lazy aspect-ratio-item {% if imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if imgEffect != 'none' %} {{ imgEffect }}{% endif %}">
+
+                            </picture>
+
+                        {% else %}
+
+                            {%- capture class -%}
+                                aspect-ratio-item{% if imgEffect != 'none' %} {{ imgEffect }}{% endif %}
+                            {%- endcapture -%}
+
+                            {% render 'placeholder-svg', type: 'category', class: class %}
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                {% if carouselSlideTitlePosition == 'below' %}
+
+                    <div class="mt-4">
+
+                        <{{ carouselSlideTitleTag }} class="slide-text">
+                            {{ text }}
+                        </{{ carouselSlideTitleTag }}>
+
+                    </div>
+
+                {% endif %}
+
+            {%- endcapture -%}
+
+            <div class="swiper-slide swiper-slide-{{ forloop.index }}">
+
+                {% if resourceUrl %}
+
+                    <a href="{{- resourceUrl -}}"{% if openResourceInNewWindow %} target="_blank"{% endif %}>
+
+                        {{ slideContent }}
+
+                    </a>
+
+                {% else %}
+
+                    {{ slideContent }}
+
+                {% endif%}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{%- endcapture -%}
+
+<div class="swiper carousel-style-{{ carouselStyle }}{{ carouselClasses }}" {{ carouselSettings }}>
+
+    <div class="swiper-wrapper">
+
+        {{- carouselContent -}}
+
+    </div>
+
+    {%- if carouselNavigation -%}
+
+        <div class="swiper-button-prev">
+            {%- render 'icon', icon: 'light/arrow-left-1' -%}
+        </div>
+
+        <div class="swiper-button-next">
+            {%- render 'icon', icon: 'light/arrow-right-1' -%}
+        </div>
+
+    {%- endif -%}
+
+    {%- if carouselPagination -%}
+
+        <div class="swiper-pagination"></div>
+
+    {%- endif -%}
+
+</div>

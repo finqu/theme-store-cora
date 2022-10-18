@@ -37,6 +37,13 @@
 			}
 		},
 		{
+			"id": "theme-product-group",
+			"name": {
+				"en": "Product group",
+				"fi": "Tuoteryhmä"
+			}
+		},
+		{
 			"id": "theme-form",
 			"name": {
 				"en": "Form",

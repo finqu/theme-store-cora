@@ -38,6 +38,7 @@
 {
 	"@context": "https://schema.org/",
 	"@type": "Product",
+	"id": {{ product.model | default: product.id | json }},
 	"productID": "{{ product.id }}",
 	{%- if product.meta_title or product.name -%}
 	"name": {{ product.meta_title | default: product.name | json }},

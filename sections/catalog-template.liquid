@@ -1,152 +1,22 @@
-{%- assign sectionTitle = category.title -%}
+{%- assign sectionTitle = 'general.product_catalog' | t -%}
 {%- assign sectionTitleTag = 'h1' -%}
-{%- assign sectionDescription = category.description -%}
-{%- assign sectionBreadcrumbs = category.breadcrumbs -%}
-{%- assign itemCount = category.product_count -%}
-{%- assign subCategories = category.sub_categories -%}
-{%- assign activeSortOption = category.sort_by | default: category.default_sort_by -%}
-{%- assign sortOptions = category.sort_options -%}
-{%- assign categoryFilters = category.filters -%}
-{%- assign categoryActiveFilters = category.active_filters -%}
+{%- assign activeSortOption = catalog.sort_by | default: catalog.default_sort_by -%}
+{%- assign sortOptions = catalog.sort_options -%}
+{%- assign catalogFilters = catalog.filters -%}
+{%- assign catalogActiveFilters = catalog.active_filters -%}
 {%- assign currentCategory = category -%}
 
-{% if category.products.size == 0 and request.design_mode %}
+{% if catalog.products.size == 0 and request.design_mode %}
     {%- assign itemCount = section.settings.itemsPerRow | times: 3 -%}
 {% else %}
-    {%- assign itemCount = category.product_count -%}
+    {%- assign itemCount = catalog.products.size -%}
 {% endif %}
 
-{%- capture categoryContentPlaceholder -%}
+{%- capture catalogContent -%}
 
-test123
+    {%- paginate catalog.products by 100 -%}
 
-{%- endcapture -%}
-
-{%- capture categoryContent -%}
-
-    {%- paginate category.products by 100 -%}
-
-        {% if subCategories %}
-
-            {% if section.settings.showSubcategoryImg %}
-
-                <div class="category-subcategories category-images pb-4{% if section.settings.showCategoryList %} d-lg-none{% endif %}">
-
-                    <div class="swiper py-1">
-
-                        <div class="swiper-wrapper">
-
-                            {% for subCategory in subCategories %}
-
-                                {% if subCategory.is_visible %}
-
-                                    <div class="swiper-slide">
-
-                                        {%- assign imgSrc = subCategory.image -%}
-                                        {%- assign imgSize = '160,160' -%}
-
-                                        <a href="{{ subCategory | page_url }}">
-
-                                            <div class="aspect-ratio-1-1">
-
-                                                <div class="aspect-ratio-container">
-
-                                                    {% if imgSrc %}
-
-                                                        <picture>
-                                                            <img
-                                                                alt="{{ item.settings.imgAlt }}"
-                                                                data-src="{{ imgSrc | thumb: imgSize }}"
-                                                                data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                                                class="lazy aspect-ratio-item {% if section.settings.subcategoryImgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}">
-                                                        </picture>
-
-                                                    {% else %}
-
-                                                        {% render 'placeholder-svg', type: 'image', class: 'aspect-ratio-item' %}
-
-                                                    {% endif %}
-
-                                                </div>
-
-                                            </div>
-
-                                            <span class="d-block mt-3 text-center">
-                                                {{ subCategory.title }}
-                                            </span>
-
-                                        </a>
-
-                                    </div>
-
-                                {% endif %}
-
-                            {% endfor %}
-
-                        </div>
-
-                        <div class="swiper-button-prev">
-                            {%- render 'icon', icon: 'light/arrow-left-1' -%}
-                        </div>
-
-                        <div class="swiper-button-next">
-                            {%- render 'icon', icon: 'light/arrow-right-1' -%}
-                        </div>
-
-                    </div>
-
-                </div>
-
-            {% else %}
-
-                <div class="category-subcategories category-tags pb-4{% if section.settings.showCategoryList %} d-lg-none{% endif %}">
-
-                    <div class="swiper py-1">
-
-                        <div class="swiper-wrapper">
-
-                            {% for subCategory in subCategories %}
-
-                                {% if subCategory.is_visible %}
-
-                                    <div class="swiper-slide">
-
-                                        <div class="category-tag">
-
-                                            <a href="{{ subCategory | page_url }}">
-
-                                                <span class="category-tag-content">
-                                                    {{ subCategory.title }}
-                                                </span>
-                                            </a>
-
-                                        </div>
-
-                                    </div>
-
-                                {% endif %}
-
-                            {% endfor %}
-
-                        </div>
-
-                        <div class="swiper-button-prev">
-                            {%- render 'icon', icon: 'light/arrow-left-1' -%}
-                        </div>
-
-                        <div class="swiper-button-next">
-                            {%- render 'icon', icon: 'light/arrow-right-1' -%}
-                        </div>
-
-                    </div>
-
-                </div>
-
-            {% endif %}
-
-        {% endif %}
-
-        {% if categoryFilters.size > 0 %}
+        {% if catalogFilters.size > 0 %}
 
              <button type="button" name="filters-mobile-navigation-show" class="d-lg-none btn btn-outline-section btn-block btn-sm mb-4">
 
@@ -156,15 +26,15 @@ test123
 
             </button>
 
-            <form class="category-filters mb-2 d-none d-lg-block">
+            <form class="catalog-filters mb-2 d-none d-lg-block">
 
-                {% for filter in categoryFilters %}
+                {% for filter in catalogFilters %}
 
-                    <div class="category-filter-dropdown dropdown">
+                    <div class="catalog-filter-dropdown dropdown">
 
-                        <button class="category-filter-btn btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="catalog-filter-btn btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                            <span class="category-filter-btn-text">
+                            <span class="catalog-filter-btn-text">
 
                                 {% if filter.param_name contains 'filter.attribute' %}
 
@@ -186,7 +56,7 @@ test123
 
                         </button>
 
-                        <div class="category-filter-dropdown-menu dropdown-menu p-4">
+                        <div class="catalog-filter-dropdown-menu dropdown-menu p-4">
 
                             {% if filter.type == 'list' %}
 
@@ -260,19 +130,19 @@ test123
 
         {% endif %}
 
-        <div class="category-dynamic-content">
+        <div class="catalog-dynamic-content">
 
-             {% if categoryActiveFilters %}
+             {% if catalogActiveFilters %}
 
-                <div class="category-activated-filters">
+                <div class="catalog-activated-filters">
 
-                   {% for filter in categoryActiveFilters %}
+                   {% for filter in catalogActiveFilters %}
 
                         <div class="item">
 
-                            <button type="button" class="category-remove-filter" value="{{ filter.param_name | replace: '.', '-' | handle }}">
+                            <button type="button" class="catalog-remove-filter" value="{{ filter.param_name | replace: '.', '-' | handle }}">
 
-                                <span class="category-activated-filter-text">
+                                <span class="catalog-activated-filter-text">
 
                                     {% if filter.param_name contains 'filter.attribute' %}
 
@@ -290,7 +160,7 @@ test123
 
                                 </span>
 
-                                <span class="category-activated-filter-icon">
+                                <span class="catalog-activated-filter-icon">
                                     {%- render 'icon', icon: 'light/close' -%}
                                 </span>
 
@@ -302,9 +172,9 @@ test123
 
                    <div class="item">
 
-                        <button type="button" class="category-reset-filters">
+                        <button type="button" class="catalog-reset-filters">
 
-                            <span class="category-reset-filters-text">
+                            <span class="catalog-reset-filters-text">
                                 {{ 'filters.clear_filters' | t }}
                             </span>
 
@@ -320,7 +190,7 @@ test123
 
                 <div class="col-auto">
 
-                    <span class="text-muted" data-category-item-count-text>
+                    <span class="text-muted" data-catalog-item-count-text>
                         {% if itemCount == 1 %}
                             {{ 'general.product_count' | t: amount: itemCount }}
                         {% else %}
@@ -370,11 +240,11 @@ test123
 
             </div>
 
-            <div class="category-items row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}" data-category-items-count="{{ itemCount }}">
+            <div class="catalog-items row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}" data-catalog-items-count="{{ itemCount }}">
 
-                {% if category.products.size > 0 %}
+                {% if catalog.products.size > 0 %}
 
-                    {% for product in category.products %}
+                    {% for product in catalog.products %}
 
                         <div class="col pt-3 pb-4">
 
@@ -403,7 +273,7 @@ test123
             {% render 'pagination', paginate: paginate %}
 
             {%- if settings.schemaItemList -%}
-                {% render 'schemas/itemlist', items: category.products, paginate: paginate %}
+                {% render 'schemas/itemlist', items: catalog.products, paginate: paginate %}
             {%- endif -%}
 
         </div>
@@ -432,11 +302,11 @@ test123
 
             <div class="filters-mobile-navigation-menu-container">
 
-                <form class="category-filters">
+                <form class="catalog-filters">
 
                     <ul class="filters-mobile-navigation-menu">
 
-                        {% for filter in categoryFilters %}
+                        {% for filter in catalogFilters %}
 
                             <li class="filters-mobile-navigation-menu-item">
 
@@ -594,15 +464,7 @@ test123
 
             <div class="col col-lg-9">
 
-                {% if category.products.size == 0 and subCategories %}
-
-                    {{ categoryContentPlaceholder }}
-
-                {% else %}
-
-                    {{ categoryContent }}
-
-                {% endif %}
+                {{ catalogContent }}
 
             </div>
 
@@ -610,15 +472,7 @@ test123
 
     {% else %}
 
-        {% if category.products.size == 0 and subCategories %}
-
-            {{ categoryContentPlaceholder }}
-
-        {% else %}
-
-            {{ categoryContent }}
-
-        {% endif %}
+        {{ catalogContent }}
 
     {% endif %}
 
@@ -633,11 +487,11 @@ test123
 {% schema %}
 {
     "name": {
-        "en": "Category",
-        "fi": "Tuoteryhmä"
+        "en": "Product catalog",
+        "fi": "Tuoteluettelo"
     },
     "tag": "section",
-    "class": "section section-category",
+    "class": "section section-catalog",
     "is_creatable": false,
     "settings": {
         "list_type": "tabs",
@@ -714,25 +568,6 @@ test123
                             "fi": "Näytä tuoteryhmälista"
                         },
                         "default": false
-                    },
-                    {
-                        "id": "showSubcategoryImg",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show subcategory image",
-                            "fi": "Näytä alatuoteryhmän kuva"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "subcategoryImgFit",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Subcategory image area fill",
-                            "fi": "Alatuoteryhmän kuva-alueen täyttö"
-                        },
-                        "default": false,
-                        "conditions": ["showSubcategoryImg eq true"]
                     }
                 ]
             }

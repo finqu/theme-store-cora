@@ -3,72 +3,145 @@
 {%- assign sectionSubtitle = section.settings.sectionSubtitle -%}
 {%- assign sectionSubtitleTag = section.settings.sectionSubtitleTag -%}
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
+{%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
+{%- assign sectionColSpacing = section.settings.sectionColSpacing -%}
 
 {%- capture sectionContent -%}
 
-    {%- case section.settings.listType -%}
-        {% when 'discounted' %}
-            {%- assign items = products.discounted -%}
-        {% when 'new' %}
-            {%- assign items = products.new_products -%}
-        {% when 'recent' %}
-            {%- assign items = products.recent -%}
-        {% when 'tag' %}
-            {%- assign items = products.tags[section.settings.tagId] -%}
-        {% when 'category' %}
-            {%- assign items = categories[section.settings.category.id].products -%}
-        {% when 'manufacturer' %}
-            {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
-    {%- endcase -%}
-
-    {%- assign items = items | slice: 0, section.settings.itemAmount -%}
-
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
-
-        {% if items.size > 0 %}
-
-            {% for product in items %}
-
-                <div class="col pt-3 pb-4">
-
-                    {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
-
-                </div>
-
-            {% endfor %}
-
-        {% elsif request.design_mode %}
-
-            {% for num in (1..section.settings.itemAmount) %}
-
-                <div class="col pt-3 pb-4">
-
-                    {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
-
-                </div>
-
-            {% endfor %}
-
-
-        {% endif %}
-
-    </div>
+    {% render 'category-carousel', items: section.settings.setting_blocks.items, sectionId: section.id, pagination: section.settings.pagination, navigation: section.settings.navigation, colSpacing: section.settings.sectionColSpacing, itemsPerView: section.settings.itemsPerView, slideTitlePosition: section.settings.slideTitlePosition, slideTextColor: section.settings.slideTextColor, slideTitleTag: section.settings.slideTitleTag, slideImgOverlay: section.settings.slideImgOverlay %}
 
 {%- endcapture -%}
 
-{% render 'section', section: section, sectionContent: sectionContent, sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
+{% render 'section', section: section, sectionContent: sectionContent, sectionContentContainer: 'fixed', sectionTitle: sectionTitle, sectionTitleTag: sectionTitleTag, sectionSubtitle: sectionSubtitle, sectionSubtitleTag: sectionSubtitleTag, sectionHeaderTextAlign: sectionHeaderTextAlign %}
 
 {% schema %}
 {
     "name": {
-        "en": "Product list",
-        "fi": "Tuotelista"
+        "en": "Category carousel",
+        "fi": "Tuotekaruselli"
     },
     "tag": "section",
-    "class": "section section-product-list has-lazy",
+    "class": "section section-carousel has-lazy",
     "settings": {
         "list_type": "tabs",
         "groups": [
+            {
+                "title": {
+                    "en": "Product groups",
+                    "fi": "Tuoteryhmät"
+                },
+                "id": "items",
+                "call_to_action": {
+                    "en": "Add a product group",
+                    "fi": "Lisää tuoteryhmä"
+                },
+                "is_sortable": true,
+                "setting_blocks": [
+                    {
+                        "type": "category",
+                        "title": {
+                            "en": "Product group",
+                            "fi": "Tuoteryhmä"
+                        },
+                        "settings": [
+                            {
+                                "id": "category",
+                                "type": "category",
+                                "label": {
+                                    "en": "Product group",
+                                    "fi": "Tuoteryhmä"
+                                },
+                                "info": {
+                                    "en": "Content will be populated automatically from the selected product group.",
+                                    "fi": "Sisältö täydennetään automaattisesti valitusta tuoteryhmästä."
+                                }
+                            },
+                            {
+                                "id": "imgSrc",
+                                "type": "image-picker",
+                                "label": {
+                                    "en": "Image",
+                                    "fi": "Kuva"
+                                }
+                            },
+                            {
+                                "id": "imgAlt",
+                                "type": "text",
+                                "label": {
+                                    "en": "Image alt",
+                                    "fi": "Kuvan alt-teksti"
+                                }
+                            },
+                            {
+                                "id": "imgEffect",
+                                "type": "select",
+                                "label": {
+                                    "en": "Image effect",
+                                    "fi": "Kuvan effekti"
+                                },
+                                "default": "none",
+                                "options": [
+                                    {
+                                        "value": "none",
+                                        "label": {
+                                            "en": "None",
+                                            "fi": "Ei mitään"
+                                        }
+                                    },
+                                    {
+                                        "value": "rounded",
+                                        "label": {
+                                            "en": "Rounded",
+                                            "fi": "Pyöristetty"
+                                        }
+                                    },
+                                    {
+                                        "value": "rounded-circle",
+                                        "label": {
+                                            "en": "Circle",
+                                            "fi": "Ympyrä"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "imgFit",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Image area fill",
+                                    "fi": "Kuva-alueen täyttö"
+                                },
+                                "default": false
+                            },
+                            {
+                                "id": "text",
+                                "type": "text",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            },
+                            {
+                                "id": "resource",
+                                "type": "url",
+                                "label": {
+                                    "en": "Link",
+                                    "fi": "Linkki"
+                                }
+                            },
+                            {
+                                "id": "resourceOpenInNewWindowStatus",
+                                "type": "checkbox",
+                                "label": {
+                                    "en": "Open link in a new window",
+                                    "fi": "Avaa linkki uudessa ikkunassa"
+                                },
+                                "default": false
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 "title": {
                     "en": "General",
@@ -112,7 +185,7 @@
                                 }
                             }
                         ],
-                        "conditions": ["title:length gt 0"]
+                        "conditions": ["sectionTitle:length gt 0"]
                     },
                     {
                         "id": "sectionSubtitle",
@@ -169,103 +242,41 @@
                         ]
                     },
                     {
-                        "id": "listType",
-                        "type": "select",
+                        "id": "sectionColSpacing",
+                        "type": "radio-pill",
                         "label": {
-                            "en": "List type",
-                            "fi": "Listan tyyppi"
+                            "en": "Column spacing",
+                            "fi": "Sarakkeen väli"
                         },
-                        "default": "new",
+                        "default": "sm",
                         "options": [
                             {
-                                "value": "discounted",
-                                "label": {
-                                    "en": "Discounted products",
-                                    "fi": "Alennetut tuotteet"
-                                }
+                                "value": "off",
+                                "label": "OFF"
                             },
                             {
-                                "value": "new",
-                                "label": {
-                                    "en": "New products",
-                                    "fi": "Uudet tuotteet"
-                                }
+                                "value": "sm",
+                                "label": "S"
                             },
                             {
-                                "value": "recent",
-                                "label": {
-                                    "en": "Recently added products",
-                                    "fi": "Viimeksi lisätyt tuotteet"
-                                }
+                                "value": "md",
+                                "label": "M"
                             },
                             {
-                                "value": "tag",
-                                "label": {
-                                    "en": "Tag products",
-                                    "fi": "Tagi tuotteet"
-                                }
+                                "value": "lg",
+                                "label": "L"
                             },
                             {
-                                "value": "category",
-                                "label": {
-                                    "en": "Product category products",
-                                    "fi": "Tuoteryhmän tuotteet"
-                                }
-                            },
-                            {
-                                "value": "manufacturer",
-                                "label": {
-                                    "en": "Manufaturer products",
-                                    "fi": "Valmistajan tuotteet"
-                                }
+                                "value": "xl",
+                                "label": "XL"
                             }
                         ]
                     },
                     {
-                        "id": "tagId",
-                        "type": "text",
+                        "id": "itemsPerView",
                         "label": {
-                            "en": "Tag",
-                            "fi": "Tag"
-                        },
-                        "conditions": ["listType eq tag"]
-                    },
-                    {
-                        "id": "category",
-                        "type": "category",
-                        "label": {
-                            "en": "Category",
-                            "fi": "Tuoteryhmä"
-                        },
-                        "conditions": ["listType eq category"]
-                    },
-                    {
-                        "id": "manufacturer",
-                        "type": "manufacturer",
-                        "label": {
-                            "en": "manufacturer",
-                            "fi": "Valmistaja"
-                        },
-                        "conditions": ["listType eq manufacturer"]
-                    },
-                    {
-                        "id": "itemAmount",
-                        "label": {
-                            "en": "Product amount",
-                            "fi": "Tuotemäärä"
-                        },
-                        "type": "range",
-                        "min": 1,
-                        "max": 20,
-                        "step": 1,
-                        "default": 8,
-                        "unit": " "
-                    },
-                    {
-                        "id": "itemsPerRow",
-                        "label": {
-                            "en": "Products per row",
-                            "fi": "Tuotteita per rivi"
+                            "en": "Product groups per view",
+                            "fi": "Tuoteryhmiä per näkymä"
                         },
                         "type": "range",
                         "min": 2,
@@ -275,49 +286,164 @@
                         "unit": " "
                     },
                     {
-                        "id": "showBadges",
-                        "type": "checkbox",
+                        "id": "slideTitlePosition",
+                        "type": "select",
                         "label": {
-                            "en": "Show badges",
-                            "fi": "Näytä merkit"
+                            "en": "Product group title position",
+                            "fi": "Tuoteryhmän otsikon sijainti"
                         },
-                        "default": true
+                        "default": "over",
+                        "options": [
+                            {
+                                "value": "over",
+                                "label": {
+                                    "en": "Over",
+                                    "fi": "Päällä"
+                                }
+                            },
+                            {
+                                "value": "below",
+                                "label": {
+                                    "en": "Below",
+                                    "fi": "Alla"
+                                }
+                            }
+                        ]
                     },
                     {
-                        "id": "showManufacturer",
-                        "type": "checkbox",
+                        "id": "slideTitleTag",
+                        "type": "radio-pill",
                         "label": {
-                            "en": "Show manufacturer",
-                            "fi": "Näytä valmistaja"
+                            "en": "Product group title SEO priority",
+                            "fi": "Tuoteryhmän otsikon SEO-prioriteetti"
                         },
-                        "default": true
+                        "default": "h3",
+                        "options": [
+                            {
+                                "value": "h3",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "span",
+                                "label": {
+                                    "en": "Text",
+                                    "fi": "Teksti"
+                                }
+                            }
+                        ]
                     },
                     {
-                        "id": "showProductName",
-                        "type": "checkbox",
+                        "id": "slideTextColor",
+                        "type": "color",
                         "label": {
-                            "en": "Show product name",
-                            "fi": "Näytä tuotteen nimi"
+                            "en": "Product group title color",
+                            "fi": "Tuoteryhmän otsikon väri"
                         },
-                        "default": true
+                        "default": "#ffffff",
+                        "conditions": ["slideTitlePosition eq over"]
                     },
                     {
-                        "id": "showPricing",
-                        "type": "checkbox",
+                        "id": "slideImgOverlay",
                         "label": {
-                            "en": "Show price information",
-                            "fi": "Näytä hintatiedot"
+                            "en": "Overlay",
+                            "fi": "Tuoteryhmän taustan tummuus"
                         },
-                        "default": true
+                        "type": "range",
+                        "min": 0,
+                        "max": 90,
+                        "step": 10,
+                        "default": "0",
+                        "unit": "%",
+                        "conditions": ["slideTitlePosition eq over"]
                     },
                     {
-                        "id": "showAddToCart",
-                        "type": "checkbox",
+                        "id": "carouselStyle",
+                        "type": "radio-pill",
                         "label": {
-                            "en": "Show add to cart button",
-                            "fi": "Näytä lisää ostoskoriin -painike"
+                            "en": "Style",
+                            "fi": "Tyyli"
                         },
-                        "default": false
+                        "default": "1",
+                        "options": [
+                            {
+                                "value": "1",
+                                "label": {
+                                    "en": "Style 1",
+                                    "fi": "Tyyli 1"
+                                }
+                            },
+                            {
+                                "value": "2",
+                                "label": {
+                                    "en": "Style 2",
+                                    "fi": "Tyyli 2"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "navigation",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Show navigation buttons",
+                            "fi": "Näytä navigointipainikkeet"
+                        },
+                        "default": "hover",
+                        "options": [
+                            {
+                                "value": "",
+                                "label": {
+                                    "en": "Off",
+                                    "fi": "Off"
+                                }
+                            },
+                            {
+                                "value": "hover",
+                                "label": {
+                                    "en": "On hover",
+                                    "fi": "Osoitin päällä"
+                                }
+                            },
+                            {
+                                "value": "on",
+                                "label": {
+                                    "en": "Always",
+                                    "fi": "Aina"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pagination",
+                        "type": "radio-pill",
+                        "label": {
+                            "en": "Show pagination",
+                            "fi": "Näytä sivutus"
+                        },
+                        "default": "hover",
+                        "options": [
+                            {
+                                "value": "",
+                                "label": {
+                                    "en": "Off",
+                                    "fi": "Off"
+                                }
+                            },
+                            {
+                                "value": "hover",
+                                "label": {
+                                    "en": "On hover",
+                                    "fi": "Osoitin päällä"
+                                }
+                            },
+                            {
+                                "value": "on",
+                                "label": {
+                                    "en": "Always",
+                                    "fi": "Aina"
+                                }
+                            }
+                        ]
                     }
                 ]
             },
@@ -587,26 +713,27 @@
     },
     "presets": [
         {
-            "category": "theme-product",
+            "category": "theme-product-group",
             "settings": {
-                "sectionTitle": "Featured products",
+                "sectionTitle": "Featured product groups",
                 "sectionTitleTag": "h2",
                 "sectionSubtitle": "",
                 "sectionSubtitleTag": "h3",
-                "sectionHeaderTextAlign": "left",
-                "listType": "new",
-                "tagId": null,
-                "resource": null,
-                "itemAmount": 8,
-                "itemsPerRow": 4,
-                "showBadges": true,
-                "showManufacturer": true,
-                "showProductName": true,
-                "showPricing": true,
+                "sectionHeaderTextAlign": "center",
+                "sectionColSpacing": "sm",
+                "itemsPerView": "4",
+                "slideTitleTag": "h3",
+                "slideTextColor": "#ffffff",
+                "slideImgOverlay": "0",
+                "carouselStyle": "1",
+                "navigation": "hover",
+                "pagination": "on",
                 "sectionHeight": "",
+                "sectionHeightCustomTop": "0",
+                "sectionHeightCustomBottom": "0",
                 "sectionInnerSpacing": "",
-                "sectionBgImgSrc": null,
-                "sectionBgImgPos": "",
+                "sectionBgImgSrc": "",
+                "sectionBgImgPos": "left-top",
                 "sectionBgImgOverlay": "0",
                 "sectionBgImgBlur": "0",
                 "sectionContentBgColorStatus": false,
