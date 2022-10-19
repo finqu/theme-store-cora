@@ -69,11 +69,15 @@
 
     {% if carouselItems.size > 0 %}
 
-       {% for product in carouselItems %}
+       {% for item in carouselItems %}
+
+            {%- if item.settings.product -%}
+                {%- assign item = item.settings.product -%}
+            {%- endif -%}
 
             <div class="swiper-slide">
 
-                {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
+                {%- render 'product-card-grid', product: item, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
 
             </div>
 

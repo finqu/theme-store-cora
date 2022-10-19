@@ -977,6 +977,7 @@ body > #search-overlay {
                             padding: spacer(2) spacer(3);
 
                             .site-header-menu-item-text {
+                                font-size: $navigation-font-size;
                                 font-family: $navigation-font-family;
                                 font-weight: $navigation-font-weight;
                                 font-style: $navigation-font-style;

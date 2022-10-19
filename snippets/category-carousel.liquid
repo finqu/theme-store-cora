@@ -4,6 +4,7 @@
 	Accepts:
 	- items: {Array} Items to show (Required)
 	- sectionId: {String} Section Id (Required)
+	- style: {Int} Style of the carousel
 	- pagination: {String} Show pagination '' | hover | on
 	- navigation: {String} Show navigation '' | hover | on
 	- colSpacing: {String} Spacing between columns
@@ -20,8 +21,9 @@
 {%- assign carouselClasses = '' -%}
 {%- assign carouselItems = items -%}
 {%- assign carouselSectionId = sectionId -%}
-{%- assign carouselPagination = pagination | default: 'hover' -%}
-{%- assign carouselNavigation = navigation | default: 'hover' -%}
+{%- assign carouselStyle = style | default: 1 -%}
+{%- assign carouselPagination = carouselPagination -%}
+{%- assign carouselNavigation = carouselNavigation -%}
 {%- assign carouselColSpacing = colSpacing | default: 'sm' -%}
 {%- assign carouselItemsPerView = itemsPerView | default: 4 -%}
 {%- assign carouselSlideTitlePosition = slideTitlePosition | default: 'below' -%}
@@ -128,11 +130,15 @@
 
         {% for item in carouselItems %}
 
-            {%- if carouselItems.size > 0 -%}
-                {%- assign itemCategory = item.settings.category -%}
-            {%- else -%}
-                {%- assign itemCategory = item -%}
-            {%- endif -%}
+        	{%- if item.settings -%}
+
+        		{%- assign itemCategory = item.settings.category -%}
+
+        	{%- else -%}
+
+        		{%- assign itemCategory = item -%}
+
+        	{%- endif -%}
 
             {%- if itemCategory -%}
 

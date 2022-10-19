@@ -5,24 +5,35 @@
 {%- assign sectionHeaderTextAlign = section.settings.sectionHeaderTextAlign -%}
 {%- assign sectionHeight = section.settings.sectionHeight | default: settings.sectionHeight -%}
 
-{%- case section.settings.listType -%}
-    {% when 'discounted' %}
-        {%- assign items = products.discounted -%}
-    {% when 'new' %}
-        {%- assign items = products.new_products -%}
-    {% when 'recent' %}
+{%- if section.settings.setting_blocks.items.size > 0 -%}
+
+    {%- assign items = section.settings.setting_blocks.items -%}
+    {%- assign itemAmount = items | size -%}
+
+{%- else -%}
+
+    {%- case section.settings.listType -%}
+        {% when 'discounted' %}
+            {%- assign items = products.discounted -%}
+        {% when 'new' %}
+            {%- assign items = products.new_products -%}
+        {% when 'recent' %}
             {%- assign items = products.recent -%}
-    {% when 'tag' %}
-        {%- assign items = products.tags[section.settings.tagId] -%}
-    {% when 'category' %}
-        {%- assign items = categories[section.settings.category.id].products -%}
-    {% when 'manufacturer' %}
-        {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
-{%- endcase -%}
+        {% when 'tag' %}
+            {%- assign items = products.tags[section.settings.tagId] -%}
+        {% when 'category' %}
+            {%- assign items = categories[section.settings.category.id].products -%}
+        {% when 'manufacturer' %}
+            {%- assign items = manufacturers[section.settings.manufacturer.id].products -%}
+    {%- endcase -%}
+
+    {%- assign itemAmount = section.settings.itemAmount -%}
+
+{%- endif -%}
 
 {%- capture sectionContent -%}
 
-    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: section.settings.itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing, productShowAddToCart: section.settings.showAddToCart %}
+    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing, productShowAddToCart: section.settings.showAddToCart %}
 
 {%- endcapture -%}
 
@@ -39,6 +50,41 @@
     "settings": {
         "list_type": "tabs",
         "groups": [
+            {
+                "title": {
+                    "en": "Products",
+                    "fi": "Tuotteet"
+                },
+                "id": "items",
+                "call_to_action": {
+                    "en": "Add a product",
+                    "fi": "Lisää tuote"
+                },
+                "is_sortable": true,
+                "setting_blocks": [
+                    {
+                        "type": "product",
+                        "title": {
+                            "en": "Product",
+                            "fi": "Tuote"
+                        },
+                        "settings": [
+                            {
+                                "id": "product",
+                                "type": "product",
+                                "label": {
+                                    "en": "Product",
+                                    "fi": "Tuote"
+                                },
+                                "info": {
+                                    "en": "Content will be populated automatically from the selected product.",
+                                    "fi": "Sisältö täydennetään automaattisesti valitusta tuotteesta."
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 "title": {
                     "en": "General",

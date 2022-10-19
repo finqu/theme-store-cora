@@ -27,6 +27,7 @@ export default class Cart {
         this.checkoutUrl = themeApp.data.routes.checkoutUrl;
         this.assetUrl = themeApp.data.routes.assetUrl;
         this.aspectRatioProductImage = themeApp.data.aspectRatioProductImage;
+        this.rootUrl = themeApp.data.rootUrl;
 
         if (this.cartTemplateEl) {
             this.cartTemplate = themeApp.hbs.compile(this.cartTemplateEl.innerHTML);
@@ -267,7 +268,8 @@ export default class Cart {
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
                     taxFreePrices: self.taxFreePrices,
-                    aspectRatioProductImage: self.aspectRatioProductImage
+                    aspectRatioProductImage: self.aspectRatioProductImage,
+                    rootUrl: self.rootUrl
                 });
 
                 cartContainerEl.querySelectorAll('[data-cart-quantity-dynamic]').forEach(el => {
@@ -291,7 +293,8 @@ export default class Cart {
                     cartUrl: self.cartUrl,
                     checkoutUrl: self.checkoutUrl,
                     taxFreePrices: self.taxFreePrices,
-                    aspectRatioProductImage: self.aspectRatioProductImage
+                    aspectRatioProductImage: self.aspectRatioProductImage,
+                    rootUrl: self.rootUrl
                 });
             }
 

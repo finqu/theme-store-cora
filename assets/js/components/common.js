@@ -28,7 +28,7 @@ export default {
                 new ProductCarousel(el);
             }
 
-            for (const el of document.querySelectorAll('.section-carousel')) {
+            for (const el of document.querySelectorAll('.section-carousel, .category-carousel')) {
                 new Carousel(el);
             }
 
@@ -434,6 +434,10 @@ export default {
 
             siteHeaderSearchToggleEls.forEach(el => { el.addEventListener('click', e => {
 
+                if (siteHeaderSearchContainerEl.classList.contains('site-search-active')) {
+                    return;
+                }
+
                 siteHeaderSearchContainerEl.classList.add('site-search-active');
 
                 themeApp.utils.animate(siteHeaderSearchContainerEl, 'fadeInDown');
@@ -626,6 +630,7 @@ export default {
 
             const position = window.getComputedStyle(stickyHeaderEl).position;
             const requiresAdjust = position !== 'absolute' && position !== 'fixed' ? true : false;
+            let resized = false;
             const eHandler = () => {
 
                 if (window.innerWidth < 992) {
@@ -667,10 +672,20 @@ export default {
 
                     stickyHeaderOffsetHeight = stickyHeaderEl.offsetHeight;
 
+                    if (resized === true) {
+
+                        document.body.style.paddingTop = stickyHeaderOffsetHeight+'px';
+
+                        resized = false;
+                    }
+
                 } else {
 
                     if (document.body.style.paddingTop) {
+
                         document.body.style.paddingTop = null;
+
+                        resized = true;
                     }
                 }
             }, 150, false));
@@ -1860,8 +1875,13 @@ export default {
                 $.get('/api/products/'+productId+'/price?'+productAttributes.join('&')+'=true', (res) => {
 
                     const price = themeApp.data.taxFreePrices ? res.net_price : res.price;
+                    const originalPrice = themeApp.data.taxFreePrices ? res.original_net_price : res.original_price;
 
                     $('[data-product-price-dynamic]').html(themeApp.utils.formatCurrency(price));
+
+                    if ($('[data-product-original-price-dynamic]').length) {
+                        $('[data-product-original-price-dynamic]').html(themeApp.utils.formatCurrency(originalPrice));
+                    }
 
                     if (window.themeApp.data.klarnaPlacementsClientId && window.KlarnaOnsiteService) {
 

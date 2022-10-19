@@ -8,7 +8,7 @@
 
 {%- capture sectionContent -%}
 
-    {% render 'category-carousel', items: section.settings.setting_blocks.items, sectionId: section.id, pagination: section.settings.pagination, navigation: section.settings.navigation, colSpacing: section.settings.sectionColSpacing, itemsPerView: section.settings.itemsPerView, slideTitlePosition: section.settings.slideTitlePosition, slideTextColor: section.settings.slideTextColor, slideTitleTag: section.settings.slideTitleTag, slideImgOverlay: section.settings.slideImgOverlay %}
+    {% render 'category-carousel', items: section.settings.setting_blocks.items, sectionId: section.id, carouselPagination: section.settings.pagination, carouselNavigation: section.settings.navigation, style: section.settings.style, colSpacing: section.settings.sectionColSpacing, itemsPerView: section.settings.itemsPerView, slideTitlePosition: section.settings.slideTitlePosition, slideTextColor: section.settings.slideTextColor, slideTitleTag: section.settings.slideTitleTag, slideImgOverlay: section.settings.slideImgOverlay %}
 
 {%- endcapture -%}
 
@@ -357,7 +357,7 @@
                         "conditions": ["slideTitlePosition eq over"]
                     },
                     {
-                        "id": "carouselStyle",
+                        "id": "style",
                         "type": "radio-pill",
                         "label": {
                             "en": "Style",
@@ -725,7 +725,7 @@
                 "slideTitleTag": "h3",
                 "slideTextColor": "#ffffff",
                 "slideImgOverlay": "0",
-                "carouselStyle": "1",
+                "style": "1",
                 "navigation": "hover",
                 "pagination": "on",
                 "sectionHeight": "",

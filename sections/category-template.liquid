@@ -18,7 +18,11 @@
 
 {%- capture categoryContentPlaceholder -%}
 
-test123
+    <div class="category-carousel">
+
+        {% render 'category-carousel', items: subCategories, carouselNavigation: 'on', sectionId: section.id, itemsPerView: 5, slideTitlePosition: 'below' %}
+
+    </div>
 
 {%- endcapture -%}
 

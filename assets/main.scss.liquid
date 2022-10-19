@@ -17,9 +17,18 @@
 
 {%- endfor -%}
 
-$font-size-base: 1rem * {{- settings.textScale -}};
+{%- capture fontSizeBase -%}1rem * {{- settings.textScale -}}{%- endcapture -%}
+
+$font-size-base: {{- fontSizeBase -}};
 $font-family-base: {{- settings.bodyTextFont -}};
 $font-style: {{- settings.bodyTextFontStyle -}};
+
+$h1-font-size: {{- fontSizeBase -}} * 2.5 * {{- settings.headingFontScale -}};
+$h2-font-size: {{- fontSizeBase -}} * 2 * {{- settings.headingFontScale -}};
+$h3-font-size: {{- fontSizeBase -}} * 1.75 * {{- settings.headingFontScale -}};
+$h4-font-size: {{- fontSizeBase -}} * 1.5 * {{- settings.headingFontScale -}};
+$h5-font-size: {{- fontSizeBase -}} * 1.25 * {{- settings.headingFontScale -}};
+$h6-font-size: {{- fontSizeBase -}} * {{- settings.headingFontScale -}};
 
 $headings-font-family: {{- settings.headingFont -}};
 $headings-font-weight: {{- settings.headingFontWeight -}};
@@ -36,6 +45,7 @@ $accent-font-weight: {{- settings.accentFontWeight -}};
 $accent-font-style: {{- settings.accentFontStyle -}};
 $accent-text-transform: {{- settings.accentTextTransform -}};
 
+$navigation-font-size: {{- fontSizeBase -}} * {{- settings.navigationFontScale -}};
 $navigation-font-family: {{- settings.navigationFont -}};
 $navigation-font-weight: {{- settings.navigationFontWeight -}};
 $navigation-font-style: {{- settings.navigationFontStyle -}};
