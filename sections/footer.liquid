@@ -47,95 +47,131 @@
                     "groups": [
                         {
                             "title": {
-                                "en": "Menus",
-                                "fi": "Valikot"
+                                "en": "Layout",
+                                "fi": "Asettelu"
                             },
                             "settings": [
                                 {
                                     "type": "title",
                                     "label": {
-                                        "en": "Menu 1",
-                                        "fi": "Valikko 1"
+                                        "en": "Layout",
+                                        "fi": "Asettelu"
                                     }
                                 },
                                 {
-                                    "id": "footerMenu1Title",
-                                    "type": "text",
-                                    "label": {
-                                        "en": "Title",
-                                        "fi": "Otsikko"
-                                    }
-                                },
-                                {
-                                    "id": "footerMenu1",
-                                    "type": "menu",
-                                    "label": {
-                                        "en": "Menu",
-                                        "fi": "Valikko"
-                                    },
-                                    "default": "footer"
+                                    "id": "footerLayout",
+                                    "type": "select",
+                                    "default": "1",
+                                    "options": [
+                                        {
+                                            "value": "1",
+                                            "label": {
+                                                "en": "Menu 1 + Introduction text + Newsletter",
+                                                "fi": "Valikko 1 + Esittelyteksti + Uutiskirje"
+                                            }
+                                        },
+                                        {
+                                            "value": "2",
+                                            "label": {
+                                                "en": "Menu 1/2 + Introduction text + Newsletter",
+                                                "fi": "Valikko 1/2 + Esittelyteksti + Uutiskirje"
+                                            }
+                                        },
+                                        {
+                                            "value": "3",
+                                            "label": {
+                                                "en": "Menu 1/2/3 + Introduction text + Newsletter",
+                                                "fi": "Valikko 1/2/3 + Esittelyteksti + Uutiskirje"
+                                            }
+                                        },
+                                        {
+                                            "value": "4",
+                                            "label": {
+                                                "en": "Introduction text + Menu 1/2 + Newsletter",
+                                                "fi": "Esittelyteksti + Valikko 1/2 + Uutiskirje"
+                                            }
+                                        },
+                                        {
+                                            "value": "5",
+                                            "label": {
+                                                "en": "Introduction text + Menu 1/2 + Social media",
+                                                "fi": "Esittelyteksti + Valikko 1/2 + Sosiaalinen media"
+                                            }
+                                        },
+                                        {
+                                            "value": "6",
+                                            "label": {
+                                                "en": "Below menu 1 + Introduction text + Newsletter",
+                                                "fi": "Allekkain valikko 1 + Esittelyteksti + Uutiskirje"
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "title",
                                     "label": {
-                                        "en": "Menu 2",
-                                        "fi": "Valikko 2"
+                                        "en": "Show",
+                                        "fi": "Näytä"
                                     }
                                 },
                                 {
-                                    "id": "footerMenu2Title",
-                                    "type": "text",
+                                    "id": "footerTextArea1Status",
+                                    "type": "checkbox",
                                     "label": {
-                                        "en": "Title",
-                                        "fi": "Otsikko"
-                                    }
-                                },
-                                {
-                                    "id": "footerMenu2",
-                                    "type": "menu",
-                                    "label": {
-                                        "en": "Menu",
-                                        "fi": "Valikko"
+                                        "en": "Introduction text",
+                                        "fi": "Esittelyteksti"
                                     },
-                                    "default": "footer"
+                                    "default": true
                                 },
                                 {
-                                    "type": "title",
+                                    "id": "footerNewsletterStatus",
+                                    "type": "checkbox",
                                     "label": {
-                                        "en": "Menu 3",
-                                        "fi": "Valikko 3"
-                                    }
-                                },
-                                {
-                                    "id": "footerMenu3Title",
-                                    "type": "text",
-                                    "label": {
-                                        "en": "Title",
-                                        "fi": "Otsikko"
-                                    }
-                                },
-                                {
-                                    "id": "footerMenu3",
-                                    "type": "menu",
-                                    "label": {
-                                        "en": "Menu",
-                                        "fi": "Valikko"
+                                        "en": "Newsletter subscribe",
+                                        "fi": "Uutiskirjeen tilaus"
                                     },
-                                    "default": "footer"
+                                    "default": true
+                                },
+                                {
+                                    "id": "footerSocialMediaButtonsStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Social media buttons",
+                                        "fi": "Ssiaalisen median kuvakkeet"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "footerTextArea2Status",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Additional text",
+                                        "fi": "Lisäteksti"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "footerPaymentMethodsStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Payment methods",
+                                        "fi": "Maksutavat"
+                                    },
+                                    "default": false
                                 }
                             ]
                         },
                         {
                             "title": {
-                                "en": "Texts",
-                                "fi": "Tekstit"
+                                "en": "Content",
+                                "fi": "Sisältö"
                             },
                             "settings": [
                                 {
                                     "type": "title",
                                     "label": {
-                                        "en": "Textarea 1",
-                                        "fi": "Tekstialue 1"
+                                        "en": "Introduction text",
+                                        "fi": "Esittelyteksti"
                                     }
                                 },
                                 {
@@ -148,29 +184,6 @@
                                 },
                                 {
                                     "id": "footerTextArea1Content",
-                                    "type": "richtext",
-                                    "label": {
-                                        "en": "Content",
-                                        "fi": "Sisältö"
-                                    }
-                                },
-                                {
-                                    "type": "title",
-                                    "label": {
-                                        "en": "Textarea 2",
-                                        "fi": "Tekstialue 2"
-                                    }
-                                },
-                                {
-                                    "id": "footerTextArea2Title",
-                                    "type": "text",
-                                    "label": {
-                                        "en": "Title",
-                                        "fi": "Otsikko"
-                                    }
-                                },
-                                {
-                                    "id": "footerTextArea2Content",
                                     "type": "richtext",
                                     "label": {
                                         "en": "Content",
@@ -222,120 +235,124 @@
                                         "en": "Content",
                                         "fi": "Sisältö"
                                     }
-                                }
-                            ]
-                        },
-                        {
-                            "title": {
-                                "en": "Settings",
-                                "fi": "Asetukset"
-                            },
-                            "settings": [
-                                {
-                                    "id": "footerLayout",
-                                    "type": "select",
-                                    "label": {
-                                        "en": "Layout",
-                                        "fi": "Asettelu"
-                                    },
-                                    "default": "1",
-                                    "options": [
-                                        {
-                                            "value": "1",
-                                            "label": {
-                                                "en": "Layout 1",
-                                                "fi": "Asettelu 1"
-                                            }
-                                        },
-                                        {
-                                            "value": "2",
-                                            "label": {
-                                                "en": "Layout 2",
-                                                "fi": "Asettelu 2"
-                                            }
-                                        },
-                                        {
-                                            "value": "3",
-                                            "label": {
-                                                "en": "Layout 3",
-                                                "fi": "Asettelu 3"
-                                            }
-                                        },
-                                        {
-                                            "value": "4",
-                                            "label": {
-                                                "en": "Layout 4",
-                                                "fi": "Asettelu 4"
-                                            }
-                                        },
-                                        {
-                                            "value": "5",
-                                            "label": {
-                                                "en": "Layout 5",
-                                                "fi": "Asettelu 5"
-                                            }
-                                        },
-                                        {
-                                            "value": "6",
-                                            "label": {
-                                                "en": "Layout 6",
-                                                "fi": "Asettelu 6"
-                                            }
-                                        }
-                                    ]
                                 },
                                 {
-                                    "id": "footerPaymentMethodsImgSrc",
-                                    "type": "image-picker",
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Additional text",
+                                        "fi": "Lisäteksti"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea2Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerTextArea2Content",
+                                    "type": "richtext",
+                                    "label": {
+                                        "en": "Content",
+                                        "fi": "Sisältö"
+                                    }
+                                },
+                                {
+                                    "type": "title",
                                     "label": {
                                         "en": "Payment methods",
                                         "fi": "Maksutavat"
                                     }
                                 },
                                 {
-                                    "id": "footerTextArea1Status",
-                                    "type": "checkbox",
+                                    "id": "footerPaymentMethodsImgSrc",
+                                    "type": "image-picker",
                                     "label": {
-                                        "en": "Show textarea 1",
-                                        "fi": "Näytä tekstialue 1"
-                                    },
-                                    "default": true
+                                        "en": "Image to display",
+                                        "fi": "Näytettävä kuva"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Menus",
+                                "fi": "Valikot"
+                            },
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Menu 1",
+                                        "fi": "Valikko 1"
+                                    }
                                 },
                                 {
-                                    "id": "footerTextArea2Status",
-                                    "type": "checkbox",
+                                    "id": "footerMenu1Title",
+                                    "type": "text",
                                     "label": {
-                                        "en": "Show textarea 2",
-                                        "fi": "Näytä tekstialue 2"
-                                    },
-                                    "default": true
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
                                 },
                                 {
-                                    "id": "footerNewsletterStatus",
-                                    "type": "checkbox",
+                                    "id": "footerMenu1",
+                                    "type": "menu",
                                     "label": {
-                                        "en": "Show newsletter subscribe",
-                                        "fi": "Näytä uutiskirjeen tilaus"
+                                        "en": "Menu to display",
+                                        "fi": "Näytettävä valikko"
                                     },
-                                    "default": true
+                                    "default": "footer"
                                 },
                                 {
-                                    "id": "footerSocialMediaButtonsStatus",
-                                    "type": "checkbox",
+                                    "type": "title",
                                     "label": {
-                                        "en": "Show social media buttons",
-                                        "fi": "Näytä sosiaalisen median kuvakkeet"
-                                    },
-                                    "default": false
+                                        "en": "Menu 2",
+                                        "fi": "Valikko 2"
+                                    }
                                 },
                                 {
-                                    "id": "footerPaymentMethodsStatus",
-                                    "type": "checkbox",
+                                    "id": "footerMenu2Title",
+                                    "type": "text",
                                     "label": {
-                                        "en": "Show payment methods",
-                                        "fi": "Näytä maksutavat"
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu2",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "Menu to display",
+                                        "fi": "Näytettävä valikko"
                                     },
-                                    "default": false
+                                    "default": "footer"
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Menu 3",
+                                        "fi": "Valikko 3"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu3Title",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Title",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "footerMenu3",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "Menu to display",
+                                        "fi": "Näytettävä valikko"
+                                    },
+                                    "default": "footer"
                                 }
                             ]
                         }
@@ -352,8 +369,26 @@
                     "groups": [
                         {
                             "title": {
-                                "en": "Layout",
-                                "fi": "Näkymä"
+                                "en": "Color style",
+                                "fi": "Värityyli"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "dark",
+                                    "info": {
+                                        "en": "You can edit the color styles in the theme settings",
+                                        "fi": "Voit muokata värityylejä teeman asetuksista"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Settings",
+                                "fi": "Asetukset"
                             },
                             "settings": [
                                 {
@@ -448,20 +483,6 @@
                                             "label": "XL"
                                         }
                                     ]
-                                }
-                            ]
-                        },
-                        {
-                            "title": {
-                                "en": "Colors",
-                                "fi": "Värit"
-                            },
-                            "settings": [
-                                {
-                                    "id": "sectionStyle",
-                                    "styles_id": "styles",
-                                    "type": "style-picker",
-                                    "default": "dark"
                                 }
                             ]
                         }

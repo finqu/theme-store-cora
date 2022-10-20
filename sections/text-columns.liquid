@@ -343,8 +343,26 @@
                     "groups": [
                         {
                             "title": {
-                                "en": "Layout",
-                                "fi": "Näkymä"
+                                "en": "Color style",
+                                "fi": "Värityyli"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionStyle",
+                                    "styles_id": "styles",
+                                    "type": "style-picker",
+                                    "default": "general",
+                                    "info": {
+                                        "en": "You can edit the color styles in the theme settings",
+                                        "fi": "Voit muokata värityylejä teeman asetuksista"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Settings",
+                                "fi": "Asetukset"
                             },
                             "settings": [
                                 {
@@ -653,20 +671,6 @@
                                     },
                                     "default": "#ffffff",
                                     "conditions": ["sectionColumnBgColorStatus:truthy eq true"]
-                                }
-                            ]
-                        },
-                        {
-                            "title": {
-                                "en": "Colors",
-                                "fi": "Värit"
-                            },
-                            "settings": [
-                                {
-                                    "id": "sectionStyle",
-                                    "styles_id": "styles",
-                                    "type": "style-picker",
-                                    "default": "general"
                                 }
                             ]
                         }
