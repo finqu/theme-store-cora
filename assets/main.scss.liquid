@@ -1,4 +1,5 @@
 {%- assign sectionStyles = '' -%}
+{%- assign primaryStyle = settings.styles['general'] -%}
 
 {%- for item in settings.styles -%}
 
@@ -8,7 +9,9 @@
 	{%- capture style -%}
 		{{- styleName -}}: (
 			{%- for arr in styleArr -%}
-				"{{ arr[0] }}": {{ arr[1] }}{%- unless forloop.last == true -%},{%- endunless -%}
+				{%- assign key = arr[0] -%}
+				{%- assign value = arr[1] | default: primaryStyle[key] -%}
+				"{{ key }}": {{ value }}{%- unless forloop.last == true -%},{%- endunless -%}
 			{%- endfor -%}
 		){%- unless forloop.last == true -%},{%- endunless -%}
 	{%- endcapture -%}

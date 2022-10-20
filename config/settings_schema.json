@@ -92,41 +92,39 @@
 						{
 							"type": "title",
 							"label": {
-								"en": "Common",
-								"fi": "Yleinen"
+								"en": "Background",
+								"fi": "Tausta"
+							},
+							"subtitle": {
+								"en": "Colors that affect background",
+                                "fi": "Taustaan vaikuttavat värit"
 							}
 						},
 						{
 							"id": "background_color",
 							"type": "color",
 							"label": {
-								"en": "Background",
-								"fi": "Tausta"
-							}
+								"en": "Background color",
+								"fi": "Taustaväri"
+							},
+							"info": {
+                                "en": "The background color of the page",
+                                "fi": "Sivuston taustaväri"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "overlay_background_color",
 							"type": "color",
 							"label": {
-								"en": "Overlay background",
-								"fi": "Päällekkäinen tausta"
-							}
-						},
-						{
-							"id": "text_color",
-							"type": "color",
-							"label": {
-								"en": "Text",
-								"fi": "Teksti"
-							}
-						},
-						{
-							"id": "link_color",
-							"type": "color",
-							"label": {
-								"en": "Link",
-								"fi": "Linkki"
-							}
+								"en": "Overlaping background color",
+								"fi": "Päällekkäinen taustaväri"
+							},
+							"info": {
+                                "en": "The background color of element which overlaps with page background color",
+                                "fi": "Elementin taustaväri joka menee päällekkäin sivuston taustavärin kanssa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "border_color",
@@ -134,39 +132,12 @@
 							"label": {
 								"en": "Border",
 								"fi": "Reunus"
-							}
-						},
-						{
-							"id": "indicator_color",
-							"type": "color",
-							"label": {
-								"en": "Indicator",
-								"fi": "Osoitin"
-							}
-						},
-						{
-							"id": "icon_color",
-							"type": "color",
-							"label": {
-								"en": "Icon",
-								"fi": "Kuvake"
-							}
-						},
-						{
-							"id": "heading_color",
-							"type": "color",
-							"label": {
-								"en": "Heading",
-								"fi": "Otsikko"
-							}
-						},
-						{
-							"id": "subheading_color",
-							"type": "color",
-							"label": {
-								"en": "Subheading",
-								"fi": "Alaotsikko"
-							}
+							},
+							"info": {
+                                "en": "The border color of the various elements. For example borders in the page footer",
+                                "fi": "Elementtien reunuksien väri. Esimerkiksi alatunnisteen väliviivojen väri"
+                            },
+							"nullable": true
 						},
 						{
 							"type": "spacer"
@@ -176,6 +147,10 @@
 							"label": {
 								"en": "Button",
 								"fi": "Nappi"
+							},
+							"subtitle": {
+								"en": "Colors that affect buttons",
+                                "fi": "Nappeihin vaikuttavat värit"
 							}
 						},
 						{
@@ -184,7 +159,12 @@
 							"label": {
 								"en": "Background",
 								"fi": "Tausta"
-							}
+							},
+							"info": {
+                                "en": "The background color of the buttons",
+                                "fi": "Nappien taustaväri"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "button_text_color",
@@ -192,7 +172,12 @@
 							"label": {
 								"en": "Text",
 								"fi": "Teksti"
-							}
+							},
+							"info": {
+                                "en": "The text color of the buttons",
+                                "fi": "Nappien tekstin väri"
+                            },
+							"nullable": true
 						},
 						{
 							"type": "spacer"
@@ -200,67 +185,91 @@
 						{
 							"type": "title",
 							"label": {
-								"en": "Table",
-								"fi": "Taulukko"
+								"en": "Text",
+								"fi": "Teksti"
+							},
+							"subtitle": {
+								"en": "Colors that affect body text, headings, icons and links",
+                                "fi": "Leipätekstiin, otsikoihin, kuvakkeisiin ja linkkeihin vaikuttavat värit"
 							}
 						},
 						{
-							"id": "table_bg_color",
-							"type": "color",
-							"label": {
-								"en": "Background",
-								"fi": "Tausta"
-							}
-						},
-						{
-							"id": "table_text_color",
+							"id": "text_color",
 							"type": "color",
 							"label": {
 								"en": "Text",
 								"fi": "Teksti"
-							}
+							},
+							"info": {
+								"en": "General text color",
+                                "fi": "Yleinen tekstien väri"
+							},
+							"nullable": true
 						},
 						{
-							"id": "table_border_color",
+							"id": "heading_color",
 							"type": "color",
 							"label": {
-								"en": "Border",
-								"fi": "Reunus"
-							}
+								"en": "Heading",
+								"fi": "Otsikko"
+							},
+							"info": {
+								"en": "General heading color",
+                                "fi": "Yleinen otsikoiden väri"
+							},
+							"nullable": true
 						},
 						{
-							"type": "spacer"
-						},
-						{
-							"type": "title",
-							"label": {
-								"en": "Form",
-								"fi": "Lomake"
-							}
-						},
-						{
-							"id": "form_bg_color",
+							"id": "subheading_color",
 							"type": "color",
 							"label": {
-								"en": "Background",
-								"fi": "Tausta"
-							}
+								"en": "Subheading",
+								"fi": "Alaotsikko"
+							},
+							"info": {
+								"en": "General subheading color",
+                                "fi": "Yleinen alaotsikoiden väri"
+							},
+							"nullable": true
 						},
 						{
-							"id": "form_text_color",
+							"id": "icon_color",
 							"type": "color",
 							"label": {
-								"en": "Text",
-								"fi": "Teksti"
-							}
+								"en": "Icon",
+								"fi": "Kuvake"
+							},
+							"info": {
+								"en": "The color of icons",
+                                "fi": "Kuvakkeiden väri"
+							},
+							"nullable": true
 						},
 						{
-							"id": "form_border_color",
+							"id": "link_color",
 							"type": "color",
 							"label": {
-								"en": "Border",
-								"fi": "Reunus"
-							}
+								"en": "Link",
+								"fi": "Linkki"
+							},
+							"info": {
+								"en": "The color of links in texts and menus",
+                                "fi": "Teksteissä ja valikoissa olevien linkkien väri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "indicator_color",
+							"type": "color",
+							"label": {
+								"en": "Indicator",
+								"fi": "Osoitin"
+							},
+							"info": {
+								"en": "The color of active elements. For example, the color of a link or icon when it is active",
+                                "fi": "Aktiivisten elementtien väri. Esimerkiksi linkin tai kuvakkeen väri kun se on aktiivinen"
+							},
+							"nullable": true
 						},
 						{
 							"type": "spacer"
@@ -270,6 +279,10 @@
 							"label": {
 								"en": "Product",
 								"fi": "Tuote"
+							},
+							"subtitle": {
+								"en": "Colors that affect product",
+                                "fi": "Tuotteeseen vaikuttavat värit"
 							}
 						},
 						{
@@ -278,7 +291,12 @@
 							"label": {
 								"en": "Title",
 								"fi": "Otsikko"
-							}
+							},
+                            "info": {
+                                "en": "The color of product name in the listings and product card",
+                                "fi": "Tuotteen nimen väri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "price_color",
@@ -286,7 +304,12 @@
 							"label": {
 								"en": "Price",
 								"fi": "Hinta"
-							}
+							},
+                            "info": {
+                                "en": "The color of product's price in the listings and on the product card",
+                                "fi": "Tuotteen hinnan väri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "sale_price_color",
@@ -294,63 +317,204 @@
 							"label": {
 								"en": "Sale price",
 								"fi": "Alennushinta"
-							}
+							},
+							"info": {
+                                "en": "The color of sale price of a product in listings and on the product card",
+                                "fi": "Tuotteen alennushinnan väri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "new_badge_bg_color",
 							"type": "color",
 							"label": {
-								"en": "New badge background",
-								"fi": "Uusi -merkin tausta"
-							}
+								"en": "New badge background color",
+								"fi": "Uusi -merkin taustaväri"
+							},
+							"info": {
+                                "en": "The background color of the badge in the listings and product card",
+                                "fi": "Merkin taustaväri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "new_badge_text_color",
 							"type": "color",
 							"label": {
-								"en": "New badge text",
-								"fi": "Uusi -merkin teksti"
-							}
+								"en": "New badge text color",
+								"fi": "Uusi -merkin teksti väri"
+							},
+							"info": {
+                                "en": "The text color of the badge in the listings and product card",
+                                "fi": "Merkin tekstin väri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "discount_badge_bg_color",
 							"type": "color",
 							"label": {
-								"en": "Discount badge background",
-								"fi": "Alennus -merkin tausta"
-							}
+								"en": "Discount badge background color",
+								"fi": "Alennus -merkin taustaväri"
+							},
+							"info": {
+                                "en": "The background color of the badge in the listings and product card",
+                                "fi": "Merkin taustaväri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "discount_badge_text_color",
 							"type": "color",
 							"label": {
-								"en": "Discount badge text",
-								"fi": "Alennus -merkin teksti"
-							}
+								"en": "Discount badge text color",
+								"fi": "Alennus -merkin tekstin värin"
+							},
+							"info": {
+                                "en": "The text color of the badge in the listings and product card",
+                                "fi": "Merkin tekstin väri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "general_badge_bg_color",
 							"type": "color",
 							"label": {
-								"en": "General badge background",
-								"fi": "Yleinen -merkin tausta"
-							}
+								"en": "General badge background color",
+								"fi": "Yleinen -merkin taustaväri"
+							},
+							"info": {
+                                "en": "The background color of the badge in the listings and product card",
+                                "fi": "Merkin taustaväri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
 						},
 						{
 							"id": "general_badge_text_color",
 							"type": "color",
 							"label": {
-								"en": "General badge text",
-								"fi": "Yleinen -merkin teksti"
+								"en": "General badge text color",
+								"fi": "Yleinen -merkin tekstin väri"
+							},
+							"info": {
+                                "en": "The text color of the badge in the listings and product card",
+                                "fi": "Merkin tekstin väri listauksissa ja tuotekortissa"
+                            },
+							"nullable": true
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Table",
+								"fi": "Taulukko"
+							},
+							"subtitle": {
+								"en": "Colors that affect tables",
+                                "fi": "Taulukoihin vaikuttavat värit"
 							}
+						},
+						{
+							"id": "table_bg_color",
+							"type": "color",
+							"label": {
+								"en": "Background",
+								"fi": "Tausta"
+							},
+                            "info": {
+                                "en": "Table background color",
+                                "fi": "Taulukon taustaväri"
+                            },
+							"nullable": true
+						},
+						{
+							"id": "table_text_color",
+							"type": "color",
+							"label": {
+								"en": "Text",
+								"fi": "Teksti"
+							},
+                            "info": {
+                                "en": "Table text color",
+                                "fi": "Taulukon tekstin väri"
+                            },
+							"nullable": true
+						},
+						{
+							"id": "table_border_color",
+							"type": "color",
+							"label": {
+								"en": "Border",
+								"fi": "Reunus"
+							},
+                            "info": {
+                                "en": "Table border color",
+                                "fi": "Taulukon reunuksen väri"
+                            },
+							"nullable": true
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Form",
+								"fi": "Lomake"
+							},
+							"subtitle": {
+								"en": "Colors that affect forms",
+                                "fi": "Lomakkeisiin vaikuttavat värit"
+							}
+						},
+						{
+							"id": "form_bg_color",
+							"type": "color",
+							"label": {
+								"en": "Background",
+								"fi": "Tausta"
+							},
+                            "info": {
+                                "en": "Form background color",
+                                "fi": "Lomakkeen taustaväri"
+                            },
+							"nullable": true
+						},
+						{
+							"id": "form_text_color",
+							"type": "color",
+							"label": {
+								"en": "Text",
+								"fi": "Teksti"
+							},
+                            "info": {
+                                "en": "Form text color",
+                                "fi": "Lomakkeen tekstin väri"
+                            },
+							"nullable": true
+						},
+						{
+							"id": "form_border_color",
+							"type": "color",
+							"label": {
+								"en": "Border",
+								"fi": "Reunus"
+							},
+                            "info": {
+                                "en": "Form border color",
+                                "fi": "Lomakkeen reunuksen väri"
+                            },
+							"nullable": true
 						}
 					],
 					"presets": [
 						{
 							"id": "general",
 							"name": {
-								"en": "General",
-								"fi": "Yleinen"
+								"en": "Primary color",
+								"fi": "Pääväri"
 							},
 							"default": {
 								"background_color": "#ffffff",
@@ -384,8 +548,8 @@
 						{
 							"id": "lightest",
 							"name": {
-								"en": "Lightest",
-								"fi": "Vaalein"
+								"en": "Background color 1",
+								"fi": "Taustaväri 1"
 							},
 							"default": {
 								"background_color": "#ffffff",
@@ -397,8 +561,8 @@
 								"icon_color": "#000000",
 								"heading_color": "#000000",
 								"subheading_color": "#000000",
-								"button_bg_color": "#000000",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#c5c5c5",
@@ -408,19 +572,19 @@
 								"product_title_color": "#000000",
 								"price_color": "#000000",
 								"sale_price_color": "#000000",
-								"new_badge_bg_color": "#000000",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#000000",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#000000",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "light",
 							"name": {
-								"en": "Light",
-								"fi": "Vaalea"
+								"en": "Background color 2",
+								"fi": "Taustaväri 2"
 							},
 							"default": {
 								"background_color": "#ebebeb",
@@ -432,8 +596,8 @@
 								"icon_color": "#000000",
 								"heading_color": "#000000",
 								"subheading_color": "#000000",
-								"button_bg_color": "#000000",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#cacaca",
@@ -443,19 +607,19 @@
 								"product_title_color": "#000000",
 								"price_color": "#000000",
 								"sale_price_color": "#000000",
-								"new_badge_bg_color": "#a8a6a1",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#a8a6a1",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#a8a6a1",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "dark",
 							"name": {
-								"en": "Dark",
-								"fi": "Tumma"
+								"en": "Background color 3",
+								"fi": "Taustaväri 3"
 							},
 							"default": {
 								"background_color": "#333333",
@@ -467,8 +631,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#333333",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#333333",
 								"table_border_color": "#292929",
@@ -478,19 +642,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#333333",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#333333",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#333333"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "darkest",
 							"name": {
-								"en": "Darkest",
-								"fi": "Tummin"
+								"en": "Background color 4",
+								"fi": "Taustaväri 4"
 							},
 							"default": {
 								"background_color": "#000000",
@@ -502,8 +666,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#000000",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -513,19 +677,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "yellow",
 							"name": {
-								"en": "Yellow",
-								"fi": "Keltainen"
+								"en": "Accent color 1",
+								"fi": "Korostusväri 1"
 							},
 							"default": {
 								"background_color": "#ffdf7c",
@@ -537,8 +701,8 @@
 								"icon_color": "#2b2b2b",
 								"heading_color": "#2b2b2b",
 								"subheading_color": "#2b2b2b",
-								"button_bg_color": "#2b2b2b",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -548,19 +712,19 @@
 								"product_title_color": "#2b2b2b",
 								"price_color": "#2b2b2b",
 								"sale_price_color": "#2b2b2b",
-								"new_badge_bg_color": "#2b2b2b",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#2b2b2b",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#2b2b2b",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "turquoise",
 							"name": {
-								"en": "Turquoise",
-								"fi": "Turkoosi"
+								"en": "Accent color 2",
+								"fi": "Korostusväri 2"
 							},
 							"default": {
 								"background_color": "#86dbd4",
@@ -572,8 +736,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -583,19 +747,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "light-blue",
 							"name": {
-								"en": "Light blue",
-								"fi": "Vaaleansininen"
+								"en": "Accent color 3",
+								"fi": "Korostusväri 3"
 							},
 							"default": {
 								"background_color": "#95c9e1",
@@ -607,8 +771,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -618,19 +782,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "green",
 							"name": {
-								"en": "Green",
-								"fi": "Vihreä"
+								"en": "Accent color 3",
+								"fi": "Korostusväri 3"
 							},
 							"default": {
 								"background_color": "#abbe7c",
@@ -642,8 +806,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -653,19 +817,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "orange",
 							"name": {
-								"en": "Orange",
-								"fi": "Oranssi"
+								"en": "Accent color 3",
+								"fi": "Korostusväri 3"
 							},
 							"default": {
 								"background_color": "#e89561",
@@ -677,8 +841,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -688,19 +852,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "blue",
 							"name": {
-								"en": "Blue",
-								"fi": "Sininen"
+								"en": "Accent color 4",
+								"fi": "Korostusväri 4"
 							},
 							"default": {
 								"background_color": "#247dbf",
@@ -712,8 +876,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -723,19 +887,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "pink",
 							"name": {
-								"en": "Pink",
-								"fi": "Vaaleanpunainen"
+								"en": "Accent color 5",
+								"fi": "Korostusväri 5"
 							},
 							"default": {
 								"background_color": "#ffd2d7",
@@ -747,8 +911,8 @@
 								"icon_color": "#2b2b2b",
 								"heading_color": "#2b2b2b",
 								"subheading_color": "#2b2b2b",
-								"button_bg_color": "#2b2b2b",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -758,19 +922,19 @@
 								"product_title_color": "#2b2b2b",
 								"price_color": "#2b2b2b",
 								"sale_price_color": "#2b2b2b",
-								"new_badge_bg_color": "#2b2b2b",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#2b2b2b",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#2b2b2b",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "red",
 							"name": {
-								"en": "Red",
-								"fi": "Punainen"
+								"en": "Accent color 6",
+								"fi": "Korostusväri 6"
 							},
 							"default": {
 								"background_color": "#ee778d",
@@ -782,8 +946,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -793,19 +957,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "teal",
 							"name": {
-								"en": "Teal",
-								"fi": "Sinivihreä"
+								"en": "Accent color 7",
+								"fi": "Korostusväri 7"
 							},
 							"default": {
 								"background_color": "#749ba0",
@@ -817,8 +981,8 @@
 								"icon_color": "#ffffff",
 								"heading_color": "#ffffff",
 								"subheading_color": "#ffffff",
-								"button_bg_color": "#ffffff",
-								"button_text_color": "#424242",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -828,19 +992,19 @@
 								"product_title_color": "#ffffff",
 								"price_color": "#ffffff",
 								"sale_price_color": "#ffffff",
-								"new_badge_bg_color": "#ffffff",
-								"new_badge_text_color": "#000000",
-								"discount_badge_bg_color": "#ffffff",
-								"discount_badge_text_color": "#000000",
-								"general_badge_bg_color": "#ffffff",
-								"general_badge_text_color": "#000000"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "grey",
 							"name": {
-								"en": "Grey",
-								"fi": "Harmaa"
+								"en": "Accent color 8",
+								"fi": "Korostusväri 8"
 							},
 							"default": {
 								"background_color": "#e7ecf0",
@@ -852,8 +1016,8 @@
 								"icon_color": "#333333",
 								"heading_color": "#333333",
 								"subheading_color": "#333333",
-								"button_bg_color": "#333333",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#000000",
 								"table_border_color": "#000000",
@@ -863,19 +1027,19 @@
 								"product_title_color": "#333333",
 								"price_color": "#333333",
 								"sale_price_color": "#333333",
-								"new_badge_bg_color": "#333333",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#333333",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#333333",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "custom1",
 							"name": {
-								"en": "Custom 1",
-								"fi": "Oma tyyli 1"
+								"en": "Custom accent color 1",
+								"fi": "Oma korostusväri 1"
 							},
 							"default": {
 								"background_color": "#ffffff",
@@ -887,8 +1051,8 @@
 								"icon_color": "#1a1a1a",
 								"heading_color": "#1a1a1a",
 								"subheading_color": "#1a1a1a",
-								"button_bg_color": "#1a1a1a",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#333333",
 								"table_border_color": "#cccccc",
@@ -898,19 +1062,19 @@
 								"product_title_color": "#1a1a1a",
 								"price_color": "#1a1a1a",
 								"sale_price_color": "#eb0037",
-								"new_badge_bg_color": "#1a1a1a",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#eb0037",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#1a1a1a",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						},
 						{
 							"id": "custom2",
 							"name": {
-								"en": "Custom 2",
-								"fi": "Oma tyyli 2"
+								"en": "Custom accent color 2",
+								"fi": "Oma korostusväri 2"
 							},
 							"default": {
 								"background_color": "#ffffff",
@@ -922,8 +1086,8 @@
 								"icon_color": "#1a1a1a",
 								"heading_color": "#1a1a1a",
 								"subheading_color": "#1a1a1a",
-								"button_bg_color": "#1a1a1a",
-								"button_text_color": "#ffffff",
+								"button_bg_color": "",
+								"button_text_color": "",
 								"table_bg_color": "#ffffff",
 								"table_text_color": "#333333",
 								"table_border_color": "#cccccc",
@@ -933,12 +1097,12 @@
 								"product_title_color": "#1a1a1a",
 								"price_color": "#1a1a1a",
 								"sale_price_color": "#eb0037",
-								"new_badge_bg_color": "#1a1a1a",
-								"new_badge_text_color": "#ffffff",
-								"discount_badge_bg_color": "#eb0037",
-								"discount_badge_text_color": "#ffffff",
-								"general_badge_bg_color": "#1a1a1a",
-								"general_badge_text_color": "#ffffff"
+								"new_badge_bg_color": "",
+								"new_badge_text_color": "",
+								"discount_badge_bg_color": "",
+								"discount_badge_text_color": "",
+								"general_badge_bg_color": "",
+								"general_badge_text_color": ""
 							}
 						}
 					]
