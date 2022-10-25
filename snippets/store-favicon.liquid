@@ -7,15 +7,19 @@
 	{% render 'store-favicon' %}
 {% endcomment %}
 
-{%- assign faviconImgSrc = settings.faviconImgSrc | default: store.favicon -%}
+{%- if store.favicon -%}
 
-{%- if faviconImgSrc and faviconImgSrc | is_ico -%}
+	{%- assign isFaviconImgIco = store.favicon | is_ico -%}
 
-	<link rel="shortcut icon" href="{{ faviconImgSrc }}" sizes="16x16 32x32 57x57 72x72 114x114 120x120 144x144 152x152" type="image/x-icon">
+	{%- if isFaviconImgIco -%}
 
-{%- elsif faviconImgSrc -%}
+		<link rel="shortcut icon" href="{{ faviconImgSrc }}" sizes="16x16 32x32 57x57 72x72 114x114 120x120 144x144 152x152" type="image/x-icon">
 
-	<link rel="icon" type="image/png" href="{{ faviconImgSrc }}">
-	<link rel="apple-touch-icon-precomposed" href="{{ faviconImgSrc }}">
+	{%- elsif faviconImgSrc -%}
+
+		<link rel="icon" type="image/png" href="{{ faviconImgSrc }}">
+		<link rel="apple-touch-icon-precomposed" href="{{ faviconImgSrc }}">
+
+	{%- endif -%}
 
 {%- endif -%}

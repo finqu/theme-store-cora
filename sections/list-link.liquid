@@ -188,6 +188,141 @@
                         },
                         {
                             "title": {
+                                "en": "Background",
+                                "fi": "Tausta"
+                            },
+                            "settings": [
+                                {
+                                    "id": "sectionBgImgSrc",
+                                    "type": "image-picker",
+                                    "label": {
+                                        "en": "Image",
+                                        "fi": "Kuva"
+                                    }
+                                },
+                                {
+                                    "id": "sectionBgImgPos",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Image position",
+                                        "fi": "Kuvan sijainti"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "left-top",
+                                            "label": {
+                                                "en": "Left Top",
+                                                "fi": "Vasemmalla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-center",
+                                            "label": {
+                                                "en": "Left Center",
+                                                "fi": "Vasemmalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "left-bottom",
+                                            "label": {
+                                                "en": "Left Bottom",
+                                                "fi": "Vasemmalla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-top",
+                                            "label": {
+                                                "en": "Right Top",
+                                                "fi": "Oikealla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-center",
+                                            "label": {
+                                                "en": "Right Center",
+                                                "fi": "Oikealla"
+                                            }
+                                        },
+                                        {
+                                            "value": "right-bottom",
+                                            "label": {
+                                                "en": "Right Bottom",
+                                                "fi": "Oikealla alhaalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-top",
+                                            "label": {
+                                                "en": "Center Top",
+                                                "fi": "Keskellä ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-center",
+                                            "label": {
+                                                "en": "Center Center",
+                                                "fi": "Keskellä"
+                                            }
+                                        },
+                                        {
+                                            "value": "center-bottom",
+                                            "label": {
+                                                "en": "Center Bottom",
+                                                "fi": "Keskellä alhaalla"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionBgImgOverlay",
+                                    "label": {
+                                        "en": "Overlay",
+                                        "fi": "Taustan tummuus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 90,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "%"
+                                },
+                                {
+                                    "id": "sectionBgImgBlur",
+                                    "label": {
+                                        "en": "Blur",
+                                        "fi": "Taustan sumeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 10,
+                                    "step": 1,
+                                    "default": "0",
+                                    "unit": " "
+                                },
+                                {
+                                    "id": "sectionColumnBgColorStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Enable column background",
+                                        "fi": "Näytä sarakkeen tausta"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "sectionColumnBgColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Column background color",
+                                        "fi": "Sarakkeen taustaväri"
+                                    },
+                                    "default": "#ffffff",
+                                    "conditions": ["sectionColumnBgColorStatus:truthy eq true"]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
                                 "en": "Settings",
                                 "fi": "Asetukset"
                             },
@@ -331,141 +466,6 @@
                                             "label": "{# icon.alignRightLight #}"
                                         }
                                     ]
-                                }
-                            ]
-                        },
-                        {
-                            "title": {
-                                "en": "Background",
-                                "fi": "Tausta"
-                            },
-                            "settings": [
-                                {
-                                    "id": "sectionBgImgSrc",
-                                    "type": "image-picker",
-                                    "label": {
-                                        "en": "Image",
-                                        "fi": "Kuva"
-                                    }
-                                },
-                                {
-                                    "id": "sectionBgImgPos",
-                                    "type": "select",
-                                    "label": {
-                                        "en": "Image position",
-                                        "fi": "Kuvan sijainti"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "left-top",
-                                            "label": {
-                                                "en": "Left Top",
-                                                "fi": "Vasemmalla ylhäällä"
-                                            }
-                                        },
-                                        {
-                                            "value": "left-center",
-                                            "label": {
-                                                "en": "Left Center",
-                                                "fi": "Vasemmalla"
-                                            }
-                                        },
-                                        {
-                                            "value": "left-bottom",
-                                            "label": {
-                                                "en": "Left Bottom",
-                                                "fi": "Vasemmalla alhaalla"
-                                            }
-                                        },
-                                        {
-                                            "value": "right-top",
-                                            "label": {
-                                                "en": "Right Top",
-                                                "fi": "Oikealla ylhäällä"
-                                            }
-                                        },
-                                        {
-                                            "value": "right-center",
-                                            "label": {
-                                                "en": "Right Center",
-                                                "fi": "Oikealla"
-                                            }
-                                        },
-                                        {
-                                            "value": "right-bottom",
-                                            "label": {
-                                                "en": "Right Bottom",
-                                                "fi": "Oikealla alhaalla"
-                                            }
-                                        },
-                                        {
-                                            "value": "center-top",
-                                            "label": {
-                                                "en": "Center Top",
-                                                "fi": "Keskellä ylhäällä"
-                                            }
-                                        },
-                                        {
-                                            "value": "center-center",
-                                            "label": {
-                                                "en": "Center Center",
-                                                "fi": "Keskellä"
-                                            }
-                                        },
-                                        {
-                                            "value": "center-bottom",
-                                            "label": {
-                                                "en": "Center Bottom",
-                                                "fi": "Keskellä alhaalla"
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionBgImgOverlay",
-                                    "label": {
-                                        "en": "Overlay",
-                                        "fi": "Taustan tummuus"
-                                    },
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 90,
-                                    "step": 10,
-                                    "default": "0",
-                                    "unit": "%"
-                                },
-                                {
-                                    "id": "sectionBgImgBlur",
-                                    "label": {
-                                        "en": "Blur",
-                                        "fi": "Taustan sumeus"
-                                    },
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 10,
-                                    "step": 1,
-                                    "default": "0",
-                                    "unit": " "
-                                },
-                                {
-                                    "id": "sectionColumnBgColorStatus",
-                                    "type": "checkbox",
-                                    "label": {
-                                        "en": "Enable column background",
-                                        "fi": "Näytä sarakkeen tausta"
-                                    },
-                                    "default": false
-                                },
-                                {
-                                    "id": "sectionColumnBgColor",
-                                    "type": "color",
-                                    "label": {
-                                        "en": "Column background color",
-                                        "fi": "Sarakkeen taustaväri"
-                                    },
-                                    "default": "#ffffff",
-                                    "conditions": ["sectionColumnBgColorStatus:truthy eq true"]
                                 }
                             ]
                         }

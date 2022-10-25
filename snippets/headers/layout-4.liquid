@@ -17,7 +17,8 @@
                         <a href="{{ routes.root_url }}">
 
                             {%- assign imgSrc = section.settings.logoImgSrc -%}
-                            {%- assign imgSize = '160,100' -%}
+                            {%- assign imgWidthRatio = section.settings.logoMaxSize | divided_by: 100.0 -%}
+                            {%- capture imgSize -%}{{- 300 | times: imgWidthRatio | ceil -}},200{%- endcapture -%}
 
                             {% if imgSrc %}
 

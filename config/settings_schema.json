@@ -62,19 +62,252 @@
 			"name": "Klarna"
 		}
 	],
+	"simple_settings": [
+		{
+			"type": "title",
+			"label": {
+				"en": "Product",
+				"fi": "Tuote"
+			}
+		},
+		{
+			"id": "aspectRatioProductImage",
+			"type": "select",
+			"label": {
+				"en": "Aspect ratio",
+				"fi": "Kuvasuhde"
+			},
+			"default": "9:13",
+			"options": [
+				{
+					"value": "9:13",
+					"label": "9:13"
+				},
+				{
+					"value": "4:3",
+					"label": "4:3"
+				},
+				{
+					"value": "1:1",
+					"label": "1:1"
+				}
+			]
+		},
+		{
+			"id": "aspectRatioProductImageFit",
+			"type": "radio-pill",
+			"label": {
+				"en": "Image area fill",
+				"fi": "Kuva-alueen täyttö"
+			},
+			"default": "contain",
+			"options": [
+				{
+					"value": "contain",
+					"label": "OFF"
+				},
+				{
+					"value": "cover",
+					"label": "ON"
+				}
+			]
+		},
+		{
+			"id": "productNameWrap",
+			"type": "checkbox",
+			"label": {
+				"en": "Wrap product name into multiple lines",
+				"fi": "Rivitä tuotenimi usealle riville"
+			},
+			"default": false
+		},
+		{
+			"type": "spacer"
+		},
+		{
+			"type": "title",
+			"label": {
+				"en": "Purchase",
+				"fi": "Ostaminen"
+			}
+		},
+		{
+			"id": "addToCartNotification",
+			"type": "checkbox",
+			"label": {
+				"en": "Add to cart notification",
+				"fi": "Lisää ostoskoriin -ilmoitus"
+			},
+			"default": true
+		},
+		{
+			"id": "taxFreePrices",
+			"type": "checkbox",
+			"label": {
+				"en": "Tax-free prices",
+				"fi": "Verottomat hinnat"
+			},
+			"default": false
+		},
+		{
+			"type": "spacer"
+		},
+		{
+			"type": "title",
+			"label": {
+				"en": "Registration",
+				"fi": "Rekisteröinti"
+			}
+		},
+		{
+			"type": "radio",
+			"id": "registerCompanyInformation",
+			"type": "checkbox",
+			"label": {
+				"en": "Show company information",
+				"fi": "Näytä yritystiedot"
+			},
+			"default": false
+		},
+		{
+			"type": "radio",
+			"id": "policyAgreementMethod",
+			"label": {
+				"en": "Policy agreement",
+				"fi": "Ehtojen hyväksyminen"
+			},
+			"default": "check",
+			"options": [
+				{
+					"value": "check",
+					"label": {
+						"en": "Checkbox",
+						"fi": "Valintaruutu"
+					}
+				},
+				{
+					"value": "inline",
+					"label": {
+						"en": "Text",
+						"fi": "Teksti"
+					}
+				}
+			]
+		},
+		{
+			"type": "spacer"
+		},
+		{
+			"type": "title",
+			"label": {
+				"en": "Buttons",
+				"fi": "Napit"
+			}
+		},
+		{
+			"id": "buttonBorderRadius",
+			"type": "radio-pill",
+			"label": {
+				"en": "Border radius",
+				"fi": "Reunan pyöreys"
+			},
+			"default": "3px",
+			"options": [
+				{
+					"value": "0px",
+					"label": "OFF"
+				},
+				{
+					"value": "3px",
+					"label": "S"
+				},
+				{
+					"value": "7px",
+					"label": "M"
+				},
+				{
+					"value": "15px",
+					"label": "L"
+				},
+				{
+					"value": "30px",
+					"label": "XL"
+				}
+			]
+		},
+		{
+			"type": "spacer"
+		},
+		{
+			"type": "title",
+			"label": "Klarna"
+		},
+		{
+			"type": "text",
+			"id": "klarnaPlacementsClientId",
+			"type": "text",
+			"label": {
+				"en": "Client id",
+				"fi": "Asiakastunnus"
+			},
+			"placeholder": "11111111-2222-3333-4444-555555555555"
+		},
+		{
+			"type": "spacer"
+		},
+		{
+			"type": "title",
+			"label": {
+				"en": "Usability",
+				"fi": "Käytettävyys"
+			}
+		},
+		{
+			"id": "backToTopButton",
+			"type": "checkbox",
+			"label": {
+				"en": "Back to top button",
+				"fi": "Takaisin alkuun -painike"
+			},
+			"default": true
+		},
+		{
+			"type": "spacer"
+		},
+		{
+			"type": "title",
+			"label": {
+				"en": "Blog",
+				"fi": "Blogi"
+			}
+		},
+		{
+			"id": "blogShowAuthor",
+			"type": "checkbox",
+			"label": {
+				"en": "Show author",
+				"fi": "Näytä kirjoittaja"
+			},
+			"default": false
+		}
+	],
 	"settings": [
 		{
 			"type": "setting-page",
 			"label": {
-				"en": "Colors",
-				"fi": "Värit"
+				"en": "Color styles",
+				"fi": "Värityylit"
+			},
+			"info": {
+				"en": "Use colors as is or customize them to fit.",
+				"fi": "Käytä värejä sellaisenaan tai muokkaa niistä sopivat."
 			},
 			"settings": [
 				{
 					"type": "heading",
 					"label": {
-						"en": "Colors",
-						"fi": "Värit"
+						"en": "Color styles",
+						"fi": "Värityylit"
 					},
 					"subheading": {
 						"en": "Use colors as is or customize them to fit.",
@@ -84,10 +317,6 @@
 				{
 					"id": "styles",
 					"type": "style-editor",
-					"label": {
-						"en": "Styles",
-						"fi": "Tyylit"
-					},
 					"settings": [
 						{
 							"type": "title",
@@ -96,8 +325,8 @@
 								"fi": "Tausta"
 							},
 							"subtitle": {
-								"en": "Colors that affect background",
-                                "fi": "Taustaan vaikuttavat värit"
+								"en": "Section colors",
+                                "fi": "Osion värit"
 							}
 						},
 						{
@@ -107,10 +336,6 @@
 								"en": "Background color",
 								"fi": "Taustaväri"
 							},
-							"info": {
-                                "en": "The background color of the page",
-                                "fi": "Sivuston taustaväri"
-                            },
 							"nullable": true
 						},
 						{
@@ -121,8 +346,8 @@
 								"fi": "Päällekkäinen taustaväri"
 							},
 							"info": {
-                                "en": "The background color of element which overlaps with page background color",
-                                "fi": "Elementin taustaväri joka menee päällekkäin sivuston taustavärin kanssa"
+                                "en": "In use for example on the shopping cart page",
+                                "fi": "Käytössä mm. ostokori sivulla"
                             },
 							"nullable": true
 						},
@@ -130,12 +355,12 @@
 							"id": "border_color",
 							"type": "color",
 							"label": {
-								"en": "Border",
-								"fi": "Reunus"
+								"en": "Border color",
+								"fi": "Reunuksen väri"
 							},
 							"info": {
-                                "en": "The border color of the various elements. For example borders in the page footer",
-                                "fi": "Elementtien reunuksien väri. Esimerkiksi alatunnisteen väliviivojen väri"
+                                "en": "In use for example on the hr elements",
+                                "fi": "Käytössä mm. väliviivoissa"
                             },
 							"nullable": true
 						},
@@ -145,8 +370,84 @@
 						{
 							"type": "title",
 							"label": {
-								"en": "Button",
-								"fi": "Nappi"
+								"en": "Text",
+								"fi": "Teksti"
+							},
+							"subtitle": {
+								"en": "Colors that affect text, for example heading or link color",
+                                "fi": "Tekstiin vaikuttavat värit, esim. otsikon tai linkin väri"
+							}
+						},
+						{
+							"id": "heading_color",
+							"type": "color",
+							"label": {
+								"en": "Heading color",
+								"fi": "Otsikon väri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "subheading_color",
+							"type": "color",
+							"label": {
+								"en": "Subheading color",
+								"fi": "Alaotsikon väri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "text_color",
+							"type": "color",
+							"label": {
+								"en": "Text color",
+								"fi": "Tekstin väri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "link_color",
+							"type": "color",
+							"label": {
+								"en": "Link color",
+								"fi": "Linkkin väri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "indicator_color",
+							"type": "color",
+							"label": {
+								"en": "Indicator color",
+								"fi": "Osoittimen väri"
+							},
+							"info": {
+								"en": "The color of active elements. For example, the color of a link or icon when it is active",
+                                "fi": "Aktiivisten elementtien väri. Esimerkiksi linkin tai kuvakkeen väri kun se on aktiivinen"
+							},
+							"nullable": true
+						},
+						{
+							"id": "icon_color",
+							"type": "color",
+							"label": {
+								"en": "Icon color",
+								"fi": "Kuvakkeiden väri"
+							},
+							"info": {
+								"en": "For example the colors of shopping cart and search icons",
+                                "fi": "Esim. haku ja ostoskori kuvakkeiden väri"
+							},
+							"nullable": true
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Buttons",
+								"fi": "Napit"
 							},
 							"subtitle": {
 								"en": "Colors that affect buttons",
@@ -157,117 +458,17 @@
 							"id": "button_bg_color",
 							"type": "color",
 							"label": {
-								"en": "Background",
-								"fi": "Tausta"
+								"en": "Background color",
+								"fi": "Taustaväri"
 							},
-							"info": {
-                                "en": "The background color of the buttons",
-                                "fi": "Nappien taustaväri"
-                            },
 							"nullable": true
 						},
 						{
 							"id": "button_text_color",
 							"type": "color",
 							"label": {
-								"en": "Text",
-								"fi": "Teksti"
-							},
-							"info": {
-                                "en": "The text color of the buttons",
-                                "fi": "Nappien tekstin väri"
-                            },
-							"nullable": true
-						},
-						{
-							"type": "spacer"
-						},
-						{
-							"type": "title",
-							"label": {
-								"en": "Text",
-								"fi": "Teksti"
-							},
-							"subtitle": {
-								"en": "Colors that affect body text, headings, icons and links",
-                                "fi": "Leipätekstiin, otsikoihin, kuvakkeisiin ja linkkeihin vaikuttavat värit"
-							}
-						},
-						{
-							"id": "text_color",
-							"type": "color",
-							"label": {
-								"en": "Text",
-								"fi": "Teksti"
-							},
-							"info": {
-								"en": "General text color",
-                                "fi": "Yleinen tekstien väri"
-							},
-							"nullable": true
-						},
-						{
-							"id": "heading_color",
-							"type": "color",
-							"label": {
-								"en": "Heading",
-								"fi": "Otsikko"
-							},
-							"info": {
-								"en": "General heading color",
-                                "fi": "Yleinen otsikoiden väri"
-							},
-							"nullable": true
-						},
-						{
-							"id": "subheading_color",
-							"type": "color",
-							"label": {
-								"en": "Subheading",
-								"fi": "Alaotsikko"
-							},
-							"info": {
-								"en": "General subheading color",
-                                "fi": "Yleinen alaotsikoiden väri"
-							},
-							"nullable": true
-						},
-						{
-							"id": "icon_color",
-							"type": "color",
-							"label": {
-								"en": "Icon",
-								"fi": "Kuvake"
-							},
-							"info": {
-								"en": "The color of icons",
-                                "fi": "Kuvakkeiden väri"
-							},
-							"nullable": true
-						},
-						{
-							"id": "link_color",
-							"type": "color",
-							"label": {
-								"en": "Link",
-								"fi": "Linkki"
-							},
-							"info": {
-								"en": "The color of links in texts and menus",
-                                "fi": "Teksteissä ja valikoissa olevien linkkien väri"
-							},
-							"nullable": true
-						},
-						{
-							"id": "indicator_color",
-							"type": "color",
-							"label": {
-								"en": "Indicator",
-								"fi": "Osoitin"
-							},
-							"info": {
-								"en": "The color of active elements. For example, the color of a link or icon when it is active",
-                                "fi": "Aktiivisten elementtien väri. Esimerkiksi linkin tai kuvakkeen väri kun se on aktiivinen"
+								"en": "Text color",
+								"fi": "Tekstin väri"
 							},
 							"nullable": true
 						},
@@ -281,125 +482,35 @@
 								"fi": "Tuote"
 							},
 							"subtitle": {
-								"en": "Colors that affect product",
-                                "fi": "Tuotteeseen vaikuttavat värit"
+								"en": "Product information colors",
+                                "fi": "Tuotteen tietojen värit"
 							}
 						},
 						{
 							"id": "product_title_color",
 							"type": "color",
 							"label": {
-								"en": "Title",
-								"fi": "Otsikko"
+								"en": "Name color",
+								"fi": "Nimen väri"
 							},
-                            "info": {
-                                "en": "The color of product name in the listings and product card",
-                                "fi": "Tuotteen nimen väri listauksissa ja tuotekortissa"
-                            },
 							"nullable": true
 						},
 						{
 							"id": "price_color",
 							"type": "color",
 							"label": {
-								"en": "Price",
-								"fi": "Hinta"
+								"en": "Price color",
+								"fi": "Hinnan väri"
 							},
-                            "info": {
-                                "en": "The color of product's price in the listings and on the product card",
-                                "fi": "Tuotteen hinnan väri listauksissa ja tuotekortissa"
-                            },
 							"nullable": true
 						},
 						{
 							"id": "sale_price_color",
 							"type": "color",
 							"label": {
-								"en": "Sale price",
-								"fi": "Alennushinta"
+								"en": "Sale price color",
+								"fi": "Alennushinnan väri"
 							},
-							"info": {
-                                "en": "The color of sale price of a product in listings and on the product card",
-                                "fi": "Tuotteen alennushinnan väri listauksissa ja tuotekortissa"
-                            },
-							"nullable": true
-						},
-						{
-							"id": "new_badge_bg_color",
-							"type": "color",
-							"label": {
-								"en": "New badge background color",
-								"fi": "Uusi -merkin taustaväri"
-							},
-							"info": {
-                                "en": "The background color of the badge in the listings and product card",
-                                "fi": "Merkin taustaväri listauksissa ja tuotekortissa"
-                            },
-							"nullable": true
-						},
-						{
-							"id": "new_badge_text_color",
-							"type": "color",
-							"label": {
-								"en": "New badge text color",
-								"fi": "Uusi -merkin teksti väri"
-							},
-							"info": {
-                                "en": "The text color of the badge in the listings and product card",
-                                "fi": "Merkin tekstin väri listauksissa ja tuotekortissa"
-                            },
-							"nullable": true
-						},
-						{
-							"id": "discount_badge_bg_color",
-							"type": "color",
-							"label": {
-								"en": "Discount badge background color",
-								"fi": "Alennus -merkin taustaväri"
-							},
-							"info": {
-                                "en": "The background color of the badge in the listings and product card",
-                                "fi": "Merkin taustaväri listauksissa ja tuotekortissa"
-                            },
-							"nullable": true
-						},
-						{
-							"id": "discount_badge_text_color",
-							"type": "color",
-							"label": {
-								"en": "Discount badge text color",
-								"fi": "Alennus -merkin tekstin värin"
-							},
-							"info": {
-                                "en": "The text color of the badge in the listings and product card",
-                                "fi": "Merkin tekstin väri listauksissa ja tuotekortissa"
-                            },
-							"nullable": true
-						},
-						{
-							"id": "general_badge_bg_color",
-							"type": "color",
-							"label": {
-								"en": "General badge background color",
-								"fi": "Yleinen -merkin taustaväri"
-							},
-							"info": {
-                                "en": "The background color of the badge in the listings and product card",
-                                "fi": "Merkin taustaväri listauksissa ja tuotekortissa"
-                            },
-							"nullable": true
-						},
-						{
-							"id": "general_badge_text_color",
-							"type": "color",
-							"label": {
-								"en": "General badge text color",
-								"fi": "Yleinen -merkin tekstin väri"
-							},
-							"info": {
-                                "en": "The text color of the badge in the listings and product card",
-                                "fi": "Merkin tekstin väri listauksissa ja tuotekortissa"
-                            },
 							"nullable": true
 						},
 						{
@@ -408,8 +519,76 @@
 						{
 							"type": "title",
 							"label": {
-								"en": "Table",
-								"fi": "Taulukko"
+								"en": "Badges",
+								"fi": "Merkit"
+							},
+							"subtitle": {
+								"en": "The colors of the badges in listings and on the product card",
+                                "fi": "Tuotelistauksissa ja tuotekortissa näkyvien merkkien värit"
+							}
+						},
+						{
+							"id": "new_badge_bg_color",
+							"type": "color",
+							"label": {
+								"en": "New background color",
+								"fi": "Uutuuden taustaväri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "new_badge_text_color",
+							"type": "color",
+							"label": {
+								"en": "New text color",
+								"fi": "Uutuuden teksti väri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "discount_badge_bg_color",
+							"type": "color",
+							"label": {
+								"en": "Discount background color",
+								"fi": "Alennuksen taustaväri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "discount_badge_text_color",
+							"type": "color",
+							"label": {
+								"en": "Discount text color",
+								"fi": "Alennuksen tekstin värin"
+							},
+							"nullable": true
+						},
+						{
+							"id": "general_badge_bg_color",
+							"type": "color",
+							"label": {
+								"en": "General background color",
+								"fi": "Yleinen taustaväri"
+							},
+							"nullable": true
+						},
+						{
+							"id": "general_badge_text_color",
+							"type": "color",
+							"label": {
+								"en": "General text color",
+								"fi": "Yleinen tekstin väri"
+							},
+							"nullable": true
+						},
+						{
+							"type": "spacer"
+						},
+						{
+							"type": "title",
+							"label": {
+								"en": "Tables",
+								"fi": "Taulukkot"
 							},
 							"subtitle": {
 								"en": "Colors that affect tables",
@@ -420,39 +599,27 @@
 							"id": "table_bg_color",
 							"type": "color",
 							"label": {
-								"en": "Background",
-								"fi": "Tausta"
+								"en": "Background color",
+								"fi": "Taustaväri"
 							},
-                            "info": {
-                                "en": "Table background color",
-                                "fi": "Taulukon taustaväri"
-                            },
 							"nullable": true
 						},
 						{
 							"id": "table_text_color",
 							"type": "color",
 							"label": {
-								"en": "Text",
-								"fi": "Teksti"
+								"en": "Text color",
+								"fi": "Tekstin väri"
 							},
-                            "info": {
-                                "en": "Table text color",
-                                "fi": "Taulukon tekstin väri"
-                            },
 							"nullable": true
 						},
 						{
 							"id": "table_border_color",
 							"type": "color",
 							"label": {
-								"en": "Border",
-								"fi": "Reunus"
+								"en": "Border color",
+								"fi": "Reunuksen väri"
 							},
-                            "info": {
-                                "en": "Table border color",
-                                "fi": "Taulukon reunuksen väri"
-                            },
 							"nullable": true
 						},
 						{
@@ -461,25 +628,21 @@
 						{
 							"type": "title",
 							"label": {
-								"en": "Form",
-								"fi": "Lomake"
+								"en": "Forms",
+								"fi": "Lomakkeet"
 							},
 							"subtitle": {
-								"en": "Colors that affect forms",
-                                "fi": "Lomakkeisiin vaikuttavat värit"
+								"en": "Colors that affect forms such as newsletter subscription",
+                                "fi": "Lomakkeisiin kuten uutiskirjeen tilaus vaikuttavat värit"
 							}
 						},
 						{
 							"id": "form_bg_color",
 							"type": "color",
 							"label": {
-								"en": "Background",
-								"fi": "Tausta"
+								"en": "Background color",
+								"fi": "Taustaväri"
 							},
-                            "info": {
-                                "en": "Form background color",
-                                "fi": "Lomakkeen taustaväri"
-                            },
 							"nullable": true
 						},
 						{
@@ -487,25 +650,17 @@
 							"type": "color",
 							"label": {
 								"en": "Text",
-								"fi": "Teksti"
+								"fi": "Tekstin väri"
 							},
-                            "info": {
-                                "en": "Form text color",
-                                "fi": "Lomakkeen tekstin väri"
-                            },
 							"nullable": true
 						},
 						{
 							"id": "form_border_color",
 							"type": "color",
 							"label": {
-								"en": "Border",
-								"fi": "Reunus"
+								"en": "Border color",
+								"fi": "Reunuksen väri"
 							},
-                            "info": {
-                                "en": "Form border color",
-                                "fi": "Lomakkeen reunuksen väri"
-                            },
 							"nullable": true
 						}
 					],
@@ -1038,8 +1193,8 @@
 						{
 							"id": "custom1",
 							"name": {
-								"en": "Custom accent color 1",
-								"fi": "Oma korostusväri 1"
+								"en": "Accent color 9",
+								"fi": "Korostusväri 9"
 							},
 							"default": {
 								"background_color": "#ffffff",
@@ -1073,8 +1228,8 @@
 						{
 							"id": "custom2",
 							"name": {
-								"en": "Custom accent color 2",
-								"fi": "Oma korostusväri 2"
+								"en": "Accent color 10",
+								"fi": "Korostusväri 10"
 							},
 							"default": {
 								"background_color": "#ffffff",
@@ -1114,6 +1269,10 @@
 			"label": {
 				"en": "Typography",
 				"fi": "Teksti"
+			},
+			"info": {
+				"en": "Customize the letters to fit the style of the store.",
+				"fi": "Mukauta kirjaimet sopimaan kaupan tyyliin."
 			},
 			"settings": [
 				{
@@ -1886,6 +2045,10 @@
 				"en": "Sections",
 				"fi": "Osiot"
 			},
+			"info": {
+				"en": "Edit common settings for sections.",
+				"fi": "Muokkaa osioiden yleisiä asetuksia."
+			},
 			"settings": [
 				{
 					"type": "heading",
@@ -2061,6 +2224,10 @@
 				"en": "General",
 				"fi": "Yleinen"
 			},
+			"info": {
+				"en": "Adjust store's general settings",
+				"fi": "Säädä kaupan yleisiä asetuksia."
+			},
 			"settings": [
 				{
 					"type": "heading",
@@ -2072,20 +2239,6 @@
 						"en": "Adjust store's general settings",
 						"fi": "Säädä kaupan yleisiä asetuksia."
 					}
-				},
-				{
-					"type": "title",
-					"label": {
-						"en": "Favicon",
-						"fi": "Favicon"
-					}
-				},
-				{
-					"id": "faviconImgSrc",
-					"type": "image-picker"
-				},
-				{
-					"type": "spacer"
 				},
 				{
 					"type": "title",
@@ -2322,6 +2475,10 @@
 				"en": "Social media",
 				"fi": "Sosiaalinen media"
 			},
+			"info": {
+				"en": "Add your own social media channels to the store.",
+				"fi": "Lisää kauppaan omat sosiaalisen median kanavat."
+			},
 			"settings": [
 				{
 					"type": "heading",
@@ -2397,6 +2554,10 @@
 			"label": {
 				"en": "Search engines",
 				"fi": "Hakukoneet"
+			},
+			"info": {
+				"en": "These settings can help you increase the visibility of your online store on search engines.",
+				"fi": "Näiden asetusten avulla voit parantaa verkkokauppasi näkyvyyttä hakukoneissa."
 			},
 			"settings": [
 				{

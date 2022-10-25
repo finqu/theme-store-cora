@@ -156,15 +156,23 @@
                     <a href="{{ routes.root_url }}">
 
                         {%- assign imgSrc = section.settings.logoImgSrc -%}
-                        {%- assign imgSize = '150,50' -%}
+                        {%- assign imgSizeOnPhone = '200,50' -%}
+                        {%- assign imgSizeOnTablet = '400,50' -%}
 
                         {% if imgSrc %}
 
                             <img
                                 alt="{{ store.name }}"
-                                src="{{ imgSrc | thumb: imgSize }}"
-                                srcset="{{ imgSrc | thumb: imgSize }} 1x, {{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                class="d-block img-fluid site-mobile-header-logo">
+                                src="{{ imgSrc | thumb: imgSizeOnTablet }}"
+                                srcset="{{ imgSrc | thumb: imgSizeOnTablet }} 1x, {{ imgSrc | thumb: imgSizeOnTablet | thumb:'@2x' }} 2x"
+                                class="img-fluid site-mobile-header-logo d-none d-md-block">
+
+                            <img
+                                alt="{{ store.name }}"
+                                src="{{ imgSrc | thumb: imgSizeOnPhone }}"
+                                srcset="{{ imgSrc | thumb: imgSizeOnPhone }} 1x, {{ imgSrc | thumb: imgSizeOnPhone | thumb:'@2x' }} 2x"
+                                class="img-fluid site-mobile-header-logo d-block d-md-none">
+
 
                         {% else %}
 
@@ -739,61 +747,85 @@
                 },
                 "settings": [
                     {
+                        "type": "title",
+                        "label": {
+                            "en": "Logo",
+                            "fi": "Logo"
+                        }
+                    },
+                    {
+                        "id": "logoImgSrc",
+                        "type": "image-picker"
+                    },
+                    {
+                        "id": "logoMaxSize",
+                        "label": {
+                            "en": "Logo size",
+                            "fi": "Logon koko"
+                        },
+                        "type": "range",
+                        "min": 20,
+                        "max": 100,
+                        "step": 1,
+                        "default": 60,
+                        "unit": "%"
+                    },
+                    {
                         "id": "headerLayout",
                         "type": "select",
                         "label": {
-                            "en": "Layout",
-                            "fi": "Asettelu"
+                            "en": "Logo position",
+                            "fi": "Logon sijainti"
                         },
                         "default": "1",
                         "options": [
                             {
                                 "value": "1",
                                 "label": {
-                                    "en": "Layout 1",
-                                    "fi": "Asettelu 1"
-                                }
-                            },
-                            {
-                                "value": "2",
-                                "label": {
-                                    "en": "Layout 2",
-                                    "fi": "Asettelu 2"
-                                }
-                            },
-                            {
-                                "value": "3",
-                                "label": {
-                                    "en": "Layout 3",
-                                    "fi": "Asettelu 3"
-                                }
-                            },
-                            {
-                                "value": "4",
-                                "label": {
-                                    "en": "Layout 4",
-                                    "fi": "Asettelu 4"
+                                    "en": "Logo top center",
+                                    "fi": "Logo ylhäällä keskellä"
                                 }
                             },
                             {
                                 "value": "5",
                                 "label": {
-                                    "en": "Layout 5",
-                                    "fi": "Asettelu 5"
+                                    "en": "Logo top center + hyphen",
+                                    "fi": "Logo ylhäällä keskellä + väliviiva"
+                                }
+                            },
+                            {
+                                "value": "2",
+                                "label": {
+                                    "en": "Logo top left",
+                                    "fi": "Logo ylhäällä vasemmalla"
+                                }
+                            },
+                            {
+                                "value": "3",
+                                "label": {
+                                    "en": "Logo top left + search field",
+                                    "fi": "Logo ylhäällä vasemmalla + hakukenttä"
+                                }
+                            },
+                            {
+                                "value": "4",
+                                "label": {
+                                    "en": "Logo on the left",
+                                    "fi": "Logo vasemmalla"
                                 }
                             },
                             {
                                 "value": "6",
                                 "label": {
-                                    "en": "Layout 6",
-                                    "fi": "Asettelu 6"
+                                    "en": "Logo on the left + transparent background",
+                                    "fi": "Logo vasemmalla + läpinäkyvä tausta"
                                 }
                             },
                             {
                                 "value": "7",
                                 "label": {
-                                    "en": "Layout 7",
-                                    "fi": "Asettelu 7"
+                                    "en": "Logo on the left + own colors",
+                                    "fi": "Logo vasemmalla + omat värit"
                                 }
                             }
                         ]
@@ -816,7 +848,7 @@
                         "type": "color",
                         "label": {
                             "en": "Indicator color",
-                            "fi": "Osoitin väri"
+                            "fi": "Osoittimien väri"
                         },
                         "default": "#000000",
                         "conditions": [
@@ -838,103 +870,6 @@
                         ]
                     },
                     {
-                        "id": "logoImgSrc",
-                        "type": "image-picker",
-                        "label": {
-                            "en": "Logo",
-                            "fi": "Logo"
-                        }
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Navigation",
-                            "fi": "Navigointi"
-                        }
-                    },
-                    {
-                        "id": "menu",
-                        "type": "menu",
-                        "label": {
-                            "en": "Menu",
-                            "fi": "Navigaatio"
-                        },
-                        "default": "main"
-                    },
-                    {
-                        "id": "stickyHeader",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Sticky header",
-                            "fi": "Leijuva ylätunniste"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "headerMegamenu",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Megamenu",
-                            "fi": "Megavalikko"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "headerSubmenuIndicator",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Submenu indicator",
-                            "fi": "Alavalikon osoitin"
-                        },
-                        "default": false
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Mobile navigation",
-                            "fi": "Mobiilinavigointi"
-                        }
-                    },
-                    {
-                        "id": "mobileMenu",
-                        "type": "menu",
-                        "label": {
-                            "en": "Menu",
-                            "fi": "Navigaatio"
-                        },
-                        "default": "main"
-                    },
-                    {
-                        "id": "stickyMobileHeader",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Sticky header",
-                            "fi": "Leijuva ylätunniste"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "addProductCategoriesToMobileNavigation",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Add categories to navigation",
-                            "fi": "Lisää tuoteryhmät navigaatioon"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "socialMediaIconsStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show social media icons",
-                            "fi": "Sosiaalisen median kuvakkeet"
-                        },
-                        "default": true
-                    },
-                    {
                         "type": "spacer"
                     },
                     {
@@ -952,26 +887,6 @@
                             "fi": "Näytä"
                         },
                         "default": false
-                    },
-                    {
-                        "id": "announcementBgColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Background color",
-                            "fi": "Taustanväri"
-                        },
-                        "default": "#000000",
-                        "conditions": ["announcementStatus eq true"]
-                    },
-                    {
-                        "id": "announcementTextColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Text color",
-                            "fi": "Tekstin väri"
-                        },
-                        "default": "#ffffff",
-                        "conditions": ["announcementStatus eq true"]
                     },
                     {
                         "id": "announcementText",
@@ -1002,10 +917,125 @@
                         "conditions": ["announcementStatus eq true"]
                     },
                     {
+                        "id": "announcementBgColor",
+                        "type": "color",
+                        "label": {
+                            "en": "Background color",
+                            "fi": "Taustanväri"
+                        },
+                        "default": "#000000",
+                        "conditions": ["announcementStatus eq true"]
+                    },
+                    {
+                        "id": "announcementTextColor",
+                        "type": "color",
+                        "label": {
+                            "en": "Text color",
+                            "fi": "Tekstin väri"
+                        },
+                        "default": "#ffffff",
+                        "conditions": ["announcementStatus eq true"]
+                    },
+                    {
+                        "type": "spacer"
+                    },
+                    {
                         "type": "title",
                         "label": {
-                            "en": "Klarna",
-                            "fi": "Klarna"
+                            "en": "Menu",
+                            "fi": "Valikko"
+                        }
+                    },
+                    {
+                        "id": "menu",
+                        "type": "menu",
+                        "label": {
+                            "en": "The current menu",
+                            "fi": "Käytössä oleva valikko"
+                        },
+                        "default": "main"
+                    },
+                    {
+                        "id": "stickyHeader",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Sticky header",
+                            "fi": "Ylätunniste jää paikoilleen"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "headerMegamenu",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Use megamenu",
+                            "fi": "Käytetään megavalikkoa"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "headerSubmenuIndicator",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show submenu indicator",
+                            "fi": "Näytetään alavalikon osoitin"
+                        },
+                        "default": false
+                    },
+                    {
+                        "type": "spacer"
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Mobile menu",
+                            "fi": "Valikko mobiilissa"
+                        }
+                    },
+                    {
+                        "id": "mobileMenu",
+                        "type": "menu",
+                        "label": {
+                            "en": "The current menu",
+                            "fi": "Käytössä oleva valikko"
+                        },
+                        "default": "main"
+                    },
+                    {
+                        "id": "stickyMobileHeader",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Sticky header",
+                            "fi": "Ylätunniste jää paikoilleen"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "socialMediaIconsStatus",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show social media icons",
+                            "fi": "Näytä sosiaalisen median kuvakkeet"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "addProductCategoriesToMobileNavigation",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Add categories to menu",
+                            "fi": "Lisää tuoteryhmät valikkoon"
+                        },
+                        "default": false
+                    },
+                    {
+                        "type": "spacer"
+                    },
+                    {
+                        "type": "title",
+                        "label": {
+                            "en": "Klarna banner",
+                            "fi": "Klarna banneri"
                         }
                     },
                     {

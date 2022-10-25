@@ -1193,7 +1193,7 @@
 
                                 <div class="card-header">
 
-                                    <button class="btn btn-block btn-text d-flex" data-toggle="collapse" data-target="#accordion-product-description">
+                                    <button class="btn btn-block btn-text d-flex" data-toggle="collapse" data-target="#accordion-product-description"{% if section.settings.openProductDescriptionByDefault %} aria-expanded="true"{% endif %}>
 
                                         <span>
                                             {{ 'product.description' | t }}
@@ -1207,7 +1207,7 @@
 
                                 </div>
 
-                                <div id="accordion-product-description" class="collapse">
+                                <div id="accordion-product-description" class="collapse{% if section.settings.openProductDescriptionByDefault %} show{% endif %}">
 
                                     <div class="product-description card-body">
                                         {{ product.description }}
@@ -1699,6 +1699,15 @@
                         "label": {
                             "en": "Show product option stock balance",
                             "fi": "Näytä tuotevalinnan varastosaldo"
+                        },
+                        "default": false
+                    },
+                    {
+                        "id": "openProductDescriptionByDefault",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Open product description open by default",
+                            "fi": "Avaa tuotekuvaus oletuksena"
                         },
                         "default": false
                     }

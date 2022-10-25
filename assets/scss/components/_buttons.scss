@@ -131,6 +131,10 @@
     border: 0;
     border-radius: 0;
     cursor: pointer;
+
+    @include hover() {
+        color: inherit;
+    }
 }
 
 .btn-link {
