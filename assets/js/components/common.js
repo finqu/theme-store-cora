@@ -12,6 +12,7 @@ import LazyLoad from 'vanilla-lazyload';
 import ImageCarousel from './image-carousel';
 import ProductCarousel from './product-carousel';
 import Carousel from './carousel';
+import noUiSlider from 'nouislider';
 
 export default {
 	init: function() {
@@ -806,6 +807,7 @@ export default {
 
         const $categoryFiltersFormEl = $(categoryFiltersFormEl);
         const categoryFilterInputEls = containerEl.querySelectorAll('input');
+        const categoryRangeSliderEls = containerEl.querySelectorAll('.range-slider');
         const facetResultCountEls = containerEl.querySelectorAll('[data-facet-result-count]');
         const filtersMobileNavigationCtaEl = containerEl.querySelector('.filters-mobile-navigation-container .filters-mobile-navigation-footer-inner-cta');
         let categoryDynamicContentEl = containerEl.querySelector('.category-dynamic-content');
@@ -816,6 +818,12 @@ export default {
             const xhr = new XMLHttpRequest();
 
             isProcessing = true;
+
+            categoryRangeSliderEls
+
+            categoryRangeSliderEls.forEach(el => {
+                el.setAttribute('disabled', true);
+            });
 
             categoryFilterInputEls.forEach(el => {
                 el.disabled = true;
@@ -862,6 +870,10 @@ export default {
                     }
 
                     isProcessing = false;
+
+                    categoryRangeSliderEls.forEach(el => {
+                        el.removeAttribute('disabled');
+                    });
 
                     categoryFilterInputEls.forEach(el => {
                         el.disabled = false;
@@ -989,6 +1001,64 @@ export default {
         };
 
         if (categoryFiltersFormEl) {
+
+            categoryRangeSliderEls.forEach(el => {
+
+                console.log(opts);
+
+                const opts = el.dataset;
+                const rangeSliderContainerEl = el.parentNode;
+                const rangeFilterEl = rangeSliderContainerEl.parentNode;
+                const rangeSliderMinTextEl = rangeFilterEl.querySelector('[ data-range-slider-min-text]');
+                const rangeSliderMaxTextEl = rangeFilterEl.querySelector('[ data-range-slider-max-text]');
+                const rangeSliderMinInputEl = rangeSliderContainerEl.querySelector('input[name="'+opts.rangeSliderMinName+'"]');
+                const rangeSliderMaxInputEl = rangeSliderContainerEl.querySelector('input[name="'+opts.rangeSliderMaxName+'"]');
+                const rangeSlider = noUiSlider.create(el, {
+                    start: [
+                        parseInt(opts.rangeSliderMinDefault, 10),
+                        parseInt(opts.rangeSliderMaxDefault, 10)
+                    ],
+                    connect: true,
+                    range: {
+                        'min': parseInt(opts.rangeSliderMinValue, 10),
+                        'max': parseInt(opts.rangeSliderMaxValue, 10)
+                    },
+                    pips: {
+                        mode: 'steps',
+                        density: 3
+                    }
+                });
+
+                let initialized = false;
+
+                rangeSlider.on('update', debounce((values, handle) => {
+
+                   if (initialized) {
+
+                       const value = parseInt(values[handle], 10);
+
+                       if (handle === 0) {
+
+                           rangeSliderMinInputEl.value = value;
+                           rangeSliderMinTextEl.innerHTML = value;
+                           rangeSliderMinInputEl.dispatchEvent(new Event('input', { bubbles:true }));
+
+                       } else {
+
+                           rangeSliderMaxInputEl.value = value;
+                           rangeSliderMaxTextEl.innerHTML = value;
+                           rangeSliderMaxInputEl.dispatchEvent(new Event('input', { bubbles:true }));
+                       }
+
+                   } else {
+
+                       initialized = true;
+                   }
+
+                }, 500, false));
+
+                rangeSliderContainerEl.classList.add('has-pips');
+            });
 
             categoryFilterInputEls.forEach(el => { el.addEventListener('input', e => {
 

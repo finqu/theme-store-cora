@@ -252,6 +252,42 @@
 
                                 {% endif %}
 
+                            {% elsif filter.type == 'range' %}
+
+                                <div class="range-filter">
+
+                                    <div class="text-center mb-2">
+
+                                        <span class="h5" data-range-slider-min-text>
+                                            {{ filter.min_value.value }}
+                                        </span>
+
+                                        <span class="h5 mx-2">-</span>
+
+                                        <span class="h5" data-range-slider-max-text>
+                                            {{ filter.max_value.value }}
+                                        </span>
+
+                                    </div>
+
+                                    <div class="range-slider-container">
+
+                                        <input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                        <input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+
+                                        <div class="range-slider"
+                                            data-range-slider-min-name="{{ filter.min_value.param_name }}"
+                                            data-range-slider-min-default="{{ filter.min_value.value }}"
+                                            data-range-slider-min-value="{{ filter.range_min }}"
+                                            data-range-slider-max-name="{{ filter.max_value.param_name }}"
+                                            data-range-slider-max-default="{{ filter.max_value.value }}"
+                                            data-range-slider-max-value="{{ filter.range_max }}">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
                             {% endif %}
 
                         </div>
@@ -527,6 +563,42 @@
                                             {% endfor %}
 
                                         {% endif %}
+
+                                    {% elsif filter.type == 'range' %}
+
+                                        <div class="range-filter">
+
+                                            <div class="text-center mb-2">
+
+                                                <span class="h5" data-range-slider-min-text>
+                                                    {{ filter.min_value.value }}
+                                                </span>
+
+                                                <span class="h5 mx-2">-</span>
+
+                                                <span class="h5" data-range-slider-max-text>
+                                                    {{ filter.max_value.value }}
+                                                </span>
+
+                                            </div>
+
+                                            <div class="range-slider-container">
+
+                                                <input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                                <input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+
+                                                <div class="range-slider"
+                                                    data-range-slider-min-name="{{ filter.min_value.param_name }}"
+                                                    data-range-slider-min-default="{{ filter.min_value.value }}"
+                                                    data-range-slider-min-value="{{ filter.range_min }}"
+                                                    data-range-slider-max-name="{{ filter.max_value.param_name }}"
+                                                    data-range-slider-max-default="{{ filter.max_value.value }}"
+                                                    data-range-slider-max-value="{{ filter.range_max }}">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
 
                                     {% endif %}
 

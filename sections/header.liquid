@@ -745,345 +745,373 @@
                     "en": "General",
                     "fi": "Yleinen"
                 },
-                "settings": [
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Logo",
-                            "fi": "Logo"
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Logo",
+                                "fi": "Logo"
+                            },
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Logo",
+                                        "fi": "Logo"
+                                    }
+                                },
+                                {
+                                    "id": "logoImgSrc",
+                                    "type": "image-picker"
+                                },
+                                {
+                                    "id": "logoMaxSize",
+                                    "label": {
+                                        "en": "Logo size",
+                                        "fi": "Logon koko"
+                                    },
+                                    "type": "range",
+                                    "min": 20,
+                                    "max": 100,
+                                    "step": 1,
+                                    "default": 60,
+                                    "unit": "%"
+                                },
+                                {
+                                    "id": "headerLayout",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Logo position",
+                                        "fi": "Logon sijainti"
+                                    },
+                                    "default": "1",
+                                    "options": [
+                                        {
+                                            "value": "1",
+                                            "label": {
+                                                "en": "Centered at top",
+                                                "fi": "Keskellä ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "5",
+                                            "label": {
+                                                "en": "Centered at top + hyphen",
+                                                "fi": "Keskellä ylhäällä + väliviiva"
+                                            }
+                                        },
+                                        {
+                                            "value": "2",
+                                            "label": {
+                                                "en": "Top left",
+                                                "fi": "Vasemmalla ylhäällä"
+                                            }
+                                        },
+                                        {
+                                            "value": "3",
+                                            "label": {
+                                                "en": "Top left + search field",
+                                                "fi": "Vasemmalla ylhäällä + hakukenttä"
+                                            }
+                                        },
+                                        {
+                                            "value": "4",
+                                            "label": {
+                                                "en": "Left",
+                                                "fi": "Vasemmalla"
+                                            }
+                                        },
+                                        {
+                                            "value": "6",
+                                            "label": {
+                                                "en": "Left + transparent background",
+                                                "fi": "Vasemmalla + läpinäkyvä tausta"
+                                            }
+                                        },
+                                        {
+                                            "value": "7",
+                                            "label": {
+                                                "en": "Left + own colors",
+                                                "fi": "Vasemmalla + omat värit"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "headerMenuItemColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Link color",
+                                        "fi": "Linkin väri"
+                                    },
+                                    "default": "#000000",
+                                    "conditions": [
+                                        "headerLayout gte 6",
+                                        "headerLayout lte 7"
+                                    ]
+                                },
+                                {
+                                    "id": "headerIndicatorColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Indicator color",
+                                        "fi": "Osoittimien väri"
+                                    },
+                                    "default": "#000000",
+                                    "conditions": [
+                                        "headerLayout gte 6",
+                                        "headerLayout lte 7"
+                                    ]
+                                },
+                                {
+                                    "id": "headerIconColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Icon color",
+                                        "fi": "Kuvakkeen väri"
+                                    },
+                                    "default": "#000000",
+                                    "conditions": [
+                                        "headerLayout gte 6",
+                                        "headerLayout lte 7"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Announcement",
+                                "fi": "Ilmoitus"
+                            },
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Announcement",
+                                        "fi": "Ilmoitus"
+                                    }
+                                },
+                                {
+                                    "id": "announcementStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show",
+                                        "fi": "Näytä"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "announcementText",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Text",
+                                        "fi": "Teksti"
+                                    },
+                                    "conditions": ["announcementStatus eq true"]
+                                },
+                                {
+                                    "id": "announcementLink",
+                                    "type": "url",
+                                    "label": {
+                                        "en": "Announcement link",
+                                        "fi": "Ilmoituksen linkki"
+                                    },
+                                    "conditions": ["announcementStatus eq true"]
+                                },
+                                {
+                                    "id": "announcementLinkOpenInNewWindowStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Open link in a new window",
+                                        "fi": "Avaa linkki uudessa ikkunassa"
+                                    },
+                                    "default": false,
+                                    "conditions": ["announcementStatus eq true"]
+                                },
+                                {
+                                    "id": "announcementBgColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Background color",
+                                        "fi": "Taustanväri"
+                                    },
+                                    "default": "#000000",
+                                    "conditions": ["announcementStatus eq true"]
+                                },
+                                {
+                                    "id": "announcementTextColor",
+                                    "type": "color",
+                                    "label": {
+                                        "en": "Text color",
+                                        "fi": "Tekstin väri"
+                                    },
+                                    "default": "#ffffff",
+                                    "conditions": ["announcementStatus eq true"]
+                                },
+                                {
+                                    "type": "separator"
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Klarna banner",
+                                        "fi": "Klarna banneri"
+                                    }
+                                },
+                                {
+                                    "id": "announcementKlarna",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show banner",
+                                        "fi": "Näytä banneri"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "announcementKlarnaType",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Layout",
+                                        "fi": "Asettelu"
+                                    },
+                                    "default": "top-strip-promotion-standard",
+                                    "options": [
+                                        {
+                                            "value": "top-strip-promotion-standard",
+                                            "label": {
+                                                "en": "Banner 1",
+                                                "fi": "Banneri 1"
+                                            }
+                                        },
+                                        {
+                                            "value": "top-strip-promotion-badge",
+                                            "label": {
+                                                "en": "Banner 2",
+                                                "fi": "Banneri 2"
+                                            }
+                                        }
+                                    ],
+                                    "conditions": ["announcementKlarna eq true"]
+                                },
+                                {
+                                    "id": "announcementKlarnaDark",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Dark theme",
+                                        "fi": "Tumma teema"
+                                    },
+                                    "default": false,
+                                    "conditions": ["announcementKlarna eq true"]
+                                }
+                            ]
+                        },
+                        {
+                            "title": {
+                                "en": "Menus",
+                                "fi": "Valikot"
+                            },
+                            "settings": [
+                                {
+                                    "type": "label",
+                                    "label": {
+                                        "en": "From here you can select menus. You edit the contents of the menus on the navigation page.",
+                                        "fi": "Täältä valitset käytössä olevat valikot. Valikoiden sisältöä muokkaat navigaatio-sivulla."
+                                    }
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Menu",
+                                        "fi": "Valikko"
+                                    }
+                                },
+                                {
+                                    "id": "menu",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "The current menu",
+                                        "fi": "Käytössä oleva valikko"
+                                    },
+                                    "default": "main"
+                                },
+                                {
+                                    "id": "stickyHeader",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Sticky header",
+                                        "fi": "Ylätunniste jää paikoilleen"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "headerMegamenu",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Use megamenu",
+                                        "fi": "Käytetään megavalikkoa"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "headerSubmenuIndicator",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show submenu indicator",
+                                        "fi": "Näytetään alavalikon osoitin"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "type": "separator"
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Mobile menu",
+                                        "fi": "Valikko mobiilissa"
+                                    }
+                                },
+                                {
+                                    "id": "mobileMenu",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "The current menu",
+                                        "fi": "Käytössä oleva valikko"
+                                    },
+                                    "default": "main"
+                                },
+                                {
+                                    "id": "stickyMobileHeader",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Sticky header",
+                                        "fi": "Ylätunniste jää paikoilleen"
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "id": "socialMediaIconsStatus",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Show social media icons",
+                                        "fi": "Näytä sosiaalisen median kuvakkeet"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "addProductCategoriesToMobileNavigation",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Add categories to menu",
+                                        "fi": "Lisää tuoteryhmät valikkoon"
+                                    },
+                                    "default": false
+                                }
+                            ]
                         }
-                    },
-                    {
-                        "id": "logoImgSrc",
-                        "type": "image-picker"
-                    },
-                    {
-                        "id": "logoMaxSize",
-                        "label": {
-                            "en": "Logo size",
-                            "fi": "Logon koko"
-                        },
-                        "type": "range",
-                        "min": 20,
-                        "max": 100,
-                        "step": 1,
-                        "default": 60,
-                        "unit": "%"
-                    },
-                    {
-                        "id": "headerLayout",
-                        "type": "select",
-                        "label": {
-                            "en": "Logo position",
-                            "fi": "Logon sijainti"
-                        },
-                        "default": "1",
-                        "options": [
-                            {
-                                "value": "1",
-                                "label": {
-                                    "en": "Logo top center",
-                                    "fi": "Logo ylhäällä keskellä"
-                                }
-                            },
-                            {
-                                "value": "5",
-                                "label": {
-                                    "en": "Logo top center + hyphen",
-                                    "fi": "Logo ylhäällä keskellä + väliviiva"
-                                }
-                            },
-                            {
-                                "value": "2",
-                                "label": {
-                                    "en": "Logo top left",
-                                    "fi": "Logo ylhäällä vasemmalla"
-                                }
-                            },
-                            {
-                                "value": "3",
-                                "label": {
-                                    "en": "Logo top left + search field",
-                                    "fi": "Logo ylhäällä vasemmalla + hakukenttä"
-                                }
-                            },
-                            {
-                                "value": "4",
-                                "label": {
-                                    "en": "Logo on the left",
-                                    "fi": "Logo vasemmalla"
-                                }
-                            },
-                            {
-                                "value": "6",
-                                "label": {
-                                    "en": "Logo on the left + transparent background",
-                                    "fi": "Logo vasemmalla + läpinäkyvä tausta"
-                                }
-                            },
-                            {
-                                "value": "7",
-                                "label": {
-                                    "en": "Logo on the left + own colors",
-                                    "fi": "Logo vasemmalla + omat värit"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "id": "headerMenuItemColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Link color",
-                            "fi": "Linkin väri"
-                        },
-                        "default": "#000000",
-                        "conditions": [
-                            "headerLayout gte 6",
-                            "headerLayout lte 7"
-                        ]
-                    },
-                    {
-                        "id": "headerIndicatorColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Indicator color",
-                            "fi": "Osoittimien väri"
-                        },
-                        "default": "#000000",
-                        "conditions": [
-                            "headerLayout gte 6",
-                            "headerLayout lte 7"
-                        ]
-                    },
-                    {
-                        "id": "headerIconColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Icon color",
-                            "fi": "Kuvakkeen väri"
-                        },
-                        "default": "#000000",
-                        "conditions": [
-                            "headerLayout gte 6",
-                            "headerLayout lte 7"
-                        ]
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Announcement",
-                            "fi": "Ilmoitus"
-                        }
-                    },
-                    {
-                        "id": "announcementStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show",
-                            "fi": "Näytä"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "announcementText",
-                        "type": "text",
-                        "label": {
-                            "en": "Text",
-                            "fi": "Teksti"
-                        },
-                        "conditions": ["announcementStatus eq true"]
-                    },
-                    {
-                        "id": "announcementLink",
-                        "type": "url",
-                        "label": {
-                            "en": "Announcement link",
-                            "fi": "Ilmoituksen linkki"
-                        },
-                        "conditions": ["announcementStatus eq true"]
-                    },
-                    {
-                        "id": "announcementLinkOpenInNewWindowStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Open link in a new window",
-                            "fi": "Avaa linkki uudessa ikkunassa"
-                        },
-                        "default": false,
-                        "conditions": ["announcementStatus eq true"]
-                    },
-                    {
-                        "id": "announcementBgColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Background color",
-                            "fi": "Taustanväri"
-                        },
-                        "default": "#000000",
-                        "conditions": ["announcementStatus eq true"]
-                    },
-                    {
-                        "id": "announcementTextColor",
-                        "type": "color",
-                        "label": {
-                            "en": "Text color",
-                            "fi": "Tekstin väri"
-                        },
-                        "default": "#ffffff",
-                        "conditions": ["announcementStatus eq true"]
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Menu",
-                            "fi": "Valikko"
-                        }
-                    },
-                    {
-                        "id": "menu",
-                        "type": "menu",
-                        "label": {
-                            "en": "The current menu",
-                            "fi": "Käytössä oleva valikko"
-                        },
-                        "default": "main"
-                    },
-                    {
-                        "id": "stickyHeader",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Sticky header",
-                            "fi": "Ylätunniste jää paikoilleen"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "headerMegamenu",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Use megamenu",
-                            "fi": "Käytetään megavalikkoa"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "headerSubmenuIndicator",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show submenu indicator",
-                            "fi": "Näytetään alavalikon osoitin"
-                        },
-                        "default": false
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Mobile menu",
-                            "fi": "Valikko mobiilissa"
-                        }
-                    },
-                    {
-                        "id": "mobileMenu",
-                        "type": "menu",
-                        "label": {
-                            "en": "The current menu",
-                            "fi": "Käytössä oleva valikko"
-                        },
-                        "default": "main"
-                    },
-                    {
-                        "id": "stickyMobileHeader",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Sticky header",
-                            "fi": "Ylätunniste jää paikoilleen"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "socialMediaIconsStatus",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show social media icons",
-                            "fi": "Näytä sosiaalisen median kuvakkeet"
-                        },
-                        "default": true
-                    },
-                    {
-                        "id": "addProductCategoriesToMobileNavigation",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Add categories to menu",
-                            "fi": "Lisää tuoteryhmät valikkoon"
-                        },
-                        "default": false
-                    },
-                    {
-                        "type": "spacer"
-                    },
-                    {
-                        "type": "title",
-                        "label": {
-                            "en": "Klarna banner",
-                            "fi": "Klarna banneri"
-                        }
-                    },
-                    {
-                        "id": "announcementKlarna",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Show banner",
-                            "fi": "Näytä banneri"
-                        },
-                        "default": false
-                    },
-                    {
-                        "id": "announcementKlarnaType",
-                        "type": "select",
-                        "label": {
-                            "en": "Layout",
-                            "fi": "Asettelu"
-                        },
-                        "default": "top-strip-promotion-standard",
-                        "options": [
-                            {
-                                "value": "top-strip-promotion-standard",
-                                "label": {
-                                    "en": "Banner 1",
-                                    "fi": "Banneri 1"
-                                }
-                            },
-                            {
-                                "value": "top-strip-promotion-badge",
-                                "label": {
-                                    "en": "Banner 2",
-                                    "fi": "Banneri 2"
-                                }
-                            }
-                        ],
-                        "conditions": ["announcementKlarna eq true"]
-                    },
-                    {
-                        "id": "announcementKlarnaDark",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Dark theme",
-                            "fi": "Tumma teema"
-                        },
-                        "default": false,
-                        "conditions": ["announcementKlarna eq true"]
-                    }
-                ]
+                    ]
+                }
             },
             {
                 "title": {

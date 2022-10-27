@@ -118,6 +118,28 @@
 
                                 {% endif %}
 
+                            {% elsif filter.type == 'range' %}
+
+                                <div class="row">
+
+                                    <div class="col">
+
+                                        <label>{{ 'filters.range.from' | t }}</label>
+
+                                        <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+
+                                    </div>
+
+                                    <div class="col">
+
+                                        <label>{{ 'filters.range.to' | t }}</label>
+
+                                        <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+
+                                    </div>
+
+                                </div>
+
                             {% endif %}
 
                         </div>
@@ -393,6 +415,28 @@
                                             {% endfor %}
 
                                         {% endif %}
+
+                                    {% elsif filter.type == 'range' %}
+
+                                        <div class="row">
+
+                                            <div class="col">
+
+                                                <label>{{ 'filters.range.from' | t }}</label>
+
+                                                <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+
+                                            </div>
+
+                                            <div class="col">
+
+                                                <label>{{ 'filters.range.to' | t }}</label>
+
+                                                <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+
+                                            </div>
+
+                                        </div>
 
                                     {% endif %}
 

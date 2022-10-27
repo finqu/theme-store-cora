@@ -112,6 +112,10 @@
             "title-descending": "Tuotenimike (Z-A)",
             "created-ascending": "Tuotteen luontiaika (Vanhin)",
             "created-descending": "Tuotteen luontiaika (Uusin)"
+        },
+        "range": {
+            "from": "Alkaen",
+            "to": "Loppuen"
         }
     },
     "product": {

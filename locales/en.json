@@ -112,6 +112,10 @@
             "title-descending": "Product (Z-A)",
             "created-ascending": "Product creation (Oldest)",
             "created-descending": "Product creation (Newest)"
+        },
+        "range": {
+            "from": "From",
+            "to": "To"
         }
     },
     "product": {
