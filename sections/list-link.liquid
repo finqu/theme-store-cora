@@ -82,83 +82,269 @@
                     "en": "Content",
                     "fi": "Sisältö"
                 },
-                "settings": [
-                    {
-                        "id": "sectionTitle",
-                        "type": "text",
-                        "label": {
-                            "en": "Title",
-                            "fi": "Otsikko"
-                        }
-                    },
-                    {
-                        "id": "sectionTitleTag",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Heading SEO priority",
-                            "fi": "Otsikon SEO-prioriteetti"
-                        },
-                        "default": "h3",
-                        "options": [
-                            {
-                                "value": "h3",
-                                "label": "H3"
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Content",
+                                "fi": "Sisältö"
                             },
-                            {
-                                "value": "span",
-                                "label": {
-                                    "en": "Text",
-                                    "fi": "Teksti"
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Heading",
+                                        "fi": "Otsikko"
+                                    }
+                                },
+                                {
+                                    "id": "sectionTitle",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Heading text",
+                                        "fi": "Otsikon teksti"
+                                    }
+                                },
+                                {
+                                    "id": "sectionHeaderTextAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Heading text align",
+                                        "fi": "Otsikon tekstin tasaus"
+                                    },
+                                    "default": "left",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Layout",
+                                        "fi": "Asettelu"
+                                    }
+                                },
+                                {
+                                    "id": "menu",
+                                    "type": "menu",
+                                    "label": {
+                                        "en": "Menu",
+                                        "fi": "Valikko"
+                                    }
+                                },
+                                {
+                                    "id": "colsPerRow",
+                                    "label": {
+                                        "en": "Columns per row",
+                                        "fi": "Sarakkeita per rivi"
+                                    },
+                                    "type": "range",
+                                    "min": 1,
+                                    "max": 5,
+                                    "step": 1,
+                                    "default": 2,
+                                    "unit": " "
                                 }
-                            }
-                        ],
-                        "conditions": ["title:length gt 0"]
-                    },
-                    {
-                        "id": "sectionHeaderTextAlign",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Heading text align",
-                            "fi": "Otsikon tekstin tasaus"
+                            ]
                         },
-                        "default": "left",
-                        "options": [
-                            {
-                                "value": "left",
-                                "label": "{# icon.alignLeftLight #}"
+                        {
+                            "title": {
+                                "en": "Settings",
+                                "fi": "Asetukset"
                             },
-                            {
-                                "value": "center",
-                                "label": "{# icon.alignCenterLight #}"
-                            },
-                            {
-                                "value": "right",
-                                "label": "{# icon.alignRightLight #}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "menu",
-                        "type": "menu",
-                        "label": {
-                            "en": "Menu",
-                            "fi": "Navigaatio"
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Seo",
+                                        "fi": "Seo"
+                                    }
+                                },
+                                {
+                                    "id": "sectionTitleTag",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Heading SEO priority",
+                                        "fi": "Otsikon SEO-prioriteetti"
+                                    },
+                                    "default": "h3",
+                                    "options": [
+                                        {
+                                            "value": "h3",
+                                            "label": "H3"
+                                        },
+                                        {
+                                            "value": "span",
+                                            "label": {
+                                                "en": "Text",
+                                                "fi": "Teksti"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Section",
+                                        "fi": "Osio"
+                                    }
+                                },
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        },
+                                        {
+                                            "value": "custom",
+                                            "label": "{# icon.pencilRegular #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionHeightCustomTop",
+                                    "label": {
+                                        "en": "Top height",
+                                        "fi": "Yläosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionHeightCustomBottom",
+                                    "label": {
+                                        "en": "Bottom height",
+                                        "fi": "Alaosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 5,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Inner spacing",
+                                        "fi": "Sisäinen tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content area width",
+                                        "fi": "Sisältöalueen leveys"
+                                    },
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content area alignment",
+                                        "fi": "Sisältöalueen ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
-                    },
-                    {
-                        "id": "colsPerRow",
-                        "label": {
-                            "en": "Columns per row",
-                            "fi": "Sarakkeita per rivi"
-                        },
-                        "type": "range",
-                        "min": 1,
-                        "max": 5,
-                        "step": 1,
-                        "default": 2,
-                        "unit": " "
-                    }
-                ]
+                    ]
+                }
             },
             {
                 "title": {
@@ -318,154 +504,6 @@
                                     },
                                     "default": "#ffffff",
                                     "conditions": ["sectionColumnBgColorStatus:truthy eq true"]
-                                }
-                            ]
-                        },
-                        {
-                            "title": {
-                                "en": "Settings",
-                                "fi": "Asetukset"
-                            },
-                            "settings": [
-                                {
-                                    "id": "sectionHeight",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Height",
-                                        "fi": "Korkeus"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        },
-                                        {
-                                            "value": "xl",
-                                            "label": "XL"
-                                        },
-                                        {
-                                            "value": "custom",
-                                            "label": "{# icon.pencilRegular #}"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionHeightCustomTop",
-                                    "label": {
-                                        "en": "Top height",
-                                        "fi": "Yläosan korkeus"
-                                    },
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 100,
-                                    "step": 10,
-                                    "default": "0",
-                                    "unit": "px",
-                                    "conditions": ["sectionHeight eq custom"]
-                                },
-                                {
-                                    "id": "sectionHeightCustomBottom",
-                                    "label": {
-                                        "en": "Bottom height",
-                                        "fi": "Alaosan korkeus"
-                                    },
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 100,
-                                    "step": 5,
-                                    "default": "0",
-                                    "unit": "px",
-                                    "conditions": ["sectionHeight eq custom"]
-                                },
-                                {
-                                    "id": "sectionInnerSpacing",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Inner spacing",
-                                        "fi": "Sisäinen tilavuus"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "off",
-                                            "label": "OFF"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentWidth",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content width",
-                                        "fi": "Sisällön leveys"
-                                    },
-                                    "default": "12",
-                                    "options": [
-                                        {
-                                            "value": "6",
-                                            "label": "50 %"
-                                        },
-                                        {
-                                            "value": "9",
-                                            "label": "75 %"
-                                        },
-                                        {
-                                            "value": "12",
-                                            "label": "100 %"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentAlign",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content alignment",
-                                        "fi": "Sisällön ryhmittyminen"
-                                    },
-                                    "default": "center",
-                                    "options": [
-                                        {
-                                            "value": "left",
-                                            "label": "{# icon.alignLeftLight #}"
-                                        },
-                                        {
-                                            "value": "center",
-                                            "label": "{# icon.alignCenterLight #}"
-                                        },
-                                        {
-                                            "value": "right",
-                                            "label": "{# icon.alignRightLight #}"
-                                        }
-                                    ]
                                 }
                             ]
                         }

@@ -430,254 +430,473 @@
                     "en": "General",
                     "fi": "Yleinen"
                 },
-                "settings": [
-                    {
-                        "id": "contentColumnArrangement",
-                        "type": "select",
-                        "label": {
-                            "en": "Column arrangement",
-                            "fi": "Sarakejärjestely"
+                "settings": {
+                    "list_type": "tabs",
+                    "groups": [
+                        {
+                            "title": {
+                                "en": "Content",
+                                "fi": "Sisältö"
+                            },
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Layout",
+                                        "fi": "Asettelu"
+                                    }
+                                },
+                                {
+                                    "id": "contentColumnArrangement",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Columns",
+                                        "fi": "Sarakkeet"
+                                    },
+                                    "default": "6,6",
+                                    "options": [
+                                        {
+                                            "value": "6,6",
+                                            "label": "6 | 6"
+                                        },
+                                        {
+                                            "value": "4,8",
+                                            "label": "4 | 8"
+                                        },
+                                        {
+                                            "value": "8,4",
+                                            "label": "8 | 4"
+                                        },
+                                        {
+                                            "value": "5,7",
+                                            "label": "5 | 7"
+                                        },
+                                        {
+                                            "value": "7,5",
+                                            "label": "7 | 5"
+                                        },
+                                        {
+                                            "value": "3,9",
+                                            "label": "3 | 9"
+                                        },
+                                        {
+                                            "value": "9,3",
+                                            "label": "9 | 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "contentImgSide",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Image side",
+                                        "fi": "Kuvan puoli"
+                                    },
+                                    "default": "left",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "contentImgAspectRatio",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Aspect ratio",
+                                        "fi": "Kuvasuhde"
+                                    },
+                                    "default": "1:1",
+                                    "options": [
+                                        {
+                                            "value": "off",
+                                            "label": {
+                                                "en": "Original",
+                                                "fi": "Alkuperäinen"
+                                            }
+                                        },
+                                        {
+                                            "value": "16:9",
+                                            "label": "16:9"
+                                        },
+                                        {
+                                            "value": "9:13",
+                                            "label": "9:13"
+                                        },
+                                        {
+                                            "value": "4:3",
+                                            "label": "4:3"
+                                        },
+                                        {
+                                            "value": "1:1",
+                                            "label": "1:1"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "contentImgFit",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Image area fill",
+                                        "fi": "Kuva-alueen täyttö"
+                                    },
+                                    "default": false,
+                                    "conditions": ["!contentImgAspectRatio eq off"]
+                                },
+                                {
+                                    "id": "contentImgAlt",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Image alt",
+                                        "fi": "Kuvan alt-teksti"
+                                    }
+                                },
+                                {
+                                    "id": "contentImgEffect",
+                                    "type": "select",
+                                    "label": {
+                                        "en": "Image effect",
+                                        "fi": "Kuvan effekti"
+                                    },
+                                    "default": "none",
+                                    "options": [
+                                        {
+                                            "value": "none",
+                                            "label": {
+                                                "en": "None",
+                                                "fi": "Ei mitään"
+                                            }
+                                        },
+                                        {
+                                            "value": "rounded",
+                                            "label": {
+                                                "en": "Rounded",
+                                                "fi": "Pyöristetty"
+                                            }
+                                        },
+                                        {
+                                            "value": "rounded-circle",
+                                            "label": {
+                                                "en": "Circle",
+                                                "fi": "Ympyrä"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "contentImgAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Image align",
+                                        "fi": "Kuvan tasaus"
+                                    },
+                                    "default": "middle",
+                                    "options": [
+                                        {
+                                            "value": "top",
+                                            "label": "{# icon.alignTopLight #}"
+                                        },
+                                        {
+                                            "value": "middle",
+                                            "label": "{# icon.alignMiddleLight #}"
+                                        },
+                                        {
+                                            "value": "bottom",
+                                            "label": "{# icon.alignBottomLight #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "contentRichtextAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Text align",
+                                        "fi": "Tekstin tasaus"
+                                    },
+                                    "default": "middle",
+                                    "options": [
+                                        {
+                                            "value": "top",
+                                            "label": "{# icon.alignTopLight #}"
+                                        },
+                                        {
+                                            "value": "middle",
+                                            "label": "{# icon.alignMiddleLight #}"
+                                        },
+                                        {
+                                            "value": "bottom",
+                                            "label": "{# icon.alignBottomLight #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "contentImgSrc",
+                                    "type": "image-picker",
+                                    "inline": "true"
+                                },
+                                {
+                                    "id": "contentRichtextHtml",
+                                    "type": "richtext",
+                                    "inline": "true"
+                                }
+                            ]
                         },
-                        "default": "6,6",
-                        "options": [
-                            {
-                                "value": "6,6",
-                                "label": "6 | 6"
+                        {
+                            "title": {
+                                "en": "Button",
+                                "fi": "Painike"
                             },
-                            {
-                                "value": "4,8",
-                                "label": "4 | 8"
-                            },
-                            {
-                                "value": "8,4",
-                                "label": "8 | 4"
-                            },
-                            {
-                                "value": "5,7",
-                                "label": "5 | 7"
-                            },
-                            {
-                                "value": "7,5",
-                                "label": "7 | 5"
-                            },
-                            {
-                                "value": "3,9",
-                                "label": "3 | 9"
-                            },
-                            {
-                                "value": "9,3",
-                                "label": "9 | 3"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentImgSide",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Image side",
-                            "fi": "Kuvan puoli"
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Button",
+                                        "fi": "Painike"
+                                    }
+                                },
+                                {
+                                    "id": "contentBtnLabel",
+                                    "type": "text",
+                                    "label": {
+                                        "en": "Text",
+                                        "fi": "Teksti"
+                                    }
+                                },
+                                {
+                                    "id": "contentBtnResource",
+                                    "type": "url",
+                                    "label": {
+                                        "en": "Link",
+                                        "fi": "Linkki"
+                                    }
+                                },
+                                {
+                                    "id": "contentBtnStyle",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Style",
+                                        "fi": "Tyyli"
+                                    },
+                                    "default": "btn1",
+                                    "options": [
+                                        {
+                                            "value": "btn1",
+                                            "label": {
+                                                "en": "Button 1",
+                                                "fi": "Nappi 1"
+                                            }
+                                        },
+                                        {
+                                            "value": "btn2",
+                                            "label": {
+                                                "en": "Button 2",
+                                                "fi": "Nappi 2"
+                                            }
+                                        },
+                                        {
+                                            "value": "link",
+                                            "label": {
+                                                "en": "Link",
+                                                "fi": "Linkki"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
                         },
-                        "default": "left",
-                        "options": [
-                            {
-                                "value": "left",
-                                "label": "{# icon.alignLeftLight #}"
+                        {
+                            "title": {
+                                "en": "Settings",
+                                "fi": "Asetukset"
                             },
-                            {
-                                "value": "right",
-                                "label": "{# icon.alignRightLight #}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentImgAlign",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Image align",
-                            "fi": "Kuvan tasaus"
-                        },
-                        "default": "middle",
-                        "options": [
-                            {
-                                "value": "top",
-                                "label": "{# icon.alignTopLight #}"
-                            },
-                            {
-                                "value": "middle",
-                                "label": "{# icon.alignMiddleLight #}"
-                            },
-                            {
-                                "value": "bottom",
-                                "label": "{# icon.alignBottomLight #}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentImgAlt",
-                        "type": "text",
-                        "label": {
-                            "en": "Image alt",
-                            "fi": "Kuvan alt-teksti"
+                            "settings": [
+                                {
+                                    "type": "title",
+                                    "label": {
+                                        "en": "Section",
+                                        "fi": "Osio"
+                                    }
+                                },
+                                {
+                                    "id": "sectionHeight",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Height",
+                                        "fi": "Korkeus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        },
+                                        {
+                                            "value": "custom",
+                                            "label": "{# icon.pencilRegular #}"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionHeightCustomTop",
+                                    "label": {
+                                        "en": "Top height",
+                                        "fi": "Yläosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 10,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionHeightCustomBottom",
+                                    "label": {
+                                        "en": "Bottom height",
+                                        "fi": "Alaosan korkeus"
+                                    },
+                                    "type": "range",
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 5,
+                                    "default": "0",
+                                    "unit": "px",
+                                    "conditions": ["sectionHeight eq custom"]
+                                },
+                                {
+                                    "id": "sectionInnerSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Inner spacing",
+                                        "fi": "Sisäinen tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "label": "OFF"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentSpacing",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content spacing",
+                                        "fi": "Sisällön tilavuus"
+                                    },
+                                    "default": "",
+                                    "options": [
+                                        {
+                                            "value": "",
+                                            "label": "Auto"
+                                        },
+                                        {
+                                            "value": "sm",
+                                            "label": "S"
+                                        },
+                                        {
+                                            "value": "md",
+                                            "label": "M"
+                                        },
+                                        {
+                                            "value": "lg",
+                                            "label": "L"
+                                        },
+                                        {
+                                            "value": "xl",
+                                            "label": "XL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentWidth",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content area width",
+                                        "fi": "Sisältöalueen leveys"
+                                    },
+                                    "default": "12",
+                                    "options": [
+                                        {
+                                            "value": "6",
+                                            "label": "50 %"
+                                        },
+                                        {
+                                            "value": "9",
+                                            "label": "75 %"
+                                        },
+                                        {
+                                            "value": "12",
+                                            "label": "100 %"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "sectionContentAlign",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Content area alignment",
+                                        "fi": "Sisältöalueen ryhmittyminen"
+                                    },
+                                    "default": "center",
+                                    "options": [
+                                        {
+                                            "value": "left",
+                                            "label": "{# icon.alignLeftLight #}"
+                                        },
+                                        {
+                                            "value": "center",
+                                            "label": "{# icon.alignCenterLight #}"
+                                        },
+                                        {
+                                            "value": "right",
+                                            "label": "{# icon.alignRightLight #}"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
-                    },
-                    {
-                        "id": "contentImgEffect",
-                        "type": "select",
-                        "label": {
-                            "en": "Image effect",
-                            "fi": "Kuvan effekti"
-                        },
-                        "default": "none",
-                        "options": [
-                            {
-                                "value": "none",
-                                "label": {
-                                    "en": "None",
-                                    "fi": "Ei mitään"
-                                }
-                            },
-                            {
-                                "value": "rounded",
-                                "label": {
-                                    "en": "Rounded",
-                                    "fi": "Pyöristetty"
-                                }
-                            },
-                            {
-                                "value": "rounded-circle",
-                                "label": {
-                                    "en": "Circle",
-                                    "fi": "Ympyrä"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentImgAspectRatio",
-                        "type": "select",
-                        "label": {
-                            "en": "Aspect ratio",
-                            "fi": "Kuvasuhde"
-                        },
-                        "default": "1:1",
-                        "options": [
-                            {
-                                "value": "off",
-                                "label": {
-                                    "en": "Original",
-                                    "fi": "Alkuperäinen"
-                                }
-                            },
-                            {
-                                "value": "16:9",
-                                "label": "16:9"
-                            },
-                            {
-                                "value": "9:13",
-                                "label": "9:13"
-                            },
-                            {
-                                "value": "4:3",
-                                "label": "4:3"
-                            },
-                            {
-                                "value": "1:1",
-                                "label": "1:1"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentImgFit",
-                        "type": "checkbox",
-                        "label": {
-                            "en": "Image area fill",
-                            "fi": "Kuva-alueen täyttö"
-                        },
-                        "default": false,
-                        "conditions": ["!contentImgAspectRatio eq off"]
-                    },
-                    {
-                        "id": "contentRichtextAlign",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Text align",
-                            "fi": "Tekstin tasaus"
-                        },
-                        "default": "middle",
-                        "options": [
-                            {
-                                "value": "top",
-                                "label": "{# icon.alignTopLight #}"
-                            },
-                            {
-                                "value": "middle",
-                                "label": "{# icon.alignMiddleLight #}"
-                            },
-                            {
-                                "value": "bottom",
-                                "label": "{# icon.alignBottomLight #}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentBtnLabel",
-                        "type": "text",
-                        "label": {
-                            "en": "Button label",
-                            "fi": "Napin teksti"
-                        }
-                    },
-                    {
-                        "id": "contentBtnResource",
-                        "type": "url",
-                        "label": {
-                            "en": "Button link",
-                            "fi": "Napin linkki"
-                        }
-                    },
-                    {
-                        "id": "contentBtnStyle",
-                        "type": "radio-pill",
-                        "label": {
-                            "en": "Button style",
-                            "fi": "Napin tyyli"
-                        },
-                        "default": "btn1",
-                        "options": [
-                            {
-                                "value": "btn1",
-                                "label": {
-                                    "en": "Button 1",
-                                    "fi": "Nappi 1"
-                                }
-                            },
-                            {
-                                "value": "btn2",
-                                "label": {
-                                    "en": "Button 2",
-                                    "fi": "Nappi 2"
-                                }
-                            },
-                            {
-                                "value": "link",
-                                "label": {
-                                    "en": "Link",
-                                    "fi": "Linkki"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "id": "contentImgSrc",
-                        "type": "image-picker",
-                        "inline": "true"
-                    },
-                    {
-                        "id": "contentRichtextHtml",
-                        "type": "richtext",
-                        "inline": "true"
-                    }
-                ]
+                    ]
+                }
             },
             {
                 "title": {
@@ -837,185 +1056,6 @@
                                     },
                                     "default": "#ffffff",
                                     "conditions": ["sectionContentBgColorStatus:truthy eq true"]
-                                }
-                            ]
-                        },
-                        {
-                            "title": {
-                                "en": "Settings",
-                                "fi": "Asetukset"
-                            },
-                            "settings": [
-                                {
-                                    "id": "sectionHeight",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Height",
-                                        "fi": "Korkeus"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        },
-                                        {
-                                            "value": "xl",
-                                            "label": "XL"
-                                        },
-                                        {
-                                            "value": "custom",
-                                            "label": "{# icon.pencilRegular #}"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionHeightCustomTop",
-                                    "label": {
-                                        "en": "Top height",
-                                        "fi": "Yläosan korkeus"
-                                    },
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 100,
-                                    "step": 10,
-                                    "default": "0",
-                                    "unit": "px",
-                                    "conditions": ["sectionHeight eq custom"]
-                                },
-                                {
-                                    "id": "sectionHeightCustomBottom",
-                                    "label": {
-                                        "en": "Bottom height",
-                                        "fi": "Alaosan korkeus"
-                                    },
-                                    "type": "range",
-                                    "min": 0,
-                                    "max": 100,
-                                    "step": 5,
-                                    "default": "0",
-                                    "unit": "px",
-                                    "conditions": ["sectionHeight eq custom"]
-                                },
-                                {
-                                    "id": "sectionInnerSpacing",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Inner spacing",
-                                        "fi": "Sisäinen tilavuus"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "off",
-                                            "label": "OFF"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentSpacing",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content spacing",
-                                        "fi": "Sisällön tilavuus"
-                                    },
-                                    "default": "",
-                                    "options": [
-                                        {
-                                            "value": "",
-                                            "label": "Auto"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        },
-                                        {
-                                            "value": "xl",
-                                            "label": "XL"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentWidth",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content width",
-                                        "fi": "Sisällön leveys"
-                                    },
-                                    "default": "12",
-                                    "options": [
-                                        {
-                                            "value": "6",
-                                            "label": "50 %"
-                                        },
-                                        {
-                                            "value": "9",
-                                            "label": "75 %"
-                                        },
-                                        {
-                                            "value": "12",
-                                            "label": "100 %"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "sectionContentAlign",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Content alignment",
-                                        "fi": "Sisällön ryhmittyminen"
-                                    },
-                                    "default": "center",
-                                    "options": [
-                                        {
-                                            "value": "left",
-                                            "label": "{# icon.alignLeftLight #}"
-                                        },
-                                        {
-                                            "value": "center",
-                                            "label": "{# icon.alignCenterLight #}"
-                                        },
-                                        {
-                                            "value": "right",
-                                            "label": "{# icon.alignRightLight #}"
-                                        }
-                                    ]
                                 }
                             ]
                         }

@@ -120,21 +120,35 @@
 
                             {% elsif filter.type == 'range' %}
 
-                                <div class="row">
+                                <div class="range-filter">
 
-                                    <div class="col">
+                                    <div class="text-center mb-2">
 
-                                        <label>{{ 'filters.range.from' | t }}</label>
+                                        <span class="h5" data-range-slider-min-text>
+                                            {{ filter.min_value.value | default: filter.range_min }}
+                                        </span>
 
-                                        <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                        <span class="h5 mx-2">-</span>
+
+                                        <span class="h5" data-range-slider-max-text>
+                                            {{ filter.max_value.value | default: filter.range_max }}
+                                        </span>
 
                                     </div>
 
-                                    <div class="col">
+                                    <div class="range-slider-container">
 
-                                        <label>{{ 'filters.range.to' | t }}</label>
+                                        <input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                        <input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
 
-                                        <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+                                        <div class="range-slider"
+                                            data-range-slider-min-name="{{ filter.min_value.param_name }}"
+                                            data-range-slider-min-default="{{ filter.min_value.value | default: filter.range_min }}"
+                                            data-range-slider-min-value="{{ filter.range_min }}"
+                                            data-range-slider-max-name="{{ filter.max_value.param_name }}"
+                                            data-range-slider-max-default="{{ filter.max_value.value | default: filter.range_max }}"
+                                            data-range-slider-max-value="{{ filter.range_max }}">
+                                        </div>
 
                                     </div>
 
@@ -418,21 +432,35 @@
 
                                     {% elsif filter.type == 'range' %}
 
-                                        <div class="row">
+                                        <div class="range-filter">
 
-                                            <div class="col">
+                                            <div class="text-center mb-2">
 
-                                                <label>{{ 'filters.range.from' | t }}</label>
+                                                <span class="h5" data-range-slider-min-text>
+                                                    {{ filter.min_value.value | default: filter.range_min }}
+                                                </span>
 
-                                                <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                                <span class="h5 mx-2">-</span>
+
+                                                <span class="h5" data-range-slider-max-text>
+                                                    {{ filter.max_value.value | default: filter.range_max }}
+                                                </span>
 
                                             </div>
 
-                                            <div class="col">
+                                            <div class="range-slider-container">
 
-                                                <label>{{ 'filters.range.to' | t }}</label>
+                                                <input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
+                                                <input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
 
-                                                <input class="form-control" type="number" min="{{ filter.range_min }}" max="{{ filter.range_max }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+                                                <div class="range-slider"
+                                                    data-range-slider-min-name="{{ filter.min_value.param_name }}"
+                                                    data-range-slider-min-default="{{ filter.min_value.value | default: filter.range_min }}"
+                                                    data-range-slider-min-value="{{ filter.range_min }}"
+                                                    data-range-slider-max-name="{{ filter.max_value.param_name }}"
+                                                    data-range-slider-max-default="{{ filter.max_value.value | default: filter.range_max }}"
+                                                    data-range-slider-max-value="{{ filter.range_max }}">
+                                                </div>
 
                                             </div>
 
