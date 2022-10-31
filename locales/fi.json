@@ -378,10 +378,10 @@
         "success": "Viesti lähetettiin onnistuneesti."
     },
     "cookie_policy": {
-        "content": "Käytämme evästeitä tukeaksemme käyttökokemustasi sivuillamme.",
+        "content": "Käytämme evästeitä tukeaksemme käyttökokemustasi sivuillamme. Hyväksy jatkaaksesi.",
         "required_cta": "Vain välttämättömät",
         "all_cta": "Hyväksy kaikki",
-        "read_privacy_policy": "Lue tietosuojaseloste",
+        "privacy_policy": "Tietosuojaseloste",
         "cookie_settings": "Evästeasetukset"
     }
 }

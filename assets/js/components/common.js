@@ -2134,11 +2134,7 @@ export default {
         }
 
         if (themeApp.data.cookiePolicy === null) {
-
             document.body.classList.add('cookie-policy-visible');
-            cookiePolicyEl.classList.remove('d-none');
-
-            themeApp.utils.animate(cookiePolicyEl, 'slideInUp');
         }
 
         const cookiePolicyCloseEl = cookiePolicyEl.querySelector('[data-cookie-policy-close]');
@@ -2151,11 +2147,8 @@ export default {
 
             cookiePolicyCloseEl.addEventListener('click', (e) => {
 
-                themeApp.utils.animate(cookiePolicyEl, 'slideOutDown').then(() => {
-
-                    document.body.classList.remove('cookie-policy-visible');
-                    cookiePolicyEl.classList.add('d-none');
-                });
+                document.body.classList.remove('cookie-policy-visible');
+                cookiePolicyEl.classList.add('d-none');
             });
         }
 
@@ -2168,9 +2161,7 @@ export default {
                 }
 
                 cookiePolicyEl.classList.remove('d-none');
-
                 document.body.classList.add('cookie-policy-visible');
-                themeApp.utils.animate(cookiePolicyEl, 'slideInUp');
             })});
         }
 
@@ -2179,7 +2170,6 @@ export default {
             cookiePolicySubmitEls.forEach(el => { el.addEventListener('click', e => {
 
                cookiePolicyInputEl.setAttribute('value', el.value);
-
                cookiePolicyFormEl.submit();
             })});
         }

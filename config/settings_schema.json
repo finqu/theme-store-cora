@@ -289,6 +289,38 @@
 				"fi": "Näytä kirjoittaja"
 			},
 			"default": false
+		},
+		{
+			"type": "title",
+			"label": {
+				"en": "Cookies notification",
+				"fi": "Evästeilmoitus"
+			}
+		},
+		{
+			"id": "cookiesNotificationPosition",
+			"type": "radio-pill",
+			"label": {
+				"en": "Position",
+				"fi": "Sijainti"
+			},
+			"default": "down",
+			"options": [
+				{
+					"value": "middle",
+					"label": {
+						"en": "Middle",
+						"fi": "Keskellä"
+					}
+				},
+				{
+					"value": "down",
+					"label": {
+						"en": "Down",
+						"fi": "Alhaalla"
+					}
+				}
+			]
 		}
 	],
 	"settings": [
@@ -2466,6 +2498,41 @@
 						"fi": "Näytä kirjoittaja"
 					},
 					"default": false
+				},
+				{
+					"type": "spacer"
+				},
+				{
+					"type": "title",
+					"label": {
+						"en": "Cookies notification",
+						"fi": "Evästeilmoitus"
+					}
+				},
+				{
+					"id": "cookiesNotificationPosition",
+					"type": "radio-pill",
+					"label": {
+						"en": "Position",
+						"fi": "Sijainti"
+					},
+					"default": "down",
+					"options": [
+						{
+							"value": "middle",
+							"label": {
+								"en": "Middle",
+								"fi": "Keskellä"
+							}
+						},
+						{
+							"value": "down",
+							"label": {
+								"en": "Down",
+								"fi": "Alhaalla"
+							}
+						}
+					]
 				}
 			]
 		},

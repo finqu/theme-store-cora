@@ -31,6 +31,7 @@
 		hasPrivacyPolicy: {{ store.privacy_policy | yepnope: 'true', 'false' }},
 		cookiePolicy: {{ session.cookie_policy | json }},
 		backToTopButton: {{ settings.backToTopButton | json }},
+		cookiesNotificationPosition: {{ settings.cookiesNotificationPosition | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
 			decimalPlaces: {{ store.currency.decimal_places | json }}
@@ -80,7 +81,7 @@
 			cookie_notification: {
 				content: {{ 'cookie_notification.content' | t | json }},
 				cta: {{ 'cookie_notification.cta' | t | json }},
-				read_privacy_policy: {{ 'cookie_notification.read_privacy_policy' | t | json }}
+				privacy_policy: {{ 'cookie_notification.privacy_policy' | t | json }}
 			},
 			error: {
 				general: {{ 'error.general' | t | json }},

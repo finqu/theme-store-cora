@@ -2381,44 +2381,77 @@ body {
 // Cookie policy
 .cookie-policy {
     position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 6;
+
+    &.cookie-policy-position-middle {
+        top: 0;
+        left: 0;
+        transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+        max-width: 400px;
+    }
+
+    &.cookie-policy-position-down {
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        @include media-breakpoint-down(md) {
+            #cookie-policy-required-cta,
+            #cookie-policy-all-cta {
+                flex: 1;
+                white-space: normal;
+            }
+        }
+    }
 
     .cookie-policy-inner {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
         width: 100%;
         overflow: hidden;
-        padding: spacer(3) spacer(4);
-        background-color: rgba(section-var(background_color, section-vars('darkest')), .80);
+        padding: spacer(5) spacer(4);
+        background-color: section-var(background_color, section-vars('darkest'));
         color: section-var(text_color, section-vars('darkest'));
         font-size: $font-size-base * 0.95;
         @include media-breakpoint-down(md) {
-            flex-direction: column;
-            align-items: unset;
             font-size: $font-size-base * 0.85;
         }
 
+        .cookie-policy-link {
+            transition: border .15s ease-in-out;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            margin-bottom: -4px;
+            color: section-var(link_color, section-vars('darkest'));
+            @include hover() {
+                color: section-var(link_color, section-vars('darkest'));
+                border-bottom-color: section-var(indicator_color, section-vars('darkest'));
+            }
+        }
+
+        .cookie-policy-link-container {
+            margin-top: spacer(4);
+
+            a {
+                text-decoration: underline;
+                color: section-var(link_color, section-vars('darkest'));
+                @include hover() {
+                    color: section-var(link_color, section-vars('darkest'));
+                }
+            }
+        }
+
         .cookie-policy-content {
+            text-align: center;
             flex: 1;
             @include media-breakpoint-down(md) {
                 margin-bottom: spacer(5);
             }
 
-            .cookie-policy-link {
-                transition: border .15s ease-in-out;
-                border-bottom: 2px solid transparent;
-                padding-bottom: 2px;
-                margin-bottom: -4px;
-                color: section-var(link_color, section-vars('darkest'));
-                @include hover() {
-                    color: section-var(link_color, section-vars('darkest'));
-                    border-bottom-color: section-var(indicator_color, section-vars('darkest'));
-                }
+            .cookie-policy-text {
+                font-weight: $font-weight-bold;
             }
         }
 
@@ -2426,6 +2459,7 @@ body {
             display: flex;
             align-items: center;
             align-content: space-between;
+            margin-top: spacer(4);
             @include media-breakpoint-down(md) {
                 flex: 1;
             }
@@ -2443,20 +2477,12 @@ body {
                     color: section-var(text_color, section-vars('darkest'));
                     border-bottom-color: section-var(text_color, section-vars('darkest'));
                 }
-                @include media-breakpoint-down(md) {
-                    flex: 1;
-                    white-space: normal;
-                }
             }
 
             #cookie-policy-all-cta {
                 @include section-button-outline-variant(section-var(button_bg_color, section-vars('darkest')), section-var(button_text_color, section-vars('darkest')));
                 min-width: 140px;
                 white-space: nowrap;
-                @include media-breakpoint-down(md) {
-                    flex: 1;
-                    white-space: normal;
-                }
             }
         }
     }
