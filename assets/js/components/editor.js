@@ -28,6 +28,10 @@ export default {
                 new ProductCarousel(el);
             }
 
+            for (const el of e.target.querySelectorAll('.category-carousel')) {
+                new ProductCarousel(el);
+            }
+
             if (e.target.classList.contains('section-carousel')) {
                 new Carousel(e.target);
             }
@@ -36,6 +40,16 @@ export default {
         document.addEventListener('finqu:section:unload', (e) => {
 
             for (const el of e.target.querySelectorAll('.product-carousel')) {
+
+                const swiperEl = el.querySelector('.swiper');
+                const swiper = swiperEl.swiper;
+
+                if (swiperEl && swiper) {
+                    swiper.destroy();
+                }
+            }
+
+            for (const el of e.target.querySelectorAll('.category-carousel')) {
 
                 const swiperEl = el.querySelector('.swiper');
                 const swiper = swiperEl.swiper;
