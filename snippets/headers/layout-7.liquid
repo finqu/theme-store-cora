@@ -50,7 +50,7 @@
             }
 
             .section-site-header.finqu-section {
-                position: absolute{% if request.design_mode %} !important{% endif %};
+                position: absolute{% if request.design_mode == 'edit' %} !important{% endif %};
                 left: 0;
                 top: 0;
                 right: 0;
@@ -58,7 +58,7 @@
             }
 
             .section-site-header.finqu-section + .finqu-sections-container > .section:first-child > .finqu-editor-ui {
-                position: absolute{% if request.design_mode %} !important{% endif %};
+                position: absolute{% if request.design_mode == 'edit' %} !important{% endif %};
                 left: 0;
                 top: 150px;
                 right: 0;

@@ -15,7 +15,7 @@
 
 <script>
 	window.store = {
-		designMode: {{ request.design_mode | yepnope: 'true', 'false' }},
+		designMode: {{ request.design_mode | json }},
 		locale: {{ locale | json }},
 		cartAddNotify: {{ settings.addToCartNotification | json }},
 		customerAccountsEnabled: {{ store.customer_accounts_enabled | json }},

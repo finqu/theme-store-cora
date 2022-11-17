@@ -272,7 +272,7 @@ export default class App {
 
 	init() {
 
-		if (this.data.designMode) {
+		if (this.data.designMode === 'edit') {
         	editor.init();
         }
 

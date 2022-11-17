@@ -19,7 +19,7 @@ export default {
 
         const bodyEl = document.querySelector('body');
 
-        if (!themeApp.data.designMode) {
+        if (themeApp.data.designMode !== 'edit') {
 
             for (const el of document.querySelectorAll('.section-image-carousel')) {
                 new ImageCarousel(el);
@@ -1862,7 +1862,7 @@ export default {
                 });
             }
 
-            if (window.themeApp.data.designMode === false) {
+            if (window.themeApp.data.designMode !== 'edit') {
 			    const productMediaGallery = new Gallery(productMainMediaSwiperEl);
             }
 
