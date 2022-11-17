@@ -120,6 +120,7 @@
     },
     "product": {
         "description": "Tuotekuvaus",
+        "lowest_price_dynamic": "Alin hinta viimeiset 30 päivää {{ amount }}",
         "vat_included_dynamic": "sis. {{ amount }} % ALV",
         "discount_dynamic": "{{ amount }} % alennus",
         "attachments": "Liitteet",

@@ -120,6 +120,7 @@
     },
     "product": {
         "description": "Description",
+        "lowest_price_dynamic": "Lowest price in the last 30 days {{ amount }}",
         "vat_included_dynamic": "incl. {{ amount }} % VAT",
         "discount_dynamic": "{{ amount }} % discount",
         "attachments": "Attachments",

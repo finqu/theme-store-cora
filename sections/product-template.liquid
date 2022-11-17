@@ -815,6 +815,16 @@
 
                             </div>
 
+                            {% if section.settings.showLowestPrice and product.previous_lower_price %}
+
+                                {% assign itemLowestPrice = product.previous_lower_price.price | in_currency %}
+
+                                <div class="product-lowest-price">
+                                    {{ 'product.lowest_price_dynamic' | t, amount: itemLowestPrice }}
+                                </div>
+
+                            {% endif %}
+
                             <div class="product-vat">
 
                                 <span class="product-vat-text text-muted">
@@ -1710,6 +1720,15 @@
                             "fi": "Avaa tuotekuvaus oletuksena"
                         },
                         "default": false
+                    },
+                    {
+                        "id": "showLowestPrice",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show the last 30 days lowest sale price",
+                            "fi": "Näytä viimeisen 30 päivän alin myyntihinta"
+                        },
+                        "default": true
                     }
                 ]
             }

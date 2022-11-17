@@ -587,7 +587,8 @@
                             "showProductOptionPrice": true,
                             "showProductOptionTotalPrice": false,
                             "showProductOptionStockBalance": false,
-                            "openProductDescriptionByDefault": true
+                            "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                         },
                         "sticky": true
                     }
@@ -2615,7 +2616,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -3786,7 +3788,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": false,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -4979,7 +4982,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -6215,7 +6219,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -7264,7 +7269,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -9481,7 +9487,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -10650,7 +10657,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": false,
                                 "showProductOptionStockBalance": false,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -11965,7 +11973,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": false,
                                 "showProductOptionStockBalance": false,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
@@ -13211,7 +13220,8 @@
                                 "showProductOptionPrice": true,
                                 "showProductOptionTotalPrice": false,
                                 "showProductOptionStockBalance": false,
-                                "openProductDescriptionByDefault": true
+                                "openProductDescriptionByDefault": true,
+                                "showLowestPrice": true
                             },
                             "sticky": true
                         }
