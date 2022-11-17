@@ -37,17 +37,17 @@
 				{% if articleImage %}
 
 	                {%- assign imgSrc = articleImage | asset_url -%}
-	  				{%- assign imgSizeSm = '248,172' -%}
-	  				{%- assign imgSizeMd = '320,222' -%}
+	  				{%- assign imgSizeSm = '288,212' -%}
+	  				{%- assign imgSizeMd = '360,262' -%}
 
 	  				{%- case itemsPerRow -%}
 
 					    {% when '2' %}
-					        {%- assign imgSizeLg = '640,444' -%}
+					        {%- assign imgSizeLg = '680,484' -%}
 					    {% when '3' %}
-					        {%- assign imgSizeLg = '414,287' -%}
+					        {%- assign imgSizeLg = '454,327' -%}
 					    {% when '4' %}
-					        {%- assign imgSizeLg = '300,248' -%}
+					        {%- assign imgSizeLg = '340,288' -%}
 
 					{%- endcase -%}
 

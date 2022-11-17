@@ -6,45 +6,45 @@
 {%- capture imgColContent -%}
 
     {%- assign imgSrc = section.settings.contentImgSrc -%}
-    {%- assign imgSizeSm = '374,374' -%}
-    {%- assign imgSizeMd = '320,320' -%}
+    {%- assign imgSizeSm = '414,414' -%}
+    {%- assign imgSizeMd = '360,360' -%}
 
     {% if contentImgSide == 'left' %}
 
         {%- case leftColSize -%}
             {% when 6 %}
-                {%- assign imgSizeLg = '630,630' -%}
+                {%- assign imgSizeLg = '670,670' -%}
             {% when 4 %}
-                {%- assign imgSizeLg = '407,407' -%}
+                {%- assign imgSizeLg = '447,447' -%}
             {% when 8 %}
-                {%- assign imgSizeLg = '854,854' -%}
+                {%- assign imgSizeLg = '894,894' -%}
             {% when 5 %}
-                {%- assign imgSizeLg = '519,519' -%}
+                {%- assign imgSizeLg = '559,559' -%}
             {% when 7 %}
-                {%- assign imgSizeLg = '742,742' -%}
+                {%- assign imgSizeLg = '782,782' -%}
             {% when 3 %}
-                {%- assign imgSizeLg = '295,295' -%}
+                {%- assign imgSizeLg = '335,335' -%}
             {% when 9 %}
-                {%- assign imgSizeLg = '965,965' -%}
+                {%- assign imgSizeLg = '1005,1005' -%}
         {%- endcase -%}
 
     {% else %}
 
         {%- case rightColSize -%}
             {% when 6 %}
-                {%- assign imgSizeLg = '630,630' -%}
+                {%- assign imgSizeLg = '670,670' -%}
             {% when 4 %}
-                {%- assign imgSizeLg = '407,407' -%}
+                {%- assign imgSizeLg = '447,447' -%}
             {% when 8 %}
-                {%- assign imgSizeLg = '854,854' -%}
+                {%- assign imgSizeLg = '894,894' -%}
             {% when 5 %}
-                {%- assign imgSizeLg = '519,519' -%}
+                {%- assign imgSizeLg = '559,559' -%}
             {% when 7 %}
-                {%- assign imgSizeLg = '742,742' -%}
+                {%- assign imgSizeLg = '782,782' -%}
             {% when 3 %}
-                {%- assign imgSizeLg = '295,295' -%}
+                {%- assign imgSizeLg = '335,335' -%}
             {% when 9 %}
-                {%- assign imgSizeLg = '965,965' -%}
+                {%- assign imgSizeLg = '1005,1005' -%}
         {%- endcase -%}
 
     {% endif %}
@@ -90,180 +90,180 @@
 
     {% if section.settings.contentImgAspectRatio == '16:9' %}
 
-        {%- assign imgSizeSm = '374,211' -%}
-        {%- assign imgSizeMd = '320,180' -%}
+        {%- assign imgSizeSm = '414,251' -%}
+        {%- assign imgSizeMd = '360,220' -%}
 
         {% if contentImgSide == 'left' %}
 
             {%- case leftColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,355' -%}
+                    {%- assign imgSizeLg = '670,395' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,229' -%}
+                    {%- assign imgSizeLg = '447,269' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,480' -%}
+                    {%- assign imgSizeLg = '894,520' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,292' -%}
+                    {%- assign imgSizeLg = '559,332' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,418' -%}
+                    {%- assign imgSizeLg = '782,458' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,166' -%}
+                    {%- assign imgSizeLg = '335,206' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,543' -%}
+                    {%- assign imgSizeLg = '1005,583' -%}
             {%- endcase -%}
 
         {% else %}
 
             {%- case rightColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,910' -%}
+                    {%- assign imgSizeLg = '670,950' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,588' -%}
+                    {%- assign imgSizeLg = '447,628' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,1233' -%}
+                    {%- assign imgSizeLg = '894,1273' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,749' -%}
+                    {%- assign imgSizeLg = '559,789' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,1072' -%}
+                    {%- assign imgSizeLg = '782,1112' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,427' -%}
+                    {%- assign imgSizeLg = '335,467' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,1394' -%}
+                    {%- assign imgSizeLg = '1005,1434' -%}
             {%- endcase -%}
 
         {% endif %}
 
     {% elsif section.settings.contentImgAspectRatio == '9:13' %}
 
-        {%- assign imgSizeSm = '374,541' -%}
-        {%- assign imgSizeMd = '320,463' -%}
+        {%- assign imgSizeSm = '414,581' -%}
+        {%- assign imgSizeMd = '360,503' -%}
 
         {% if contentImgSide == 'left' %}
 
             {%- case leftColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,910' -%}
+                    {%- assign imgSizeLg = '670,950' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,588' -%}
+                    {%- assign imgSizeLg = '447,628' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,1233' -%}
+                    {%- assign imgSizeLg = '894,1273' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,749' -%}
+                    {%- assign imgSizeLg = '559,789' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,1072' -%}
+                    {%- assign imgSizeLg = '782,1112' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,427' -%}
+                    {%- assign imgSizeLg = '335,467' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,1394' -%}
+                    {%- assign imgSizeLg = '1005,1414' -%}
             {%- endcase -%}
 
         {% else %}
 
             {%- case rightColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,910' -%}
+                    {%- assign imgSizeLg = '6370,9150' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,588' -%}
+                    {%- assign imgSizeLg = '447,5628' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,1233' -%}
+                    {%- assign imgSizeLg = '894,12373' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,749' -%}
+                    {%- assign imgSizeLg = '559,789' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,1072' -%}
+                    {%- assign imgSizeLg = '7482,1112' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,427' -%}
+                    {%- assign imgSizeLg = '335,467' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,1394' -%}
+                    {%- assign imgSizeLg = '1005,1434' -%}
             {%- endcase -%}
 
         {% endif %}
 
     {% elsif section.settings.contentImgAspectRatio == '4:3' %}
 
-        {%- assign imgSizeSm = '374,281' -%}
-        {%- assign imgSizeMd = '320,240' -%}
+        {%- assign imgSizeSm = '414,321' -%}
+        {%- assign imgSizeMd = '360,280' -%}
 
         {% if contentImgSide == 'left' %}
 
             {%- case leftColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,473' -%}
+                    {%- assign imgSizeLg = '670,513' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,305' -%}
+                    {%- assign imgSizeLg = '447,345' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,640' -%}
+                    {%- assign imgSizeLg = '894,680' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,389' -%}
+                    {%- assign imgSizeLg = '559,429' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,557' -%}
+                    {%- assign imgSizeLg = '782,597' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,222' -%}
+                    {%- assign imgSizeLg = '335,262' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,724' -%}
+                    {%- assign imgSizeLg = '1005,764' -%}
             {%- endcase -%}
 
         {% else %}
 
             {%- case rightColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,473' -%}
+                    {%- assign imgSizeLg = '670,513' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,305' -%}
+                    {%- assign imgSizeLg = '447,345' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,640' -%}
+                    {%- assign imgSizeLg = '894,680' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,389' -%}
+                    {%- assign imgSizeLg = '559,429' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,557' -%}
+                    {%- assign imgSizeLg = '782,597' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,222' -%}
+                    {%- assign imgSizeLg = '335,262' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,724' -%}
+                    {%- assign imgSizeLg = '1005,764' -%}
             {%- endcase -%}
 
         {% endif %}
 
     {% elsif section.settings.contentImgAspectRatio == '1:1' %}
 
-        {%- assign imgSizeSm = '374,374' -%}
-        {%- assign imgSizeMd = '320,320' -%}
+        {%- assign imgSizeSm = '414,414' -%}
+        {%- assign imgSizeMd = '360,360' -%}
 
         {% if contentImgSide == 'left' %}
 
             {%- case leftColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,630' -%}
+                    {%- assign imgSizeLg = '670,670' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,407' -%}
+                    {%- assign imgSizeLg = '447,447' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,854' -%}
+                    {%- assign imgSizeLg = '894,894' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,519' -%}
+                    {%- assign imgSizeLg = '559,559' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,742' -%}
+                    {%- assign imgSizeLg = '782,782' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,295' -%}
+                    {%- assign imgSizeLg = '335,335' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,965' -%}
+                    {%- assign imgSizeLg = '1005,1005' -%}
             {%- endcase -%}
 
         {% else %}
 
             {%- case rightColSize -%}
                 {% when 6 %}
-                    {%- assign imgSizeLg = '630,630' -%}
+                    {%- assign imgSizeLg = '670,670' -%}
                 {% when 4 %}
-                    {%- assign imgSizeLg = '407,407' -%}
+                    {%- assign imgSizeLg = '447,447' -%}
                 {% when 8 %}
-                    {%- assign imgSizeLg = '854,854' -%}
+                    {%- assign imgSizeLg = '894,894' -%}
                 {% when 5 %}
-                    {%- assign imgSizeLg = '519,519' -%}
+                    {%- assign imgSizeLg = '559,559' -%}
                 {% when 7 %}
-                    {%- assign imgSizeLg = '742,742' -%}
+                    {%- assign imgSizeLg = '782,782' -%}
                 {% when 3 %}
-                    {%- assign imgSizeLg = '295,295' -%}
+                    {%- assign imgSizeLg = '335,335' -%}
                 {% when 9 %}
-                    {%- assign imgSizeLg = '965,965' -%}
+                    {%- assign imgSizeLg = '1005,1005' -%}
             {%- endcase -%}
 
         {% endif %}

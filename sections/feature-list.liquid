@@ -21,20 +21,20 @@
 
                     <div{% if item.settings.title or item.settings.description %} class="mb-3"{% endif %}>
 
-                        {%- assign imgSizeSm = '375,375' -%}
-                        {%- assign imgSizeMd = '200,200' -%}
+                        {%- assign imgSizeSm = '415,415' -%}
+                        {%- assign imgSizeMd = '240,240' -%}
 
                         {%- case section.settings.itemsPerRow -%}
                             {% when 2 %}
-                                {%- assign imgSizeLg = '640,640' -%}
+                                {%- assign imgSizeLg = '680,680' -%}
                             {% when 3 %}
-                                {%- assign imgSizeLg = '414,414' -%}
+                                {%- assign imgSizeLg = '454,454' -%}
                             {% when 4 %}
-                                {%- assign imgSizeLg = '280,280' -%}
+                                {%- assign imgSizeLg = '320,320' -%}
                             {% when 5 %}
-                                {%- assign imgSizeLg = '232,232' -%}
+                                {%- assign imgSizeLg = '272,272' -%}
                             {% when 6 %}
-                                {%- assign imgSizeLg = '187,187' -%}
+                                {%- assign imgSizeLg = '227,227' -%}
                         {%- endcase -%}
 
                         <picture>
