@@ -35,7 +35,15 @@
 
     {%- endif -%}
 
-    {% if section.settings.announcementStatus and section.settings.announcementText %}
+    {%- if section.settings.announcementVisibility == 'frontpage' and request.page_type == 'frontpage' and section.settings.announcementStatus -%}
+        {%- assign announcementIsVisible = true -%}
+    {% elsif section.settings.announcementVisibility == 'all' and section.settings.announcementStatus %}
+        {%- assign announcementIsVisible = true -%}
+    {%- else -%}
+        {%- assign announcementIsVisible = false -%}
+    {%- endif -%}
+
+    {% if announcementIsVisible and section.settings.announcementText %}
 
         <div class="site-announcement-container{% if section.settings.announcementText | size > 50 %} has-long-text{% endif %}">
 
@@ -896,10 +904,35 @@
                                     "id": "announcementStatus",
                                     "type": "checkbox",
                                     "label": {
-                                        "en": "Show",
-                                        "fi": "Näytä"
+                                        "en": "Show announcement",
+                                        "fi": "Näytä ilmoitus"
                                     },
                                     "default": false
+                                },
+                                {
+                                    "id": "announcementVisibility",
+                                    "type": "radio-pill",
+                                    "label": {
+                                        "en": "Visibility",
+                                        "fi": "Näkyvyys"
+                                    },
+                                    "default": "all",
+                                    "options": [
+                                        {
+                                            "value": "all",
+                                            "label": {
+                                                "en": "On all pages",
+                                                "fi": "Kaikilla sivuilla"
+                                            }
+                                        },
+                                        {
+                                            "value": "frontpage",
+                                            "label": {
+                                                "en": "On frontpage",
+                                                "fi": "Etusivulla"
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
                                     "id": "announcementText",

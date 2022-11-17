@@ -10,7 +10,8 @@
 		{{- styleName -}}: (
 			{%- for arr in styleArr -%}
 				{%- assign key = arr[0] -%}
-				{%- assign value = arr[1] | default: primaryStyle[key] -%}
+				{%- assign fallback = primaryStyle[key] | default: 'transparent' -%}
+				{%- assign value = arr[1] | default: fallback -%}
 				"{{ key }}": {{ value }}{%- unless forloop.last == true -%},{%- endunless -%}
 			{%- endfor -%}
 		){%- unless forloop.last == true -%},{%- endunless -%}

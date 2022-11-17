@@ -1156,6 +1156,7 @@
                     "headerIndicatorColor": "#000000",
                     "headerIconColor": "#000000",
                     "announcementStatus": false,
+                    "announcementVisibility": "all",
                     "announcementText": "",
                     "announcementLink": {
                         "type": "url",
@@ -2659,6 +2660,7 @@
                         "headerIndicatorColor": "#000000",
                         "headerIconColor": "#000000",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -3829,6 +3831,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": false,
+                        "announcementVisibility": "all",
                         "announcementText": "Talk about your brand",
                         "announcementLink": {
                             "type": "url",
@@ -5021,6 +5024,7 @@
                         "headerIndicatorColor": "#f80000",
                         "headerIconColor": "#ef0c0c",
                         "announcementStatus": false,
+                        "announcementVisibility": "all",
                         "announcementText": "Talk about your brand",
                         "announcementLink": {
                             "type": "url",
@@ -6256,6 +6260,7 @@
                         "headerIndicatorColor": "#000000",
                         "headerIconColor": "#000000",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Talk about your brand",
                         "announcementLink": {
                             "type": "url",
@@ -7304,6 +7309,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -7323,7 +7329,7 @@
                         "mobileMenu": "main",
                         "stickyMobileHeader": false,
                         "socialMediaIconsStatus": true,
-                        "addProductCategoriesToMobileNavigation": true,
+                        "addProductCategoriesToMobileNavigation": false,
                         "sectionStyle": "general"
                     }
                 },
@@ -8654,6 +8660,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -9519,6 +9526,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -10687,6 +10695,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": false,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -12001,6 +12010,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -13238,6 +13248,7 @@
                         "headerIndicatorColor": "#ffffff",
                         "headerIconColor": "#ffffff",
                         "announcementStatus": true,
+                        "announcementVisibility": "all",
                         "announcementText": "Make an announcement or share information about your store",
                         "announcementLink": {
                             "type": "url",
@@ -13257,7 +13268,7 @@
                         "mobileMenu": "main",
                         "stickyMobileHeader": false,
                         "socialMediaIconsStatus": true,
-                        "addProductCategoriesToMobileNavigation": true,
+                        "addProductCategoriesToMobileNavigation": false,
                         "sectionStyle": "general"
                     }
                 },
