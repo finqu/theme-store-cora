@@ -500,6 +500,7 @@ export default {
                             }, 100);
 
                             el.style.height = 0+'px';
+                            el.style.overflow = 'hidden';
 
                             closeHandleTimer = null;
 
@@ -513,6 +514,9 @@ export default {
                             if (e.target.style.height === '0px') {
                                 submenuEl.classList.remove('site-header-submenu-transition');
                                 submenuEl.classList.remove('site-header-submenu-active');
+                                submenuEl.style.overflow = null;
+                            } else {
+                                submenuEl.style.overflow = 'visible';
                             }
                         };
 

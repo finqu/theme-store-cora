@@ -1109,7 +1109,7 @@ body > #search-overlay {
                     .site-header-sublevel {
                         position: absolute;
                         left: 100%;
-                        top: -#{spacer(4)};
+                        top: -#{subtract(spacer(4), 0.015)};
                         visibility: hidden;
                         width: 100%;
                         padding-left: $grid-gutter-width / 2;
@@ -1132,7 +1132,6 @@ body > #search-overlay {
                                 position: relative;
 
                                 .site-header-sublevel-menu-item-text {
-
                                     font-family: $navigation-font-family;
                                     font-weight: $navigation-font-weight;
                                     font-style: $navigation-font-style;
@@ -1143,10 +1142,6 @@ body > #search-overlay {
                                 }
                             }
                         }
-                    }
-
-                    .site-header-submenu {
-                        overflow: visible;
                     }
                 }
             }
