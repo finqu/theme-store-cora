@@ -1,5 +1,9 @@
 {%- capture sectionContent -%}
 
+    {%- if store.customer_accounts_require_approval == true and customer.has_access -%}
+        {%- assign accountHasApproval = true -%}
+    {%- endif -%}
+
     {% if request.uri contains 'create_review=true' and product.customer_has_reviewed == false and product.reviews_are_enabled %}
 
         <div class="product-create-review-layout">
@@ -85,7 +89,7 @@
 
         <div class="row justify-content-between">
 
-            <div class="col-12 col-md-6 col-lg-6 pr-lg-8">
+            <div class="col-12 col-md-6 col-lg-7 pr-lg-8">
 
                 <div class="product-media-container">
 
@@ -115,15 +119,15 @@
 
                                                     {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                        {%- assign imgSize = '139,183' -%}
+                                                        {%- assign imgSize = '132,182' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                        {%- assign imgSize = '139,115' -%}
+                                                        {%- assign imgSize = '122,104' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                        {%- assign imgSize = '139,139' -%}
+                                                        {%- assign imgSize = '132,132' -%}
 
                                                     {% endif %}
 
@@ -176,15 +180,15 @@
 
                                                             {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                                {%- assign imgSize = '139,183' -%}
+                                                                {%- assign imgSize = '132,182' -%}
 
                                                             {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                                {%- assign imgSize = '139,115' -%}
+                                                                {%- assign imgSize = '122,104' -%}
 
                                                             {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                                {%- assign imgSize = '139,139' -%}
+                                                                {%- assign imgSize = '132,132' -%}
 
                                                             {% endif %}
 
@@ -233,15 +237,15 @@
 
                                                                     {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                                        {%- assign imgSize = '139,183' -%}
+                                                                        {%- assign imgSize = '132,182' -%}
 
                                                                     {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                                        {%- assign imgSize = '139,115' -%}
+                                                                        {%- assign imgSize = '122,104' -%}
 
                                                                     {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                                        {%- assign imgSize = '139,139' -%}
+                                                                        {%- assign imgSize = '132,132' -%}
 
                                                                     {% endif %}
 
@@ -315,15 +319,15 @@
 
                                                     {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                        {%- assign imgSize = '139,183' -%}
+                                                        {%- assign imgSize = '132,182' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                        {%- assign imgSize = '139,115' -%}
+                                                        {%- assign imgSize = '122,104' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                        {%- assign imgSize = '139,139' -%}
+                                                        {%- assign imgSize = '132,132' -%}
 
                                                     {% endif %}
 
@@ -392,21 +396,21 @@
 
                                                     {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                        {%- assign imgSizeSm = '404,580' -%}
-                                                        {%- assign imgSizeMd = '736,1045' -%}
-                                                        {%- assign imgSizeLg = '526,742' -%}
+                                                        {%- assign imgSizeSm = '555,792' -%}
+                                                        {%- assign imgSizeMd = '747,1070' -%}
+                                                        {%- assign imgSizeLg = '574,820' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                        {%- assign imgSizeSm = '414,320' -%}
-                                                        {%- assign imgSizeMd = '736,562' -%}
-                                                        {%- assign imgSizeLg = '526,405' -%}
+                                                        {%- assign imgSizeSm = '555,421' -%}
+                                                        {%- assign imgSizeMd = '747,565' -%}
+                                                        {%- assign imgSizeLg = '574,435' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                        {%- assign imgSizeSm = '414,414' -%}
-                                                        {%- assign imgSizeMd = '736736' -%}
-                                                        {%- assign imgSizeLg = '526,526' -%}
+                                                        {%- assign imgSizeSm = '555,555' -%}
+                                                        {%- assign imgSizeMd = '747,747' -%}
+                                                        {%- assign imgSizeLg = '574,574' -%}
 
                                                     {% endif %}
 
@@ -474,21 +478,21 @@
 
                                                             {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                                {%- assign imgSizeSm = '414,580' -%}
-                                                                {%- assign imgSizeMd = '736,1045' -%}
-                                                                {%- assign imgSizeLg = '526,742' -%}
+                                                                {%- assign imgSizeSm = '555,792' -%}
+                                                                {%- assign imgSizeMd = '747,1070' -%}
+                                                                {%- assign imgSizeLg = '574,820' -%}
 
                                                             {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                                {%- assign imgSizeSm = '414,320' -%}
-                                                                {%- assign imgSizeMd = '736,562' -%}
-                                                                {%- assign imgSizeLg = '526,405' -%}
+                                                                {%- assign imgSizeSm = '555,421' -%}
+                                                                {%- assign imgSizeMd = '747,565' -%}
+                                                                {%- assign imgSizeLg = '574,435' -%}
 
                                                             {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                                {%- assign imgSizeSm = '414,414' -%}
-                                                                {%- assign imgSizeMd = '736,736' -%}
-                                                                {%- assign imgSizeLg = '526,526' -%}
+                                                                {%- assign imgSizeSm = '555,555' -%}
+                                                                {%- assign imgSizeMd = '747,747' -%}
+                                                                {%- assign imgSizeLg = '574,574' -%}
 
                                                             {% endif %}
 
@@ -552,21 +556,21 @@
 
                                                                     {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                                        {%- assign imgSizeSm = '414,580' -%}
-                                                                        {%- assign imgSizeMd = '736,1045' -%}
-                                                                        {%- assign imgSizeLg = '526,742' -%}
+                                                                        {%- assign imgSizeSm = '555,792' -%}
+                                                                        {%- assign imgSizeMd = '747,1070' -%}
+                                                                        {%- assign imgSizeLg = '574,820' -%}
 
                                                                     {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                                        {%- assign imgSizeSm = '414,320' -%}
-                                                                        {%- assign imgSizeMd = '736,562' -%}
-                                                                        {%- assign imgSizeLg = '526,405' -%}
+                                                                        {%- assign imgSizeSm = '555,421' -%}
+                                                                        {%- assign imgSizeMd = '747,565' -%}
+                                                                        {%- assign imgSizeLg = '574,435' -%}
 
                                                                     {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                                        {%- assign imgSizeSm = '414,414' -%}
-                                                                        {%- assign imgSizeMd = '736,736' -%}
-                                                                        {%- assign imgSizeLg = '526,526' -%}
+                                                                        {%- assign imgSizeSm = '555,555' -%}
+                                                                        {%- assign imgSizeMd = '747,747' -%}
+                                                                        {%- assign imgSizeLg = '574,574' -%}
 
                                                                     {% endif %}
 
@@ -656,21 +660,21 @@
 
                                                     {% if settings.aspectRatioProductImage == '9:13' %}
 
-                                                        {%- assign imgSizeSm = '414,580' -%}
-                                                        {%- assign imgSizeMd = '736,1045' -%}
-                                                        {%- assign imgSizeLg = '526,742' -%}
+                                                        {%- assign imgSizeSm = '555,792' -%}
+                                                        {%- assign imgSizeMd = '747,1070' -%}
+                                                        {%- assign imgSizeLg = '574,820' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '4:3' %}
 
-                                                        {%- assign imgSizeSm = '414,320' -%}
-                                                        {%- assign imgSizeMd = '736,562' -%}
-                                                        {%- assign imgSizeLg = '526,405' -%}
+                                                        {%- assign imgSizeSm = '555,421' -%}
+                                                        {%- assign imgSizeMd = '747,565' -%}
+                                                        {%- assign imgSizeLg = '574,435' -%}
 
                                                     {% elsif settings.aspectRatioProductImage == '1:1' %}
 
-                                                        {%- assign imgSizeSm = '414,414' -%}
-                                                        {%- assign imgSizeMd = '736,736' -%}
-                                                        {%- assign imgSizeLg = '526,526' -%}
+                                                        {%- assign imgSizeSm = '555,555' -%}
+                                                        {%- assign imgSizeMd = '747,747' -%}
+                                                        {%- assign imgSizeLg = '574,574' -%}
 
                                                     {% endif %}
 
@@ -763,10 +767,6 @@
 
                     </div>
 
-                    {%- if store.customer_accounts_require_approval == true and customer.has_access -%}
-                        {%- assign accountHasApproval = true -%}
-                    {%- endif -%}
-
                     {% if store.customer_accounts_require_approval == false or accountHasApproval %}
 
                         <div class="product-pricing">
@@ -798,26 +798,30 @@
                                 {% if product.has_discount %}
 
                                     <span class="product-sale-price-text text-sale-price font-weight-bold mr-1" data-product-price-dynamic>
-                                        {{ itemPrice | in_currency }}
+                                        {{ itemPrice | money_with_currency }}
                                     </span>
 
                                     <span class="product-price text-decoration-line-through text-muted" data-product-original-price-dynamic>
-                                        {{ itemOriginalPrice | in_currency }}
+                                        {{ itemOriginalPrice | money_with_currency }}
                                     </span>
 
                                 {% else %}
 
                                     <span class="product-price text-price" data-product-price-dynamic>
-                                        {{ itemPrice | in_currency }}
+                                        {{ itemPrice | money_with_currency }}
                                     </span>
 
                                 {% endif %}
 
                             </div>
 
-                            {% if section.settings.showLowestPrice and product.previous_lower_price %}
+                            {% if section.settings.showLowestPrice %}
 
-                                {% assign itemLowestPrice = product.previous_lower_price.price | in_currency %}
+                                {%- if settings.taxFreePrices -%}
+                                    {% assign itemLowestPrice = product.previous_lower_price.net_price | default: product.net_price | money_with_currency %}
+                                {%- else -%}
+                                    {% assign itemLowestPrice = product.previous_lower_price.price | default: product.price | money_with_currency %}
+                                {%- endif -%}
 
                                 <div class="product-lowest-price">
                                     {{ 'product.lowest_price_dynamic' | t, amount: itemLowestPrice }}
@@ -1610,6 +1614,25 @@
             </div>
 
         {% endif %}
+
+        <script type="application/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                document.dispatchEvent(new CustomEvent('theme:product:view', {
+                    detail: {
+                        id: {{ product.id | json }},
+                        {%- if store.customer_accounts_require_approval == false or accountHasApproval -%}
+                        price: {{ product.price | json }},
+                        {%- else -%}
+                        price: null,
+                        {%- endif -%}
+                        name: {{ product.name | default: null | json }},
+                        manufacturer: {{ product.manufacturer | default: null | json }},
+                        breadcrumbs: {{ product.breadcrumbs | default: [] | json }},
+                        currency: {{ store.currency.iso_code | json }}
+                    }
+                }));
+            });
+        </script>
 
     {% endif %}
 

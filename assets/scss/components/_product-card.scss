@@ -74,6 +74,9 @@
 }
 
 .product-card-grid-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     .product-media-container {
         position: relative;
@@ -141,6 +144,8 @@
     }
 
     .product-action {
+        width: 100%;
+        margin-top: auto;
         @include media-breakpoint-down(md) {
 
             .btn {

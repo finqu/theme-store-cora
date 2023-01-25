@@ -38,7 +38,7 @@
 
                 {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice == false %}
 
-                    (+{{ itemPrice | in_currency }})
+                    (+{{ itemPrice | money_with_currency }})
 
                 {% endif %}
 

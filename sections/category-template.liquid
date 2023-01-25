@@ -2,7 +2,6 @@
 {%- assign sectionTitleTag = 'h1' -%}
 {%- assign sectionDescription = category.description -%}
 {%- assign sectionBreadcrumbs = category.breadcrumbs -%}
-{%- assign itemCount = category.product_count -%}
 {%- assign subCategories = category.sub_categories -%}
 {%- assign activeSortOption = category.sort_by | default: category.default_sort_by -%}
 {%- assign sortOptions = category.sort_options -%}
@@ -13,14 +12,14 @@
 {% if category.products.size == 0 and request.design_mode %}
     {%- assign itemCount = section.settings.itemsPerRow | times: 3 -%}
 {% else %}
-    {%- assign itemCount = category.product_count -%}
+    {%- assign itemCount = category.products.size -%}
 {% endif %}
 
 {%- capture categoryContentPlaceholder -%}
 
     <div class="category-carousel">
 
-        {% render 'category-carousel', items: subCategories, carouselNavigation: 'on', sectionId: section.id, itemsPerView: 5, slideTitlePosition: 'below' %}
+        {% render 'category-carousel', items: subCategories, carouselNavigation: 'on', sectionId: section.id, itemsPerView: 5, slideTitlePosition: 'below', style: 2 %}
 
     </div>
 
@@ -670,7 +669,7 @@
 
             <div class="col col-lg-9">
 
-                {% if category.products.size == 0 and subCategories %}
+                {% if category.products.size == 0 and subCategories and categoryActiveFilters.size == 0 %}
 
                     {{ categoryContentPlaceholder }}
 
@@ -686,7 +685,7 @@
 
     {% else %}
 
-        {% if category.products.size == 0 and subCategories %}
+        {% if category.products.size == 0 and subCategories and categoryActiveFilters.size == 0 %}
 
             {{ categoryContentPlaceholder }}
 

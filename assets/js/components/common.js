@@ -374,6 +374,7 @@ export default {
             const siteSearchEls = containerEl.querySelectorAll('.site-search');
             const siteHeaderSearchToggleEls = containerEl.querySelectorAll('.site-search-toggle');
             const siteHeaderSearchContainerEl = containerEl.querySelector('.site-search-container');
+            const siteHeaderSearchInputEl = siteHeaderSearchContainerEl.querySelector('[name="q"]');
 
             const search = (siteSearchEl, siteSearchResultsEl, q) => {
 
@@ -451,6 +452,7 @@ export default {
                 document.body.appendChild(searchOverlayEl);
 
                 themeApp.utils.animate(searchOverlayEl, 'fadeIn');
+                siteHeaderSearchInputEl.focus();
 
                 searchOverlayEl.addEventListener('click', e => {
 

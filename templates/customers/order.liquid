@@ -38,11 +38,11 @@
 
 		<div class="col-auto">
 
-			{% if order.is_paid %}
+			{% if order.financial_status == 'paid' %}
 
 				<div class="d-flex justify-content-md-end">
 
-                    <a href="{{ order | receipt_url_href }}" class="btn btn-outline-section">
+                    <a href="{{ order.receipt_url }}" class="btn btn-outline-section">
                     	{{ 'account.order.download_receipt' | t }}
                    	</a>
 
@@ -100,6 +100,26 @@
 
 							</div>
 
+							{% if order.shipping_address.company %}
+
+								<div class="order-shipping-address-line">
+
+									<span class="order-shipping-address-line-text">
+										{{ order.shipping_address.company  }}
+									</span>
+
+								</div>
+
+								<div class="order-shipping-address-line">
+
+									<span class="order-shipping-address-line-text">
+										{{ order.shipping_address.vat_number  }} {{ order.shipping_address.company_id  }}
+									</span>
+
+								</div>
+
+							{% endif %}
+
 							<div class="order-shipping-address-line">
 
 								<span class="order-shipping-address-line-text">
@@ -148,6 +168,26 @@
 
 							</div>
 
+							{% if order.billing_address.company %}
+
+								<div class="order-shipping-address-line">
+
+									<span class="order-shipping-address-line-text">
+										{{ order.billing_address.company  }}
+									</span>
+
+								</div>
+
+								<div class="order-shipping-address-line">
+
+									<span class="order-shipping-address-line-text">
+										{{ order.billing_address.vat_number  }} {{ order.billing_address.company_id  }}
+									</span>
+
+								</div>
+
+							{% endif %}
+
 							<div class="order-billing-address-line">
 
 								<span class="order-billing-address-line-text">
@@ -184,103 +224,115 @@
 
 					</div>
 
-					<div class="col-12 col-md mb-4 mb-md-0">
+					{% if order.shipping_methods.size %}
 
-						<div class="mb-2">
+						<div class="col-12 col-md mb-4 mb-md-0">
 
-							<span class="font-weight-bold">
+							<div class="mb-2">
 
-								{% if order.shipping_methods.size > 1 %}
-									{{ 'account.order.shipping_method_plural' | t }}
-								{% else %}
-									{{ 'account.order.shipping_method' | t }}
-								{% endif %}
-							</span>
+								<span class="font-weight-bold">
 
-						</div>
-
-						{% for shipping_method in order.shipping_methods %}
-
-							<div {%- unless forloop.last %} class="mb-4"{% endunless %}>
-
-								<div>
-
-									<span>
-										{{ shipping_method.title }}
-									</span>
-
-								</div>
-
-								<div>
-
-									<span>
-										{{ shipping_method.pickup_address.name }}
-									</span>
-
-								</div>
-
-								<div>
-
-									<span>
-										{{ shipping_method.pickup_address.address1 }}
-									</span>
-
-								</div>
-
-								<div>
-
-									<span>
-										{{ shipping_method.pickup_address.zipcode }} {{ shipping_method.pickup_address.city }}
-									</span>
-
-								</div>
-
-								<div>
-
-									<span>
-										{{ shipping_method.pickup_address.country.name }}
-									</span>
-
-								</div>
+									{% if order.shipping_methods.size > 1 %}
+										{{ 'account.order.shipping_method_plural' | t }}
+									{% else %}
+										{{ 'account.order.shipping_method' | t }}
+									{% endif %}
+								</span>
 
 							</div>
 
-						{% endfor %}
+							{% for shipping_method in order.shipping_methods %}
 
-					</div>
+								<div {%- unless forloop.last %} class="mb-4"{% endunless %}>
 
-					<div class="col-12 col-md">
+									<div>
 
-						<div class="mb-2">
+										<span>
+											{{ shipping_method.title }}
+										</span>
 
-							<span class="font-weight-bold">
+									</div>
 
-								{% if order.payment_methods.size > 1 %}
-									{{ 'account.order.payment_method_plural' | t }}
-								{% else %}
-									{{ 'account.order.payment_method' | t }}
-								{% endif %}
-							</span>
+									{% if shipping_method.pickup_address %}
 
-						</div>
+										<div>
 
-						{% for payment_method in order.payment_methods %}
+											<span>
+												{{ shipping_method.pickup_address.name }}
+											</span>
 
-							<div {%- unless forloop.last %} class="mb-1"{% endunless %}>
+										</div>
 
-								<div>
+										<div>
 
-									<span>
-										{{ payment_method.title }}
-									</span>
+											<span>
+												{{ shipping_method.pickup_address.address1 }}
+											</span>
+
+										</div>
+
+										<div>
+
+											<span>
+												{{ shipping_method.pickup_address.zipcode }} {{ shipping_method.pickup_address.city }}
+											</span>
+
+										</div>
+
+										<div>
+
+											<span>
+												{{ shipping_method.pickup_address.country.name }}
+											</span>
+
+										</div>
+
+									{% endif %}
 
 								</div>
 
+							{% endfor %}
+
+						</div>
+
+					{% endif %}
+
+					{% if order.payment_methods.size %}
+
+						<div class="col-12 col-md">
+
+							<div class="mb-2">
+
+								<span class="font-weight-bold">
+
+									{% if order.payment_methods.size > 1 %}
+										{{ 'account.order.payment_method_plural' | t }}
+									{% else %}
+										{{ 'account.order.payment_method' | t }}
+									{% endif %}
+								</span>
+
 							</div>
 
-						{% endfor %}
+							{% for payment_method in order.payment_methods %}
 
-					</div>
+								<div {%- unless forloop.last %} class="mb-1"{% endunless %}>
+
+									<div>
+
+										<span>
+											{{ payment_method.title }}
+										</span>
+
+									</div>
+
+								</div>
+
+							{% endfor %}
+
+						</div>
+
+					{% endif %}
 
 				</div>
 
@@ -513,6 +565,26 @@
 
 		                                {% endif %}
 
+		                                {% if item.downloads %}
+
+                                            <div class="order-item-downloads">
+
+                                                {% for download in item.downloads %}
+
+                                                	<div class="order-item-download">
+
+	                                                    <a href="{{ download.download_link }}" target="_blank">
+	                                                    	{{ 'account.order.download_file' | t }}{% if item.downloads.size > 1 %}: {{ download.basename }}{% endif %}
+	                                                    </a>
+
+	                                                </div>
+
+                                                {% endfor %}
+
+                                            </div>
+
+                                        {% endif %}
+
 		                                {% if item.product %}
 
 		                                	{% if item.product.reviews_are_enabled and item.product.customer_has_reviewed == false %}
@@ -532,7 +604,7 @@
 	                            		<div class="order-item-price">
 
 	                                        <span class="order-item-price-text">
-	                                            {{ item.price | in_currency }}
+	                                            {{ item.price | money_with_currency }}
 	                                        </span>
 
 	                                    </div>
@@ -572,7 +644,7 @@
 	                    <div class="col text-right">
 
 	                        <span>
-	                        	{{ order.subtotal_price | in_currency }}
+	                        	{{ order.subtotal_price | money_with_currency }}
 	                        </span>
 
 	                    </div>
@@ -598,7 +670,7 @@
 		                    <div class="col text-right">
 
 		                        <span>
-		                        	{{ order.payment_fee | in_currency }}
+		                        	{{ order.payment_fee | money_with_currency }}
 		                        </span>
 
 		                    </div>
@@ -626,7 +698,7 @@
 		                    <div class="col text-right">
 
 		                        <span>
-		                        	{{ order.shipping_price | in_currency }}
+		                        	{{ order.shipping_price | money_with_currency }}
 		                        </span>
 
 		                    </div>
@@ -658,7 +730,7 @@
 				                    <div class="col text-right">
 
 				                        <span>
-				                        	{{ discount.amount | in_currency }}
+				                        	{{ discount.amount | money_with_currency }}
 				                        </span>
 
 				                    </div>
@@ -688,7 +760,7 @@
 	                    <div class="col text-right">
 
 	                        <span>
-	                        	{{ order.total_price | in_currency }}
+	                        	{{ order.total_price | money_with_currency }}
 	                        </span>
 
 	                    </div>

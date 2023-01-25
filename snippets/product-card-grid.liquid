@@ -270,17 +270,17 @@
 					{% if productHasDiscount %}
 
 						<span class="text-sale-price font-weight-bold mr-2">
-							{{ itemPrice | in_currency }}
+							{{ itemPrice | money_with_currency }}
 						</span>
 
 			            <span class="text-decoration-line-through text-muted">
-			            	{{ itemOriginalPrice | in_currency }}
+			            	{{ itemOriginalPrice | money_with_currency }}
 			            </span>
 
 			        {% else %}
 
 			        	<span class="text-price">
-							{{ itemPrice | in_currency }}
+							{{ itemPrice | money_with_currency }}
 						</span>
 
 			        {% endif %}

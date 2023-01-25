@@ -250,6 +250,7 @@
             "download_receipt": "Download receipt",
             "order_status": "Order status",
             "write_review": "Write a review",
+            "download_file": "Download file",
             "order_statuses": {
                 "debt_collection": "Debt collection",
                 "received": "Received",

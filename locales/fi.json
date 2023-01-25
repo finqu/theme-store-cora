@@ -220,6 +220,7 @@
             "download_receipt": "Lataa kuitti",
             "order_status": "Tilauksen tila",
             "write_review": "Arvostele tuote",
+            "download_file": "Lataa tiedosto",
             "order_statuses": {
                 "billed": "Laskutettu",
                 "cancelled": "Peruutettu",

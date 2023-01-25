@@ -13,7 +13,7 @@
             <label for="product-attribute-{{ option.id }}">
 
                 {{ option.name }}
-                {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice == false %}(+{{ itemPrice | in_currency }}) {% endif %}
+                {% if itemPrice > 0 and showOptionPrice and showOptionTotalPrice == false %}(+{{ itemPrice | money_with_currency }}) {% endif %}
 
             </label>
 
