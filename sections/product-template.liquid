@@ -1625,9 +1625,8 @@
                         {%- else -%}
                         price: null,
                         {%- endif -%}
-                        name: {{ product.name | default: null | json }},
-                        manufacturer: {{ product.manufacturer | default: null | json }},
-                        breadcrumbs: {{ product.breadcrumbs | default: [] | json }},
+                        name: {{ product.name | json }},
+                        manufacturer: {{ product.manufacturer.name | json }},
                         currency: {{ store.currency.iso_code | json }}
                     }
                 }));
@@ -1739,7 +1738,7 @@
                         "id": "openProductDescriptionByDefault",
                         "type": "checkbox",
                         "label": {
-                            "en": "Open product description open by default",
+                            "en": "Open product description by default",
                             "fi": "Avaa tuotekuvaus oletuksena"
                         },
                         "default": false
