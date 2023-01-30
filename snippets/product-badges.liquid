@@ -4,6 +4,9 @@
 	Accepts:
 	- product: {Object} Product Liquid object (required)
     - position: {String} Position of badges: ''
+    - showDiscount: {Boolean} Show discount badge
+    - showOutOfStock: {Boolean} Show out of stock badge
+    - showNew: {Boolean} Show new badge
 
     Usage:
     Render this snippet inside of element with "product-media-container" or "product-main-media-swiper" class.
@@ -11,6 +14,18 @@
 	Usage:
 	{% render 'product-badges', product: product %}
 {% endcomment %}
+
+{%- if showDiscount != false -%}
+    {%- assign showDiscount = true -%}
+{%- endif -%}
+
+{%- if showOutOfStock != false -%}
+    {%- assign showOutOfStock = true -%}
+{%- endif -%}
+
+{%- if showNew != false -%}
+    {%- assign showNew = true -%}
+{%- endif -%}
 
 {%- assign position = position | default: 'bottom-left'-%}
 {%- assign prefix = 'product-badge-position-' -%}
@@ -43,7 +58,7 @@
 
     {% if store.customer_accounts_require_approval == false or accountHasApproval %}
 
-        {% if productHasDiscount and productOutOfStock == false %}
+        {% if showDiscount and productHasDiscount and productOutOfStock == false %}
 
             <div class="product-badge product-badge-discount">
 
@@ -57,7 +72,7 @@
 
     {% endif %}
 
-    {% if productIsNew and productOutOfStock == false %}
+    {% if showNew and productIsNew and productOutOfStock == false %}
 
         <div class="product-badge product-badge-new">
 
@@ -67,7 +82,7 @@
 
         </div>
 
-    {% elsif productOutOfStock %}
+    {% elsif showOutOfStock and productOutOfStock %}
 
         <div class="product-badge product-badge-general">
 

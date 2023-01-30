@@ -8,7 +8,9 @@
 	- itemAmount: {Int} How many items is displayed
 	- itemsPerView: {Int} Items per one slide
 	- style: {Int} Style of carousel 1 | 2
-	- productShowBadges: {Boolean} Show product badges
+	- productShowDiscountBadge: {Boolean} Show discount product badge
+    - productShowOutOfStockBadge: {Boolean} Show out of stock product badge
+    - productShowNewBadge: {Boolean} Show new product badge
 	- productShowManufacturer: {Boolean} Show product manufacturer
 	- productShowName: {Boolean} Show product name
 	- productShowPricing: {Boolean} Show product pricing
@@ -25,14 +27,24 @@
 {%- assign carouselItemsPerView = itemsPerView | default: 4 -%}
 {%- assign carouselItems = items | slice: 0, carouselItemAmount -%}
 {%- assign carouselStyle = style | default: 1 -%}
-{%- assign carouselProductShowBadges = productShowBadges %}
+{%- assign carouselProductShowDiscountBadge= productShowDiscountBadge %}
+{%- assign carouselProductShowOutOfStockBadge = productShowOutOfStockBadge %}
+{%- assign carouselProductShowNewBadge = productShowNewBadge %}
 {%- assign carouselProductShowManufacturer = productShowManufacturer %}
 {%- assign carouselProductShowName = productShowName %}
 {%- assign carouselProductShowPricing = productShowPricing %}
 {%- assign carouselProductShowAddToCart = productShowAddToCart %}
 
-{%- if carouselProductShowBadges != false -%}
-	{%- assign carouselProductShowBadges = true -%}
+{%- if carouselProductShowDiscountBadge != false -%}
+    {%- assign carouselProductShowDiscountBadge = true -%}
+{%- endif -%}
+
+{%- if carouselProductShowOutOfStockBadge != false -%}
+    {%- assign carouselProductShowOutOfStockBadge = true -%}
+{%- endif -%}
+
+{%- if carouselProductShowNewBadge != false -%}
+	{%- assign carouselProductShowNewBadge = true -%}
 {%- endif -%}
 
 {%- if carouselProductShowManufacturer != false -%}
@@ -77,7 +89,7 @@
 
             <div class="swiper-slide">
 
-                {%- render 'product-card-grid', product: item, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
+                {%- render 'product-card-grid', product: item, wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showDiscountBadge: carouselProductShowDiscountBadge, showOutOfStockBadge: carouselProductShowOutOfStockBadge, showNewBadge: carouselProductShowNewBadge, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
 
             </div>
 
@@ -89,7 +101,7 @@
 
             <div class="swiper-slide">
 
-                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showBadges: carouselProductShowBadges, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
+                {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: carouselItemsPerView, showDiscountBadge: carouselProductShowDiscountBadge, showOutOfStockBadge: carouselProductShowOutOfStockBadge, showNewBadge: carouselProductShowNewBadge, showManufacturer: carouselProductShowManufacturer, showProductName: carouselProductShowName, showPricing: carouselProductShowPricing, showAddToCart: carouselProductShowAddToCart -%}
 
             </div>
 

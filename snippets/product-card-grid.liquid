@@ -5,7 +5,9 @@
 	- product: {Object} Product Liquid object (required)
 	- wishlist: {String} 'toggle' | 'remove' | 'add'
 	- itemsPerRow {Number} Number of product card grid siblings
-	- showBadges: {Boolean} true | false
+	- showDiscountBadge: {Boolean} true | false
+	- showOutOfStockBadge: {Boolean} true | false
+	- showNewBadge: {Boolean} true | false
 	- showManufacturer: {Boolean} true | false
 	- showProductName: {Boolean} true | false
 	- showPricing: {Boolean} true | false
@@ -32,8 +34,16 @@
 	{%- assign itemsPerRow = 4 -%}
 {%- endunless -%}
 
-{%- if showBadges != false -%}
-	{%- assign showBadges = true -%}
+{%- if showDiscountBadge != false -%}
+	{%- assign showDiscountBadge = true -%}
+{%- endif -%}
+
+{%- if showOutOfStockBadge != false -%}
+	{%- assign showOutOfStockBadge = true -%}
+{%- endif -%}
+
+{%- if showNewBadge != false -%}
+	{%- assign showNewBadge = true -%}
 {%- endif -%}
 
 {%- if showManufacturer != false -%}
@@ -85,7 +95,7 @@
 
 	<div class="product-media-container">
 
-		{% if showBadges %}
+		{% if showDiscountBadge or showOutOfStockBadge or showNewBadge %}
 
 			{% render 'product-badges', product: product, postion: 'left-bottom' %}
 

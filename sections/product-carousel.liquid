@@ -33,7 +33,7 @@
 
 {%- capture sectionContent -%}
 
-    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowBadges: section.settings.showBadges, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing, productShowAddToCart: section.settings.showAddToCart %}
+    {% render 'product-carousel', items: items, pagination: section.settings.pagination, navigation: section.settings.navigation, itemAmount: itemAmount, itemsPerView: section.settings.itemsPerView, style: section.settings.carouselStyle, productShowDiscountBadge: section.settings.showDiscountBadge, productShowOutOfStockBadge: section.settings.showOutOfStockBadge, productShowNewBadge: section.settings.showNewBadge, productShowManufacturer: section.settings.showManufacturer, productShowName: section.settings.showProductName, productShowPricing: section.settings.showPricing, productShowAddToCart: section.settings.showAddToCart %}
 
 {%- endcapture -%}
 
@@ -551,11 +551,29 @@
                                     "default": false
                                 },
                                 {
-                                    "id": "showBadges",
+                                    "id": "showDiscountBadge",
                                     "type": "checkbox",
                                     "label": {
-                                        "en": "Badges",
-                                        "fi": "Merkit"
+                                        "en": "Discount badge",
+                                        "fi": "Alennusmerkki"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "showOutOfStockBadge",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Out of stock badge",
+                                        "fi": "Loppumerkki"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "showNewBadge",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "New badge",
+                                        "fi": "Uutuusmerkki"
                                     },
                                     "default": true
                                 },
@@ -778,7 +796,9 @@
                 },
                 "itemAmount": "20",
                 "itemsPerView": "4",
-                "showBadges": true,
+                "showDiscountBadge": true,
+                "showOutOfStockBadge": true,
+                "showNewBadge": true,
                 "showManufacturer": true,
                 "showProductName": true,
                 "showPricing": true,

@@ -43,7 +43,7 @@
 
                 <div class="col pt-3 pb-4">
 
-                    {%- render 'product-card-grid', product: item, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
+                    {%- render 'product-card-grid', product: item, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showDiscountBadge: section.settings.showDiscountBadge, showOutOfStockBadge: section.settings.showOutOfStockBadge, showNewBadge: section.settings.showNewBadge, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
 
                 </div>
 
@@ -55,7 +55,7 @@
 
                 <div class="col pt-3 pb-4">
 
-                    {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showBadges: section.settings.showBadges, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
+                    {%- render 'product-card-grid', wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showDiscountBadge: section.settings.showDiscountBadge, showOutOfStockBadge: section.settings.showOutOfStockBadge, showNewBadge: section.settings.showNewBadge, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
 
                 </div>
 
@@ -483,11 +483,29 @@
                                     "default": false
                                 },
                                 {
-                                    "id": "showBadges",
+                                    "id": "showDiscountBadge",
                                     "type": "checkbox",
                                     "label": {
-                                        "en": "Badges",
-                                        "fi": "Merkit"
+                                        "en": "Discount badge",
+                                        "fi": "Alennusmerkki"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "showOutOfStockBadge",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "Out of stock badge",
+                                        "fi": "Loppumerkki"
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "id": "showNewBadge",
+                                    "type": "checkbox",
+                                    "label": {
+                                        "en": "New badge",
+                                        "fi": "Uutuusmerkki"
                                     },
                                     "default": true
                                 },
@@ -703,7 +721,9 @@
                 "resource": null,
                 "itemAmount": 8,
                 "itemsPerRow": 4,
-                "showBadges": true,
+                "showDiscountBadge": true,
+                "showOutOfStockBadge": true,
+                "showNewBadge": true,
                 "showManufacturer": true,
                 "showProductName": true,
                 "showPricing": true,
