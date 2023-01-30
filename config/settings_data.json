@@ -604,7 +604,10 @@
                             "showProductOptionTotalPrice": false,
                             "showProductOptionStockBalance": false,
                             "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                            "showLowestPrice": true,
+                            "showDiscountBadge": true,
+                            "showOutOfStockBadge": true,
+                            "showNewBadge": true
                         },
                         "sticky": true
                     }
@@ -2651,7 +2654,10 @@
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -3833,7 +3839,10 @@
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": false,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -5037,7 +5046,10 @@
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -6294,7 +6306,10 @@
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -7356,7 +7371,10 @@
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -9596,7 +9614,10 @@
                                 "showProductOptionTotalPrice": true,
                                 "showProductOptionStockBalance": true,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -10776,7 +10797,10 @@
                                 "showProductOptionTotalPrice": false,
                                 "showProductOptionStockBalance": false,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -12106,7 +12130,10 @@
                                 "showProductOptionTotalPrice": false,
                                 "showProductOptionStockBalance": false,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }
@@ -13365,7 +13392,10 @@
                                 "showProductOptionTotalPrice": false,
                                 "showProductOptionStockBalance": false,
                                 "openProductDescriptionByDefault": true,
-                                "showLowestPrice": true
+                                "showLowestPrice": true,
+                                "showDiscountBadge": true,
+                                "showOutOfStockBadge": true,
+                                "showNewBadge": true
                             },
                             "sticky": true
                         }

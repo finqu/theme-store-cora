@@ -97,7 +97,7 @@
 
 		{% if showDiscountBadge or showOutOfStockBadge or showNewBadge %}
 
-			{% render 'product-badges', product: product, postion: 'left-bottom' %}
+			{% render 'product-badges', product: product, postion: 'left-bottom', showDiscount: showDiscountBadge, showOutOfStock: showOutOfStockBadge, showNew: showNewBadge %}
 
 		{% endif %}
 

@@ -372,7 +372,7 @@
 
                         <div id="product-main-media-swiper" class="swiper swiper-navigation-hide-on-desktop col">
 
-                            {% render 'product-badges', product: product, position: 'top-left' %}
+                            {% render 'product-badges', product: product, position: 'top-left', showDiscount: section.settings.showDiscountBadge, showOutOfStock: section.settings.showOutOfStockBadge, showNew: section.settings.showNewBadge, %}
 
                             <div class="swiper-wrapper">
 
@@ -1749,6 +1749,33 @@
                         "label": {
                             "en": "Show the last 30 days lowest sale price",
                             "fi": "Näytä viimeisen 30 päivän alin myyntihinta"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "showDiscountBadge",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show discount badge",
+                            "fi": "Näytä alennusmerkki"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "showOutOfStockBadge",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show out of stock badge",
+                            "fi": "Näytä loppumerkki"
+                        },
+                        "default": true
+                    },
+                    {
+                        "id": "showNewBadge",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Show new badge",
+                            "fi": "Näytä uutuusmerkki"
                         },
                         "default": true
                     }
