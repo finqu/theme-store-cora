@@ -17,67 +17,219 @@
 
             </div>
 
-            <div class="form-group form-floating">
+            <div class="row">
 
-                <input type="text" class="form-control" name="company_id" id="register-company-id" value="{{ form.submitted.company_id }}" placeholder="{{ 'account.information.company_id' | t }}">
+                <div class="form-group col-12 col-md">
 
-                <label for="register-company-id">
-                    {{ 'account.information.company_id' | t }}
-                </label>
+                    <div class="form-floating">
 
-            </div>
+                        <input type="text" class="form-control" name="company_id" id="register-company-id" value="{{ form.submitted.company_id }}" placeholder="{{ 'account.information.company_id' | t }}">
 
-            <div class="form-group form-floating">
+                        <label for="register-company-id">
+                            {{ 'account.information.company_id' | t }}
+                        </label>
 
-                <input type="text" class="form-control" name="vat_number" id="register-vat-number" value="{{ form.submitted.vat_number }}" placeholder="{{ 'account.information.vat_number' | t }}">
+                    </div>
 
-                <label for="register-vat-number">
-                    {{ 'account.information.vat_number' | t }}
-                </label>
+                </div>
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="vat_number" id="register-vat-number" value="{{ form.submitted.vat_number }}" placeholder="{{ 'account.information.vat_number' | t }}">
+
+                        <label for="register-vat-number">
+                            {{ 'account.information.vat_number' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
 
             </div>
 
         {% endif %}
 
-        <div class="form-group form-floating">
+        {% if settings.registerAdditionalInformation %}
 
-             <input type="text" class="form-control" name="first_name" id="register-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.first_name | escape }}" required>
+            <div class="row">
 
-             <label for="register-firstname">
-                {{ 'account.information.firstname' | t }}
-            </label>
+                <div class="form-group col-12 col-md">
 
-        </div>
+                    <div class="form-floating">
 
-        <div class="form-group form-floating">
+                         <input type="text" class="form-control" name="first_name" id="register-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.first_name | escape }}" required>
 
-            <input type="text" class="form-control" name="last_name" id="register-lastname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.last_name | escape }}" required>
+                         <label for="register-firstname">
+                            {{ 'account.information.firstname' | t }}
+                        </label>
 
-            <label for="register-lastname">
-                {{ 'account.information.lastname' | t }}
-            </label>
+                    </div>
 
-        </div>
+                </div>
 
-        <div class="form-group form-floating">
+                <div class="form-group col-12 col-md">
 
-            <input type="email" class="form-control" name="email" id="register-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.submitted.email | escape }}" required>
+                    <div class="form-floating">
 
-            <label for="register-email">
-                {{ 'account.information.email' | t }}
-            </label>
+                        <input type="text" class="form-control" name="last_name" id="register-lastname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.last_name | escape }}" required>
 
-        </div>
+                        <label for="register-lastname">
+                            {{ 'account.information.lastname' | t }}
+                        </label>
 
-        <div class="form-group form-floating">
+                    </div>
 
-            <input type="password" pattern=".{8,}" class="form-control" name="password" id="register-password" placeholder="{{ 'account.information.password' | t }}" value="{{ form.submitted.password | escape }}" required title="8 {{ 'error.min_length' | t }}">
+                </div>
 
-            <label for="register-password">
-                {{ 'account.information.password' | t }}
-            </label>
+            </div>
 
-        </div>
+            <div class="row">
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="email" class="form-control" name="email" id="register-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.submitted.email | escape }}" required>
+
+                        <label for="register-email">
+                            {{ 'account.information.email' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="tel" class="form-control" name="phonenumber" id="register-phone" placeholder="{{ 'account.information.phone' | t }}" value="{{ form.submitted.phonenumber | escape }}" required>
+
+                        <label for="register-phone">
+                            {{ 'account.information.phone' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group form-floating">
+
+                <input type="text" class="form-control" name="address_1" id="register-address-1" placeholder="{{ 'account.information.street_address' | t }}" value="{{ form.submitted.address_1 }}">
+
+                <label for="register-address-1">
+                    {{ 'account.information.street_address' | t }}
+                </label>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <select name="country" class="form-select" id="register-country">
+
+                            {{ country_option_tags }}
+
+                        </select>
+
+                        <label for="register-country">
+                            {{ 'account.information.country' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="zipcode" id="register-zipcode" placeholder="{{ 'account.information.zipcode' | t }}" value="{{ form.submitted.zipcode }}">
+
+                        <label for="register-zipcode">
+                            {{ 'account.information.zipcode' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-12 col-md-6">
+
+                    <div class="form-floating">
+
+                        <input type="text" class="form-control" name="city" id="register-city" placeholder="{{ 'account.information.city' | t }}" value="{{ form.submitted.city }}">
+
+                        <label for="register-city">
+                            {{ 'account.information.city' | t }}
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group form-floating">
+
+                <input type="password" pattern=".{8,}" class="form-control" name="password" id="register-password" placeholder="{{ 'account.information.password' | t }}" value="{{ form.submitted.password | escape }}" required title="8 {{ 'error.min_length' | t }}">
+
+                <label for="register-password">
+                    {{ 'account.information.password' | t }}
+                </label>
+
+            </div>
+
+        {% else %}
+
+            <div class="form-group form-floating">
+
+                 <input type="text" class="form-control" name="first_name" id="register-firstname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.first_name | escape }}" required>
+
+                 <label for="register-firstname">
+                    {{ 'account.information.firstname' | t }}
+                </label>
+
+            </div>
+
+            <div class="form-group form-floating">
+
+                <input type="text" class="form-control" name="last_name" id="register-lastname" placeholder="{{ 'account.information.firstname' | t }}" value="{{ form.submitted.last_name | escape }}" required>
+
+                <label for="register-lastname">
+                    {{ 'account.information.lastname' | t }}
+                </label>
+
+            </div>
+
+            <div class="form-group form-floating">
+
+                <input type="email" class="form-control" name="email" id="register-email" placeholder="{{ 'account.information.email' | t }}" value="{{ form.submitted.email | escape }}" required>
+
+                <label for="register-email">
+                    {{ 'account.information.email' | t }}
+                </label>
+
+            </div>
+
+            <div class="form-group form-floating">
+
+                <input type="password" pattern=".{8,}" class="form-control" name="password" id="register-password" placeholder="{{ 'account.information.password' | t }}" value="{{ form.submitted.password | escape }}" required title="8 {{ 'error.min_length' | t }}">
+
+                <label for="register-password">
+                    {{ 'account.information.password' | t }}
+                </label>
+
+            </div>
+
+        {% endif %}
 
         {% if settings.policyAgreementMethod == 'check' %}
 

@@ -2119,6 +2119,16 @@
 				},
 				{
 					"type": "radio",
+					"id": "registerAdditionalInformation",
+					"type": "checkbox",
+					"label": {
+						"en": "Show additional information",
+						"fi": "Näytä lisätiedot"
+					},
+					"default": false
+				},
+				{
+					"type": "radio",
 					"id": "policyAgreementMethod",
 					"label": {
 						"en": "Policy agreement",
