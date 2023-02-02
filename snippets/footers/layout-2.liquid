@@ -37,7 +37,7 @@
 
                                             {%- if item.url -%}
 
-                                                <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-footer-menu-item-text">
                                                     {{ item.title }}
                                                 </a>
 
@@ -59,7 +59,7 @@
 
                                                     {%- if item.url -%}
 
-                                                        <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                        <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-footer-menu-item-text">
                                                             {{ item.title }}
                                                         </a>
 
@@ -109,7 +109,7 @@
 
                                             {%- if item.url -%}
 
-                                                <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-footer-menu-item-text">
                                                     {{ item.title }}
                                                 </a>
 
@@ -131,7 +131,7 @@
 
                                                     {%- if item.url -%}
 
-                                                        <a href="{{ item.url }}" class="site-footer-menu-item-text">
+                                                        <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-footer-menu-item-text">
                                                             {{ item.title }}
                                                         </a>
 

@@ -271,8 +271,8 @@
 
                                     <div class="range-slider-container">
 
-                                        <input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
-                                        <input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+                                        <input type="hidden" class="input-{{ filter.param_name | replace: '.', '-' | handle }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" data-is-range-filter>
+                                        <input type="hidden" class="input-{{ filter.param_name | replace: '.', '-' | handle }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" data-is-range-filter>
 
                                         <div class="range-slider"
                                             data-range-slider-min-name="{{ filter.min_value.param_name }}"
@@ -583,8 +583,8 @@
 
                                             <div class="range-slider-container">
 
-                                                <input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">
-                                                <input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">
+                                                <input type="hidden" class="input-mobile-{{ filter.param_name | replace: '.', '-' | handle }}" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" data-is-range-filter>
+                                                <input type="hidden" class="input-mobile-{{ filter.param_name | replace: '.', '-' | handle }}" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" data-is-range-filter>
 
                                                 <div class="range-slider"
                                                     data-range-slider-min-name="{{ filter.min_value.param_name }}"

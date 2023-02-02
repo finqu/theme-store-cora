@@ -54,7 +54,7 @@
 
                                             {%- if item.url -%}
 
-                                                <a href="{{ item.url }}" class="site-header-menu-item-text text-underline-indicator">
+                                                <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-header-menu-item-text text-underline-indicator">
                                                     {{ item.title }}
                                                 </a>
 
@@ -240,7 +240,7 @@
 
                                                                 {%- if item.url -%}
 
-                                                                    <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                    <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
                                                                         {{ item.title }}
                                                                     </a>
 
@@ -270,7 +270,7 @@
 
                                                                                     {%- if item.url -%}
 
-                                                                                        <a href="{{ item.url }}" class="site-header-sublevel-menu-item-text text-underline-indicator">
+                                                                                        <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-header-sublevel-menu-item-text text-underline-indicator">
                                                                                             {{ item.title }}
                                                                                         </a>
 
@@ -310,7 +310,7 @@
 
                                                             {%- if item.url -%}
 
-                                                                <a href="{{ item.url }}" class="site-header-submenu-column-title-text">
+                                                                <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-header-submenu-column-title-text">
                                                                     {{ item.title }}
                                                                 </a>
 
@@ -332,7 +332,7 @@
 
                                                                     {%- if item.url -%}
 
-                                                                        <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                        <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
                                                                             {{ item.title }}
                                                                         </a>
 
@@ -368,7 +368,7 @@
 
                                                             {%- if item.url -%}
 
-                                                                <a href="{{ item.url }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
+                                                                <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="site-header-submenu-column-menu-item-text text-underline-indicator">
                                                                     {{ item.title }}
                                                                 </a>
 

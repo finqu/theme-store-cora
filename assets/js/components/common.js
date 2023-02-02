@@ -962,6 +962,26 @@ export default {
                     } else if (el.type === 'number') {
 
                         el.value = '';
+
+                    } else if (el.hasAttribute('data-is-range-filter')) {
+
+                        const sliderEl = el.parentNode.querySelector('.range-slider');
+
+                        el.value = '';
+
+                        if (sliderEl && sliderEl.noUiSlider) {
+
+                            const rangeSliderMinTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-min-text]');
+                            const rangeSliderMaxTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-max-text]');
+
+                            sliderEl.noUiSlider.set([
+                                parseInt(sliderEl.dataset.rangeSliderMinDefault, 10),
+                                parseInt(sliderEl.dataset.rangeSliderMaxDefault, 10)
+                            ]);
+
+                            rangeSliderMinTextEl.innerHTML = sliderEl.dataset.rangeSliderMinDefault;
+                            rangeSliderMaxTextEl.innerHTML = sliderEl.dataset.rangeSliderMaxDefault;
+                        }
                     }
                 });
 
@@ -974,6 +994,26 @@ export default {
                     } else if (el.type === 'number') {
 
                         el.value = '';
+
+                    } else if (el.hasAttribute('data-is-range-filter')) {
+
+                        const sliderEl = el.parentNode.querySelector('.range-slider');
+
+                        el.value = '';
+
+                        if (sliderEl && sliderEl.noUiSlider) {
+
+                            const rangeSliderMinTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-min-text]');
+                            const rangeSliderMaxTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-max-text]');
+
+                            sliderEl.noUiSlider.set([
+                                parseInt(sliderEl.dataset.rangeSliderMinDefault, 10),
+                                parseInt(sliderEl.dataset.rangeSliderMaxDefault, 10)
+                            ]);
+
+                            rangeSliderMinTextEl.innerHTML = sliderEl.dataset.rangeSliderMinDefault;
+                            rangeSliderMaxTextEl.innerHTML = sliderEl.dataset.rangeSliderMaxDefault;
+                        }
                     }
                 });
 
@@ -997,8 +1037,27 @@ export default {
                         } else if (el.type === 'number') {
 
                             el.value = '';
-                        }
 
+                        } else if (el.hasAttribute('data-is-range-filter')) {
+
+                            const sliderEl = el.parentNode.querySelector('.range-slider');
+
+                            el.value = '';
+
+                            if (sliderEl && sliderEl.noUiSlider) {
+
+                                const rangeSliderMinTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-min-text]');
+                                const rangeSliderMaxTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-max-text]');
+
+                                sliderEl.noUiSlider.set([
+                                    parseInt(sliderEl.dataset.rangeSliderMinDefault, 10),
+                                    parseInt(sliderEl.dataset.rangeSliderMaxDefault, 10)
+                                ]);
+
+                                rangeSliderMinTextEl.innerHTML = sliderEl.dataset.rangeSliderMinDefault;
+                                rangeSliderMaxTextEl.innerHTML = sliderEl.dataset.rangeSliderMaxDefault;
+                            }
+                        }
                     });
 
                     $categoryFiltersFormEl.submit();
@@ -1013,8 +1072,8 @@ export default {
                 const opts = el.dataset;
                 const rangeSliderContainerEl = el.parentNode;
                 const rangeFilterEl = rangeSliderContainerEl.parentNode;
-                const rangeSliderMinTextEl = rangeFilterEl.querySelector('[ data-range-slider-min-text]');
-                const rangeSliderMaxTextEl = rangeFilterEl.querySelector('[ data-range-slider-max-text]');
+                const rangeSliderMinTextEl = rangeFilterEl.querySelector('[data-range-slider-min-text]');
+                const rangeSliderMaxTextEl = rangeFilterEl.querySelector('[data-range-slider-max-text]');
                 const rangeSliderMinInputEl = rangeSliderContainerEl.querySelector('input[name="'+opts.rangeSliderMinName+'"]');
                 const rangeSliderMaxInputEl = rangeSliderContainerEl.querySelector('input[name="'+opts.rangeSliderMaxName+'"]');
                 const rangeSlider = noUiSlider.create(el, {
@@ -1043,13 +1102,13 @@ export default {
 
                        if (handle === 0) {
 
-                           rangeSliderMinInputEl.value = value;
+                           rangeSliderMinInputEl.value = parseInt(opts.rangeSliderMinValue, 10) !== value ? value : '';
                            rangeSliderMinTextEl.innerHTML = value;
                            rangeSliderMinInputEl.dispatchEvent(new Event('input', { bubbles:true }));
 
                        } else {
 
-                           rangeSliderMaxInputEl.value = value;
+                           rangeSliderMaxInputEl.value = parseInt(opts.rangeSliderMaxValue, 10) !== value ? value : '';
                            rangeSliderMaxTextEl.innerHTML = value;
                            rangeSliderMaxInputEl.dispatchEvent(new Event('input', { bubbles:true }));
                        }
@@ -1349,6 +1408,26 @@ export default {
                     } else if (el.type === 'number') {
 
                         el.value = '';
+
+                    } else if (el.hasAttribute('data-is-range-filter')) {
+
+                        const sliderEl = el.parentNode.querySelector('.range-slider');
+
+                        el.value = '';
+
+                        if (sliderEl && sliderEl.noUiSlider) {
+
+                            const rangeSliderMinTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-min-text]');
+                            const rangeSliderMaxTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-max-text]');
+
+                            sliderEl.noUiSlider.set([
+                                parseInt(sliderEl.dataset.rangeSliderMinDefault, 10),
+                                parseInt(sliderEl.dataset.rangeSliderMaxDefault, 10)
+                            ]);
+
+                            rangeSliderMinTextEl.innerHTML = sliderEl.dataset.rangeSliderMinDefault;
+                            rangeSliderMaxTextEl.innerHTML = sliderEl.dataset.rangeSliderMaxDefault;
+                        }
                     }
                 });
 
@@ -1361,6 +1440,26 @@ export default {
                     } else if (el.type === 'number') {
 
                         el.value = '';
+
+                    } else if (el.hasAttribute('data-is-range-filter')) {
+
+                        const sliderEl = el.parentNode.querySelector('.range-slider');
+
+                        el.value = '';
+
+                        if (sliderEl && sliderEl.noUiSlider) {
+
+                            const rangeSliderMinTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-min-text]');
+                            const rangeSliderMaxTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-max-text]');
+
+                            sliderEl.noUiSlider.set([
+                                parseInt(sliderEl.dataset.rangeSliderMinDefault, 10),
+                                parseInt(sliderEl.dataset.rangeSliderMaxDefault, 10)
+                            ]);
+
+                            rangeSliderMinTextEl.innerHTML = sliderEl.dataset.rangeSliderMinDefault;
+                            rangeSliderMaxTextEl.innerHTML = sliderEl.dataset.rangeSliderMaxDefault;
+                        }
                     }
                 });
 
@@ -1384,8 +1483,27 @@ export default {
                         } else if (el.type === 'number') {
 
                             el.value = '';
-                        }
 
+                        } else if (el.hasAttribute('data-is-range-filter')) {
+
+                            const sliderEl = el.parentNode.querySelector('.range-slider');
+
+                            el.value = '';
+
+                            if (sliderEl && sliderEl.noUiSlider) {
+
+                                const rangeSliderMinTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-min-text]');
+                                const rangeSliderMaxTextEl = el.parentNode.parentNode.querySelector('[ data-range-slider-max-text]');
+
+                                sliderEl.noUiSlider.set([
+                                    parseInt(sliderEl.dataset.rangeSliderMinDefault, 10),
+                                    parseInt(sliderEl.dataset.rangeSliderMaxDefault, 10)
+                                ]);
+
+                                rangeSliderMinTextEl.innerHTML = sliderEl.dataset.rangeSliderMinDefault;
+                                rangeSliderMaxTextEl.innerHTML = sliderEl.dataset.rangeSliderMaxDefault;
+                            }
+                        }
                     });
 
                     $catalogFiltersFormEl.submit();

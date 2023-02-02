@@ -17,7 +17,7 @@
 
                 {%- if item.url -%}
 
-                    <a href="{{ item.url }}" class="link-list-item-text">
+                    <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="link-list-item-text">
                         {{ item.title }}
                     </a>
 
@@ -39,7 +39,7 @@
 
                         {%- if item.url -%}
 
-                            <a href="{{ item.url }}" class="link-list-item-text">
+                            <a href="{{ item.url }}" target="{{ item.target | default: '_self' }}" class="link-list-item-text">
                                 {{ item.title }}
                             </a>
 
