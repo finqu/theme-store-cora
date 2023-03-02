@@ -679,7 +679,7 @@
                                                     {% endif %}
 
                                                     <div class="product-media-video-icon-container c-zoom-in">
-                                                        {%- render 'icon', icon: 'regular/controls-play', class: 'svg-icon-fw product-media-video-icon '' -%}
+                                                        {%- render 'icon', icon: 'regular/controls-play', class: 'svg-icon-fw product-media-video-icon' -%}
                                                     </div>
 
                                                     <picture>
@@ -886,6 +886,20 @@
                             <span>{{ product.short_description }}</span>
 
                         </div>
+
+                    {% endif %}
+
+                    {% if product.promotion %}
+
+                        <div class="border p-3 rounded">
+
+                	    	<h6 class="mb-0">{{ product.promotion.title }}</h6>
+
+                	    	{% if product.promotion.description %}
+                	    	    <div><small>{{ product.promotion.description }}</small></div>
+                	    	{% endif %}
+
+                	    </div>
 
                     {% endif %}
 
