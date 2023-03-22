@@ -12,7 +12,25 @@
 
 {%- if section.settings.videoSrc -%}
 
-    {%- if section.settings.videoSrc contains 'youtube.com' -%}
+    {%- if section.settings.videoSrc contains 'youtu.be' -%}
+
+        {%- assign videoType = 'iframe' -%}
+        {%- assign videoId =  section.settings.videoSrc | split: '/' | last -%}
+
+        {%- if videoId -%}
+
+            {%- assign videoSrc = 'https://www.youtube-nocookie.com/embed/' | append: videoId -%}
+
+            {%- capture params -%}
+                autoplay={{ section.settings.videoAutoplay | yepnope: 1, 0 }}&rel=0&modestbranding=1&playsinline=1&controls={{ section.settings.videoControls | yepnope: 1, 0 }}
+            {%- endcapture -%}
+
+            {%- assign params = params | strip -%}
+            {%- assign videoSrc = videoSrc | build_query: params-%}
+
+        {%- endif -%}
+
+    {%- elsif section.settings.videoSrc contains 'youtube.com' -%}
 
         {%- assign videoType = 'iframe' -%}
         {%- assign queryParams = section.settings.videoSrc | query_params -%}
