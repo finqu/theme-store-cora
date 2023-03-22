@@ -96,6 +96,37 @@ export default class Cart {
                         }
                     };
 
+                    try {
+
+                        attributes.forEach((obj) => {
+
+                            const el = cartFormEl.querySelector('[name="'+obj.name+'"]');
+
+                            if (el && el.nodeName === 'TEXTAREA') {
+
+                                const minlength = el.getAttribute('minlength');
+                                const maxlength = el.getAttribute('maxlength');
+
+                                if (minlength && obj.value.length < minlength) {
+
+                                    self.notify.warning(null, themeApp.utils.t('error.attribute_text_min_length'));
+
+                                    throw new Error('Attribute text min length error.');
+
+                                } else if (maxlength && obj.value.length > maxlength) {
+
+                                    self.notify.warning(null, themeApp.utils.t('error.attribute_text_max_length'));
+
+                                    throw new Error('Attribute text max length error.');
+                                }
+                            }
+                        });
+
+                    } catch (e) {
+
+                        return false;
+                    }
+
                     if (!itemId || !quantity) {
                         return false;
                     }

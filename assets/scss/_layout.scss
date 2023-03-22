@@ -69,14 +69,14 @@ body.template-frontpage {
                         }
                     }
 
-                    &.has-klarna-top-strip-promotion-standard-banner {
+                    &.has-klarna-top-strip-promotion-auto-size-banner {
 
                         .site-header-container {
-                            top: $klarna-top-strip-promotion-standard-banner-height;
+                            top: $klarna-top-strip-promotion-auto-size-banner-height;
                         }
 
                         .site-klarna-banner {
-                            height: $klarna-top-strip-promotion-standard-banner-height;
+                            height: $klarna-top-strip-promotion-auto-size-banner-height;
                         }
                     }
 
@@ -91,14 +91,14 @@ body.template-frontpage {
                         }
                     }
 
-                    &.has-announcement.has-klarna-top-strip-promotion-standard-banner {
+                    &.has-announcement.has-klarna-top-strip-promotion-auto-size-banner {
 
                         .site-announcement-container {
-                            top: $klarna-top-strip-promotion-standard-banner-height;
+                            top: $klarna-top-strip-promotion-auto-size-banner-height;
                         }
 
                         .site-header-container {
-                            top: add($klarna-top-strip-promotion-standard-banner-height, $announcement-height);
+                            top: add($klarna-top-strip-promotion-auto-size-banner-height, $announcement-height);
                         }
                     }
 
@@ -177,14 +177,14 @@ body.template-frontpage {
                         }
                     }
 
-                    &.has-klarna-top-strip-promotion-standard-banner {
+                    &.has-klarna-top-strip-promotion-auto-size-banner {
 
                         .site-header-container {
-                            top: $klarna-top-strip-promotion-standard-banner-height;
+                            top: $klarna-top-strip-promotion-auto-size-banner-height;
                         }
 
                         .site-klarna-banner {
-                            height: $klarna-top-strip-promotion-standard-banner-height;
+                            height: $klarna-top-strip-promotion-auto-size-banner-height;
                         }
                     }
 
@@ -199,14 +199,14 @@ body.template-frontpage {
                         }
                     }
 
-                    &.has-announcement.has-klarna-top-strip-promotion-standard-banner {
+                    &.has-announcement.has-klarna-top-strip-promotion-auto-size-banner {
 
                         .site-announcement-container {
-                            top: $klarna-top-strip-promotion-standard-banner-height;
+                            top: $klarna-top-strip-promotion-auto-size-banner-height;
                         }
 
                         .site-header-container {
-                            top: add($klarna-top-strip-promotion-standard-banner-height, $announcement-height);
+                            top: add($klarna-top-strip-promotion-auto-size-banner-height, $announcement-height);
                         }
                     }
 
@@ -708,18 +708,18 @@ body > #search-overlay {
             justify-content: center;
             z-index: 5;
 
-            &.klarna-type-top-strip-promotion-standard {
-                height: $klarna-top-strip-promotion-standard-banner-height;
+            &.klarna-type-top-strip-promotion-auto-size {
+                height: $klarna-top-strip-promotion-auto-size-banner-height;
                 @include media-breakpoint-down(sm) {
-                    height: $klarna-top-strip-promotion-standard-banner-mobile-height;
+                    height: $klarna-top-strip-promotion-auto-size-banner-mobile-height;
                 }
 
                 &.klarna-theme-light {
-                    background-color: $klarna-top-strip-promotion-standard-banner-light-background-color;
+                    background-color: $klarna-top-strip-promotion-auto-size-banner-light-background-color;
                 }
 
                 &.klarna-theme-dark {
-                    background-color: $klarna-top-strip-promotion-standard-banner-dark-background-color;
+                    background-color: $klarna-top-strip-promotion-auto-size-banner-dark-background-color;
                 }
             }
 

@@ -415,9 +415,11 @@
 
                     {% for product in category.products %}
 
+                        {% assign url = product | link_to_within: currentCategory %}
+
                         <div class="col pt-3 pb-4">
 
-                            {%- render 'product-card-grid', product: product, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showDiscountBadge: section.settings.showDiscountBadge, showOutOfStockBadge: section.settings.showOutOfStockBadge, showNewBadge: section.settings.showNewBadge, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
+                            {%- render 'product-card-grid', product: product, url: url, wishlist: 'toggle', itemsPerRow: section.settings.itemsPerRow, showDiscountBadge: section.settings.showDiscountBadge, showOutOfStockBadge: section.settings.showOutOfStockBadge, showNewBadge: section.settings.showNewBadge, showManufacturer: section.settings.showManufacturer, showProductName: section.settings.showProductName, showPricing: section.settings.showPricing, showAddToCart: section.settings.showAddToCart -%}
 
                         </div>
 

@@ -79,7 +79,11 @@
 {%- assign productOriginalNetPrice = product.original_net_price | default: '' -%}
 {%- assign productOriginalPrice = product.original_price | default: '' -%}
 {%- assign productHasDiscount = product.has_discount | default: false -%}
-{%- assign productUrl = product | page_url | default: '' -%}
+{%- assign productUrl = product | link | default: '' -%}
+
+{% if url %}
+	{%- assign productUrl = url -%}
+{% endif %}
 
 {%- unless product -%}
 	{%- assign productName = 'Example product title' -%}

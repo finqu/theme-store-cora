@@ -2230,6 +2230,15 @@
 					"default": true
 				},
 				{
+					"id": "searchAutocomplete",
+					"type": "checkbox",
+					"label": {
+						"en": "Search autocomplete",
+						"fi": "Ennakoiva haku"
+					},
+					"default": true
+				},
+				{
 					"type": "spacer"
 				},
 				{
@@ -2332,6 +2341,22 @@
 					}
 				},
 				{
+					"id": "whatsappPageUrl",
+					"type": "text",
+					"label": {
+						"en": "WhatsApp page URL",
+						"fi": "WhatsApp-sivun URL-osoite"
+					}
+				},
+				{
+					"id": "snapchatPageUrl",
+					"type": "text",
+					"label": {
+						"en": "Snapchat page URL",
+						"fi": "Snapchat-sivun URL-osoite"
+					}
+				},
+				{
 					"id": "pinterestPageUrl",
 					"type": "text",
 					"label": {
@@ -2345,6 +2370,30 @@
 					"label": {
 						"en": "Youtube page URL",
 						"fi": "Youtube-sivun URL-osoite"
+					}
+				},
+				{
+					"id": "linkedinPageUrl",
+					"type": "text",
+					"label": {
+						"en": "LinkedIn page URL",
+						"fi": "LinkedIn-sivun URL-osoite"
+					}
+				},
+				{
+					"id": "tumblrPageUrl",
+					"type": "text",
+					"label": {
+						"en": "Tumblr page URL",
+						"fi": "Tumblr-sivun URL-osoite"
+					}
+				},
+				{
+					"id": "redditPageUrl",
+					"type": "text",
+					"label": {
+						"en": "Reddit page URL",
+						"fi": "Reddit-sivun URL-osoite"
 					}
 				},
 				{

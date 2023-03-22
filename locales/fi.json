@@ -320,7 +320,9 @@
         "terms_of_use": "Sinun on hyväksyttävä käyttöehdot.",
         "min_length": "merkkiä vähintään.",
         "privacy_policy": "Sinun on hyväksyttävä henkilötietojen käsittely ja oltava vähintään 16 vuotias.",
-        "requires_account": "Sinun on kirjauduttava sisään"
+        "requires_account": "Sinun on kirjauduttava sisään",
+        "attribute_text_min_length": "Tuotevalinnan teksti on liian lyhyt.",
+        "attribute_text_max_length": "Tuotevalinnan teksti on liian pitkä."
     },
     "login": {
         "title": "Kirjaudu sisään",

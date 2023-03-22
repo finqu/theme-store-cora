@@ -181,7 +181,9 @@
         "terms_of_use": "You must agree to terms of use.",
         "min_length": "characters minimum.",
         "privacy_policy": "You must accept handling of personal information and be at least 16 years old.",
-        "requires_account": "You must be logged in"
+        "requires_account": "You must be logged in",
+        "attribute_text_min_length": "The product option text is too short.",
+        "attribute_text_max_length": "The product option text is too long."
     },
     "blog": {
         "title": "Blog",

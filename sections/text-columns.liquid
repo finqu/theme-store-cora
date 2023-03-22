@@ -101,7 +101,7 @@
                                         alt="{{ item.settings.imgAlt }}"
                                         data-src="{{ imgSrc | thumb: imgSizeSm }}"
                                         data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                                        class="lazy aspect-ratio-item {% if item.settings.imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
+                                        class="lazy aspect-ratio-item {% if item.settings.imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}{% unless item.settings.imgFit %} aspect-ratio-item-position-{{ item.settings.imgAlign }}{% endunless %}"
                                         data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
                                 </picture>
 
@@ -116,7 +116,7 @@
                             <div class="aspect-ratio-container" data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
 
                                 {%- capture class -%}
-                                    aspect-ratio-item{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}
+                                    aspect-ratio-item{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}{% unless item.settings.imgFit %} aspect-ratio-item-position-{{ item.settings.imgAlign }}{% endunless %}
                                 {%- endcapture -%}
 
                                 {% render 'placeholder-svg', type: 'image', class: class %}
@@ -147,6 +147,15 @@
                                     {%- assign imgSizeLg = '285,285' -%}
                             {%- endcase -%}
 
+                            {%- case item.settings.imgAlign -%}
+                                {% when 'left' %}
+                                    {%- assign imgAlign = 'mr-auto' -%}
+                                {% when 'center' %}
+                                    {%- assign imgAlign = 'mx-auto' -%}
+                                {% when 'right' %}
+                                    {%- assign imgAlign = 'ml-auto' -%}
+                            {%- endcase -%}
+
                             <picture>
 
                                 <source media="(min-width: 992px)" data-srcset="
@@ -167,7 +176,7 @@
                                     alt="{{ item.settings.imgAlt }}"
                                     data-src="{{ imgSrc | thumb: imgSizeSm }}"
                                     data-srcset="{{ imgSrc | thumb: imgSizeSm }} 1x,{{ imgSrc | thumb: imgSizeSm | thumb:'@2x' }} 2x"
-                                    class="lazy d-block mx-auto img-fluid {% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
+                                    class="lazy d-block img-fluid{% if item.settings.imgFit %} mx-auto{% else %} {{ imgAlign }}{% endif %}{% if item.settings.imgEffect != 'none' %} {{ item.settings.imgEffect }}{% endif %}"
                                     data-finqu-inline-editor="items.{{ item.id }}.imgSrc">
                             </picture>
 
@@ -318,6 +327,30 @@
                                                     "label": "1:1"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "id": "imgAlign",
+                                            "type": "radio-pill",
+                                            "label": {
+                                                "en": "Image align",
+                                                "fi": "Kuvan tasaus"
+                                            },
+                                            "default": "center",
+                                            "options": [
+                                                {
+                                                    "value": "left",
+                                                    "label": "{# icon.alignLeftLight #}"
+                                                },
+                                                {
+                                                    "value": "center",
+                                                    "label": "{# icon.alignCenterLight #}"
+                                                },
+                                                {
+                                                    "value": "right",
+                                                    "label": "{# icon.alignRightLight #}"
+                                                }
+                                            ],
+                                            "conditions": ["imgFit eq false"]
                                         },
                                         {
                                             "id": "imgFit",
@@ -723,6 +756,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -734,6 +768,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -745,6 +780,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -777,6 +813,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -788,6 +825,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -820,6 +858,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -831,6 +870,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }
@@ -842,6 +882,7 @@
                                 "imgAlt": "",
                                 "imgEffect": "none",
                                 "imgAspectRatio": "1:1",
+                                "imgAlign": "center",
                                 "imgFit": false,
                                 "richtextHtml": "<h2>Heading<\/h2><p>Pair text with an image to focus on your chosen product, article or brand and tell your customers about it.<\/p>"
                             }

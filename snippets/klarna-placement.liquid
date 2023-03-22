@@ -16,48 +16,37 @@
 
 {%- case type -%}
 
-	{% when 'info-page' %}
-		{%- assign key = 'info-page' -%}
+  {% when 'info-page' %}
+    {%- assign key = 'info-page' -%}
 
-	{% when 'footer-promotion-auto-size' %}
-		{%- assign key = 'footer-promotion-auto-size' -%}
+  {% when 'footer-promotion-auto-size' %}
+    {%- assign key = 'footer-promotion-auto-size' -%}
 
-	{% when 'sidebar-promotion-auto-size' %}
-		{%- assign key = 'sidebar-promotion-auto-size' -%}
+  {% when 'sidebar-promotion-auto-size' %}
+    {%- assign key = 'sidebar-promotion-auto-size' -%}
 
-	{% when 'credit-promotion-auto-size' %}
-		{%- assign key = 'credit-promotion-auto-size' -%}
-		{%- assign amount = purchaseAmount -%}
+  {% when 'credit-promotion-auto-size' %}
+    {%- assign key = 'credit-promotion-auto-size' -%}
+    {%- assign amount = purchaseAmount -%}
 
-	{% when 'credit-promotion-standard' %}
-		{%- assign key = 'credit-promotion-standard' -%}
-		{%- assign amount = purchaseAmount -%}
+  {% when 'credit-promotion-badge' %}
+    {%- assign key = 'credit-promotion-badge' -%}
+    {%- assign amount = purchaseAmount -%}
 
-	{% when 'credit-promotion-small' %}
-		{%- assign key = 'credit-promotion-small' -%}
-		{%- assign amount = purchaseAmount -%}
+  {% when 'top-strip-promotion-auto-size' %}
+    {%- assign key = 'top-strip-promotion-auto-size' -%}
 
-	{% when 'credit-promotion-badge' %}
-		{%- assign key = 'credit-promotion-badge' -%}
-		{%- assign amount = purchaseAmount -%}
+  {% when 'top-strip-promotion-badge' %}
+    {%- assign key = 'top-strip-promotion-badge' -%}
 
-	{% when 'top-strip-promotion-auto-size' %}
-		{%- assign key = 'top-strip-promotion-auto-size' -%}
+  {% when 'homepage-promotion-tall' %}
+    {%- assign key = 'homepage-promotion-tall' -%}
 
-	{% when 'top-strip-promotion-standard' %}
-		{%- assign key = 'top-strip-promotion-standard' -%}
+  {% when 'homepage-promotion-wide' %}
+    {%- assign key = 'homepage-promotion-wide' -%}
 
-	{% when 'top-strip-promotion-badge' %}
-		{%- assign key = 'top-strip-promotion-badge' -%}
-
-	{% when 'homepage-promotion-tall' %}
-		{%- assign key = 'homepage-promotion-tall' -%}
-
-	{% when 'homepage-promotion-wide' %}
-		{%- assign key = 'homepage-promotion-wide' -%}
-
-	{% when 'homepage-promotion-box' %}
-		{%- assign key = 'homepage-promotion-box' -%}
+  {% when 'homepage-promotion-box' %}
+    {%- assign key = 'homepage-promotion-box' -%}
 
 {%- endcase -%}
 

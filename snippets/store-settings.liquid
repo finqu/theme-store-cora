@@ -31,6 +31,7 @@
 		hasPrivacyPolicy: {{ store.privacy_policy | yepnope: 'true', 'false' }},
 		cookiePolicy: {{ session.cookie_policy | json }},
 		backToTopButton: {{ settings.backToTopButton | json }},
+		searchAutocomplete: {{ settings.searchAutocomplete | json }},
 		cookiesNotificationPosition: {{ settings.cookiesNotificationPosition | json }},
 		currency: {
 			code: {{ store.currency.code | json }},
@@ -111,7 +112,9 @@
 		        terms_of_use: {{ 'error.terms_of_use' | t | json }},
 		        min_length: {{ 'error.min_length' | t | json }},
 		        privacy_policy: {{ 'error.privacy_policy' | t | json }},
-		        requires_account: {{ 'error.requires_account' | t | json }}
+		        requires_account: {{ 'error.requires_account' | t | json }},
+				attribute_text_min_length: {{ 'error.attribute_text_min_length' | t | json }},
+				attribute_text_max_lengt: {{ 'error.attribute_text_min_length' | t | json }}
 			}
 		},
 		placeholders: {

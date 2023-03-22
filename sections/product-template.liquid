@@ -815,7 +815,7 @@
 
                             </div>
 
-                            {% if section.settings.showLowestPrice %}
+                            {% if section.settings.showLowestPrice and product.discount_information %}
 
                                 {%- if settings.taxFreePrices -%}
                                     {% assign itemLowestPrice = product.previous_lower_price.net_price | default: product.net_price | money_with_currency %}

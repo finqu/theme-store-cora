@@ -387,45 +387,55 @@ export default {
                     return;
                 }
 
-                $.get('/api/search/suggest', {
-                    q: q
-                }, (res) => {
+                if (window.themeApp.searchAutocomplete) {
 
-                    siteSearchEl.classList.add('active');
+                    $.get('/api/search/suggest', {
+                        q: q
+                    }, (res) => {
 
-                    if (res.length > 0) {
+                        siteSearchEl.classList.add('active');
 
-                        siteSearchResultsEl.innerHTML = res.map(item => `
-                            <a href="${item.url}" class="site-search-result-item" tabindex="0">
-                                <span class="site-search-result-item-text">
-                                    ${item.title}
-                                </span>
-                            </a>
-                        `).join('');
+                        if (res.length > 0) {
 
-                    } else {
+                            siteSearchResultsEl.innerHTML = res.map(item => `
+                                <a href="${item.url}" class="site-search-result-item" tabindex="0">
+                                    <span class="site-search-result-item-text">
+                                        ${item.title}
+                                    </span>
+                                </a>
+                            `).join('');
 
-                        siteSearchResultsEl.innerHTML = `
-                            <div class="site-search-no-results">
-                                <span class="site-search-no-results-text">
-                                    ${window.themeApp.utils.t('general.search_no_results')}
-                                </span>
-                            </div>
-                        `;
-                    }
+                        } else {
+
+                            siteSearchResultsEl.innerHTML = `
+                                <div class="site-search-no-results">
+                                    <span class="site-search-no-results-text">
+                                        ${window.themeApp.utils.t('general.search_no_results')}
+                                    </span>
+                                </div>
+                            `;
+                        }
+
+                        document.dispatchEvent(new CustomEvent('theme:search', {
+                            detail: {
+                                query: q,
+                                items: res
+                            }
+                        }));
+                    });
+                    
+                } else {
 
                     document.dispatchEvent(new CustomEvent('theme:search', {
                         detail: {
-                            query: q,
-                            items: res
+                            query: q
                         }
                     }));
-                });
+                }
             }
 
             siteSearchEls.forEach(el => {
 
-                const siteSearchFormContainerEl = el.querySelector('.site-search-form-container');
                 const siteSearchQueryEl = el.querySelector('input[name="q"]');
                 const siteSearchResultsEl = el.querySelector('.site-search-results');
 
@@ -2220,15 +2230,39 @@ export default {
                 }
             });
 
-            themeApp.utils.filterInput(productQuantityInputEl, function(value) {
+            themeApp.utils.filterInput(productQuantityInputEl, function (value) {
 
-                if (maxQuantity) {
+                if (minQuantity && maxQuantity) {
 
-                    return value != 0 && value <= maxQuantity && value >= minQuantity && /^\d+$/.test(value);
+                    return (
+                        value != 0 &&
+                        value >= parseInt(minQuantity, 10) &&
+                        value <= parseInt(maxQuantity, 10) &&
+                        /^\d+$/.test(value)
+                    );
+
+                } else if (minQuantity) {
+
+                    return (
+                        value != 0 &&
+                        value >= parseInt(minQuantity, 10) &&
+                        /^\d+$/.test(value)
+                    );
+
+                } else if (maxQuantity) { 
+
+                    return (
+                        value != 0 &&
+                        value <= parseInt(maxQuantity, 10) &&
+                        /^\d+$/.test(value)
+                    );
 
                 } else {
 
-                    return value != 0 && value >= minQuantity && /^\d+$/.test(value);
+                    return (
+                        value != 0 &&
+                        /^\d+$/.test(value)
+                    );
                 }
             });
         };

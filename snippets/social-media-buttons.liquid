@@ -17,8 +17,13 @@
     {{ settings.facebookPageUrl | yepnope: 'true', 'false' }},
     {{ settings.instagramPageUrl | yepnope: 'true', 'false' }},
     {{ settings.twitterPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.whatsappPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.snapchatPageUrl | yepnope: 'true', 'false' }},
     {{ settings.pinterestPageUrl | yepnope: 'true', 'false' }},
     {{ settings.youtubePageUrl | yepnope: 'true', 'false' }},
+    {{ settings.linkedinPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.tumblrPageUrl | yepnope: 'true', 'false' }},
+    {{ settings.redditPageUrl | yepnope: 'true', 'false' }},
     {{ settings.tiktokPageUrl | yepnope: 'true', 'false' }},
     {{ settings.ravelryPageUrl | yepnope: 'true', 'false' }}
 {%- endcapture -%}
@@ -45,6 +50,18 @@
 
         {% endif %}
 
+        {% if settings.whatsappPageUrl %}
+
+            {% render 'social-media-button', type: 'whatsapp', url: settings.whatsappPageUrl, style: style, size: size %}
+
+        {% endif %}
+
+        {% if settings.snapchatPageUrl %}
+
+            {% render 'social-media-button', type: 'snapchat', url: settings.snapchatPageUrl, style: style, size: size %}
+
+        {% endif %}
+
         {% if settings.pinterestPageUrl %}
 
             {% render 'social-media-button', type: 'pinterest', url: settings.pinterestPageUrl, style: style, size: size %}
@@ -54,6 +71,24 @@
         {% if settings.youtubePageUrl %}
 
             {% render 'social-media-button', type: 'youtube', url: settings.youtubePageUrl, style: style, size: size %}
+
+        {% endif %}
+
+        {% if settings.linkedinPageUrl %}
+
+            {% render 'social-media-button', type: 'linkedin', url: settings.linkedinPageUrl, style: style, size: size %}
+
+        {% endif %}
+
+        {% if settings.tumblrPageUrl %}
+
+            {% render 'social-media-button', type: 'tumblr', url: settings.tumblrPageUrl, style: style, size: size %}
+
+        {% endif %}
+
+        {% if settings.redditPageUrl %}
+
+            {% render 'social-media-button', type: 'reddit', url: settings.redditPageUrl, style: style, size: size %}
 
         {% endif %}
 
