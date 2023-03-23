@@ -415,7 +415,7 @@
 
                     {% for product in category.products %}
 
-                        {% assign url = product | link_to_within: currentCategory %}
+                        {% assign url = product | within: currentCategory %}
 
                         <div class="col pt-3 pb-4">
 
@@ -657,7 +657,7 @@
 
                 {%- endfor -%}
 
-                <ul class="category-list{% if hasActiveCategory %} no-active-subcategories{% endif %}">
+                <ul class="category-list{% if hasActiveCategory %} no-active-subcategories{% endif %}{% if section.settings.highlightActiveSubcategory %} category-list-highlight-active-subcategory{% endif %}">
 
                     {% for item in categories.root %}
 
@@ -828,6 +828,15 @@
                         },
                         "default": false,
                         "conditions": ["showSubcategoryImg eq true"]
+                    },
+                    {
+                        "id": "highlightActiveSubcategory",
+                        "type": "checkbox",
+                        "label": {
+                            "en": "Highlight active subcategory",
+                            "fi": "Korosta aktiivinen alatuoteryhmä"
+                        },
+                        "default": false
                     }
                 ]
             }

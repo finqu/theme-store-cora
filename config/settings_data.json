@@ -2636,7 +2636,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -3822,7 +3823,8 @@
                                 "showAddToCart": false,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -5030,7 +5032,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -6099,7 +6102,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         },
@@ -7357,7 +7361,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -8726,7 +8731,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -9602,7 +9608,8 @@
                                 "showAddToCart": false,
                                 "showCategoryList": true,
                                 "showSubcategoryImg": false,
-                                "subcategoryImgFit": false
+                                "subcategoryImgFit": false,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -10786,7 +10793,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -12120,7 +12128,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }
@@ -13383,7 +13392,8 @@
                                 "showAddToCart": true,
                                 "showCategoryList": false,
                                 "showSubcategoryImg": true,
-                                "subcategoryImgFit": true
+                                "subcategoryImgFit": true,
+                                "highlightActiveSubcategory": false
                             },
                             "sticky": true
                         }

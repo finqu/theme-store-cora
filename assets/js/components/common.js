@@ -387,7 +387,7 @@ export default {
                     return;
                 }
 
-                if (window.themeApp.searchAutocomplete) {
+                if (window.themeApp.data.searchAutocomplete) {
 
                     $.get('/api/search/suggest', {
                         q: q
