@@ -1969,9 +1969,12 @@ body > #search-overlay {
 
         &.category-list-highlight-active-subcategory {
 
-            .caterogy-list-subcategory-container {
-                padding-top: .80rem;
-                margin-bottom: .80rem;
+            > .category-list-item {
+
+                > .caterogy-list-subcategory-container {
+                    padding-top: .80rem;
+                    margin-bottom: .80rem;
+                }
             }
         }
 

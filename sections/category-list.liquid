@@ -42,194 +42,190 @@
 
 {%- capture sectionContent -%}
 
-    <div class="container">
+    {% if items.size == 0 and request.design_mode %}
 
-        {% if items.size == 0 and request.design_mode %}
+        {%- assign itemsPerRow = section.settings.itemsPerRow | times: 2 -%}
 
-            {%- assign itemsPerRow = section.settings.itemsPerRow | times: 2 -%}
+        <div class="category-items-container category-items-position-{{ section.settings.titlePosition }} row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
 
-            <div class="category-items-container row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
+            {% for num in (1..itemsPerRow) %}
 
-                {% for num in (1..itemsPerRow) %}
+                <div class="category-item-{{ forloop.index }} section-spacer-y-{{ section.settings.sectionContentSpacing }} col">
 
-                    <div class="category-item-{{ forloop.index }} section-spacer-y-{{ section.settings.sectionContentSpacing }} col">
+                    {% if section.settings.titlePosition == 'over' %}
 
-                        {% if section.settings.titlePosition == 'over' %}
+                        <div class="category-item-title-container">
 
-                            <div class="category-item-title-container">
-
-                                <{{ section.settings.titleTag }} class="category-item-title">
-                                    Example product group
-                                </{{ section.settings.titleTag }}>
-
-                            </div>
-
-                        {% endif %}
-
-                        <div class="aspect-ratio-1-1">
-
-                            <div class="aspect-ratio-container">
-
-                                {% render 'placeholder-svg', type: 'category', class: 'aspect-ratio-item' %}
-
-                            </div>
+                            <{{ section.settings.titleTag }} class="category-item-title">
+                                Example product group
+                            </{{ section.settings.titleTag }}>
 
                         </div>
 
-                        {% if section.settings.titlePosition == 'below' %}
+                    {% endif %}
 
-                            <div class="mt-4">
+                    <div class="aspect-ratio-1-1">
 
-                                <{{ section.settings.titleTag }} class="category-item-title">
-                                    Example product group
-                                </{{ section.settings.titleTag }}>
+                        <div class="aspect-ratio-container">
 
-                            </div>
+                            {% render 'placeholder-svg', type: 'category', class: 'aspect-ratio-item' %}
 
-                        {% endif %}
+                        </div>
 
                     </div>
 
-                {% endfor %}
+                    {% if section.settings.titlePosition == 'below' %}
 
-            </div>
+                        <div class="category-item-title-container">
 
-        {% else %}
-
-            <div class="category-items-container row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
-
-                {% for item in items %}
-
-                    {%- if section.settings.setting_blocks.items.size > 0 -%}
-                        {%- assign itemCategory = item.settings.category -%}
-                    {%- else -%}
-                        {%- assign itemCategory = item -%}
-                    {%- endif -%}
-
-                    {%- if itemCategory -%}
-
-                        {%- if item.settings.imgSrc -%}
-                            {%- assign imgSrc = item.settings.imgSrc-%}
-                        {%- else -%}
-                            {%- assign imgSrc = itemCategory.image -%}
-                        {%- endif -%}
-
-                        {%- assign imgAlt = item.settings.imgAlt | default: itemCategory.title -%}
-                        {%- assign imgFit = item.settings.imgFit | default: true -%}
-                        {%- assign imgEffect = item.settings.imgEffect | default: 'none' -%}
-                        {%- assign resourceUrl = item.settings.resource.url | default: itemCategory | link -%}
-                        {%- assign openResourceInNewWindow = item.settings.resourceOpenInNewWindowStatus | default: false -%}
-                        {%- assign text = item.settings.text | default: itemCategory.title -%}
-
-                    {%- else -%}
-
-                        {%- assign imgSrc = item.settings.imgSrc -%}
-                        {%- assign imgAlt = item.settings.imgAlt -%}
-                        {%- assign imgFit = item.settings.imgFit -%}
-                        {%- assign imgEffect = item.settings.imgEffect -%}
-                        {%- assign resourceUrl = item.settings.resource.url -%}
-                        {%- assign openResourceInNewWindow = item.settings.resourceOpenInNewWindowStatus -%}
-                        {%- assign text = item.settings.text -%}
-
-                    {%- endif -%}
-
-                    {%- capture categoryItemContent -%}
-
-                        {%- if section.settings.imgOverlay and imgSrc and imgFit -%}
-                            <style>
-                                #finqu-section-{{ section.id }} .category-item-{{ forloop.index }}::after {
-                                    content: '';
-                                    position: absolute;
-                                    left: 0;
-                                    top: 0;
-                                    right: 0;
-                                    bottom: 0;
-                                    z-index: 1;
-                                    background: linear-gradient(0deg, rgb(0,0,0, {{ section.settings.imgOverlay }}%), rgb(0,0,0, {{ section.settings.imgOverlay }}%))
-                                }
-                            </style>
-                        {%- endif -%}
-
-                        {% if section.settings.titlePosition == 'over' %}
-
-                            <div class="category-item-title-container">
-
-                                <{{ section.settings.titleTag }} class="category-item-title">
-                                    {{ text }}
-                                </{{ section.settings.titleTag }}>
-
-                            </div>
-
-                        {% endif %}
-
-                        <div class="aspect-ratio-1-1">
-
-                            <div class="aspect-ratio-container">
-
-                                {% if imgSrc %}
-
-                                    <picture>
-                                        <img
-                                            alt="{{ imgAlt }}"
-                                            data-src="{{ imgSrc | thumb: imgSize }}"
-                                            data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
-                                            class="lazy aspect-ratio-item {% if imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if imgEffect != 'none' %} {{ imgEffect }}{% endif %}">
-
-                                    </picture>
-
-                                {% else %}
-
-                                    {%- capture class -%}
-                                        aspect-ratio-item{% if imgEffect != 'none' %} {{ imgEffect }}{% endif %}
-                                    {%- endcapture -%}
-
-                                    {% render 'placeholder-svg', type: 'category', class: class %}
-
-                                {% endif %}
-
-                            </div>
+                            <{{ section.settings.titleTag }} class="category-item-title">
+                                Example product group
+                            </{{ section.settings.titleTag }}>
 
                         </div>
 
-                        {% if section.settings.titlePosition == 'below' %}
+                    {% endif %}
 
-                            <div class="mt-4">
+                </div>
 
-                                <{{ section.settings.titleTag }} class="category-item-title">
-                                    {{ text }}
-                                </{{ section.settings.titleTag }}>
+            {% endfor %}
 
-                            </div>
+        </div>
 
-                        {% endif %}
+    {% else %}
 
-                    {%- endcapture -%}
+        <div class="category-items-container category-items-position-{{ section.settings.titlePosition }} row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-{{ section.settings.itemsPerRow }}">
 
-                    <div class="category-item-{{ forloop.index }} section-spacer-y-{{ section.settings.sectionContentSpacing }} col">
+            {% for item in items %}
 
-                        {% if resourceUrl %}
+                {%- if section.settings.setting_blocks.items.size > 0 -%}
+                    {%- assign itemCategory = item.settings.category -%}
+                {%- else -%}
+                    {%- assign itemCategory = item -%}
+                {%- endif -%}
 
-                            <a href="{{- resourceUrl -}}"{% if openResourceInNewWindow %} target="_blank"{% endif %}>
+                {%- if itemCategory -%}
 
-                                {{ categoryItemContent }}
+                    {%- if item.settings.imgSrc -%}
+                        {%- assign imgSrc = item.settings.imgSrc-%}
+                    {%- else -%}
+                        {%- assign imgSrc = itemCategory.image -%}
+                    {%- endif -%}
 
-                            </a>
+                    {%- assign imgAlt = item.settings.imgAlt | default: itemCategory.title -%}
+                    {%- assign imgFit = item.settings.imgFit | default: true -%}
+                    {%- assign imgEffect = item.settings.imgEffect | default: 'none' -%}
+                    {%- assign resourceUrl = item.settings.resource.url | default: itemCategory | link -%}
+                    {%- assign openResourceInNewWindow = item.settings.resourceOpenInNewWindowStatus | default: false -%}
+                    {%- assign text = item.settings.text | default: itemCategory.title -%}
 
-                        {% else %}
+                {%- else -%}
+
+                    {%- assign imgSrc = item.settings.imgSrc -%}
+                    {%- assign imgAlt = item.settings.imgAlt -%}
+                    {%- assign imgFit = item.settings.imgFit -%}
+                    {%- assign imgEffect = item.settings.imgEffect -%}
+                    {%- assign resourceUrl = item.settings.resource.url -%}
+                    {%- assign openResourceInNewWindow = item.settings.resourceOpenInNewWindowStatus -%}
+                    {%- assign text = item.settings.text -%}
+
+                {%- endif -%}
+
+                {%- capture categoryItemContent -%}
+
+                    {%- if section.settings.imgOverlay and imgSrc and imgFit -%}
+                        <style>
+                            #finqu-section-{{ section.id }} .category-item-{{ forloop.index }}::after {
+                                content: '';
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                right: 0;
+                                bottom: 0;
+                                z-index: 1;
+                                background: linear-gradient(0deg, rgb(0,0,0, {{ section.settings.imgOverlay }}%), rgb(0,0,0, {{ section.settings.imgOverlay }}%))
+                            }
+                        </style>
+                    {%- endif -%}
+
+                    {% if section.settings.titlePosition == 'over' %}
+
+                        <div class="category-item-title-container">
+
+                            <{{ section.settings.titleTag }} class="category-item-title">
+                                {{ text }}
+                            </{{ section.settings.titleTag }}>
+
+                        </div>
+
+                    {% endif %}
+
+                    <div class="aspect-ratio-1-1">
+
+                        <div class="aspect-ratio-container">
+
+                            {% if imgSrc %}
+
+                                <picture>
+                                    <img
+                                        alt="{{ imgAlt }}"
+                                        data-src="{{ imgSrc | thumb: imgSize }}"
+                                        data-srcset="{{ imgSrc | thumb: imgSize }} 1x,{{ imgSrc | thumb: imgSize | thumb:'@2x' }} 2x"
+                                        class="lazy aspect-ratio-item {% if imgFit %}aspect-ratio-item-cover{% else %}aspect-ratio-item-contain{% endif %}{% if imgEffect != 'none' %} {{ imgEffect }}{% endif %}">
+
+                                </picture>
+
+                            {% else %}
+
+                                {%- capture class -%}
+                                    aspect-ratio-item{% if imgEffect != 'none' %} {{ imgEffect }}{% endif %}
+                                {%- endcapture -%}
+
+                                {% render 'placeholder-svg', type: 'category', class: class %}
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    {% if section.settings.titlePosition == 'below' %}
+
+                        <div class="category-item-title-container">
+
+                            <{{ section.settings.titleTag }} class="category-item-title">
+                                {{ text }}
+                            </{{ section.settings.titleTag }}>
+
+                        </div>
+
+                    {% endif %}
+
+                {%- endcapture -%}
+
+                <div class="category-item-{{ forloop.index }} section-spacer-y-{{ section.settings.sectionContentSpacing }} col">
+
+                    {% if resourceUrl %}
+
+                        <a href="{{- resourceUrl -}}"{% if openResourceInNewWindow %} target="_blank"{% endif %}>
 
                             {{ categoryItemContent }}
 
-                        {% endif%}
+                        </a>
 
-                    </div>
+                    {% else %}
 
-                {% endfor %}
+                        {{ categoryItemContent }}
 
-            </div>
+                    {% endif%}
 
-        {% endif %}
+                </div>
 
-    </div>
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
 
 {%- endcapture -%}
 
@@ -328,37 +324,6 @@
                                     "step": 1,
                                     "default": 4,
                                     "unit": " "
-                                },
-                                {
-                                    "id": "sectionColSpacing",
-                                    "type": "radio-pill",
-                                    "label": {
-                                        "en": "Column spacing",
-                                        "fi": "Sarakkeen väli"
-                                    },
-                                    "default": "sm",
-                                    "options": [
-                                        {
-                                            "value": "off",
-                                            "label": "OFF"
-                                        },
-                                        {
-                                            "value": "sm",
-                                            "label": "S"
-                                        },
-                                        {
-                                            "value": "md",
-                                            "label": "M"
-                                        },
-                                        {
-                                            "value": "lg",
-                                            "label": "L"
-                                        },
-                                        {
-                                            "value": "xl",
-                                            "label": "XL"
-                                        }
-                                    ]
                                 }
                             ]
                         },
@@ -936,7 +901,6 @@
                 "sectionSubtitle": "",
                 "sectionSubtitleTag": "h3",
                 "sectionHeaderTextAlign": "center",
-                "sectionColSpacing": "sm",
                 "sectionContentSpacing": "sm",
                 "itemsPerRow": "4",
                 "titleTag": "h3",
