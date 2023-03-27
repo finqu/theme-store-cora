@@ -58,7 +58,7 @@ button[name="gallery-next"] {
 	}
 
 	.pswp__bg {
-		background: color-yiq(section-var(background_color, section-vars()));
+		background: section-var(background_color, section-vars());
 	}
 
 	.pswp__video-container {
