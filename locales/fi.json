@@ -290,6 +290,15 @@
                 "other": "Muu syy",
                 "warranty_repair": "Takuukorjaus"
             }
+        },
+        "loyalty_discount": {
+            "current_level_title": "Alennuksesi",
+            "level_expiry_info": "Alennus on voimassa {{ expiry }} asti.",
+            "spend_gap_info": "Osta vielä {{ amount }} ja pääset seuraavalle tasolle.",
+            "not_combinable_not_stackable": "Alennus ei koske jo alennettuja tuotteita eikä sitä voida yhdistää muihin alennuksiin. Alennus myönnetään automaattisesti kassalla.",
+            "not_combinable_stackable": "Alennus ei koske jo alennettuja tuotteita. Alennus myönnetään automaattisesti kassalla. Alennus myönnetään automaattisesti kassalla.",
+            "combinable_not_stackable": "Alennusta ei voida yhdistää muihin alennuksiin. Alennus myönnetään automaattisesti kassalla.",
+            "combinable_stackable": "Alennus myönnetään automaattisesti kassalla."
         }
     },
     "error": {

@@ -322,6 +322,15 @@
                 "other": "Other",
                 "warranty_repair": "Warranty repair"
             }
+        },
+        "loyalty_discount": {
+            "current_level_title": "Your discount",
+            "level_expiry_info": "Discount is valid until {{ expiry }}.",
+            "spend_gap_info": "Spend {{ amount }} more to reach the next discount level.",
+            "not_combinable_not_stackable": "The discount offered cannot be used in conjunction with other discounts and is not applicable to products that have already been discounted. The discount will be applied automatically during the checkout process.",
+            "not_combinable_stackable": "The discount offered cannot be used in conjunction with other discounts. The discount will be applied automatically during the checkout process.",
+            "combinable_not_stackable": "The discount offered is not applicable to products that have already been discounted. The discount will be applied automatically during the checkout process.",
+            "combinable_stackable": "The discount will be applied automatically during the checkout process."
         }
     },
     "login": {

@@ -145,6 +145,110 @@
 
 	</div>
 
+	{% assign loyalty = customer.loyalty_discount_progress %}
+
+	{% if loyalty %}
+
+		<div class="pb-6 mb-6 border-bottom">
+
+			<div class="row no-gutters">
+
+				<div class="col-auto">
+
+					{%- render 'icon', icon: 'regular/love-it-hand-give', class: 'svg-icon-4x' -%}
+
+				</div>
+
+				<div class="col pl-4">
+
+					<div class="row">
+
+						<div class="col">
+
+							<div class="row">
+
+								<div class="col">
+
+									<div>
+
+										<span class="d-block font-weight-bold mb-2">
+											{{ loyalty.title }}
+										</span>
+
+										<div>
+
+											{{ loyalty.description }}
+
+											{% if loyalty.is_combinable == false and loyalty.is_stackable == false %}
+												<br><br>
+												{{ 'account.loyalty_discount.not_combinable_not_stackable' | t }}
+											{% elsif loyalty.is_combinable and loyalty.is_stackable == false %}
+												<br><br>
+												{{ 'account.loyalty_discount.combinable_not_stackable' | t }}
+											{% elsif loyalty.is_combinable == false and loyalty.is_stackable %}
+												<br><br>
+												{{ 'account.loyalty_discount.not_combinable_stackable' | t }}
+											{% else %}
+												<br><br>
+												{{ 'account.loyalty_discount.combinable_stackable' | t }}
+											{% endif %}
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="col-12 col-md-5 mt-6 mt-md-0">
+
+									{{ 'account.loyalty_discount.current_level_title' | t }}
+
+									<h3 class="mb-0">
+										{% if loyalty.is_fixed_discount %}
+											{{ loyalty.current_level.discount | money_with_currency }}
+										{% else %}
+											{{ loyalty.current_level.discount }}%
+										{% endif %}
+									</h3>
+
+									{% if loyalty.current_level.valid_until %}
+										{%- assign expiry = loyalty.current_level.valid_until | date: dateFormat -%}
+
+										<span class="small text-muted">{{ 'account.loyalty_discount.level_expiry_info' | t: expiry: expiry }}</span>
+
+									{% endif %}
+
+									{% if loyalty.next_level %}
+
+										<div class="progress mb-3 mt-3">
+											{%- assign total = loyalty.next_level.threshold | minus: loyalty.current_level.threshold -%}
+											{%- assign progress = loyalty.total_spent | minus: loyalty.current_level.threshold -%}
+											{%- assign percentage = progress | divided_by: total | times: 100 -%}
+
+											<div class="progress-bar" role="progressbar" style="width: {{ percentage }}%" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+
+										{%- assign amount = loyalty.next_level.threshold | minus: loyalty.total_spent | money_with_currency -%}
+										<span>{{ 'account.loyalty_discount.spend_gap_info' | t: amount: amount }}</span>
+
+									{% endif %}
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{% endif %}
+
 	<div class="pb-6 mb-6 border-bottom">
 
 		<div class="row no-gutters">
