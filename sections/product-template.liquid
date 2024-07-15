@@ -792,7 +792,7 @@
                                 {%- else -%}
                                     {% assign itemPrice = product.price %}
                                     {% assign itemOriginalPrice = product.original_price %}
-                                    {% assign itemTaxPercent = product.taxpercent | round %}
+                                    {% assign itemTaxPercent = product.taxpercent %}
                                 {%- endif -%}
 
                                 {% if product.has_discount %}

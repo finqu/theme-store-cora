@@ -235,17 +235,20 @@ export default class App {
 	        }
         });
 
-        Handlebars.registerPartial('image', function(data) {
-
-        	const src = data.src;
-        	const scale = parseInt(data.scale, 10) || 1;
-        	const size = data.size.split(',');
-        	const width = scale * size[0];
-        	const height = scale * (size[1] || size[0]);
-        	const extension = src.substring(src.lastIndexOf('.') + 1);
-        	const result = src.substring(0, src.lastIndexOf('.'))+'_'+width+'_'+height+'.'+extension;
-
-            return result;
+        Handlebars.registerPartial('image', function(input = null) {
+			if (!input || typeof input !== 'object' || Object.keys(input).length === 0) {
+				return;
+			}
+		
+			const { src, scale, size } = input;
+			const url = new URL(src);
+			const scaleValue = parseInt(scale, 10) || 1;
+			const [width, height = width] = size.split(',').map(value => scaleValue * parseInt(value, 10));
+		
+			url.searchParams.set('w', width);
+			url.searchParams.set('h', height);
+		
+			return url.href;
         });
 
         Handlebars.registerHelper('assign', function (key, val, options) {
